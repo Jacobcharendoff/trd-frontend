@@ -35,12 +35,12 @@ function Hero() {
               </div>
 
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
-                {"Let's design "}
-                <span className="trd-gradient-text">your next rig.</span>
+                {"Let's build "}
+                <span className="trd-gradient-text">something that sounds like you.</span>
               </h1>
 
               <p className="text-[18px] text-white/[0.75] leading-relaxed max-w-md">
-                {"Book a free 30-minute consultation. We'll map your tone goals, discuss your current setup, and design a custom pedalboard that brings your vision to life."}
+                {"Grab a free 30-minute call. We'll talk about your playing, your rig, what's working — and what's not. No sales pitch, just straight talk from one player to another."}
               </p>
 
               <div className="flex flex-wrap gap-6 py-4">
@@ -62,9 +62,9 @@ function Hero() {
 
               {/* Agenda card */}
               <div className="trd-glass-dark p-6 space-y-4">
-                <h3 className="text-[15px] font-semibold text-white">{"What we'll cover"}</h3>
+                <h3 className="text-[15px] font-semibold text-white">{"What we'll dig into"}</h3>
                 <ul className="space-y-3">
-                  {['Your tone goals and inspiration', 'Existing gear and rig constraints', 'Custom build proposal and timeline'].map((item) => (
+                  {['What you play and the tone you\u2019re chasing', 'Your current rig — what\u2019s working, what\u2019s not', 'A custom build plan with timeline and pricing'].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <svg className="w-5 h-5 text-[#10B981] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -113,9 +113,9 @@ function Hero() {
 /* ──── After the Call (light — informational) ──── */
 function AfterTheCall() {
   const steps = [
-    { number: '01', title: 'Custom Build Plan', description: 'We document your exact specifications, wiring diagram, and components selected.' },
-    { number: '02', title: 'Transparent Quote', description: 'You receive an itemized proposal with timeline and no surprise fees.' },
-    { number: '03', title: 'You Decide', description: "No pressure. Review, ask questions, and move forward when you're ready." },
+    { number: '01', title: 'We Map It Out', description: 'Your specs, wiring diagram, component list — all documented so nothing gets lost in translation.' },
+    { number: '02', title: 'Straight-Up Quote', description: 'Itemized proposal, clear timeline, no hidden fees. You see exactly what you\u2019re paying for.' },
+    { number: '03', title: 'Your Call', description: "No pressure. Take your time, ask questions, sleep on it. We\u2019re here when you\u2019re ready." },
   ];
 
   return (
@@ -177,8 +177,8 @@ function Team() {
     <Section theme="lightGray">
       <div className="space-y-12">
         <div className="text-center space-y-2">
-          <h2 className="text-4xl font-bold text-[#1d1d1f]">Meet your build team</h2>
-          <p className="text-[16px] text-[#1d1d1f]/60 max-w-2xl mx-auto">Three rig engineers with 50+ years of collective experience.</p>
+          <h2 className="text-4xl font-bold text-[#1d1d1f]">The guys behind the bench.</h2>
+          <p className="text-[16px] text-[#1d1d1f]/60 max-w-2xl mx-auto">Three rig engineers. 50+ years on the soldering iron between them.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4">
           {team.map((member) => (
@@ -257,9 +257,9 @@ function FallbackCTA() {
   return (
     <Section theme="light">
       <div className="text-center space-y-6">
-        <h2 className="text-3xl font-bold text-[#1d1d1f]">{"Can't find a time that works?"}</h2>
+        <h2 className="text-3xl font-bold text-[#1d1d1f]">{"Calendar not cooperating?"}</h2>
         <p className="text-[16px] text-[#1d1d1f]/60 max-w-2xl mx-auto">
-          {"Email us directly and we'll get back to you within 24 hours to find a time that fits your schedule."}
+          {"Shoot us an email — we'll find a time that works. Usually back to you within a day."}
         </p>
         <a href="mailto:hello@therigdr.com" className="inline-block px-8 py-4 bg-[#1d1d1f] text-white font-semibold rounded-full hover:bg-[#1d1d1f]/90 transition-colors text-[16px]">
           Get in touch &rarr;

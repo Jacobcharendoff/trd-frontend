@@ -44,7 +44,7 @@ export default function ToneTutoringPage() {
                 <span className="trd-gradient-text">dialed.</span>
               </h1>
               <p className="text-lg sm:text-xl text-[#f5f5f7]/80 max-w-2xl mx-auto leading-relaxed mb-8">
-                {"Private 1-on-1 sessions with the team behind 200+ custom rigs. Whether you're stuck on your signal chain, chasing a specific sound, or just want a second set of ears \u2014 we'll get you there."}
+                {"Hop on a video call with the guys who've built 200+ rigs. Stuck on your signal chain? Chasing a sound you can't quite nail? Just want someone who actually knows gear to tell you what's up? That's what this is for."}
               </p>
               <div className="flex gap-4 justify-center mb-16">
                 <a
@@ -85,17 +85,17 @@ export default function ToneTutoringPage() {
       <Section theme="light" id="pain-points" reveal>
         <div className="mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-4">
-            Sound familiar?
+            Yeah, we&apos;ve heard this before.
           </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">Common struggles we help guitarists overcome</p>
+          <p className="text-[#1d1d1f]/50 text-lg">If any of this sounds like you, you&apos;re in the right place</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {[
-            { icon: '\uD83C\uDFA8', title: 'Gear Paralysis', desc: 'Too many pedals, YouTube rabbit holes, and gear reviews pulling you in different directions.' },
-            { icon: '\uD83C\uDFB8', title: 'Tone Chasing', desc: 'Sounds great in the store or on a video, but nowhere near right when you play it live.' },
-            { icon: '\u26A1', title: 'Signal Chain Confusion', desc: 'Where does the compressor actually go? Does order really matter? Why does it sound weird?' },
-            { icon: '\uD83E\uDD14', title: 'No One to Ask', desc: 'Forums give conflicting advice. Gear shops just want to sell you something. You need a real expert.' },
+            { icon: '\uD83C\uDFA8', title: 'Gear Paralysis', desc: "You've watched 47 YouTube demos this week and you're more confused than when you started. We get it." },
+            { icon: '\uD83C\uDFB8', title: 'Tone Chasing', desc: "It sounded incredible in the store. At home? Not even close. There's a reason for that — and it's fixable." },
+            { icon: '\u26A1', title: 'Signal Chain Chaos', desc: "Compressor before or after the drive? Does your loop order actually matter? (Spoiler: yes. A lot.)" },
+            { icon: '\uD83E\uDD14', title: 'No One Who Gets It', desc: "Reddit says one thing, the gear shop says another, and your buddy just told you to buy a Tube Screamer. You need someone who actually builds rigs for a living." },
           ].map((pain) => (
             <div key={pain.title} className="bg-[#f5f5f7] rounded-2xl p-8">
               <div className="flex items-start gap-4">
@@ -112,10 +112,10 @@ export default function ToneTutoringPage() {
         {/* Solution reframe */}
         <div className="border border-[#F5A623]/30 bg-[#F5A623]/[0.05] rounded-2xl p-8 sm:p-12 text-center">
           <h3 className="text-2xl sm:text-3xl font-bold text-[#1d1d1f] mb-4">
-            What if you had a rig expert on speed dial?
+            Imagine having a rig builder on speed dial.
           </h3>
           <p className="text-[#1d1d1f]/60 text-lg max-w-2xl mx-auto">
-            {"That's exactly what Tone Tutoring is. One-on-one video sessions with someone who's built 200+ rigs and worked with touring artists. No nonsense. Just real tone advice."}
+            {"That's basically what this is. One-on-one video with someone who's wired 200+ boards and toured with artists you listen to. No fluff, no upsell — just someone who knows tone helping you find yours."}
           </p>
         </div>
       </Section>
@@ -124,19 +124,19 @@ export default function ToneTutoringPage() {
       <Section theme="lightGray" id="what-you-get" reveal>
         <div className="mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-4">
-            {"What's included"}
+            {"Here's what you get."}
           </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">In every Tone Tutoring session</p>
+          <p className="text-[#1d1d1f]/50 text-lg">Every session, no exceptions</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {[
-            { title: 'Video Walkthrough of Your Rig', desc: "We dive deep into what you've got, how it's set up, and what's working (or not)." },
-            { title: 'Signal Chain Audit', desc: "We map it all out. Is your order optimized? Are you missing something? We'll tell you." },
-            { title: 'Pedal Placement Optimization', desc: 'Real recommendations on where to put your gear for best tone and workflow.' },
-            { title: 'Tone Goal Mapping', desc: "What's your end goal? We create a roadmap to get you there." },
-            { title: 'Session Recording', desc: 'Get a full video recording to review later. Reference whenever you want.' },
-            { title: 'Follow-up Notes (24 hrs)', desc: 'Written takeaways with specific recommendations you can implement right away.' },
+            { title: 'Full Rig Walkthrough', desc: "Show us what you've got. We'll go through every pedal, every cable, every setting — and tell you what's helping and what's hurting." },
+            { title: 'Signal Chain Audit', desc: "We'll map your whole chain and figure out if the order is working for you or fighting you. Most players are surprised." },
+            { title: 'Pedal Placement Recs', desc: "Where your stuff sits on the board matters more than you think. We'll show you why and give you a plan." },
+            { title: 'Tone Roadmap', desc: "Where are you trying to go? We'll draw the line from where you are now to the sound in your head." },
+            { title: 'Session Recording', desc: "The whole call is recorded so you can rewatch it later. No frantic note-taking required." },
+            { title: 'Follow-up Notes', desc: "Within 24 hours you'll get written notes with specific next steps. No vague advice — real action items." },
           ].map((item) => (
             <div key={item.title} className="bg-white rounded-2xl p-8 flex gap-4 border border-black/[0.04]">
               <div className="text-[#10B981] text-xl font-bold flex-shrink-0 mt-0.5">&#10003;</div>
@@ -153,17 +153,17 @@ export default function ToneTutoringPage() {
       <Section theme="light" id="process" reveal>
         <div className="mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-4">
-            How it works
+            Dead simple.
           </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">Four simple steps to better tone</p>
+          <p className="text-[#1d1d1f]/50 text-lg">Four steps. You could be dialing in your tone this week.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { num: '1', title: 'Book a Session', desc: "Choose your session type and pick a time that works. It's that simple." },
-            { num: '2', title: 'Share Rig Details', desc: 'Tell us about your gear, playing style, and what you want to work on.' },
-            { num: '3', title: 'Meet on Video', desc: "We'll walk through your rig, answer questions, and dial in your tone together." },
-            { num: '4', title: 'Get Your Plan', desc: 'Recording + notes within 24 hours. Start implementing your new tone today.' },
+            { num: '1', title: 'Pick a Time', desc: "Single session or 3-pack — grab what fits and book a slot. Takes about 30 seconds." },
+            { num: '2', title: 'Tell Us About Your Rig', desc: "Quick form about your gear, your style, and what's bugging you. Helps us hit the ground running." },
+            { num: '3', title: 'Hop on the Call', desc: "We dig into your rig together. Real-time feedback, real answers, no BS." },
+            { num: '4', title: 'Get Your Game Plan', desc: "Recording + written notes land in your inbox within 24 hours. Go make noise." },
           ].map((step) => (
             <div key={step.num} className="bg-[#f5f5f7] rounded-2xl p-8 flex flex-col">
               <div className="text-4xl font-bold trd-gradient-text mb-4">{step.num}</div>
@@ -178,9 +178,9 @@ export default function ToneTutoringPage() {
       <Section theme="lightGray" id="reviews" reveal>
         <div className="mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            From real players
+            Players talk.
           </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">What guitarists say about Tone Tutoring</p>
+          <p className="text-[#1d1d1f]/50 text-lg">Here&apos;s what they&apos;re saying after their sessions</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -209,16 +209,16 @@ export default function ToneTutoringPage() {
       <Section theme="dark" id="pricing" reveal>
         <div className="mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-4">
-            Simple Pricing
+            No surprises. Just pricing.
           </h2>
-          <p className="text-[#f5f5f7]/60 text-lg">No hidden fees. Transparent pricing for every guitarist.</p>
+          <p className="text-[#f5f5f7]/60 text-lg">Pick the one that fits. Either way, you&apos;re getting the real deal.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           {/* Single Session */}
           <div className="trd-glass-dark p-10 hover:bg-white/[0.06] transition-colors duration-300">
             <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">Single Session</h3>
-            <p className="text-[#f5f5f7]/60 mb-6">60-minute deep dive into your rig</p>
+            <p className="text-[#f5f5f7]/60 mb-6">One hour, one rig, full attention</p>
             <div className="mb-8">
               <p className="text-4xl font-bold text-[#F5A623] mb-1">$99.99</p>
               <p className="text-sm text-[#f5f5f7]/60">USD</p>
@@ -240,7 +240,7 @@ export default function ToneTutoringPage() {
           <div className="trd-glass-dark p-10 hover:bg-white/[0.06] transition-colors duration-300 relative border border-[#F5A623]/40">
             <div className="absolute -top-4 right-6 bg-[#F5A623] text-black px-4 py-1 rounded-full text-xs font-bold">BEST VALUE</div>
             <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">3-Session Pack</h3>
-            <p className="text-[#f5f5f7]/60 mb-6">Three sessions. Full signal chain transformation.</p>
+            <p className="text-[#f5f5f7]/60 mb-6">For the player who wants the full transformation</p>
             <div className="mb-8">
               <p className="text-4xl font-bold text-[#F5A623] mb-1">$149.99</p>
               <p className="text-sm text-[#f5f5f7]/60">USD (saves you $49.98)</p>
@@ -268,19 +268,19 @@ export default function ToneTutoringPage() {
       <Section theme="light" id="faq" reveal>
         <div className="mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-4">
-            Questions?
+            Got questions? Cool.
           </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">{"We've got answers"}</p>
+          <p className="text-[#1d1d1f]/50 text-lg">Here are the ones we get the most</p>
         </div>
 
         <div className="space-y-4 max-w-3xl">
-          <AccordionItem title="What if I'm a beginner?" content="No problem. Tone Tutoring is for guitarists of all levels. Whether you're just starting or you've been playing for decades, we'll meet you where you are and help you improve. The concepts are the same — gear just gets more complex as you go deeper." />
-          <AccordionItem title="Do I need to have my gear in front of me?" content="Yes, it helps. We'll want to see your actual setup so we can walk through it together. Make sure you have your guitar, amp, and any pedals ready to demo. If you don't have everything set up yet, that's okay — we can still plan for what you want to get." />
-          <AccordionItem title="What platform do you use?" content="We use Zoom for all sessions. It's reliable, easy, and gives us good bandwidth for video. Just bring your phone or laptop to the session, and we'll do the rest. No weird software to install." />
-          <AccordionItem title="Can you help me pick new pedals?" content="Absolutely. In fact, that's one of the things we do best. We'll discuss your goals, your budget, and what actually makes sense for your style of playing. We'll give you honest recommendations based on what you need — not what's trendy." />
-          <AccordionItem title="What's the difference between this and the free build consultation?" content="The free consultation is great for people thinking about a custom pedalboard build. It's 20 minutes, and we talk big picture. Tone Tutoring is a deep-dive coaching session focused on optimizing your existing rig or planning your tone journey. It's way more detailed and interactive." />
-          <AccordionItem title="Can I do multiple sessions back-to-back?" content="Yes. The 3-Session Pack is perfect for this. Many players do one session, implement the changes, then schedule another to dial in the next layer. We recommend spacing them out by at least a week so you have time to practice with your new setup." />
-          <AccordionItem title="What if I'm not happy with my session?" content="We stand behind our work. If for some reason you don't feel like the session was valuable, reach out and we'll make it right. Your tone journey matters to us." />
+          <AccordionItem title="I'm kind of a beginner — is this for me?" content="100%. You don't need a massive rig to get value from this. Whether you've got three pedals or thirty, we'll meet you where you are. The fundamentals of great tone are the same at every level." />
+          <AccordionItem title="Do I need my gear in front of me?" content="Yeah, that's the whole point. Have your guitar, amp, and whatever pedals you've got set up and ready to go. If your setup isn't fully built yet, no sweat — we can still plan it out together." />
+          <AccordionItem title="What platform do you use?" content="Zoom. It works, it's easy, and you don't need to install anything weird. Just grab your phone or laptop and show up." />
+          <AccordionItem title="Can you help me pick new pedals?" content="That's literally one of our favorite things to do. We'll talk about what you're going for, what your budget looks like, and give you honest recs — not whatever's trending on Instagram this week." />
+          <AccordionItem title="How is this different from the free build consultation?" content="The free consult is a 20-minute chat for people thinking about a custom board build. Tone Tutoring is a full hour of hands-on coaching where we dig into your rig and optimize what you've already got. Way more detailed, way more interactive." />
+          <AccordionItem title="Should I space out the 3-session pack?" content="We'd recommend it. Do a session, implement the changes, play for a week, then come back and we'll dial in the next layer. You'll get way more out of it that way." />
+          <AccordionItem title="What if the session doesn't help?" content="Reach out. We'll make it right. We don't do this to collect checks — we do it because we're obsessed with tone. If you didn't get value, that's on us to fix." />
         </div>
       </Section>
 
@@ -292,7 +292,7 @@ export default function ToneTutoringPage() {
             <span className="trd-gradient-text">Start owning it.</span>
           </h2>
           <p className="text-[#f5f5f7]/60 text-lg max-w-2xl mx-auto">
-            Your tone is closer than you think. {"Let's unlock it together."}
+            {"You're closer to your sound than you think. Let's go find it."}
           </p>
         </div>
         <div className="mt-12">

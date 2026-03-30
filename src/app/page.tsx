@@ -27,10 +27,10 @@ export default function Home() {
             <div className="mb-8 text-center">
               <h1 className="text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[5.5rem] font-bold leading-[1.05] tracking-tight text-[#f5f5f7] mb-6">
                 Your tone.{' '}
-                <span className="trd-gradient-text">Engineered.</span>
+                <span className="trd-gradient-text">Dialed in.</span>
               </h1>
               <p className="text-lg sm:text-xl text-[#f5f5f7]/80 max-w-2xl mx-auto leading-relaxed mb-8">
-                Custom pedalboard builds tailored to your playing style, signal chain, and sonic vision. From weekend warriors to touring professionals.
+                We build pedalboards that actually sound like you. Tell us how you play, what you&apos;re chasing, and we&apos;ll handle the rest — from signal chain to soldered connection.
               </p>
               <div className="flex gap-4 justify-center mb-16">
                 <Link
@@ -67,9 +67,9 @@ export default function Home() {
       <Section theme="lightGray" id="reviews" reveal>
         <div className="mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            Loved by guitarists
+            Don&apos;t take our word for it.
           </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">Real feedback from real builds</p>
+          <p className="text-[#1d1d1f]/50 text-lg">Hear it from the players themselves</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -115,17 +115,17 @@ export default function Home() {
       <Section theme="light" id="process" reveal>
         <div className="mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            How it works
+            How we build yours.
           </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">Four steps from consultation to gig-ready</p>
+          <p className="text-[#1d1d1f]/50 text-lg">Four steps. Zero guesswork.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { num: '1', title: 'Consultation', desc: "We talk tone, budget, and your playing style. No pressure, no upsell — just honest advice." },
-            { num: '2', title: 'Design', desc: 'Custom layout, signal chain mapping, and power distribution planned for your exact rig.' },
-            { num: '3', title: 'Build', desc: 'Hand-wired, tested, and optimized. Every cable soldered. Every connection verified.' },
-            { num: '4', title: 'Ship & Play', desc: 'Carefully packaged and shipped. Ready to gig. Lifetime support included.' },
+            { num: '1', title: 'We Talk', desc: "Hop on a call — tell us what you play, what bugs you about your current setup, and where you want to go. No sales pitch." },
+            { num: '2', title: 'We Design', desc: "We map out your signal chain, power, layout, and switching — every detail tailored to how you actually play." },
+            { num: '3', title: 'We Build', desc: "Hand-wired, stress-tested, optimized. Every cable soldered, every connection verified before it leaves the bench." },
+            { num: '4', title: 'You Play', desc: "Ships to your door, gig-ready. And if anything ever needs attention — lifetime support, on us." },
           ].map((step) => (
             <div key={step.num} className="bg-[#f5f5f7] rounded-2xl p-8 flex flex-col">
               <div className="text-4xl font-bold trd-gradient-text mb-4">{step.num}</div>
@@ -141,9 +141,9 @@ export default function Home() {
         <div className="py-20 md:py-[120px]">
           <div className="mb-8">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-2">
-              Recent builds
+              Off the bench.
             </h2>
-            <p className="text-[#f5f5f7]/60 text-lg">Custom rigs we've built this year</p>
+            <p className="text-[#f5f5f7]/60 text-lg">Recent builds from the shop</p>
           </div>
 
           <div className="relative -mx-6">
@@ -197,10 +197,10 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-4">
-              Not ready for a full build?
+              Not sure what you need yet?
             </h2>
             <p className="text-lg text-[#1d1d1f]/60 leading-relaxed mb-6">
-              Check out Tone Tutoring &mdash; our structured program to help you discover and develop your signature tone. Perfect for players who want to level up without a custom build.
+              Tone Tutoring is a one-on-one session where we dig into your rig, your playing, and figure out what&apos;s holding your tone back. Think of it as a tone checkup before committing to a full build.
             </p>
             <Link
               href="/tone-tutoring"
@@ -222,10 +222,10 @@ export default function Home() {
       <Section theme="dark" id="closing-cta" reveal className="text-center">
         <div className="mb-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-4">
-            Trusted by <span className="trd-gradient-text">professionals</span>
+            Your tone deserves <span className="trd-gradient-text">better.</span>
           </h2>
           <p className="text-[#f5f5f7]/60 text-lg max-w-2xl mx-auto mb-2">
-            If your tone matters to you, your board should too.
+            Life&apos;s too short for a board that fights you on stage. Let&apos;s build one that works.
           </p>
           <p className="text-sm text-[#f5f5f7]/40">
             Trusted by Isaiah Sharkey, Tosin Abasi, and 50+ touring artists worldwide.
