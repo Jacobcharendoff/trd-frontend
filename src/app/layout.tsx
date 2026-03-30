@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import AnnouncementBar from '@/components/AnnouncementBar';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import LeadMagnet from '@/components/LeadMagnet';
+import ExitIntent from '@/components/ExitIntent';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -35,6 +37,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main className="pt-14">{children}</main>
         <Footer />
+        <LeadMagnet />
+        <ExitIntent />
       </body>
     </html>
   );

@@ -4,6 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRef } from 'react';
 import Section from '@/components/Section';
+import TestimonialCarousel from '@/components/TestimonialCarousel';
+import BeforeAfter from '@/components/BeforeAfter';
 
 export default function Home() {
   const galleryRef = useRef<HTMLDivElement>(null);
@@ -63,7 +65,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ──── REVIEWS (light gray — social proof breathes in open space) ──── */}
+      {/* ──── REVIEWS (light gray — social proof carousel) ──── */}
       <Section theme="lightGray" id="reviews" reveal>
         <div className="mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
@@ -71,44 +73,7 @@ export default function Home() {
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg">Hear it from the players themselves</p>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            {
-              quote: "The pedalboard Jacob designed completely transformed my live rig. It's like he read my mind about what I needed. Best investment I've made in my tone.",
-              name: 'Isaiah Sharkey',
-              role: 'Session & Touring Guitarist',
-            },
-            {
-              quote: "I've worked with Jacob multiple times. He understands signal flow, tone shaping, and durability. Your board won't fail you on tour.",
-              name: 'Tosin Abasi',
-              role: 'Professional Guitarist',
-            },
-            {
-              quote: "From consultation to delivery, the whole experience was professional and smooth. My new board is exactly what I envisioned.",
-              name: 'Client',
-              role: 'Home Player & Hobbyist',
-            },
-          ].map((review) => (
-            <div
-              key={review.name}
-              className="bg-white rounded-2xl p-8 border border-black/[0.06] hover:shadow-md transition-shadow duration-300"
-            >
-              <div className="mb-4 flex gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-[#F5A623]">&#9733;</span>
-                ))}
-              </div>
-              <p className="text-[#1d1d1f]/80 leading-relaxed mb-6">
-                &ldquo;{review.quote}&rdquo;
-              </p>
-              <div>
-                <p className="font-semibold text-[#1d1d1f]">{review.name}</p>
-                <p className="text-sm text-[#1d1d1f]/50">{review.role}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <TestimonialCarousel />
       </Section>
 
       {/* ──── PROCESS (white — clean, informational) ──── */}
@@ -190,6 +155,17 @@ export default function Home() {
             </button>
           </div>
         </div>
+      </Section>
+
+      {/* ──── BEFORE / AFTER (light — transformation proof) ──── */}
+      <Section theme="light" id="transformations" reveal>
+        <div className="mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
+            The difference is night and day.
+          </h2>
+          <p className="text-[#1d1d1f]/50 text-lg">Real rigs. Real transformations.</p>
+        </div>
+        <BeforeAfter />
       </Section>
 
       {/* ──── TONE TUTORING CTA (white — soft cross-sell) ──── */}
