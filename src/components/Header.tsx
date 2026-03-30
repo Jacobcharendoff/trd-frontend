@@ -9,6 +9,7 @@ const navItems = [
   { label: 'Tone Tutoring', href: '/tone-tutoring' },
   { label: 'The Process', href: '/process' },
   { label: 'About', href: '/about' },
+  { label: 'Blog', href: '/blog' },
 ];
 
 export default function Header() {

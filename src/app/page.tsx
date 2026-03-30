@@ -6,6 +6,7 @@ import { useRef } from 'react';
 import Section from '@/components/Section';
 import TestimonialCarousel from '@/components/TestimonialCarousel';
 import BeforeAfter from '@/components/BeforeAfter';
+import ComparisonTable from '@/components/ComparisonTable';
 
 export default function Home() {
   const galleryRef = useRef<HTMLDivElement>(null);
@@ -166,6 +167,17 @@ export default function Home() {
           <p className="text-[#1d1d1f]/50 text-lg">Real rigs. Real transformations.</p>
         </div>
         <BeforeAfter />
+      </Section>
+
+      {/* ──── COMPARISON TABLE (lightGray — conversion driver) ──── */}
+      <Section theme="lightGray" id="compare" reveal>
+        <div className="mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
+            DIY or done right?
+          </h2>
+          <p className="text-[#1d1d1f]/50 text-lg">Let&apos;s be honest about what you&apos;re getting into.</p>
+        </div>
+        <ComparisonTable />
       </Section>
 
       {/* ──── TONE TUTORING CTA (white — soft cross-sell) ──── */}
