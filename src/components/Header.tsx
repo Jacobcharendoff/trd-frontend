@@ -5,11 +5,10 @@ import Link from 'next/link';
 
 const navItems = [
   { label: 'Book a Build', href: '/book' },
-  { label: 'Shop', href: '/collections' },
+  { label: 'Gallery', href: '/gallery' },
   { label: 'Tone Tutoring', href: '/tone-tutoring' },
   { label: 'The Process', href: '/process' },
   { label: 'About', href: '/about' },
-  { label: 'Blog', href: '/blog' },
 ];
 
 export default function Header() {
