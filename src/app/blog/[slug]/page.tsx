@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import Section from '@/components/Section';
+import { BlogPostSchema } from '@/components/StructuredData';
 import { getPostBySlug, getAllPosts } from '@/lib/blog';
 
 export default function BlogPostPage() {
@@ -51,6 +52,12 @@ export default function BlogPostPage() {
 
   return (
     <>
+      <BlogPostSchema
+        title={post.title}
+        description={post.excerpt}
+        date={post.date}
+        url={`https://www.therigdr.com/blog/${slug}`}
+      />
       {/* ──── ARTICLE HERO ──── */}
       <Section theme="light" id="article-hero" reveal>
         <div className="mb-8">
