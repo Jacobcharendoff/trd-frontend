@@ -84,7 +84,7 @@ export default function TestimonialCarousel({
         const isAtEnd = scrollLeft + clientWidth >= scrollWidth - 10;
 
         scrollContainerRef.current.scrollBy({
-          left: 320,
+          left: 540,
           behavior: 'smooth',
         });
 
@@ -106,7 +106,7 @@ export default function TestimonialCarousel({
 
   const handleScroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
-      const scrollAmount = 320;
+      const scrollAmount = 540;
       scrollContainerRef.current.scrollBy({
         left: direction === 'right' ? scrollAmount : -scrollAmount,
         behavior: 'smooth',
@@ -142,9 +142,9 @@ export default function TestimonialCarousel({
         {artists.map((artist, index) => (
           <div
             key={index}
-            className="flex-shrink-0 snap-start w-[340px] sm:w-[420px]"
+            className="flex-shrink-0 snap-start w-[420px] sm:w-[520px]"
           >
-            <div className="group relative rounded-2xl overflow-hidden aspect-[4/3]">
+            <div className="group relative rounded-2xl overflow-hidden aspect-[16/9]">
               <Image
                 src={artist.photo}
                 alt={artist.name}

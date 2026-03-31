@@ -88,7 +88,11 @@ export default function Home() {
 
         <div className="relative w-full rounded-3xl overflow-hidden bg-[#0a0a0a] aspect-video max-w-4xl mx-auto shadow-2xl">
           <video
-            controls
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
             className="w-full h-full object-cover"
             poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png"
           >
