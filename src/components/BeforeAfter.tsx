@@ -1,156 +1,148 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 
-interface Transformation {
-  before: {
-    label: string;
-    description: string;
-  };
-  after: {
-    label: string;
-    description: string;
-    image: string;
-  };
+interface CaseStudy {
   playerName: string;
+  playerRole: string;
+  heading: string;
+  story: string;
+  tags: string[];
+  beforeImage: string;
+  afterImage: string;
 }
 
-const transformations: Transformation[] = [
+const caseStudies: CaseStudy[] = [
   {
-    before: {
-      label: 'Before',
-      description: 'Tangled cables, inconsistent power, noise issues, pedals falling off mid-set.',
-    },
-    after: {
-      label: 'After',
-      description: 'Clean routing, isolated power, optimized signal chain, gig-ready in seconds.',
-      image: 'https://www.therigdr.com/cdn/shop/files/Javy_B.png',
-    },
-    playerName: 'Javy B. — Live Performer',
+    playerName: 'Mason M.',
+    playerRole: 'Touring Guitarist',
+    heading: 'From tangled mess to tour-ready',
+    story: 'Mason came to us with a board held together with zip ties and hope. We rebuilt it from scratch with isolated power, buffered signal path, and a switching system that lets him go from clean to lead with one tap.',
+    tags: ['12 PEDALS', 'MIDI SWITCHING', 'TOURING RIG'],
+    beforeImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_20.png',
+    afterImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png',
   },
   {
-    before: {
-      label: 'Before',
-      description: 'Random pedal order, tone sucking, no switching — tap dancing all night.',
-    },
-    after: {
-      label: 'After',
-      description: 'Smart loop switching, buffered signal path, one-stomp preset changes.',
-      image: 'https://www.therigdr.com/cdn/shop/files/John_A.png',
-    },
-    playerName: 'John A. — Studio Session',
+    playerName: 'Shannon G.',
+    playerRole: 'Worship Leader',
+    heading: 'Silent stage, massive tone',
+    story: "Shannon's board was plagued by ground loops and hum. We redesigned the power section with fully isolated outputs and re-routed the signal chain. Dead silent on stage, massive tone out front.",
+    tags: ['8 PEDALS', 'ISOLATED POWER', 'WORSHIP'],
+    beforeImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Untitled_design_11.png',
+    afterImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Shannon_G._1.png',
   },
   {
-    before: {
-      label: 'Before',
-      description: 'Board was too big to fit in gig bag, cables kept failing mid-tour.',
-    },
-    after: {
-      label: 'After',
-      description: 'Compact, tour-ready, flawless through 40+ shows without a single cable failure.',
-      image: 'https://www.therigdr.com/cdn/shop/files/Chris_G.png',
-    },
-    playerName: 'Chris G. — Touring Guitarist',
-  },
-  {
-    before: {
-      label: 'Before',
-      description: 'Noisy ground loops, muddy signal, tone was getting lost in the mix.',
-    },
-    after: {
-      label: 'After',
-      description: 'Crystal clear, isolated power section, tone cuts through without hum.',
-      image: 'https://www.therigdr.com/cdn/shop/files/Shannon_G._1.png',
-    },
-    playerName: 'Shannon G. — Studio & Live',
-  },
-  {
-    before: {
-      label: 'Before',
-      description: 'Tried 3 different builds myself, never got the signal chain right.',
-    },
-    after: {
-      label: 'After',
-      description: 'One consultation and everything clicked. Board sounds exactly how I hear it.',
-      image: 'https://www.therigdr.com/cdn/shop/files/Jeremy_B.png',
-    },
-    playerName: 'Jeremy B. — DIY to Pro',
-  },
-  {
-    before: {
-      label: 'Before',
-      description: 'Effects were fighting each other, no switching options, tone was boxed in.',
-    },
-    after: {
-      label: 'After',
-      description: 'Effects are stacked perfectly, smooth switching, tone is now wide open.',
-      image: 'https://www.therigdr.com/cdn/shop/files/Mark_A.png',
-    },
-    playerName: 'Mark A. — Genre Switcher',
+    playerName: 'Jeff C.',
+    playerRole: 'Session Player',
+    heading: 'Studio precision, zero compromise',
+    story: 'Jeff tracks for multiple artists and needed a board that covers everything from jazz cleans to modern high-gain. We built a dual-amp rig with isolated loops and studio-grade cabling throughout.',
+    tags: ['15 PEDALS', 'DUAL AMP', 'STUDIO'],
+    beforeImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/MikeStipanovLayout1.png',
+    afterImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jeremy_B.png',
   },
 ];
 
-export default function BeforeAfter() {
+function BeforeAfterSlider({ beforeImage, afterImage }: { beforeImage: string; afterImage: string }) {
+  const [showAfter, setShowAfter] = useState(true);
+
   return (
-    <section className="w-full py-16 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="space-y-12">
-          {transformations.map((transformation, idx) => (
-            <div key={idx}>
-              {/* Desktop: Side-by-side, Mobile: Stacked */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-6">
-                {/* Before Card */}
-                <div className="bg-[#f5f5f7] rounded-2xl p-8 h-full flex flex-col justify-center">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-3 h-3 rounded-full bg-gradient-to-r from-red-500 to-orange-500"></div>
-                    <span className="text-sm font-semibold text-[#1d1d1f] tracking-wide">
-                      {transformation.before.label}
-                    </span>
-                  </div>
-                  <p className="text-lg text-[#1d1d1f] leading-relaxed">
-                    {transformation.before.description}
-                  </p>
-                </div>
+    <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[#f5f5f7]">
+      {/* Before Image */}
+      <div className={`absolute inset-0 transition-opacity duration-700 ${showAfter ? 'opacity-0' : 'opacity-100'}`}>
+        <Image
+          src={beforeImage}
+          alt="Before"
+          fill
+          className="object-cover"
+          unoptimized
+        />
+      </div>
+      {/* After Image */}
+      <div className={`absolute inset-0 transition-opacity duration-700 ${showAfter ? 'opacity-100' : 'opacity-0'}`}>
+        <Image
+          src={afterImage}
+          alt="After"
+          fill
+          className="object-cover"
+          unoptimized
+        />
+      </div>
 
-                {/* Arrow divider (hidden on mobile) */}
-                <div className="hidden lg:flex justify-center -mx-4 z-10">
-                  <div className="text-3xl text-[#F5A623]">→</div>
-                </div>
-
-                {/* After Card */}
-                <div className="rounded-2xl overflow-hidden bg-[#1d1d1f] relative h-80 lg:h-full lg:min-h-96">
-                  <Image
-                    src={`https://cdn.shopify.com/s/files/1/0528/3171/5486/files/${transformation.after.image}`}
-                    alt={transformation.after.label}
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
-                  {/* Overlay text */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-8">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-3 h-3 rounded-full bg-[#10B981]"></div>
-                      <span className="text-sm font-semibold text-[#f5f5f7] tracking-wide">
-                        {transformation.after.label}
-                      </span>
-                    </div>
-                    <p className="text-lg text-[#f5f5f7] leading-relaxed">
-                      {transformation.after.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Player Name */}
-              <div className="text-center">
-                <p className="text-sm font-semibold text-[#1d1d1f] tracking-wide uppercase">
-                  {transformation.playerName}
-                </p>
-              </div>
-            </div>
-          ))}
+      {/* Before / After Toggle */}
+      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10">
+        <div className="flex bg-black/60 backdrop-blur-sm rounded-full p-1">
+          <button
+            onClick={() => setShowAfter(false)}
+            className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              !showAfter
+                ? 'bg-white text-[#1d1d1f]'
+                : 'text-white/70 hover:text-white'
+            }`}
+          >
+            Before
+          </button>
+          <button
+            onClick={() => setShowAfter(true)}
+            className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              showAfter
+                ? 'bg-white text-[#1d1d1f]'
+                : 'text-white/70 hover:text-white'
+            }`}
+          >
+            After
+          </button>
         </div>
       </div>
-    </section>
+    </div>
+  );
+}
+
+export default function BeforeAfter() {
+  return (
+    <div className="space-y-24">
+      {caseStudies.map((study, idx) => {
+        const isReversed = idx % 2 !== 0;
+        return (
+          <div
+            key={idx}
+            className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${
+              isReversed ? 'lg:direction-rtl' : ''
+            }`}
+          >
+            {/* Image Slider */}
+            <div className={`relative aspect-[4/3] ${isReversed ? 'lg:order-2' : ''}`}>
+              <BeforeAfterSlider
+                beforeImage={study.beforeImage}
+                afterImage={study.afterImage}
+              />
+            </div>
+
+            {/* Story */}
+            <div className={isReversed ? 'lg:order-1' : ''}>
+              <p className="text-[#F5A623] font-medium text-sm tracking-wide mb-3">
+                {study.playerName} — {study.playerRole}
+              </p>
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#1d1d1f] mb-4 leading-tight">
+                {study.heading}
+              </h3>
+              <p className="text-[#1d1d1f]/60 text-base sm:text-lg leading-relaxed mb-6">
+                {study.story}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {study.tags.map((tag, i) => (
+                  <span
+                    key={i}
+                    className="text-xs font-medium tracking-wide uppercase text-[#1d1d1f]/50 border border-[#1d1d1f]/15 rounded-full px-4 py-1.5"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 }

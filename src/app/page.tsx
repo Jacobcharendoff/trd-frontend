@@ -2,24 +2,12 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRef } from 'react';
 import Section from '@/components/Section';
 import TestimonialCarousel from '@/components/TestimonialCarousel';
 import BeforeAfter from '@/components/BeforeAfter';
-import ComparisonTable from '@/components/ComparisonTable';
+import GallerySlider from '@/components/GallerySlider';
 
 export default function Home() {
-  const galleryRef = useRef<HTMLDivElement>(null);
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (galleryRef.current) {
-      galleryRef.current.scrollBy({
-        left: direction === 'left' ? -400 : 400,
-        behavior: 'smooth',
-      });
-    }
-  };
-
   return (
     <>
       {/* ──── 1. HERO SECTION (dark — cinematic video hero matching Dawn) ──── */}
@@ -66,9 +54,9 @@ export default function Home() {
             {/* Stats Row */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-12 pt-8 border-t border-white/10">
               <p className="text-base sm:text-lg text-[#f5f5f7]/60">Custom builds from $2,000 USD</p>
-              <span className="hidden sm:block text-[#f5f5f7]/20">•</span>
+              <span className="hidden sm:block text-[#f5f5f7]/20">&bull;</span>
               <p className="text-base sm:text-lg text-[#f5f5f7]/60">Lifetime support</p>
-              <span className="hidden sm:block text-[#f5f5f7]/20">•</span>
+              <span className="hidden sm:block text-[#f5f5f7]/20">&bull;</span>
               <p className="text-base sm:text-lg text-[#f5f5f7]/60">Free repairs</p>
             </div>
           </div>
@@ -86,7 +74,7 @@ export default function Home() {
         <TestimonialCarousel theme="light" />
       </Section>
 
-      {/* ──── 4. HOW WE BUILD (light — numbered steps matching Dawn) ──── */}
+      {/* ──── 3. HOW WE BUILD (lightGray — numbered steps matching Dawn) ──── */}
       <Section theme="lightGray" id="how-we-build" reveal>
         <div className="text-center mb-12">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">How We Build</p>
@@ -111,7 +99,7 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ──── 5. VIDEO SECTION (light — "See a rig come to life") ──── */}
+      {/* ──── 4. VIDEO SECTION (light — "See a rig come to life") ──── */}
       <Section theme="light" id="video-build" reveal>
         <div className="text-center mb-12">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Watch the Build</p>
@@ -128,7 +116,7 @@ export default function Home() {
             poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png"
           >
             <source
-              src="https://cdn.shopify.com/s/files/1/0528/3171/5486/videos/c/vp/f12872e61445487b86f0ae5df85ba09b/f12872e61445487b86f0ae5df85ba09b.HD-1080p-7.2Mbps-78086312.mp4"
+              src="https://cdn.shopify.com/videos/c/vp/f12872e61445487b86f0ae5df85ba09b/f12872e61445487b86f0ae5df85ba09b.HD-1080p-7.2Mbps-78086312.mp4"
               type="video/mp4"
             />
             Your browser does not support the video tag.
@@ -136,67 +124,20 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ──── 6. GALLERY (lightGray — "200+ rigs. Here's a few.") ──── */}
-      <Section theme="lightGray" id="gallery" noPadding reveal>
-        <div className="py-20 md:py-[120px]">
-          <div className="text-center mb-8">
-            <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">The Gallery</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-              200+ rigs. <span className="trd-gradient-text">Here&apos;s a few.</span>
-            </h2>
-          </div>
-
-          <div className="relative -mx-6">
-            <div
-              ref={galleryRef}
-              className="flex gap-4 overflow-x-auto px-6 pb-6 snap-x snap-mandatory scroll-smooth"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-            >
-              {[
-                'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png',
-                'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/MikeStipanovLayout1.png',
-                'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jeremy_B.png',
-                'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Untitled_design_11.png',
-                'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_20.png',
-                'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_28.png',
-              ].map((url, idx) => (
-                <div
-                  key={idx}
-                  className="flex-shrink-0 w-80 sm:w-96 h-64 sm:h-80 rounded-2xl overflow-hidden snap-center bg-[#0a0a0a] shadow-lg"
-                >
-                  <Image
-                    src={url}
-                    alt={`Custom rig build ${idx + 1}`}
-                    width={400}
-                    height={320}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                    unoptimized
-                  />
-                </div>
-              ))}
-            </div>
-
-            <button
-              onClick={() => scroll('left')}
-              className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-lg text-[#1d1d1f] p-3 rounded-full transition-colors border border-black/10"
-              aria-label="Scroll gallery left"
-            >
-              &#8592;
-            </button>
-            <button
-              onClick={() => scroll('right')}
-              className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-lg text-[#1d1d1f] p-3 rounded-full transition-colors border border-black/10"
-              aria-label="Scroll gallery right"
-            >
-              &#8594;
-            </button>
-          </div>
+      {/* ──── 5. GALLERY (lightGray — fade slider with thumbnails) ──── */}
+      <Section theme="lightGray" id="gallery" reveal>
+        <div className="text-center mb-10">
+          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">The Gallery</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
+            200+ rigs. <span className="trd-gradient-text">Here&apos;s a few.</span>
+          </h2>
         </div>
+        <GallerySlider />
       </Section>
 
-      {/* ──── 7. BEFORE/AFTER (light — transformation proof) ──── */}
+      {/* ──── 6. BEFORE/AFTER — Case Studies (light) ──── */}
       <Section theme="light" id="transformations" reveal>
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Transformations</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
             From chaos to <span className="text-[#F5A623]">clarity.</span>
@@ -206,68 +147,128 @@ export default function Home() {
         <BeforeAfter />
       </Section>
 
-      {/* ──── 8. SERVICE TIERS (lightGray — "Your rig. Your call.") ──── */}
-      <Section theme="lightGray" id="service-tiers" reveal>
-        <div className="mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            Your rig. Your call.
+      {/* ──── 7. SERVICE TIERS — Dark comparison matching Dawn ──── */}
+      <Section theme="dark" id="service-tiers" reveal>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-4">
+            Your rig. <span className="italic text-[#F5A623]">Your call.</span>
           </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">From repair to custom build, we've got you covered.</p>
+          <p className="text-[#f5f5f7]/50 text-lg max-w-2xl mx-auto">
+            Whether you&apos;re upgrading, building, or staying put — here&apos;s what each option really looks like.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            {
-              title: 'Repairs & Maintenance',
-              desc: "Fix what you've got",
-              details: ['Cable repair & replacement', 'Pedal troubleshooting', 'Cleaning & optimization', 'Starting at $75/hour'],
-            },
-            {
-              title: 'DIY Builder Support',
-              desc: 'Build it yourself',
-              details: ['Consultation & design', 'Parts sourcing help', 'Troubleshooting guidance', 'Lifetime email support'],
-              featured: true,
-            },
-            {
-              title: 'Custom Build',
-              desc: 'We build it for you',
-              details: ['Full consultation', 'Professional hand-build', 'Stress testing & optimization', 'Lifetime support', 'Starting at $2,000'],
-            },
-          ].map((tier, idx) => (
-            <div
-              key={idx}
-              className={`rounded-2xl p-8 border ${
-                tier.featured
-                  ? 'bg-white border-[#F5A623]/30 ring-2 ring-[#F5A623]/10'
-                  : 'bg-white border-black/[0.06]'
-              }`}
-            >
-              <h3 className="text-2xl font-bold text-[#1d1d1f] mb-1">{tier.title}</h3>
-              <p className="text-[#1d1d1f]/50 text-lg mb-6">{tier.desc}</p>
-              <ul className="space-y-3">
-                {tier.details.map((detail, i) => (
-                  <li key={i} className="flex items-start gap-3 text-[#1d1d1f]/70">
-                    <span className="text-[#10B981] mt-1">✓</span>
-                    <span>{detail}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/book"
-                className={`mt-8 block text-center font-semibold py-3 px-6 rounded-full transition-colors ${
-                  tier.featured
-                    ? 'bg-[#F5A623] hover:bg-[#D48A1A] text-black'
-                    : 'bg-[#1d1d1f] hover:bg-[#1d1d1f]/90 text-white'
-                }`}
-              >
-                Get Started
-              </Link>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+          {/* Tier 1 — Current Setup (anti-sell) */}
+          <div className="rounded-2xl p-8 bg-[#f5f5f7]/[0.06] border border-white/[0.06] flex flex-col">
+            <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#f5f5f7]/30 mb-2">Current Setup</p>
+            <h3 className="text-2xl font-bold text-[#f5f5f7]/70 mb-2">Fix what you&apos;ve got</h3>
+            <p className="text-[#f5f5f7]/40 text-sm mb-6">
+              Already have a board? We&apos;ll optimize your signal chain, clean up your wiring, and kill the noise.
+            </p>
+            <p className="text-3xl font-bold text-[#f5f5f7]/50 mb-1">$0</p>
+            <p className="text-[#f5f5f7]/30 text-sm mb-8">upfront — but it costs you tone</p>
+
+            <div className="space-y-4 flex-grow">
+              {[
+                'Signal degrades at every connection',
+                'Power noise bleeds into your signal',
+                'No professional signal path design',
+                'No warranty or ongoing support',
+                'Tone loss compounds over time',
+                'Unreliable on stage',
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <span className="text-red-400/60 mt-0.5 flex-shrink-0">&#10005;</span>
+                  <span className="text-[#f5f5f7]/40 text-sm leading-snug">{item}</span>
+                </div>
+              ))}
             </div>
-          ))}
+
+            <p className="text-[#f5f5f7]/25 text-sm italic mt-8">You already know something&apos;s off.</p>
+          </div>
+
+          {/* Tier 2 — DIY Build */}
+          <div className="rounded-2xl p-8 bg-[#f5f5f7]/[0.06] border border-white/[0.08] flex flex-col">
+            <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#f5f5f7]/30 mb-2">DIY Build</p>
+            <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">Build it yourself</h3>
+            <p className="text-[#f5f5f7]/50 text-sm mb-6">
+              Want to learn? Our DIY kits come with the same components we use in custom builds.
+            </p>
+            <p className="text-3xl font-bold text-[#f5f5f7] mb-1">$750 – $1,500 <span className="text-lg font-normal text-[#f5f5f7]/50">USD</span></p>
+            <p className="text-[#f5f5f7]/30 text-sm mb-8">+ your time</p>
+
+            <div className="space-y-4 flex-grow">
+              {[
+                { text: 'Basic signal path improvement', positive: true },
+                { text: 'Your choice of layout & components', positive: true },
+                { text: 'No isolated power design', positive: false },
+                { text: 'No hand-soldered connections', positive: false },
+                { text: 'No lifetime support or repairs', positive: false },
+                { text: 'Stage-ready (with enough testing)', positive: true },
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <span className={`mt-0.5 flex-shrink-0 ${item.positive ? 'text-[#10B981]' : 'text-red-400/60'}`}>
+                    {item.positive ? '✓' : '✕'}
+                  </span>
+                  <span className={`text-sm leading-snug ${item.positive ? 'text-[#f5f5f7]/70' : 'text-[#f5f5f7]/40'}`}>{item.text}</span>
+                </div>
+              ))}
+            </div>
+
+            <Link
+              href="/shop"
+              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full border-2 border-[#F5A623] text-[#F5A623] hover:bg-[#F5A623] hover:text-black transition-colors duration-200"
+            >
+              Explore DIY Options
+            </Link>
+          </div>
+
+          {/* Tier 3 — Custom Build (recommended) */}
+          <div className="relative rounded-2xl p-8 bg-gradient-to-b from-[#1a3a4a] to-[#0f2833] border border-[#2997FF]/20 flex flex-col">
+            {/* Recommended badge */}
+            <div className="absolute -top-3.5 right-6">
+              <span className="bg-[#2997FF] text-white text-xs font-semibold tracking-wider uppercase px-4 py-1.5 rounded-full">
+                ✓ Recommended
+              </span>
+            </div>
+
+            <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#2997FF] mb-2">Custom Build</p>
+            <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">We build it for you</h3>
+            <p className="text-[#f5f5f7]/50 text-sm mb-6">
+              Hand us your pedalboard and walk away. You&apos;ll get it back wired right, sounding right, and backed for life.
+            </p>
+            <p className="text-3xl font-bold text-[#f5f5f7] mb-1">From $2,000 <span className="text-lg font-normal text-[#f5f5f7]/50">USD</span></p>
+            <p className="text-[#f5f5f7]/30 text-sm mb-8">turnkey, guaranteed</p>
+
+            <div className="space-y-4 flex-grow">
+              {[
+                'Fully isolated power design',
+                'Hand-soldered, precision connections',
+                'Zero-noise signal chain',
+                'Road-tested, tour-grade durability',
+                'Lifetime support & free repairs',
+                'Professional signal path engineering',
+                'Bulletproof on any stage',
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <span className="text-[#10B981] mt-0.5 flex-shrink-0">✓</span>
+                  <span className="text-[#f5f5f7]/80 text-sm leading-snug">{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <Link
+              href="/book"
+              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full bg-[#F5A623] hover:bg-[#D48A1A] text-black transition-colors duration-200"
+            >
+              Start a Build
+            </Link>
+          </div>
         </div>
       </Section>
 
-      {/* ──── 9. CUSTOMER REVIEWS (white — real reviews with build photos) ──── */}
+      {/* ──── 8. CUSTOMER REVIEWS (white — real reviews) ──── */}
       <Section theme="light" id="customer-reviews" reveal>
         <div className="mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
@@ -300,7 +301,7 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ──── 10. FAQ (lightGray — "Got questions?") ──── */}
+      {/* ──── 9. FAQ (lightGray — "Got questions?") ──── */}
       <Section theme="lightGray" id="faq" reveal>
         <div className="mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
@@ -341,7 +342,7 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ──── 11. TONE TUTORING CROSS-SELL (white) ──── */}
+      {/* ──── 10. TONE TUTORING CROSS-SELL (white) ──── */}
       <Section theme="light" id="tone-tutoring-cta" reveal>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
@@ -349,7 +350,7 @@ export default function Home() {
               Start with a Tone Tutoring session.
             </h2>
             <p className="text-lg text-[#1d1d1f]/60 leading-relaxed mb-6">
-              Not sure if you need a full build? Do a 60-minute Tone Tutoring session first. We'll dig into your current rig, your playing style, and create a roadmap for your tone. Then decide if a custom build is right for you.
+              Not sure if you need a full build? Do a 60-minute Tone Tutoring session first. We&apos;ll dig into your current rig, your playing style, and create a roadmap for your tone. Then decide if a custom build is right for you.
             </p>
             <Link
               href="/tone-tutoring"
@@ -367,7 +368,7 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ──── 12. CLOSING CTA (dark accent — strong finish) ──── */}
+      {/* ──── 11. CLOSING CTA (dark accent — strong finish) ──── */}
       <Section theme="dark" id="closing-cta" reveal className="text-center">
         <div className="mb-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-4">
