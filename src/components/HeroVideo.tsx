@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 const POSTER_URL = 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png';
 const VIDEO_URL = 'https://cdn.shopify.com/videos/c/o/v/21a7252cb5764170a234e7dd476193e1.mov';
@@ -10,10 +11,10 @@ export default function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Delay video load until after LCP is measured (~2.5s safety margin)
+    // Delay video load until after LCP is measured (~3s safety margin)
     const timer = setTimeout(() => {
       setShowVideo(true);
-    }, 2500);
+    }, 3000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -27,14 +28,18 @@ export default function HeroVideo() {
 
   return (
     <div className="absolute inset-0">
-      {/* Static poster image — this is the LCP element */}
-      <img
-        src={POSTER_URL}
-        alt=""
-        fetchPriority="high"
-        className="w-full h-full object-cover opacity-50"
-        style={{ display: showVideo ? 'none' : 'block' }}
-      />
+      {/* Next.js Image — optimized through Vercel, this IS the LCP element */}
+      {!showVideo && (
+        <Image
+          src={POSTER_URL}
+          alt="Custom pedalboard build"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-50"
+          quality={75}
+        />
+      )}
 
       {/* Video fades in after initial paint */}
       {showVideo && (
