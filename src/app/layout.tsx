@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import AnnouncementBar from '@/components/AnnouncementBar';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import LeadMagnet from '@/components/LeadMagnet';
+import ConsultationPopup from '@/components/ConsultationPopup';
 import ExitIntent from '@/components/ExitIntent';
 import { LocalBusinessSchema } from '@/components/StructuredData';
 import './globals.css';
@@ -57,7 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main>{children}</main>
         <Footer />
-        <LeadMagnet />
+        <ConsultationPopup />
         <ExitIntent />
       </body>
     </html>
