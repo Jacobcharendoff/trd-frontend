@@ -251,7 +251,7 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ──── 8. REVIEWS ──── */}
+      {/* ──── 8. REVIEWS — single scrolling row ──── */}
       <Section theme="light" id="customer-reviews" reveal>
         <div className="mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
@@ -260,94 +260,148 @@ export default function Home() {
           <p className="text-[#1d1d1f]/50 text-lg">Straight from the people who gig on these boards.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            { name: 'Kevin M.', feedback: 'Jacob built exactly what I described. Fast, clean, and the board is rock solid. Took it on a 3-week run and it didn\'t miss a beat.' },
-            { name: 'Josh W.', feedback: 'Best decision I made for my live rig. The noise I was chasing for months? Gone. First gig with the new board and I couldn\'t stop grinning.' },
-            { name: 'Kaden C.', feedback: 'You can tell someone who cares about the craft put this together. Every cable, every connection. It\'s a different level.' },
-            { name: 'Shane T.', feedback: 'I used to dread setting up my board at gigs. Now I just plug in and play. That\'s what I was paying for.' },
-            { name: 'Mason M.', feedback: 'Jacob actually listened. Didn\'t try to upsell me on stuff I didn\'t need. The result sounds exactly like what was in my head.' },
-            { name: 'Robert B.', feedback: 'Worth every dollar. I\'ve had this board for two years now and it still works like the day I got it.' },
-          ].map((review, idx) => (
-            <div key={idx} className="bg-[#f5f5f7] rounded-2xl p-8 border border-black/[0.06]">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-4 h-4" fill="#EAB308" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
+        <div className="relative w-[100vw] -ml-[calc((100vw-100%)/2)]">
+          <div
+            className="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              paddingLeft: 'max(24px, calc((100vw - 1080px) / 2 + 24px))',
+              paddingRight: 'max(24px, calc((100vw - 1080px) / 2 + 24px))',
+            }}
+          >
+            {[
+              { name: 'Kevin M.', feedback: 'Jacob built exactly what I described. Fast, clean, and the board is rock solid. Took it on a 3-week run and it didn\'t miss a beat.' },
+              { name: 'Josh W.', feedback: 'Best decision I made for my live rig. The noise I was chasing for months? Gone. First gig with the new board and I couldn\'t stop grinning.' },
+              { name: 'Kaden C.', feedback: 'You can tell someone who cares about the craft put this together. Every cable, every connection. It\'s a different level.' },
+              { name: 'Shane T.', feedback: 'I used to dread setting up my board at gigs. Now I just plug in and play. That\'s what I was paying for.' },
+              { name: 'Mason M.', feedback: 'Jacob actually listened. Didn\'t try to upsell me on stuff I didn\'t need. The result sounds exactly like what was in my head.' },
+              { name: 'Robert B.', feedback: 'Worth every dollar. I\'ve had this board for two years now and it still works like the day I got it.' },
+            ].map((review, idx) => (
+              <div key={idx} className="flex-shrink-0 snap-start w-[320px] sm:w-[360px] bg-[#f5f5f7] rounded-2xl p-7 border border-black/[0.06]">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4" fill="#EAB308" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-[#1d1d1f]/70 mb-6 leading-relaxed text-[15px]">{review.feedback}</p>
+                <p className="font-semibold text-[#1d1d1f]">{review.name}</p>
               </div>
-              <p className="text-[#1d1d1f]/70 mb-6 leading-relaxed">{review.feedback}</p>
-              <p className="font-semibold text-[#1d1d1f]">{review.name}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </Section>
 
-      {/* ──── 9. FAQ ──── */}
-      <Section theme="lightGray" id="faq" reveal>
-        <div className="mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            The stuff people ask us.
+      {/* ──── 9. FAQ — Dawn style: centered heading, full-width dividers, chevrons ──── */}
+      <Section theme="light" id="faq" reveal>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f]">
+            Got questions? <span className="trd-gradient-text">We&apos;ve got answers.</span>
           </h2>
         </div>
 
-        <div className="space-y-3 max-w-3xl">
+        <div className="max-w-3xl mx-auto divide-y divide-[#1d1d1f]/10">
           {[
             {
               q: "How long does a build take?",
-              a: "Usually 2 to 4 weeks once we lock in the design. Complex rigs with switching systems can take a bit longer. We'll give you a real timeline before we start.",
+              a: "Most builds ship in 4-8 weeks depending on complexity and what parts we need to source. Touring emergency? We do rush builds too - just let us know.",
             },
             {
-              q: "What if something's not right with my build?",
-              a: "We'll fix it. That's what lifetime support means. If your board needs a tweak or something's not working the way it should, send it back or hop on a call and we'll sort it out.",
+              q: "How much does a custom build cost?",
+              a: "Every rig is different, so every quote is different. Builds typically start around $2,500 and scale with complexity. Your consultation is free - we'll walk through what you need and give you a straight answer.",
             },
             {
-              q: "Can I change my setup later?",
-              a: "That's the plan. We build boards knowing your rig will evolve. Swapping a pedal or adding one later is straightforward, and we're here to help when you do.",
+              q: "What if something breaks?",
+              a: "That's what 'For Life' means. Every build comes with lifetime support. If something goes wrong, we fix it. No questions, no runaround.",
             },
             {
-              q: "Do you ship outside the US?",
-              a: "Yeah, we've shipped boards internationally. Shipping costs depend on where you are. We'll quote that out during the consultation.",
+              q: "Do I need to ship my board to you?",
+              a: "Most clients do, yeah. We're in Montgomery, TX. We'll send you a shipping label and walk you through packing it safe. Local? Drop it off anytime.",
             },
             {
-              q: "I don't need a full build. Can you just fix something?",
-              a: "Absolutely. We do repair work too. Cables, pedals, power issues, whatever it is. Starts at $75/hour.",
+              q: "What is included in the free consultation?",
+              a: "Everything. We talk through your rig, your signal chain, what's bugging you, and what you want it to do. Then we put together a game plan and a quote. No pressure, no obligation.",
+            },
+            {
+              q: "Do you build MIDI switching systems and audio loops?",
+              a: "Absolutely. That's actually where things get really fun. We build full MIDI-controlled rigs with loop switchers, preset routing, the whole deal.",
             },
           ].map((item, idx) => (
-            <details key={idx} className="bg-white rounded-2xl border border-black/[0.06] p-6 cursor-pointer group">
-              <summary className="font-semibold text-[#1d1d1f] flex items-center gap-3 [&::-webkit-details-marker]:hidden list-none">
-                <span className="text-[#0071E3] text-lg transition-transform duration-200 group-open:rotate-45">+</span>
-                {item.q}
+            <details key={idx} className="group cursor-pointer">
+              <summary className="flex items-center justify-between py-5 [&::-webkit-details-marker]:hidden list-none">
+                <span className="font-medium text-[#1d1d1f] text-base sm:text-lg pr-4">{item.q}</span>
+                <svg
+                  className="w-5 h-5 flex-shrink-0 text-[#1d1d1f]/30 transition-transform duration-200 group-open:rotate-180"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
               </summary>
-              <p className="text-[#1d1d1f]/60 mt-4 leading-relaxed pl-7">{item.a}</p>
+              <p className="text-[#1d1d1f]/60 pb-5 leading-relaxed text-[15px]">{item.a}</p>
             </details>
           ))}
         </div>
+
+        <div className="text-center mt-10">
+          <Link href="/book" className="text-[#0071E3] hover:text-[#005BB5] font-medium transition-colors">
+            Still have questions? Let&apos;s talk &rsaquo;
+          </Link>
+        </div>
       </Section>
 
-      {/* ──── 10. TONE TUTORING CROSS-SELL ──── */}
+      {/* ──── 10. TONE TUTORING CROSS-SELL — Dawn style with What You Get card ──── */}
       <Section theme="light" id="tone-tutoring-cta" reveal>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           <div>
-            <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Not ready for a build?</p>
+            <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Not ready for a full build?</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-4">
-              Talk tone with us first.
+              Start with a Tone Tutoring session.
             </h2>
-            <p className="text-lg text-[#1d1d1f]/60 leading-relaxed mb-6">
-              60 minutes on a video call. We dig into your rig, figure out what&apos;s working and what isn&apos;t, and map out where to go from here. No commitment. Just good advice from someone who&apos;s wired 200+ boards.
+            <p className="text-lg text-[#1d1d1f]/60 leading-relaxed mb-8">
+              A 1-on-1 video call where we audit your rig, optimize your signal chain, and give you a clear upgrade path - no build required.
             </p>
-            <Link
-              href="/tone-tutoring"
-              className="inline-flex items-center gap-2 bg-[#1d1d1f] hover:bg-[#1d1d1f]/90 text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
-            >
-              Learn More
-            </Link>
+            <div className="flex items-center gap-6">
+              <Link
+                href="/tone-tutoring"
+                className="inline-flex items-center gap-2 bg-[#1d1d1f] hover:bg-[#1d1d1f]/90 text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
+              >
+                Book a Session
+              </Link>
+              <span className="text-[#1d1d1f]/50 text-base">From $99.99 USD</span>
+            </div>
           </div>
-          <div className="relative h-80 bg-gradient-to-br from-[#0071E3]/10 to-[#00B4D8]/10 rounded-2xl flex items-center justify-center border border-[#0071E3]/20">
-            <div className="text-center">
-              <p className="text-5xl font-bold trd-gradient-text mb-2">$99.99</p>
-              <p className="text-[#1d1d1f]/40 text-lg">60 minutes, 1-on-1</p>
+
+          {/* What You Get card — matches Dawn */}
+          <div className="bg-[#f5f5f7] rounded-2xl p-8 sm:p-10">
+            {/* Icon */}
+            <div className="flex justify-center mb-5">
+              <svg className="w-12 h-12 text-[#0071E3]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+              </svg>
+            </div>
+
+            <h3 className="text-xl font-bold text-[#1d1d1f] text-center mb-2">What you get</h3>
+            <p className="text-[#1d1d1f]/50 text-sm text-center mb-6">
+              60-min deep dive into your rig with actionable takeaways
+            </p>
+
+            <div className="space-y-4">
+              {[
+                'Signal chain audit and optimization',
+                'Personalized upgrade roadmap',
+                'Recording of your session',
+                'Follow-up notes with recommendations',
+                'Priority access to custom build slots',
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <svg className="w-5 h-5 flex-shrink-0 text-[#0071E3] mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-[#1d1d1f]/70 text-[15px]">{item}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
