@@ -207,7 +207,7 @@ export default function ShopPage() {
                     </div>
 
                     <Link
-                      href={`https://www.therigdr.com/products/${product.handle}`}
+                      href={`https://the-rig-doctor.myshopify.com/products/${product.handle}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full bg-gradient-to-r from-[#F5A623] to-[#10B981] hover:from-[#D48A1A] hover:to-[#0a8e5b] text-black font-semibold px-4 py-3 rounded-lg transition-all duration-200 text-center text-sm"
