@@ -361,38 +361,7 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ──── 12. PRODUCT SHOWCASE (dark) ──── */}
-      <Section theme="dark" id="products" reveal>
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-2">
-            The same gear we use in every build.
-          </h2>
-          <p className="text-[#f5f5f7]/60 text-lg">Curated from the best brands in the business.</p>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
-          {[
-            'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Amp-500x500.png',
-            'https://cdn.shopify.com/s/files/1/0528/3171/5486/products/patch_flat_flat_wide_hires.jpg',
-            'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/s-l1200_Large-removebg-preview.jpg',
-            'https://cdn.shopify.com/s/files/1/0528/3171/5486/collections/DIYRigBuildingKit.png',
-            'https://cdn.shopify.com/s/files/1/0528/3171/5486/collections/GT_cables-ylalT8Ub_ucPztCwF_TkSxtRMmsPJGGl_05987cbc-4202-4142-89d7-5abd30f857cd.jpg',
-          ].map((url, idx) => (
-            <div key={idx} className="bg-[#1a1a1a] rounded-2xl p-6 flex items-center justify-center aspect-square overflow-hidden border border-white/10">
-              <Image
-                src={url}
-                alt={`Product ${idx + 1}`}
-                width={200}
-                height={200}
-                className="w-full h-full object-contain"
-                unoptimized
-              />
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* ──── 13. CLOSING CTA (dark accent — strong finish) ──── */}
+      {/* ──── 12. CLOSING CTA (dark accent — strong finish) ──── */}
       <Section theme="dark" id="closing-cta" reveal className="text-center">
         <div className="mb-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-4">
