@@ -64,7 +64,6 @@ export default function ExitIntent() {
               alt="Before"
               fill
               className="object-cover"
-              unoptimized
             />
           </div>
           <div
@@ -76,7 +75,6 @@ export default function ExitIntent() {
               alt="After"
               fill
               className="object-cover"
-              unoptimized
             />
           </div>
 

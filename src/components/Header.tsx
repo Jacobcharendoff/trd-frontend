@@ -43,7 +43,6 @@ export default function Header() {
             width={140}
             height={40}
             className={`h-8 w-auto transition-all duration-300 ${scrolled ? 'invert' : ''}`}
-            unoptimized
             priority
           />
         </Link>

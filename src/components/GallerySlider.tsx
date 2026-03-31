@@ -56,7 +56,6 @@ export default function GallerySlider() {
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 1080px"
-              unoptimized
               priority={idx === 0}
             />
           </div>
@@ -107,7 +106,6 @@ export default function GallerySlider() {
               fill
               className="object-cover"
               sizes="80px"
-              unoptimized
             />
           </button>
         ))}

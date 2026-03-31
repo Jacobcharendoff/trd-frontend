@@ -55,7 +55,6 @@ function BeforeAfterSlider({ beforeImage, afterImage }: { beforeImage: string; a
           alt="Before"
           fill
           className="object-cover"
-          unoptimized
         />
       </div>
       {/* After Image */}
@@ -65,7 +64,6 @@ function BeforeAfterSlider({ beforeImage, afterImage }: { beforeImage: string; a
           alt="After"
           fill
           className="object-cover"
-          unoptimized
         />
       </div>
 

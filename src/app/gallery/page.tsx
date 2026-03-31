@@ -89,7 +89,6 @@ export default function GalleryPage() {
                     alt={build.title}
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-500"
-                    unoptimized
                   />
                 </div>
                 <div className="p-6 sm:p-8">

@@ -102,7 +102,6 @@ export default function ConsultationPopup() {
               alt="Before — messy pedalboard"
               fill
               className="object-cover"
-              unoptimized
             />
           </div>
           <div
@@ -114,7 +113,6 @@ export default function ConsultationPopup() {
               alt="After — clean TRD build"
               fill
               className="object-cover"
-              unoptimized
             />
           </div>
 
@@ -165,13 +163,13 @@ export default function ConsultationPopup() {
             className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
             style={{ opacity: showAfter ? 0 : 1 }}
           >
-            <Image src={BEFORE_IMAGE} alt="Before" fill className="object-cover" unoptimized />
+            <Image src={BEFORE_IMAGE} alt="Before" fill className="object-cover" />
           </div>
           <div
             className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
             style={{ opacity: showAfter ? 1 : 0 }}
           >
-            <Image src={AFTER_IMAGE} alt="After" fill className="object-cover" unoptimized />
+            <Image src={AFTER_IMAGE} alt="After" fill className="object-cover" />
           </div>
 
           <div className="absolute top-3 left-3 z-10">

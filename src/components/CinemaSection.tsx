@@ -188,8 +188,8 @@ export default function CinemaSection() {
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 58vw"
-                unoptimized
-                priority={idx === 0}
+                quality={75}
+                loading={idx === 0 ? 'eager' : 'lazy'}
               />
               {/* Bottom gradient for mobile text legibility */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent lg:hidden" />

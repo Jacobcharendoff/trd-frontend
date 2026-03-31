@@ -220,7 +220,6 @@ export default function PopularProducts() {
                           width={220}
                           height={220}
                           className="w-full h-full object-cover"
-                          unoptimized
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-[#1d1d1f]/20">
