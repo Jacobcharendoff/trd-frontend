@@ -15,8 +15,8 @@ export default function SignalFlowCapture() {
 
     try {
       // Submit to HubSpot form via their public API
-      const portalId = '48aborede49538';
-      const formId = 'signal-flow-cheat-sheet';
+      const portalId = '245067165';
+      const formId = 'b6534f50-4862-409c-abb2-24b832a30c86';
 
       const response = await fetch(
         `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`,

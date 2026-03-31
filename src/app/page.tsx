@@ -130,6 +130,26 @@ export default function Home() {
         <BeforeAfter />
       </Section>
 
+      {/* ──── MID-PAGE CTA ──── */}
+      <section className="bg-gradient-to-r from-[#0071E3] to-[#00B4D8] py-14 sm:py-16">
+        <div className="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+              Ready to hear what your rig should sound like?
+            </h3>
+            <p className="text-white/70 text-base mt-2">
+              30 minutes. Free. No commitment.
+            </p>
+          </div>
+          <Link
+            href="/book"
+            className="inline-flex items-center px-8 py-4 rounded-full bg-white text-[#0071E3] font-semibold text-base hover:bg-white/90 transition-all whitespace-nowrap shadow-lg"
+          >
+            Book a Free Consultation
+          </Link>
+        </div>
+      </section>
+
       {/* ──── 7. SERVICE TIERS ──── */}
       <Section theme="dark" id="service-tiers" reveal>
         <div className="text-center mb-16">
