@@ -6,6 +6,7 @@ import GallerySlider from '@/components/GallerySlider';
 import CinemaSection from '@/components/CinemaSection';
 import PopularProducts from '@/components/PopularProducts';
 import SignalFlowCapture from '@/components/SignalFlowCapture';
+import HeroVideo from '@/components/HeroVideo';
 
 export default function Home() {
   return (
@@ -13,27 +14,7 @@ export default function Home() {
       {/* ──── 1. HERO ──── */}
       <div className="relative w-full overflow-hidden">
         <div className="relative min-h-screen flex items-center justify-center bg-black">
-          <div className="absolute inset-0">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="none"
-              poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png"
-              className="w-full h-full object-cover opacity-50"
-            >
-              <source
-                src="https://cdn.shopify.com/videos/c/o/v/21a7252cb5764170a234e7dd476193e1.mov"
-                type="video/quicktime"
-              />
-              <source
-                src="https://cdn.shopify.com/videos/c/o/v/21a7252cb5764170a234e7dd476193e1.mov"
-                type="video/mp4"
-              />
-            </video>
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
-          </div>
+          <HeroVideo />
 
           <div className="relative z-10 max-w-[1080px] mx-auto px-6 pt-32 pb-20 w-full text-left">
             <h1 className="text-[2.75rem] sm:text-[3.5rem] md:text-[4.25rem] lg:text-[5rem] font-bold leading-[1.08] tracking-tight text-[#f5f5f7] mb-6 max-w-3xl">
@@ -95,7 +76,7 @@ export default function Home() {
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="none"
             className="w-full h-full object-cover"
             poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png"
           >
