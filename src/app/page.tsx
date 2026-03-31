@@ -1,13 +1,11 @@
-'use client';
-
 import Link from 'next/link';
-import Image from 'next/image';
 import Section from '@/components/Section';
 import TestimonialCarousel from '@/components/TestimonialCarousel';
 import BeforeAfter from '@/components/BeforeAfter';
 import GallerySlider from '@/components/GallerySlider';
 import CinemaSection from '@/components/CinemaSection';
 import PopularProducts from '@/components/PopularProducts';
+import SignalFlowCapture from '@/components/SignalFlowCapture';
 
 export default function Home() {
   return (
@@ -39,9 +37,9 @@ export default function Home() {
 
           <div className="relative z-10 max-w-[1080px] mx-auto px-6 pt-32 pb-20 w-full text-left">
             <h1 className="text-[2.75rem] sm:text-[3.5rem] md:text-[4.25rem] lg:text-[5rem] font-bold leading-[1.08] tracking-tight text-[#f5f5f7] mb-6 max-w-3xl">
-              Your board should sound
+              We don&apos;t sell gear.
               <br />
-              <span className="trd-gradient-text">as good as you play.</span>
+              <span className="trd-gradient-text">We wire it right.</span>
             </h1>
             <p className="text-lg sm:text-xl text-[#f5f5f7]/70 max-w-xl leading-relaxed mb-8">
               Hand-wired pedalboards built around how you actually play.
@@ -81,7 +79,7 @@ export default function Home() {
       {/* ──── 3. HOW WE BUILD (Cinema / Parallax) ──── */}
       <CinemaSection />
 
-      {/* ──── 4. VIDEO ──── */}
+      {/* ──── 4. WATCH THE BUILD ──── */}
       <Section theme="light" id="video-build" reveal>
         <div className="text-center mb-12">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Watch the Build</p>
@@ -110,10 +108,10 @@ export default function Home() {
       </Section>
 
       {/* ──── 5. GALLERY ──── */}
-      <Section theme="lightGray" id="gallery" reveal>
+      <Section theme="dark" id="gallery" reveal>
         <div className="text-center mb-10">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">The Gallery</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
+          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-4">The Gallery</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-2">
             200+ rigs. <span className="trd-gradient-text">Here&apos;s a few.</span>
           </h2>
         </div>
@@ -144,7 +142,7 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-          {/* Tier 1 — Keep what you've got */}
+          {/* Tier 1 */}
           <div className="rounded-2xl p-8 bg-[#f5f5f7]/[0.06] border border-white/[0.06] flex flex-col">
             <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#f5f5f7]/30 mb-2">Current Setup</p>
             <h3 className="text-2xl font-bold text-[#f5f5f7]/70 mb-2">Ride it out</h3>
@@ -173,7 +171,7 @@ export default function Home() {
             <p className="text-[#f5f5f7]/25 text-sm italic mt-8">You know something&apos;s off.</p>
           </div>
 
-          {/* Tier 2 — DIY Build */}
+          {/* Tier 2 */}
           <div className="rounded-2xl p-8 bg-[#f5f5f7]/[0.06] border border-white/[0.08] flex flex-col">
             <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#f5f5f7]/30 mb-2">DIY Kits</p>
             <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">Build it yourself</h3>
@@ -209,7 +207,7 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Tier 3 — Custom Build */}
+          {/* Tier 3 */}
           <div className="relative rounded-2xl p-8 bg-gradient-to-b from-[#1a3a4a] to-[#0f2833] border border-[#0071E3]/20 flex flex-col">
             <div className="absolute -top-3.5 right-6">
               <span className="bg-[#0071E3] text-white text-xs font-semibold tracking-wider uppercase px-4 py-1.5 rounded-full">
@@ -252,13 +250,13 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ──── 8. REVIEWS — single scrolling row ──── */}
+      {/* ──── 8. REVIEWS ──── */}
       <Section theme="light" id="customer-reviews" reveal>
         <div className="mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            Players talk.
+            Don&apos;t take our word for it.
           </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">Straight from the people who gig on these boards.</p>
+          <p className="text-[#1d1d1f]/50 text-lg">Straight from the people who gig on these boards every week.</p>
         </div>
 
         <div className="relative w-[100vw] -ml-[calc((100vw-100%)/2)]">
@@ -295,8 +293,11 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ──── 9. FAQ — Dawn style: centered heading, full-width dividers, chevrons ──── */}
-      <Section theme="light" id="faq" reveal>
+      {/* ──── 9. SIGNAL FLOW CHEAT SHEET — email capture ──── */}
+      <SignalFlowCapture />
+
+      {/* ──── 10. FAQ ──── */}
+      <Section theme="lightGray" id="faq" reveal>
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f]">
             Got questions? <span className="trd-gradient-text">We&apos;ve got answers.</span>
@@ -307,11 +308,11 @@ export default function Home() {
           {[
             {
               q: "How long does a build take?",
-              a: "Most builds ship in 4-8 weeks depending on complexity and what parts we need to source. Touring emergency? We do rush builds too - just let us know.",
+              a: "Most builds ship in 4-8 weeks depending on complexity and what parts we need to source. Touring emergency? We do rush builds too. Just let us know.",
             },
             {
               q: "How much does a custom build cost?",
-              a: "Every rig is different, so every quote is different. Builds typically start around $2,500 and scale with complexity. Your consultation is free - we'll walk through what you need and give you a straight answer.",
+              a: "Every rig is different, so every quote is different. Builds typically start around $2,500 and scale with complexity. Your consultation is free. We'll walk through what you need and give you a straight answer.",
             },
             {
               q: "What if something breaks?",
@@ -352,10 +353,10 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ──── 10. TONE SHOP — Most Popular ──── */}
+      {/* ──── 11. TONE SHOP — Most Popular ──── */}
       <PopularProducts />
 
-      {/* ──── 11. TONE TUTORING — video + What You Get (page closer) ──── */}
+      {/* ──── 12. TONE TUTORING — page closer ──── */}
       <Section theme="light" id="tone-tutoring-cta" reveal>
         <div className="text-center mb-12">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Not ready for a full build?</p>
@@ -363,19 +364,20 @@ export default function Home() {
             Start with a Tone Tutoring session.
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg max-w-2xl mx-auto">
-            A 1-on-1 video call where we audit your rig, optimize your signal chain, and give you a clear upgrade path.
+            A 1-on-1 video call where we go through your rig, fix your signal chain, and map out what to do next.
           </p>
         </div>
 
-        {/* Video — Loom-style pedalboard layout walkthrough */}
+        {/* Video — pedalboard layout walkthrough */}
         <div className="relative w-full rounded-3xl overflow-hidden bg-[#0a0a0a] aspect-video max-w-4xl mx-auto shadow-2xl mb-16">
           <video
             autoPlay
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
             className="w-full h-full object-cover"
+            poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png"
           >
             <source
               src="https://cdn.shopify.com/videos/c/o/v/81fddb9f77f541f9affca863220f5c65.mp4"
@@ -422,7 +424,7 @@ export default function Home() {
               Your rig&apos;s not going to fix itself.
             </h3>
             <p className="text-lg text-[#1d1d1f]/60 leading-relaxed mb-8">
-              Grab a session. Tell us what you&apos;re dealing with. We&apos;ll tell you what we&apos;d do about it — no build required.
+              Grab a session. Tell us what you&apos;re dealing with. We&apos;ll map out exactly what we&apos;d do about it. No build required.
             </p>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
               <Link
@@ -441,7 +443,6 @@ export default function Home() {
           </div>
         </div>
       </Section>
-
     </>
   );
 }
