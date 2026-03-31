@@ -25,7 +25,11 @@ export default function Home() {
               className="w-full h-full object-cover opacity-50"
             >
               <source
-                src="https://cdn.shopify.com/videos/c/vp/f12872e61445487b86f0ae5df85ba09b/f12872e61445487b86f0ae5df85ba09b.HD-1080p-7.2Mbps-78086312.mp4"
+                src="https://cdn.shopify.com/videos/c/o/v/21a7252cb5764170a234e7dd476193e1.mov"
+                type="video/quicktime"
+              />
+              <source
+                src="https://cdn.shopify.com/videos/c/o/v/21a7252cb5764170a234e7dd476193e1.mov"
                 type="video/mp4"
               />
             </video>
@@ -97,11 +101,7 @@ export default function Home() {
             poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png"
           >
             <source
-              src="https://cdn.shopify.com/videos/c/o/v/21a7252cb5764170a234e7dd476193e1.mov"
-              type="video/quicktime"
-            />
-            <source
-              src="https://cdn.shopify.com/videos/c/o/v/21a7252cb5764170a234e7dd476193e1.mov"
+              src="https://cdn.shopify.com/videos/c/vp/f12872e61445487b86f0ae5df85ba09b/f12872e61445487b86f0ae5df85ba09b.HD-1080p-7.2Mbps-78086312.mp4"
               type="video/mp4"
             />
           </video>
@@ -407,25 +407,6 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ──── 11. CLOSING CTA ──── */}
-      <Section theme="dark" id="closing-cta" reveal className="text-center">
-        <div className="mb-8">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-4">
-            Your rig&apos;s not going to fix itself.
-          </h2>
-          <p className="text-[#f5f5f7]/60 text-lg max-w-2xl mx-auto">
-            Grab a free call. Tell us what you&apos;re dealing with. We&apos;ll tell you what we&apos;d do about it.
-          </p>
-        </div>
-        <div className="mt-12">
-          <Link
-            href="/book"
-            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
-          >
-            Book a Free Consultation
-          </Link>
-        </div>
-      </Section>
     </>
   );
 }
