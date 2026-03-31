@@ -93,7 +93,7 @@ export default function Home() {
             poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png"
           >
             <source
-              src="https://cdn.shopify.com/videos/c/vp/f12872e61445487b86f0ae5df85ba09b/f12872e61445487b86f0ae5df85ba09b.HD-1080p-7.2Mbps-78086312.mp4"
+              src="https://cdn.shopify.com/videos/c/o/v/fd1dd8951a58473399e8ee70e902ed4e.mp4"
               type="video/mp4"
             />
           </video>
