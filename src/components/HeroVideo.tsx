@@ -2,51 +2,48 @@
 
 import { useState, useEffect, useRef } from 'react';
 
-// Shopify CDN resize: serve 1200px wide WebP (~80-150KB vs 1.2MB PNG)
-const POSTER_SMALL = 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png?width=1200&format=webp&v=1';
-const POSTER_FULL = 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png';
+// Shopify CDN resize: 1200px WebP (~100KB vs 1.2MB raw PNG)
+const POSTER_URL = 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png?width=1200&format=webp&v=1';
 const VIDEO_URL = 'https://cdn.shopify.com/videos/c/o/v/21a7252cb5764170a234e7dd476193e1.mov';
 
 export default function HeroVideo() {
-  const [showVideo, setShowVideo] = useState(false);
+  const [videoReady, setVideoReady] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Delay video load until after LCP is measured
+    // Delay video injection until well after LCP measurement
     const timer = setTimeout(() => {
-      setShowVideo(true);
-    }, 3000);
+      setVideoReady(true);
+    }, 4000);
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
-    if (showVideo && videoRef.current) {
+    if (videoReady && videoRef.current) {
       videoRef.current.play().catch(() => {});
     }
-  }, [showVideo]);
+  }, [videoReady]);
 
   return (
     <div className="absolute inset-0">
-      {/* Optimized poster — Shopify CDN serves 1200px WebP, ~100KB */}
+      {/* Static poster — ALWAYS in DOM, never unmounted. This is the LCP element. */}
       <img
-        src={POSTER_SMALL}
+        src={POSTER_URL}
         alt="Custom pedalboard build"
         fetchPriority="high"
         decoding="sync"
-        className="w-full h-full object-cover opacity-50"
-        style={{ display: showVideo ? 'none' : 'block' }}
+        className="absolute inset-0 w-full h-full object-cover opacity-50"
       />
 
-      {/* Video fades in after initial paint */}
-      {showVideo && (
+      {/* Video layers ON TOP of the image — never replaces it as LCP candidate */}
+      {videoReady && (
         <video
           ref={videoRef}
           muted
           loop
           playsInline
           preload="auto"
-          poster={POSTER_FULL}
-          className="w-full h-full object-cover opacity-50"
+          className="absolute inset-0 w-full h-full object-cover opacity-50"
         >
           <source src={VIDEO_URL} type="video/mp4" />
         </video>
