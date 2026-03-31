@@ -96,7 +96,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
             {/* Stat 1 */}
             <div className="text-center">
-              <div className="text-4xl sm:text-5xl font-bold mb-2" style={{ color: 'var(--trd-amber)' }}>
+              <div className="text-4xl sm:text-5xl font-bold mb-2" style={{ color: 'var(--trd-blue)' }}>
                 17+
               </div>
               <p className="text-gray-300 text-sm sm:text-base">Years Experience</p>
@@ -104,7 +104,7 @@ export default function AboutPage() {
 
             {/* Stat 2 */}
             <div className="text-center">
-              <div className="text-4xl sm:text-5xl font-bold mb-2" style={{ color: 'var(--trd-amber)' }}>
+              <div className="text-4xl sm:text-5xl font-bold mb-2" style={{ color: 'var(--trd-blue)' }}>
                 200+
               </div>
               <p className="text-gray-300 text-sm sm:text-base">Rigs Built</p>
@@ -112,7 +112,7 @@ export default function AboutPage() {
 
             {/* Stat 3 */}
             <div className="text-center">
-              <div className="text-4xl sm:text-5xl font-bold mb-2" style={{ color: 'var(--trd-amber)' }}>
+              <div className="text-4xl sm:text-5xl font-bold mb-2" style={{ color: 'var(--trd-blue)' }}>
                 50+
               </div>
               <p className="text-gray-300 text-sm sm:text-base">Touring Artists</p>
@@ -120,7 +120,7 @@ export default function AboutPage() {
 
             {/* Stat 4 */}
             <div className="text-center">
-              <div className="text-4xl sm:text-5xl font-bold mb-2" style={{ color: 'var(--trd-amber)' }}>
+              <div className="text-4xl sm:text-5xl font-bold mb-2" style={{ color: 'var(--trd-blue)' }}>
                 100%
               </div>
               <p className="text-gray-300 text-sm sm:text-base">Satisfaction Rate</p>
@@ -169,7 +169,7 @@ export default function AboutPage() {
           <Link
             href="/book"
             className="inline-block px-8 sm:px-10 py-4 rounded-lg font-semibold text-white transition-all duration-300 hover:shadow-lg hover:scale-105"
-            style={{ backgroundColor: 'var(--trd-amber)' }}
+            style={{ backgroundColor: 'var(--trd-blue)' }}
           >
             Book a Consultation
           </Link>

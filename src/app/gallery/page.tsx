@@ -148,7 +148,7 @@ export default function GalleryPage() {
                 <div
                   className="text-5xl font-bold mb-6"
                   style={{
-                    background: 'linear-gradient(135deg, var(--trd-amber), var(--trd-green))',
+                    background: 'linear-gradient(135deg, var(--trd-blue), var(--trd-green))',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
@@ -180,7 +180,7 @@ export default function GalleryPage() {
           <Link
             href="/book"
             className="inline-block px-8 sm:px-10 py-4 rounded-lg font-semibold text-white transition-all duration-300 hover:shadow-lg hover:scale-105"
-            style={{ backgroundColor: 'var(--trd-amber)' }}
+            style={{ backgroundColor: 'var(--trd-blue)' }}
           >
             Start Your Build
           </Link>
