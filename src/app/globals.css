@@ -87,6 +87,26 @@ body {
   border-radius: 16px;
 }
 
+/* ─── Hero CTA Glow Pulse ─── */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 113, 227, 0.3); }
+  50% { box-shadow: 0 0 35px rgba(0, 113, 227, 0.5), 0 0 60px rgba(0, 113, 227, 0.15); }
+}
+
+.trd-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ─── Review card hover ─── */
+.trd-review-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trd-review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
 /* ─── HubSpot Overrides ─── */
 #hubspot-messages-iframe-container {
   display: none !important;

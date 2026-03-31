@@ -29,7 +29,7 @@ export default function Home() {
             <div className="flex gap-4 mb-16">
               <Link
                 href="/book"
-                className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
+                className="trd-glow-pulse group relative inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,113,227,0.4)] hover:scale-[1.02]"
               >
                 Start a Build
               </Link>
@@ -42,6 +42,13 @@ export default function Home() {
               <span className="hidden sm:block text-[#f5f5f7]/20">&bull;</span>
               <p className="text-base sm:text-lg text-[#f5f5f7]/60">Lifetime support</p>
             </div>
+          </div>
+
+          {/* Scroll indicator */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+            <svg className="w-6 h-6 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7" />
+            </svg>
           </div>
         </div>
       </div>
@@ -112,19 +119,21 @@ export default function Home() {
       </Section>
 
       {/* ──── MID-PAGE CTA ──── */}
-      <section className="bg-gradient-to-r from-[#0071E3] to-[#00B4D8] py-14 sm:py-16">
-        <div className="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#0071E3] via-[#0091F7] to-[#00B4D8] py-16 sm:py-20">
+        {/* Subtle radial glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.08)_0%,transparent_70%)]" />
+        <div className="relative max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-8">
           <div>
             <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
               Ready to hear what your rig should sound like?
             </h3>
-            <p className="text-white/70 text-base mt-2">
+            <p className="text-white/60 text-base mt-3">
               30 minutes. Free. No commitment.
             </p>
           </div>
           <Link
             href="/book"
-            className="inline-flex items-center px-8 py-4 rounded-full bg-white text-[#0071E3] font-semibold text-base hover:bg-white/90 transition-all whitespace-nowrap shadow-lg"
+            className="inline-flex items-center px-8 py-4 rounded-full bg-white text-[#0071E3] font-semibold text-base hover:bg-white/95 hover:scale-[1.02] transition-all duration-300 whitespace-nowrap shadow-[0_4px_20px_rgba(0,0,0,0.15)]"
           >
             Book a Free Consultation
           </Link>
@@ -144,7 +153,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           {/* Tier 1 */}
-          <div className="rounded-2xl p-8 bg-[#f5f5f7]/[0.06] border border-white/[0.06] flex flex-col">
+          <div className="rounded-2xl p-8 bg-[#f5f5f7]/[0.06] border border-white/[0.06] flex flex-col hover:-translate-y-1 transition-all duration-500">
             <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#f5f5f7]/30 mb-2">Current Setup</p>
             <h3 className="text-2xl font-bold text-[#f5f5f7]/70 mb-2">Ride it out</h3>
             <p className="text-[#f5f5f7]/40 text-sm mb-6">
@@ -173,7 +182,7 @@ export default function Home() {
           </div>
 
           {/* Tier 2 */}
-          <div className="rounded-2xl p-8 bg-[#f5f5f7]/[0.06] border border-white/[0.08] flex flex-col">
+          <div className="rounded-2xl p-8 bg-[#f5f5f7]/[0.06] border border-white/[0.08] flex flex-col hover:-translate-y-1 transition-all duration-500">
             <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#f5f5f7]/30 mb-2">DIY Kits</p>
             <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">Build it yourself</h3>
             <p className="text-[#f5f5f7]/50 text-sm mb-6">
@@ -208,8 +217,8 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Tier 3 */}
-          <div className="relative rounded-2xl p-8 bg-gradient-to-b from-[#1a3a4a] to-[#0f2833] border border-[#0071E3]/20 flex flex-col">
+          {/* Tier 3 — Most Popular */}
+          <div className="relative rounded-2xl p-8 bg-gradient-to-b from-[#1a3a4a] to-[#0f2833] border border-[#0071E3]/30 flex flex-col shadow-[0_0_40px_rgba(0,113,227,0.12)] hover:shadow-[0_0_60px_rgba(0,113,227,0.20)] hover:-translate-y-1 transition-all duration-500">
             <div className="absolute -top-3.5 right-6">
               <span className="bg-[#0071E3] text-white text-xs font-semibold tracking-wider uppercase px-4 py-1.5 rounded-full">
                 Most Popular
@@ -243,7 +252,7 @@ export default function Home() {
 
             <Link
               href="/book"
-              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full bg-[#0071E3] hover:bg-[#005BB5] text-white transition-colors duration-200"
+              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full bg-[#0071E3] hover:bg-[#005BB5] text-white transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,113,227,0.35)]"
             >
               Start a Build
             </Link>
@@ -278,7 +287,7 @@ export default function Home() {
               { name: 'Mason M.', feedback: 'Jacob actually listened. Didn\'t try to upsell me on stuff I didn\'t need. The result sounds exactly like what was in my head.' },
               { name: 'Robert B.', feedback: 'Worth every dollar. I\'ve had this board for two years now and it still works like the day I got it.' },
             ].map((review, idx) => (
-              <div key={idx} className="flex-shrink-0 snap-start w-[320px] sm:w-[360px] bg-[#f5f5f7] rounded-2xl p-7 border border-black/[0.06]">
+              <div key={idx} className="trd-review-card flex-shrink-0 snap-start w-[320px] sm:w-[360px] bg-[#f5f5f7] rounded-2xl p-7 border border-black/[0.06]">
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
                     <svg key={i} className="w-4 h-4" fill="#EAB308" viewBox="0 0 20 20">
@@ -430,7 +439,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
               <Link
                 href="/tone-tutoring"
-                className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
+                className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,113,227,0.4)] hover:scale-[1.02]"
               >
                 Book a Session
               </Link>
