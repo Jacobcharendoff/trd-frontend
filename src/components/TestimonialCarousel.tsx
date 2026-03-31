@@ -119,19 +119,20 @@ export default function TestimonialCarousel({
     theme === 'dark' ? 'text-[#f5f5f7]/50' : 'text-[#1d1d1f]/50';
 
   return (
-    <div className="relative w-full -mx-6 px-6 overflow-hidden">
-      {/* Container with hidden scrollbar */}
+    <div className="relative w-[100vw] -ml-[calc((100vw-100%)/2)]">
+      {/* Scrollable container — full viewport width, padded to align with content */}
       <div
         ref={scrollContainerRef}
-        className="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory px-1 py-1"
+        className="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory"
         style={{
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
+          paddingLeft: 'max(24px, calc((100vw - 1080px) / 2 + 24px))',
+          paddingRight: 'max(24px, calc((100vw - 1080px) / 2 + 24px))',
         }}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
-        {/* CSS to hide scrollbar */}
         <style>{`
           div::-webkit-scrollbar {
             display: none;
@@ -141,21 +142,18 @@ export default function TestimonialCarousel({
         {artists.map((artist, index) => (
           <div
             key={index}
-            className="flex-shrink-0 snap-start w-[280px] sm:w-[300px]"
+            className="flex-shrink-0 snap-start w-[280px] sm:w-[320px]"
           >
-            <div className="group relative rounded-2xl overflow-hidden h-[380px] sm:h-[420px]">
-              {/* Artist Photo — full card */}
+            <div className="group relative rounded-2xl overflow-hidden h-[380px] sm:h-[440px]">
               <Image
                 src={artist.photo}
                 alt={artist.name}
                 fill
                 className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                sizes="300px"
+                sizes="320px"
                 unoptimized
               />
-              {/* Gradient overlay for text legibility */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              {/* Name & Role pinned to bottom */}
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <p className="font-semibold text-white text-lg leading-tight">
                   {artist.name}
@@ -169,45 +167,27 @@ export default function TestimonialCarousel({
         ))}
       </div>
 
-      {/* Left Arrow */}
+      {/* Left Arrow — aligned to content edge */}
       <button
         onClick={() => handleScroll('left')}
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 rounded-full bg-white/90 hover:bg-white shadow-lg text-[#1d1d1f] p-3 transition-all duration-200 border border-black/10"
+        className="absolute top-1/2 -translate-y-1/2 z-20 rounded-full bg-white/90 hover:bg-white shadow-lg text-[#1d1d1f] p-3 transition-all duration-200 border border-black/10"
+        style={{ left: 'max(12px, calc((100vw - 1080px) / 2 + 8px))' }}
         aria-label="Scroll left"
       >
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 19l-7-7 7-7"
-          />
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
       </button>
 
-      {/* Right Arrow */}
+      {/* Right Arrow — aligned to content edge */}
       <button
         onClick={() => handleScroll('right')}
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 rounded-full bg-white/90 hover:bg-white shadow-lg text-[#1d1d1f] p-3 transition-all duration-200 border border-black/10"
+        className="absolute top-1/2 -translate-y-1/2 z-20 rounded-full bg-white/90 hover:bg-white shadow-lg text-[#1d1d1f] p-3 transition-all duration-200 border border-black/10"
+        style={{ right: 'max(12px, calc((100vw - 1080px) / 2 + 8px))' }}
         aria-label="Scroll right"
       >
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 5l7 7-7 7"
-          />
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
       </button>
     </div>
