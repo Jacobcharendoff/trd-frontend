@@ -52,9 +52,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <LocalBusinessSchema />
       </head>
       <body className="antialiased">
-        <AnnouncementBar />
+        {/* AnnouncementBar hidden for Dawn parity — restore post-launch */}
+        {/* <AnnouncementBar /> */}
         <Header />
-        <main className="pt-14">{children}</main>
+        <main>{children}</main>
         <Footer />
         <LeadMagnet />
         <ExitIntent />

@@ -22,20 +22,26 @@ export default function Home() {
 
   return (
     <>
-      {/* ──── 1. HERO SECTION (dark — cinematic first impression with real rig photo) ──── */}
+      {/* ──── 1. HERO SECTION (dark — cinematic video hero matching Dawn) ──── */}
       <div className="relative w-full overflow-hidden">
         <div className="relative min-h-screen flex items-center justify-center bg-black">
-          {/* Background image */}
+          {/* Background video — matches Dawn's autoplay muted loop hero */}
           <div className="absolute inset-0">
-            <Image
-              src="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png"
-              alt="Custom rig build"
-              fill
-              className="object-cover opacity-40"
-              priority
-              unoptimized
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20" />
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png"
+              className="w-full h-full object-cover opacity-50"
+            >
+              <source
+                src="https://cdn.shopify.com/videos/c/vp/f12872e61445487b86f0ae5df85ba09b/f12872e61445487b86f0ae5df85ba09b.HD-1080p-7.2Mbps-78086312.mp4"
+                type="video/mp4"
+              />
+            </video>
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
           </div>
 
           {/* Hero content — left-aligned to match Dawn */}
