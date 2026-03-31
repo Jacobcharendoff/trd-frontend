@@ -38,14 +38,11 @@ export default function Header() {
           className="flex items-center hover:opacity-80 transition-all"
         >
           <Image
-            src={scrolled
-              ? 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/logo-dark-hrt.png?v=1742952854'
-              : 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/logo-white-hrt.png?v=1742952854'
-            }
+            src="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/logo-white-hrt.png?v=1742952854"
             alt="The Rig Doctor"
             width={140}
             height={40}
-            className="h-8 w-auto"
+            className={`h-8 w-auto transition-all duration-300 ${scrolled ? 'invert' : ''}`}
             unoptimized
             priority
           />
