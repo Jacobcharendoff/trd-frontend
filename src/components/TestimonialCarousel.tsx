@@ -142,15 +142,15 @@ export default function TestimonialCarousel({
         {artists.map((artist, index) => (
           <div
             key={index}
-            className="flex-shrink-0 snap-start w-[280px] sm:w-[320px]"
+            className="flex-shrink-0 snap-start w-[340px] sm:w-[400px]"
           >
-            <div className="group relative rounded-2xl overflow-hidden h-[380px] sm:h-[440px]">
+            <div className="group relative rounded-2xl overflow-hidden aspect-[4/5]">
               <Image
                 src={artist.photo}
                 alt={artist.name}
                 fill
-                className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                sizes="320px"
+                className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                sizes="400px"
                 unoptimized
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
