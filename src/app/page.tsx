@@ -19,7 +19,7 @@ export default function Home() {
               muted
               loop
               playsInline
-              preload="metadata"
+              preload="none"
               poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png"
               className="w-full h-full object-cover opacity-50"
             >
@@ -395,7 +395,7 @@ export default function Home() {
             muted
             loop
             playsInline
-            preload="auto"
+            preload="none"
             className="w-full h-full object-cover"
             poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png"
           >
