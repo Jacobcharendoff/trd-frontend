@@ -61,7 +61,7 @@ export default function GalleryPage() {
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
                 Off the bench.
               </h1>
-              <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-lg sm:text-xl text-[#f5f5f7]/70 max-w-2xl mx-auto leading-relaxed">
                 Every board tells a story. Here are some of ours.
               </p>
             </div>
@@ -83,7 +83,7 @@ export default function GalleryPage() {
                 key={build.id}
                 className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
               >
-                <div className="relative h-64 overflow-hidden bg-gray-100">
+                <div className="relative h-64 overflow-hidden bg-[#f5f5f7]">
                   <Image
                     src={build.image}
                     alt={build.title}
@@ -96,7 +96,7 @@ export default function GalleryPage() {
                   <h3 className="text-xl sm:text-2xl font-semibold mb-3 text-[#1d1d1f]">
                     {build.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-[#1d1d1f]/60 leading-relaxed">
                     {build.description}
                   </p>
                 </div>
@@ -109,7 +109,7 @@ export default function GalleryPage() {
                 <p className="text-lg sm:text-xl font-semibold text-[#1d1d1f] mb-2">
                   More builds coming soon
                 </p>
-                <p className="text-gray-600">
+                <p className="text-[#1d1d1f]/60">
                   Fresh rigs, fresh stories.
                 </p>
               </div>
@@ -120,7 +120,7 @@ export default function GalleryPage() {
                 <p className="text-lg sm:text-xl font-semibold text-[#1d1d1f] mb-2">
                   More builds coming soon
                 </p>
-                <p className="text-gray-600">
+                <p className="text-[#1d1d1f]/60">
                   Fresh rigs, fresh stories.
                 </p>
               </div>
@@ -133,10 +133,10 @@ export default function GalleryPage() {
       <Section theme="lightGray" reveal>
         <div className="w-full">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4 text-[#1d1d1f]">
-            We build for every player.
+            We build for all kinds of players.
           </h2>
-          <p className="text-center text-lg text-gray-600 mb-16 max-w-2xl mx-auto">
-            From the bedroom to the stadium, we've got a rig for you.
+          <p className="text-center text-lg text-[#1d1d1f]/60 mb-16 max-w-2xl mx-auto">
+            Different players, different needs. Same standard of work.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -159,7 +159,7 @@ export default function GalleryPage() {
                 <h3 className="text-xl sm:text-2xl font-semibold mb-3 text-[#1d1d1f]">
                   {category.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-[#1d1d1f]/60 leading-relaxed">
                   {category.description}
                 </p>
               </div>
@@ -174,15 +174,14 @@ export default function GalleryPage() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white">
             Want to see yours here?
           </h2>
-          <p className="text-lg sm:text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Every build starts with a conversation. Let's talk about your rig.
+          <p className="text-lg text-[#f5f5f7]/60 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Every build starts with a conversation.
           </p>
           <Link
             href="/book"
-            className="inline-block px-8 sm:px-10 py-4 rounded-lg font-semibold text-white transition-all duration-300 hover:shadow-lg hover:scale-105"
-            style={{ backgroundColor: 'var(--trd-blue)' }}
+            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
           >
-            Start Your Build
+            Book a Free Consultation
           </Link>
         </div>
       </Section>

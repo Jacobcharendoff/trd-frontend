@@ -12,22 +12,22 @@ const steps: CinemaStep[] = [
   {
     num: '01',
     title: 'Signal Routing',
-    desc: 'We map every pedal combination before a single cable is cut. Your tone stays clean from input to output.',
+    desc: 'We map your whole chain before we cut a single cable. Every pedal, every combination. Your tone stays clean from input to output.',
   },
   {
     num: '02',
-    title: 'Cable Architecture',
-    desc: 'Every run is labeled, laced, and built to survive hundreds of shows. No rat\u2019s nest. No guesswork.',
+    title: 'Cable Work',
+    desc: 'Every run is labeled, laced, and built to handle hundreds of shows. When you open the back of this board, it makes sense.',
   },
   {
     num: '03',
     title: 'Power & Protection',
-    desc: 'Isolated power rails kill the hum, buzz, and mystery noise. The stuff that\u2019s been driving you nuts? Gone.',
+    desc: 'Isolated power rails kill the hum and buzz. That mystery noise you can never track down? We know where it lives.',
   },
   {
     num: '04',
-    title: 'Tour-Ready',
-    desc: 'Your board leaves here stage-ready. Peace of mind on stage. Every night.',
+    title: 'Stage-Ready',
+    desc: 'Your board leaves here ready to plug in. We stress-test everything so you don\u2019t think about it at the gig.',
   },
 ];
 
@@ -79,10 +79,9 @@ export default function CinemaSection() {
 
           {/* Heading */}
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-10 leading-tight">
-            Noise. Rat&apos;s nest.
+            Noise, rat&apos;s nest, tone suck.
             <br />
-            Tone suck.{' '}
-            <span className="text-[#0071E3]">We fix that.</span>
+            <span className="text-[#0071E3]">Yeah, we fix that.</span>
           </h2>
 
           {/* Steps */}

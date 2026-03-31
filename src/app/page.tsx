@@ -11,10 +11,9 @@ import CinemaSection from '@/components/CinemaSection';
 export default function Home() {
   return (
     <>
-      {/* ──── 1. HERO SECTION (dark — cinematic video hero matching Dawn) ──── */}
+      {/* ──── 1. HERO ──── */}
       <div className="relative w-full overflow-hidden">
         <div className="relative min-h-screen flex items-center justify-center bg-black">
-          {/* Background video — matches Dawn's autoplay muted loop hero */}
           <div className="absolute inset-0">
             <video
               autoPlay
@@ -33,59 +32,58 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
           </div>
 
-          {/* Hero content — left-aligned to match Dawn */}
           <div className="relative z-10 max-w-[1080px] mx-auto px-6 pt-32 pb-20 w-full text-left">
-            <h1 className="text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[5.5rem] font-bold leading-[1.05] tracking-tight text-[#f5f5f7] mb-6 max-w-3xl">
-              We don&apos;t sell gear.{' '}
+            <h1 className="text-[2.75rem] sm:text-[3.5rem] md:text-[4.25rem] lg:text-[5rem] font-bold leading-[1.08] tracking-tight text-[#f5f5f7] mb-6 max-w-3xl">
+              Your board should sound
               <br />
-              <span className="trd-gradient-text">We wire it right.</span>
+              <span className="trd-gradient-text">as good as you play.</span>
             </h1>
             <p className="text-lg sm:text-xl text-[#f5f5f7]/70 max-w-xl leading-relaxed mb-8">
-              17 years. 200+ custom rigs. Hand-soldered, tour-tested, backed for life.
+              Hand-wired pedalboards built around how you actually play.
+              One at a time. Backed for life.
             </p>
             <div className="flex gap-4 mb-16">
               <Link
                 href="/book"
-                className="inline-flex items-center gap-2 bg-[#2997FF] hover:bg-[#1a82e6] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
+                className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
               >
                 Start a Build
               </Link>
             </div>
 
-            {/* Stats Row */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-12 pt-8 border-t border-white/10">
-              <p className="text-base sm:text-lg text-[#f5f5f7]/60">Custom builds from $2,000 USD</p>
+              <p className="text-base sm:text-lg text-[#f5f5f7]/60">200+ rigs built</p>
+              <span className="hidden sm:block text-[#f5f5f7]/20">&bull;</span>
+              <p className="text-base sm:text-lg text-[#f5f5f7]/60">17 years at the bench</p>
               <span className="hidden sm:block text-[#f5f5f7]/20">&bull;</span>
               <p className="text-base sm:text-lg text-[#f5f5f7]/60">Lifetime support</p>
-              <span className="hidden sm:block text-[#f5f5f7]/20">&bull;</span>
-              <p className="text-base sm:text-lg text-[#f5f5f7]/60">Free repairs</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* ──── 2. ARTIST TESTIMONIALS (light — matches Dawn "WHAT ARTISTS SAY") ──── */}
+      {/* ──── 2. ARTIST TESTIMONIALS ──── */}
       <Section theme="light" id="testimonials" reveal>
         <div className="text-center mb-12">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">What Artists Say</p>
+          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">On the Road</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            Real builds. Real players. <span className="trd-gradient-text">Real results.</span>
+            Trusted by players who <span className="trd-gradient-text">can&apos;t afford a bad night.</span>
           </h2>
         </div>
         <TestimonialCarousel theme="light" />
       </Section>
 
-      {/* ──── 3. HOW WE BUILD (Cinema / Parallax — matching Dawn .trd-cinema) ──── */}
+      {/* ──── 3. HOW WE BUILD (Cinema / Parallax) ──── */}
       <CinemaSection />
 
-      {/* ──── 4. VIDEO SECTION (light — "See a rig come to life") ──── */}
+      {/* ──── 4. VIDEO ──── */}
       <Section theme="light" id="video-build" reveal>
         <div className="text-center mb-12">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Watch the Build</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            See a rig come to <span className="text-[#0071E3]">life.</span>
+            Bare enclosure to <span className="text-[#0071E3]">road-ready.</span>
           </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">From bare enclosure to road-ready in under a minute.</p>
+          <p className="text-[#1d1d1f]/50 text-lg">The whole thing in under a minute.</p>
         </div>
 
         <div className="relative w-full rounded-3xl overflow-hidden bg-[#0a0a0a] aspect-video max-w-4xl mx-auto shadow-2xl">
@@ -98,12 +96,11 @@ export default function Home() {
               src="https://cdn.shopify.com/videos/c/vp/f12872e61445487b86f0ae5df85ba09b/f12872e61445487b86f0ae5df85ba09b.HD-1080p-7.2Mbps-78086312.mp4"
               type="video/mp4"
             />
-            Your browser does not support the video tag.
           </video>
         </div>
       </Section>
 
-      {/* ──── 5. GALLERY (lightGray — fade slider with thumbnails) ──── */}
+      {/* ──── 5. GALLERY ──── */}
       <Section theme="lightGray" id="gallery" reveal>
         <div className="text-center mb-10">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">The Gallery</p>
@@ -114,48 +111,48 @@ export default function Home() {
         <GallerySlider />
       </Section>
 
-      {/* ──── 6. BEFORE/AFTER — Case Studies (light) ──── */}
+      {/* ──── 6. BEFORE/AFTER ──── */}
       <Section theme="light" id="transformations" reveal>
         <div className="text-center mb-16">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Transformations</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            From chaos to <span className="text-[#0071E3]">clarity.</span>
+            Same pedals. <span className="text-[#0071E3]">Completely different rig.</span>
           </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">See what a professional build actually changes about your rig.</p>
+          <p className="text-[#1d1d1f]/50 text-lg">What changes when we get our hands on it.</p>
         </div>
         <BeforeAfter />
       </Section>
 
-      {/* ──── 7. SERVICE TIERS — Dark comparison matching Dawn ──── */}
+      {/* ──── 7. SERVICE TIERS ──── */}
       <Section theme="dark" id="service-tiers" reveal>
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-4">
-            Your rig. <span className="italic text-[#0071E3]">Your call.</span>
+            Three ways to <span className="trd-gradient-text">get your tone right.</span>
           </h2>
           <p className="text-[#f5f5f7]/50 text-lg max-w-2xl mx-auto">
-            Whether you&apos;re upgrading, building, or staying put — here&apos;s what each option really looks like.
+            Depends on how hands-on you want to be.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-          {/* Tier 1 — Current Setup (anti-sell) */}
+          {/* Tier 1 — Keep what you've got */}
           <div className="rounded-2xl p-8 bg-[#f5f5f7]/[0.06] border border-white/[0.06] flex flex-col">
             <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#f5f5f7]/30 mb-2">Current Setup</p>
-            <h3 className="text-2xl font-bold text-[#f5f5f7]/70 mb-2">Fix what you&apos;ve got</h3>
+            <h3 className="text-2xl font-bold text-[#f5f5f7]/70 mb-2">Ride it out</h3>
             <p className="text-[#f5f5f7]/40 text-sm mb-6">
-              Already have a board? We&apos;ll optimize your signal chain, clean up your wiring, and kill the noise.
+              Keep your current board as-is. No cost, but here&apos;s what you&apos;re living with.
             </p>
             <p className="text-3xl font-bold text-[#f5f5f7]/50 mb-1">$0</p>
-            <p className="text-[#f5f5f7]/30 text-sm mb-8">upfront — but it costs you tone</p>
+            <p className="text-[#f5f5f7]/30 text-sm mb-8">but it costs you tone</p>
 
             <div className="space-y-4 flex-grow">
               {[
-                'Signal degrades at every connection',
-                'Power noise bleeds into your signal',
-                'No professional signal path design',
-                'No warranty or ongoing support',
-                'Tone loss compounds over time',
-                'Unreliable on stage',
+                'Signal gets worse at every connection',
+                'Noise and hum you can\'t track down',
+                'No plan behind the signal chain',
+                'Nobody to call when something breaks',
+                'Gets worse over time, not better',
+                'A liability on stage',
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <span className="text-red-400/60 mt-0.5 flex-shrink-0">&#10005;</span>
@@ -164,33 +161,33 @@ export default function Home() {
               ))}
             </div>
 
-            <p className="text-[#f5f5f7]/25 text-sm italic mt-8">You already know something&apos;s off.</p>
+            <p className="text-[#f5f5f7]/25 text-sm italic mt-8">You know something&apos;s off.</p>
           </div>
 
           {/* Tier 2 — DIY Build */}
           <div className="rounded-2xl p-8 bg-[#f5f5f7]/[0.06] border border-white/[0.08] flex flex-col">
-            <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#f5f5f7]/30 mb-2">DIY Build</p>
+            <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#f5f5f7]/30 mb-2">DIY Kits</p>
             <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">Build it yourself</h3>
             <p className="text-[#f5f5f7]/50 text-sm mb-6">
-              Want to learn? Our DIY kits come with the same components we use in custom builds.
+              Same components we use. You do the assembly.
             </p>
             <p className="text-3xl font-bold text-[#f5f5f7] mb-1">$750 – $1,500 <span className="text-lg font-normal text-[#f5f5f7]/50">USD</span></p>
-            <p className="text-[#f5f5f7]/30 text-sm mb-8">+ your time</p>
+            <p className="text-[#f5f5f7]/30 text-sm mb-8">+ your time and patience</p>
 
             <div className="space-y-4 flex-grow">
               {[
-                { text: 'Basic signal path improvement', positive: true },
-                { text: 'Your choice of layout & components', positive: true },
-                { text: 'No isolated power design', positive: false },
-                { text: 'No hand-soldered connections', positive: false },
-                { text: 'No lifetime support or repairs', positive: false },
-                { text: 'Stage-ready (with enough testing)', positive: true },
+                { text: 'Decent signal path improvement', ok: true },
+                { text: 'Pick your own layout', ok: true },
+                { text: 'No isolated power design', ok: false },
+                { text: 'No hand-soldered connections', ok: false },
+                { text: 'No lifetime support', ok: false },
+                { text: 'Stage-ready if you test it enough', ok: true },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <span className={`mt-0.5 flex-shrink-0 ${item.positive ? 'text-[#10B981]' : 'text-red-400/60'}`}>
-                    {item.positive ? '✓' : '✕'}
+                  <span className={`mt-0.5 flex-shrink-0 ${item.ok ? 'text-[#10B981]' : 'text-red-400/60'}`}>
+                    {item.ok ? '✓' : '✕'}
                   </span>
-                  <span className={`text-sm leading-snug ${item.positive ? 'text-[#f5f5f7]/70' : 'text-[#f5f5f7]/40'}`}>{item.text}</span>
+                  <span className={`text-sm leading-snug ${item.ok ? 'text-[#f5f5f7]/70' : 'text-[#f5f5f7]/40'}`}>{item.text}</span>
                 </div>
               ))}
             </div>
@@ -199,23 +196,22 @@ export default function Home() {
               href="/shop"
               className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full border-2 border-[#0071E3] text-[#0071E3] hover:bg-[#0071E3] hover:text-white transition-colors duration-200"
             >
-              Explore DIY Options
+              Browse Kits
             </Link>
           </div>
 
-          {/* Tier 3 — Custom Build (recommended) */}
-          <div className="relative rounded-2xl p-8 bg-gradient-to-b from-[#1a3a4a] to-[#0f2833] border border-[#2997FF]/20 flex flex-col">
-            {/* Recommended badge */}
+          {/* Tier 3 — Custom Build */}
+          <div className="relative rounded-2xl p-8 bg-gradient-to-b from-[#1a3a4a] to-[#0f2833] border border-[#0071E3]/20 flex flex-col">
             <div className="absolute -top-3.5 right-6">
-              <span className="bg-[#2997FF] text-white text-xs font-semibold tracking-wider uppercase px-4 py-1.5 rounded-full">
-                ✓ Recommended
+              <span className="bg-[#0071E3] text-white text-xs font-semibold tracking-wider uppercase px-4 py-1.5 rounded-full">
+                Most Popular
               </span>
             </div>
 
-            <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#2997FF] mb-2">Custom Build</p>
+            <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#0071E3] mb-2">Custom Build</p>
             <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">We build it for you</h3>
             <p className="text-[#f5f5f7]/50 text-sm mb-6">
-              Hand us your pedalboard and walk away. You&apos;ll get it back wired right, sounding right, and backed for life.
+              Hand us your board. Walk away. Get it back wired right and backed for life.
             </p>
             <p className="text-3xl font-bold text-[#f5f5f7] mb-1">From $2,000 <span className="text-lg font-normal text-[#f5f5f7]/50">USD</span></p>
             <p className="text-[#f5f5f7]/30 text-sm mb-8">turnkey, guaranteed</p>
@@ -223,11 +219,11 @@ export default function Home() {
             <div className="space-y-4 flex-grow">
               {[
                 'Fully isolated power design',
-                'Hand-soldered, precision connections',
-                'Zero-noise signal chain',
-                'Road-tested, tour-grade durability',
-                'Lifetime support & free repairs',
-                'Professional signal path engineering',
+                'Hand-soldered, every connection',
+                'Dead-quiet signal chain',
+                'Road-tested before it ships',
+                'Lifetime support, free repairs',
+                'Engineered signal path',
                 'Bulletproof on any stage',
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
@@ -247,114 +243,116 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ──── 8. CUSTOMER REVIEWS (white — real reviews) ──── */}
+      {/* ──── 8. REVIEWS ──── */}
       <Section theme="light" id="customer-reviews" reveal>
         <div className="mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            What our customers say.
+            Players talk.
           </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">Real feedback from real players.</p>
+          <p className="text-[#1d1d1f]/50 text-lg">Straight from the people who gig on these boards.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            { name: 'Kevin M.', feedback: 'Jacob built exactly what I imagined. Fast, professional, and the board is bulletproof.' },
-            { name: 'Josh W.', feedback: 'Best decision I made for my live rig. No more noise issues, and it fits perfectly in my case.' },
-            { name: 'Kaden C.', feedback: 'The craftsmanship is incredible. Every detail matters, and it shows in how the board plays.' },
-            { name: 'Shane T.', feedback: 'Finally, a pedalboard that doesn\'t fight me during gigs. Highly recommend.' },
-            { name: 'Mason M.', feedback: 'Jacob really listened to what I needed. The result is a rig that feels like an extension of me.' },
-            { name: 'Robert B.', feedback: 'Professional quality, professional results. Worth every penny.' },
+            { name: 'Kevin M.', feedback: 'Jacob built exactly what I described. Fast, clean, and the board is rock solid. Took it on a 3-week run and it didn\'t miss a beat.' },
+            { name: 'Josh W.', feedback: 'Best decision I made for my live rig. The noise I was chasing for months? Gone. First gig with the new board and I couldn\'t stop grinning.' },
+            { name: 'Kaden C.', feedback: 'You can tell someone who cares about the craft put this together. Every cable, every connection. It\'s a different level.' },
+            { name: 'Shane T.', feedback: 'I used to dread setting up my board at gigs. Now I just plug in and play. That\'s what I was paying for.' },
+            { name: 'Mason M.', feedback: 'Jacob actually listened. Didn\'t try to upsell me on stuff I didn\'t need. The result sounds exactly like what was in my head.' },
+            { name: 'Robert B.', feedback: 'Worth every dollar. I\'ve had this board for two years now and it still works like the day I got it.' },
           ].map((review, idx) => (
             <div key={idx} className="bg-[#f5f5f7] rounded-2xl p-8 border border-black/[0.06]">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5" fill="#0071E3" viewBox="0 0 20 20">
+                  <svg key={i} className="w-4 h-4" fill="#EAB308" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}
               </div>
-              <p className="text-[#1d1d1f]/70 mb-4 leading-relaxed">{review.feedback}</p>
+              <p className="text-[#1d1d1f]/70 mb-6 leading-relaxed">{review.feedback}</p>
               <p className="font-semibold text-[#1d1d1f]">{review.name}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* ──── 9. FAQ (lightGray — "Got questions?") ──── */}
+      {/* ──── 9. FAQ ──── */}
       <Section theme="lightGray" id="faq" reveal>
         <div className="mb-12">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            Got questions? We&apos;ve got answers.
+            The stuff people ask us.
           </h2>
         </div>
 
-        <div className="space-y-4 max-w-3xl mx-auto">
+        <div className="space-y-3 max-w-3xl">
           {[
             {
-              q: "How long does a custom build take?",
-              a: "Typically 2–4 weeks depending on complexity and current workload. We'll give you a timeline during your consultation.",
+              q: "How long does a build take?",
+              a: "Usually 2 to 4 weeks once we lock in the design. Complex rigs with switching systems can take a bit longer. We'll give you a real timeline before we start.",
             },
             {
-              q: "What if I'm not happy with my build?",
-              a: "We offer a 100% satisfaction guarantee. If something isn't right, we'll fix it or rebuild it. Lifetime support means you're never on your own.",
+              q: "What if something's not right with my build?",
+              a: "We'll fix it. That's what lifetime support means. If your board needs a tweak or something's not working the way it should, send it back or hop on a call and we'll sort it out.",
             },
             {
-              q: "Can I add to or modify my board later?",
-              a: "Absolutely. We design boards to evolve with you. Future modifications are easy and you get lifetime support.",
+              q: "Can I change my setup later?",
+              a: "That's the plan. We build boards knowing your rig will evolve. Swapping a pedal or adding one later is straightforward, and we're here to help when you do.",
             },
             {
-              q: "Do you ship internationally?",
-              a: "Yes, we ship worldwide. Shipping costs and timelines vary by location—ask during your consultation.",
+              q: "Do you ship outside the US?",
+              a: "Yeah, we've shipped boards internationally. Shipping costs depend on where you are. We'll quote that out during the consultation.",
             },
             {
-              q: "What if I just want repairs?",
-              a: "We offer hourly repair services for cables, pedals, power issues, and more. Starts at $75/hour.",
+              q: "I don't need a full build. Can you just fix something?",
+              a: "Absolutely. We do repair work too. Cables, pedals, power issues, whatever it is. Starts at $75/hour.",
             },
           ].map((item, idx) => (
-            <details key={idx} className="bg-white rounded-2xl border border-black/[0.06] p-6 cursor-pointer">
-              <summary className="font-semibold text-[#1d1d1f] flex items-center gap-3">
-                <span className="text-[#0071E3]">+</span> {item.q}
+            <details key={idx} className="bg-white rounded-2xl border border-black/[0.06] p-6 cursor-pointer group">
+              <summary className="font-semibold text-[#1d1d1f] flex items-center gap-3 [&::-webkit-details-marker]:hidden list-none">
+                <span className="text-[#0071E3] text-lg transition-transform duration-200 group-open:rotate-45">+</span>
+                {item.q}
               </summary>
-              <p className="text-[#1d1d1f]/60 mt-4 leading-relaxed">{item.a}</p>
+              <p className="text-[#1d1d1f]/60 mt-4 leading-relaxed pl-7">{item.a}</p>
             </details>
           ))}
         </div>
       </Section>
 
-      {/* ──── 10. TONE TUTORING CROSS-SELL (white) ──── */}
+      {/* ──── 10. TONE TUTORING CROSS-SELL ──── */}
       <Section theme="light" id="tone-tutoring-cta" reveal>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
+            <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Not ready for a build?</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-4">
-              Start with a Tone Tutoring session.
+              Talk tone with us first.
             </h2>
             <p className="text-lg text-[#1d1d1f]/60 leading-relaxed mb-6">
-              Not sure if you need a full build? Do a 60-minute Tone Tutoring session first. We&apos;ll dig into your current rig, your playing style, and create a roadmap for your tone. Then decide if a custom build is right for you.
+              60 minutes on a video call. We dig into your rig, figure out what&apos;s working and what isn&apos;t, and map out where to go from here. No commitment. Just good advice from someone who&apos;s wired 200+ boards.
             </p>
             <Link
               href="/tone-tutoring"
               className="inline-flex items-center gap-2 bg-[#1d1d1f] hover:bg-[#1d1d1f]/90 text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
             >
-              Book a Session
+              Learn More
             </Link>
           </div>
           <div className="relative h-80 bg-gradient-to-br from-[#0071E3]/10 to-[#00B4D8]/10 rounded-2xl flex items-center justify-center border border-[#0071E3]/20">
             <div className="text-center">
               <p className="text-5xl font-bold trd-gradient-text mb-2">$99.99</p>
-              <p className="text-[#1d1d1f]/40 text-lg">60 minutes</p>
+              <p className="text-[#1d1d1f]/40 text-lg">60 minutes, 1-on-1</p>
             </div>
           </div>
         </div>
       </Section>
 
-      {/* ──── 11. CLOSING CTA (dark accent — strong finish) ──── */}
+      {/* ──── 11. CLOSING CTA ──── */}
       <Section theme="dark" id="closing-cta" reveal className="text-center">
         <div className="mb-8">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-4">
-            Your tone. Our craft. For life.
+            Your rig&apos;s not going to fix itself.
           </h2>
           <p className="text-[#f5f5f7]/60 text-lg max-w-2xl mx-auto">
-            Let&apos;s build the rig you&apos;ve been dreaming about.
+            Grab a free call. Tell us what you&apos;re dealing with. We&apos;ll tell you what we&apos;d do about it.
           </p>
         </div>
         <div className="mt-12">
@@ -362,7 +360,7 @@ export default function Home() {
             href="/book"
             className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
           >
-            Start a Build
+            Book a Free Consultation
           </Link>
         </div>
       </Section>

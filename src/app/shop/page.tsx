@@ -148,13 +148,13 @@ export default function ShopPage() {
         {loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[...Array(6)].map((_, i) => (
-              <div key={i} className="bg-[#1d1d1f] rounded-2xl overflow-hidden animate-pulse">
-                <div className="w-full aspect-square bg-[#2a2a2c]" />
+              <div key={i} className="bg-white rounded-2xl overflow-hidden border border-black/[0.06] animate-pulse">
+                <div className="w-full aspect-square bg-[#f5f5f7]" />
                 <div className="p-6 space-y-3">
-                  <div className="h-4 bg-[#2a2a2c] rounded w-20" />
-                  <div className="h-5 bg-[#2a2a2c] rounded w-3/4" />
-                  <div className="h-4 bg-[#2a2a2c] rounded w-full" />
-                  <div className="h-8 bg-[#2a2a2c] rounded w-24 mt-4" />
+                  <div className="h-4 bg-[#f5f5f7] rounded w-20" />
+                  <div className="h-5 bg-[#f5f5f7] rounded w-3/4" />
+                  <div className="h-4 bg-[#f5f5f7] rounded w-full" />
+                  <div className="h-8 bg-[#f5f5f7] rounded w-24 mt-4" />
                 </div>
               </div>
             ))}
@@ -163,21 +163,21 @@ export default function ShopPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProducts.map((product) => (
               <div key={product.id} className="group">
-                <div className="bg-[#1d1d1f] rounded-2xl overflow-hidden border border-[#1d1d1f]/30 hover:border-[#0071E3]/40 transition-all duration-300 flex flex-col h-full">
+                <div className="bg-white rounded-2xl overflow-hidden border border-black/[0.06] hover:shadow-lg transition-all duration-300 flex flex-col h-full">
                   {/* Product Image */}
-                  <div className="relative w-full aspect-square overflow-hidden bg-gradient-to-br from-[#0071E3]/10 to-[#00B4D8]/10 group-hover:scale-[1.02] transition-transform duration-300">
+                  <div className="relative w-full aspect-square overflow-hidden bg-[#f5f5f7]">
                     {product.image ? (
                       <Image
                         src={product.image}
                         alt={product.imageAlt}
                         width={product.imageWidth}
                         height={product.imageHeight}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
-                        <svg className="w-16 h-16 text-[#f5f5f7]/10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-16 h-16 text-[#1d1d1f]/10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                       </div>
@@ -192,16 +192,16 @@ export default function ShopPage() {
                       </span>
                     </div>
 
-                    <h3 className="text-lg font-semibold text-[#f5f5f7] mb-2 leading-snug line-clamp-3">
+                    <h3 className="text-lg font-semibold text-[#1d1d1f] mb-2 leading-snug line-clamp-3">
                       {product.title}
                     </h3>
 
-                    <p className="text-sm text-[#f5f5f7]/60 mb-4 flex-1 line-clamp-2">
+                    <p className="text-sm text-[#1d1d1f]/60 mb-4 flex-1 line-clamp-2">
                       {product.description}
                     </p>
 
                     <div className="mb-6">
-                      <p className="text-2xl font-bold trd-gradient-text">
+                      <p className="text-2xl font-bold text-[#1d1d1f]">
                         {getPriceDisplay(product.priceMin, product.priceMax)}
                       </p>
                     </div>
@@ -210,9 +210,9 @@ export default function ShopPage() {
                       href={`https://the-rig-doctor.myshopify.com/products/${product.handle}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full bg-gradient-to-r from-[#0071E3] to-[#00B4D8] hover:from-[#005BB5] hover:to-[#0a8e5b] text-black font-semibold px-4 py-3 rounded-lg transition-all duration-200 text-center text-sm"
+                      className="w-full bg-[#1d1d1f] hover:bg-[#1d1d1f]/90 text-white font-semibold px-4 py-3 rounded-full transition-colors duration-200 text-center text-sm"
                     >
-                      View on Shop
+                      View Product
                     </Link>
                   </div>
                 </div>
@@ -242,7 +242,7 @@ export default function ShopPage() {
             Not sure what you need?
           </h2>
           <p className="text-[#f5f5f7]/60 text-lg max-w-2xl mx-auto mb-8">
-            Book a free consultation with one of our specialists. We'll help you figure out exactly what your rig needs.
+            Grab a free call and we&apos;ll help you figure out what your rig actually needs.
           </p>
         </div>
         <div className="flex gap-4 justify-center">

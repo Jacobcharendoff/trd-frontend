@@ -10,7 +10,7 @@ export default function Process() {
   const faqs = [
     {
       question: 'How much does a custom build cost?',
-      answer: "It depends on your setup — a simple 5-pedal board starts around $200-300 in labor, while a complex touring rig with switching systems can run $800+. Pedals and components are separate. We'll give you a transparent quote before any work starts.",
+      answer: "Depends on your setup. A simple 5-pedal board starts around $200-300 in labor. A complex touring rig with switching systems can run $800+. Components are separate. We'll give you a clear quote before any work starts.",
     },
     {
       question: 'How long does a build take?',
@@ -26,34 +26,34 @@ export default function Process() {
     },
     {
       question: 'What if I want to change my setup later?',
-      answer: "That's what lifetime support is for. Need to swap a pedal, add a new one, or rethink your chain? We'll help you plan the update and can do the work if needed.",
+      answer: "That's the point of lifetime support. Need to swap a pedal, add something new, rethink the chain? We'll help you plan the changes and do the work if you need us to.",
     },
   ];
 
   const includedItems = [
     {
       title: 'Hand-soldered connections',
-      description: 'Pro-quality construction that lasts.',
+      description: 'Every joint done by hand. Built to last.',
     },
     {
       title: 'Pro-grade patch cables',
-      description: 'Low-noise, reliable signal path.',
+      description: 'Low-noise cable throughout the whole board.',
     },
     {
-      title: 'Custom power distribution',
-      description: 'Clean power for every pedal.',
+      title: 'Isolated power distribution',
+      description: 'Clean power to every pedal. No ground loops.',
     },
     {
       title: 'Signal chain optimization',
-      description: 'Tuned for your tone.',
+      description: 'Pedal order and routing designed for your sound.',
     },
     {
-      title: 'Full documentation package',
-      description: 'Everything you need to understand your rig.',
+      title: 'Full documentation',
+      description: 'Signal chain diagram, settings, care guide. All of it.',
     },
     {
       title: 'Lifetime support',
-      description: "We're here whenever you need us.",
+      description: 'Need something changed down the road? Call us.',
     },
   ];
 
@@ -83,7 +83,7 @@ export default function Process() {
             <div className="text-6xl sm:text-7xl md:text-8xl font-bold trd-gradient-text mb-8">01</div>
             <h2 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] mb-6">We Talk</h2>
             <p className="text-lg text-[#1d1d1f]/70 leading-relaxed">
-              It starts with a conversation. Hop on a free 30-minute call and tell us everything — what you play, what drives you crazy about your current setup, what tone you're chasing. We'll ask the right questions to understand your playing style, your gig schedule, and your signal chain goals. No sales pitch. Just two guitarists talking tone.
+              Hop on a free 30-minute call and tell us what you&apos;re working with. What you play, what bugs you about your current setup, what sound you&apos;re chasing. We&apos;ll ask the right questions to understand your playing style and your signal chain. Just two guitarists talking tone.
             </p>
           </div>
           <div className="bg-[#f5f5f7] rounded-2xl p-8 h-fit border border-black/[0.06]">
@@ -113,7 +113,7 @@ export default function Process() {
             <div className="text-6xl sm:text-7xl md:text-8xl font-bold trd-gradient-text mb-8">02</div>
             <h2 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] mb-6">We Design</h2>
             <p className="text-lg text-[#1d1d1f]/70 leading-relaxed">
-              Based on our conversation, we map out your entire rig. Signal chain order, power distribution, cable routing, switching logic — every detail gets planned before we touch a soldering iron. You'll get a full build plan with layout mockups so you can see exactly what you're getting.
+              We map out your entire rig based on what we talked about. Signal chain order, power distribution, cable routing, switching logic. Every detail gets planned before we pick up a soldering iron. You&apos;ll see the full build plan with layout mockups before we start.
             </p>
           </div>
           <div className="bg-white rounded-2xl p-8 h-fit border border-black/[0.06]">
@@ -143,7 +143,7 @@ export default function Process() {
             <div className="text-6xl sm:text-7xl md:text-8xl font-bold trd-gradient-text mb-8">03</div>
             <h2 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] mb-6">We Build</h2>
             <p className="text-lg text-[#1d1d1f]/70 leading-relaxed">
-              This is where it gets real. Every cable is hand-soldered with pro-grade materials. Every connection is tested. Every pedal is mounted for maximum accessibility and minimum noise. We don't rush builds — your board gets the time it deserves. And we stress-test everything before it ships.
+              Every cable hand-soldered with pro-grade materials. Every connection tested. Every pedal mounted for accessibility and minimum noise. We don&apos;t rush these. Your board gets the time it needs. And we stress-test the whole thing before it ships.
             </p>
           </div>
           <div className="bg-[#f5f5f7] rounded-2xl p-8 h-fit border border-black/[0.06]">
@@ -173,7 +173,7 @@ export default function Process() {
             <div className="text-6xl sm:text-7xl md:text-8xl font-bold trd-gradient-text mb-8">04</div>
             <h2 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] mb-6">You Play</h2>
             <p className="text-lg text-[#1d1d1f]/70 leading-relaxed">
-              Your board ships to your door, ready to plug in and play. We include a full documentation package with your signal chain diagram, settings reference, and care instructions. And here's the thing — we don't disappear after delivery. Lifetime support means if you ever need a tweak, a swap, or just want to talk tone, we're a call away.
+              Your board ships to your door, ready to plug in. Comes with a full documentation package: signal chain diagram, settings reference, care instructions. And we don&apos;t disappear after delivery. Need a tweak, a swap, or just want to talk tone down the road? We&apos;re a call away.
             </p>
           </div>
           <div className="bg-white rounded-2xl p-8 h-fit border border-black/[0.06]">
