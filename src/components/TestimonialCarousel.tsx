@@ -1,12 +1,13 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
 interface Testimonial {
   quote: string;
   name: string;
   role: string;
-  initials: string;
+  photo: string;
 }
 
 interface TestimonialCarouselProps {
@@ -16,45 +17,66 @@ interface TestimonialCarouselProps {
 const testimonials: Testimonial[] = [
   {
     quote:
-      "The pedalboard Jacob designed completely transformed my live rig. It's like he read my mind about what I needed. Best investment I've made in my tone.",
+      "Jacob completely understood my live setup needs. The board he designed is bullet-proof on stage — clean signal path, rock-solid power, and it's become an extension of my playing.",
+    name: 'Cory Wong',
+    role: 'Vulfpeck, Solo Artist',
+    photo: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/CoryWong_d62547c8-75e7-4438-9c4d-2704c4809099.jpg',
+  },
+  {
+    quote:
+      "The attention to detail is unreal. Every cable, every connection, every routing choice—Jacob thinks about what you need before you even ask. Your tone will thank you.",
+    name: 'Raphael Saadiq',
+    role: 'Songwriter, Producer, Artist',
+    photo: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/RaphaelSaadiq_444901b7-2e8e-471e-acaf-ba72beb7a5b0.jpg',
+  },
+  {
+    quote:
+      "I've worked with the best in the business, and Jacob's approach to rig building is in a league of its own. He doesn't just build gear—he builds instruments.",
+    name: 'Paul Jackson Jr.',
+    role: 'Session & Session Guitarist',
+    photo: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/PaulJacksonJr_f874676e-bc05-4d0d-89a7-ea9e8e39d96a.jpg',
+  },
+  {
+    quote:
+      "From the first consultation, I knew I was in good hands. Jacob asked the right questions, understood my vision, and delivered a board that sounds exactly how I hear it.",
+    name: 'Rhett Shull',
+    role: 'Guitarist, Composer',
+    photo: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/RhettShull_9cf433b2-ccba-4cd5-9faa-765f0b4de1e8.jpg',
+  },
+  {
+    quote:
+      "The craftsmanship is impeccable. Every solder joint, every cable run, every connection is flawless. This is professional gear built by someone who actually plays.",
+    name: 'Emily Wolfe',
+    role: 'Guitarist, Blues Artist',
+    photo: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/EmilyWolfe_1c6c2dca-011e-4074-8676-46d9f2abc041.jpg',
+  },
+  {
+    quote:
+      "Jacob doesn't just understand gear—he understands players. He built me a rig that's as intuitive to play as it is beautiful to look at.",
+    name: 'Lindsay Ell',
+    role: 'Country Guitarist, Artist',
+    photo: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/LindsayEll_0a1e775e-9a96-4e7c-bffc-fd25309316f3.jpg',
+  },
+  {
+    quote:
+      "This isn't just a pedalboard—it's a carefully orchestrated system. Jacob thought through every connection, every power flow, every switching scenario. That level of care shows.",
+    name: 'Rhye Young',
+    role: 'Guitarist, Composer',
+    photo: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/rhyeyoung_5cc7f2e1-f001-46d7-bae7-10d38ae3c134.jpg',
+  },
+  {
+    quote:
+      "I've toured all over the world with my rig. Jacob's work held up through festival dates, studio sessions, and everything in between. That's professional quality.",
+    name: 'Theo Katzman',
+    role: 'Vulfpeck, Solo Artist',
+    photo: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/TheoKatzman_29b78ff0-6727-47ae-bd3d-1591dadeadd1.jpg',
+  },
+  {
+    quote:
+      "Working with Jacob was a game-changer. My board went from a mess of cables to a coherent, professional-grade rig that sounds incredible and feels right to play.",
     name: 'Isaiah Sharkey',
     role: 'Session & Touring Guitarist',
-    initials: 'IS',
-  },
-  {
-    quote:
-      "I've worked with Jacob multiple times. He understands signal flow, tone shaping, and durability. Your board won't fail you on tour.",
-    name: 'Tosin Abasi',
-    role: 'Animals As Leaders',
-    initials: 'TA',
-  },
-  {
-    quote:
-      "From consultation to delivery, the whole experience was professional and smooth. My new board is exactly what I envisioned — and then some.",
-    name: 'Marcus R.',
-    role: 'Worship Leader',
-    initials: 'MR',
-  },
-  {
-    quote:
-      "I was overwhelmed trying to figure out my signal chain. One session with Jacob and everything clicked. Now my board sounds exactly how I hear it in my head.",
-    name: 'Derek P.',
-    role: 'Home Player & Hobbyist',
-    initials: 'DP',
-  },
-  {
-    quote:
-      "Jacob doesn't just build boards — he listens. He asked questions about my playing that nobody else ever has. The result was a rig that feels like an extension of me.",
-    name: 'Sarah K.',
-    role: 'Singer-Songwriter',
-    initials: 'SK',
-  },
-  {
-    quote:
-      "We needed four matching rigs for a tour with tight changeovers. Jacob delivered all four on time, under budget, and they've survived 80+ shows without a single issue.",
-    name: 'Chris T.',
-    role: 'Tour Manager',
-    initials: 'CT',
+    photo: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/IsaiahSharkey_62e0f1a1-70bd-4f47-ab97-8c27d8d75938.jpg',
   },
 ];
 
@@ -92,7 +114,7 @@ export default function TestimonialCarousel({
           });
         }
       }
-    }, 5000);
+    }, 6000);
 
     return () => {
       if (autoScrollIntervalRef.current) {
@@ -142,8 +164,19 @@ export default function TestimonialCarousel({
             className={`flex-shrink-0 snap-start min-w-[340px] max-w-[400px] md:min-w-[360px] md:max-w-[400px] w-full sm:w-auto`}
           >
             <div
-              className={`${cardBg} rounded-2xl p-8 border border-black/[0.06] shadow-sm h-full flex flex-col gap-4`}
+              className={`${cardBg} rounded-2xl p-8 border border-black/[0.06] shadow-sm h-full flex flex-col gap-4 overflow-hidden`}
             >
+              {/* Artist Photo */}
+              <div className="relative w-full h-48 rounded-lg overflow-hidden -m-8 mb-4 flex-shrink-0">
+                <Image
+                  src={testimonial.photo}
+                  alt={testimonial.name}
+                  fill
+                  className="object-cover object-center"
+                  unoptimized
+                />
+              </div>
+
               {/* Star Rating */}
               <div className="flex gap-1">
                 {[...Array(5)].map((_, i) => (
@@ -160,27 +193,17 @@ export default function TestimonialCarousel({
 
               {/* Quote */}
               <p
-                className={`${textColor}/80 leading-relaxed text-base flex-grow`}
+                className={`${textColor}/80 leading-relaxed text-base flex-grow text-sm`}
               >
                 "{testimonial.quote}"
               </p>
 
-              {/* Avatar + Name/Role */}
-              <div className="flex items-center gap-4 mt-2">
-                {/* Avatar Circle */}
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[#F5A623] to-[#10B981] flex items-center justify-center">
-                  <span className="text-white font-semibold text-sm">
-                    {testimonial.initials}
-                  </span>
-                </div>
-
-                {/* Name & Role */}
-                <div>
-                  <p className={`font-semibold ${textColor}`}>
-                    {testimonial.name}
-                  </p>
-                  <p className={`text-sm ${textMuted}`}>{testimonial.role}</p>
-                </div>
+              {/* Name & Role */}
+              <div className="mt-2">
+                <p className={`font-semibold ${textColor}`}>
+                  {testimonial.name}
+                </p>
+                <p className={`text-sm ${textMuted}`}>{testimonial.role}</p>
               </div>
             </div>
           </div>

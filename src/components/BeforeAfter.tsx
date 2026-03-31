@@ -24,9 +24,9 @@ const transformations: Transformation[] = [
     after: {
       label: 'After',
       description: 'Clean routing, isolated power, optimized signal chain, gig-ready in seconds.',
-      image: 'Rig_Build_27.png',
+      image: 'https://www.therigdr.com/cdn/shop/files/Javy_B.png',
     },
-    playerName: 'Touring Pro Rig',
+    playerName: 'Javy B. — Live Performer',
   },
   {
     before: {
@@ -36,9 +36,57 @@ const transformations: Transformation[] = [
     after: {
       label: 'After',
       description: 'Smart loop switching, buffered signal path, one-stomp preset changes.',
-      image: 'MikeStipanovLayout1.png',
+      image: 'https://www.therigdr.com/cdn/shop/files/John_A.png',
     },
-    playerName: 'Mike S. — Session Rig',
+    playerName: 'John A. — Studio Session',
+  },
+  {
+    before: {
+      label: 'Before',
+      description: 'Board was too big to fit in gig bag, cables kept failing mid-tour.',
+    },
+    after: {
+      label: 'After',
+      description: 'Compact, tour-ready, flawless through 40+ shows without a single cable failure.',
+      image: 'https://www.therigdr.com/cdn/shop/files/Chris_G.png',
+    },
+    playerName: 'Chris G. — Touring Guitarist',
+  },
+  {
+    before: {
+      label: 'Before',
+      description: 'Noisy ground loops, muddy signal, tone was getting lost in the mix.',
+    },
+    after: {
+      label: 'After',
+      description: 'Crystal clear, isolated power section, tone cuts through without hum.',
+      image: 'https://www.therigdr.com/cdn/shop/files/Shannon_G._1.png',
+    },
+    playerName: 'Shannon G. — Studio & Live',
+  },
+  {
+    before: {
+      label: 'Before',
+      description: 'Tried 3 different builds myself, never got the signal chain right.',
+    },
+    after: {
+      label: 'After',
+      description: 'One consultation and everything clicked. Board sounds exactly how I hear it.',
+      image: 'https://www.therigdr.com/cdn/shop/files/Jeremy_B.png',
+    },
+    playerName: 'Jeremy B. — DIY to Pro',
+  },
+  {
+    before: {
+      label: 'Before',
+      description: 'Effects were fighting each other, no switching options, tone was boxed in.',
+    },
+    after: {
+      label: 'After',
+      description: 'Effects are stacked perfectly, smooth switching, tone is now wide open.',
+      image: 'https://www.therigdr.com/cdn/shop/files/Mark_A.png',
+    },
+    playerName: 'Mark A. — Genre Switcher',
   },
 ];
 

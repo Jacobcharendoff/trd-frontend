@@ -32,17 +32,32 @@ export default function Section({
 
   useEffect(() => {
     if (!reveal || !ref.current) return;
+
+    // Create intersection observer with more lenient threshold
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true);
-          observer.disconnect();
+          observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.1 }
+      {
+        threshold: 0.05,
+        rootMargin: '50px'
+      }
     );
+
     observer.observe(ref.current);
-    return () => observer.disconnect();
+
+    // Fallback: ensure visibility after 8 seconds if observer didn't trigger
+    const timeoutId = setTimeout(() => {
+      setVisible(true);
+    }, 8000);
+
+    return () => {
+      clearTimeout(timeoutId);
+      observer.disconnect();
+    };
   }, [reveal]);
 
   return (
