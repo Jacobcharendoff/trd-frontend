@@ -120,7 +120,7 @@ export default function BeforeAfter() {
 
             {/* Story */}
             <div className={isReversed ? 'lg:order-1' : ''}>
-              <p className="text-[#F5A623] font-medium text-sm tracking-wide mb-3">
+              <p className="text-[#0071E3] font-medium text-sm tracking-wide mb-3">
                 {study.playerName} — {study.playerRole}
               </p>
               <h3 className="text-2xl sm:text-3xl font-bold text-[#1d1d1f] mb-4 leading-tight">

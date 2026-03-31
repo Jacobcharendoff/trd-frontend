@@ -68,11 +68,11 @@ export default function LeadMagnet() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="rounded-full bg-white/10 border border-white/20 text-white placeholder-white/40 px-5 py-3 focus:outline-none focus:ring-2 focus:ring-[#F5A623] focus:border-transparent flex-1 sm:flex-none"
+              className="rounded-full bg-white/10 border border-white/20 text-white placeholder-white/40 px-5 py-3 focus:outline-none focus:ring-2 focus:ring-[#0071E3] focus:border-transparent flex-1 sm:flex-none"
             />
             <button
               type="submit"
-              className="bg-[#F5A623] hover:bg-[#D48A1A] text-black font-semibold rounded-full px-6 py-3 transition-colors duration-200 whitespace-nowrap"
+              className="bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold rounded-full px-6 py-3 transition-colors duration-200 whitespace-nowrap"
             >
               Get It Free
             </button>

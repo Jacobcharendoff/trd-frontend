@@ -96,7 +96,7 @@ export default function GallerySlider() {
             onClick={() => goTo(idx)}
             className={`relative w-16 h-12 sm:w-20 sm:h-14 rounded-lg overflow-hidden transition-all duration-300 flex-shrink-0 ${
               idx === activeIndex
-                ? 'ring-2 ring-[#F5A623] ring-offset-2 opacity-100 scale-105'
+                ? 'ring-2 ring-[#0071E3] ring-offset-2 opacity-100 scale-105'
                 : 'opacity-40 hover:opacity-70'
             }`}
             aria-label={`View image ${idx + 1}`}

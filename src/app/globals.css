@@ -8,12 +8,11 @@
   --trd-dark-card: #1d1d1f;
   --trd-light-gray: #f5f5f7;
   --trd-white: #ffffff;
-  --trd-amber: #F5A623;
-  --trd-amber-dark: #D48A1A;
-  --trd-green: #10B981;
-  --trd-green-light: #34d399;
-  --trd-cyan: #06B6D4;
-  --trd-blue: #2563EB;
+  --trd-blue: #0071E3;
+  --trd-blue-dark: #005BB5;
+  --trd-cyan: #00B4D8;
+  --trd-green: #34D399;
+  --trd-green-check: #10B981;
   --trd-text: #1d1d1f;
   --trd-text-secondary: rgba(0, 0, 0, 0.5);
   --trd-border-light: rgba(0, 0, 0, 0.06);
@@ -34,14 +33,14 @@ body {
 
 /* ─── Gradient Text Utility ─── */
 .trd-gradient-text {
-  background: linear-gradient(135deg, var(--trd-amber), var(--trd-green));
+  background: linear-gradient(135deg, var(--trd-blue), var(--trd-cyan), var(--trd-green));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .trd-gradient-text-cyan {
-  background: linear-gradient(135deg, var(--trd-cyan), var(--trd-green-light));
+  background: linear-gradient(135deg, var(--trd-cyan), var(--trd-green));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -53,9 +52,9 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(245, 166, 35, 0.10) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 50%, rgba(16, 185, 129, 0.07) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 80%, rgba(245, 166, 35, 0.05) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 50%, rgba(0, 113, 227, 0.10) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 50%, rgba(0, 180, 216, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 80%, rgba(52, 211, 153, 0.05) 0%, transparent 50%);
   animation: aurora 8s ease-in-out infinite alternate;
   pointer-events: none;
 }

@@ -64,7 +64,7 @@ export default function ExitIntent() {
             <Link
               href="/book"
               onClick={handleClose}
-              className="block w-full bg-[#F5A623] hover:bg-[#D48A1A] text-black font-semibold rounded-full py-3 px-6 text-center transition-colors duration-200"
+              className="block w-full bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold rounded-full py-3 px-6 text-center transition-colors duration-200"
             >
               Book a Free Call
             </Link>

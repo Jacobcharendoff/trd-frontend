@@ -14,13 +14,13 @@ export default function BlogPage() {
       case 'Gear Guide':
         return 'bg-[#10B981]';
       case 'Signal Chain':
-        return 'bg-[#F5A623]';
+        return 'bg-[#0071E3]';
       case 'Behind the Bench':
         return 'bg-purple-500';
       case 'Tone Tips':
         return 'bg-blue-500';
       default:
-        return 'bg-[#F5A623]';
+        return 'bg-[#0071E3]';
     }
   };
 
@@ -50,7 +50,7 @@ export default function BlogPage() {
             </h2>
           </div>
           <Link href={`/blog/${featuredPost.slug}`}>
-            <div className="bg-white rounded-2xl p-8 sm:p-12 border border-[#f5f5f7] hover:border-[#F5A623] transition-all duration-300 cursor-pointer hover:shadow-lg">
+            <div className="bg-white rounded-2xl p-8 sm:p-12 border border-[#f5f5f7] hover:border-[#0071E3] transition-all duration-300 cursor-pointer hover:shadow-lg">
               <div className="flex items-center gap-3 mb-6">
                 <span
                   className={`${getCategoryColor(
@@ -69,7 +69,7 @@ export default function BlogPage() {
               </p>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-[#1d1d1f]/50">{featuredPost.readTime}</span>
-                <span className="text-[#F5A623] font-semibold">Read more →</span>
+                <span className="text-[#0071E3] font-semibold">Read more →</span>
               </div>
             </div>
           </Link>
@@ -86,7 +86,7 @@ export default function BlogPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {otherPosts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`}>
-              <div className="bg-white rounded-2xl p-6 h-full flex flex-col hover:shadow-lg transition-all duration-300 cursor-pointer hover:border-[#F5A623] border border-transparent">
+              <div className="bg-white rounded-2xl p-6 h-full flex flex-col hover:shadow-lg transition-all duration-300 cursor-pointer hover:border-[#0071E3] border border-transparent">
                 <div className="mb-4">
                   <span
                     className={`${getCategoryColor(
@@ -123,7 +123,7 @@ export default function BlogPage() {
           </p>
           <a
             href="mailto:jacob@therigdr.com"
-            className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48A1A] text-black font-semibold px-8 py-4 rounded-full transition-colors duration-200"
+            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
           >
             Email the bench
           </a>

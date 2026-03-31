@@ -22,7 +22,7 @@ export default function BlogPostPage() {
           </p>
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48A1A] text-black font-semibold px-8 py-4 rounded-full transition-colors duration-200"
+            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
           >
             Back to the Workbench
           </Link>
@@ -40,13 +40,13 @@ export default function BlogPostPage() {
       case 'Gear Guide':
         return 'bg-[#10B981]';
       case 'Signal Chain':
-        return 'bg-[#F5A623]';
+        return 'bg-[#0071E3]';
       case 'Behind the Bench':
         return 'bg-purple-500';
       case 'Tone Tips':
         return 'bg-blue-500';
       default:
-        return 'bg-[#F5A623]';
+        return 'bg-[#0071E3]';
     }
   };
 
@@ -63,7 +63,7 @@ export default function BlogPostPage() {
         <div className="mb-8">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-[#F5A623] hover:text-[#D48A1A] font-semibold mb-8 transition-colors"
+            className="inline-flex items-center gap-2 text-[#0071E3] hover:text-[#005BB5] font-semibold mb-8 transition-colors"
           >
             ← Back to posts
           </Link>
@@ -120,7 +120,7 @@ export default function BlogPostPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {relatedPosts.map((relatedPost) => (
               <Link key={relatedPost.slug} href={`/blog/${relatedPost.slug}`}>
-                <div className="bg-white rounded-2xl p-6 h-full flex flex-col hover:shadow-lg transition-all duration-300 cursor-pointer hover:border-[#F5A623] border border-transparent">
+                <div className="bg-white rounded-2xl p-6 h-full flex flex-col hover:shadow-lg transition-all duration-300 cursor-pointer hover:border-[#0071E3] border border-transparent">
                   <div className="mb-4">
                     <span
                       className={`${getCategoryColor(
@@ -158,7 +158,7 @@ export default function BlogPostPage() {
           </p>
           <Link
             href="/book"
-            className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48A1A] text-black font-semibold px-8 py-4 rounded-full transition-colors duration-200"
+            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
           >
             Book a consultation
           </Link>

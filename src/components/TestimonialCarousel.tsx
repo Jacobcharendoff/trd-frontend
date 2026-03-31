@@ -119,11 +119,11 @@ export default function TestimonialCarousel({
     theme === 'dark' ? 'text-[#f5f5f7]/50' : 'text-[#1d1d1f]/50';
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full -mx-6 px-6 overflow-hidden">
       {/* Container with hidden scrollbar */}
       <div
         ref={scrollContainerRef}
-        className="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory"
+        className="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory px-1 py-1"
         style={{
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
@@ -172,7 +172,7 @@ export default function TestimonialCarousel({
       {/* Left Arrow */}
       <button
         onClick={() => handleScroll('left')}
-        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 md:translate-x-2 z-10 rounded-full bg-white/90 hover:bg-white shadow-lg text-[#1d1d1f] p-3 transition-all duration-200 border border-black/10"
+        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 rounded-full bg-white/90 hover:bg-white shadow-lg text-[#1d1d1f] p-3 transition-all duration-200 border border-black/10"
         aria-label="Scroll left"
       >
         <svg
@@ -193,7 +193,7 @@ export default function TestimonialCarousel({
       {/* Right Arrow */}
       <button
         onClick={() => handleScroll('right')}
-        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 md:-translate-x-2 z-10 rounded-full bg-white/90 hover:bg-white shadow-lg text-[#1d1d1f] p-3 transition-all duration-200 border border-black/10"
+        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 rounded-full bg-white/90 hover:bg-white shadow-lg text-[#1d1d1f] p-3 transition-all duration-200 border border-black/10"
         aria-label="Scroll right"
       >
         <svg

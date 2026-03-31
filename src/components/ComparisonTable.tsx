@@ -91,10 +91,10 @@ export default function ComparisonTable() {
         {/* TRD Column */}
         <div className="flex flex-col">
           <div className="relative mb-4">
-            <div className="bg-white rounded-2xl p-6 text-center border-2 border-[#F5A623]/30">
+            <div className="bg-white rounded-2xl p-6 text-center border-2 border-[#0071E3]/30">
               <div className="flex items-center justify-center gap-3">
                 <h3 className="text-2xl font-semibold trd-gradient-text">TRD Custom Build</h3>
-                <span className="bg-[#F5A623]/10 text-[#F5A623] text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide">
+                <span className="bg-[#0071E3]/10 text-[#0071E3] text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide">
                   Recommended
                 </span>
               </div>
@@ -108,7 +108,7 @@ export default function ComparisonTable() {
                 <div className="text-xs font-medium text-[#1d1d1f]/40 uppercase tracking-wide mb-1.5 text-center lg:text-left lg:hidden">
                   {item.feature}
                 </div>
-                <div className="bg-gradient-to-br from-[#10B981]/[0.04] to-[#F5A623]/[0.04] border border-[#10B981]/10 rounded-xl p-4 flex items-start gap-3">
+                <div className="bg-gradient-to-br from-[#10B981]/[0.04] to-[#0071E3]/[0.04] border border-[#10B981]/10 rounded-xl p-4 flex items-start gap-3">
                   <CheckIcon />
                   <div>
                     <p className="text-xs font-medium text-[#1d1d1f]/40 uppercase tracking-wide mb-1 hidden lg:block">{item.feature}</p>

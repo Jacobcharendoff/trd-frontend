@@ -79,7 +79,7 @@ export default function Home() {
         <div className="text-center mb-12">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">How We Build</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            Noise. Rat&apos;s nest. Tone suck. <span className="text-[#F5A623]">We fix that.</span>
+            Noise. Rat&apos;s nest. Tone suck. <span className="text-[#0071E3]">We fix that.</span>
           </h2>
         </div>
 
@@ -104,7 +104,7 @@ export default function Home() {
         <div className="text-center mb-12">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Watch the Build</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            See a rig come to <span className="text-[#F5A623]">life.</span>
+            See a rig come to <span className="text-[#0071E3]">life.</span>
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg">From bare enclosure to road-ready in under a minute.</p>
         </div>
@@ -140,7 +140,7 @@ export default function Home() {
         <div className="text-center mb-16">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Transformations</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            From chaos to <span className="text-[#F5A623]">clarity.</span>
+            From chaos to <span className="text-[#0071E3]">clarity.</span>
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg">See what a professional build actually changes about your rig.</p>
         </div>
@@ -151,7 +151,7 @@ export default function Home() {
       <Section theme="dark" id="service-tiers" reveal>
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-4">
-            Your rig. <span className="italic text-[#F5A623]">Your call.</span>
+            Your rig. <span className="italic text-[#0071E3]">Your call.</span>
           </h2>
           <p className="text-[#f5f5f7]/50 text-lg max-w-2xl mx-auto">
             Whether you&apos;re upgrading, building, or staying put — here&apos;s what each option really looks like.
@@ -218,7 +218,7 @@ export default function Home() {
 
             <Link
               href="/shop"
-              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full border-2 border-[#F5A623] text-[#F5A623] hover:bg-[#F5A623] hover:text-black transition-colors duration-200"
+              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full border-2 border-[#0071E3] text-[#0071E3] hover:bg-[#0071E3] hover:text-white transition-colors duration-200"
             >
               Explore DIY Options
             </Link>
@@ -260,7 +260,7 @@ export default function Home() {
 
             <Link
               href="/book"
-              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full bg-[#F5A623] hover:bg-[#D48A1A] text-black transition-colors duration-200"
+              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full bg-[#0071E3] hover:bg-[#005BB5] text-white transition-colors duration-200"
             >
               Start a Build
             </Link>
@@ -289,7 +289,7 @@ export default function Home() {
             <div key={idx} className="bg-[#f5f5f7] rounded-2xl p-8 border border-black/[0.06]">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5" fill="#F5A623" viewBox="0 0 20 20">
+                  <svg key={i} className="w-5 h-5" fill="#0071E3" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}
@@ -334,7 +334,7 @@ export default function Home() {
           ].map((item, idx) => (
             <details key={idx} className="bg-white rounded-2xl border border-black/[0.06] p-6 cursor-pointer">
               <summary className="font-semibold text-[#1d1d1f] flex items-center gap-3">
-                <span className="text-[#F5A623]">+</span> {item.q}
+                <span className="text-[#0071E3]">+</span> {item.q}
               </summary>
               <p className="text-[#1d1d1f]/60 mt-4 leading-relaxed">{item.a}</p>
             </details>
@@ -359,7 +359,7 @@ export default function Home() {
               Book a Session
             </Link>
           </div>
-          <div className="relative h-80 bg-gradient-to-br from-[#F5A623]/10 to-[#10B981]/10 rounded-2xl flex items-center justify-center border border-[#F5A623]/20">
+          <div className="relative h-80 bg-gradient-to-br from-[#0071E3]/10 to-[#00B4D8]/10 rounded-2xl flex items-center justify-center border border-[#0071E3]/20">
             <div className="text-center">
               <p className="text-5xl font-bold trd-gradient-text mb-2">$99.99</p>
               <p className="text-[#1d1d1f]/40 text-lg">60 minutes</p>
@@ -381,7 +381,7 @@ export default function Home() {
         <div className="mt-12">
           <Link
             href="/book"
-            className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48A1A] text-black font-semibold px-8 py-4 rounded-full transition-colors duration-200"
+            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
           >
             Start a Build
           </Link>

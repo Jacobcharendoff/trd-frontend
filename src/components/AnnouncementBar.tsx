@@ -11,10 +11,10 @@ export default function AnnouncementBar() {
   return (
     <div className="relative bg-[#1d1d1f] text-white text-center py-2.5 px-6 text-[13px]">
       <p>
-        <span className="text-[#F5A623] font-medium">Free consultation</span>
+        <span className="text-[#0071E3] font-medium">Free consultation</span>
         {' — '}
         Book a call and let&apos;s talk about your next build.{' '}
-        <Link href="/book" className="underline underline-offset-2 hover:text-[#F5A623] transition-colors">
+        <Link href="/book" className="underline underline-offset-2 hover:text-[#0071E3] transition-colors">
           Book now →
         </Link>
       </p>

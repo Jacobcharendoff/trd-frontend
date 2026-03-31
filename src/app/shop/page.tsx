@@ -121,7 +121,7 @@ export default function ShopPage() {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   selectedCategory === category
-                    ? 'bg-[#F5A623] text-black shadow-sm'
+                    ? 'bg-[#0071E3] text-white shadow-sm'
                     : 'bg-[#f5f5f7] text-[#1d1d1f] border border-[#1d1d1f]/10 hover:bg-[#1d1d1f]/5'
                 }`}
               >
@@ -163,9 +163,9 @@ export default function ShopPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProducts.map((product) => (
               <div key={product.id} className="group">
-                <div className="bg-[#1d1d1f] rounded-2xl overflow-hidden border border-[#1d1d1f]/30 hover:border-[#F5A623]/40 transition-all duration-300 flex flex-col h-full">
+                <div className="bg-[#1d1d1f] rounded-2xl overflow-hidden border border-[#1d1d1f]/30 hover:border-[#0071E3]/40 transition-all duration-300 flex flex-col h-full">
                   {/* Product Image */}
-                  <div className="relative w-full aspect-square overflow-hidden bg-gradient-to-br from-[#F5A623]/10 to-[#10B981]/10 group-hover:scale-[1.02] transition-transform duration-300">
+                  <div className="relative w-full aspect-square overflow-hidden bg-gradient-to-br from-[#0071E3]/10 to-[#00B4D8]/10 group-hover:scale-[1.02] transition-transform duration-300">
                     {product.image ? (
                       <Image
                         src={product.image}
@@ -187,7 +187,7 @@ export default function ShopPage() {
                   {/* Content */}
                   <div className="flex-1 p-6 flex flex-col">
                     <div className="mb-3">
-                      <span className="inline-block text-xs font-medium text-[#F5A623] bg-[#F5A623]/10 px-3 py-1 rounded-full">
+                      <span className="inline-block text-xs font-medium text-[#0071E3] bg-[#0071E3]/10 px-3 py-1 rounded-full">
                         {product.category}
                       </span>
                     </div>
@@ -210,7 +210,7 @@ export default function ShopPage() {
                       href={`https://the-rig-doctor.myshopify.com/products/${product.handle}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full bg-gradient-to-r from-[#F5A623] to-[#10B981] hover:from-[#D48A1A] hover:to-[#0a8e5b] text-black font-semibold px-4 py-3 rounded-lg transition-all duration-200 text-center text-sm"
+                      className="w-full bg-gradient-to-r from-[#0071E3] to-[#00B4D8] hover:from-[#005BB5] hover:to-[#0a8e5b] text-black font-semibold px-4 py-3 rounded-lg transition-all duration-200 text-center text-sm"
                     >
                       View on Shop
                     </Link>
@@ -227,7 +227,7 @@ export default function ShopPage() {
             <p className="text-[#1d1d1f]/60 text-lg mb-4">No products in this category yet.</p>
             <button
               onClick={() => setSelectedCategory('All')}
-              className="text-[#F5A623] font-medium hover:underline"
+              className="text-[#0071E3] font-medium hover:underline"
             >
               View all products
             </button>
@@ -248,7 +248,7 @@ export default function ShopPage() {
         <div className="flex gap-4 justify-center">
           <Link
             href="/book"
-            className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48A1A] text-black font-semibold px-8 py-4 rounded-full transition-colors duration-200"
+            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
           >
             Book a Free Consultation
           </Link>

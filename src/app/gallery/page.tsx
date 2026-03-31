@@ -104,7 +104,7 @@ export default function GalleryPage() {
             ))}
 
             {/* Placeholder cards */}
-            <div className="bg-gradient-to-br from-[#F5A623]/10 to-[#10B981]/10 rounded-2xl overflow-hidden flex items-center justify-center min-h-96">
+            <div className="bg-gradient-to-br from-[#0071E3]/10 to-[#00B4D8]/10 rounded-2xl overflow-hidden flex items-center justify-center min-h-96">
               <div className="text-center px-6">
                 <p className="text-lg sm:text-xl font-semibold text-[#1d1d1f] mb-2">
                   More builds coming soon
@@ -115,7 +115,7 @@ export default function GalleryPage() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-[#F5A623]/10 to-[#10B981]/10 rounded-2xl overflow-hidden flex items-center justify-center min-h-96">
+            <div className="bg-gradient-to-br from-[#0071E3]/10 to-[#00B4D8]/10 rounded-2xl overflow-hidden flex items-center justify-center min-h-96">
               <div className="text-center px-6">
                 <p className="text-lg sm:text-xl font-semibold text-[#1d1d1f] mb-2">
                   More builds coming soon
