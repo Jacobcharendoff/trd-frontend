@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const navItems = [
-  { label: 'Book a Build', href: '/book' },
+  { label: 'Custom Builds', href: '/book' },
   { label: 'Shop', href: '/shop' },
-  { label: 'Gallery', href: '/gallery' },
   { label: 'Tone Tutoring', href: '/tone-tutoring' },
-  { label: 'The Process', href: '/process' },
+  { label: 'Process', href: '/process' },
   { label: 'About', href: '/about' },
   { label: 'Blog', href: '/blog' },
 ];
@@ -35,14 +35,20 @@ export default function Header() {
         {/* Logo */}
         <Link
           href="/"
-          className={`flex items-center gap-2 font-semibold text-[15px] tracking-tight hover:opacity-80 transition-all ${
-            scrolled ? 'text-[#1d1d1f]' : 'text-white'
-          }`}
+          className="flex items-center hover:opacity-80 transition-all"
         >
-          <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-          </svg>
-          The Rig Doctor
+          <Image
+            src={scrolled
+              ? 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/logo-dark-hrt.png?v=1742952854'
+              : 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/logo-white-hrt.png?v=1742952854'
+            }
+            alt="The Rig Doctor"
+            width={140}
+            height={40}
+            className="h-8 w-auto"
+            unoptimized
+            priority
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -62,17 +68,43 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* CTA */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* CTA + Icons */}
+        <div className="hidden md:flex items-center gap-3">
           <Link
             href="/book"
             className={`text-[13px] font-medium rounded-full px-5 py-2 transition-colors ${
               scrolled
-                ? 'bg-[#1d1d1f] text-white hover:bg-[#1d1d1f]/90'
-                : 'bg-white text-black hover:bg-white/90'
+                ? 'bg-[#2997FF] text-white hover:bg-[#1a82e6]'
+                : 'bg-[#2997FF] text-white hover:bg-[#1a82e6]'
             }`}
           >
             Start a Build
+          </Link>
+          {/* Search Icon */}
+          <button
+            className={`p-2 rounded-full transition-colors ${
+              scrolled ? 'text-[#1d1d1f]/60 hover:text-[#1d1d1f]' : 'text-white/70 hover:text-white'
+            }`}
+            aria-label="Search"
+          >
+            <svg viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="M21 21l-4.35-4.35" />
+            </svg>
+          </button>
+          {/* Cart Icon */}
+          <Link
+            href="/shop"
+            className={`p-2 rounded-full transition-colors ${
+              scrolled ? 'text-[#1d1d1f]/60 hover:text-[#1d1d1f]' : 'text-white/70 hover:text-white'
+            }`}
+            aria-label="Cart"
+          >
+            <svg viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <path d="M16 10a4 4 0 01-8 0" />
+            </svg>
           </Link>
         </div>
 

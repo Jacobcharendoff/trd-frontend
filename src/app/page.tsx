@@ -35,92 +35,69 @@ export default function Home() {
               priority
               unoptimized
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-black/30" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20" />
           </div>
 
-          {/* Hero content */}
-          <div className="relative z-10 max-w-[1080px] mx-auto px-6 pt-32 pb-20 w-full text-center">
-            <h1 className="text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[5.5rem] font-bold leading-[1.05] tracking-tight text-[#f5f5f7] mb-6">
+          {/* Hero content — left-aligned to match Dawn */}
+          <div className="relative z-10 max-w-[1080px] mx-auto px-6 pt-32 pb-20 w-full text-left">
+            <h1 className="text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[5.5rem] font-bold leading-[1.05] tracking-tight text-[#f5f5f7] mb-6 max-w-3xl">
               We don&apos;t sell gear.{' '}
+              <br />
               <span className="trd-gradient-text">We wire it right.</span>
             </h1>
-            <p className="text-lg sm:text-xl text-[#f5f5f7]/80 max-w-2xl mx-auto leading-relaxed mb-8">
-              Custom pedalboards built for your tone, your playing style, and your stage. From signal chain to lifetime support.
+            <p className="text-lg sm:text-xl text-[#f5f5f7]/70 max-w-xl leading-relaxed mb-8">
+              17 years. 200+ custom rigs. Hand-soldered, tour-tested, backed for life.
             </p>
-            <div className="flex gap-4 justify-center mb-16">
+            <div className="flex gap-4 mb-16">
               <Link
                 href="/book"
-                className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48A1A] text-black font-semibold px-8 py-4 rounded-full transition-colors duration-200"
+                className="inline-flex items-center gap-2 bg-[#2997FF] hover:bg-[#1a82e6] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
               >
                 Start a Build
               </Link>
             </div>
 
             {/* Stats Row */}
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-12 text-center pt-12 border-t border-white/10">
-              <div>
-                <p className="text-lg sm:text-xl font-semibold text-[#f5f5f7]/80">Custom builds from $2,000 USD</p>
-              </div>
-              <div className="hidden sm:block w-px h-8 bg-white/10" />
-              <div>
-                <p className="text-lg sm:text-xl font-semibold text-[#f5f5f7]/80">Lifetime support</p>
-              </div>
-              <div className="hidden sm:block w-px h-8 bg-white/10" />
-              <div>
-                <p className="text-lg sm:text-xl font-semibold text-[#f5f5f7]/80">Free repairs</p>
-              </div>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-12 pt-8 border-t border-white/10">
+              <p className="text-base sm:text-lg text-[#f5f5f7]/60">Custom builds from $2,000 USD</p>
+              <span className="hidden sm:block text-[#f5f5f7]/20">•</span>
+              <p className="text-base sm:text-lg text-[#f5f5f7]/60">Lifetime support</p>
+              <span className="hidden sm:block text-[#f5f5f7]/20">•</span>
+              <p className="text-base sm:text-lg text-[#f5f5f7]/60">Free repairs</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* ──── 2. VIDEO EMBED (dark — Shopify-hosted video) ──── */}
-      <Section theme="dark" id="video-intro" reveal noPadding>
-        <div className="py-20 md:py-[120px] px-6">
-          <div className="relative w-full rounded-3xl overflow-hidden bg-[#1a1a1a] aspect-video max-w-4xl mx-auto">
-            <video
-              controls
-              className="w-full h-full object-cover"
-              poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png"
-            >
-              <source
-                src="https://www.therigdr.com/cdn/shop/videos/c/vp/f12872e61445487b86f0ae5df85ba09b/f12872e61445487b86f0ae5df85ba09b.HD-1080p-7.2Mbps-78086312.mp4"
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      </Section>
-
-      {/* ──── 3. ARTIST TESTIMONIALS (lightGray — full-bleed carousel with real artist photos) ──── */}
-      <Section theme="lightGray" id="testimonials" reveal>
-        <div className="mb-12">
+      {/* ──── 2. ARTIST TESTIMONIALS (light — matches Dawn "WHAT ARTISTS SAY") ──── */}
+      <Section theme="light" id="testimonials" reveal>
+        <div className="text-center mb-12">
+          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">What Artists Say</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            Trusted by touring artists.
+            Real builds. Real players. <span className="trd-gradient-text">Real results.</span>
           </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">Hear from the professionals who've trusted us with their rigs.</p>
         </div>
         <TestimonialCarousel theme="light" />
       </Section>
 
-      {/* ──── 4. PROBLEM SECTION (white — "We fix that" detail cards) ──── */}
-      <Section theme="light" id="problems" reveal>
-        <div className="mb-12">
+      {/* ──── 4. HOW WE BUILD (light — numbered steps matching Dawn) ──── */}
+      <Section theme="lightGray" id="how-we-build" reveal>
+        <div className="text-center mb-12">
+          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">How We Build</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            Noise. Rat&apos;s nest. Tone suck.
+            Noise. Rat&apos;s nest. Tone suck. <span className="text-[#F5A623]">We fix that.</span>
           </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">We fix that.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { title: 'Signal Routing', desc: 'Optimized signal path tailored to your effects and playing style. No more tone suck.' },
-            { title: 'Cable Architecture', desc: 'Hand-soldered, pro-grade cables with proper shielding and connectivity.' },
-            { title: 'Power & Protection', desc: 'Isolated power distribution eliminates ground loops and noise.' },
-            { title: 'Tour-Ready', desc: 'Built for durability. Tested on stage. Backed by lifetime support.' },
+            { num: '01', title: 'Signal Routing', desc: 'Optimized signal path tailored to your effects and playing style. No more tone suck.' },
+            { num: '02', title: 'Cable Architecture', desc: 'Every run is labeled, laced, and built to survive hundreds of shows. No rat\'s nest. No guesswork.' },
+            { num: '03', title: 'Power & Protection', desc: 'Isolated power distribution eliminates ground loops and noise. Clean power, clean tone.' },
+            { num: '04', title: 'Tour-Ready', desc: 'Your board leaves here stage-ready. Peace of mind on stage. Every night.' },
           ].map((item, idx) => (
-            <div key={idx} className="bg-[#f5f5f7] rounded-2xl p-8 flex flex-col border border-black/[0.06]">
+            <div key={idx} className="bg-white rounded-2xl p-8 flex flex-col border border-black/[0.06]">
+              <p className="text-4xl font-bold text-[#1d1d1f]/10 mb-4">{item.num}</p>
               <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">{item.title}</h3>
               <p className="text-[#1d1d1f]/60 leading-relaxed flex-grow">{item.desc}</p>
             </div>
@@ -128,16 +105,17 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ──── 5. VIDEO SECTION (dark — "See a rig come to life") ──── */}
-      <Section theme="dark" id="video-build" reveal>
+      {/* ──── 5. VIDEO SECTION (light — "See a rig come to life") ──── */}
+      <Section theme="light" id="video-build" reveal>
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-2">
-            See a rig come to life.
+          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Watch the Build</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
+            See a rig come to <span className="text-[#F5A623]">life.</span>
           </h2>
-          <p className="text-[#f5f5f7]/60 text-lg">Watch the build process from start to finish.</p>
+          <p className="text-[#1d1d1f]/50 text-lg">From bare enclosure to road-ready in under a minute.</p>
         </div>
 
-        <div className="relative w-full rounded-3xl overflow-hidden bg-[#1a1a1a] aspect-video max-w-4xl mx-auto">
+        <div className="relative w-full rounded-3xl overflow-hidden bg-[#0a0a0a] aspect-video max-w-4xl mx-auto shadow-2xl">
           <video
             controls
             className="w-full h-full object-cover"
@@ -152,14 +130,14 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ──── 6. GALLERY (dark — "200+ rigs. Here's a few.") ──── */}
-      <Section theme="dark" id="gallery" noPadding reveal>
+      {/* ──── 6. GALLERY (lightGray — "200+ rigs. Here's a few.") ──── */}
+      <Section theme="lightGray" id="gallery" noPadding reveal>
         <div className="py-20 md:py-[120px]">
-          <div className="mb-8">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-2">
-              200+ rigs. Here&apos;s a few.
+          <div className="text-center mb-8">
+            <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">The Gallery</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
+              200+ rigs. <span className="trd-gradient-text">Here&apos;s a few.</span>
             </h2>
-            <p className="text-[#f5f5f7]/60 text-lg">Custom builds from around the world.</p>
           </div>
 
           <div className="relative -mx-6">
@@ -178,7 +156,7 @@ export default function Home() {
               ].map((url, idx) => (
                 <div
                   key={idx}
-                  className="flex-shrink-0 w-80 sm:w-96 h-64 sm:h-80 rounded-2xl overflow-hidden snap-center bg-[#1a1a1a]"
+                  className="flex-shrink-0 w-80 sm:w-96 h-64 sm:h-80 rounded-2xl overflow-hidden snap-center bg-[#0a0a0a] shadow-lg"
                 >
                   <Image
                     src={url}
@@ -194,14 +172,14 @@ export default function Home() {
 
             <button
               onClick={() => scroll('left')}
-              className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full transition-colors"
+              className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-lg text-[#1d1d1f] p-3 rounded-full transition-colors border border-black/10"
               aria-label="Scroll gallery left"
             >
               &#8592;
             </button>
             <button
               onClick={() => scroll('right')}
-              className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full transition-colors"
+              className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white shadow-lg text-[#1d1d1f] p-3 rounded-full transition-colors border border-black/10"
               aria-label="Scroll gallery right"
             >
               &#8594;
@@ -212,11 +190,12 @@ export default function Home() {
 
       {/* ──── 7. BEFORE/AFTER (light — transformation proof) ──── */}
       <Section theme="light" id="transformations" reveal>
-        <div className="mb-12">
+        <div className="text-center mb-12">
+          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Transformations</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            From chaos to clarity.
+            From chaos to <span className="text-[#F5A623]">clarity.</span>
           </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">Real before and after transformations from players like you.</p>
+          <p className="text-[#1d1d1f]/50 text-lg">See what a professional build actually changes about your rig.</p>
         </div>
         <BeforeAfter />
       </Section>

@@ -167,12 +167,13 @@ export default function TestimonialCarousel({
               className={`${cardBg} rounded-2xl p-8 border border-black/[0.06] shadow-sm h-full flex flex-col gap-4 overflow-hidden`}
             >
               {/* Artist Photo */}
-              <div className="relative w-full h-48 rounded-lg overflow-hidden -m-8 mb-4 flex-shrink-0">
+              <div className="relative w-full h-48 rounded-xl overflow-hidden flex-shrink-0">
                 <Image
                   src={testimonial.photo}
                   alt={testimonial.name}
                   fill
                   className="object-cover object-center"
+                  sizes="400px"
                   unoptimized
                 />
               </div>
