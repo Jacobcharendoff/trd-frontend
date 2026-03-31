@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 const navItems = [
   { label: 'Book a Build', href: '/book' },
+  { label: 'Shop', href: '/shop' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Tone Tutoring', href: '/tone-tutoring' },
   { label: 'The Process', href: '/process' },
