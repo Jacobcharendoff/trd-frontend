@@ -74,55 +74,74 @@ export default function Home() {
         <TestimonialCarousel theme="light" />
       </Section>
 
-      {/* ──── 3. HOW WE BUILD (lightGray — numbered steps matching Dawn) ──── */}
-      <Section theme="lightGray" id="how-we-build" reveal>
-        <div className="text-center mb-12">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">How We Build</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            Noise. Rat&apos;s nest. Tone suck. <span className="text-[#0071E3]">We fix that.</span>
-          </h2>
+      {/* ──── 3. HOW WE BUILD — Parallax split: steps left, video right ──── */}
+      <section id="how-we-build" className="relative bg-[#0a0a0a] overflow-hidden">
+        {/* Subtle aurora glow */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-[#0071E3]/5 rounded-full blur-[120px]" />
+          <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-[#00B4D8]/5 rounded-full blur-[100px]" />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { num: '01', title: 'Signal Routing', desc: 'Optimized signal path tailored to your effects and playing style. No more tone suck.' },
-            { num: '02', title: 'Cable Architecture', desc: 'Every run is labeled, laced, and built to survive hundreds of shows. No rat\'s nest. No guesswork.' },
-            { num: '03', title: 'Power & Protection', desc: 'Isolated power distribution eliminates ground loops and noise. Clean power, clean tone.' },
-            { num: '04', title: 'Tour-Ready', desc: 'Your board leaves here stage-ready. Peace of mind on stage. Every night.' },
-          ].map((item, idx) => (
-            <div key={idx} className="bg-white rounded-2xl p-8 flex flex-col border border-black/[0.06]">
-              <p className="text-4xl font-bold text-[#1d1d1f]/10 mb-4">{item.num}</p>
-              <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">{item.title}</h3>
-              <p className="text-[#1d1d1f]/60 leading-relaxed flex-grow">{item.desc}</p>
+        <div className="relative max-w-[1200px] mx-auto px-6 py-24 md:py-32">
+          {/* Section header — full width */}
+          <div className="mb-16 md:mb-20">
+            <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/30 mb-4">How We Build</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#f5f5f7] leading-[1.1]">
+              Noise. Rat&apos;s nest. Tone suck.<br />
+              <span className="trd-gradient-text">We fix that.</span>
+            </h2>
+          </div>
+
+          {/* Split layout: steps left, sticky video right */}
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+            {/* Left: numbered steps */}
+            <div className="w-full lg:w-1/2 space-y-8">
+              {[
+                { num: '01', title: 'Signal Routing', desc: 'Optimized signal path tailored to your effects and playing style. No more tone suck.' },
+                { num: '02', title: 'Cable Architecture', desc: 'Every run is labeled, laced, and built to survive hundreds of shows. No rat\'s nest. No guesswork.' },
+                { num: '03', title: 'Power & Protection', desc: 'Isolated power distribution eliminates ground loops and noise. Clean power, clean tone.' },
+                { num: '04', title: 'Tour-Ready', desc: 'Your board leaves here stage-ready. Peace of mind on stage. Every night.' },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="group relative pl-6 border-l-2 border-white/10 hover:border-[#0071E3]/60 transition-all duration-500"
+                  style={{ animationDelay: `${idx * 150}ms` }}
+                >
+                  <p className="text-5xl font-bold text-white/[0.06] mb-2 transition-colors duration-500 group-hover:text-[#0071E3]/20">
+                    {item.num}
+                  </p>
+                  <h3 className="text-xl font-semibold text-[#f5f5f7] mb-2">{item.title}</h3>
+                  <p className="text-[#f5f5f7]/50 leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+
+              <p className="text-[#f5f5f7]/30 text-sm pt-4">From bare enclosure to road-ready in under a minute.</p>
             </div>
-          ))}
-        </div>
-      </Section>
 
-      {/* ──── 4. VIDEO SECTION (light — "See a rig come to life") ──── */}
-      <Section theme="light" id="video-build" reveal>
-        <div className="text-center mb-12">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Watch the Build</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            See a rig come to <span className="text-[#0071E3]">life.</span>
-          </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">From bare enclosure to road-ready in under a minute.</p>
+            {/* Right: sticky video — autoplay loop, Dawn style */}
+            <div className="w-full lg:w-1/2 lg:sticky lg:top-24 lg:self-start">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 ring-1 ring-white/10">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png"
+                  className="w-full aspect-[4/5] object-cover"
+                >
+                  <source
+                    src="https://cdn.shopify.com/videos/c/vp/f12872e61445487b86f0ae5df85ba09b/f12872e61445487b86f0ae5df85ba09b.HD-1080p-7.2Mbps-78086312.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+                {/* Gradient overlay at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0a0a0a]/60 to-transparent" />
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div className="relative w-full rounded-3xl overflow-hidden bg-[#0a0a0a] aspect-video max-w-4xl mx-auto shadow-2xl">
-          <video
-            controls
-            className="w-full h-full object-cover"
-            poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png"
-          >
-            <source
-              src="https://cdn.shopify.com/videos/c/vp/f12872e61445487b86f0ae5df85ba09b/f12872e61445487b86f0ae5df85ba09b.HD-1080p-7.2Mbps-78086312.mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      </Section>
+      </section>
 
       {/* ──── 5. GALLERY (lightGray — fade slider with thumbnails) ──── */}
       <Section theme="lightGray" id="gallery" reveal>
