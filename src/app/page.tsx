@@ -368,49 +368,18 @@ export default function Home() {
 
       {/* ──── 12. TONE TUTORING — page closer ──── */}
       <Section theme="light" id="tone-tutoring-cta" reveal>
-        <div className="text-center mb-12">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Not ready for a full build?</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            Start with a Tone Tutoring session.
-          </h2>
-          <p className="text-[#1d1d1f]/50 text-lg max-w-2xl mx-auto">
-            A 1-on-1 video call where we go through your rig, fix your signal chain, and map out what to do next.
-          </p>
-        </div>
-
-        {/* Video — pedalboard layout walkthrough */}
-        <div className="relative w-full rounded-3xl overflow-hidden bg-[#0a0a0a] aspect-video max-w-4xl mx-auto shadow-2xl mb-16">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="none"
-            className="w-full h-full object-cover"
-            poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png"
-          >
-            <source
-              src="https://cdn.shopify.com/videos/c/o/v/81fddb9f77f541f9affca863220f5c65.mp4"
-              type="video/mp4"
-            />
-          </video>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* What You Get card */}
-          <div className="bg-[#f5f5f7] rounded-2xl p-8 sm:p-10">
-            <div className="flex justify-center mb-5">
-              <svg className="w-12 h-12 text-[#0071E3]/60" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
-              </svg>
-            </div>
-
-            <h3 className="text-xl font-bold text-[#1d1d1f] text-center mb-2">What you get</h3>
-            <p className="text-[#1d1d1f]/50 text-sm text-center mb-6">
-              60-min deep dive into your rig with actionable takeaways
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left: Value prop */}
+          <div>
+            <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Not ready for a full build?</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-4">
+              Start with a Tone Tutoring session.
+            </h2>
+            <p className="text-lg text-[#1d1d1f]/60 leading-relaxed mb-8">
+              A 1-on-1 video call where we go through your rig, fix your signal chain, and map out what to do next. 60 minutes. Actionable takeaways you can use immediately.
             </p>
 
-            <div className="space-y-4">
+            <div className="space-y-3 mb-10">
               {[
                 'Signal chain audit and optimization',
                 'Personalized upgrade roadmap',
@@ -426,16 +395,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
 
-          {/* CTA side */}
-          <div className="flex flex-col justify-center">
-            <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1d1d1f] mb-4">
-              Your rig&apos;s not going to fix itself.
-            </h3>
-            <p className="text-lg text-[#1d1d1f]/60 leading-relaxed mb-8">
-              Grab a session. Tell us what you&apos;re dealing with. We&apos;ll map out exactly what we&apos;d do about it. No build required.
-            </p>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
               <Link
                 href="/tone-tutoring"
@@ -445,10 +405,26 @@ export default function Home() {
               </Link>
               <span className="text-[#1d1d1f]/50 text-base">From $99.99 USD</span>
             </div>
-            <div className="mt-8 pt-6 border-t border-[#1d1d1f]/10">
+
+            <div className="mt-6 pt-5 border-t border-[#1d1d1f]/10">
               <Link href="/book" className="text-[#0071E3] hover:text-[#005BB5] font-medium transition-colors">
                 Or start with a free consultation &rsaquo;
               </Link>
+            </div>
+          </div>
+
+          {/* Right: Image */}
+          <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png?width=800&format=webp"
+              alt="Custom pedalboard build"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-8">
+              <p className="text-white/90 text-lg font-semibold">Your rig&apos;s not going to fix itself.</p>
+              <p className="text-white/60 text-sm mt-1">Let&apos;s figure out what it needs.</p>
             </div>
           </div>
         </div>

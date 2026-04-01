@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import Section from '@/components/Section';
+import TestimonialCarousel from '@/components/TestimonialCarousel';
 
 /* ──── Hero with Calendar ──── */
 function Hero() {
@@ -198,56 +199,17 @@ function Team() {
   );
 }
 
-/* ──── Reviews (white — clean cards) ──── */
-function Reviews() {
-  const reviews = [
-    { author: 'Paul Papanek', rating: 5, text: 'Jacob knew what I needed before I finished describing it. The build completely changed how my rig sounds.' },
-    { author: 'Paul Rose', rating: 5, text: 'The attention to detail on this thing is something else. Every cable, every pedal, all dialed.' },
-    { author: 'Verified Client', rating: 5, text: "Best money I've spent on gear in years. The consultation alone gave me a clear picture of what my rig actually needed." },
-  ];
-
+/* ──── Trusted By (same carousel as homepage) ──── */
+function TrustedBy() {
   return (
-    <Section theme="light">
-      <div className="space-y-12">
-        <div className="text-center space-y-4">
-          <div className="flex items-center justify-center gap-1">
-            {[...Array(5)].map((_, i) => (
-              <svg key={i} className="w-5 h-5" fill="#EAB308" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            ))}
-          </div>
-          <p className="text-[18px] font-semibold text-[#1d1d1f]">Trusted by touring artists worldwide</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {reviews.map((review) => (
-            <div key={review.author} className="bg-[#f5f5f7] rounded-2xl p-8 space-y-4">
-              <div className="flex gap-1">
-                {[...Array(review.rating)].map((_, i) => (
-                  <svg key={i} className="w-4 h-4" fill="#EAB308" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-[15px] text-[#1d1d1f]/80 leading-relaxed">&ldquo;{review.text}&rdquo;</p>
-              <p className="text-[14px] font-semibold text-[#1d1d1f]">{review.author}</p>
-            </div>
-          ))}
-        </div>
+    <Section theme="light" reveal>
+      <div className="text-center mb-12">
+        <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">On the Road</p>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
+          Trusted by players who <span className="trd-gradient-text">can&apos;t afford a bad night.</span>
+        </h2>
       </div>
-    </Section>
-  );
-}
-
-/* ──── Trust (light gray) ──── */
-function Trust() {
-  return (
-    <Section theme="lightGray">
-      <div className="text-center space-y-4">
-        <p className="text-[18px] text-[#1d1d1f] leading-relaxed">
-          Trusted by <span className="font-semibold">touring artists</span> like <span className="font-semibold">Isaiah Sharkey</span> and <span className="font-semibold">Tosin Abasi</span>. Over <span className="font-semibold">200 rigs built</span> and counting.
-        </p>
-      </div>
+      <TestimonialCarousel theme="light" />
     </Section>
   );
 }
@@ -276,8 +238,7 @@ export default function BookPage() {
       <Hero />
       <AfterTheCall />
       <Team />
-      <Reviews />
-      <Trust />
+      <TrustedBy />
       <FallbackCTA />
     </>
   );
