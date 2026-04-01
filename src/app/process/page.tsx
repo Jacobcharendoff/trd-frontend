@@ -10,7 +10,7 @@ export default function Process() {
   const faqs = [
     {
       question: 'How much does a custom build cost?',
-      answer: "Depends on your setup. A simple 5-pedal board starts around $200-300 in labor. A complex touring rig with switching systems can run $800+. Components are separate. We'll give you a clear quote before any work starts.",
+      answer: "Every build is different. Custom rigs start from $2,000 and scale with complexity — switching systems, isolated power, the works. Your consultation is free and we'll give you a clear, itemized quote before any work starts.",
     },
     {
       question: 'How long does a build take?',

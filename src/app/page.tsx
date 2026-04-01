@@ -342,7 +342,7 @@ export default function Home() {
             },
             {
               q: "How much does a custom build cost?",
-              a: "Every rig is different, so every quote is different. Builds typically start around $2,500 and scale with complexity. Your consultation is free. We'll walk through what you need and give you a straight answer.",
+              a: "Every rig is different, so every quote is different. Builds start from $2,000 and scale with complexity. Your consultation is free — we'll walk through what you need and give you a straight answer.",
             },
             {
               q: "What if something breaks?",

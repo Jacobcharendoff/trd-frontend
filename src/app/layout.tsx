@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import ConsultationPopup from '@/components/ConsultationPopup';
 import ExitIntent from '@/components/ExitIntent';
 import { LocalBusinessSchema } from '@/components/StructuredData';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <LocalBusinessSchema />
       </head>
+      <GoogleAnalytics />
       <body className="antialiased">
         {/* AnnouncementBar hidden for Dawn parity — restore post-launch */}
         {/* <AnnouncementBar /> */}
