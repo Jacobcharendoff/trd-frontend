@@ -107,6 +107,50 @@ body {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
 }
 
+/* ─── Section Transition Gradients ─── */
+.trd-section-fade-dark-to-light::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(to bottom, #0a0a0a, transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.trd-section-fade-light-to-dark::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, #0a0a0a);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── Consistent CTA Glow Hover ─── */
+.trd-cta-primary {
+  transition: all 0.3s ease;
+}
+
+.trd-cta-primary:hover {
+  box-shadow: 0 0 30px rgba(0, 113, 227, 0.4);
+  transform: scale(1.02);
+}
+
+/* ─── Before/After Slider ─── */
+.trd-slider-handle {
+  transition: box-shadow 0.2s ease;
+}
+
+.trd-slider-handle:hover {
+  box-shadow: 0 0 20px rgba(0, 113, 227, 0.4);
+}
+
 /* ─── HubSpot Overrides ─── */
 #hubspot-messages-iframe-container {
   display: none !important;

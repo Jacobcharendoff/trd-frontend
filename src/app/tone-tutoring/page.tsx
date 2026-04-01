@@ -48,7 +48,7 @@ export default function ToneTutoringPage() {
               <div className="flex gap-4 justify-center mb-16">
                 <a
                   href="https://the-rig-doctor.myshopify.com/products/tone-tutoring"
-                  className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
+                  className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full trd-cta-primary"
                 >
                   Book a Session
                 </a>
@@ -223,7 +223,7 @@ export default function ToneTutoringPage() {
                 </li>
               ))}
             </ul>
-            <a href="https://the-rig-doctor.myshopify.com/products/tone-tutoring" className="w-full block text-center bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200">
+            <a href="https://the-rig-doctor.myshopify.com/products/tone-tutoring" className="w-full block text-center bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full trd-cta-primary">
               Book Now
             </a>
           </div>
@@ -245,7 +245,7 @@ export default function ToneTutoringPage() {
                 </li>
               ))}
             </ul>
-            <a href="https://the-rig-doctor.myshopify.com/products/tone-tutoring" className="w-full block text-center bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200">
+            <a href="https://the-rig-doctor.myshopify.com/products/tone-tutoring" className="w-full block text-center bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full trd-cta-primary">
               Book Now
             </a>
           </div>
@@ -288,7 +288,7 @@ export default function ToneTutoringPage() {
         <div className="mt-12">
           <a
             href="https://the-rig-doctor.myshopify.com/products/tone-tutoring"
-            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
+            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full trd-cta-primary"
           >
             Book a Session
           </a>

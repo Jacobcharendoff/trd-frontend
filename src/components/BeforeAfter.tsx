@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import Image from 'next/image';
 
 interface CaseStudy {
@@ -44,53 +44,69 @@ const caseStudies: CaseStudy[] = [
 ];
 
 function BeforeAfterSlider({ beforeImage, afterImage }: { beforeImage: string; afterImage: string }) {
-  const [showAfter, setShowAfter] = useState(true);
+  const [sliderPos, setSliderPos] = useState(50);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+
+  const updatePosition = useCallback((clientX: number) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const pct = Math.max(2, Math.min(98, (x / rect.width) * 100));
+    setSliderPos(pct);
+  }, []);
+
+  const handlePointerDown = useCallback((e: React.PointerEvent) => {
+    isDragging.current = true;
+    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+    updatePosition(e.clientX);
+  }, [updatePosition]);
+
+  const handlePointerMove = useCallback((e: React.PointerEvent) => {
+    if (!isDragging.current) return;
+    updatePosition(e.clientX);
+  }, [updatePosition]);
+
+  const handlePointerUp = useCallback(() => {
+    isDragging.current = false;
+  }, []);
 
   return (
-    <div className="relative w-full h-full rounded-2xl overflow-hidden bg-[#f5f5f7]">
-      {/* Before Image */}
-      <div className={`absolute inset-0 transition-opacity duration-700 ${showAfter ? 'opacity-0' : 'opacity-100'}`}>
-        <Image
-          src={beforeImage}
-          alt="Before"
-          fill
-          className="object-cover"
-        />
-      </div>
-      {/* After Image */}
-      <div className={`absolute inset-0 transition-opacity duration-700 ${showAfter ? 'opacity-100' : 'opacity-0'}`}>
-        <Image
-          src={afterImage}
-          alt="After"
-          fill
-          className="object-cover"
-        />
+    <div
+      ref={containerRef}
+      className="relative w-full h-full rounded-2xl overflow-hidden bg-[#f5f5f7] cursor-col-resize select-none touch-none"
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+    >
+      {/* After Image (full) */}
+      <Image src={afterImage} alt="After" fill className="object-cover" />
+
+      {/* Before Image (clipped) */}
+      <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}>
+        <Image src={beforeImage} alt="Before" fill className="object-cover" />
       </div>
 
-      {/* Before / After Toggle */}
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10">
-        <div className="flex bg-black/60 backdrop-blur-sm rounded-full p-1">
-          <button
-            onClick={() => setShowAfter(false)}
-            className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-              !showAfter
-                ? 'bg-white text-[#1d1d1f]'
-                : 'text-white/70 hover:text-white'
-            }`}
-          >
-            Before
-          </button>
-          <button
-            onClick={() => setShowAfter(true)}
-            className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-              showAfter
-                ? 'bg-white text-[#1d1d1f]'
-                : 'text-white/70 hover:text-white'
-            }`}
-          >
-            After
-          </button>
+      {/* Slider line + handle */}
+      <div className="absolute top-0 bottom-0 z-10" style={{ left: `${sliderPos}%` }}>
+        <div className="absolute top-0 bottom-0 -translate-x-1/2 w-[2px] bg-white shadow-[0_0_8px_rgba(0,0,0,0.3)]" />
+        <div className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center">
+          <svg className="w-5 h-5 text-[#1d1d1f]/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M8 9l-3 3 3 3m8-6l3 3-3 3" />
+          </svg>
         </div>
+      </div>
+
+      {/* Labels */}
+      <div className="absolute top-4 left-4 z-10">
+        <span className="bg-black/50 backdrop-blur-sm text-white text-xs font-semibold tracking-wider uppercase px-3 py-1.5 rounded-full">
+          Before
+        </span>
+      </div>
+      <div className="absolute top-4 right-4 z-10">
+        <span className="bg-black/50 backdrop-blur-sm text-white text-xs font-semibold tracking-wider uppercase px-3 py-1.5 rounded-full">
+          After
+        </span>
       </div>
     </div>
   );

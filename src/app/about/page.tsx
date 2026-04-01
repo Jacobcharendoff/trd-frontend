@@ -115,11 +115,13 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="w-full h-96 bg-[#f5f5f7] rounded-2xl flex items-center justify-center border border-black/[0.06]">
-            <div className="text-center">
-              <div className="text-[#1d1d1f]/30 text-lg font-medium">Workshop Photo</div>
-              <div className="text-[#1d1d1f]/20 text-sm mt-2">Montgomery, TX</div>
-            </div>
+          <div className="w-full h-96 rounded-2xl overflow-hidden border border-black/[0.06]">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png?width=800&format=webp"
+              alt="The Rig Doctor workshop — Montgomery, TX"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
           </div>
         </div>
       </Section>
@@ -134,7 +136,7 @@ export default function AboutPage() {
         </p>
         <Link
           href="/book"
-          className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
+          className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full trd-cta-primary"
         >
           Book a Consultation
         </Link>

@@ -12,15 +12,32 @@ export default function ConsultationPopup() {
   const [isDismissed, setIsDismissed] = useState(false);
   const [showAfter, setShowAfter] = useState(false);
   const calendarRef = useRef<HTMLDivElement>(null);
+  const readyRef = useRef(false);
 
-  // Scroll trigger at 50%
+  // Once-per-session guard + 90s minimum delay before it can fire
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    // If user already dismissed in this session, never show again
+    if (sessionStorage.getItem('trd-popup-dismissed')) {
+      setIsDismissed(true);
+      return;
+    }
+    // Wait 90 seconds before arming the scroll trigger
+    const timer = setTimeout(() => {
+      readyRef.current = true;
+    }, 90000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Scroll trigger at 60% — only after 90s delay
   useEffect(() => {
     if (isDismissed) return;
 
     const handleScroll = () => {
+      if (!readyRef.current) return;
       const scrollPercentage =
         (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-      if (scrollPercentage >= 50 && !isVisible) {
+      if (scrollPercentage >= 60 && !isVisible) {
         setIsVisible(true);
       }
     };
@@ -63,6 +80,7 @@ export default function ConsultationPopup() {
   const handleClose = () => {
     setIsVisible(false);
     setIsDismissed(true);
+    try { sessionStorage.setItem('trd-popup-dismissed', '1'); } catch {}
   };
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {

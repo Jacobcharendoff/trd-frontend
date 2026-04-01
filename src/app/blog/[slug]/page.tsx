@@ -22,7 +22,7 @@ export default function BlogPostPage() {
           </p>
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
+            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full trd-cta-primary"
           >
             Back to the Workbench
           </Link>
@@ -158,7 +158,7 @@ export default function BlogPostPage() {
           </p>
           <Link
             href="/book"
-            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
+            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full trd-cta-primary"
           >
             Book a consultation
           </Link>

@@ -123,7 +123,7 @@ export default function BlogPage() {
           </p>
           <a
             href="mailto:jacob@therigdr.com"
-            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200"
+            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full trd-cta-primary"
           >
             Email the bench
           </a>
