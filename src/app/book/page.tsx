@@ -46,9 +46,9 @@ function Hero() {
 
               <div className="flex flex-wrap gap-6 py-4">
                 {[
-                  { icon: 'M12 8v4l3 2m6-3a9 9 0 11-18 0 9 9 0 0118 0z', color: '#0071E3', label: '30 minutes' },
+                  { icon: 'M12 8v4l3 2m6-3a9 9 0 11-18 0 9 9 0 0118 0z', color: '#F5A623', label: '30 minutes' },
                   { icon: 'M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z', color: '#10B981', label: 'Google Meet' },
-                  { icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z', color: '#06B6D4', label: 'Complimentary' },
+                  { icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z', color: '#F5A623', label: 'Complimentary' },
                 ].map((meta) => (
                   <div key={meta.label} className="flex items-center gap-3">
                     <svg className="w-5 h-5" style={{ color: meta.color }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -94,7 +94,7 @@ function Hero() {
 
           {/* Mobile CTA */}
           <div className="lg:hidden mt-12">
-            <button onClick={scrollToCalendar} className="w-full py-4 px-6 bg-[#0071E3] text-white font-semibold rounded-full hover:bg-[#005BB5] transition-colors text-[16px]">
+            <button onClick={scrollToCalendar} className="w-full py-4 px-6 bg-[#F5A623] text-[#1d1d1f] font-semibold rounded-full hover:bg-[#D48E1A] transition-colors text-[16px]">
               Book your free consultation
             </button>
           </div>
@@ -134,7 +134,7 @@ function AfterTheCall() {
 
         <div className="bg-[#f5f5f7] rounded-2xl p-8 flex gap-6 items-start border border-black/[0.04]">
           <div className="flex-shrink-0">
-            <svg className="w-6 h-6 text-[#0071E3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-[#F5A623]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5h.01" />
             </svg>
           </div>
@@ -142,7 +142,7 @@ function AfterTheCall() {
             <h4 className="font-semibold text-[#1d1d1f]">Not sure if this is the right call?</h4>
             <p className="text-[15px] text-[#1d1d1f]/70">
               {"This consultation is built for custom build projects. If you're looking for signal chain feedback, gear recommendations, or quick advice, "}
-              <Link href="/tone-tutoring" className="text-[#005BB5] hover:text-[#0071E3] transition-colors font-medium">explore Tone Tutoring</Link>.
+              <Link href="/tone-tutoring" className="text-[#F5A623] hover:text-[#D48E1A] transition-colors font-medium">explore Tone Tutoring</Link>.
             </p>
           </div>
         </div>
@@ -178,16 +178,17 @@ function Team() {
     <Section theme="lightGray">
       <div className="space-y-12">
         <div className="text-center space-y-2">
-          <h2 className="text-4xl font-bold text-[#1d1d1f]">The guys behind the bench.</h2>
+          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-2">The Bench</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f]">The guys behind the builds.</h2>
           <p className="text-[16px] text-[#1d1d1f]/60 max-w-2xl mx-auto">Three rig engineers. 50+ years on the soldering iron between them.</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
           {team.map((member) => (
-            <div key={member.name} className="text-center space-y-4">
-              <div className="w-40 h-40 mx-auto rounded-full overflow-hidden border-2 border-black/[0.06] shadow-sm">
-                <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+            <div key={member.name} className="group bg-white rounded-2xl overflow-hidden border border-black/[0.04] hover:-translate-y-1 transition-all duration-500">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
               </div>
-              <div>
+              <div className="p-6">
                 <h3 className="text-[18px] font-semibold text-[#1d1d1f]">{member.name}</h3>
                 <p className="text-[14px] text-[#1d1d1f]/50">{member.title}</p>
               </div>

@@ -29,7 +29,7 @@ export default function Home() {
             <div className="flex gap-4 mb-16">
               <Link
                 href="/book"
-                className="trd-glow-pulse group relative inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,113,227,0.4)] hover:scale-[1.02]"
+                className="trd-glow-pulse group relative inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48E1A] text-[#1d1d1f] font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(245,166,35,0.4)] hover:scale-[1.02]"
               >
                 Start a Build
               </Link>
@@ -53,6 +53,9 @@ export default function Home() {
         </div>
       </div>
 
+      {/* dark → light transition */}
+      <div className="trd-divider-dark-to-light" />
+
       {/* ──── 2. ARTIST TESTIMONIALS ──── */}
       <Section theme="light" id="testimonials" reveal>
         <div className="text-center mb-12">
@@ -64,15 +67,21 @@ export default function Home() {
         <TestimonialCarousel theme="light" />
       </Section>
 
+      {/* light → dark transition */}
+      <div className="trd-divider-light-to-dark" />
+
       {/* ──── 3. HOW WE BUILD (Cinema / Parallax) ──── */}
       <CinemaSection />
+
+      {/* dark → light transition */}
+      <div className="trd-divider-dark-to-light" />
 
       {/* ──── 4. WATCH THE BUILD ──── */}
       <Section theme="light" id="video-build" reveal>
         <div className="text-center mb-12">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Watch the Build</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            Bare enclosure to <span className="text-[#0071E3]">road-ready.</span>
+            Bare enclosure to <span className="trd-gradient-text">road-ready.</span>
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg">The whole thing in under a minute.</p>
         </div>
@@ -95,6 +104,9 @@ export default function Home() {
         </div>
       </Section>
 
+      {/* light → dark transition */}
+      <div className="trd-divider-light-to-dark" />
+
       {/* ──── 5. GALLERY ──── */}
       <Section theme="dark" id="gallery" reveal>
         <div className="text-center mb-10">
@@ -106,12 +118,15 @@ export default function Home() {
         <GallerySlider />
       </Section>
 
+      {/* dark → light transition */}
+      <div className="trd-divider-dark-to-light" />
+
       {/* ──── 6. BEFORE/AFTER ──── */}
       <Section theme="light" id="transformations" reveal>
         <div className="text-center mb-16">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Transformations</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-            Same pedals. <span className="text-[#0071E3]">Completely different rig.</span>
+            Same pedals. <span className="trd-gradient-text">Completely different rig.</span>
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg">What changes when we get our hands on it.</p>
         </div>
@@ -119,26 +134,28 @@ export default function Home() {
       </Section>
 
       {/* ──── MID-PAGE CTA ──── */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-[#0071E3] via-[#0091F7] to-[#00B4D8] py-16 sm:py-20">
-        {/* Subtle radial glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.08)_0%,transparent_70%)]" />
+      <section className="relative overflow-hidden bg-[#1d1d1f] py-16 sm:py-20">
+        {/* Warm amber/green radial glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(245,166,35,0.08)_0%,transparent_60%),radial-gradient(ellipse_at_70%_50%,rgba(16,185,129,0.06)_0%,transparent_60%)]" />
         <div className="relative max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-8">
           <div>
-            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            <h3 className="text-2xl sm:text-3xl font-bold text-[#f5f5f7] tracking-tight">
               Ready to hear what your rig should sound like?
             </h3>
-            <p className="text-white/60 text-base mt-3">
+            <p className="text-[#f5f5f7]/50 text-base mt-3">
               30 minutes. Free. No commitment.
             </p>
           </div>
           <Link
             href="/book"
-            className="inline-flex items-center px-8 py-4 rounded-full bg-white text-[#0071E3] font-semibold text-base hover:bg-white/95 hover:scale-[1.02] transition-all duration-300 whitespace-nowrap shadow-[0_4px_20px_rgba(0,0,0,0.15)]"
+            className="inline-flex items-center px-8 py-4 rounded-full bg-[#F5A623] text-[#1d1d1f] font-semibold text-base hover:bg-[#D48E1A] hover:scale-[1.02] transition-all duration-300 whitespace-nowrap shadow-[0_4px_20px_rgba(0,0,0,0.25)]"
           >
             Book a Free Consultation
           </Link>
         </div>
       </section>
+
+      {/* dark CTA → dark tiers (seamless) */}
 
       {/* ──── 7. SERVICE TIERS ──── */}
       <Section theme="dark" id="service-tiers" reveal>
@@ -211,21 +228,21 @@ export default function Home() {
 
             <Link
               href="/shop"
-              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full border-2 border-[#0071E3] text-[#0071E3] hover:bg-[#0071E3] hover:text-white transition-colors duration-200"
+              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full border-2 border-[#F5A623]/50 text-[#F5A623] hover:bg-[#F5A623] hover:text-[#1d1d1f] transition-colors duration-200"
             >
               Browse Kits
             </Link>
           </div>
 
           {/* Tier 3 — Most Popular */}
-          <div className="relative rounded-2xl p-8 bg-gradient-to-b from-[#1a3a4a] to-[#0f2833] border border-[#0071E3]/30 flex flex-col shadow-[0_0_40px_rgba(0,113,227,0.12)] hover:shadow-[0_0_60px_rgba(0,113,227,0.20)] hover:-translate-y-1 transition-all duration-500">
+          <div className="relative rounded-2xl p-8 bg-gradient-to-b from-[#2a2310] to-[#1a1a0f] border border-[#F5A623]/30 flex flex-col shadow-[0_0_40px_rgba(245,166,35,0.12)] hover:shadow-[0_0_60px_rgba(245,166,35,0.20)] hover:-translate-y-1 transition-all duration-500">
             <div className="absolute -top-3.5 right-6">
-              <span className="bg-[#0071E3] text-white text-xs font-semibold tracking-wider uppercase px-4 py-1.5 rounded-full">
+              <span className="bg-[#F5A623] text-[#1d1d1f] text-xs font-semibold tracking-wider uppercase px-4 py-1.5 rounded-full">
                 Most Popular
               </span>
             </div>
 
-            <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#0071E3] mb-2">Custom Build</p>
+            <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#F5A623] mb-2">Custom Build</p>
             <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">We build it for you</h3>
             <p className="text-[#f5f5f7]/50 text-sm mb-6">
               Hand us your board. Walk away. Get it back wired right and backed for life.
@@ -252,13 +269,16 @@ export default function Home() {
 
             <Link
               href="/book"
-              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full bg-[#0071E3] hover:bg-[#005BB5] text-white transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,113,227,0.35)]"
+              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full bg-[#F5A623] hover:bg-[#D48E1A] text-[#1d1d1f] transition-all duration-300 hover:shadow-[0_0_25px_rgba(245,166,35,0.35)]"
             >
               Start a Build
             </Link>
           </div>
         </div>
       </Section>
+
+      {/* dark → light transition */}
+      <div className="trd-divider-dark-to-light" />
 
       {/* ──── 8. REVIEWS ──── */}
       <Section theme="light" id="customer-reviews" reveal>
@@ -357,7 +377,7 @@ export default function Home() {
         </div>
 
         <div className="text-center mt-10">
-          <Link href="/book" className="text-[#0071E3] hover:text-[#005BB5] font-medium transition-colors">
+          <Link href="/book" className="text-[#F5A623] hover:text-[#D48E1A] font-medium transition-colors">
             Still have questions? Let&apos;s talk &rsaquo;
           </Link>
         </div>
@@ -388,7 +408,7 @@ export default function Home() {
                 'Priority access to custom build slots',
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <svg className="w-5 h-5 flex-shrink-0 text-[#0071E3] mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 flex-shrink-0 text-[#10B981] mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <span className="text-[#1d1d1f]/70 text-[15px]">{item}</span>
@@ -399,7 +419,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
               <Link
                 href="/tone-tutoring"
-                className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,113,227,0.4)] hover:scale-[1.02]"
+                className="inline-flex items-center gap-2 bg-[#1d1d1f] hover:bg-[#1d1d1f]/85 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:scale-[1.02]"
               >
                 Book a Session
               </Link>
@@ -407,7 +427,7 @@ export default function Home() {
             </div>
 
             <div className="mt-6 pt-5 border-t border-[#1d1d1f]/10">
-              <Link href="/book" className="text-[#0071E3] hover:text-[#005BB5] font-medium transition-colors">
+              <Link href="/book" className="text-[#F5A623] hover:text-[#D48E1A] font-medium transition-colors">
                 Or start with a free consultation &rsaquo;
               </Link>
             </div>

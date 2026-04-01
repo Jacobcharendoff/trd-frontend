@@ -68,10 +68,10 @@ export default function Header() {
         <div className="hidden md:flex items-center gap-3">
           <Link
             href="/book"
-            className={`text-[13px] font-medium rounded-full px-5 py-2 transition-colors ${
+            className={`text-[13px] font-medium rounded-full px-5 py-2 transition-all duration-300 ${
               scrolled
-                ? 'bg-[#2997FF] text-white hover:bg-[#1a82e6]'
-                : 'bg-[#2997FF] text-white hover:bg-[#1a82e6]'
+                ? 'bg-[#F5A623] text-[#1d1d1f] hover:bg-[#D48E1A]'
+                : 'bg-[#F5A623] text-[#1d1d1f] hover:bg-[#D48E1A]'
             }`}
           >
             Start a Build

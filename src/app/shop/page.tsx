@@ -121,7 +121,7 @@ export default function ShopPage() {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   selectedCategory === category
-                    ? 'bg-[#0071E3] text-white shadow-sm'
+                    ? 'bg-[#F5A623] text-[#1d1d1f] shadow-sm'
                     : 'bg-[#f5f5f7] text-[#1d1d1f] border border-[#1d1d1f]/10 hover:bg-[#1d1d1f]/5'
                 }`}
               >
@@ -187,7 +187,7 @@ export default function ShopPage() {
                   {/* Content */}
                   <div className="flex-1 p-6 flex flex-col">
                     <div className="mb-3">
-                      <span className="inline-block text-xs font-medium text-[#0071E3] bg-[#0071E3]/10 px-3 py-1 rounded-full">
+                      <span className="inline-block text-xs font-medium text-[#F5A623] bg-[#F5A623]/10 px-3 py-1 rounded-full">
                         {product.category}
                       </span>
                     </div>
@@ -248,7 +248,7 @@ export default function ShopPage() {
         <div className="flex gap-4 justify-center">
           <Link
             href="/book"
-            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full trd-cta-primary"
+            className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48E1A] text-[#1d1d1f] font-semibold px-8 py-4 rounded-full trd-cta-primary"
           >
             Book a Free Consultation
           </Link>
