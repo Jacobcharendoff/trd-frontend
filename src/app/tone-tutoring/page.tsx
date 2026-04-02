@@ -210,47 +210,24 @@ export default function ToneTutoringPage() {
           <p className="text-[#f5f5f7]/60 text-lg">Pick the one that fits.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          {/* Single */}
-          <div className="trd-glass-dark p-10 hover:bg-white/[0.06] transition-colors duration-300">
-            <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">Single Session</h3>
+        <div className="max-w-xl mx-auto mb-8">
+          <div className="trd-glass-dark p-10 hover:bg-white/[0.06] transition-colors duration-300 border border-[#F5A623]/20">
+            <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">60-Minute Session</h3>
             <p className="text-[#f5f5f7]/60 mb-6">One hour, one rig, full attention.</p>
             <div className="mb-8">
               <p className="text-4xl font-bold text-[#F5A623] mb-1">$99.99</p>
               <p className="text-sm text-[#f5f5f7]/60">USD</p>
             </div>
             <ul className="space-y-3 mb-8">
-              {['60-minute video session', 'Signal chain audit', 'Session recording', 'Follow-up notes within 24 hrs'].map((item) => (
+              {['60-minute 1-on-1 video session', 'Full signal chain audit', 'Session recording delivered', 'Follow-up notes within 24 hrs', 'Honest gear recommendations'].map((item) => (
                 <li key={item} className="flex gap-3">
                   <span className="text-[#10B981]">&#10003;</span>
                   <span className="text-[#f5f5f7]/80">{item}</span>
                 </li>
               ))}
             </ul>
-            <a href="https://the-rig-doctor.myshopify.com/products/tone-tutoring" className="w-full block text-center bg-[#F5A623] hover:bg-[#D48E1A] text-[#1d1d1f] font-semibold px-8 py-4 rounded-full trd-cta-primary">
-              Book Now
-            </a>
-          </div>
-
-          {/* 3-Pack */}
-          <div className="trd-glass-dark p-10 hover:bg-white/[0.06] transition-colors duration-300 relative border border-[#F5A623]/40">
-            <div className="absolute -top-4 right-6 bg-[#F5A623] text-[#1d1d1f] px-4 py-1 rounded-full text-xs font-bold">BEST VALUE</div>
-            <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">3-Session Pack</h3>
-            <p className="text-[#f5f5f7]/60 mb-6">For the player who wants to go deep.</p>
-            <div className="mb-8">
-              <p className="text-4xl font-bold text-[#F5A623] mb-1">$149.99</p>
-              <p className="text-sm text-[#f5f5f7]/60">USD (saves you $149.98)</p>
-            </div>
-            <ul className="space-y-3 mb-8">
-              {['3x 60-minute sessions', 'Full rig transformation plan', 'All recordings and notes', 'Email support between sessions'].map((item) => (
-                <li key={item} className="flex gap-3">
-                  <span className="text-[#10B981]">&#10003;</span>
-                  <span className="text-[#f5f5f7]/80">{item}</span>
-                </li>
-              ))}
-            </ul>
-            <a href="https://the-rig-doctor.myshopify.com/products/tone-tutoring" className="w-full block text-center bg-[#F5A623] hover:bg-[#D48E1A] text-[#1d1d1f] font-semibold px-8 py-4 rounded-full trd-cta-primary">
-              Book Now
+            <a href="https://the-rig-doctor.myshopify.com/products/tone-tutoring-follow-up" className="w-full block text-center bg-[#F5A623] hover:bg-[#D48E1A] text-[#1d1d1f] font-semibold px-8 py-4 rounded-full trd-cta-primary">
+              Book Your Session
             </a>
           </div>
         </div>
@@ -276,7 +253,7 @@ export default function ToneTutoringPage() {
           <AccordionItem title="What platform?" content="Zoom. It works, it's easy, nothing weird to install." />
           <AccordionItem title="Can you help me pick new gear?" content="That's one of our favorite things to do. We'll talk about what you're going for, what your budget looks like, and give you honest recs. Not whatever's trending this week." />
           <AccordionItem title="How's this different from the free build consultation?" content="The free consult is a 20-minute chat for people thinking about a custom build. Tone Tutoring is a full hour of hands-on coaching where we actually dig into your rig and optimize what you've got. Way more detailed." />
-          <AccordionItem title="Should I space out the 3-pack?" content="We'd recommend it. Do a session, make the changes, play for a week, then come back. You'll get way more out of it that way." />
+          <AccordionItem title="Can I book more than one session?" content="Absolutely. A lot of guys do a session, make the changes, play for a week, then come back. You get way more out of it that way. Just book another one when you're ready." />
           <AccordionItem title="What if I don't get anything out of it?" content="Reach out. We'll make it right. We're not doing this to collect checks. If you didn't get value, that's on us." />
         </div>
       </Section>
