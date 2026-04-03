@@ -241,7 +241,7 @@ export default function ProductPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                     </svg>
                   </div>
-                  <span className="text-sm text-[#1d1d1f]/60">Ships in 2\u20135 days</span>
+                  <span className="text-sm text-[#1d1d1f]/60">Ships in 2–5 days</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-[#f5f5f7] flex items-center justify-center flex-shrink-0">
