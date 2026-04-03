@@ -15,10 +15,10 @@ interface CaseStudy {
 
 const caseStudies: CaseStudy[] = [
   {
-    playerName: 'Mason M.',
+    playerName: 'Kevin M.',
     playerRole: 'Touring Guitarist',
     heading: 'From tangled mess to tour-ready',
-    story: 'Mason came to us with a board held together with zip ties and hope. We rebuilt it from scratch with isolated power, buffered signal path, and a switching system that lets him go from clean to lead with one tap.',
+    story: 'Came in with a board held together with zip ties and hope. We rebuilt it from scratch \u2014 isolated power, buffered signal path, and a switching system for going clean to lead with one tap.',
     tags: ['12 PEDALS', 'MIDI SWITCHING', 'TOURING RIG'],
     beforeImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_20.png',
     afterImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png',
