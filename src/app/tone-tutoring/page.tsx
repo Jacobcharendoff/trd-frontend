@@ -153,7 +153,7 @@ export default function ToneTutoringPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { num: '1', title: 'Pick a time', desc: "Single session or 3-pack. Grab what fits and book a slot. Takes 30 seconds." },
+            { num: '1', title: 'Pick a time', desc: "Grab a slot and book your session. Takes 30 seconds." },
             { num: '2', title: 'Tell us about your rig', desc: "Quick form about your gear, your style, and what's bugging you. Helps us come prepared." },
             { num: '3', title: 'Get on the call', desc: "We dig into your rig together. Real-time feedback. Real answers." },
             { num: '4', title: 'Get your game plan', desc: "Recording and written notes hit your inbox within 24 hours. Go make some noise." },
