@@ -29,7 +29,7 @@ export default function Home() {
             <div className="flex gap-4 mb-16">
               <Link
                 href="/book"
-                className="trd-glow-pulse group relative inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48E1A] text-[#1d1d1f] font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(245,166,35,0.4)] hover:scale-[1.02]"
+                className="trd-glow-pulse group relative inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-[#1d1d1f] font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,113,227,0.4)] hover:scale-[1.02]"
               >
                 Start a Build
               </Link>
@@ -136,7 +136,7 @@ export default function Home() {
       {/* ──── MID-PAGE CTA ──── */}
       <section className="relative overflow-hidden bg-[#1d1d1f] py-16 sm:py-20">
         {/* Warm amber/green radial glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(245,166,35,0.08)_0%,transparent_60%),radial-gradient(ellipse_at_70%_50%,rgba(16,185,129,0.06)_0%,transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.12)_0%,transparent_60%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.08)_0%,transparent_60%)]" />
         <div className="relative max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-8">
           <div>
             <h3 className="text-2xl sm:text-3xl font-bold text-[#f5f5f7] tracking-tight">
@@ -148,7 +148,7 @@ export default function Home() {
           </div>
           <Link
             href="/book"
-            className="inline-flex items-center px-8 py-4 rounded-full bg-[#F5A623] text-[#1d1d1f] font-semibold text-base hover:bg-[#D48E1A] hover:scale-[1.02] transition-all duration-300 whitespace-nowrap shadow-[0_4px_20px_rgba(0,0,0,0.25)]"
+            className="inline-flex items-center px-8 py-4 rounded-full bg-[#0071E3] text-[#1d1d1f] font-semibold text-base hover:bg-[#005BB5] hover:scale-[1.02] transition-all duration-300 whitespace-nowrap shadow-[0_4px_20px_rgba(0,113,227,0.25)]"
           >
             Book a Free Consultation
           </Link>
@@ -228,21 +228,21 @@ export default function Home() {
 
             <Link
               href="/shop"
-              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full border-2 border-[#F5A623]/50 text-[#F5A623] hover:bg-[#F5A623] hover:text-[#1d1d1f] transition-colors duration-200"
+              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full border-2 border-[#0071E3]/50 text-[#0071E3] hover:bg-[#0071E3] hover:text-[#1d1d1f] transition-colors duration-200"
             >
               Browse Kits
             </Link>
           </div>
 
           {/* Tier 3 — Most Popular */}
-          <div className="relative rounded-2xl p-8 bg-gradient-to-b from-[#2a2310] to-[#1a1a0f] border border-[#F5A623]/30 flex flex-col shadow-[0_0_40px_rgba(245,166,35,0.12)] hover:shadow-[0_0_60px_rgba(245,166,35,0.20)] hover:-translate-y-1 transition-all duration-500">
+          <div className="relative rounded-2xl p-8 bg-gradient-to-b from-[#0a1628] to-[#0f0a1f] border border-[#0071E3]/30 flex flex-col shadow-[0_0_40px_rgba(0,113,227,0.15)] hover:shadow-[0_0_60px_rgba(0,113,227,0.25)] hover:-translate-y-1 transition-all duration-500">
             <div className="absolute -top-3.5 right-6">
-              <span className="bg-[#F5A623] text-[#1d1d1f] text-xs font-semibold tracking-wider uppercase px-4 py-1.5 rounded-full">
+              <span className="bg-[#0071E3] text-[#1d1d1f] text-xs font-semibold tracking-wider uppercase px-4 py-1.5 rounded-full">
                 Most Popular
               </span>
             </div>
 
-            <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#F5A623] mb-2">Custom Build</p>
+            <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#0071E3] mb-2">Custom Build</p>
             <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">We build it for you</h3>
             <p className="text-[#f5f5f7]/50 text-sm mb-6">
               Hand us your board. Walk away. Get it back wired right and backed for life.
@@ -269,7 +269,7 @@ export default function Home() {
 
             <Link
               href="/book"
-              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full bg-[#F5A623] hover:bg-[#D48E1A] text-[#1d1d1f] transition-all duration-300 hover:shadow-[0_0_25px_rgba(245,166,35,0.35)]"
+              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full bg-[#0071E3] hover:bg-[#005BB5] text-[#1d1d1f] transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,113,227,0.40)]"
             >
               Start a Build
             </Link>
@@ -377,7 +377,7 @@ export default function Home() {
         </div>
 
         <div className="text-center mt-10">
-          <Link href="/book" className="text-[#F5A623] hover:text-[#D48E1A] font-medium transition-colors">
+          <Link href="/book" className="text-[#0071E3] hover:text-[#005BB5] font-medium transition-colors">
             Still have questions? Let&apos;s talk &rsaquo;
           </Link>
         </div>
@@ -427,7 +427,7 @@ export default function Home() {
             </div>
 
             <div className="mt-6 pt-5 border-t border-[#1d1d1f]/10">
-              <Link href="/book" className="text-[#F5A623] hover:text-[#D48E1A] font-medium transition-colors">
+              <Link href="/book" className="text-[#0071E3] hover:text-[#005BB5] font-medium transition-colors">
                 Or start with a free consultation &rsaquo;
               </Link>
             </div>
