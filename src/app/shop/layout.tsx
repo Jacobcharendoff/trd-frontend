@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Shop | The Rig Doctor',
+  title: 'The Tone Shop',
   description:
     'Shop cables, pedalboards, switching equipment, and more. Everything you need to build a rig that works.',
   openGraph: {
