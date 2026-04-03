@@ -7,7 +7,7 @@ import Section from '@/components/Section';
 function AccordionItem({ title, content }: { title: string; content: string }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="border border-black/[0.06] rounded-2xl overflow-hidden bg-white">
+    <div className="border border-black[0.06] rounded-2xl overflow-hidden bg-white">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full px-8 py-6 flex justify-between items-center hover:bg-[#f5f5f7]/50 transition-colors duration-200"
@@ -207,7 +207,7 @@ export default function ToneTutoringPage() {
           <h2 className="trd-section-headline text-[#f5f5f7] mb-4">
             Pricing. No surprises.
           </h2>
-          <p className="text-[#f5f5f7]/60 text-lg">Pick the one that fits.</p>
+          <p className="text-[#f5f5f7]/60 text-lg">One session. Everything you need.</p>
         </div>
 
         <div className="max-w-xl mx-auto mb-8">
