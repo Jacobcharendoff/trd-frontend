@@ -108,7 +108,7 @@ export default function AboutPage() {
               The Workshop
             </h2>
             <p className="text-lg text-[#1d1d1f]/70 leading-relaxed mb-6">
-              Every build comes out of our shop in Montgomery, Texas. No outsourcing, no assembly lines. Just hands on boards.
+              Every build comes out of our shop in Houston, Texas. No outsourcing, no assembly lines. Just hands on boards.
             </p>
             <p className="text-[#1d1d1f]/60 leading-relaxed">
               That&apos;s where we figure out what makes your rig tick, what your needs actually are, and how to build something that works for you night after night.
@@ -118,7 +118,7 @@ export default function AboutPage() {
           <div className="w-full h-96 rounded-2xl overflow-hidden border border-black/[0.06]">
             <img
               src="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png?width=800&format=webp"
-              alt="The Rig Doctor workshop — Montgomery, TX"
+              alt="The Rig Doctor workshop â Houston, TX"
               className="w-full h-full object-cover"
               loading="lazy"
             />
