@@ -13,7 +13,7 @@ function AccordionItem({ title, content }: { title: string; content: string }) {
         className="w-full px-8 py-6 flex justify-between items-center hover:bg-[#f5f5f7]/50 transition-colors duration-200"
       >
         <h3 className="text-lg font-semibold text-[#1d1d1f] text-left">{title}</h3>
-        <span className={`text-[#F5A623] text-2xl transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}>+</span>
+        <span className={`text-[#0071E3] text-2xl transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}>+</span>
       </button>
       {isOpen && (
         <div className="px-8 py-6 border-t border-black/[0.06] bg-[#f5f5f7]/30">
@@ -33,8 +33,8 @@ export default function ToneTutoringPage() {
           <div className="absolute inset-0 pointer-events-none" />
           <div className="relative z-10 max-w-[1080px] mx-auto px-6 pt-32 pb-20 w-full">
             <div className="flex justify-center mb-6">
-              <div className="inline-block bg-white/[0.08] border border-[#F5A623]/40 rounded-full px-4 py-2">
-                <p className="text-sm font-semibold text-[#F5A623]">1-on-1 Video Session</p>
+              <div className="inline-block bg-white/[0.08] border border-[#0071E3]/40 rounded-full px-4 py-2">
+                <p className="text-sm font-semibold text-[#0071E3]">1-on-1 Video Session</p>
               </div>
             </div>
             <div className="mb-8 text-center">
@@ -48,7 +48,7 @@ export default function ToneTutoringPage() {
               <div className="flex gap-4 justify-center mb-16">
                 <a
                   href="https://the-rig-doctor.myshopify.com/products/tone-tutoring"
-                  className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48E1A] text-[#1d1d1f] font-semibold px-8 py-4 rounded-full trd-cta-primary"
+                  className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-[#1d1d1f] font-semibold px-8 py-4 rounded-full trd-cta-primary"
                 >
                   Book a Session
                 </a>
@@ -57,17 +57,17 @@ export default function ToneTutoringPage() {
 
             <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-12 text-center pt-12 border-t border-white/10">
               <div>
-                <p className="text-2xl sm:text-3xl font-bold text-[#F5A623] mb-2">17+</p>
+                <p className="text-2xl sm:text-3xl font-bold text-[#0071E3] mb-2">17+</p>
                 <p className="text-sm text-[#f5f5f7]/60">Years at the bench</p>
               </div>
               <div className="hidden sm:block w-px h-12 bg-white/10" />
               <div>
-                <p className="text-2xl sm:text-3xl font-bold text-[#F5A623] mb-2">200+</p>
+                <p className="text-2xl sm:text-3xl font-bold text-[#0071E3] mb-2">200+</p>
                 <p className="text-sm text-[#f5f5f7]/60">Rigs built</p>
               </div>
               <div className="hidden sm:block w-px h-12 bg-white/10" />
               <div>
-                <p className="text-2xl sm:text-3xl font-bold text-[#F5A623] mb-2">50+</p>
+                <p className="text-2xl sm:text-3xl font-bold text-[#0071E3] mb-2">50+</p>
                 <p className="text-sm text-[#f5f5f7]/60">Touring artists</p>
               </div>
             </div>
@@ -104,7 +104,7 @@ export default function ToneTutoringPage() {
           ))}
         </div>
 
-        <div className="border border-[#F5A623]/20 bg-[#F5A623]/[0.04] rounded-2xl p-8 sm:p-12">
+        <div className="border border-[#0071E3]/20 bg-[#0071E3]/[0.04] rounded-2xl p-8 sm:p-12">
           <h3 className="text-2xl sm:text-3xl font-bold text-[#1d1d1f] mb-4">
             That&apos;s what this session is for.
           </h3>
@@ -211,11 +211,11 @@ export default function ToneTutoringPage() {
         </div>
 
         <div className="max-w-xl mx-auto mb-8">
-          <div className="trd-glass-dark p-10 hover:bg-white/[0.06] transition-colors duration-300 border border-[#F5A623]/20">
+          <div className="trd-glass-dark p-10 hover:bg-white/[0.06] transition-colors duration-300 border border-[#0071E3]/20">
             <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">60-Minute Session</h3>
             <p className="text-[#f5f5f7]/60 mb-6">One hour, one rig, full attention.</p>
             <div className="mb-8">
-              <p className="text-4xl font-bold text-[#F5A623] mb-1">$99.99</p>
+              <p className="text-4xl font-bold text-[#0071E3] mb-1">$99.99</p>
               <p className="text-sm text-[#f5f5f7]/60">USD</p>
             </div>
             <ul className="space-y-3 mb-8">
@@ -226,7 +226,7 @@ export default function ToneTutoringPage() {
                 </li>
               ))}
             </ul>
-            <a href="https://the-rig-doctor.myshopify.com/products/tone-tutoring-follow-up" className="w-full block text-center bg-[#F5A623] hover:bg-[#D48E1A] text-[#1d1d1f] font-semibold px-8 py-4 rounded-full trd-cta-primary">
+            <a href="https://the-rig-doctor.myshopify.com/products/tone-tutoring-follow-up" className="w-full block text-center bg-[#0071E3] hover:bg-[#005BB5] text-[#1d1d1f] font-semibold px-8 py-4 rounded-full trd-cta-primary">
               Book Your Session
             </a>
           </div>
@@ -273,7 +273,7 @@ export default function ToneTutoringPage() {
         <div className="mt-12">
           <a
             href="https://the-rig-doctor.myshopify.com/products/tone-tutoring"
-            className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48E1A] text-[#1d1d1f] font-semibold px-8 py-4 rounded-full trd-cta-primary"
+            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-[#1d1d1f] font-semibold px-8 py-4 rounded-full trd-cta-primary"
           >
             Book a Session
           </a>

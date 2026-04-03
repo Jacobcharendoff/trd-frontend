@@ -208,7 +208,7 @@ export default function Process() {
           {includedItems.map((item, idx) => (
             <div key={idx} className="flex gap-6">
               <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-gradient-to-br from-[#F5A623] to-[#D48E1A]">
+                <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-gradient-to-br from-[#0071E3] to-[#005BB5]">
                   <span className="text-[#1d1d1f] font-bold">{(idx + 1).toString().padStart(2, '0')}</span>
                 </div>
               </div>
@@ -273,7 +273,7 @@ export default function Process() {
         <div className="flex justify-center">
           <Link
             href="/book"
-            className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48E1A] text-[#1d1d1f] font-semibold px-8 py-4 rounded-full trd-cta-primary"
+            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-[#1d1d1f] font-semibold px-8 py-4 rounded-full trd-cta-primary"
           >
             Book a Free Consultation
           </Link>

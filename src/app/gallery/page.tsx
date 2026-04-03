@@ -103,7 +103,7 @@ export default function GalleryPage() {
             ))}
 
             {/* Placeholder cards */}
-            <div className="bg-gradient-to-br from-[#F5A623]/10 to-[#D48E1A]/10 rounded-2xl overflow-hidden flex items-center justify-center min-h-96">
+            <div className="bg-gradient-to-br from-[#0071E3]/10 to-[#005BB5]/10 rounded-2xl overflow-hidden flex items-center justify-center min-h-96">
               <div className="text-center px-6">
                 <p className="text-lg sm:text-xl font-semibold text-[#1d1d1f] mb-2">
                   More builds coming soon
@@ -114,7 +114,7 @@ export default function GalleryPage() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-[#F5A623]/10 to-[#D48E1A]/10 rounded-2xl overflow-hidden flex items-center justify-center min-h-96">
+            <div className="bg-gradient-to-br from-[#0071E3]/10 to-[#005BB5]/10 rounded-2xl overflow-hidden flex items-center justify-center min-h-96">
               <div className="text-center px-6">
                 <p className="text-lg sm:text-xl font-semibold text-[#1d1d1f] mb-2">
                   More builds coming soon
@@ -178,7 +178,7 @@ export default function GalleryPage() {
           </p>
           <Link
             href="/book"
-            className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48E1A] text-[#1d1d1f] font-semibold px-8 py-4 rounded-full trd-cta-primary"
+            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-[#1d1d1f] font-semibold px-8 py-4 rounded-full trd-cta-primary"
           >
             Book a Free Consultation
           </Link>
