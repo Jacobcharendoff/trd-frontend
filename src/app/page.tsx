@@ -24,7 +24,7 @@ export default function Home() {
             </h1>
             <p className="trd-subheadline max-w-2xl mx-auto mb-12">
               Hand-wired pedalboards built around how you actually play.
-              One at a time. Backed for life.
+              One at a time. Built to last.
             </p>
             <div className="flex justify-center gap-4 mb-20">
               <Link
@@ -48,8 +48,8 @@ export default function Home() {
               </div>
               <div className="w-px h-10 bg-white/10" />
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold trd-gradient-text-warm">∞</p>
-                <p className="text-sm text-[#f5f5f7]/50 mt-1">lifetime support</p>
+                <p className="text-2xl sm:text-3xl font-bold trd-gradient-text-warm">50+</p>
+                <p className="text-sm text-[#f5f5f7]/50 mt-1">touring artists</p>
               </div>
             </div>
           </div>
@@ -78,7 +78,7 @@ export default function Home() {
         <div className="text-center mb-12">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">On the Road</p>
           <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
-            Trusted by players who <span className="trd-gradient-text">can&apos;t afford a bad night.</span>
+            Trusted by players who can&apos;t afford a bad night.
           </h2>
         </div>
         <TestimonialCarousel theme="light" />
@@ -98,7 +98,7 @@ export default function Home() {
         <div className="text-center mb-12">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Watch the Build</p>
           <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
-            Bare enclosure to <span className="trd-gradient-text">road-ready.</span>
+            Bare enclosure to road-ready.
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg">The whole thing in under a minute.</p>
         </div>
@@ -143,7 +143,7 @@ export default function Home() {
         <div className="text-center mb-16">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Transformations</p>
           <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
-            Same pedals. <span className="trd-gradient-text">Completely different rig.</span>
+            Same pedals. Completely different rig.
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg">What changes when we get our hands on it.</p>
         </div>
@@ -262,7 +262,7 @@ export default function Home() {
             <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#0071E3] mb-2">Custom Build</p>
             <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">We build it for you</h3>
             <p className="text-[#f5f5f7]/50 text-sm mb-6">
-              Hand us your board. Walk away. Get it back wired right and backed for life.
+              Hand us your board. Walk away. Get it back wired right and built to last.
             </p>
             <p className="text-3xl font-bold text-[#f5f5f7] mb-1">From $2,000 <span className="text-lg font-normal text-[#f5f5f7]/50">USD</span></p>
             <p className="text-[#f5f5f7]/30 text-sm mb-8">turnkey, guaranteed</p>
@@ -273,7 +273,7 @@ export default function Home() {
                 'Hand-soldered, every connection',
                 'Dead-quiet signal chain',
                 'Road-tested before it ships',
-                'Lifetime support, free repairs',
+                'Ongoing support when you need it',
                 'Engineered signal path',
                 'Bulletproof on any stage',
               ].map((item, i) => (
@@ -317,12 +317,11 @@ export default function Home() {
             }}
           >
             {[
-              { name: 'Kevin M.', feedback: 'Jacob built exactly what I described. Fast, clean, and the board is rock solid. Took it on a 3-week run and it didn\'t miss a beat.' },
-              { name: 'Josh W.', feedback: 'Best decision I made for my live rig. The noise I was chasing for months? Gone. First gig with the new board and I couldn\'t stop grinning.' },
-              { name: 'Kaden C.', feedback: 'You can tell someone who cares about the craft put this together. Every cable, every connection. It\'s a different level.' },
-              { name: 'Shane T.', feedback: 'I used to dread setting up my board at gigs. Now I just plug in and play. That\'s what I was paying for.' },
-              { name: 'Mason M.', feedback: 'Jacob actually listened. Didn\'t try to upsell me on stuff I didn\'t need. The result sounds exactly like what was in my head.' },
-              { name: 'Robert B.', feedback: 'Worth every dollar. I\'ve had this board for two years now and it still works like the day I got it.' },
+              { name: 'Kevin M.', feedback: 'Took it on a 3-week tour. Not a single issue. I used to carry a backup board \u2014 don\'t anymore.' },
+              { name: 'Josh W.', feedback: 'Had this hum I could never figure out. Jacob found it in like 10 minutes. Board\'s been dead quiet since.' },
+              { name: 'Kaden C.', feedback: 'Opened up the back and every cable was labeled and laced clean. I\'ve never seen anyone do that.' },
+              { name: 'Shane T.', feedback: 'Setup used to take me 20 minutes at gigs. Now I uncase it and plug in. That alone was worth it.' },
+              { name: 'Robert B.', feedback: 'Two years in and it still holds up. I\'ve gigged this thing hard. Nothing\'s come loose, nothing buzzes.' },
             ].map((review, idx) => (
               <div key={idx} className="trd-review-card flex-shrink-0 snap-start w-[320px] sm:w-[360px] bg-[#f5f5f7] rounded-2xl p-7 border border-black/[0.06]">
                 <div className="flex gap-1 mb-4">
@@ -347,7 +346,7 @@ export default function Home() {
       <Section theme="lightGray" id="faq" reveal>
         <div className="text-center mb-12">
           <h2 className="trd-section-headline text-[#1d1d1f]">
-            Got questions? <span className="trd-gradient-text">We&apos;ve got answers.</span>
+            Got questions? We&apos;ve got answers.
           </h2>
         </div>
 
@@ -363,15 +362,15 @@ export default function Home() {
             },
             {
               q: "What if something breaks?",
-              a: "That's what 'For Life' means. Every build comes with lifetime support. If something goes wrong, we fix it. No questions, no runaround.",
+              a: "We stand behind our work. If something goes wrong with the build, reach out and we'll figure it out with you. We're not going to leave you hanging.",
             },
             {
               q: "Do I need to ship my board to you?",
-              a: "Most clients do, yeah. We're in Montgomery, TX. We'll send you a shipping label and walk you through packing it safe. Local? Drop it off anytime.",
+              a: "Most clients do, yeah. We're in Houston, TX. We'll send you a shipping label and walk you through packing it safe. Local? Drop it off anytime.",
             },
             {
               q: "What is included in the free consultation?",
-              a: "Everything. We talk through your rig, your signal chain, what's bugging you, and what you want it to do. Then we put together a game plan and a quote. No pressure, no obligation.",
+              a: "We talk through your rig, your signal chain, what's bugging you, and what you want it to do. Then we put together a game plan and a quote. No pressure, no obligation.",
             },
             {
               q: "Do you build MIDI switching systems and audio loops?",
