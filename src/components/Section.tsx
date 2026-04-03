@@ -33,7 +33,13 @@ export default function Section({
   useEffect(() => {
     if (!reveal || !ref.current) return;
 
-    // Create intersection observer with more lenient threshold
+    // If element is already in the viewport on mount, show immediately
+    const rect = ref.current.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -42,17 +48,17 @@ export default function Section({
         }
       },
       {
-        threshold: 0.05,
-        rootMargin: '50px'
+        threshold: 0.02,
+        rootMargin: '100px'
       }
     );
 
     observer.observe(ref.current);
 
-    // Fallback: ensure visibility after 8 seconds if observer didn't trigger
+    // Fallback: ensure visibility after 1.5s no matter what
     const timeoutId = setTimeout(() => {
       setVisible(true);
-    }, 8000);
+    }, 1500);
 
     return () => {
       clearTimeout(timeoutId);
@@ -66,7 +72,7 @@ export default function Section({
       ref={ref}
       className={`
         ${themeClasses[theme]}
-        ${noPadding ? '' : 'py-20 md:py-[120px]'}
+        ${noPadding ? '' : 'py-14 md:py-20'}
         ${reveal ? `transition-all duration-700 ease-out ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}` : ''}
         ${className}
       `}
