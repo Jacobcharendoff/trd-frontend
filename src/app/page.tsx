@@ -13,35 +13,52 @@ export default function Home() {
     <>
       {/* ──── 1. HERO ──── */}
       <div className="relative w-full overflow-hidden">
-        <div className="relative min-h-screen flex items-center justify-center bg-black">
+        <div className="relative min-h-screen flex items-end justify-center bg-black trd-aurora-intense">
           <HeroVideo />
 
-          <div className="relative z-10 max-w-[1080px] mx-auto px-6 pt-32 pb-20 w-full text-left">
-            <h1 className="text-[2.75rem] sm:text-[3.5rem] md:text-[4.25rem] lg:text-[5rem] font-bold leading-[1.08] tracking-tight text-[#f5f5f7] mb-6 max-w-3xl">
+          <div className="relative z-10 max-w-[1200px] mx-auto px-6 pb-24 pt-40 w-full text-center">
+            <h1 className="trd-hero-headline text-[#f5f5f7] mb-8">
               We don&apos;t sell gear.
               <br />
               <span className="trd-gradient-text">We wire it right.</span>
             </h1>
-            <p className="text-lg sm:text-xl text-[#f5f5f7]/70 max-w-xl leading-relaxed mb-8">
+            <p className="trd-subheadline max-w-2xl mx-auto mb-12">
               Hand-wired pedalboards built around how you actually play.
               One at a time. Backed for life.
             </p>
-            <div className="flex gap-4 mb-16">
+            <div className="flex justify-center gap-4 mb-20">
               <Link
                 href="/book"
-                className="trd-glow-pulse group relative inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,113,227,0.4)] hover:scale-[1.02]"
+                className="trd-cta-gradient trd-glow-pulse inline-flex items-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
               >
                 Start a Build
+                <svg className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </Link>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-12 pt-8 border-t border-white/10">
-              <p className="text-base sm:text-lg text-[#f5f5f7]/60">200+ rigs built</p>
-              <span className="hidden sm:block text-[#f5f5f7]/20">&bull;</span>
-              <p className="text-base sm:text-lg text-[#f5f5f7]/60">17 years at the bench</p>
-              <span className="hidden sm:block text-[#f5f5f7]/20">&bull;</span>
-              <p className="text-base sm:text-lg text-[#f5f5f7]/60">Lifetime support</p>
+            <div className="flex justify-center items-center gap-8 sm:gap-16 pt-8 border-t border-white/10">
+              <div className="text-center">
+                <p className="text-2xl sm:text-3xl font-bold text-white">200+</p>
+                <p className="text-sm text-[#f5f5f7]/50 mt-1">rigs built</p>
+              </div>
+              <div className="w-px h-10 bg-white/10" />
+              <div className="text-center">
+                <p className="text-2xl sm:text-3xl font-bold text-white">17</p>
+                <p className="text-sm text-[#f5f5f7]/50 mt-1">years at the bench</p>
+              </div>
+              <div className="w-px h-10 bg-white/10" />
+              <div className="text-center">
+                <p className="text-2xl sm:text-3xl font-bold trd-gradient-text-warm">∞</p>
+                <p className="text-sm text-[#f5f5f7]/50 mt-1">lifetime support</p>
+              </div>
             </div>
+          </div>
+
+          {/* Scroll indicator */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+            <svg className="w-6 h-6 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7" />
+            </svg>
           </div>
 
           {/* Scroll indicator */}
