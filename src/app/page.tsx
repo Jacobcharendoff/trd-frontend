@@ -29,7 +29,7 @@ export default function Home() {
             <div className="flex gap-4 mb-16">
               <Link
                 href="/book"
-                className="trd-glow-pulse group relative inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-[#1d1d1f] font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,113,227,0.4)] hover:scale-[1.02]"
+                className="trd-glow-pulse group relative inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,113,227,0.4)] hover:scale-[1.02]"
               >
                 Start a Build
               </Link>
@@ -269,7 +269,7 @@ export default function Home() {
 
             <Link
               href="/book"
-              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full bg-[#0071E3] hover:bg-[#005BB5] text-[#1d1d1f] transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,113,227,0.40)]"
+              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full bg-[#0071E3] hover:bg-[#005BB5] text-white transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,113,227,0.40)]"
             >
               Start a Build
             </Link>
