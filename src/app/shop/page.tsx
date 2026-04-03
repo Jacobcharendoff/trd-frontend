@@ -97,13 +97,13 @@ export default function ShopPage() {
     <>
       {/* ──── HERO SECTION ──── */}
       <div className="relative w-full bg-black overflow-hidden">
-        <div className="relative trd-aurora min-h-[500px] flex items-center justify-center">
+        <div className="relative trd-aurora-intense min-h-[500px] flex items-center justify-center">
           <div className="absolute inset-0 pointer-events-none" />
           <div className="relative z-10 max-w-[1080px] mx-auto px-6 py-32 w-full text-center">
-            <h1 className="text-[2.5rem] sm:text-[3.5rem] md:text-[4.5rem] font-bold leading-[1.05] tracking-tight text-[#f5f5f7] mb-6">
+            <h1 className="trd-hero-headline text-[#f5f5f7] mb-6">
               The Tone <span className="trd-gradient-text">Shop</span>
             </h1>
-            <p className="text-lg sm:text-xl text-[#f5f5f7]/70 max-w-2xl mx-auto leading-relaxed">
+            <p className="trd-subheadline max-w-2xl mx-auto">
               Cables, pedalboards, switching, and more — everything you need to build a rig that works.
             </p>
           </div>
@@ -238,7 +238,7 @@ export default function ShopPage() {
       {/* ──── CTA SECTION ──── */}
       <Section theme="dark" id="shop-cta" reveal className="text-center">
         <div className="mb-8">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-4">
+          <h2 className="trd-section-headline text-[#f5f5f7] mb-4">
             Not sure what you need?
           </h2>
           <p className="text-[#f5f5f7]/60 text-lg max-w-2xl mx-auto mb-8">
@@ -248,7 +248,7 @@ export default function ShopPage() {
         <div className="flex gap-4 justify-center">
           <Link
             href="/book"
-            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full trd-cta-primary"
+            className="inline-flex items-center gap-2 text-white font-semibold px-8 py-4 rounded-full trd-cta-gradient trd-glow-pulse"
           >
             Book a Free Consultation
           </Link>
