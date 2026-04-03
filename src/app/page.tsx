@@ -77,7 +77,7 @@ export default function Home() {
       <Section theme="light" id="testimonials" reveal>
         <div className="text-center mb-12">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">On the Road</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
+          <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
             Trusted by players who <span className="trd-gradient-text">can&apos;t afford a bad night.</span>
           </h2>
         </div>
@@ -97,7 +97,7 @@ export default function Home() {
       <Section theme="light" id="video-build" reveal>
         <div className="text-center mb-12">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Watch the Build</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
+          <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
             Bare enclosure to <span className="trd-gradient-text">road-ready.</span>
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg">The whole thing in under a minute.</p>
@@ -128,7 +128,7 @@ export default function Home() {
       <Section theme="dark" id="gallery" reveal>
         <div className="text-center mb-10">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-4">The Gallery</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-2">
+          <h2 className="trd-section-headline text-[#f5f5f7] mb-2">
             200+ rigs. <span className="trd-gradient-text">Here&apos;s a few.</span>
           </h2>
         </div>
@@ -142,7 +142,7 @@ export default function Home() {
       <Section theme="light" id="transformations" reveal>
         <div className="text-center mb-16">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Transformations</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
+          <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
             Same pedals. <span className="trd-gradient-text">Completely different rig.</span>
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg">What changes when we get our hands on it.</p>
@@ -152,8 +152,8 @@ export default function Home() {
 
       {/* ──── MID-PAGE CTA ──── */}
       <section className="relative overflow-hidden bg-[#1d1d1f] py-16 sm:py-20">
-        {/* Warm amber/green radial glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.12)_0%,transparent_60%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.08)_0%,transparent_60%)]" />
+        {/* Tie-dye aurora glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(255,55,95,0.06)_0%,transparent_50%)]" />
         <div className="relative max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-8">
           <div>
             <h3 className="text-2xl sm:text-3xl font-bold text-[#f5f5f7] tracking-tight">
@@ -165,7 +165,7 @@ export default function Home() {
           </div>
           <Link
             href="/book"
-            className="inline-flex items-center px-8 py-4 rounded-full bg-[#0071E3] text-white font-semibold text-base hover:bg-[#005BB5] hover:scale-[1.02] transition-all duration-300 whitespace-nowrap shadow-[0_4px_20px_rgba(0,113,227,0.25)]"
+            className="trd-cta-gradient trd-glow-pulse inline-flex items-center px-8 py-4 rounded-full font-semibold text-base whitespace-nowrap"
           >
             Book a Free Consultation
           </Link>
@@ -177,7 +177,7 @@ export default function Home() {
       {/* ──── 7. SERVICE TIERS ──── */}
       <Section theme="dark" id="service-tiers" reveal>
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-4">
+          <h2 className="trd-section-headline text-[#f5f5f7] mb-4">
             Three ways to <span className="trd-gradient-text">get your tone right.</span>
           </h2>
           <p className="text-[#f5f5f7]/50 text-lg max-w-2xl mx-auto">
@@ -245,7 +245,7 @@ export default function Home() {
 
             <Link
               href="/shop"
-              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full border-2 border-[#0071E3]/50 text-[#0071E3] bg-[#0071E3] text-white transition-colors duration-200"
+              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full border-2 border-[#0071E3]/50 text-[#0071E3] hover:bg-[#0071E3] hover:text-white transition-all duration-300"
             >
               Browse Kits
             </Link>
@@ -300,7 +300,7 @@ export default function Home() {
       {/* ──── 8. REVIEWS ──── */}
       <Section theme="light" id="customer-reviews" reveal>
         <div className="mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
+          <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
             Don&apos;t take our word for it.
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg">Straight from the people who gig on these boards every week.</p>
@@ -346,7 +346,7 @@ export default function Home() {
       {/* ──── 10. FAQ ──── */}
       <Section theme="lightGray" id="faq" reveal>
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f]">
+          <h2 className="trd-section-headline text-[#1d1d1f]">
             Got questions? <span className="trd-gradient-text">We&apos;ve got answers.</span>
           </h2>
         </div>
@@ -409,7 +409,7 @@ export default function Home() {
           {/* Left: Value prop */}
           <div>
             <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Not ready for a full build?</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-4">
+            <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
               Start with a Tone Tutoring session.
             </h2>
             <p className="text-lg text-[#1d1d1f]/60 leading-relaxed mb-8">
