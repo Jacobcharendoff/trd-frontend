@@ -26,7 +26,7 @@ export default function Process() {
     },
     {
       question: 'What if I want to change my setup later?',
-      answer: "That's the point of lifetime support. Need to swap a pedal, add something new, rethink the chain? We'll help you plan the changes and do the work if you need us to.",
+      answer: "That's what we're here for. Need to swap a pedal, add something new, rethink the chain? Reach out and we'll help you plan the changes and do the work if you need us to.",
     },
   ];
 
@@ -52,7 +52,7 @@ export default function Process() {
       description: 'Signal chain diagram, settings, care guide. All of it.',
     },
     {
-      title: 'Lifetime support',
+      title: 'Ongoing support',
       description: 'Need something changed down the road? Call us.',
     },
   ];
@@ -185,7 +185,7 @@ export default function Process() {
               </div>
               <div>
                 <p className="text-sm text-[#1d1d1f]/50">Support</p>
-                <p className="text-lg font-semibold text-[#1d1d1f]">Lifetime</p>
+                <p className="text-lg font-semibold text-[#1d1d1f]">We&apos;re a call away</p>
               </div>
               <div>
                 <p className="text-sm text-[#1d1d1f]/50">Ready to</p>
