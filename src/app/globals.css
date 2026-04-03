@@ -1,23 +1,37 @@
 @import "tailwindcss";
 
-/* ─── TRD Global Design System ─── */
+/* ═══════════════════════════════════════════════════════════
+   THE RIG DOCTOR — Design System v2
+   Apple Intelligence-inspired tie-dye gradient system
+   Blue-primary → Purple → Pink → Orange
+   ═══════════════════════════════════════════════════════════ */
 
 :root {
+  /* ─── Core Neutrals ─── */
   --trd-black: #000000;
   --trd-dark: #0a0a0a;
   --trd-dark-card: #1d1d1f;
   --trd-light-gray: #f5f5f7;
   --trd-white: #ffffff;
-  --trd-amber: #F5A623;
-  --trd-amber-dark: #D48E1A;
-  --trd-green: #10B981;
-  --trd-green-light: #34D399;
-  --trd-blue: #0071E3;
-  --trd-blue-dark: #005BB5;
   --trd-text: #1d1d1f;
   --trd-text-secondary: rgba(0, 0, 0, 0.5);
   --trd-border-light: rgba(0, 0, 0, 0.06);
   --trd-border-dark: rgba(255, 255, 255, 0.08);
+
+  /* ─── Tie-Dye Gradient Palette ─── */
+  --trd-blue: #0071E3;
+  --trd-blue-light: #2997FF;
+  --trd-blue-dark: #005BB5;
+  --trd-purple: #BF5AF2;
+  --trd-pink: #FF375F;
+  --trd-orange: #FF9F0A;
+  --trd-red: #FF453A;
+
+  /* ─── Legacy Support (components still referencing amber/green) ─── */
+  --trd-amber: #0071E3;
+  --trd-amber-dark: #005BB5;
+  --trd-green: #BF5AF2;
+  --trd-green-light: #FF375F;
 }
 
 html {
@@ -32,54 +46,150 @@ body {
   color: var(--trd-text);
 }
 
-/* ─── Gradient Text Utility ─── */
+/* ═══════════════════════════════════════════════════════════
+   GRADIENT TEXT — The signature TRD tie-dye effect
+   ═══════════════════════════════════════════════════════════ */
+
 .trd-gradient-text {
-  background: linear-gradient(135deg, var(--trd-amber), var(--trd-green));
+  background: linear-gradient(90deg, var(--trd-blue), var(--trd-purple), var(--trd-pink), var(--trd-orange));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .trd-gradient-text-warm {
-  background: linear-gradient(135deg, var(--trd-amber), var(--trd-green-light));
+  background: linear-gradient(90deg, var(--trd-blue-light), var(--trd-purple), var(--trd-pink));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ─── Aurora Background (warm stage-lit glow) ─── */
+.trd-gradient-text-blue {
+  background: linear-gradient(90deg, var(--trd-blue-light), var(--trd-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   AURORA BACKGROUND — Immersive tie-dye glow for dark sections
+   ═══════════════════════════════════════════════════════════ */
+
 .trd-aurora::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(245, 166, 35, 0.10) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 50%, rgba(16, 185, 129, 0.07) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 80%, rgba(245, 166, 35, 0.05) 0%, transparent 50%);
-  animation: aurora 8s ease-in-out infinite alternate;
+    radial-gradient(ellipse at 15% 50%, rgba(0, 113, 227, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 40% 30%, rgba(191, 90, 242, 0.10) 0%, transparent 45%),
+    radial-gradient(ellipse at 65% 60%, rgba(255, 55, 95, 0.08) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 40%, rgba(255, 159, 10, 0.08) 0%, transparent 50%);
+  animation: aurora 10s ease-in-out infinite alternate;
   pointer-events: none;
+  z-index: 0;
 }
 
 @keyframes aurora {
-  0% { opacity: 0.6; }
-  100% { opacity: 1; }
+  0% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
-/* ─── Pulse Dot ─── */
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+/* ─── Aurora variant: intense (for hero sections) ─── */
+.trd-aurora-intense::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 10% 50%, rgba(0, 113, 227, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 35% 20%, rgba(191, 90, 242, 0.18) 0%, transparent 45%),
+    radial-gradient(ellipse at 60% 70%, rgba(255, 55, 95, 0.15) 0%, transparent 45%),
+    radial-gradient(ellipse at 90% 30%, rgba(255, 159, 10, 0.12) 0%, transparent 50%);
+  animation: aurora-intense 12s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.trd-pulse-dot {
-  animation: pulse-dot 2s ease-in-out infinite;
+@keyframes aurora-intense {
+  0% { opacity: 0.6; transform: scale(1) rotate(0deg); }
+  33% { opacity: 0.9; transform: scale(1.03) rotate(0.5deg); }
+  66% { opacity: 0.7; transform: scale(0.98) rotate(-0.5deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
-/* ─── Glass Card ─── */
+/* ═══════════════════════════════════════════════════════════
+   GRADIENT BORDERS & BACKGROUNDS
+   ═══════════════════════════════════════════════════════════ */
+
+.trd-gradient-border {
+  position: relative;
+  border-radius: 16px;
+}
+
+.trd-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--trd-blue), var(--trd-purple), var(--trd-pink));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.trd-gradient-bg {
+  background: linear-gradient(135deg,
+    rgba(0, 113, 227, 0.05),
+    rgba(191, 90, 242, 0.05),
+    rgba(255, 55, 95, 0.03));
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CTA BUTTONS — Blue primary with tie-dye glow
+   ═══════════════════════════════════════════════════════════ */
+
+.trd-cta-primary {
+  background: var(--trd-blue);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.trd-cta-primary:hover {
+  background: var(--trd-blue-light);
+  box-shadow:
+    0 0 20px rgba(0, 113, 227, 0.4),
+    0 0 40px rgba(191, 90, 242, 0.15);
+  transform: scale(1.02);
+}
+
+/* ─── Gradient CTA (special use) ─── */
+.trd-cta-gradient {
+  background: linear-gradient(90deg, var(--trd-blue), var(--trd-purple));
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.trd-cta-gradient:hover {
+  background: linear-gradient(90deg, var(--trd-blue-light), var(--trd-pink));
+  box-shadow:
+    0 0 25px rgba(0, 113, 227, 0.35),
+    0 0 50px rgba(191, 90, 242, 0.15);
+  transform: scale(1.02);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   GLASS CARDS
+   ═══════════════════════════════════════════════════════════ */
+
 .trd-glass-dark {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .trd-glass-light {
@@ -88,77 +198,167 @@ body {
   border-radius: 16px;
 }
 
-/* ─── Hero CTA Glow Pulse ─── */
+/* ═══════════════════════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════════════════════ */
+
+/* Pulse Dot */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.trd-pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+/* Glow Pulse (blue tie-dye) */
 @keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 20px rgba(245, 166, 35, 0.3); }
-  50% { box-shadow: 0 0 35px rgba(245, 166, 35, 0.5), 0 0 60px rgba(245, 166, 35, 0.15); }
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 113, 227, 0.3); }
+  50% { box-shadow: 0 0 35px rgba(0, 113, 227, 0.5), 0 0 60px rgba(191, 90, 242, 0.15); }
+}
+.trd-glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+
+/* Float animation for visual elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.trd-float { animation: float 6s ease-in-out infinite; }
+
+/* Shimmer for loading states */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.trd-shimmer {
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0, 113, 227, 0.08) 50%,
+    transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
 }
 
-.trd-glow-pulse {
-  animation: glow-pulse 3s ease-in-out infinite;
+/* Scroll-triggered fade-in-up */
+.trd-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.trd-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* ─── Review card hover ─── */
+/* Scroll-triggered scale */
+.trd-reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.trd-reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   REVIEW CARDS
+   ═══════════════════════════════════════════════════════════ */
+
 .trd-review-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .trd-review-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
 }
 
-/* ─── Section Transition Dividers ─── */
-.trd-divider-dark-to-light {
-  height: 80px;
-  background: linear-gradient(to bottom, #0a0a0a, #ffffff);
-}
+/* ═══════════════════════════════════════════════════════════
+   SECTION TRANSITION DIVIDERS
+   ═══════════════════════════════════════════════════════════ */
 
-.trd-divider-light-to-dark {
-  height: 80px;
-  background: linear-gradient(to bottom, #ffffff, #0a0a0a);
-}
+.trd-divider-dark-to-light { height: 80px; background: linear-gradient(to bottom, #0a0a0a, #ffffff); }
+.trd-divider-light-to-dark { height: 80px; background: linear-gradient(to bottom, #ffffff, #0a0a0a); }
+.trd-divider-dark-to-gray  { height: 80px; background: linear-gradient(to bottom, #0a0a0a, #f5f5f7); }
+.trd-divider-gray-to-dark  { height: 80px; background: linear-gradient(to bottom, #f5f5f7, #0a0a0a); }
+.trd-divider-light-to-gray { height: 64px; background: linear-gradient(to bottom, #ffffff, #f5f5f7); }
+.trd-divider-gray-to-light { height: 64px; background: linear-gradient(to bottom, #f5f5f7, #ffffff); }
 
-.trd-divider-dark-to-gray {
-  height: 80px;
-  background: linear-gradient(to bottom, #0a0a0a, #f5f5f7);
-}
+/* ═══════════════════════════════════════════════════════════
+   SLIDER HANDLE
+   ═══════════════════════════════════════════════════════════ */
 
-.trd-divider-gray-to-dark {
-  height: 80px;
-  background: linear-gradient(to bottom, #f5f5f7, #0a0a0a);
-}
-
-.trd-divider-light-to-gray {
-  height: 64px;
-  background: linear-gradient(to bottom, #ffffff, #f5f5f7);
-}
-
-.trd-divider-gray-to-light {
-  height: 64px;
-  background: linear-gradient(to bottom, #f5f5f7, #ffffff);
-}
-
-/* ─── Consistent CTA Glow Hover ─── */
-.trd-cta-primary {
-  transition: all 0.3s ease;
-}
-
-.trd-cta-primary:hover {
-  box-shadow: 0 0 30px rgba(245, 166, 35, 0.4);
-  transform: scale(1.02);
-}
-
-/* ─── Before/After Slider ─── */
-.trd-slider-handle {
-  transition: box-shadow 0.2s ease;
-}
-
+.trd-slider-handle { transition: box-shadow 0.2s ease; }
 .trd-slider-handle:hover {
-  box-shadow: 0 0 20px rgba(245, 166, 35, 0.4);
+  box-shadow: 0 0 20px rgba(0, 113, 227, 0.4);
 }
 
-/* ─── HubSpot Overrides ─── */
+/* ═══════════════════════════════════════════════════════════
+   VIDEO CONTAINER — For Apple-style inline video
+   ═══════════════════════════════════════════════════════════ */
+
+.trd-video-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.trd-video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FULL-BLEED IMAGE SECTIONS
+   ═══════════════════════════════════════════════════════════ */
+
+.trd-full-bleed {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  overflow: hidden;
+}
+
+.trd-image-parallax {
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TYPOGRAPHY — Apple-scale headline system
+   ═══════════════════════════════════════════════════════════ */
+
+.trd-hero-headline {
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.trd-section-headline {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.trd-subheadline {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.trd-subheadline-dark {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(29, 29, 31, 0.6);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HUBSPOT OVERRIDES
+   ═══════════════════════════════════════════════════════════ */
+
 #hubspot-messages-iframe-container {
   display: none !important;
 }
