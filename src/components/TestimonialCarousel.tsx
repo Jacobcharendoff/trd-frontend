@@ -30,11 +30,6 @@ const artists: Artist[] = [
     photo: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/PaulJacksonJr_f874676e-bc05-4d0d-89a7-ea9e8e39d96a.jpg',
   },
   {
-    name: 'Rhett Shull',
-    role: 'Nashville Guitarist & YouTube Creator',
-    photo: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/RhettShull_9cf433b2-ccba-4cd5-9faa-765f0b4de1e8.jpg',
-  },
-  {
     name: 'Emily Wolfe',
     role: 'Austin Rock & Blues Guitarist',
     photo: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/EmilyWolfe_1c6c2dca-011e-4074-8676-46d9f2abc041.jpg',
