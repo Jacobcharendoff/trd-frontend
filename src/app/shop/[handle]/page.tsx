@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+/* Using native <img> instead of next/image to avoid Shopify CDN domain issues */
 import Section from '@/components/Section';
 import { getProduct, getCheckoutUrl, type ShopifyProduct } from '@/lib/shopify';
 
@@ -63,8 +63,8 @@ export default function ProductPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white">
-        <div className="max-w-[1200px] mx-auto px-6 py-32">
+      <div className="min-h-screen bg-white pt-20">
+        <div className="max-w-[1200px] mx-auto px-6 py-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div className="aspect-square bg-[#f5f5f7] rounded-3xl animate-pulse" />
             <div className="flex flex-col justify-center space-y-6">
@@ -82,7 +82,7 @@ export default function ProductPage() {
 
   if (error || !product) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center pt-20">
         <div className="text-center max-w-md px-6">
           <h1 className="text-3xl font-bold text-[#1d1d1f] mb-4">Product not found</h1>
           <p className="text-[#1d1d1f]/60 mb-8">
@@ -103,13 +103,15 @@ export default function ProductPage() {
   const variants = product.variants.edges.map((e) => e.node);
   const currentVariant = variants[selectedVariant];
   const hasMultipleVariants = variants.length > 1 && !(variants.length === 1 && variants[0].title === 'Default Title');
+  const useDropdown = hasMultipleVariants && variants.length > 6;
   const currentImage = images[selectedImage] || null;
   const price = currentVariant ? formatPrice(currentVariant.price.amount) : formatPrice(product.priceRange.minVariantPrice.amount);
   const isAvailable = currentVariant?.availableForSale !== false;
 
   return (
     <>
-      <div className="bg-white border-b border-black/[0.04]">
+      {/* Breadcrumb â sits below the site Header */}
+      <div className="bg-white border-b border-black/[0.04] pt-16">
         <div className="max-w-[1200px] mx-auto px-6 py-3">
           <nav className="flex items-center gap-2 text-sm text-[#1d1d1f]/40">
             <Link href="/shop" className="hover:text-[#0071E3] transition-colors">
@@ -122,19 +124,17 @@ export default function ProductPage() {
       </div>
 
       <section className="bg-white">
-        <div className="max-w-[1200px] mx-auto px-6 py-16 lg:py-24">
+        <div className="max-w-[1200px] mx-auto px-6 py-12 lg:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+            {/* Product Image */}
             <div className="space-y-4">
               <div className="relative aspect-square bg-[#f5f5f7] rounded-3xl overflow-hidden">
                 {currentImage ? (
-                  <Image
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
                     src={currentImage.url}
                     alt={currentImage.altText || product.title}
-                    width={currentImage.width}
-                    height={currentImage.height}
                     className="w-full h-full object-contain p-8"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    priority
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
@@ -157,11 +157,10 @@ export default function ProductPage() {
                           : 'border-transparent opacity-60 hover:opacity-100'
                       }`}
                     >
-                      <Image
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
                         src={img.url}
                         alt={img.altText || `${product.title} ${i + 1}`}
-                        width={80}
-                        height={80}
                         className="w-full h-full object-cover"
                       />
                     </button>
@@ -170,9 +169,10 @@ export default function ProductPage() {
               )}
             </div>
 
-            <div className="lg:sticky lg:top-32 space-y-8">
+            {/* Product Info */}
+            <div className="lg:sticky lg:top-24 space-y-6">
               <div>
-                <h1 className="text-[2rem] sm:text-[2.5rem] lg:text-[3rem] font-bold leading-[1.1] tracking-tight text-[#1d1d1f] mb-4">
+                <h1 className="text-[2rem] sm:text-[2.5rem] lg:text-[3rem] font-bold leading-[1.1] tracking-tight text-[#1d1d1f] mb-3">
                   {product.title}
                 </h1>
                 <p className="text-2xl sm:text-3xl font-semibold text-[#1d1d1f]">
@@ -180,27 +180,43 @@ export default function ProductPage() {
                 </p>
               </div>
 
+              {/* Variants â dropdown for 6+ options, pills for fewer */}
               {hasMultipleVariants && (
                 <div>
                   <p className="text-sm font-medium text-[#1d1d1f]/60 mb-3 uppercase tracking-wide">
                     Options
                   </p>
-                  <div className="flex flex-wrap gap-2">
-                    {variants.map((v, i) => (
-                      <button
-                        key={v.id}
-                        onClick={() => setSelectedVariant(i)}
-                        className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
-                          selectedVariant === i
-                            ? 'bg-[#1d1d1f] text-white'
-                            : 'bg-[#f5f5f7] text-[#1d1d1f] hover:bg-[#1d1d1f]/5 border border-[#1d1d1f]/10'
-                        } ${!v.availableForSale ? 'opacity-40 line-through cursor-not-allowed' : ''}`}
-                        disabled={!v.availableForSale}
-                      >
-                        {v.title}
-                      </button>
-                    ))}
-                  </div>
+                  {useDropdown ? (
+                    <select
+                      value={selectedVariant}
+                      onChange={(e) => setSelectedVariant(Number(e.target.value))}
+                      className="w-full px-5 py-3.5 rounded-2xl text-base font-medium bg-[#f5f5f7] text-[#1d1d1f] border border-[#1d1d1f]/10 focus:border-[#0071E3] focus:ring-2 focus:ring-[#0071E3]/20 outline-none transition-all appearance-none cursor-pointer"
+                      style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231d1d1f' d='M6 8.825L1.175 4l.884-.884L6 7.058l3.941-3.942.884.884z'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 16px center' }}
+                    >
+                      {variants.map((v, i) => (
+                        <option key={v.id} value={i} disabled={!v.availableForSale}>
+                          {v.title}{!v.availableForSale ? ' â Sold Out' : ''} â {formatPrice(v.price.amount)}
+                        </option>
+                      ))}
+                    </select>
+                  ) : (
+                    <div className="flex flex-wrap gap-2">
+                      {variants.map((v, i) => (
+                        <button
+                          key={v.id}
+                          onClick={() => setSelectedVariant(i)}
+                          className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
+                            selectedVariant === i
+                              ? 'bg-[#1d1d1f] text-white'
+                              : 'bg-[#f5f5f7] text-[#1d1d1f] hover:bg-[#1d1d1f]/5 border border-[#1d1d1f]/10'
+                          } ${!v.availableForSale ? 'opacity-40 line-through cursor-not-allowed' : ''}`}
+                          disabled={!v.availableForSale}
+                        >
+                          {v.title}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -241,7 +257,7 @@ export default function ProductPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                     </svg>
                   </div>
-                  <span className="text-sm text-[#1d1d1f]/60">Ships in 2–5 days</span>
+                  <span className="text-sm text-[#1d1d1f]/60">Ships in 2-5 days</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-[#f5f5f7] flex items-center justify-center flex-shrink-0">
