@@ -60,11 +60,11 @@ export default function SignalFlowCapture() {
     <section
       ref={ref}
       id="signal-flow"
-      className={\`
+      className={`
         bg-[#0a0a0a] text-[#f5f5f7] py-20 md:py-[120px] overflow-hidden
         transition-all duration-700 ease-out
-        \${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
-      \`}
+        ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+      `}
     >
       <div className="max-w-[1080px] mx-auto px-6">
         <div className="relative rounded-3xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent p-8 md:p-16 text-center overflow-hidden">
@@ -89,6 +89,7 @@ export default function SignalFlowCapture() {
             </p>
 
             {status === 'success' ? (
+              /* —— Success state —— */
               <div className="animate-in fade-in duration-500">
                 <div className="inline-flex items-center gap-2 text-green-400 mb-6">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -116,6 +117,7 @@ export default function SignalFlowCapture() {
                 </p>
               </div>
             ) : (
+              /* —— Form state —— */
               <form onSubmit={handleSubmit} className="max-w-md mx-auto">
                 <div className="flex flex-col sm:flex-row gap-3">
                   <input
