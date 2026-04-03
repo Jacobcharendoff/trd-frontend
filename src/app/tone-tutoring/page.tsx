@@ -29,7 +29,7 @@ export default function ToneTutoringPage() {
     <>
       {/* ──── HERO ──── */}
       <div className="relative w-full bg-black overflow-hidden">
-        <div className="relative trd-aurora min-h-screen flex items-center justify-center">
+        <div className="relative trd-aurora-intense min-h-screen flex items-end justify-center">
           <div className="absolute inset-0 pointer-events-none" />
           <div className="relative z-10 max-w-[1080px] mx-auto px-6 pt-32 pb-20 w-full">
             <div className="flex justify-center mb-6">
@@ -38,17 +38,17 @@ export default function ToneTutoringPage() {
               </div>
             </div>
             <div className="mb-8 text-center">
-              <h1 className="text-[2.75rem] sm:text-[3.5rem] md:text-[4.25rem] lg:text-[5rem] font-bold leading-[1.08] tracking-tight text-[#f5f5f7] mb-6">
+              <h1 className="trd-hero-headline text-[#f5f5f7] mb-6">
                 Your tone,{' '}
                 <span className="trd-gradient-text">sorted.</span>
               </h1>
-              <p className="text-lg sm:text-xl text-[#f5f5f7]/80 max-w-2xl mx-auto leading-relaxed mb-8">
+              <p className="trd-subheadline max-w-2xl mx-auto mb-8">
                 Hop on a video call with the guys who build rigs for touring artists. Bring your board, your questions, and whatever&apos;s been bugging you. We&apos;ll figure it out together.
               </p>
               <div className="flex gap-4 justify-center mb-16">
                 <a
                   href="https://the-rig-doctor.myshopify.com/products/tone-tutoring"
-                  className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full trd-cta-primary"
+                  className="trd-cta-gradient trd-glow-pulse inline-flex items-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
                 >
                   Book a Session
                 </a>
@@ -57,17 +57,17 @@ export default function ToneTutoringPage() {
 
             <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-12 text-center pt-12 border-t border-white/10">
               <div>
-                <p className="text-2xl sm:text-3xl font-bold text-[#0071E3] mb-2">17+</p>
+                <p className="text-2xl sm:text-3xl font-bold text-white mb-2">17+</p>
                 <p className="text-sm text-[#f5f5f7]/60">Years at the bench</p>
               </div>
               <div className="hidden sm:block w-px h-12 bg-white/10" />
               <div>
-                <p className="text-2xl sm:text-3xl font-bold text-[#0071E3] mb-2">200+</p>
+                <p className="text-2xl sm:text-3xl font-bold text-white mb-2">200+</p>
                 <p className="text-sm text-[#f5f5f7]/60">Rigs built</p>
               </div>
               <div className="hidden sm:block w-px h-12 bg-white/10" />
               <div>
-                <p className="text-2xl sm:text-3xl font-bold text-[#0071E3] mb-2">50+</p>
+                <p className="text-2xl sm:text-3xl font-bold text-white mb-2">50+</p>
                 <p className="text-sm text-[#f5f5f7]/60">Touring artists</p>
               </div>
             </div>
@@ -85,7 +85,7 @@ export default function ToneTutoringPage() {
       {/* ──── THE PROBLEM ──── */}
       <Section theme="light" id="pain-points" reveal>
         <div className="mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-4">
+          <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
             Sound familiar?
           </h2>
         </div>
@@ -117,7 +117,7 @@ export default function ToneTutoringPage() {
       {/* ──── WHAT YOU GET ──── */}
       <Section theme="lightGray" id="what-you-get" reveal>
         <div className="mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-4">
+          <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
             What&apos;s included.
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg">Every session, no exceptions.</p>
@@ -146,7 +146,7 @@ export default function ToneTutoringPage() {
       {/* ──── HOW IT WORKS ──── */}
       <Section theme="light" id="process" reveal>
         <div className="mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-4">
+          <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
             Four steps. Pretty straightforward.
           </h2>
         </div>
@@ -170,7 +170,7 @@ export default function ToneTutoringPage() {
       {/* ──── REVIEWS ──── */}
       <Section theme="lightGray" id="reviews" reveal>
         <div className="mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
+          <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
             From players who&apos;ve done it.
           </h2>
         </div>
@@ -204,7 +204,7 @@ export default function ToneTutoringPage() {
       {/* ──── PRICING ──── */}
       <Section theme="dark" id="pricing" reveal>
         <div className="mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-4">
+          <h2 className="trd-section-headline text-[#f5f5f7] mb-4">
             Pricing. No surprises.
           </h2>
           <p className="text-[#f5f5f7]/60 text-lg">Pick the one that fits.</p>
@@ -215,7 +215,7 @@ export default function ToneTutoringPage() {
             <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">60-Minute Session</h3>
             <p className="text-[#f5f5f7]/60 mb-6">One hour, one rig, full attention.</p>
             <div className="mb-8">
-              <p className="text-4xl font-bold text-[#0071E3] mb-1">$99.99</p>
+              <p className="text-4xl font-bold trd-gradient-text mb-1">$99.99</p>
               <p className="text-sm text-[#f5f5f7]/60">USD</p>
             </div>
             <ul className="space-y-3 mb-8">
@@ -226,7 +226,7 @@ export default function ToneTutoringPage() {
                 </li>
               ))}
             </ul>
-            <a href="https://the-rig-doctor.myshopify.com/products/tone-tutoring-follow-up" className="w-full block text-center bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full trd-cta-primary">
+            <a href="https://the-rig-doctor.myshopify.com/products/tone-tutoring-follow-up" className="w-full block text-center trd-cta-gradient font-semibold px-8 py-4 rounded-full text-lg">
               Book Your Session
             </a>
           </div>
@@ -242,7 +242,7 @@ export default function ToneTutoringPage() {
       {/* ──── FAQ ──── */}
       <Section theme="light" id="faq" reveal>
         <div className="mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-4">
+          <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
             Questions we get a lot.
           </h2>
         </div>
@@ -263,7 +263,7 @@ export default function ToneTutoringPage() {
       {/* ──── CLOSING CTA ──── */}
       <Section theme="dark" id="final-cta" reveal className="text-center">
         <div className="mb-8">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-4">
+          <h2 className="trd-section-headline text-[#f5f5f7] mb-4">
             You&apos;re closer to your sound than you think.
           </h2>
           <p className="text-[#f5f5f7]/60 text-lg max-w-2xl mx-auto">
@@ -273,7 +273,7 @@ export default function ToneTutoringPage() {
         <div className="mt-12">
           <a
             href="https://the-rig-doctor.myshopify.com/products/tone-tutoring"
-            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full trd-cta-primary"
+            className="trd-cta-gradient trd-glow-pulse inline-flex items-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
           >
             Book a Session
           </a>
