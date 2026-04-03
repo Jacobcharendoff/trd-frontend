@@ -47,10 +47,15 @@ export default function ShopPage() {
     return () => { cancelled = true; };
   }, []);
 
+  // Internal-only products that shouldn't appear in the storefront
+  const hiddenProductTitles = ['custom rig build', 'labor', 'customer pedals'];
+
   // Build unified product list from whichever source we have
   const displayProducts = useMemo(() => {
     if (shopifyProducts && shopifyProducts.length > 0) {
-      return shopifyProducts.map((p) => ({
+      return shopifyProducts
+        .filter((p) => !hiddenProductTitles.some((h) => p.title.toLowerCase().includes(h)))
+        .map((p) => ({
         id: p.id,
         title: p.title,
         handle: p.handle,
@@ -65,7 +70,9 @@ export default function ShopPage() {
       }));
     }
     // Fall back to static data
-    return staticProducts.map((p) => ({
+    return staticProducts
+      .filter((p) => !hiddenProductTitles.some((h) => p.title.toLowerCase().includes(h)))
+      .map((p) => ({
       id: p.id,
       title: p.title,
       handle: p.handle,
