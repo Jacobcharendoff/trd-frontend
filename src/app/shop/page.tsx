@@ -121,7 +121,7 @@ export default function ShopPage() {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   selectedCategory === category
-                    ? 'bg-[#0071E3] text-[#1d1d1f] shadow-sm'
+                    ? 'bg-[#0071E3] text-white shadow-sm'
                     : 'bg-[#f5f5f7] text-[#1d1d1f] border border-[#1d1d1f]/10 hover:bg-[#1d1d1f]/5'
                 }`}
               >

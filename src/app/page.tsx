@@ -148,7 +148,7 @@ export default function Home() {
           </div>
           <Link
             href="/book"
-            className="inline-flex items-center px-8 py-4 rounded-full bg-[#0071E3] text-[#1d1d1f] font-semibold text-base hover:bg-[#005BB5] hover:scale-[1.02] transition-all duration-300 whitespace-nowrap shadow-[0_4px_20px_rgba(0,113,227,0.25)]"
+            className="inline-flex items-center px-8 py-4 rounded-full bg-[#0071E3] text-white font-semibold text-base hover:bg-[#005BB5] hover:scale-[1.02] transition-all duration-300 whitespace-nowrap shadow-[0_4px_20px_rgba(0,113,227,0.25)]"
           >
             Book a Free Consultation
           </Link>
@@ -228,7 +228,7 @@ export default function Home() {
 
             <Link
               href="/shop"
-              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full border-2 border-[#0071E3]/50 text-[#0071E3] hover:bg-[#0071E3] hover:text-[#1d1d1f] transition-colors duration-200"
+              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full border-2 border-[#0071E3]/50 text-[#0071E3] bg-[#0071E3] text-white transition-colors duration-200"
             >
               Browse Kits
             </Link>
@@ -237,7 +237,7 @@ export default function Home() {
           {/* Tier 3 — Most Popular */}
           <div className="relative rounded-2xl p-8 bg-gradient-to-b from-[#0a1628] to-[#0f0a1f] border border-[#0071E3]/30 flex flex-col shadow-[0_0_40px_rgba(0,113,227,0.15)] hover:shadow-[0_0_60px_rgba(0,113,227,0.25)] hover:-translate-y-1 transition-all duration-500">
             <div className="absolute -top-3.5 right-6">
-              <span className="bg-[#0071E3] text-[#1d1d1f] text-xs font-semibold tracking-wider uppercase px-4 py-1.5 rounded-full">
+              <span className="bg-[#0071E3] text-white text-xs font-semibold tracking-wider uppercase px-4 py-1.5 rounded-full">
                 Most Popular
               </span>
             </div>

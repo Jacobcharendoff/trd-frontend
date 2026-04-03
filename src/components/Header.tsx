@@ -70,8 +70,8 @@ export default function Header() {
             href="/book"
             className={`text-[13px] font-medium rounded-full px-5 py-2 transition-all duration-300 ${
               scrolled
-                ? 'bg-[#0071E3] text-[#1d1d1f] hover:bg-[#005BB5]'
-                : 'bg-[#0071E3] text-[#1d1d1f] hover:bg-[#005BB5]'
+                ? 'bg-[#0071E3] text-white hover:bg-[#005BB5]'
+                : 'bg-[#0071E3] text-white hover:bg-[#005BB5]'
             }`}
           >
             Start a Build

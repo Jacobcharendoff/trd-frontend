@@ -94,7 +94,7 @@ function Hero() {
 
           {/* Mobile CTA */}
           <div className="lg:hidden mt-12">
-            <button onClick={scrollToCalendar} className="w-full py-4 px-6 bg-[#0071E3] text-[#1d1d1f] font-semibold rounded-full hover:bg-[#005BB5] transition-colors text-[16px]">
+            <button onClick={scrollToCalendar} className="w-full py-4 px-6 bg-[#0071E3] text-white font-semibold rounded-full hover:bg-[#005BB5] transition-colors text-[16px]">
               Book your free consultation
             </button>
           </div>
