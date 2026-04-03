@@ -61,14 +61,14 @@ export default function Process() {
     <>
       {/* ──── HERO SECTION (dark with aurora) ──── */}
       <div className="relative w-full bg-black overflow-hidden">
-        <div className="relative trd-aurora min-h-[60vh] flex items-center justify-center">
+        <div className="relative trd-aurora-intense min-h-[60vh] flex items-center justify-center">
           <div className="absolute inset-0 pointer-events-none" />
           <div className="relative z-10 max-w-[1080px] mx-auto px-6 py-20 w-full">
             <div className="text-center">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05] tracking-tight text-[#f5f5f7] mb-6">
+              <h1 className="trd-hero-headline text-[#f5f5f7] mb-6">
                 How we build yours.
               </h1>
-              <p className="text-lg sm:text-xl text-[#f5f5f7]/80 max-w-2xl mx-auto leading-relaxed">
+              <p className="trd-subheadline max-w-2xl mx-auto">
                 From first call to first gig — here's exactly what happens when you work with us.
               </p>
             </div>
@@ -81,7 +81,7 @@ export default function Process() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div>
             <div className="text-6xl sm:text-7xl md:text-8xl font-bold trd-gradient-text mb-8">01</div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] mb-6">We Talk</h2>
+            <h2 className="trd-section-headline text-[#1d1d1f] mb-6">We Talk</h2>
             <p className="text-lg text-[#1d1d1f]/70 leading-relaxed">
               Hop on a free 30-minute call and tell us what you&apos;re working with. What you play, what bugs you about your current setup, what sound you&apos;re chasing. We&apos;ll ask the right questions to understand your playing style and your signal chain. Just two guitarists talking tone.
             </p>
@@ -111,7 +111,7 @@ export default function Process() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div>
             <div className="text-6xl sm:text-7xl md:text-8xl font-bold trd-gradient-text mb-8">02</div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] mb-6">We Design</h2>
+            <h2 className="trd-section-headline text-[#1d1d1f] mb-6">We Design</h2>
             <p className="text-lg text-[#1d1d1f]/70 leading-relaxed">
               We map out your entire rig based on what we talked about. Signal chain order, power distribution, cable routing, switching logic. Every detail gets planned before we pick up a soldering iron. You&apos;ll see the full build plan with layout mockups before we start.
             </p>
@@ -141,7 +141,7 @@ export default function Process() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div>
             <div className="text-6xl sm:text-7xl md:text-8xl font-bold trd-gradient-text mb-8">03</div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] mb-6">We Build</h2>
+            <h2 className="trd-section-headline text-[#1d1d1f] mb-6">We Build</h2>
             <p className="text-lg text-[#1d1d1f]/70 leading-relaxed">
               Every cable hand-soldered with pro-grade materials. Every connection tested. Every pedal mounted for accessibility and minimum noise. We don&apos;t rush these. Your board gets the time it needs. And we stress-test the whole thing before it ships.
             </p>
@@ -171,7 +171,7 @@ export default function Process() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div>
             <div className="text-6xl sm:text-7xl md:text-8xl font-bold trd-gradient-text mb-8">04</div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] mb-6">You Play</h2>
+            <h2 className="trd-section-headline text-[#1d1d1f] mb-6">You Play</h2>
             <p className="text-lg text-[#1d1d1f]/70 leading-relaxed">
               Your board ships to your door, ready to plug in. Comes with a full documentation package: signal chain diagram, settings reference, care instructions. And we don&apos;t disappear after delivery. Need a tweak, a swap, or just want to talk tone down the road? We&apos;re a call away.
             </p>
@@ -199,7 +199,7 @@ export default function Process() {
       {/* ──── WHAT'S INCLUDED (dark) ──── */}
       <Section theme="dark" reveal>
         <div className="mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7]">
+          <h2 className="trd-section-headline text-[#f5f5f7]">
             Every build includes
           </h2>
         </div>
@@ -209,7 +209,7 @@ export default function Process() {
             <div key={idx} className="flex gap-6">
               <div className="flex-shrink-0">
                 <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-gradient-to-br from-[#0071E3] to-[#005BB5]">
-                  <span className="text-[#1d1d1f] font-bold">{(idx + 1).toString().padStart(2, '0')}</span>
+                  <span className="text-white font-bold">{(idx + 1).toString().padStart(2, '0')}</span>
                 </div>
               </div>
               <div>
@@ -224,7 +224,7 @@ export default function Process() {
       {/* ──── FAQ (light) ──── */}
       <Section theme="light" reveal>
         <div className="mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f]">
+          <h2 className="trd-section-headline text-[#1d1d1f]">
             Questions we get a lot.
           </h2>
         </div>
@@ -263,7 +263,7 @@ export default function Process() {
       {/* ──── CLOSING CTA (dark) ──── */}
       <Section theme="dark" reveal className="text-center">
         <div className="mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-4">
+          <h2 className="trd-section-headline text-[#f5f5f7] mb-4">
             Ready to start?
           </h2>
           <p className="text-lg text-[#f5f5f7]/70 max-w-2xl mx-auto">
@@ -273,7 +273,7 @@ export default function Process() {
         <div className="flex justify-center">
           <Link
             href="/book"
-            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full trd-cta-primary"
+            className="trd-cta-gradient trd-glow-pulse inline-flex items-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
           >
             Book a Free Consultation
           </Link>
