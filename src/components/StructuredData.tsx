@@ -32,3 +32,40 @@ export default function LocalBusinessSchema() {
     />
   );
 }
+
+export function BlogPostSchema({
+  title,
+  description,
+  date,
+  url,
+}: {
+  title: string;
+  description: string;
+  date: string;
+  url: string;
+}) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    description,
+    datePublished: date,
+    url,
+    author: {
+      '@type': 'Person',
+      name: 'Jacob Charendoff',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'The Rig Doctor',
+      url: 'https://www.therigdr.com',
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
