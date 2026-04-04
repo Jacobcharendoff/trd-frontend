@@ -27,7 +27,7 @@ function AccordionItem({ title, content }: { title: string; content: string }) {
 export default function ToneTutoringPage() {
   return (
     <>
-      {/* ──── HERO ──── */}
+      {/* ââââ HERO ââââ */}
       <div className="relative w-full bg-black overflow-hidden">
         <div className="relative trd-aurora-intense min-h-screen flex items-end justify-center">
           <div className="absolute inset-0 pointer-events-none" />
@@ -47,7 +47,7 @@ export default function ToneTutoringPage() {
               </p>
               <div className="flex gap-4 justify-center mb-16">
                 <a
-                  href="https://the-rig-doctor.myshopify.com/products/tone-tutoring"
+                  href="/api/checkout?handle=tone-tutoring"
                   className="trd-cta-gradient trd-glow-pulse inline-flex items-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
                 >
                   Book a Session
@@ -82,7 +82,7 @@ export default function ToneTutoringPage() {
 
       <div className="trd-divider-dark-to-light" />
 
-      {/* ──── THE PROBLEM ──── */}
+      {/* ââââ THE PROBLEM ââââ */}
       <Section theme="light" id="pain-points" reveal>
         <div className="mb-12">
           <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
@@ -114,7 +114,7 @@ export default function ToneTutoringPage() {
         </div>
       </Section>
 
-      {/* ──── WHAT YOU GET ──── */}
+      {/* ââââ WHAT YOU GET ââââ */}
       <Section theme="lightGray" id="what-you-get" reveal>
         <div className="mb-12">
           <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
@@ -143,7 +143,7 @@ export default function ToneTutoringPage() {
         </div>
       </Section>
 
-      {/* ──── HOW IT WORKS ──── */}
+      {/* ââââ HOW IT WORKS ââââ */}
       <Section theme="light" id="process" reveal>
         <div className="mb-12">
           <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
@@ -167,7 +167,7 @@ export default function ToneTutoringPage() {
         </div>
       </Section>
 
-      {/* ──── REVIEWS ──── */}
+      {/* ââââ REVIEWS ââââ */}
       <Section theme="lightGray" id="reviews" reveal>
         <div className="mb-12">
           <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
@@ -201,7 +201,7 @@ export default function ToneTutoringPage() {
 
       <div className="trd-divider-gray-to-dark" />
 
-      {/* ──── PRICING ──── */}
+      {/* ââââ PRICING ââââ */}
       <Section theme="dark" id="pricing" reveal>
         <div className="mb-12">
           <h2 className="trd-section-headline text-[#f5f5f7] mb-4">
@@ -226,7 +226,7 @@ export default function ToneTutoringPage() {
                 </li>
               ))}
             </ul>
-            <a href="https://the-rig-doctor.myshopify.com/products/tone-tutoring-follow-up" className="w-full block text-center trd-cta-gradient font-semibold px-8 py-4 rounded-full text-lg">
+            <a href="/api/checkout?handle=tone-tutoring-follow-up" className="w-full block text-center trd-cta-gradient font-semibold px-8 py-4 rounded-full text-lg">
               Book Your Session
             </a>
           </div>
@@ -239,7 +239,7 @@ export default function ToneTutoringPage() {
 
       <div className="trd-divider-dark-to-light" />
 
-      {/* ──── FAQ ──── */}
+      {/* ââââ FAQ ââââ */}
       <Section theme="light" id="faq" reveal>
         <div className="mb-12">
           <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
@@ -260,7 +260,7 @@ export default function ToneTutoringPage() {
 
       <div className="trd-divider-light-to-dark" />
 
-      {/* ──── CLOSING CTA ──── */}
+      {/* ââââ CLOSING CTA ââââ */}
       <Section theme="dark" id="final-cta" reveal className="text-center">
         <div className="mb-8">
           <h2 className="trd-section-headline text-[#f5f5f7] mb-4">
@@ -272,7 +272,7 @@ export default function ToneTutoringPage() {
         </div>
         <div className="mt-12">
           <a
-            href="https://the-rig-doctor.myshopify.com/products/tone-tutoring"
+            href="/api/checkout?handle=tone-tutoring"
             className="trd-cta-gradient trd-glow-pulse inline-flex items-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
           >
             Book a Session
