@@ -17,22 +17,24 @@ export default function ConsultationPopup() {
   // Once-per-session guard + 90s minimum delay before it can fire
   useEffect(() => {
     if (typeof window === 'undefined') return;
+
     // If user already dismissed in this session, never show again
     if (sessionStorage.getItem('trd-popup-dismissed')) {
       setIsDismissed(true);
       return;
     }
+
     // Wait 90 seconds before arming the scroll trigger
     const timer = setTimeout(() => {
       readyRef.current = true;
     }, 90000);
+
     return () => clearTimeout(timer);
   }, []);
 
   // Scroll trigger at 60% — only after 90s delay
   useEffect(() => {
     if (isDismissed) return;
-
     const handleScroll = () => {
       if (!readyRef.current) return;
       const scrollPercentage =
@@ -41,7 +43,6 @@ export default function ConsultationPopup() {
         setIsVisible(true);
       }
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isVisible, isDismissed]);
@@ -80,7 +81,9 @@ export default function ConsultationPopup() {
   const handleClose = () => {
     setIsVisible(false);
     setIsDismissed(true);
-    try { sessionStorage.setItem('trd-popup-dismissed', '1'); } catch {}
+    try {
+      sessionStorage.setItem('trd-popup-dismissed', '1');
+    } catch {}
   };
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -109,8 +112,8 @@ export default function ConsultationPopup() {
           </svg>
         </button>
 
-        {/* Before/after image banner */}
-        <div className="relative w-full h-[200px] flex-shrink-0 bg-[#0a0a0a] overflow-hidden">
+        {/* Before/after image banner — taller container + contain to prevent cropping */}
+        <div className="relative w-full h-[280px] flex-shrink-0 bg-[#0a0a0a] overflow-hidden">
           <div
             className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
             style={{ opacity: showAfter ? 0 : 1 }}
@@ -119,7 +122,7 @@ export default function ConsultationPopup() {
               src={BEFORE_IMAGE}
               alt="Before — messy pedalboard"
               fill
-              className="object-cover"
+              className="object-contain"
             />
           </div>
           <div
@@ -130,7 +133,7 @@ export default function ConsultationPopup() {
               src={AFTER_IMAGE}
               alt="After — clean TRD build"
               fill
-              className="object-cover"
+              className="object-contain"
             />
           </div>
 
@@ -175,19 +178,29 @@ export default function ConsultationPopup() {
 
       {/* ─── Mobile: slide-up sheet ─── */}
       <div className="lg:hidden w-full bg-white rounded-t-3xl shadow-2xl overflow-hidden flex flex-col animate-popup-slide-up max-h-[85vh]">
-        {/* Before/after crossfade — compact */}
-        <div className="relative w-full h-[160px] flex-shrink-0 bg-[#0a0a0a]">
+        {/* Before/after crossfade — compact but uncropped */}
+        <div className="relative w-full h-[220px] flex-shrink-0 bg-[#0a0a0a]">
           <div
             className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
             style={{ opacity: showAfter ? 0 : 1 }}
           >
-            <Image src={BEFORE_IMAGE} alt="Before" fill className="object-cover" />
+            <Image
+              src={BEFORE_IMAGE}
+              alt="Before"
+              fill
+              className="object-contain"
+            />
           </div>
           <div
             className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
             style={{ opacity: showAfter ? 1 : 0 }}
           >
-            <Image src={AFTER_IMAGE} alt="After" fill className="object-cover" />
+            <Image
+              src={AFTER_IMAGE}
+              alt="After"
+              fill
+              className="object-contain"
+            />
           </div>
 
           <div className="absolute top-3 left-3 z-10">
@@ -223,6 +236,7 @@ export default function ConsultationPopup() {
           >
             Book a Free Call
           </Link>
+
           <button
             onClick={handleClose}
             className="mt-3 text-sm text-[#1d1d1f]/35 hover:text-[#1d1d1f]/60 transition-colors duration-200 py-1"
