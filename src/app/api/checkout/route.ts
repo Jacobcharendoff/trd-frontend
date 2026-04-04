@@ -7,7 +7,7 @@ import { getProduct, getCheckoutUrl } from '@/lib/shopify';
  * Creates a Shopify cart via the Storefront API and redirects
  * the user to Shopify's hosted checkout page.
  *
- * Usage: /api/checkout?handle=tone-tutoring-follow-up
+ * Usage: /api/checkout?handle=tone-tutoring-follow-up&quantity=2
  *
  * Safety net: replaces any www.therigdr.com or therigdr.com URLs
  * with the-rig-doctor.myshopify.com to ensure checkout always
@@ -16,6 +16,8 @@ import { getProduct, getCheckoutUrl } from '@/lib/shopify';
 export async function GET(req: NextRequest) {
   try {
     const handle = req.nextUrl.searchParams.get('handle');
+    const quantityParam = req.nextUrl.searchParams.get('quantity');
+    const quantity = Math.max(1, Math.min(10, parseInt(quantityParam || '1', 10) || 1));
 
     if (!handle) {
       return NextResponse.json({ error: 'Product handle required' }, { status: 400 });
@@ -39,7 +41,7 @@ export async function GET(req: NextRequest) {
     }
 
     // Create a cart and get the Shopify-hosted checkout URL
-    let checkoutUrl = await getCheckoutUrl(variant.id);
+    let checkoutUrl = await getCheckoutUrl(variant.id, quantity);
 
     // Safety net: ensure checkout URL points to Shopify servers,
     // not our headless frontend domain
