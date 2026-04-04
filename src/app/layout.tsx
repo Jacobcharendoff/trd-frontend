@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: '%s | The Rig Doctor',
   },
   description:
-    'Professional custom pedalboard builds for touring artists and home players. Hand-wired, stress-tested, lifetime support. Montgomery, TX.',
+    'Professional custom pedalboard builds for touring artists and home players. Hand-wired, stress-tested, lifetime support. Houston, TX.',
   metadataBase: new URL('https://www.therigdr.com'),
   openGraph: {
     type: 'website',
