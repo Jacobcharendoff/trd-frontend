@@ -224,7 +224,7 @@ function FallbackCTA() {
         <p className="text-[16px] text-[#1d1d1f]/60 max-w-2xl mx-auto">
           {"Shoot us an email — we'll find a time that works. Usually back to you within a day."}
         </p>
-        <a href="mailto:hello@therigdr.com" className="inline-block px-8 py-4 bg-[#1d1d1f] text-white font-semibold rounded-full hover:bg-[#1d1d1f]/90 transition-colors text-[16px]">
+        <a href="mailto:info@therigdr.com" className="inline-block px-8 py-4 bg-[#1d1d1f] text-white font-semibold rounded-full hover:bg-[#1d1d1f]/90 transition-colors text-[16px]">
           Get in touch &rarr;
         </a>
       </div>
