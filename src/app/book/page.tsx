@@ -32,7 +32,7 @@ function Hero() {
             <div className="space-y-8">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/[0.05] border border-white/[0.08] rounded-full">
                 <span className="inline-block w-2 h-2 rounded-full bg-[#10B981] trd-pulse-dot" />
-                <span className="text-[13px] text-white/[0.85]">Custom builds &middot; Montgomery, TX</span>
+                <span className="text-[13px] text-white/[0.85]">Custom builds &middot; Houston, TX</span>
               </div>
 
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
@@ -186,7 +186,7 @@ function Team() {
           {team.map((member) => (
             <div key={member.name} className="group bg-white rounded-2xl overflow-hidden border border-black/[0.04] hover:-translate-y-1 transition-all duration-500">
               <div className="aspect-[4/3] overflow-hidden">
-                <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500" />
+                <img src={member.image} alt={member.name} className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-500" />
               </div>
               <div className="p-6">
                 <h3 className="text-[18px] font-semibold text-[#1d1d1f]">{member.name}</h3>
