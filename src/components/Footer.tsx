@@ -1,1 +1,99 @@
-import Link from 'next/link';export default function Footer() {  return (    <footer className="bg-[#1d1d1f] text-white/50 py-16">      <div className="max-w-[1080px] mx-auto px-6">        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">          {/* Brand */}          <div className="md:col-span-1">            <Link href="/" className="text-white font-semibold text-lg tracking-tight block mb-3">              The Rig Doctor            </Link>            <p className="text-[13px] leading-relaxed">              Custom pedalboard builds for touring artists and home players. Houston, TX.            </p>          </div>          {/* Services */}          <div>            <h4 className="text-white text-[11px] font-semibold uppercase tracking-widest mb-4">Services</h4>            <nav className="flex flex-col gap-2.5">              <Link href="/book" className="text-[13px] hover:text-white transition-colors">Custom Builds</Link>              <Link href="/tone-tutoring" className="text-[13px] hover:text-white transition-colors">Tone Tutoring</Link>              <Link href="/process" className="text-[13px] hover:text-white transition-colors">The Process</Link>            </nav>          </div>          {/* Shop */}          <div>            <h4 className="text-white text-[11px] font-semibold uppercase tracking-widest mb-4">Shop</h4>            <nav className="flex flex-col gap-2.5">              <Link href="/collections" className="text-[13px] hover:text-white transition-colors">All Products</Link>              <Link href="/collections/diy-kits" className="text-[13px] hover:text-white transition-colors">DIY Kits</Link>              <Link href="/collections/cables" className="text-[13px] hover:text-white transition-colors">Cables</Link>            </nav>          </div>
+'use client';
+
+import Link from 'next/link';
+import { Instagram, Mail } from 'lucide-react';
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="relative z-10 mt-32 border-t border-white/10 bg-black py-16">
+      <div className="container mx-auto max-w-6xl px-6">
+        {/* Main Footer Content */}
+        <div className="grid gap-12 md:grid-cols-3">
+          {/* Brand Section */}
+          <div>
+            <h3 className="text-xl font-semibold text-white mb-3">The Rig Doctor</h3>
+            <p className="text-sm text-gray-400 mb-4">
+              Professional custom pedalboard builds for touring artists and home players. Houston, TX.
+            </p>
+            <div className="flex gap-4">
+              <a
+                href="https://instagram.com/therigdr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 hover:bg-white/10 rounded transition"
+              >
+                <Instagram className="w-5 h-5 text-white" />
+              </a>
+              <a
+                href="mailto:info@therigdr.com"
+                className="p-2 hover:bg-white/10 rounded transition"
+              >
+                <Mail className="w-5 h-5 text-white" />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-semibold text-white mb-4">Quick Links</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/book" className="text-gray-400 hover:text-white transition">
+                  Book Consultation
+                </Link>
+              </li>
+              <li>
+                <Link href="/shop" className="text-gray-400 hover:text-white transition">
+                  Shop Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-gray-400 hover:text-white transition">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="text-gray-400 hover:text-white transition">
+                  Blog
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Legal Links */}
+          <div>
+            <h4 className="font-semibold text-white mb-4">Legal</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/privacy" className="text-gray-400 hover:text-white transition">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="text-gray-400 hover:text-white transition">
+                  Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link href="/refunds" className="text-gray-400 hover:text-white transition">
+                  Refund Policy
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-white/10 my-12" />
+
+        {/* Bottom Section */}
+        <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+          <p>&copy; {currentYear} The Rig Doctor. All rights reserved.</p>
+          <p>Built with precision. Delivered with passion.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
