@@ -1,8 +1,100 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Section from '@/components/Section';
 import { getAllPosts, getFeaturedPost } from '@/lib/blog';
+
+
+// Blog CTA — HubSpot form for topic suggestions
+function BlogCTA() {
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('sending');
+
+    try {
+      const res = await fetch(
+        'https://api.hsforms.com/submissions/v3/integration/submit/245067165/b6534f50-4862-409c-abb2-24b832a30c86',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fields: [
+              { name: 'email', value: email },
+              { name: 'message', value: message || 'Blog topic suggestion' },
+            ],
+            context: {
+              pageUri: typeof window !== 'undefined' ? window.location.href : '',
+              pageName: 'Blog — Topic Suggestion',
+            },
+          }),
+        }
+      );
+
+      if (res.ok) {
+        setStatus('sent');
+        setEmail('');
+        setMessage('');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  };
+
+  return (
+    <div className="text-center max-w-2xl mx-auto">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f5f5f7] mb-4">
+        Got a topic you want us to cover?
+      </h2>
+      <p className="text-lg text-[#f5f5f7]/70 mb-8">
+        Drop us a line and let us know what you want to learn about. We&apos;re always listening.
+      </p>
+
+      {status === 'sent' ? (
+        <div className="trd-glass-dark p-8 rounded-2xl">
+          <p className="text-lg font-semibold text-[#10B981]">Thanks! We got your message.</p>
+          <p className="text-sm text-[#f5f5f7]/60 mt-2">We&apos;ll add it to the content queue.</p>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="space-y-4 text-left">
+          <input
+            type="email"
+            placeholder="your@email.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="w-full rounded-xl bg-white/[0.05] border border-white/[0.12] text-white placeholder-white/40 px-5 py-4 focus:outline-none focus:ring-2 focus:ring-[#F5A623] focus:border-transparent"
+          />
+          <textarea
+            placeholder="What topic should we write about?"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            rows={3}
+            className="w-full rounded-xl bg-white/[0.05] border border-white/[0.12] text-white placeholder-white/40 px-5 py-4 focus:outline-none focus:ring-2 focus:ring-[#F5A623] focus:border-transparent resize-none"
+          />
+          <div className="text-center">
+            <button
+              type="submit"
+              disabled={status === 'sending'}
+              className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48A1A] text-black font-semibold px-8 py-4 rounded-full transition-colors duration-200 disabled:opacity-50"
+            >
+              {status === 'sending' ? 'Sending...' : 'Send it over'}
+            </button>
+          </div>
+          {status === 'error' && (
+            <p className="text-center text-sm text-red-400">Something went wrong. Try again or email info@therigdr.com</p>
+          )}
+        </form>
+      )}
+    </div>
+  );
+}
 
 export default function BlogPage() {
   const featuredPost = getFeaturedPost();
@@ -114,20 +206,7 @@ export default function BlogPage() {
 
       {/* ──── CTA SECTION ──── */}
       <Section theme="dark" id="cta" reveal>
-        <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f5f5f7] mb-4">
-            Got a topic you want us to cover?
-          </h2>
-          <p className="text-lg text-[#f5f5f7]/70 mb-8">
-            Drop us a line and let us know what you want to learn about. We're always listening.
-          </p>
-          <a
-            href="mailto:jacob@therigdr.com"
-            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full trd-cta-primary"
-          >
-            Email the bench
-          </a>
-        </div>
+        <BlogCTA />
       </Section>
     </>
   );
