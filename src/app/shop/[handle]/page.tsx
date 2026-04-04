@@ -22,6 +22,7 @@ export default function ProductPage() {
   const [selectedVariant, setSelectedVariant] = useState(0);
   const [selectedImage, setSelectedImage] = useState(0);
   const [addingToCart, setAddingToCart] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     if (!handle) return;
@@ -52,7 +53,7 @@ export default function ProductPage() {
     if (!variant) return;
     setAddingToCart(true);
     try {
-      const url = await getCheckoutUrl(variant.id);
+      const url = await getCheckoutUrl(variant.id, quantity);
       window.location.href = url;
     } catch {
       window.location.href = `https://the-rig-doctor.myshopify.com/products/${handle}`;
@@ -105,12 +106,14 @@ export default function ProductPage() {
   const hasMultipleVariants = variants.length > 1 && !(variants.length === 1 && variants[0].title === 'Default Title');
   const useDropdown = hasMultipleVariants && variants.length > 6;
   const currentImage = images[selectedImage] || null;
-  const price = currentVariant ? formatPrice(currentVariant.price.amount) : formatPrice(product.priceRange.minVariantPrice.amount);
+  const unitPrice = currentVariant ? parseFloat(currentVariant.price.amount) : parseFloat(product.priceRange.minVariantPrice.amount);
+  const totalPrice = unitPrice * quantity;
+  const price = totalPrice % 1 === 0 ? `$${totalPrice.toFixed(0)}` : `$${totalPrice.toFixed(2)}`;
   const isAvailable = currentVariant?.availableForSale !== false;
 
   return (
     <>
-      {/* Breadcrumb â sits below the site Header */}
+      {/* Breadcrumb — sits below the site Header */}
       <div className="bg-white border-b border-black/[0.04] pt-16">
         <div className="max-w-[1200px] mx-auto px-6 py-3">
           <nav className="flex items-center gap-2 text-sm text-[#1d1d1f]/40">
@@ -180,7 +183,7 @@ export default function ProductPage() {
                 </p>
               </div>
 
-              {/* Variants â dropdown for 6+ options, pills for fewer */}
+              {/* Variants — dropdown for 6+ options, pills for fewer */}
               {hasMultipleVariants && (
                 <div>
                   <p className="text-sm font-medium text-[#1d1d1f]/60 mb-3 uppercase tracking-wide">
@@ -195,7 +198,7 @@ export default function ProductPage() {
                     >
                       {variants.map((v, i) => (
                         <option key={v.id} value={i} disabled={!v.availableForSale}>
-                          {v.title}{!v.availableForSale ? ' â Sold Out' : ''} â {formatPrice(v.price.amount)}
+                          {v.title}{!v.availableForSale ? ' — Sold Out' : ''} — {formatPrice(v.price.amount)}
                         </option>
                       ))}
                     </select>
@@ -220,6 +223,34 @@ export default function ProductPage() {
                 </div>
               )}
 
+              {/* Quantity Selector */}
+              <div>
+                <p className="text-sm font-medium text-[#1d1d1f]/60 mb-3 uppercase tracking-wide">
+                  Quantity
+                </p>
+                <div className="inline-flex items-center rounded-full bg-[#f5f5f7] border border-[#1d1d1f]/10">
+                  <button
+                    onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                    disabled={quantity <= 1}
+                    className="w-12 h-12 flex items-center justify-center text-lg font-medium text-[#1d1d1f] rounded-full transition-all hover:bg-[#1d1d1f]/5 disabled:opacity-30 disabled:cursor-not-allowed"
+                    aria-label="Decrease quantity"
+                  >
+                    −
+                  </button>
+                  <span className="w-12 text-center text-base font-semibold text-[#1d1d1f] tabular-nums select-none">
+                    {quantity}
+                  </span>
+                  <button
+                    onClick={() => setQuantity((q) => Math.min(10, q + 1))}
+                    disabled={quantity >= 10}
+                    className="w-12 h-12 flex items-center justify-center text-lg font-medium text-[#1d1d1f] rounded-full transition-all hover:bg-[#1d1d1f]/5 disabled:opacity-30 disabled:cursor-not-allowed"
+                    aria-label="Increase quantity"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
               {product.description && (
                 <div className="text-[#1d1d1f]/70 text-base sm:text-lg leading-relaxed">
                   <p>{product.description}</p>
@@ -233,7 +264,7 @@ export default function ProductPage() {
                     disabled={addingToCart}
                     className="w-full trd-cta-gradient text-white font-semibold px-8 py-4 rounded-full text-lg transition-all disabled:opacity-60 disabled:cursor-wait"
                   >
-                    {addingToCart ? 'Opening checkout...' : 'Buy Now'}
+                    {addingToCart ? 'Opening checkout...' : `Buy Now${quantity > 1 ? ` · ${quantity} items` : ''}`}
                   </button>
                 ) : (
                   <div className="w-full bg-[#f5f5f7] text-[#1d1d1f]/40 font-semibold px-8 py-4 rounded-full text-lg text-center">
