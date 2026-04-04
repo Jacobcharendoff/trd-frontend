@@ -7,12 +7,12 @@ import { getProduct, getCheckoutUrl } from '@/lib/shopify';
  * Creates a Shopify cart via the Storefront API and redirects
  * the user to Shopify's hosted checkout page.
  *
- * Usage: /api/checkout?handle=tone-tutoring
+ * Usage: /api/checkout?handle=tone-tutoring-follow-up
  *
- * This avoids the broken redirect loop where
- * the-rig-doctor.myshopify.com/products/* → www.therigdr.com/products/* → 404
+ * Safety net: replaces any www.therigdr.com or therigdr.com URLs
+ * with the-rig-doctor.myshopify.com to ensure checkout always
+ * reaches Shopify's servers (not our headless frontend).
  */
-
 export async function GET(req: NextRequest) {
   try {
     const handle = req.nextUrl.searchParams.get('handle');
@@ -39,12 +39,17 @@ export async function GET(req: NextRequest) {
     }
 
     // Create a cart and get the Shopify-hosted checkout URL
-    const checkoutUrl = await getCheckoutUrl(variant.id);
+    let checkoutUrl = await getCheckoutUrl(variant.id);
+
+    // Safety net: ensure checkout URL points to Shopify servers,
+    // not our headless frontend domain
+    checkoutUrl = checkoutUrl
+      .replace('https://www.therigdr.com', 'https://the-rig-doctor.myshopify.com')
+      .replace('https://therigdr.com', 'https://the-rig-doctor.myshopify.com');
 
     return NextResponse.redirect(checkoutUrl);
   } catch (err) {
     console.error('Checkout redirect error:', err);
-    // Fallback: send them to the Tone Tutoring page rather than a dead end
     return NextResponse.redirect(new URL('/tone-tutoring', req.url));
   }
 }
