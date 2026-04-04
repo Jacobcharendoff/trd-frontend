@@ -3,7 +3,7 @@ import AnnouncementBar from '@/components/AnnouncementBar';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ConsultationPopup from '@/components/ConsultationPopup';
-import { LocalBusinessSchema } from '@/components/StructuredData';
+import LocalBusinessSchema from '@/components/StructuredData';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import './globals.css';
 
