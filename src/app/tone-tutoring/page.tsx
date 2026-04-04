@@ -47,7 +47,7 @@ export default function ToneTutoringPage() {
               </p>
               <div className="flex gap-4 justify-center mb-16">
                 <a
-                  href="/api/checkout?handle=tone-tutoring"
+                  href="/api/checkout?handle=tone-tutoring-follow-up"
                   className="trd-cta-gradient trd-glow-pulse inline-flex items-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
                 >
                   Book a Session
@@ -272,7 +272,7 @@ export default function ToneTutoringPage() {
         </div>
         <div className="mt-12">
           <a
-            href="/api/checkout?handle=tone-tutoring"
+            href="/api/checkout?handle=tone-tutoring-follow-up"
             className="trd-cta-gradient trd-glow-pulse inline-flex items-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
           >
             Book a Session
