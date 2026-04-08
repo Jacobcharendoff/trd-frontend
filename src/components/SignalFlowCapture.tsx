@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from 'react';
 
 const PDF_URL =
   'https://ul04rn4k3jtypxsy.public.blob.vercel-storage.com/Signal_Flow_Cheat_Sheet-ht17iWYR53dcOwLBPjes5W2F4jgaNa.pdf';
-
 const HUBSPOT_PORTAL_ID = '245067165';
 const HUBSPOT_FORM_ID = 'b6534f50-4862-409c-abb2-24b832a30c86';
 
@@ -32,27 +31,52 @@ export default function SignalFlowCapture() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || status === 'submitting') return;
+
+    // CRITICAL: Open the PDF in a new tab IMMEDIATELY while we still have a
+    // fresh user gesture. Without this, users who opt in but don't click the
+    // success-state download button walk away empty-handed — which is how we
+    // ended up with a customer complaint. This is the safety net.
+    if (typeof window !== 'undefined') {
+      window.open(PDF_URL, '_blank', 'noopener,noreferrer');
+    }
+
     setStatus('submitting');
 
+    // Capture the lead. Try our API route first (wraps HubSpot + transactional
+    // email delivery). Fall back to direct HubSpot submission if the API route
+    // isn't live yet. Failures are swallowed — the user already has the PDF,
+    // CRM capture is best-effort.
     try {
-      const res = await fetch(
-        `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            fields: [{ name: 'email', value: email }],
-            context: {
-              pageUri: typeof window !== 'undefined' ? window.location.href : '',
-              pageName: 'Signal Flow Cheat Sheet Capture',
-            },
-          }),
-        },
-      );
-      if (!res.ok) throw new Error('Form submission failed');
+      const apiRes = await fetch('/api/signal-flow-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          pageUri: typeof window !== 'undefined' ? window.location.href : '',
+        }),
+      });
+
+      if (!apiRes.ok) {
+        await fetch(
+          `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_ID}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              fields: [{ name: 'email', value: email }],
+              context: {
+                pageUri: typeof window !== 'undefined' ? window.location.href : '',
+                pageName: 'Signal Flow Cheat Sheet Capture',
+              },
+            }),
+          },
+        );
+      }
+
       setStatus('success');
     } catch {
-      setStatus('error');
+      // User already has the PDF open — show success regardless.
+      setStatus('success');
     }
   };
 
@@ -61,7 +85,9 @@ export default function SignalFlowCapture() {
       ref={ref}
       id="signal-flow"
       className={`
-        bg-[#0a0a0a] text-[#f5f5f7] py-20 md:py-[120px] overflow-hidden
+        bg-[#0a0a0a] text-[#f5f5f7]
+        py-20 md:py-[120px]
+        overflow-hidden
         transition-all duration-700 ease-out
         ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
       `}
@@ -82,10 +108,8 @@ export default function SignalFlowCapture() {
             <h2 className="trd-section-headline text-[#f5f5f7] mb-4">
               Signal Flow Cheat Sheet
             </h2>
-
             <p className="text-lg md:text-xl text-[#f5f5f7]/60 max-w-xl mx-auto mb-10 leading-relaxed">
-              12 signal chain diagrams covering every rig style — from simple mono setups to
-              wet/dry/wet and 4-cable method. Stop guessing where your pedals go.
+              12 signal chain diagrams covering every rig style — from simple mono setups to wet/dry/wet and 4-cable method. Stop guessing where your pedals go.
             </p>
 
             {status === 'success' ? (
@@ -95,9 +119,8 @@ export default function SignalFlowCapture() {
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="font-medium">You&apos;re in. Here&apos;s your cheat sheet.</span>
+                  <span className="font-medium">Your cheat sheet opened in a new tab.</span>
                 </div>
-
                 <div>
                   <a
                     href={PDF_URL}
@@ -108,12 +131,11 @@ export default function SignalFlowCapture() {
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
-                    Download the Cheat Sheet
+                    Download again
                   </a>
                 </div>
-
                 <p className="text-sm text-[#f5f5f7]/40 mt-6">
-                  PDF &middot; 15 pages &middot; Prints great on letter or A4
+                  Didn&apos;t open? Your browser may have blocked the popup — click the button above.
                 </p>
               </div>
             ) : (
@@ -133,18 +155,16 @@ export default function SignalFlowCapture() {
                     disabled={status === 'submitting'}
                     className="trd-cta-gradient trd-glow-pulse px-8 py-3.5 rounded-full font-semibold text-base whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
                   >
-                    {status === 'submitting' ? 'Sending...' : 'Get the PDF'}
+                    {status === 'submitting' ? 'Opening...' : 'Get the PDF'}
                   </button>
                 </div>
-
                 {status === 'error' && (
                   <p className="text-red-400 text-sm mt-3">
                     Something went wrong. Please try again.
                   </p>
                 )}
-
                 <p className="text-xs text-[#f5f5f7]/30 mt-4">
-                  No spam, ever. Just gear knowledge.
+                  PDF opens instantly in a new tab. No spam — just gear knowledge.
                 </p>
               </form>
             )}
