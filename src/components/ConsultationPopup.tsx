@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -11,8 +11,7 @@ export default function ConsultationPopup() {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
   const [showAfter, setShowAfter] = useState(false);
-  const calendarRef = useRef<HTMLDivElement>(null);
-  const readyRef = useRef(false);
+  const readyRef = { current: false };
 
   // Once-per-session guard + 90s minimum delay before it can fire
   useEffect(() => {
@@ -20,6 +19,12 @@ export default function ConsultationPopup() {
 
     // If user already dismissed in this session, never show again
     if (sessionStorage.getItem('trd-popup-dismissed')) {
+      setIsDismissed(true);
+      return;
+    }
+
+    // Don't show on /book page — the calendar is already right there
+    if (window.location.pathname === '/book') {
       setIsDismissed(true);
       return;
     }
@@ -56,28 +61,6 @@ export default function ConsultationPopup() {
     return () => clearInterval(interval);
   }, [isVisible]);
 
-  // Load HubSpot embed script when popup opens
-  useEffect(() => {
-    if (!isVisible || !calendarRef.current) return;
-
-    const existingScript = document.querySelector(
-      'script[src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"]'
-    );
-
-    if (existingScript) {
-      const container = calendarRef.current;
-      if (container && !container.querySelector('iframe')) {
-        const clone = container.cloneNode(true) as HTMLElement;
-        container.parentNode?.replaceChild(clone, container);
-      }
-    } else {
-      const script = document.createElement('script');
-      script.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
-      script.async = true;
-      document.body.appendChild(script);
-    }
-  }, [isVisible]);
-
   const handleClose = () => {
     setIsVisible(false);
     setIsDismissed(true);
@@ -112,7 +95,7 @@ export default function ConsultationPopup() {
           </svg>
         </button>
 
-        {/* Before/after image banner — taller container + contain to prevent cropping */}
+        {/* Before/after image banner */}
         <div className="relative w-full h-[280px] flex-shrink-0 bg-[#0a0a0a] overflow-hidden">
           <div
             className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
@@ -155,13 +138,12 @@ export default function ConsultationPopup() {
           </p>
         </div>
 
-        {/* HubSpot Calendar */}
+        {/* HubSpot Calendar — direct iframe, no embed script dependency */}
         <div className="flex-1 overflow-y-auto px-4 pb-2 min-h-0">
-          <div
-            ref={calendarRef}
-            className="meetings-iframe-container"
-            data-src="https://meetings-na2.hubspot.com/trd/rig-build-consultation?embed=true"
-            style={{ minHeight: '400px' }}
+          <iframe
+            src="https://meetings-na2.hubspot.com/trd/rig-build-consultation?embed=true"
+            style={{ width: '100%', minHeight: '580px', border: 'none' }}
+            title="Book a free rig build consultation"
           />
         </div>
 
