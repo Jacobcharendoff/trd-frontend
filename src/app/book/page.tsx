@@ -169,7 +169,7 @@ function AfterTheCall() {
 /* ──── Team (light gray — warm, open) ──── */
 function Team() {
   const team = [
-    { name: 'Jacob', title: 'Founder', image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jacob_avatar.png' },
+    { name: 'Jacob', title: 'Rig Engineer', image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jacob_avatar.png' },
     { name: 'Vince', title: 'Rig Engineer', image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Vince_Avatar.png' },
     { name: 'Mason', title: 'Rig Engineer', image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Mason_Avatar.png' },
   ];
