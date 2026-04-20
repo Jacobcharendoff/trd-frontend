@@ -82,7 +82,7 @@ export default function ConsultationPopup() {
       className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-end lg:items-center justify-center z-50 animate-popup-fade"
       onClick={handleBackdropClick}
     >
-      {/* ─── Desktop: stacked layout — image banner on top, calendar below ─── */}
+      {/* ─── Desktop layout — image banner + embedded calendar ─── */}
       <div className="hidden lg:flex lg:flex-col max-w-[520px] w-full bg-white rounded-3xl shadow-2xl overflow-hidden animate-popup-scale max-h-[85vh] relative">
         {/* Close */}
         <button
