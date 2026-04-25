@@ -17,7 +17,7 @@ const steps: CinemaStep[] = [
     title: 'Signal Routing',
     desc: 'We map your whole chain before we cut a single cable. Every pedal, every combination. Your tone stays clean from input to output.',
     image:
-      'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/MikeStipanovLayout1.png',
+      'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Signal_Routing.png',
     color: '#0071E3', // blue
   },
   {
@@ -25,7 +25,7 @@ const steps: CinemaStep[] = [
     title: 'Cable Work',
     desc: 'Every run is labeled, laced, and built to handle hundreds of shows. When you open the back of this board, it makes sense.',
     image:
-      'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jeremy_B.png',
+      'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Cable_Work.png',
     color: '#00B4D8', // cyan
   },
   {
@@ -33,15 +33,15 @@ const steps: CinemaStep[] = [
     title: 'Power & Protection',
     desc: 'Isolated power rails kill the hum and buzz. That mystery noise you can never track down? We know where it lives.',
     image:
-      'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Untitled_design_11.png',
+      'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Power_Protection.png',
     color: '#34D399', // green
   },
   {
     num: '04',
     title: 'Stage-Ready',
-    desc: 'Your board leaves here ready to plug in. We stress-test everything so you don\u2019t think about it at the gig.',
+    desc: 'Your board leaves here ready to plug in. We stress-test everything so you don’t think about it at the gig.',
     image:
-      'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png',
+      'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Stage-Ready.jpg',
     color: '#0071E3', // blue (full circle)
   },
 ];
