@@ -41,40 +41,62 @@ export default function ContactWidget() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#f5f5f7] py-20 sm:py-24">
-      <div className="max-w-3xl mx-auto px-6">
-        <div className="text-center mb-10">
-          <h2 className="trd-section-headline text-[#1d1d1f] mb-3">
-            Get in touch.
+    <section className="relative overflow-hidden bg-[#0a0a0a] py-24 sm:py-32">
+      {/* Aurora glow background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full opacity-[0.07]"
+          style={{
+            background: 'radial-gradient(ellipse at center, #0071E3 0%, #6C5CE7 40%, transparent 70%)',
+          }}
+        />
+        <div
+          className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full opacity-[0.04]"
+          style={{
+            background: 'radial-gradient(circle at center, #00C9FF 0%, transparent 70%)',
+          }}
+        />
+      </div>
+
+      {/* Top divider line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
+
+      <div className="relative z-10 max-w-2xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <p className="text-sm font-medium uppercase tracking-widest text-[#0071E3] mb-4">
+            Let&apos;s talk
+          </p>
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#f5f5f7] mb-4 tracking-tight">
+            Get in <span className="trd-gradient-text">touch.</span>
           </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">
+          <p className="text-[#f5f5f7]/50 text-lg max-w-md mx-auto">
             Questions about a build, a product, or just want to talk tone? Drop us a line.
           </p>
         </div>
 
         {status === 'sent' ? (
-          <div className="text-center py-12 bg-white rounded-2xl border border-black/[0.06] px-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#10B981]/10 mb-6">
+          <div className="text-center py-14 rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm px-8">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#10B981]/10 border border-[#10B981]/20 mb-6">
               <svg className="w-10 h-10 text-[#10B981]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-[#1d1d1f] mb-3">
+            <h3 className="text-2xl font-bold text-[#f5f5f7] mb-3">
               Thanks{submittedName ? `, ${submittedName}` : ''}! Message received.
             </h3>
-            <p className="text-[#1d1d1f]/50 text-lg mb-2">
+            <p className="text-[#f5f5f7]/50 text-lg mb-2">
               We&apos;ve got your message and will get back to you within 24 hours.
             </p>
-            <p className="text-[#1d1d1f]/40 text-sm">
+            <p className="text-[#f5f5f7]/30 text-sm">
               Need something urgent? Call us at{' '}
-              <a href="tel:+19365489254" className="text-[#0071E3] hover:text-[#005BB5] transition-colors">
+              <a href="tel:+19365489254" className="text-[#0071E3] hover:text-[#4DA3FF] transition-colors">
                 (936) 548-9254
               </a>
               {' '}Mon–Fri, 9am–5pm CT.
             </p>
             <button
               onClick={() => setStatus('idle')}
-              className="mt-8 text-[#0071E3] hover:text-[#005BB5] font-medium text-sm transition-colors"
+              className="mt-8 text-[#0071E3] hover:text-[#4DA3FF] font-medium text-sm transition-colors"
             >
               Send another message
             </button>
@@ -83,8 +105,8 @@ export default function ContactWidget() {
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label htmlFor="cw-firstName" className="block text-sm font-medium text-[#1d1d1f]/70 mb-1.5">
-                  First Name <span className="text-red-400">*</span>
+                <label htmlFor="cw-firstName" className="block text-sm font-medium text-[#f5f5f7]/50 mb-2">
+                  First Name <span className="text-[#0071E3]">*</span>
                 </label>
                 <input
                   type="text"
@@ -93,12 +115,12 @@ export default function ContactWidget() {
                   required
                   value={form.firstName}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl bg-white border border-black/[0.08] text-[#1d1d1f] placeholder-[#1d1d1f]/30 focus:outline-none focus:ring-2 focus:ring-[#0071E3]/30 focus:border-[#0071E3]/50 transition-all text-sm"
+                  className="w-full px-4 py-3.5 rounded-xl bg-white/[0.05] border border-white/[0.1] text-[#f5f5f7] placeholder-white/20 focus:outline-none focus:ring-2 focus:ring-[#0071E3]/40 focus:border-[#0071E3]/50 transition-all text-sm backdrop-blur-sm"
                   placeholder="Jacob"
                 />
               </div>
               <div>
-                <label htmlFor="cw-lastName" className="block text-sm font-medium text-[#1d1d1f]/70 mb-1.5">
+                <label htmlFor="cw-lastName" className="block text-sm font-medium text-[#f5f5f7]/50 mb-2">
                   Last Name
                 </label>
                 <input
@@ -107,7 +129,7 @@ export default function ContactWidget() {
                   name="lastName"
                   value={form.lastName}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl bg-white border border-black/[0.08] text-[#1d1d1f] placeholder-[#1d1d1f]/30 focus:outline-none focus:ring-2 focus:ring-[#0071E3]/30 focus:border-[#0071E3]/50 transition-all text-sm"
+                  className="w-full px-4 py-3.5 rounded-xl bg-white/[0.05] border border-white/[0.1] text-[#f5f5f7] placeholder-white/20 focus:outline-none focus:ring-2 focus:ring-[#0071E3]/40 focus:border-[#0071E3]/50 transition-all text-sm backdrop-blur-sm"
                   placeholder="Smith"
                 />
               </div>
@@ -115,8 +137,8 @@ export default function ContactWidget() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label htmlFor="cw-email" className="block text-sm font-medium text-[#1d1d1f]/70 mb-1.5">
-                  Email <span className="text-red-400">*</span>
+                <label htmlFor="cw-email" className="block text-sm font-medium text-[#f5f5f7]/50 mb-2">
+                  Email <span className="text-[#0071E3]">*</span>
                 </label>
                 <input
                   type="email"
@@ -125,12 +147,12 @@ export default function ContactWidget() {
                   required
                   value={form.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl bg-white border border-black/[0.08] text-[#1d1d1f] placeholder-[#1d1d1f]/30 focus:outline-none focus:ring-2 focus:ring-[#0071E3]/30 focus:border-[#0071E3]/50 transition-all text-sm"
+                  className="w-full px-4 py-3.5 rounded-xl bg-white/[0.05] border border-white/[0.1] text-[#f5f5f7] placeholder-white/20 focus:outline-none focus:ring-2 focus:ring-[#0071E3]/40 focus:border-[#0071E3]/50 transition-all text-sm backdrop-blur-sm"
                   placeholder="you@email.com"
                 />
               </div>
               <div>
-                <label htmlFor="cw-phone" className="block text-sm font-medium text-[#1d1d1f]/70 mb-1.5">
+                <label htmlFor="cw-phone" className="block text-sm font-medium text-[#f5f5f7]/50 mb-2">
                   Phone
                 </label>
                 <input
@@ -139,15 +161,15 @@ export default function ContactWidget() {
                   name="phone"
                   value={form.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-xl bg-white border border-black/[0.08] text-[#1d1d1f] placeholder-[#1d1d1f]/30 focus:outline-none focus:ring-2 focus:ring-[#0071E3]/30 focus:border-[#0071E3]/50 transition-all text-sm"
+                  className="w-full px-4 py-3.5 rounded-xl bg-white/[0.05] border border-white/[0.1] text-[#f5f5f7] placeholder-white/20 focus:outline-none focus:ring-2 focus:ring-[#0071E3]/40 focus:border-[#0071E3]/50 transition-all text-sm backdrop-blur-sm"
                   placeholder="(555) 123-4567"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="cw-message" className="block text-sm font-medium text-[#1d1d1f]/70 mb-1.5">
-                Message <span className="text-red-400">*</span>
+              <label htmlFor="cw-message" className="block text-sm font-medium text-[#f5f5f7]/50 mb-2">
+                Message <span className="text-[#0071E3]">*</span>
               </label>
               <textarea
                 id="cw-message"
@@ -156,20 +178,20 @@ export default function ContactWidget() {
                 rows={4}
                 value={form.message}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl bg-white border border-black/[0.08] text-[#1d1d1f] placeholder-[#1d1d1f]/30 focus:outline-none focus:ring-2 focus:ring-[#0071E3]/30 focus:border-[#0071E3]/50 transition-all text-sm resize-none"
+                className="w-full px-4 py-3.5 rounded-xl bg-white/[0.05] border border-white/[0.1] text-[#f5f5f7] placeholder-white/20 focus:outline-none focus:ring-2 focus:ring-[#0071E3]/40 focus:border-[#0071E3]/50 transition-all text-sm resize-none backdrop-blur-sm"
                 placeholder="Tell us about your rig, what you're looking for, or just say hey."
               />
             </div>
 
             {status === 'error' && (
-              <p className="text-sm text-red-500">Something went wrong. Please try again.</p>
+              <p className="text-sm text-red-400">Something went wrong. Please try again.</p>
             )}
 
-            <div className="text-center pt-2">
+            <div className="text-center pt-4">
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className="inline-flex items-center gap-2 font-semibold px-10 py-4 rounded-full text-white bg-[#1d1d1f] hover:bg-[#1d1d1f]/90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                className="inline-flex items-center gap-2 font-semibold px-10 py-4 rounded-full text-white trd-cta-gradient trd-glow-pulse transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
               >
                 {status === 'sending' ? (
                   <>
