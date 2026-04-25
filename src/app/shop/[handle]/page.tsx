@@ -312,18 +312,6 @@ export default function ProductPage() {
         </div>
       </section>
 
-      {product.descriptionHtml && product.descriptionHtml !== product.description && (
-        <Section theme="light" id="product-details" reveal>
-          <div className="max-w-3xl mx-auto">
-            <h2 className="trd-section-headline text-[#1d1d1f] mb-8">Details</h2>
-            <div
-              className="prose prose-lg max-w-none text-[#1d1d1f]/70 prose-headings:text-[#1d1d1f] prose-headings:font-semibold prose-a:text-[#0071E3] prose-a:no-underline hover:prose-a:underline prose-strong:text-[#1d1d1f]"
-              dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
-            />
-          </div>
-        </Section>
-      )}
-
       <Section theme="dark" id="product-cta" reveal className="text-center">
         <div className="mb-8">
           <h2 className="trd-section-headline text-[#f5f5f7] mb-4">
@@ -348,6 +336,27 @@ export default function ProductPage() {
           </Link>
         </div>
       </Section>
+
+      {/* ──── Consultation CTA ──── */}
+      <section className="relative overflow-hidden bg-[#1d1d1f] py-16 sm:py-20">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(255,55,95,0.06)_0%,transparent_50%)]" />
+        <div className="relative max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-8">
+          <div>
+            <h3 className="text-2xl sm:text-3xl font-bold text-[#f5f5f7] tracking-tight">
+              Ready to hear what your rig should sound like?
+            </h3>
+            <p className="text-[#f5f5f7]/50 text-base mt-3">
+              30 minutes. Free. No commitment.
+            </p>
+          </div>
+          <Link
+            href="/book"
+            className="trd-cta-gradient trd-glow-pulse inline-flex items-center px-8 py-4 rounded-full font-semibold text-base whitespace-nowrap"
+          >
+            Book a Free Consultation
+          </Link>
+        </div>
+      </section>
     </>
   );
 }
