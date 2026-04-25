@@ -225,7 +225,7 @@ function TransformationSection() {
             Drag the slider and see what changes when we get our hands on it.
           </p>
         </div>
-        <BeforeAfter />
+        <BeforeAfter theme="dark" />
       </Section>
       <div className="trd-divider-dark-to-light" />
     </>
