@@ -80,6 +80,27 @@ async function shopifyFetch<T>(query: string, variables?: Record<string, unknown
   return json.data;
 }
 
+// ─── Helpers ───
+
+/**
+ * Shopify returns checkout URLs using the store's primary domain (therigdr.com).
+ * Since that domain is served by the headless Next.js frontend, checkout URLs
+ * must be rewritten to use the myshopify.com domain so they reach Shopify's
+ * actual checkout flow instead of the headless app.
+ */
+function ensureShopifyCheckoutDomain(checkoutUrl: string): string {
+  try {
+    const parsed = new URL(checkoutUrl);
+    if (parsed.hostname !== SHOPIFY_DOMAIN) {
+      parsed.hostname = SHOPIFY_DOMAIN;
+      return parsed.toString();
+    }
+  } catch {
+    // If URL parsing fails, return as-is
+  }
+  return checkoutUrl;
+}
+
 // ─── Product Queries ───
 
 export async function getProduct(handle: string): Promise<ShopifyProduct | null> {
@@ -220,5 +241,5 @@ export async function getCheckoutUrl(variantId: string, quantity: number = 1): P
   if (userErrors.length > 0) {
     throw new Error(userErrors[0].message);
   }
-  return cart.checkoutUrl;
+  return ensureShopifyCheckoutDomain(cart.checkoutUrl);
 }
