@@ -15,7 +15,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // If HubSpot token is available, create/update contact
+    let contactId: string | null = null;
+
+    // If HubSpot token is available, create/update contact + ticket
     if (HUBSPOT_TOKEN) {
       try {
         // Search for existing contact by email
@@ -48,11 +50,11 @@ export async function POST(req: NextRequest) {
           email,
           phone: phone || '',
           hs_lead_status: 'NEW',
-          lifecyclestage: 'lead',
         };
 
         if (existingContact) {
           // Update existing contact
+          contactId = existingContact.id;
           await fetch(
             `https://api.hubapi.com/crm/v3/objects/contacts/${existingContact.id}`,
             {
@@ -66,7 +68,8 @@ export async function POST(req: NextRequest) {
           );
         } else {
           // Create new contact
-          await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
+          properties.lifecyclestage = 'lead';
+          const createRes = await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -74,12 +77,13 @@ export async function POST(req: NextRequest) {
             },
             body: JSON.stringify({ properties }),
           });
+          const createData = await createRes.json();
+          contactId = createData.id || null;
         }
 
-        // Create a note with the message
-        const contactId = existingContact?.id;
+        // Create a note with the message, associated to the contact
         if (contactId) {
-          const noteRes = await fetch(
+          await fetch(
             'https://api.hubapi.com/crm/v3/objects/notes',
             {
               method: 'POST',
@@ -89,7 +93,7 @@ export async function POST(req: NextRequest) {
               },
               body: JSON.stringify({
                 properties: {
-                  hs_note_body: `Website Contact Form:\n\nName: ${firstName} ${lastName || ''}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\n\nMessage:\n${message}`,
+                  hs_note_body: `<strong>Website Contact Form</strong><br><br><strong>Name:</strong> ${firstName} ${lastName || ''}<br><strong>Email:</strong> ${email}<br><strong>Phone:</strong> ${phone || 'Not provided'}<br><br><strong>Message:</strong><br>${message}`,
                   hs_timestamp: new Date().toISOString(),
                 },
                 associations: [
@@ -107,8 +111,42 @@ export async function POST(req: NextRequest) {
             }
           );
         }
+
+        // Create a HubSpot ticket — triggers email notifications to the team
+        const ticketBody: Record<string, unknown> = {
+          properties: {
+            subject: `Website Contact: ${firstName} ${lastName || ''} — ${email}`,
+            content: `Name: ${firstName} ${lastName || ''}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\n\nMessage:\n${message}`,
+            hs_pipeline: '0',
+            hs_pipeline_stage: '1',
+            hs_ticket_priority: 'MEDIUM',
+            source_type: 'WEB',
+          },
+          associations: contactId
+            ? [
+                {
+                  to: { id: contactId },
+                  types: [
+                    {
+                      associationCategory: 'HUBSPOT_DEFINED',
+                      associationTypeId: 16,
+                    },
+                  ],
+                },
+              ]
+            : [],
+        };
+
+        await fetch('https://api.hubapi.com/crm/v3/objects/tickets', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${HUBSPOT_TOKEN}`,
+          },
+          body: JSON.stringify(ticketBody),
+        });
       } catch (hubspotErr) {
-        // Log but don't fail the request — form submission still counts
+        // Log but don't fail the request
         console.error('HubSpot error:', hubspotErr);
       }
     }
