@@ -5,7 +5,7 @@ import BeforeAfter from '@/components/BeforeAfter';
 import GallerySlider from '@/components/GallerySlider';
 import CinemaSection from '@/components/CinemaSection';
 import PopularProducts from '@/components/PopularProducts';
-import SignalFlowCapture from '@/components/SignalFlowCapture';
+import ReviewsMarquee from '@/components/ReviewsMarquee';
 import HeroVideo from '@/components/HeroVideo';
 
 export default function Home() {
@@ -302,52 +302,18 @@ export default function Home() {
       {/* dark → light transition */}
       <div className="trd-divider-dark-to-light" />
 
-      {/* ──── 8. REVIEWS ──── */}
+      {/* ──── 8. REVIEWS — Auto-scrolling marquee ──── */}
       <Section theme="light" id="customer-reviews" reveal>
-        <div className="mb-12">
+        <div className="text-center mb-12">
           <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
             Don&apos;t take our word for it.
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg">Straight from the people who gig on these boards every week.</p>
         </div>
-
-        <div className="relative w-[100vw] -ml-[calc((100vw-100%)/2)]">
-          <div
-            className="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory"
-            style={{
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-              paddingLeft: 'max(24px, calc((100vw - 1080px) / 2 + 24px))',
-              paddingRight: 'max(24px, calc((100vw - 1080px) / 2 + 24px))',
-            }}
-          >
-            {[
-              { name: 'Kevin M.', feedback: 'Took it on a 3-week tour. Not a single issue. I used to carry a backup board — don\'t anymore.' },
-              { name: 'Josh W.', feedback: 'Had this hum I could never figure out. Jacob found it in like 10 minutes. Board\'s been dead quiet since.' },
-              { name: 'Kaden C.', feedback: 'Opened up the back and every cable was labeled and laced clean. I\'ve never seen anyone do that.' },
-              { name: 'Shane T.', feedback: 'Setup used to take me 20 minutes at gigs. Now I uncase it and plug in. That alone was worth it.' },
-              { name: 'Robert B.', feedback: 'Two years in and it still holds up. I\'ve gigged this thing hard. Nothing\'s come loose, nothing buzzes.' },
-            ].map((review, idx) => (
-              <div key={idx} className="trd-review-card flex-shrink-0 snap-start w-[320px] sm:w-[360px] bg-[#f5f5f7] rounded-2xl p-7 border border-black/[0.06]">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-4 h-4" fill="#EAB308" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-[#1d1d1f]/70 mb-6 leading-relaxed text-[15px]">{review.feedback}</p>
-                <p className="font-semibold text-[#1d1d1f]">{review.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <ReviewsMarquee />
       </Section>
 
-      {/* ──── 9. SIGNAL FLOW CHEAT SHEET — email capture ──── */}
-      <SignalFlowCapture />
-
-      {/* ──── 10. FAQ ──── */}
+      {/* ──── 9. FAQ ──── */}
       <Section theme="lightGray" id="faq" reveal>
         <div className="text-center mb-12">
           <h2 className="trd-section-headline text-[#1d1d1f]">
@@ -404,10 +370,10 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ──── 11. TONE SHOP — Most Popular ──── */}
+      {/* ──── 10. TONE SHOP — Most Popular ──── */}
       <PopularProducts />
 
-      {/* ──── 12. TONE TUTORING — page closer ──── */}
+      {/* ──── 11. TONE TUTORING — page closer ──── */}
       <Section theme="light" id="tone-tutoring-cta" reveal>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: Value prop */}
