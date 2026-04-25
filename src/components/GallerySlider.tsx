@@ -4,12 +4,16 @@ import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 
 const galleryImages = [
-  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png', alt: 'Custom rig build — touring pedalboard' },
-  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/MikeStipanovLayout1.png', alt: 'Custom rig build — studio layout' },
-  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jeremy_B.png', alt: 'Custom rig build — Jeremy B.' },
-  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Untitled_design_11.png', alt: 'Custom rig build — compact board' },
-  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_20.png', alt: 'Custom rig build — professional wiring' },
-  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_28.png', alt: 'Custom rig build — finished board' },
+  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Javy_B.png?v=1773867365', alt: 'Custom rig build — Javy B.' },
+  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/William_O._1.png?v=1773867364', alt: 'Custom rig build — William O.' },
+  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Josh_W.png?v=1773867364', alt: 'Custom rig build — Josh W.' },
+  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Vince_D.png?v=1773867366', alt: 'Custom rig build — Vince D.' },
+  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/John_A._1.png?v=1773867365', alt: 'Custom rig build — John A.' },
+  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Hunter_W._1.jpg?v=1774980806', alt: 'Custom rig build — Hunter W.' },
+  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/John_A.png?v=1773867366', alt: 'Custom rig build — John A. detail' },
+  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jacob_S.png?v=1773867364', alt: 'Custom rig build — Jacob S.' },
+  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Saxon_W..jpg?v=1777143325', alt: 'Custom rig build — Saxon W.' },
+  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Vince_D._2.jpg?v=1777143325', alt: 'Custom rig build — Vince D. board' },
 ];
 
 export default function GallerySlider() {
