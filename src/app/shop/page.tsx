@@ -29,9 +29,12 @@ const STOREFRONT_WHITELIST: StorefrontEntry[] = [
   { titleMatch: '2524',              category: 'Cables',      order: 4 },
   { titleMatch: '2534',              category: 'Cables',      order: 5 },
   { titleMatch: 'tie down',          category: 'Accessories',  order: 6 },
-  { titleMatch: 'powergrip',         category: 'Accessories',  order: 7 },
-  { titleMatch: 'rig rendering',     category: 'Services',     order: 8 },
-  { titleMatch: 'tone tutor',        category: 'Services',     order: 9 },
+  { titleMatch: 'tie-down',          category: 'Accessories',  order: 6 },
+  { titleMatch: 'tiedown',           category: 'Accessories',  order: 6 },
+  { titleMatch: 'zip',               category: 'Accessories',  order: 7 },
+  { titleMatch: 'powergrip',         category: 'Accessories',  order: 8 },
+  { titleMatch: 'rig rendering',     category: 'Services',     order: 9 },
+  { titleMatch: 'tone tutor',        category: 'Services',     order: 10 },
 ];
 
 function matchWhitelist(title: string): StorefrontEntry | null {
