@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     title: 'The Rig Doctor | Custom Pedalboard Builds',
     description:
-      'Professional custom pedalboard builds for touring artists and home players. 17+ years experience. 200+ rigs built.',
+      'Professional custom pedalboard builds for touring artists and home players. 17+ years experience. 500+ rigs built.',
     url: 'https://www.therigdr.com',
   },
   twitter: {
