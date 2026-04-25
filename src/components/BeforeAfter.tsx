@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import Image from 'next/image';
 
 interface CaseStudy {
@@ -15,32 +15,15 @@ interface CaseStudy {
 
 const caseStudies: CaseStudy[] = [
   {
-    playerName: 'Kevin M.',
-    playerRole: 'Touring Guitarist',
-    heading: 'From tangled mess to tour-ready',
-    story: 'Came in with a board held together with zip ties and hope. We rebuilt it from scratch \u2014 isolated power, buffered signal path, and a switching system for going clean to lead with one tap.',
-    tags: ['12 PEDALS', 'MIDI SWITCHING', 'TOURING RIG'],
-    beforeImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_20.png',
-    afterImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png',
+    playerName: 'Ryan H.',
+    playerRole: 'Gigging Guitarist',
+    heading: 'From shoebox to stage-proof',
+    story: 'Ryan came to us with a board that was doing the job — barely. Tangled cables, daisy-chained power, and tone that disappeared by the third song. We stripped it down, rebuilt the signal path from scratch, isolated every power rail, and handed him back a rig that stays dead quiet no matter how loud the stage gets.',
+    tags: ['9 PEDALS', 'ISOLATED POWER', 'FULL REWIRE'],
+    beforeImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Ryan_Before.png?v=1777143983',
+    afterImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Ryan_After.jpg?v=1777143984',
   },
-  {
-    playerName: 'Shannon G.',
-    playerRole: 'Worship Leader',
-    heading: 'Silent stage, massive tone',
-    story: "Shannon's board was plagued by ground loops and hum. We redesigned the power section with fully isolated outputs and re-routed the signal chain. Dead silent on stage, massive tone out front.",
-    tags: ['8 PEDALS', 'ISOLATED POWER', 'WORSHIP'],
-    beforeImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Untitled_design_11.png',
-    afterImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Shannon_G._1.png',
-  },
-  {
-    playerName: 'Jeff C.',
-    playerRole: 'Session Player',
-    heading: 'Studio precision, zero compromise',
-    story: 'Jeff tracks for multiple artists and needed a board that covers everything from jazz cleans to modern high-gain. We built a dual-amp rig with isolated loops and studio-grade cabling throughout.',
-    tags: ['15 PEDALS', 'DUAL AMP', 'STUDIO'],
-    beforeImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/MikeStipanovLayout1.png',
-    afterImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jeremy_B.png',
-  },
+  // More case studies coming — need before/after shots
 ];
 
 function BeforeAfterSlider({ beforeImage, afterImage }: { beforeImage: string; afterImage: string }) {
