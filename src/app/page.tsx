@@ -38,7 +38,7 @@ export default function Home() {
 
             <div className="flex justify-center items-center gap-8 sm:gap-16 pt-8 border-t border-white/10">
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-white">200+</p>
+                <p className="text-2xl sm:text-3xl font-bold text-white">500+</p>
                 <p className="text-sm text-[#f5f5f7]/50 mt-1">rigs built</p>
               </div>
               <div className="w-px h-10 bg-white/10" />
@@ -129,7 +129,7 @@ export default function Home() {
         <div className="text-center mb-10">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-4">The Gallery</p>
           <h2 className="trd-section-headline text-[#f5f5f7] mb-2">
-            200+ rigs. <span className="trd-gradient-text">Here&apos;s a few.</span>
+            500+ rigs. <span className="trd-gradient-text">Here&apos;s a few.</span>
           </h2>
         </div>
         <GallerySlider />
@@ -317,7 +317,7 @@ export default function Home() {
             }}
           >
             {[
-              { name: 'Kevin M.', feedback: 'Took it on a 3-week tour. Not a single issue. I used to carry a backup board \u2014 don\'t anymore.' },
+              { name: 'Kevin M.', feedback: 'Took it on a 3-week tour. Not a single issue. I used to carry a backup board — don\'t anymore.' },
               { name: 'Josh W.', feedback: 'Had this hum I could never figure out. Jacob found it in like 10 minutes. Board\'s been dead quiet since.' },
               { name: 'Kaden C.', feedback: 'Opened up the back and every cable was labeled and laced clean. I\'ve never seen anyone do that.' },
               { name: 'Shane T.', feedback: 'Setup used to take me 20 minutes at gigs. Now I uncase it and plug in. That alone was worth it.' },
