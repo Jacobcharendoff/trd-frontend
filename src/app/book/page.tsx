@@ -1,9 +1,11 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import Section from '@/components/Section';
 import TestimonialCarousel from '@/components/TestimonialCarousel';
+import BeforeAfter from '@/components/BeforeAfter';
 
 /* ──── Hero with Calendar ──── */
 function Hero() {
@@ -65,7 +67,7 @@ function Hero() {
               <div className="trd-glass-dark p-6 space-y-4">
                 <h3 className="text-[15px] font-semibold text-white">{"What we'll dig into"}</h3>
                 <ul className="space-y-3">
-                  {['What you play and the tone you\u2019re chasing', 'Your current rig — what\u2019s working, what\u2019s not', 'A custom build plan with timeline and pricing'].map((item) => (
+                  {['What you play and the tone you’re chasing', 'Your current rig — what’s working, what’s not', 'A custom build plan with timeline and pricing'].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <svg className="w-5 h-5 text-[#10B981] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -111,62 +113,164 @@ function Hero() {
   );
 }
 
-/* ──── After the Call (light — informational) ──── */
-function AfterTheCall() {
+/* ──── Visual Process Section ──── */
+function ProcessSection() {
   const steps = [
-    { number: '01', title: 'We Map It Out', description: 'Your specs, wiring diagram, component list. Everything documented so nothing gets lost.' },
-    { number: '02', title: 'Clear Quote', description: 'Itemized proposal with a real timeline. You see exactly what you\u2019re paying for before we start.' },
-    { number: '03', title: 'Your Move', description: "Take your time. Ask questions. Sleep on it. We\u2019re here when you\u2019re ready." },
+    {
+      number: '01',
+      title: 'We Map It Out',
+      description: 'Your specs, wiring diagram, signal chain order, component list — everything documented so nothing gets lost. We photograph your current board and plan the rebuild piece by piece.',
+      image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jacob_S.png',
+      imageAlt: 'Detailed rig planning and wiring diagram',
+    },
+    {
+      number: '02',
+      title: 'We Build It',
+      description: 'Every connection hand-soldered. Every cable custom-cut. Isolated power, engineered signal path, cable management that stays clean on the road. We road-test it before it ships.',
+      image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/John_A._1.png',
+      imageAlt: 'Hand-soldered pedalboard build in progress',
+    },
+    {
+      number: '03',
+      title: 'You Play It',
+      description: 'Board arrives road-ready. Plug in, hit your presets, and hear the difference. Dead quiet. Zero signal loss. And if anything ever goes wrong — we\'re a phone call away.',
+      image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Saxon_W..jpg',
+      imageAlt: 'Finished custom pedalboard ready to play',
+    },
   ];
 
   return (
-    <Section theme="light" id="after-call">
-      <div className="space-y-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {steps.map((step) => (
-            <div key={step.number} className="bg-[#f5f5f7] rounded-2xl p-8 space-y-4">
-              <div className="text-5xl font-bold trd-gradient-text">{step.number}</div>
-              <h3 className="text-xl font-semibold text-[#1d1d1f]">{step.title}</h3>
-              <p className="text-[15px] text-[#1d1d1f]/70 leading-relaxed">{step.description}</p>
-            </div>
-          ))}
-        </div>
+    <Section theme="light" id="process" reveal>
+      <div className="text-center mb-16">
+        <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">
+          The Process
+        </p>
+        <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
+          From call to <span className="trd-gradient-text">stage-ready.</span>
+        </h2>
+        <p className="text-[#1d1d1f]/50 text-lg max-w-2xl mx-auto">
+          Three steps. No surprises. You know exactly what&apos;s happening at every stage.
+        </p>
+      </div>
 
-        <div className="bg-[#f5f5f7] rounded-2xl p-8 flex gap-6 items-start border border-black/[0.04]">
-          <div className="flex-shrink-0">
-            <svg className="w-6 h-6 text-[#0071E3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5h.01" />
-            </svg>
-          </div>
-          <div className="flex-1 space-y-2">
-            <h4 className="font-semibold text-[#1d1d1f]">Not sure if this is the right call?</h4>
-            <p className="text-[15px] text-[#1d1d1f]/70">
-              {"This consultation is built for custom build projects. If you're looking for signal chain feedback, gear recommendations, or quick advice, "}
-              <Link href="/tone-tutoring" className="text-[#0071E3] hover:text-[#005BB5] transition-colors font-medium">explore Tone Tutoring</Link>.
-            </p>
-          </div>
-        </div>
-
-        <div className="text-center space-y-4">
-          <p className="text-[18px] text-[#1d1d1f] font-medium">
-            Custom builds typically start from <span className="trd-gradient-text font-bold">$2,000</span>
-          </p>
-        </div>
-
-        <div className="flex justify-center pt-4">
-          <button
-            onClick={() => document.querySelector('.meetings-iframe-container')?.scrollIntoView({ behavior: 'smooth' })}
-            className="px-8 py-4 bg-[#1d1d1f] text-white font-semibold rounded-full hover:bg-[#1d1d1f]/90 transition-colors text-[16px]"
+      <div className="space-y-20">
+        {steps.map((step, idx) => (
+          <div
+            key={step.number}
+            className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
+              idx % 2 === 1 ? 'lg:[direction:rtl]' : ''
+            }`}
           >
-            Book your free consultation
-          </button>
-        </div>
+            {/* Image */}
+            <div className={`${idx % 2 === 1 ? 'lg:[direction:ltr]' : ''}`}>
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#0a0a0a] shadow-xl group">
+                <Image
+                  src={step.image}
+                  alt={step.imageAlt}
+                  fill
+                  className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                {/* Step number overlay */}
+                <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white text-xs font-bold tracking-widest px-3 py-1.5 rounded-full">
+                  STEP {step.number}
+                </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className={`space-y-6 ${idx % 2 === 1 ? 'lg:[direction:ltr]' : ''}`}>
+              <div className="text-6xl sm:text-7xl font-bold trd-gradient-text opacity-30">
+                {step.number}
+              </div>
+              <h3 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] -mt-4">
+                {step.title}
+              </h3>
+              <p className="text-[16px] text-[#1d1d1f]/60 leading-relaxed max-w-md">
+                {step.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Pricing note */}
+      <div className="text-center mt-20 space-y-4">
+        <p className="text-[18px] text-[#1d1d1f] font-medium">
+          Custom builds typically start from{' '}
+          <span className="trd-gradient-text font-bold">$2,000 USD</span>
+        </p>
+        <p className="text-[14px] text-[#1d1d1f]/40">
+          Every rig is different. Your consultation is free — we give you a straight quote.
+        </p>
       </div>
     </Section>
   );
 }
 
-/* ──── Team (light gray — warm, open) ──── */
+/* ──── Before/After Transformation ──── */
+function TransformationSection() {
+  return (
+    <>
+      <div className="trd-divider-light-to-dark" />
+      <Section theme="dark" id="before-after" reveal>
+        <div className="text-center mb-16">
+          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-4">
+            The Difference
+          </p>
+          <h2 className="trd-section-headline text-[#f5f5f7] mb-2">
+            Same pedals. <span className="trd-gradient-text">Completely different rig.</span>
+          </h2>
+          <p className="text-[#f5f5f7]/50 text-lg">
+            Drag the slider and see what changes when we get our hands on it.
+          </p>
+        </div>
+        <BeforeAfter />
+      </Section>
+      <div className="trd-divider-dark-to-light" />
+    </>
+  );
+}
+
+/* ──── Build Gallery Strip ──── */
+function GalleryStrip() {
+  const images = [
+    { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Javy_B.png?v=1773867365', alt: 'Javy B. build' },
+    { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/William_O._1.png?v=1773867364', alt: 'William O. build' },
+    { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Josh_W.png?v=1773867364', alt: 'Josh W. build' },
+    { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Vince_D.png?v=1773867366', alt: 'Vince D. build' },
+    { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Hunter_W._1.jpg?v=1774980806', alt: 'Hunter W. build' },
+    { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Vince_D._2.jpg?v=1777143325', alt: 'Vince D. board' },
+  ];
+
+  return (
+    <Section theme="lightGray" id="recent-builds" reveal>
+      <div className="text-center mb-10">
+        <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">
+          Recent Builds
+        </p>
+        <h2 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f]">
+          Every board tells a story.
+        </h2>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+        {images.map((img, idx) => (
+          <div key={idx} className="relative aspect-[4/3] rounded-xl overflow-hidden group bg-[#0a0a0a]">
+            <Image
+              src={img.src}
+              alt={img.alt}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              sizes="(max-width: 768px) 50vw, 33vw"
+            />
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+/* ──── Team (light — warm, open) ──── */
 function Team() {
   const team = [
     { name: 'Jacob', title: 'Rig Engineer', image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jacob_avatar.png' },
@@ -175,7 +279,7 @@ function Team() {
   ];
 
   return (
-    <Section theme="lightGray">
+    <Section theme="light" reveal>
       <div className="space-y-12">
         <div className="text-center space-y-2">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-2">The Bench</p>
@@ -200,22 +304,26 @@ function Team() {
   );
 }
 
-/* ──── Trusted By (same carousel as homepage) ──── */
+/* ──── Trusted By ──── */
 function TrustedBy() {
   return (
-    <Section theme="light" reveal>
-      <div className="text-center mb-12">
-        <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">On the Road</p>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] mb-2">
-          Trusted by players who <span className="trd-gradient-text">can&apos;t afford a bad night.</span>
-        </h2>
-      </div>
-      <TestimonialCarousel theme="light" />
-    </Section>
+    <>
+      <div className="trd-divider-light-to-dark" />
+      <Section theme="dark" reveal>
+        <div className="text-center mb-12">
+          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-4">On the Road</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-2">
+            Trusted by players who <span className="trd-gradient-text">can&apos;t afford a bad night.</span>
+          </h2>
+        </div>
+        <TestimonialCarousel theme="dark" />
+      </Section>
+      <div className="trd-divider-dark-to-light" />
+    </>
   );
 }
 
-/* ──── Fallback CTA (white) ──── */
+/* ──── Fallback CTA ──── */
 function FallbackCTA() {
   return (
     <Section theme="light">
@@ -237,7 +345,9 @@ export default function BookPage() {
   return (
     <>
       <Hero />
-      <AfterTheCall />
+      <ProcessSection />
+      <TransformationSection />
+      <GalleryStrip />
       <Team />
       <TrustedBy />
       <FallbackCTA />
