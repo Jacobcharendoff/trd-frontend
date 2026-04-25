@@ -30,6 +30,19 @@ export default function ToneTutoringPage() {
       {/* ──── HERO ──── */}
       <div className="relative w-full bg-black overflow-hidden">
         <div className="relative trd-aurora-intense min-h-screen flex items-end justify-center">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="none"
+            className="absolute inset-0 w-full h-full object-cover opacity-30"
+          >
+            <source
+              src="https://cdn.shopify.com/videos/c/o/v/5f0a62a68694406d95b83a837a56c2d0.mov"
+              type="video/mp4"
+            />
+          </video>
           <div className="absolute inset-0 pointer-events-none" />
           <div className="relative z-10 max-w-[1080px] mx-auto px-6 pt-32 pb-20 w-full">
             <div className="flex justify-center mb-6">
