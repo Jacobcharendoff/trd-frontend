@@ -103,12 +103,26 @@ export default function ShopPage() {
   return (
     <>
       {/* ──── HERO SECTION ──── */}
-      <div className="relative w-full bg-black overflow-hidden">
-        <div className="relative trd-aurora-intense min-h-[500px] flex items-center justify-center">
-          <div className="absolute inset-0 pointer-events-none" />
+      <div className="relative w-full overflow-hidden">
+        <div className="relative min-h-[500px] flex items-center justify-center bg-black trd-aurora-intense">
+          {/* Background Video */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="none"
+            className="absolute inset-0 w-full h-full object-cover opacity-40"
+          >
+            <source
+              src="https://cdn.shopify.com/videos/c/o/v/2a85affb7da84ea2aebb92e333164646.mp4"
+              type="video/mp4"
+            />
+          </video>
+
           <div className="relative z-10 max-w-[1080px] mx-auto px-6 py-32 w-full text-center">
             <h1 className="trd-hero-headline text-[#f5f5f7] mb-6">
-              The Tone <span className="trd-gradient-text">Shop</span>
+              The <span className="trd-gradient-text">Tone</span> Shop
             </h1>
             <p className="trd-subheadline max-w-2xl mx-auto">
               Cables, pedalboards, switching, and more — everything you need to build a rig that works.
@@ -116,6 +130,9 @@ export default function ShopPage() {
           </div>
         </div>
       </div>
+
+      {/* dark → light transition */}
+      <div className="trd-divider-dark-to-light" />
 
       {/* ──── CATEGORY FILTERS ──── */}
       <Section theme="light" id="shop-filters" reveal={false}>
