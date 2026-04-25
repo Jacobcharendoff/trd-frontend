@@ -157,10 +157,10 @@ export default function Home() {
         <div className="relative max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-8">
           <div>
             <h3 className="text-2xl sm:text-3xl font-bold text-[#f5f5f7] tracking-tight">
-              Ready to hear what your rig should sound like?
+              Looking for a Rig Renovation?
             </h3>
             <p className="text-[#f5f5f7]/50 text-base mt-3">
-              30 minutes. Free. No commitment.
+              Tell us what you&apos;re working with. We&apos;ll tell you what it needs.
             </p>
           </div>
           <Link
