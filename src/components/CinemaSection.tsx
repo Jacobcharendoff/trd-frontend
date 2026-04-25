@@ -9,6 +9,7 @@ interface CinemaStep {
   desc: string;
   image: string;
   color: string; // gradient stop color for active step
+  fit?: 'cover' | 'contain'; // override object-fit per step
 }
 
 const steps: CinemaStep[] = [
@@ -19,6 +20,7 @@ const steps: CinemaStep[] = [
     image:
       'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Signal_Routing.png',
     color: '#0071E3', // blue
+    fit: 'contain',
   },
   {
     num: '02',
@@ -186,7 +188,7 @@ export default function CinemaSection() {
                 src={step.image}
                 alt={step.title}
                 fill
-                className="object-cover"
+                className={step.fit === 'contain' ? 'object-contain p-4' : 'object-cover'}
                 sizes="(max-width: 1024px) 100vw, 58vw"
                 quality={75}
                 loading={idx === 0 ? 'eager' : 'lazy'}
