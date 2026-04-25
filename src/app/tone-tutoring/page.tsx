@@ -27,7 +27,7 @@ function AccordionItem({ title, content }: { title: string; content: string }) {
 export default function ToneTutoringPage() {
   return (
     <>
-      {/* ââââ HERO ââââ */}
+      {/* ──── HERO ──── */}
       <div className="relative w-full bg-black overflow-hidden">
         <div className="relative trd-aurora-intense min-h-screen flex items-end justify-center">
           <div className="absolute inset-0 pointer-events-none" />
@@ -62,7 +62,7 @@ export default function ToneTutoringPage() {
               </div>
               <div className="hidden sm:block w-px h-12 bg-white/10" />
               <div>
-                <p className="text-2xl sm:text-3xl font-bold text-white mb-2">200+</p>
+                <p className="text-2xl sm:text-3xl font-bold text-white mb-2">500+</p>
                 <p className="text-sm text-[#f5f5f7]/60">Rigs built</p>
               </div>
               <div className="hidden sm:block w-px h-12 bg-white/10" />
@@ -82,7 +82,7 @@ export default function ToneTutoringPage() {
 
       <div className="trd-divider-dark-to-light" />
 
-      {/* ââââ THE PROBLEM ââââ */}
+      {/* ──── THE PROBLEM ──── */}
       <Section theme="light" id="pain-points" reveal>
         <div className="mb-12">
           <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
@@ -109,12 +109,12 @@ export default function ToneTutoringPage() {
             That&apos;s what this session is for.
           </h3>
           <p className="text-[#1d1d1f]/60 text-lg max-w-2xl">
-            One hour, one-on-one, with someone who&apos;s wired 200+ boards and toured with artists you listen to. Bring your rig, your questions, whatever&apos;s on your mind. We&apos;ll work through it.
+            One hour, one-on-one, with someone who&apos;s wired 500+ boards and toured with artists you listen to. Bring your rig, your questions, whatever&apos;s on your mind. We&apos;ll work through it.
           </p>
         </div>
       </Section>
 
-      {/* ââââ WHAT YOU GET ââââ */}
+      {/* ──── WHAT YOU GET ──── */}
       <Section theme="lightGray" id="what-you-get" reveal>
         <div className="mb-12">
           <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
@@ -143,7 +143,7 @@ export default function ToneTutoringPage() {
         </div>
       </Section>
 
-      {/* ââââ HOW IT WORKS ââââ */}
+      {/* ──── HOW IT WORKS ──── */}
       <Section theme="light" id="process" reveal>
         <div className="mb-12">
           <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
@@ -167,7 +167,7 @@ export default function ToneTutoringPage() {
         </div>
       </Section>
 
-      {/* ââââ REVIEWS ââââ */}
+      {/* ──── REVIEWS ──── */}
       <Section theme="lightGray" id="reviews" reveal>
         <div className="mb-12">
           <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
@@ -201,7 +201,7 @@ export default function ToneTutoringPage() {
 
       <div className="trd-divider-gray-to-dark" />
 
-      {/* ââââ PRICING ââââ */}
+      {/* ──── PRICING ──── */}
       <Section theme="dark" id="pricing" reveal>
         <div className="mb-12">
           <h2 className="trd-section-headline text-[#f5f5f7] mb-4">
@@ -239,7 +239,7 @@ export default function ToneTutoringPage() {
 
       <div className="trd-divider-dark-to-light" />
 
-      {/* ââââ FAQ ââââ */}
+      {/* ──── FAQ ──── */}
       <Section theme="light" id="faq" reveal>
         <div className="mb-12">
           <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
@@ -260,7 +260,7 @@ export default function ToneTutoringPage() {
 
       <div className="trd-divider-light-to-dark" />
 
-      {/* ââââ CLOSING CTA ââââ */}
+      {/* ──── CLOSING CTA ──── */}
       <Section theme="dark" id="final-cta" reveal className="text-center">
         <div className="mb-8">
           <h2 className="trd-section-headline text-[#f5f5f7] mb-4">
