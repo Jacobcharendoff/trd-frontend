@@ -19,7 +19,7 @@ const caseStudies: CaseStudy[] = [
     playerRole: 'Gigging Guitarist',
     heading: 'From shoebox to stage-proof',
     story: 'Ryan came to us with a board that was doing the job — barely. Tangled cables, daisy-chained power, and tone that disappeared by the third song. We stripped it down, rebuilt the signal path from scratch, isolated every power rail, and handed him back a rig that stays dead quiet no matter how loud the stage gets.',
-    tags: ['9 PEDALS', 'ISOLATED POWER', 'FULL REWIRE'],
+    tags: ['15 PEDALS', 'ISOLATED POWER', 'FULL REWIRE'],
     beforeImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Ryan_Before.png?v=1777143983',
     afterImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Ryan_After.jpg?v=1777143984',
   },
