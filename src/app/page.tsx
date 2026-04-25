@@ -212,7 +212,12 @@ export default function Home() {
               ))}
             </div>
 
-            <p className="text-[#f5f5f7]/25 text-sm italic mt-8">You know something&apos;s off.</p>
+            <Link
+              href="/book"
+              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full border-2 border-[#f5f5f7]/20 text-[#f5f5f7]/60 hover:border-[#f5f5f7]/40 hover:text-[#f5f5f7] transition-all duration-300"
+            >
+              Book a Consultation
+            </Link>
           </div>
 
           {/* Tier 2 */}
@@ -244,10 +249,10 @@ export default function Home() {
             </div>
 
             <Link
-              href="/shop"
+              href="/book"
               className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full border-2 border-[#0071E3]/50 text-[#0071E3] hover:bg-[#0071E3] hover:text-white transition-all duration-300"
             >
-              Browse Kits
+              Book a Consultation
             </Link>
           </div>
 
@@ -288,7 +293,7 @@ export default function Home() {
               href="/book"
               className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full bg-[#0071E3] hover:bg-[#005BB5] text-white transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,113,227,0.40)]"
             >
-              Start a Build
+              Book a Consultation
             </Link>
           </div>
         </div>
