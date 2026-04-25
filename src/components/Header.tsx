@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const navItems = [
-  { label: 'Custom Builds', href: '/book' },
+  { label: 'Custom Builds', href: '/custom-builds' },
   { label: 'Shop', href: '/shop' },
   { label: 'Tone Tutoring', href: '/tone-tutoring' },
   { label: 'Process', href: '/process' },
