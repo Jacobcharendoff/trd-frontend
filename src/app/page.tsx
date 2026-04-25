@@ -59,13 +59,6 @@ export default function Home() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7" />
             </svg>
           </div>
-
-          {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-            <svg className="w-6 h-6 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7" />
-            </svg>
-          </div>
         </div>
       </div>
 
@@ -185,7 +178,7 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-          {/* Tier 1 */}
+          {/* Tier 1 — Ride it out (no CTA button) */}
           <div className="rounded-2xl p-8 bg-[#f5f5f7]/[0.06] border border-white/[0.06] flex flex-col hover:-translate-y-1 transition-all duration-500">
             <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#f5f5f7]/30 mb-2">Current Setup</p>
             <h3 className="text-2xl font-bold text-[#f5f5f7]/70 mb-2">Ride it out</h3>
@@ -211,15 +204,10 @@ export default function Home() {
               ))}
             </div>
 
-            <Link
-              href="/book"
-              className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full border-2 border-[#f5f5f7]/20 text-[#f5f5f7]/60 hover:border-[#f5f5f7]/40 hover:text-[#f5f5f7] transition-all duration-300"
-            >
-              Book a Consultation
-            </Link>
+            <p className="text-[#f5f5f7]/25 text-sm italic mt-8">You know something&apos;s off.</p>
           </div>
 
-          {/* Tier 2 */}
+          {/* Tier 2 — DIY Kits */}
           <div className="rounded-2xl p-8 bg-[#f5f5f7]/[0.06] border border-white/[0.08] flex flex-col hover:-translate-y-1 transition-all duration-500">
             <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#f5f5f7]/30 mb-2">DIY Kits</p>
             <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">Build it yourself</h3>
@@ -255,7 +243,7 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Tier 3 — Most Popular */}
+          {/* Tier 3 — Custom Build (Most Popular) */}
           <div className="relative rounded-2xl p-8 bg-gradient-to-b from-[#0a1628] to-[#0f0a1f] border border-[#0071E3]/30 flex flex-col shadow-[0_0_40px_rgba(0,113,227,0.15)] hover:shadow-[0_0_60px_rgba(0,113,227,0.25)] hover:-translate-y-1 transition-all duration-500">
             <div className="absolute -top-3.5 right-6">
               <span className="bg-[#0071E3] text-white text-xs font-semibold tracking-wider uppercase px-4 py-1.5 rounded-full">
@@ -292,7 +280,7 @@ export default function Home() {
               href="/book"
               className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full bg-[#0071E3] hover:bg-[#005BB5] text-white transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,113,227,0.40)]"
             >
-              Book a Consultation
+              Start a Build
             </Link>
           </div>
         </div>
