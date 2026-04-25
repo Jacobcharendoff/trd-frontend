@@ -1,8 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function ContactWidget() {
+  const pathname = usePathname();
+
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -12,6 +15,11 @@ export default function ContactWidget() {
   });
   const [submittedName, setSubmittedName] = useState('');
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+
+  // Reset to form view on route change
+  useEffect(() => {
+    setStatus('idle');
+  }, [pathname]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
