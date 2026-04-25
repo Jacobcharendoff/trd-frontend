@@ -8,8 +8,6 @@ const navItems = [
   { label: 'Custom Builds', href: '/custom-builds' },
   { label: 'Shop', href: '/shop' },
   { label: 'Tone Tutoring', href: '/tone-tutoring' },
-  { label: 'Process', href: '/process' },
-  { label: 'About', href: '/about' },
   { label: 'Blog', href: '/blog' },
 ];
 
