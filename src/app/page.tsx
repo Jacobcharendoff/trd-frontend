@@ -4,7 +4,6 @@ import TestimonialCarousel from '@/components/TestimonialCarousel';
 import BeforeAfter from '@/components/BeforeAfter';
 import GallerySlider from '@/components/GallerySlider';
 import CinemaSection from '@/components/CinemaSection';
-import PopularProducts from '@/components/PopularProducts';
 import ReviewsMarquee from '@/components/ReviewsMarquee';
 import HeroVideo from '@/components/HeroVideo';
 
@@ -367,73 +366,6 @@ export default function Home() {
           <Link href="/book" className="text-[#0071E3] hover:text-[#005BB5] font-medium transition-colors">
             Still have questions? Let&apos;s talk &rsaquo;
           </Link>
-        </div>
-      </Section>
-
-      {/* ──── 10. TONE SHOP — Most Popular ──── */}
-      <PopularProducts />
-
-      {/* ──── 11. TONE TUTORING — page closer ──── */}
-      <Section theme="light" id="tone-tutoring-cta" reveal>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left: Value prop */}
-          <div>
-            <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Not ready for a full build?</p>
-            <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
-              Start with a Tone Tutoring session.
-            </h2>
-            <p className="text-lg text-[#1d1d1f]/60 leading-relaxed mb-8">
-              A 1-on-1 video call where we go through your rig, fix your signal chain, and map out what to do next. 60 minutes. Actionable takeaways you can use immediately.
-            </p>
-
-            <div className="space-y-3 mb-10">
-              {[
-                'Signal chain audit and optimization',
-                'Personalized upgrade roadmap',
-                'Recording of your session',
-                'Follow-up notes with recommendations',
-                'Priority access to custom build slots',
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <svg className="w-5 h-5 flex-shrink-0 text-[#10B981] mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-[#1d1d1f]/70 text-[15px]">{item}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
-              <Link
-                href="/tone-tutoring"
-                className="inline-flex items-center gap-2 bg-[#1d1d1f] hover:bg-[#1d1d1f]/85 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:scale-[1.02]"
-              >
-                Book a Session
-              </Link>
-              <span className="text-[#1d1d1f]/50 text-base">From $99.99 USD</span>
-            </div>
-
-            <div className="mt-6 pt-5 border-t border-[#1d1d1f]/10">
-              <Link href="/book" className="text-[#0071E3] hover:text-[#005BB5] font-medium transition-colors">
-                Or start with a free consultation &rsaquo;
-              </Link>
-            </div>
-          </div>
-
-          {/* Right: Image */}
-          <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl">
-            <img
-              src="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png?width=800&format=webp"
-              alt="Custom pedalboard build"
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-8">
-              <p className="text-white/90 text-lg font-semibold">Your rig&apos;s not going to fix itself.</p>
-              <p className="text-white/60 text-sm mt-1">Let&apos;s figure out what it needs.</p>
-            </div>
-          </div>
         </div>
       </Section>
     </>
