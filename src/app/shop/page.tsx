@@ -5,24 +5,46 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Section from '@/components/Section';
 import { getAllProducts, type ShopifyProduct } from '@/lib/shopify';
-import { products as staticProducts, categories as staticCategories, type ProductCategory, getPriceDisplay } from '@/lib/products';
+import { products as staticProducts, getPriceDisplay } from '@/lib/products';
 
-/* ──── Helpers ──── */
-function inferCategory(product: ShopifyProduct): string {
-  const title = product.title.toLowerCase();
-  const desc = product.description.toLowerCase();
-  const combined = title + ' ' + desc;
+/* ══════════════════════════════════════════════════════════════
+   STOREFRONT WHITELIST
+   Only these products appear on the public site, in this order.
+   Everything else stays in Shopify for custom quotes/backend use.
+   ══════════════════════════════════════════════════════════════ */
 
-  if (combined.includes('pedalboard') || combined.includes('pedal board')) return 'Pedalboards';
-  if (combined.includes('cable') || combined.includes('patch')) return 'Cables & Patch Cables';
-  if (combined.includes('switch') || combined.includes('loop') || combined.includes('junction') || combined.includes('pcb') || combined.includes('solder')) return 'Switching & Electronics';
-  if (combined.includes('tutor') || combined.includes('consult') || combined.includes('coaching') || combined.includes('build service') || combined.includes('custom build')) return 'Services';
-  return 'Accessories';
+type StorefrontEntry = {
+  /** Partial match against Shopify product title (case-insensitive) */
+  titleMatch: string;
+  /** Display category on the storefront */
+  category: 'Cables' | 'Accessories' | 'Services';
+  /** Sort order — lower = first */
+  order: number;
+};
+
+const STOREFRONT_WHITELIST: StorefrontEntry[] = [
+  { titleMatch: '2314',              category: 'Cables',      order: 1 },
+  { titleMatch: 'insert cable',      category: 'Cables',      order: 2 },
+  { titleMatch: 'stereo cable',      category: 'Cables',      order: 3 },
+  { titleMatch: '2524',              category: 'Cables',      order: 4 },
+  { titleMatch: '2534',              category: 'Cables',      order: 5 },
+  { titleMatch: 'tie down',          category: 'Accessories',  order: 6 },
+  { titleMatch: 'powergrip',         category: 'Accessories',  order: 7 },
+  { titleMatch: 'rig rendering',     category: 'Services',     order: 8 },
+  { titleMatch: 'tone tutor',        category: 'Services',     order: 9 },
+];
+
+function matchWhitelist(title: string): StorefrontEntry | null {
+  const lower = title.toLowerCase();
+  return STOREFRONT_WHITELIST.find((entry) => lower.includes(entry.titleMatch)) || null;
 }
 
+/* ──── Helpers ──── */
 function formatShopifyPrice(amount: string): number {
   return parseFloat(amount);
 }
+
+const CATEGORIES = ['Cables', 'Accessories', 'Services'] as const;
 
 export default function ShopPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -47,51 +69,44 @@ export default function ShopPage() {
     return () => { cancelled = true; };
   }, []);
 
-  // Internal-only products that shouldn't appear in the storefront
-  const hiddenProductTitles = ['custom rig build', 'labor', 'customer pedals'];
-
-  // Build unified product list from whichever source we have
+  // Build unified product list — whitelist only
   const displayProducts = useMemo(() => {
-    if (shopifyProducts && shopifyProducts.length > 0) {
-      return shopifyProducts
-        .filter((p) => !hiddenProductTitles.some((h) => p.title.toLowerCase().includes(h)))
-        .map((p) => ({
-        id: p.id,
-        title: p.title,
-        handle: p.handle,
-        description: p.description,
-        category: inferCategory(p),
-        priceMin: formatShopifyPrice(p.priceRange.minVariantPrice.amount),
-        priceMax: formatShopifyPrice(p.priceRange.maxVariantPrice.amount),
-        image: p.images.edges[0]?.node.url || null,
-        imageAlt: p.images.edges[0]?.node.altText || p.title,
-        imageWidth: p.images.edges[0]?.node.width || 600,
-        imageHeight: p.images.edges[0]?.node.height || 600,
-      }));
-    }
-    // Fall back to static data
-    return staticProducts
-      .filter((p) => !hiddenProductTitles.some((h) => p.title.toLowerCase().includes(h)))
-      .map((p) => ({
-      id: p.id,
-      title: p.title,
-      handle: p.handle,
-      description: p.description,
-      category: p.category,
-      priceMin: p.priceMin,
-      priceMax: p.priceMax,
-      image: null as string | null,
-      imageAlt: p.title,
-      imageWidth: 600,
-      imageHeight: 600,
-    }));
-  }, [shopifyProducts]);
+    const source = (shopifyProducts && shopifyProducts.length > 0)
+      ? shopifyProducts.map((p) => ({
+          id: p.id,
+          title: p.title,
+          handle: p.handle,
+          description: p.description,
+          priceMin: formatShopifyPrice(p.priceRange.minVariantPrice.amount),
+          priceMax: formatShopifyPrice(p.priceRange.maxVariantPrice.amount),
+          image: p.images.edges[0]?.node.url || null,
+          imageAlt: p.images.edges[0]?.node.altText || p.title,
+          imageWidth: p.images.edges[0]?.node.width || 600,
+          imageHeight: p.images.edges[0]?.node.height || 600,
+        }))
+      : staticProducts.map((p) => ({
+          id: p.id,
+          title: p.title,
+          handle: p.handle,
+          description: p.description,
+          priceMin: p.priceMin,
+          priceMax: p.priceMax,
+          image: null as string | null,
+          imageAlt: p.title,
+          imageWidth: 600,
+          imageHeight: 600,
+        }));
 
-  // Derive categories from actual products
-  const categories = useMemo(() => {
-    const cats = [...new Set(displayProducts.map((p) => p.category))];
-    return cats.sort();
-  }, [displayProducts]);
+    // Filter to whitelist and assign category + order
+    return source
+      .map((p) => {
+        const entry = matchWhitelist(p.title);
+        if (!entry) return null;
+        return { ...p, category: entry.category, order: entry.order };
+      })
+      .filter(Boolean)
+      .sort((a, b) => a!.order - b!.order) as Array<typeof source[number] & { category: string; order: number }>;
+  }, [shopifyProducts]);
 
   const filteredProducts = useMemo(() => {
     if (selectedCategory === 'All') return displayProducts;
@@ -139,7 +154,7 @@ export default function ShopPage() {
         <div className="mb-8">
           <p className="text-sm text-[#1d1d1f]/60 font-medium mb-4 uppercase tracking-wide">Filter by category</p>
           <div className="flex flex-wrap gap-2">
-            {['All', ...categories].map((category) => (
+            {['All', ...CATEGORIES].map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
