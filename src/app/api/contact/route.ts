@@ -16,11 +16,11 @@ export async function POST(req: NextRequest) {
     }
 
     let contactId: string | null = null;
+    let ticketCreated = false;
 
-    // If HubSpot token is available, create/update contact + ticket
     if (HUBSPOT_TOKEN) {
+      // ── Step 1: Create or update contact ──
       try {
-        // Search for existing contact by email
         const searchRes = await fetch(
           'https://api.hubapi.com/crm/v3/objects/contacts/search',
           {
@@ -53,7 +53,6 @@ export async function POST(req: NextRequest) {
         };
 
         if (existingContact) {
-          // Update existing contact
           contactId = existingContact.id;
           await fetch(
             `https://api.hubapi.com/crm/v3/objects/contacts/${existingContact.id}`,
@@ -67,7 +66,6 @@ export async function POST(req: NextRequest) {
             }
           );
         } else {
-          // Create new contact
           properties.lifecyclestage = 'lead';
           const createRes = await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
             method: 'POST',
@@ -80,80 +78,94 @@ export async function POST(req: NextRequest) {
           const createData = await createRes.json();
           contactId = createData.id || null;
         }
+      } catch (contactErr) {
+        console.error('[Contact Form] Contact create/update failed:', contactErr);
+      }
 
-        // Create a note with the message, associated to the contact
-        if (contactId) {
-          await fetch(
-            'https://api.hubapi.com/crm/v3/objects/notes',
-            {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${HUBSPOT_TOKEN}`,
+      // ── Step 2: Create note associated to contact ──
+      if (contactId) {
+        try {
+          await fetch('https://api.hubapi.com/crm/v3/objects/notes', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${HUBSPOT_TOKEN}`,
+            },
+            body: JSON.stringify({
+              properties: {
+                hs_note_body: `<strong>Website Contact Form</strong><br><br><strong>Name:</strong> ${firstName} ${lastName || ''}<br><strong>Email:</strong> ${email}<br><strong>Phone:</strong> ${phone || 'Not provided'}<br><br><strong>Message:</strong><br>${message}`,
+                hs_timestamp: new Date().toISOString(),
               },
-              body: JSON.stringify({
-                properties: {
-                  hs_note_body: `<strong>Website Contact Form</strong><br><br><strong>Name:</strong> ${firstName} ${lastName || ''}<br><strong>Email:</strong> ${email}<br><strong>Phone:</strong> ${phone || 'Not provided'}<br><br><strong>Message:</strong><br>${message}`,
-                  hs_timestamp: new Date().toISOString(),
-                },
-                associations: [
-                  {
-                    to: { id: contactId },
-                    types: [
-                      {
-                        associationCategory: 'HUBSPOT_DEFINED',
-                        associationTypeId: 202,
-                      },
-                    ],
-                  },
-                ],
-              }),
-            }
-          );
-        }
-
-        // Create a HubSpot ticket — triggers email notifications to the team
-        const ticketBody: Record<string, unknown> = {
-          properties: {
-            subject: `Website Contact: ${firstName} ${lastName || ''} — ${email}`,
-            content: `Name: ${firstName} ${lastName || ''}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\n\nMessage:\n${message}`,
-            hs_pipeline: '0',
-            hs_pipeline_stage: '1',
-            hs_ticket_priority: 'MEDIUM',
-            source_type: 'WEB',
-          },
-          associations: contactId
-            ? [
+              associations: [
                 {
                   to: { id: contactId },
                   types: [
                     {
                       associationCategory: 'HUBSPOT_DEFINED',
-                      associationTypeId: 16,
+                      associationTypeId: 202,
                     },
                   ],
                 },
-              ]
-            : [],
+              ],
+            }),
+          });
+        } catch (noteErr) {
+          console.error('[Contact Form] Note creation failed:', noteErr);
+        }
+      }
+
+      // ── Step 3: Create ticket (triggers email notification) ──
+      try {
+        const ticketPayload: Record<string, unknown> = {
+          properties: {
+            subject: `Website Contact: ${firstName} ${lastName || ''} — ${email}`,
+            content: `Name: ${firstName} ${lastName || ''}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\n\nMessage:\n${message}`,
+            hs_pipeline: '0',
+            hs_pipeline_stage: '1',
+          },
         };
 
-        await fetch('https://api.hubapi.com/crm/v3/objects/tickets', {
+        // Associate ticket to contact if we have one
+        if (contactId) {
+          ticketPayload.associations = [
+            {
+              to: { id: contactId },
+              types: [
+                {
+                  associationCategory: 'HUBSPOT_DEFINED',
+                  associationTypeId: 16,
+                },
+              ],
+            },
+          ];
+        }
+
+        const ticketRes = await fetch('https://api.hubapi.com/crm/v3/objects/tickets', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${HUBSPOT_TOKEN}`,
           },
-          body: JSON.stringify(ticketBody),
+          body: JSON.stringify(ticketPayload),
         });
-      } catch (hubspotErr) {
-        // Log but don't fail the request
-        console.error('HubSpot error:', hubspotErr);
+
+        if (ticketRes.ok) {
+          ticketCreated = true;
+        } else {
+          const ticketError = await ticketRes.text();
+          console.error('[Contact Form] Ticket creation failed:', ticketRes.status, ticketError);
+        }
+      } catch (ticketErr) {
+        console.error('[Contact Form] Ticket creation threw:', ticketErr);
       }
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({
+      success: true,
+      hubspot: HUBSPOT_TOKEN ? { contactId, ticketCreated } : null,
+    });
   } catch (err) {
-    console.error('Contact form error:', err);
+    console.error('[Contact Form] Top-level error:', err);
     return NextResponse.json(
       { error: 'Something went wrong. Please try again.' },
       { status: 500 }
