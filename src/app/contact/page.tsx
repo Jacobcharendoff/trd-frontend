@@ -6,17 +6,40 @@ import Section from '@/components/Section';
 export default function ContactPage() {
   return (
     <div>
-      {/* Hero */}
-      <Section theme="dark" reveal>
-        <div className="min-h-[300px] flex flex-col items-center justify-center py-16 sm:py-24">
-          <h1 className="text-[2.25rem] sm:text-[3rem] md:text-[3.5rem] font-bold text-center text-white mb-4">
-            Get in Touch
-          </h1>
-          <p className="text-lg text-[#f5f5f7]/50 text-center max-w-xl">
-            Questions about a build, need help with your rig, or just want to talk tone? We&apos;re here.
-          </p>
+      {/* Hero with Background Video */}
+      <div className="relative w-full overflow-hidden">
+        <div className="relative min-h-screen flex items-center justify-center bg-black trd-aurora-intense">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="none"
+            className="absolute inset-0 w-full h-full object-cover opacity-40"
+          >
+            <source
+              src="https://cdn.shopify.com/videos/c/o/v/1e7a54e296a04be0b5e8d7c34031924a.mov"
+              type="video/quicktime"
+            />
+            <source
+              src="https://cdn.shopify.com/videos/c/o/v/1e7a54e296a04be0b5e8d7c34031924a.mov"
+              type="video/mp4"
+            />
+          </video>
+
+          <div className="relative z-10 max-w-[1080px] mx-auto px-6 py-32 w-full text-center">
+            <h1 className="trd-hero-headline text-[#f5f5f7] mb-6">
+              Get in <span className="trd-gradient-text">Touch</span>
+            </h1>
+            <p className="trd-subheadline max-w-2xl mx-auto">
+              Questions about a build, need help with your rig, or just want to talk tone? We&apos;re here.
+            </p>
+          </div>
         </div>
-      </Section>
+      </div>
+
+      {/* dark → light transition */}
+      <div className="trd-divider-dark-to-light" />
 
       {/* Contact Info Cards */}
       <Section theme="light" reveal>
@@ -29,7 +52,7 @@ export default function ContactPage() {
               </svg>
             </div>
             <h3 className="text-lg font-semibold text-[#1d1d1f] mb-2">Email</h3>
-            <a href="mailto:info@therigdr.com" className="text-blue-600 hover:underline">
+            <a href="mailto:info@therigdr.com" className="text-[#0071E3] hover:text-[#005BB5] transition-colors">
               info@therigdr.com
             </a>
             <p className="text-sm text-[#1d1d1f]/50 mt-2">We typically respond within 24 hours</p>
@@ -43,10 +66,10 @@ export default function ContactPage() {
               </svg>
             </div>
             <h3 className="text-lg font-semibold text-[#1d1d1f] mb-2">Phone</h3>
-            <a href="tel:+18327797447" className="text-blue-600 hover:underline">
-              (832) 779-7447
+            <a href="tel:+19365489254" className="text-[#0071E3] hover:text-[#005BB5] transition-colors">
+              (936) 548-9254
             </a>
-            <p className="text-sm text-[#1d1d1f]/50 mt-2">Mon\u2013Fri, 9am\u20135pm CT</p>
+            <p className="text-sm text-[#1d1d1f]/50 mt-2">Mon–Fri, 9am–5pm CT</p>
           </div>
 
           {/* Location */}
@@ -59,8 +82,7 @@ export default function ContactPage() {
             </div>
             <h3 className="text-lg font-semibold text-[#1d1d1f] mb-2">Location</h3>
             <p className="text-[#1d1d1f]/70">
-              641 Amesbury Rd<br />
-              Montgomery, TX 77316
+              Houston, Texas
             </p>
             <p className="text-sm text-[#1d1d1f]/50 mt-2">By appointment only</p>
           </div>
@@ -76,34 +98,13 @@ export default function ContactPage() {
           </p>
           <Link
             href="/book"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#6366f1] to-[#ec4899] px-8 py-4 text-lg font-semibold text-white shadow-lg hover:opacity-90 transition"
+            className="inline-flex items-center gap-2 rounded-full trd-cta-gradient trd-glow-pulse px-8 py-4 text-lg font-semibold text-white transition"
           >
             Book a Consultation
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
           </Link>
-        </div>
-      </Section>
-
-      {/* Social / Follow */}
-      <Section theme="lightGray" reveal>
-        <div className="text-center">
-          <h2 className="text-2xl font-bold text-[#1d1d1f] mb-4">Follow Along</h2>
-          <p className="text-[#1d1d1f]/60 mb-6">
-            See our latest builds, behind-the-scenes content, and gear talk on Instagram.
-          </p>
-          <a
-            href="https://instagram.com/therigdr"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[#1d1d1f] font-semibold hover:opacity-70 transition"
-          >
-            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" />
-            </svg>
-            @therigdr on Instagram
-          </a>
         </div>
       </Section>
     </div>
