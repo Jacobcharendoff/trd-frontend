@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import AnnouncementBar from '@/components/AnnouncementBar';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ContactWidget from '@/components/ContactWidget';
 import ConsultationPopup from '@/components/ConsultationPopup';
 import LocalBusinessSchema from '@/components/StructuredData';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* <AnnouncementBar /> */}
         <Header />
         <main>{children}</main>
+        <ContactWidget />
         <Footer />
         <ConsultationPopup />
       </body>
