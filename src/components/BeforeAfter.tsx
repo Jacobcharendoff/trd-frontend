@@ -95,7 +95,13 @@ function BeforeAfterSlider({ beforeImage, afterImage }: { beforeImage: string; a
   );
 }
 
-export default function BeforeAfter() {
+interface BeforeAfterProps {
+  theme?: 'light' | 'dark';
+}
+
+export default function BeforeAfter({ theme = 'light' }: BeforeAfterProps) {
+  const isDark = theme === 'dark';
+
   return (
     <div className="space-y-24">
       {caseStudies.map((study, idx) => {
@@ -120,17 +126,25 @@ export default function BeforeAfter() {
               <p className="text-[#0071E3] font-medium text-sm tracking-wide mb-3">
                 {study.playerName} — {study.playerRole}
               </p>
-              <h3 className="text-2xl sm:text-3xl font-bold text-[#1d1d1f] mb-4 leading-tight">
+              <h3 className={`text-2xl sm:text-3xl font-bold mb-4 leading-tight ${
+                isDark ? 'text-[#f5f5f7]' : 'text-[#1d1d1f]'
+              }`}>
                 {study.heading}
               </h3>
-              <p className="text-[#1d1d1f]/60 text-base sm:text-lg leading-relaxed mb-6">
+              <p className={`text-base sm:text-lg leading-relaxed mb-6 ${
+                isDark ? 'text-[#f5f5f7]/60' : 'text-[#1d1d1f]/60'
+              }`}>
                 {study.story}
               </p>
               <div className="flex flex-wrap gap-2">
                 {study.tags.map((tag, i) => (
                   <span
                     key={i}
-                    className="text-xs font-medium tracking-wide uppercase text-[#1d1d1f]/50 border border-[#1d1d1f]/15 rounded-full px-4 py-1.5"
+                    className={`text-xs font-medium tracking-wide uppercase rounded-full px-4 py-1.5 ${
+                      isDark
+                        ? 'text-[#f5f5f7]/50 border border-[#f5f5f7]/15'
+                        : 'text-[#1d1d1f]/50 border border-[#1d1d1f]/15'
+                    }`}
                   >
                     {tag}
                   </span>
