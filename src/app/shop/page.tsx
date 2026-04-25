@@ -104,7 +104,7 @@ export default function ShopPage() {
     <>
       {/* ──── HERO SECTION ──── */}
       <div className="relative w-full overflow-hidden">
-        <div className="relative min-h-[500px] flex items-center justify-center bg-black trd-aurora-intense">
+        <div className="relative min-h-screen flex items-center justify-center bg-black trd-aurora-intense">
           {/* Background Video */}
           <video
             autoPlay
