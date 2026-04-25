@@ -67,7 +67,7 @@ function Hero() {
               <div className="trd-glass-dark p-6 space-y-4">
                 <h3 className="text-[15px] font-semibold text-white">{"What we'll dig into"}</h3>
                 <ul className="space-y-3">
-                  {['What you play and the tone you’re chasing', 'Your current rig — what’s working, what’s not', 'A custom build plan with timeline and pricing'].map((item) => (
+                  {['What you play and the tone you're chasing', 'Your current rig — what's working, what's not', 'A custom build plan with timeline and pricing'].map((item) => (
                     <li key={item} className="flex items-start gap-3">
                       <svg className="w-5 h-5 text-[#10B981] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -270,40 +270,6 @@ function GalleryStrip() {
   );
 }
 
-/* ──── Team (light — warm, open) ──── */
-function Team() {
-  const team = [
-    { name: 'Jacob', title: 'Rig Engineer', image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jacob_avatar.png' },
-    { name: 'Vince', title: 'Rig Engineer', image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Vince_Avatar.png' },
-    { name: 'Mason', title: 'Rig Engineer', image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Mason_Avatar.png' },
-  ];
-
-  return (
-    <Section theme="light" reveal>
-      <div className="space-y-12">
-        <div className="text-center space-y-2">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-2">The Bench</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f]">The guys behind the builds.</h2>
-          <p className="text-[16px] text-[#1d1d1f]/60 max-w-2xl mx-auto">Three rig engineers. 50+ years on the soldering iron between them.</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
-          {team.map((member) => (
-            <div key={member.name} className="group bg-white rounded-2xl overflow-hidden border border-black/[0.04] hover:-translate-y-1 transition-all duration-500">
-              <div className="aspect-[4/3] overflow-hidden">
-                <img src={member.image} alt={member.name} className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-500" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-[18px] font-semibold text-[#1d1d1f]">{member.name}</h3>
-                <p className="text-[14px] text-[#1d1d1f]/50">{member.title}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </Section>
-  );
-}
-
 /* ──── Trusted By ──── */
 function TrustedBy() {
   return (
@@ -318,25 +284,7 @@ function TrustedBy() {
         </div>
         <TestimonialCarousel theme="dark" />
       </Section>
-      <div className="trd-divider-dark-to-light" />
     </>
-  );
-}
-
-/* ──── Fallback CTA ──── */
-function FallbackCTA() {
-  return (
-    <Section theme="light">
-      <div className="text-center space-y-6">
-        <h2 className="text-3xl font-bold text-[#1d1d1f]">{"Calendar not cooperating?"}</h2>
-        <p className="text-[16px] text-[#1d1d1f]/60 max-w-2xl mx-auto">
-          {"Shoot us an email — we'll find a time that works. Usually back to you within a day."}
-        </p>
-        <a href="mailto:info@therigdr.com" className="inline-block px-8 py-4 bg-[#1d1d1f] text-white font-semibold rounded-full hover:bg-[#1d1d1f]/90 transition-colors text-[16px]">
-          Get in touch &rarr;
-        </a>
-      </div>
-    </Section>
   );
 }
 
@@ -348,9 +296,7 @@ export default function BookPage() {
       <ProcessSection />
       <TransformationSection />
       <GalleryStrip />
-      <Team />
       <TrustedBy />
-      <FallbackCTA />
     </>
   );
 }
