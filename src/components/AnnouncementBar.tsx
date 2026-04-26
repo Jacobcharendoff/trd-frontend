@@ -9,21 +9,35 @@ export default function AnnouncementBar() {
   if (!visible) return null;
 
   return (
-    <div className="relative bg-[#1d1d1f] text-white text-center py-2.5 px-6 text-[13px]">
-      <p>
-        <span className="text-[#0071E3] font-medium">Free consultation</span>
-        {' — '}
-        Book a call and let&apos;s talk about your next build.{' '}
-        <Link href="/book" className="underline underline-offset-2 hover:text-[#0071E3] transition-colors">
-          Book now →
-        </Link>
-      </p>
+    <div className="relative bg-gradient-to-r from-[#6366F1] via-[#A855F7] to-[#EC4899] text-white text-center py-2.5 px-10 text-[13px]">
+      <Link
+        href="/shop/mogami-2314-patch-cables"
+        className="hover:opacity-90 transition-opacity"
+      >
+        <span className="hidden sm:inline">
+          <span className="font-semibold">Mogami 2314 Patch Cables — $19</span>
+          {' '}
+          <span className="text-white/80 line-through">$24</span>
+          {' · Sale ends May 1st · '}
+        </span>
+        <span className="sm:hidden">
+          <span className="font-semibold">Mogami 2314 — $19</span>
+          {' '}
+          <span className="text-white/80 line-through">$24</span>
+          {' · '}
+        </span>
+        <span className="underline underline-offset-2 font-semibold">Shop Now →</span>
+      </Link>
       <button
-        onClick={() => setVisible(false)}
-        className="absolute right-3 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-1"
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setVisible(false);
+        }}
+        className="absolute right-3 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors p-1"
         aria-label="Dismiss announcement"
       >
-        <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5">
           <path d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
