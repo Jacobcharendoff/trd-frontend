@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 /* Using native <img> instead of next/image to avoid Shopify CDN domain issues */
+import Section from '@/components/Section';
 import { getProduct, getCheckoutUrl, type ShopifyProduct } from '@/lib/shopify';
 
 function formatPrice(amount: string): string {
@@ -108,6 +109,11 @@ export default function ProductPage() {
   const unitPrice = currentVariant ? parseFloat(currentVariant.price.amount) : parseFloat(product.priceRange.minVariantPrice.amount);
   const totalPrice = unitPrice * quantity;
   const price = totalPrice % 1 === 0 ? `$${totalPrice.toFixed(0)}` : `$${totalPrice.toFixed(2)}`;
+  const compareAtAmount = currentVariant?.compareAtPrice ? parseFloat(currentVariant.compareAtPrice.amount) : null;
+  const totalCompareAt = compareAtAmount ? compareAtAmount * quantity : null;
+  const compareAtPrice = totalCompareAt && totalCompareAt > totalPrice
+    ? (totalCompareAt % 1 === 0 ? `$${totalCompareAt.toFixed(0)}` : `$${totalCompareAt.toFixed(2)}`)
+    : null;
   const isAvailable = currentVariant?.availableForSale !== false;
 
   return (
@@ -177,8 +183,15 @@ export default function ProductPage() {
                 <h1 className="text-[2rem] sm:text-[2.5rem] lg:text-[3rem] font-bold leading-[1.1] tracking-tight text-[#1d1d1f] mb-3">
                   {product.title}
                 </h1>
-                <p className="text-2xl sm:text-3xl font-semibold text-[#1d1d1f]">
-                  {price} <span className="text-base font-normal text-[#1d1d1f]/40">USD</span>
+                <p className="text-2xl sm:text-3xl font-semibold text-[#1d1d1f] flex items-baseline gap-3">
+                  <span>{price}</span>
+                  {compareAtPrice && (
+                    <span className="text-xl sm:text-2xl font-normal text-[#1d1d1f]/40 line-through">{compareAtPrice}</span>
+                  )}
+                  <span className="text-base font-normal text-[#1d1d1f]/40">USD</span>
+                  {compareAtPrice && (
+                    <span className="text-sm font-medium text-green-600 bg-green-50 px-2 py-0.5 rounded-full">Sale</span>
+                  )}
                 </p>
               </div>
 
@@ -311,152 +324,51 @@ export default function ProductPage() {
         </div>
       </section>
 
-      {/* ──── Consultation CTA + Service Tiers ────
-           All bg-[#1d1d1f] to flow seamlessly into the footer */}
-      <div className="bg-[#1d1d1f]">
-        {/* Consultation CTA */}
-        <section className="relative overflow-hidden py-16 sm:py-20">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(255,55,95,0.06)_0%,transparent_50%)]" />
-          <div className="relative max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-8">
-            <div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-[#f5f5f7] tracking-tight">
-                Ready to hear what your rig should sound like?
-              </h3>
-              <p className="text-[#f5f5f7]/50 text-base mt-3">
-                30 minutes. Free. No commitment.
-              </p>
-            </div>
-            <Link
-              href="/book"
-              className="trd-cta-gradient trd-glow-pulse inline-flex items-center px-8 py-4 rounded-full font-semibold text-base whitespace-nowrap"
-            >
-              Book a Free Consultation
-            </Link>
+      <Section theme="dark" id="product-cta" reveal className="text-center">
+        <div className="mb-8">
+          <h2 className="trd-section-headline text-[#f5f5f7] mb-4">
+            Questions about this product?
+          </h2>
+          <p className="text-[#f5f5f7]/60 text-lg max-w-2xl mx-auto mb-8">
+            We&apos;re guitarists first. If you&apos;re not sure this is the right fit for your rig, let&apos;s talk.
+          </p>
+        </div>
+        <div className="flex gap-4 justify-center flex-wrap">
+          <Link
+            href="/book"
+            className="inline-flex items-center gap-2 trd-cta-gradient text-white font-semibold px-8 py-4 rounded-full trd-glow-pulse"
+          >
+            Book a Free Call
+          </Link>
+          <Link
+            href="/shop"
+            className="inline-flex items-center gap-2 border border-white/20 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 transition-colors"
+          >
+            Browse All Products
+          </Link>
+        </div>
+      </Section>
+
+      {/* ──── Consultation CTA ──── */}
+      <section className="relative overflow-hidden bg-[#1d1d1f] py-16 sm:py-20">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(255,55,95,0.06)_0%,transparent_50%)]" />
+        <div className="relative max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-8">
+          <div>
+            <h3 className="text-2xl sm:text-3xl font-bold text-[#f5f5f7] tracking-tight">
+              Ready to hear what your rig should sound like?
+            </h3>
+            <p className="text-[#f5f5f7]/50 text-base mt-3">
+              30 minutes. Free. No commitment.
+            </p>
           </div>
-        </section>
-
-        {/* Service Tiers */}
-        <section className="py-20 md:py-[120px]">
-          <div className="max-w-[1080px] mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="trd-section-headline text-[#f5f5f7] mb-4">
-                Three ways to <span className="trd-gradient-text">get your tone right.</span>
-              </h2>
-              <p className="text-[#f5f5f7]/50 text-lg max-w-2xl mx-auto">
-                Depends on how hands-on you want to be.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-              {/* Tier 1 */}
-              <div className="rounded-2xl p-8 bg-[#f5f5f7]/[0.06] border border-white/[0.06] flex flex-col hover:-translate-y-1 transition-all duration-500">
-                <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#f5f5f7]/30 mb-2">Current Setup</p>
-                <h3 className="text-2xl font-bold text-[#f5f5f7]/70 mb-2">Ride it out</h3>
-                <p className="text-[#f5f5f7]/40 text-sm mb-6">
-                  Keep your current board as-is. No cost, but here&apos;s what you&apos;re living with.
-                </p>
-                <p className="text-3xl font-bold text-[#f5f5f7]/50 mb-1">$0</p>
-                <p className="text-[#f5f5f7]/30 text-sm mb-8">but it costs you tone</p>
-
-                <div className="space-y-4 flex-grow">
-                  {[
-                    'Signal gets worse at every connection',
-                    'Noise and hum you can\'t track down',
-                    'No plan behind the signal chain',
-                    'Nobody to call when something breaks',
-                    'Gets worse over time, not better',
-                    'A liability on stage',
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <span className="text-red-400/60 mt-0.5 flex-shrink-0">&#10005;</span>
-                      <span className="text-[#f5f5f7]/40 text-sm leading-snug">{item}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <p className="text-[#f5f5f7]/25 text-sm italic mt-8">You know something&apos;s off.</p>
-              </div>
-
-              {/* Tier 2 */}
-              <div className="rounded-2xl p-8 bg-[#f5f5f7]/[0.06] border border-white/[0.08] flex flex-col hover:-translate-y-1 transition-all duration-500">
-                <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#f5f5f7]/30 mb-2">DIY Kits</p>
-                <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">Build it yourself</h3>
-                <p className="text-[#f5f5f7]/50 text-sm mb-6">
-                  Same components we use. You do the assembly.
-                </p>
-                <p className="text-3xl font-bold text-[#f5f5f7] mb-1">$750 – $1,500 <span className="text-lg font-normal text-[#f5f5f7]/50">USD</span></p>
-                <p className="text-[#f5f5f7]/30 text-sm mb-8">+ your time and patience</p>
-
-                <div className="space-y-4 flex-grow">
-                  {[
-                    { text: 'Decent signal path improvement', ok: true },
-                    { text: 'Pick your own layout', ok: true },
-                    { text: 'No isolated power design', ok: false },
-                    { text: 'No hand-soldered connections', ok: false },
-                    { text: 'No lifetime support', ok: false },
-                    { text: 'Stage-ready if you test it enough', ok: true },
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <span className={`mt-0.5 flex-shrink-0 ${item.ok ? 'text-[#10B981]' : 'text-red-400/60'}`}>
-                        {item.ok ? '✓' : '✕'}
-                      </span>
-                      <span className={`text-sm leading-snug ${item.ok ? 'text-[#f5f5f7]/70' : 'text-[#f5f5f7]/40'}`}>{item.text}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <Link
-                  href="/shop"
-                  className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full border-2 border-[#0071E3]/50 text-[#0071E3] hover:bg-[#0071E3] hover:text-white transition-all duration-300"
-                >
-                  Browse Kits
-                </Link>
-              </div>
-
-              {/* Tier 3 — Most Popular */}
-              <div className="relative rounded-2xl p-8 bg-gradient-to-b from-[#0a1628] to-[#0f0a1f] border border-[#0071E3]/30 flex flex-col shadow-[0_0_40px_rgba(0,113,227,0.15)] hover:shadow-[0_0_60px_rgba(0,113,227,0.25)] hover:-translate-y-1 transition-all duration-500">
-                <div className="absolute -top-3.5 right-6">
-                  <span className="bg-[#0071E3] text-white text-xs font-semibold tracking-wider uppercase px-4 py-1.5 rounded-full">
-                    Most Popular
-                  </span>
-                </div>
-
-                <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#0071E3] mb-2">Custom Build</p>
-                <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">We build it for you</h3>
-                <p className="text-[#f5f5f7]/50 text-sm mb-6">
-                  Hand us your board. Walk away. Get it back wired right and built to last.
-                </p>
-                <p className="text-3xl font-bold text-[#f5f5f7] mb-1">From $2,000 <span className="text-lg font-normal text-[#f5f5f7]/50">USD</span></p>
-                <p className="text-[#f5f5f7]/30 text-sm mb-8">turnkey, guaranteed</p>
-
-                <div className="space-y-4 flex-grow">
-                  {[
-                    'Fully isolated power design',
-                    'Hand-soldered, every connection',
-                    'Dead-quiet signal chain',
-                    'Road-tested before it ships',
-                    'Ongoing support when you need it',
-                    'Engineered signal path',
-                    'Bulletproof on any stage',
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <span className="text-[#10B981] mt-0.5 flex-shrink-0">{'✓'}</span>
-                      <span className="text-[#f5f5f7]/80 text-sm leading-snug">{item}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <Link
-                  href="/book"
-                  className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full bg-[#0071E3] hover:bg-[#005BB5] text-white transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,113,227,0.40)]"
-                >
-                  Start a Build
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+          <Link
+            href="/book"
+            className="trd-cta-gradient trd-glow-pulse inline-flex items-center px-8 py-4 rounded-full font-semibold text-base whitespace-nowrap"
+          >
+            Book a Free Consultation
+          </Link>
+        </div>
+      </section>
     </>
   );
 }

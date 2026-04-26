@@ -34,12 +34,17 @@ export interface ShopifyProduct {
     minVariantPrice: ShopifyPrice;
     maxVariantPrice: ShopifyPrice;
   };
+  compareAtPriceRange: {
+    minVariantPrice: ShopifyPrice;
+    maxVariantPrice: ShopifyPrice;
+  } | null;
   variants: {
     edges: Array<{
       node: {
         id: string;
         title: string;
         price: ShopifyPrice;
+        compareAtPrice: ShopifyPrice | null;
         availableForSale: boolean;
       };
     }>;
@@ -80,27 +85,6 @@ async function shopifyFetch<T>(query: string, variables?: Record<string, unknown
   return json.data;
 }
 
-// ─── Helpers ───
-
-/**
- * Shopify returns checkout URLs using the store's primary domain (therigdr.com).
- * Since that domain is served by the headless Next.js frontend, checkout URLs
- * must be rewritten to use the myshopify.com domain so they reach Shopify's
- * actual checkout flow instead of the headless app.
- */
-function ensureShopifyCheckoutDomain(checkoutUrl: string): string {
-  try {
-    const parsed = new URL(checkoutUrl);
-    if (parsed.hostname !== SHOPIFY_DOMAIN) {
-      parsed.hostname = SHOPIFY_DOMAIN;
-      return parsed.toString();
-    }
-  } catch {
-    // If URL parsing fails, return as-is
-  }
-  return checkoutUrl;
-}
-
 // ─── Product Queries ───
 
 export async function getProduct(handle: string): Promise<ShopifyProduct | null> {
@@ -126,12 +110,17 @@ export async function getProduct(handle: string): Promise<ShopifyProduct | null>
           minVariantPrice { amount currencyCode }
           maxVariantPrice { amount currencyCode }
         }
+        compareAtPriceRange {
+          minVariantPrice { amount currencyCode }
+          maxVariantPrice { amount currencyCode }
+        }
         variants(first: 20) {
           edges {
             node {
               id
               title
               price { amount currencyCode }
+              compareAtPrice { amount currencyCode }
               availableForSale
             }
           }
@@ -169,12 +158,17 @@ export async function getAllProducts(): Promise<ShopifyProduct[]> {
               minVariantPrice { amount currencyCode }
               maxVariantPrice { amount currencyCode }
             }
+            compareAtPriceRange {
+              minVariantPrice { amount currencyCode }
+              maxVariantPrice { amount currencyCode }
+            }
             variants(first: 5) {
               edges {
                 node {
                   id
                   title
                   price { amount currencyCode }
+                  compareAtPrice { amount currencyCode }
                   availableForSale
                 }
               }
@@ -241,5 +235,5 @@ export async function getCheckoutUrl(variantId: string, quantity: number = 1): P
   if (userErrors.length > 0) {
     throw new Error(userErrors[0].message);
   }
-  return ensureShopifyCheckoutDomain(cart.checkoutUrl);
+  return cart.checkoutUrl;
 }
