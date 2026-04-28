@@ -33,18 +33,5 @@
         }
       ]
     }
-  ],
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.therigdr.com"
-        }
-      ],
-      "destination": "https://therigdr.com/:path*",
-      "permanent": true
-    }
   ]
 }
