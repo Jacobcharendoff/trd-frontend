@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const HUBSPOT_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
 
+// Jacob's HubSpot owner ID — tickets and contacts get assigned to him
+// so HubSpot's built-in notifications fire to info@therigdr.com
+const OWNER_ID = '61103251';
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -50,6 +54,7 @@ export async function POST(req: NextRequest) {
           email,
           phone: phone || '',
           hs_lead_status: 'NEW',
+          hubspot_owner_id: OWNER_ID,
         };
 
         if (existingContact) {
@@ -114,7 +119,7 @@ export async function POST(req: NextRequest) {
         }
       }
 
-      // ── Step 3: Create ticket (triggers email notification) ──
+      // ── Step 3: Create ticket (assigned to Jacob → triggers email notification) ──
       try {
         const ticketPayload: Record<string, unknown> = {
           properties: {
@@ -122,6 +127,7 @@ export async function POST(req: NextRequest) {
             content: `Name: ${firstName} ${lastName || ''}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\n\nMessage:\n${message}`,
             hs_pipeline: '0',
             hs_pipeline_stage: '1',
+            hubspot_owner_id: OWNER_ID,
           },
         };
 
