@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Header from '@/components/Header';
+import ContactWidget from '@/components/ContactWidget';
 import Footer from '@/components/Footer';
 import Analytics from '@/components/Analytics';
 import ErrorBoundary from '@/components/ErrorBoundary';
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ErrorBoundary>
           <main className="pt-[90px]">{children}</main>
         </ErrorBoundary>
+        <ContactWidget />
         <Footer />
       </body>
     </html>
