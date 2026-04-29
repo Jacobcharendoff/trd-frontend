@@ -2,7 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const HUBSPOT_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const NOTIFICATION_EMAIL = 'info@therigdr.com';
+// onboarding@resend.dev can only send to the Resend account owner's email.
+// Once therigdr.com is verified in Resend, switch back to info@therigdr.com
+// and update the from address to notifications@therigdr.com
+const NOTIFICATION_EMAIL = 'jacobcharendoff@gmail.com';
 
 // Jacob's HubSpot owner ID — tickets and contacts get assigned to him
 const OWNER_ID = '61103251';
@@ -20,7 +23,7 @@ async function sendNotificationEmail(data: {
   const fullName = `${firstName}${lastName ? ' ' + lastName : ''}`;
 
   try {
-    await fetch('https://api.resend.com/emails', {
+    const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -68,6 +71,11 @@ async function sendNotificationEmail(data: {
         `,
       }),
     });
+
+    if (!res.ok) {
+      const errorBody = await res.text();
+      console.error('[Contact Form] Resend API error:', res.status, errorBody);
+    }
   } catch (emailErr) {
     console.error('[Contact Form] Notification email failed:', emailErr);
   }
