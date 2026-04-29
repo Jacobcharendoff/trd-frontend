@@ -2,12 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const HUBSPOT_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-// onboarding@resend.dev can only send to the Resend account owner's email.
-// Once therigdr.com is verified in Resend, switch to VERIFIED_DOMAIN = true,
-// update FROM_ADDRESS, and set NOTIFICATION_EMAIL back to info@therigdr.com.
-const VERIFIED_DOMAIN = false; // flip to true after DNS records are added in GoDaddy
-const FROM_ADDRESS = 'The Rig Doctor <onboarding@resend.dev>'; // change to notifications@therigdr.com after verification
-const NOTIFICATION_EMAIL = 'jacobcharendoff@gmail.com'; // change to info@therigdr.com after verification
+// therigdr.com verified in Resend on Apr 28, 2026 — branded emails active
+const VERIFIED_DOMAIN = true;
+const FROM_ADDRESS = 'The Rig Doctor <notifications@therigdr.com>';
+const NOTIFICATION_EMAIL = 'info@therigdr.com';
 
 // Jacob's HubSpot owner ID — tickets and contacts get assigned to him
 const OWNER_ID = '61103251';
