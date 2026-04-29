@@ -3,9 +3,11 @@ import { NextRequest, NextResponse } from 'next/server';
 const HUBSPOT_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 // onboarding@resend.dev can only send to the Resend account owner's email.
-// Once therigdr.com is verified in Resend, switch back to info@therigdr.com
-// and update the from address to notifications@therigdr.com
-const NOTIFICATION_EMAIL = 'jacobcharendoff@gmail.com';
+// Once therigdr.com is verified in Resend, switch to VERIFIED_DOMAIN = true,
+// update FROM_ADDRESS, and set NOTIFICATION_EMAIL back to info@therigdr.com.
+const VERIFIED_DOMAIN = false; // flip to true after DNS records are added in GoDaddy
+const FROM_ADDRESS = 'The Rig Doctor <onboarding@resend.dev>'; // change to notifications@therigdr.com after verification
+const NOTIFICATION_EMAIL = 'jacobcharendoff@gmail.com'; // change to info@therigdr.com after verification
 
 // Jacob's HubSpot owner ID — tickets and contacts get assigned to him
 const OWNER_ID = '61103251';
@@ -30,7 +32,7 @@ async function sendNotificationEmail(data: {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'The Rig Doctor <onboarding@resend.dev>',
+        from: FROM_ADDRESS,
         to: [NOTIFICATION_EMAIL],
         reply_to: email,
         subject: `New inquiry from ${fullName}`,
@@ -78,6 +80,73 @@ async function sendNotificationEmail(data: {
     }
   } catch (emailErr) {
     console.error('[Contact Form] Notification email failed:', emailErr);
+  }
+}
+
+async function sendCustomerConfirmation(data: {
+  firstName: string;
+  email: string;
+}) {
+  // Only send customer-facing emails once therigdr.com domain is verified in Resend.
+  // onboarding@resend.dev can only deliver to the account owner's email.
+  if (!RESEND_API_KEY || !VERIFIED_DOMAIN) return;
+
+  const { firstName, email } = data;
+
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: FROM_ADDRESS,
+        to: [email],
+        subject: `Got your message, ${firstName}!`,
+        html: `
+          <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 520px; margin: 0 auto; padding: 40px 24px; color: #1d1d1f;">
+            <div style="margin-bottom: 32px;">
+              <h1 style="margin: 0 0 4px; font-size: 24px; font-weight: 700; color: #1d1d1f;">The Rig Doctor</h1>
+              <div style="width: 40px; height: 3px; background: #F5A623; border-radius: 2px;"></div>
+            </div>
+
+            <p style="font-size: 16px; line-height: 1.7; margin: 0 0 16px; color: #1d1d1f;">
+              Hey ${firstName},
+            </p>
+
+            <p style="font-size: 16px; line-height: 1.7; margin: 0 0 16px; color: #1d1d1f;">
+              Thanks for reaching out — we got your message and we're on it. Someone from the team will get back to you shortly, usually within 24 hours.
+            </p>
+
+            <p style="font-size: 16px; line-height: 1.7; margin: 0 0 24px; color: #1d1d1f;">
+              In the meantime, feel free to reply to this email if you think of anything else.
+            </p>
+
+            <p style="font-size: 16px; line-height: 1.7; margin: 0 0 4px; color: #1d1d1f;">
+              Talk soon,
+            </p>
+            <p style="font-size: 16px; line-height: 1.7; margin: 0 0 32px; color: #1d1d1f; font-weight: 500;">
+              The Rig Doctor Team
+            </p>
+
+            <div style="border-top: 1px solid rgba(0,0,0,0.06); padding-top: 20px;">
+              <p style="margin: 0; font-size: 12px; color: #86868b; line-height: 1.5;">
+                The Rig Doctor · Custom Pedalboards & Rig Builds<br>
+                <a href="https://www.therigdr.com" style="color: #F5A623; text-decoration: none;">therigdr.com</a>
+              </p>
+            </div>
+          </div>
+        `,
+      }),
+    });
+
+    if (!res.ok) {
+      const errorBody = await res.text();
+      console.error('[Contact Form] Customer confirmation email error:', res.status, errorBody);
+    }
+  } catch (emailErr) {
+    console.error('[Contact Form] Customer confirmation email failed:', emailErr);
   }
 }
 
@@ -241,8 +310,11 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // ── Step 4: Send notification email to info@therigdr.com ──
+    // ── Step 4: Send notification email to Jacob ──
     await sendNotificationEmail({ firstName, lastName: lastName || '', email, phone: phone || '', message });
+
+    // ── Step 5: Send confirmation email to customer ──
+    await sendCustomerConfirmation({ firstName, email });
 
     return NextResponse.json({
       success: true,
