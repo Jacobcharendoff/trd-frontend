@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getProduct, getCheckoutUrl } from '@/lib/shopify';
+import { getProduct, createCartWithAttribution } from '@/lib/shopify';
+import { getUTMFromCookie, appendUTMToURL, utmToCartAttributes } from '@/lib/utm';
 
 /**
  * Checkout API Route
@@ -7,17 +8,15 @@ import { getProduct, getCheckoutUrl } from '@/lib/shopify';
  * Creates a Shopify cart via the Storefront API and redirects
  * the user to Shopify's hosted checkout page.
  *
- * Usage: /api/checkout?handle=tone-tutoring-follow-up&quantity=2
+ * Attribution: reads trd_utm cookie, passes UTM params as cart attributes
+ * AND appends them to the checkout URL for Shopify analytics.
  *
- * Safety net: replaces any www.therigdr.com or therigdr.com URLs
- * with the-rig-doctor.myshopify.com to ensure checkout always
- * reaches Shopify's servers (not our headless frontend).
+ * Usage: /api/checkout?handle=tone-tutoring
  */
+
 export async function GET(req: NextRequest) {
   try {
     const handle = req.nextUrl.searchParams.get('handle');
-    const quantityParam = req.nextUrl.searchParams.get('quantity');
-    const quantity = Math.max(1, Math.min(10, parseInt(quantityParam || '1', 10) || 1));
 
     if (!handle) {
       return NextResponse.json({ error: 'Product handle required' }, { status: 400 });
@@ -40,18 +39,32 @@ export async function GET(req: NextRequest) {
       return NextResponse.redirect(new URL('/tone-tutoring', req.url));
     }
 
-    // Create a cart and get the Shopify-hosted checkout URL
-    let checkoutUrl = await getCheckoutUrl(variant.id, quantity);
+    // Read UTM attribution from cookie
+    const cookieHeader = req.headers.get('cookie') || '';
+    const utmParams = getUTMFromCookie(cookieHeader);
+    const cartAttributes = utmParams ? utmToCartAttributes(utmParams) : [];
 
-    // Safety net: ensure checkout URL points to Shopify servers,
-    // not our headless frontend domain
-    checkoutUrl = checkoutUrl
-      .replace('https://www.therigdr.com', 'https://the-rig-doctor.myshopify.com')
-      .replace('https://therigdr.com', 'https://the-rig-doctor.myshopify.com');
+    // Create a cart with attribution and get the Shopify-hosted checkout URL
+    const { cart, userErrors } = await createCartWithAttribution(
+      variant.id,
+      1,
+      cartAttributes
+    );
+
+    if (userErrors.length > 0) {
+      throw new Error(userErrors[0].message);
+    }
+
+    // Append UTM params to checkout URL so Shopify analytics picks them up
+    let checkoutUrl = cart.checkoutUrl;
+    if (utmParams) {
+      checkoutUrl = appendUTMToURL(checkoutUrl, utmParams);
+    }
 
     return NextResponse.redirect(checkoutUrl);
   } catch (err) {
     console.error('Checkout redirect error:', err);
+    // Fallback: send them to the Tone Tutoring page rather than a dead end
     return NextResponse.redirect(new URL('/tone-tutoring', req.url));
   }
 }

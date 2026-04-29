@@ -230,6 +230,43 @@ export async function createCart(variantId: string, quantity: number = 1) {
   return data.cartCreate;
 }
 
+/**
+ * Create a cart with UTM attribution data passed as cart attributes.
+ * These attributes show up on the order in Shopify admin,
+ * enabling manual and automated attribution analysis.
+ */
+export async function createCartWithAttribution(
+  variantId: string,
+  quantity: number = 1,
+  attributes: Array<{ key: string; value: string }> = []
+) {
+  const query = `
+    mutation CartCreate($input: CartInput!) {
+      cartCreate(input: $input) {
+        cart {
+          id
+          checkoutUrl
+        }
+        userErrors { field message }
+      }
+    }
+  `;
+
+  const data = await shopifyFetch<{
+    cartCreate: {
+      cart: { id: string; checkoutUrl: string };
+      userErrors: Array<{ field: string; message: string }>;
+    };
+  }>(query, {
+    input: {
+      lines: [{ merchandiseId: variantId, quantity }],
+      attributes,
+    },
+  });
+
+  return data.cartCreate;
+}
+
 export async function getCheckoutUrl(variantId: string, quantity: number = 1): Promise<string> {
   const { cart, userErrors } = await createCart(variantId, quantity);
   if (userErrors.length > 0) {

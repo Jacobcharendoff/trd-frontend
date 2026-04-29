@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import Header from '@/components/Header';
-import ContactWidget from '@/components/ContactWidget';
 import Footer from '@/components/Footer';
 import Analytics from '@/components/Analytics';
+import UTMCapture from '@/components/UTMCapture';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import ErrorInit from '@/components/ErrorInit';
 import './globals.css';
@@ -27,12 +27,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="antialiased">
         <Analytics />
+        <UTMCapture />
         <ErrorInit />
         <Header />
         <ErrorBoundary>
           <main className="pt-[90px]">{children}</main>
         </ErrorBoundary>
-        <ContactWidget />
         <Footer />
       </body>
     </html>
