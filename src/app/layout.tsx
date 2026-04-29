@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Analytics from '@/components/Analytics';
+import HubSpotTracking from '@/components/HubSpotTracking';
 import UTMCapture from '@/components/UTMCapture';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import ErrorInit from '@/components/ErrorInit';
@@ -19,6 +20,18 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'The Rig Doctor',
     locale: 'en_US',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'The Rig Doctor — Custom Pedalboard Builds',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/og-image.png'],
   },
 };
 
@@ -27,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="antialiased">
         <Analytics />
+        <HubSpotTracking />
         <UTMCapture />
         <ErrorInit />
         <Header />
