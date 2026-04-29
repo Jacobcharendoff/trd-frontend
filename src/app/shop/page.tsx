@@ -247,7 +247,7 @@ export default function ShopPage() {
                     <div className="mb-6">
                       <p className="text-2xl font-bold text-[#1d1d1f] flex items-baseline gap-2">
                         <span>{getPriceDisplay(product.priceMin, product.priceMax)}</span>
-                        {product.compareAtMin && product.compareAtMin !== product.priceMin && (
+                        {product.compareAtMin != null && product.compareAtMin > 0 && product.compareAtMin !== product.priceMin && (
                           <>
                             <span className="text-lg font-normal text-[#1d1d1f]/40 line-through">${product.compareAtMin % 1 === 0 ? product.compareAtMin.toFixed(0) : product.compareAtMin.toFixed(2)}</span>
                             <span className="text-xs font-medium text-green-600 bg-green-50 px-1.5 py-0.5 rounded-full">Sale</span>

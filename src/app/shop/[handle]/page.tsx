@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import { useParams } from 'next/navigation';
 /* Using native <img> instead of next/image to avoid Shopify CDN domain issues */
 import { getProduct, getCheckoutUrl, type ShopifyProduct } from '@/lib/shopify';
@@ -9,6 +10,48 @@ import { getProduct, getCheckoutUrl, type ShopifyProduct } from '@/lib/shopify';
 function formatPrice(amount: string): string {
   const num = parseFloat(amount);
   return num % 1 === 0 ? `$${num.toFixed(0)}` : `$${num.toFixed(2)}`;
+}
+
+/** Generate Product JSON-LD for rich search results */
+function ProductJsonLd({ product, selectedVariant }: { product: ShopifyProduct; selectedVariant: number }) {
+  const variant = product.variants.edges[selectedVariant]?.node;
+  const image = product.images.edges[0]?.node.url;
+  const price = variant?.price.amount || product.priceRange.minVariantPrice.amount;
+  const currency = variant?.price.currencyCode || product.priceRange.minVariantPrice.currencyCode;
+  const isAvailable = variant?.availableForSale !== false;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.title,
+    description: product.description,
+    image: image || `https://www.therigdr.com/og-image.png`,
+    url: `https://www.therigdr.com/shop/${product.handle}`,
+    brand: {
+      '@type': 'Brand',
+      name: 'The Rig Doctor',
+    },
+    offers: {
+      '@type': 'Offer',
+      url: `https://www.therigdr.com/shop/${product.handle}`,
+      priceCurrency: currency,
+      price: price,
+      availability: isAvailable
+        ? 'https://schema.org/InStock'
+        : 'https://schema.org/OutOfStock',
+      seller: {
+        '@type': 'Organization',
+        name: 'The Rig Doctor',
+      },
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
 }
 
 export default function ProductPage() {
@@ -117,6 +160,9 @@ export default function ProductPage() {
 
   return (
     <>
+      {/* Product JSON-LD for rich search results */}
+      <ProductJsonLd product={product} selectedVariant={selectedVariant} />
+
       {/* Breadcrumb — sits below the site Header */}
       <div className="bg-white border-b border-black/[0.04] pt-16">
         <div className="max-w-[1200px] mx-auto px-6 py-3">
