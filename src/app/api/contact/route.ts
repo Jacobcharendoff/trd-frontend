@@ -27,7 +27,7 @@ async function sendNotificationEmail(data: {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'The Rig Doctor <notifications@therigdr.com>',
+        from: 'The Rig Doctor <onboarding@resend.dev>',
         to: [NOTIFICATION_EMAIL],
         reply_to: email,
         subject: `New inquiry from ${fullName}`,
