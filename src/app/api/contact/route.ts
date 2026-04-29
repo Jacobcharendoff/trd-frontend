@@ -163,7 +163,6 @@ export async function POST(req: NextRequest) {
 
     const fullName = `${firstName}${lastName ? ' ' + lastName : ''}`;
     let contactId: string | null = null;
-    let ticketCreated = false;
 
     if (HUBSPOT_TOKEN) {
       // ── Step 1: Create or update contact ──
@@ -262,61 +261,20 @@ export async function POST(req: NextRequest) {
         }
       }
 
-      // ── Step 3: Create ticket ──
-      try {
-        const ticketPayload: Record<string, unknown> = {
-          properties: {
-            subject: `New inquiry from ${fullName}`,
-            content: `Name: ${fullName}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\n\nMessage:\n${message}`,
-            hs_pipeline: '0',
-            hs_pipeline_stage: '1',
-            hubspot_owner_id: OWNER_ID,
-          },
-        };
-
-        if (contactId) {
-          ticketPayload.associations = [
-            {
-              to: { id: contactId },
-              types: [
-                {
-                  associationCategory: 'HUBSPOT_DEFINED',
-                  associationTypeId: 16,
-                },
-              ],
-            },
-          ];
-        }
-
-        const ticketRes = await fetch('https://api.hubapi.com/crm/v3/objects/tickets', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${HUBSPOT_TOKEN}`,
-          },
-          body: JSON.stringify(ticketPayload),
-        });
-
-        if (ticketRes.ok) {
-          ticketCreated = true;
-        } else {
-          const ticketError = await ticketRes.text();
-          console.error('[Contact Form] Ticket creation failed:', ticketRes.status, ticketError);
-        }
-      } catch (ticketErr) {
-        console.error('[Contact Form] Ticket creation threw:', ticketErr);
-      }
+      // Ticket creation removed — HubSpot's built-in ticket auto-reply
+      // sends a generic "your request has been received" email that duplicates
+      // our branded Resend confirmation. Contact + note is sufficient for CRM tracking.
     }
 
-    // ── Step 4: Send notification email to Jacob ──
+    // ── Step 3: Send notification email to Jacob ──
     await sendNotificationEmail({ firstName, lastName: lastName || '', email, phone: phone || '', message });
 
-    // ── Step 5: Send confirmation email to customer ──
+    // ── Step 4: Send confirmation email to customer ──
     await sendCustomerConfirmation({ firstName, email });
 
     return NextResponse.json({
       success: true,
-      hubspot: HUBSPOT_TOKEN ? { contactId, ticketCreated } : null,
+      hubspot: HUBSPOT_TOKEN ? { contactId } : null,
     });
   } catch (err) {
     console.error('[Contact Form] Top-level error:', err);
