@@ -2,56 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Head from 'next/head';
 import { useParams } from 'next/navigation';
 /* Using native <img> instead of next/image to avoid Shopify CDN domain issues */
-import { getProduct, getCheckoutUrl, type ShopifyProduct } from '@/lib/shopify';
+import Section from '@/components/Section';
+import { getProduct, type ShopifyProduct } from '@/lib/shopify';
+import { buildGA4Item, trackViewItem, trackAddToCart, trackBeginCheckout } from '@/lib/analytics';
 
 function formatPrice(amount: string): string {
   const num = parseFloat(amount);
   return num % 1 === 0 ? `$${num.toFixed(0)}` : `$${num.toFixed(2)}`;
-}
-
-/** Generate Product JSON-LD for rich search results */
-function ProductJsonLd({ product, selectedVariant }: { product: ShopifyProduct; selectedVariant: number }) {
-  const variant = product.variants.edges[selectedVariant]?.node;
-  const image = product.images.edges[0]?.node.url;
-  const price = variant?.price.amount || product.priceRange.minVariantPrice.amount;
-  const currency = variant?.price.currencyCode || product.priceRange.minVariantPrice.currencyCode;
-  const isAvailable = variant?.availableForSale !== false;
-
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: product.title,
-    description: product.description,
-    image: image || `https://www.therigdr.com/og-image.png`,
-    url: `https://www.therigdr.com/shop/${product.handle}`,
-    brand: {
-      '@type': 'Brand',
-      name: 'The Rig Doctor',
-    },
-    offers: {
-      '@type': 'Offer',
-      url: `https://www.therigdr.com/shop/${product.handle}`,
-      priceCurrency: currency,
-      price: price,
-      availability: isAvailable
-        ? 'https://schema.org/InStock'
-        : 'https://schema.org/OutOfStock',
-      seller: {
-        '@type': 'Organization',
-        name: 'The Rig Doctor',
-      },
-    },
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
-  );
 }
 
 export default function ProductPage() {
@@ -89,14 +48,34 @@ export default function ProductPage() {
     return () => { cancelled = true; };
   }, [handle]);
 
+  // GA4: view_item when product loads
+  useEffect(() => {
+    if (!product) return;
+    const variant = product.variants.edges[0]?.node;
+    if (!variant) return;
+    const item = buildGA4Item(product, variant, 1);
+    trackViewItem(item);
+  }, [product]);
+
   const handleBuyNow = async () => {
     if (!product) return;
     const variant = product.variants.edges[selectedVariant]?.node;
     if (!variant) return;
     setAddingToCart(true);
+
+    // GA4: add_to_cart + begin_checkout
+    const ga4Item = buildGA4Item(product, variant, quantity);
+    trackAddToCart(ga4Item);
+    trackBeginCheckout([ga4Item]);
+
     try {
-      const url = await getCheckoutUrl(variant.id, quantity);
-      window.location.href = url;
+      // Route through API for UTM attribution
+      const params = new URLSearchParams({
+        handle,
+        variantId: variant.id,
+        quantity: String(quantity),
+      });
+      window.location.href = `/api/checkout?${params.toString()}`;
     } catch {
       window.location.href = `https://the-rig-doctor.myshopify.com/products/${handle}`;
     } finally {
@@ -160,9 +139,6 @@ export default function ProductPage() {
 
   return (
     <>
-      {/* Product JSON-LD for rich search results */}
-      <ProductJsonLd product={product} selectedVariant={selectedVariant} />
-
       {/* Breadcrumb — sits below the site Header */}
       <div className="bg-white border-b border-black/[0.04] pt-16">
         <div className="max-w-[1200px] mx-auto px-6 py-3">
@@ -366,6 +342,52 @@ export default function ProductPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <Section theme="dark" id="product-cta" reveal className="text-center">
+        <div className="mb-8">
+          <h2 className="trd-section-headline text-[#f5f5f7] mb-4">
+            Questions about this product?
+          </h2>
+          <p className="text-[#f5f5f7]/60 text-lg max-w-2xl mx-auto mb-8">
+            We&apos;re guitarists first. If you&apos;re not sure this is the right fit for your rig, let&apos;s talk.
+          </p>
+        </div>
+        <div className="flex gap-4 justify-center flex-wrap">
+          <Link
+            href="/book"
+            className="inline-flex items-center gap-2 trd-cta-gradient text-white font-semibold px-8 py-4 rounded-full trd-glow-pulse"
+          >
+            Book a Free Call
+          </Link>
+          <Link
+            href="/shop"
+            className="inline-flex items-center gap-2 border border-white/20 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 transition-colors"
+          >
+            Browse All Products
+          </Link>
+        </div>
+      </Section>
+
+      {/* ──── Consultation CTA ──── */}
+      <section className="relative overflow-hidden bg-[#1d1d1f] py-16 sm:py-20">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(255,55,95,0.06)_0%,transparent_50%)]" />
+        <div className="relative max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-8">
+          <div>
+            <h3 className="text-2xl sm:text-3xl font-bold text-[#f5f5f7] tracking-tight">
+              Ready to hear what your rig should sound like?
+            </h3>
+            <p className="text-[#f5f5f7]/50 text-base mt-3">
+              30 minutes. Free. No commitment.
+            </p>
+          </div>
+          <Link
+            href="/book"
+            className="trd-cta-gradient trd-glow-pulse inline-flex items-center px-8 py-4 rounded-full font-semibold text-base whitespace-nowrap"
+          >
+            Book a Free Consultation
+          </Link>
         </div>
       </section>
     </>
