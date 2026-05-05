@@ -1,169 +1,219 @@
-'use client';
-
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import { getPostBySlug, getAllPosts, getRelatedPosts } from '@/lib/blog';
 import Section from '@/components/Section';
-import { BlogPostSchema } from '@/components/StructuredData';
-import { getPostBySlug, getAllPosts } from '@/lib/blog';
 
-export default function BlogPostPage() {
-  const params = useParams();
-  const slug = params.slug as string;
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
+
+export async function generateStaticParams() {
+  return getAllPosts().map((post) => ({ slug: post.slug }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
   const post = getPostBySlug(slug);
-  const allPosts = getAllPosts();
+  if (!post) return {};
 
-  if (!post) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0a0a0a]">
-        <div className="text-center max-w-md mx-auto px-6">
-          <h1 className="text-4xl font-bold text-[#f5f5f7] mb-4">Post not found</h1>
-          <p className="text-[#f5f5f7]/70 mb-8">
-            We couldn't find that post. It might have been archived or moved.
-          </p>
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full trd-cta-primary"
-          >
-            Back to the Workbench
-          </Link>
-        </div>
-      </div>
-    );
-  }
+  return {
+    title: post.title,
+    description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: 'article',
+      publishedTime: post.publishedAt,
+      authors: [post.author],
+      images: post.heroImage
+        ? [{ url: post.heroImage, width: 1200, height: 630, alt: post.heroAlt || post.title }]
+        : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+      images: post.heroImage ? [post.heroImage] : undefined,
+    },
+  };
+}
 
-  const relatedPosts = allPosts
-    .filter((p) => p.slug !== post.slug && p.category === post.category)
-    .slice(0, 2);
+export default async function BlogPost({ params }: PageProps) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+  if (!post) notFound();
 
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case 'Gear Guide':
-        return 'bg-[#10B981]';
-      case 'Signal Chain':
-        return 'bg-[#0071E3]';
-      case 'Behind the Bench':
-        return 'bg-purple-500';
-      case 'Tone Tips':
-        return 'bg-blue-500';
-      default:
-        return 'bg-[#0071E3]';
-    }
+  const related = getRelatedPosts(slug, 2);
+
+  // Article JSON-LD
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.description,
+    image: post.heroImage,
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt || post.publishedAt,
+    author: {
+      '@type': 'Person',
+      name: post.author,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'The Rig Doctor',
+      url: 'https://www.therigdr.com',
+    },
   };
 
   return (
     <>
-      <BlogPostSchema
-        title={post.title}
-        description={post.excerpt}
-        date={post.date}
-        url={`https://www.therigdr.com/blog/${slug}`}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {/* ──── ARTICLE HERO ──── */}
-      <Section theme="light" id="article-hero" reveal>
-        <div className="mb-8">
+
+      {/* ── Article Header ── */}
+      <Section theme="dark" className="!py-16 md:!py-24">
+        <div className="max-w-3xl">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-[#0071E3] hover:text-[#005BB5] font-semibold mb-8 transition-colors"
+            className="inline-flex items-center gap-1.5 text-[13px] text-[#f5f5f7]/50 hover:text-[#f5f5f7]/80 transition-colors mb-6"
           >
-            ← Back to posts
-          </Link>
-        </div>
-
-        <div className="max-w-[720px] mx-auto">
-          <div className="flex items-center gap-3 mb-6">
-            <span
-              className={`${getCategoryColor(
-                post.category
-              )} text-white text-xs font-semibold px-3 py-1 rounded-full`}
+            <svg
+              viewBox="0 0 24 24"
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
             >
-              {post.category}
-            </span>
-            <span className="text-sm text-[#1d1d1f]/50">{post.date}</span>
-            <span className="text-sm text-[#1d1d1f]/50">•</span>
-            <span className="text-sm text-[#1d1d1f]/50">{post.readTime}</span>
-          </div>
+              <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Back to Blog
+          </Link>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1d1d1f] mb-6 leading-tight">
+          <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#F5A623] mb-4">
+            {post.category}
+          </span>
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#f5f5f7] leading-[1.1] mb-6">
             {post.title}
           </h1>
 
-          <p className="text-xl text-[#1d1d1f]/70 leading-relaxed">
-            {post.excerpt}
-          </p>
+          <div className="flex items-center gap-3 text-[13px] text-[#f5f5f7]/40">
+            <span>{post.author}</span>
+            <span className="w-1 h-1 rounded-full bg-white/20" />
+            <span>{post.readTime}</span>
+            <span className="w-1 h-1 rounded-full bg-white/20" />
+            <time dateTime={post.publishedAt}>
+              {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric',
+              })}
+            </time>
+          </div>
         </div>
       </Section>
 
-      {/* ──── ARTICLE CONTENT ──── */}
-      <Section theme="light" reveal>
-        <div
-          className="max-w-[720px] mx-auto prose prose-base text-[#1d1d1f]
-            [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:text-[#1d1d1f]
-            [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:mt-8 [&_h3]:mb-3 [&_h3]:text-[#1d1d1f]
-            [&_p]:text-base [&_p]:text-[#1d1d1f]/80 [&_p]:leading-relaxed [&_p]:mb-6
-            [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:mb-6
-            [&_li]:mb-2 [&_li]:text-[#1d1d1f]/80
-            [&_strong]:font-semibold [&_strong]:text-[#1d1d1f]
-          "
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
+      {/* ── Hero Image ── */}
+      {post.heroImage && (
+        <Section theme="light" className="!py-0 !-mt-8">
+          <div className="relative aspect-[2/1] rounded-2xl overflow-hidden border border-black/[0.04]">
+            <Image
+              src={post.heroImage}
+              alt={post.heroAlt || post.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1080px) 100vw, 1080px"
+              priority
+            />
+          </div>
+        </Section>
+      )}
+
+      {/* ── Article Body ── */}
+      <Section theme="light" className="!py-12 md:!py-16">
+        <article className="max-w-3xl mx-auto">
+          {post.sections.map((section, i) => (
+            <div key={i} className="mb-8 last:mb-0">
+              {section.heading &&
+                (section.headingLevel === 3 ? (
+                  <h3 className="text-xl font-bold tracking-tight text-[#1d1d1f] mb-4 mt-10">
+                    {section.heading}
+                  </h3>
+                ) : (
+                  <h2 className="text-2xl font-bold tracking-tight text-[#1d1d1f] mb-4 mt-12 first:mt-0">
+                    {section.heading}
+                  </h2>
+                ))}
+              <div
+                className="prose-trd"
+                dangerouslySetInnerHTML={{ __html: section.content }}
+              />
+            </div>
+          ))}
+        </article>
       </Section>
 
-      {/* ──── MORE FROM THE BENCH ──── */}
-      {relatedPosts.length > 0 && (
-        <Section theme="lightGray" id="related" reveal>
-          <div className="mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f]">
-              More from the bench.
+      {/* ── CTA Banner ── */}
+      {post.cta && (
+        <Section theme="lightGray" className="!py-12 md:!py-16">
+          <div className="max-w-3xl mx-auto bg-[#0a0a0a] rounded-2xl p-8 md:p-12 text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#f5f5f7] mb-4">
+              {post.cta.text}
             </h2>
+            <Link
+              href={post.cta.href}
+              className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48A1A] text-black font-semibold px-8 py-4 rounded-lg transition-colors"
+            >
+              {post.cta.label}
+            </Link>
           </div>
+        </Section>
+      )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {relatedPosts.map((relatedPost) => (
-              <Link key={relatedPost.slug} href={`/blog/${relatedPost.slug}`}>
-                <div className="bg-white rounded-2xl p-6 h-full flex flex-col hover:shadow-lg transition-all duration-300 cursor-pointer hover:border-[#0071E3] border border-transparent">
-                  <div className="mb-4">
-                    <span
-                      className={`${getCategoryColor(
-                        relatedPost.category
-                      )} text-white text-xs font-semibold px-3 py-1 rounded-full inline-block`}
-                    >
-                      {relatedPost.category}
-                    </span>
+      {/* ── Related Posts ── */}
+      {related.length > 0 && (
+        <Section theme="light">
+          <h2 className="text-2xl font-bold tracking-tight text-[#1d1d1f] mb-8">
+            Keep reading
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-6">
+            {related.map((rp) => (
+              <Link
+                key={rp.slug}
+                href={`/blog/${rp.slug}`}
+                className="group block bg-[#f5f5f7] rounded-2xl overflow-hidden border border-black/[0.04] hover:border-black/[0.1] transition-colors"
+              >
+                {rp.heroImage && (
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <Image
+                      src={rp.heroImage}
+                      alt={rp.heroAlt || rp.title}
+                      fill
+                      className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                    />
                   </div>
-                  <h3 className="text-lg font-semibold text-[#1d1d1f] mb-3 leading-tight flex-grow">
-                    {relatedPost.title}
+                )}
+                <div className="p-5">
+                  <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#F5A623] mb-2">
+                    {rp.category}
+                  </span>
+                  <h3 className="text-[15px] font-semibold text-[#1d1d1f] mb-2 group-hover:text-[#F5A623] transition-colors leading-snug">
+                    {rp.title}
                   </h3>
-                  <p className="text-sm text-[#1d1d1f]/60 mb-6 line-clamp-2">
-                    {relatedPost.excerpt}
+                  <p className="text-[13px] text-black/45 leading-relaxed line-clamp-2">
+                    {rp.description}
                   </p>
-                  <div className="flex items-center justify-between text-xs text-[#1d1d1f]/50 border-t border-[#f5f5f7] pt-4">
-                    <span>{relatedPost.date}</span>
-                    <span>{relatedPost.readTime}</span>
-                  </div>
                 </div>
               </Link>
             ))}
           </div>
         </Section>
       )}
-
-      {/* ──── CTA ──── */}
-      <Section theme="dark" id="cta" reveal>
-        <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f5f5f7] mb-4">
-            Need help with your rig?
-          </h2>
-          <p className="text-lg text-[#f5f5f7]/70 mb-8">
-            Let's talk about your tone and build something that sounds like you.
-          </p>
-          <Link
-            href="/book"
-            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full trd-cta-primary"
-          >
-            Book a consultation
-          </Link>
-        </div>
-      </Section>
     </>
   );
 }

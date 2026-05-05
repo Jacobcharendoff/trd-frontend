@@ -1,69 +1,49 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 const navItems = [
-  { label: 'Custom Builds', href: '/custom-builds' },
-  { label: 'Shop', href: '/shop' },
+  { label: 'Book a Build', href: '/book' },
+  { label: 'Shop', href: '/collections' },
   { label: 'Tone Tutoring', href: '/tone-tutoring' },
+  { label: 'The Process', href: '/process' },
+  { label: 'About', href: '/about' },
+  { label: 'Plan Your Rig', href: '/plan-your-rig' },
   { label: 'Blog', href: '/blog' },
 ];
 
-/* ── Sale announcement config ── */
-const saleAnnouncement = {
-  enabled: true,
-  text: 'Mogami 2314 Patch Cables — $19',
-  strikePrice: '$24',
-  suffix: 'Sale ends May 1st',
-  cta: 'Shop Now →',
+/* ── Announcement bar config ── */
+const announcement = {
+  text: 'Mogami 2314 Patch Cables — $19 (was $24). Sale ends May 1st.',
   href: '/shop/mogami-2314-patch-cables',
+  cta: 'Shop Now →',
 };
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [bannerVisible, setBannerVisible] = useState(saleAnnouncement.enabled);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [bannerVisible, setBannerVisible] = useState(true);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* ── Sale Announcement Bar ── */}
+      {/* ── Announcement Bar ── */}
       {bannerVisible && (
         <div className="relative bg-gradient-to-r from-[#6366F1] via-[#A855F7] to-[#EC4899] text-white text-center">
           <Link
-            href={saleAnnouncement.href}
+            href={announcement.href}
             className="block px-10 py-2 text-[12px] sm:text-[13px] font-medium tracking-wide hover:opacity-90 transition-opacity"
           >
-            <span className="hidden sm:inline">
-              <span className="font-semibold">{saleAnnouncement.text}</span>
-              {' '}
-              <span className="text-white/70 line-through">{saleAnnouncement.strikePrice}</span>
-              {' · '}
-              {saleAnnouncement.suffix}
-              {' · '}
-            </span>
-            <span className="sm:hidden">
-              <span className="font-semibold">Mogami 2314 — $19</span>
-              {' '}
-              <span className="text-white/70 line-through">$24</span>
-              {' · '}
-            </span>
-            <span className="underline underline-offset-2 font-semibold">{saleAnnouncement.cta}</span>
+            <span className="hidden sm:inline">{announcement.text}</span>
+            <span className="sm:hidden">Mogami 2314 — $19 (was $24)</span>
+            {' '}
+            <span className="underline underline-offset-2 font-semibold">{announcement.cta}</span>
           </Link>
           <button
             onClick={(e) => {
               e.preventDefault();
-              e.stopPropagation();
               setBannerVisible(false);
             }}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors p-1"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors p-1"
             aria-label="Close announcement"
           >
             <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -74,27 +54,14 @@ export default function Header() {
       )}
 
       {/* ── Main Nav ── */}
-      <div
-        className={`transition-all duration-300 ${
-          scrolled
-            ? 'bg-white/80 backdrop-blur-xl border-b border-black/[0.06] shadow-sm'
-            : 'bg-transparent'
-        }`}
-      >
+      <div className="bg-[rgba(29,29,31,0.92)] backdrop-blur-xl border-b border-white/[0.06]">
         <div className="max-w-[1080px] mx-auto px-6 h-14 flex items-center justify-between">
           {/* Logo */}
-          <Link
-            href="/"
-            className="flex items-center hover:opacity-80 transition-all"
-          >
-            <Image
-              src="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/logo-white-hrt.png?v=1742952854"
-              alt="The Rig Doctor"
-              width={140}
-              height={40}
-              className={`h-8 w-auto transition-all duration-300 ${scrolled ? 'invert' : ''}`}
-              priority
-            />
+          <Link href="/" className="flex items-center gap-2 text-white font-semibold text-[15px] tracking-tight hover:opacity-80 transition-opacity">
+            <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+            The Rig Doctor
           </Link>
 
           {/* Desktop Nav */}
@@ -103,61 +70,27 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-[13px] transition-colors ${
-                  scrolled
-                    ? 'text-[#1d1d1f]/70 hover:text-[#1d1d1f]'
-                    : 'text-white/[0.85] hover:text-white'
-                }`}
+                className="text-[13px] text-white/[0.85] hover:text-white transition-colors"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          {/* CTA + Icons */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* CTA */}
+          <div className="hidden md:flex items-center gap-4">
             <Link
               href="/book"
-              className={`text-[13px] font-medium rounded-full px-5 py-2 transition-all duration-300 ${
-                scrolled
-                  ? 'bg-[#0071E3] text-white hover:bg-[#005BB5]'
-                  : 'bg-[#0071E3] text-white hover:bg-[#005BB5]'
-              }`}
+              className="text-[13px] font-medium text-black bg-white rounded-full px-5 py-2 hover:bg-white/90 transition-colors"
             >
               Start a Build
-            </Link>
-            {/* Search Icon */}
-            <button
-              className={`p-2 rounded-full transition-colors ${
-                scrolled ? 'text-[#1d1d1f]/60 hover:text-[#1d1d1f]' : 'text-white/70 hover:text-white'
-              }`}
-              aria-label="Search"
-            >
-              <svg viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="11" cy="11" r="8" />
-                <path d="M21 21l-4.35-4.35" />
-              </svg>
-            </button>
-            {/* Cart Icon */}
-            <Link
-              href="/shop"
-              className={`p-2 rounded-full transition-colors ${
-                scrolled ? 'text-[#1d1d1f]/60 hover:text-[#1d1d1f]' : 'text-white/70 hover:text-white'
-              }`}
-              aria-label="Cart"
-            >
-              <svg viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <path d="M16 10a4 4 0 01-8 0" />
-              </svg>
             </Link>
           </div>
 
           {/* Mobile Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={`md:hidden p-2 ${scrolled ? 'text-[#1d1d1f]' : 'text-white'}`}
+            className="md:hidden text-white p-2"
             aria-label="Toggle menu"
           >
             <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2">
@@ -172,14 +105,14 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {mobileOpen && (
-          <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-black/[0.06] px-6 py-6">
+          <div className="md:hidden bg-[rgba(29,29,31,0.98)] backdrop-blur-xl border-t border-white/[0.06] px-6 py-6">
             <nav className="flex flex-col gap-4">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-[15px] text-[#1d1d1f]/80 hover:text-[#1d1d1f] transition-colors"
+                  className="text-[15px] text-white/[0.85] hover:text-white transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -187,7 +120,7 @@ export default function Header() {
               <Link
                 href="/book"
                 onClick={() => setMobileOpen(false)}
-                className="text-[15px] font-medium text-white bg-[#1d1d1f] rounded-full px-6 py-3 text-center mt-2 hover:bg-[#1d1d1f]/90 transition-colors"
+                className="text-[15px] font-medium text-black bg-white rounded-full px-6 py-3 text-center mt-2 hover:bg-white/90 transition-colors"
               >
                 Start a Build
               </Link>
