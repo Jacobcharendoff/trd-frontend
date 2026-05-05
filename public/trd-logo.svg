@@ -1,0 +1,34 @@
+<svg viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- The Rig Doctor — Horizontal Lockup (White on Dark) -->
+  <defs>
+    <linearGradient id="trdGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="30%" stop-color="#8b5cf6"/>
+      <stop offset="55%" stop-color="#ec4899"/>
+      <stop offset="80%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="trdGradH" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="33%" stop-color="#8b5cf6"/>
+      <stop offset="66%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Mark -->
+  <g transform="translate(40, 10)">
+    <circle cx="20" cy="72" r="14" fill="none" stroke="url(#trdGrad)" stroke-width="3"/>
+    <circle cx="20" cy="72" r="4.5" fill="url(#trdGrad)"/>
+    <line x1="20" y1="58" x2="20" y2="28" stroke="url(#trdGrad)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M20,28 C20,14 15,6 8,-6" fill="none" stroke="url(#trdGrad)" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M20,28 C20,14 25,6 32,-6" fill="none" stroke="url(#trdGrad)" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="8" cy="-6" r="3.5" fill="url(#trdGrad)"/>
+    <circle cx="32" cy="-6" r="3.5" fill="url(#trdGrad)"/>
+  </g>
+
+  <!-- Type -->
+  <text x="100" y="42" fill="#ffffff" font-family="Inter, -apple-system, SF Pro Display, Helvetica Neue, sans-serif" font-size="12" font-weight="300" letter-spacing="5" opacity="0.45">THE</text>
+  <text x="100" y="80" fill="#ffffff" font-family="Inter, -apple-system, SF Pro Display, Helvetica Neue, sans-serif" font-size="42" font-weight="700" letter-spacing="2">RIG DOCTOR</text>
+  <rect x="100" y="90" width="150" height="2" rx="1" fill="url(#trdGradH)"/>
+</svg>
