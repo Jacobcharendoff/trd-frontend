@@ -38,7 +38,7 @@ interface PPRawPedal {
   Image: string;
 }
 
-const PEDAL_IMG_BASE = 'https://pedalplayground.com/images/pedals/';
+const PEDAL_IMG_BASE = 'https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/public/images/pedals/';
 
 /* ── Category classification ── */
 const categoryColors: Record<string, { color: string; textColor: string }> = {
@@ -98,22 +98,22 @@ function convertPPPedal(raw: PPRawPedal): Pedal {
 const featuredPedals: Pedal[] = [
   // Tuners
   { id: 'boss-tu3', name: 'Boss TU-3', brand: 'Boss', categoryId: 'tuner', color: '#1a1a1a', textColor: '#fff', shortName: 'TU-3', image: 'boss-tu3.png' },
-  { id: 'tc-electronic-polytune3', name: 'TC Electronic Polytune 3', brand: 'TC Electronic', categoryId: 'tuner', color: '#1a1a1a', textColor: '#fff', shortName: 'Polytune 3', image: 'tc-electronic-polytune3.png' },
+  { id: 'tc-electronic-polytune3', name: 'TC Electronic Polytune 3', brand: 'TC Electronic', categoryId: 'tuner', color: '#1a1a1a', textColor: '#fff', shortName: 'Polytune 3', image: 'tc-polytune-3.png' },
   // Filters / Wah
   { id: 'dunlop-gcb95', name: 'Dunlop Cry Baby', brand: 'Dunlop', categoryId: 'filter', color: '#2d2d2d', textColor: '#fff', shortName: 'Cry Baby', image: 'dunlop-gcb95.png' },
-  { id: 'electro-harmonix-q-tron', name: 'Electro-Harmonix Q-Tron', brand: 'Electro-Harmonix', categoryId: 'filter', color: '#6B4C9A', textColor: '#fff', shortName: 'Q-Tron', image: 'electro-harmonix-q-tron.png' },
+  { id: 'electro-harmonix-q-tron', name: 'Electro-Harmonix Q-Tron', brand: 'Electro-Harmonix', categoryId: 'filter', color: '#6B4C9A', textColor: '#fff', shortName: 'Q-Tron', image: 'ehx-q-tron-plus.png' },
   // Compressors
   { id: 'keeley-compressor-plus', name: 'Keeley Compressor+', brand: 'Keeley', categoryId: 'compressor', color: '#3B82F6', textColor: '#fff', shortName: 'Compressor+', image: 'keeley-compressor-plus.png' },
-  { id: 'mxr-dynacomp', name: 'MXR Dyna Comp', brand: 'MXR', categoryId: 'compressor', color: '#EF4444', textColor: '#fff', shortName: 'Dyna Comp', image: 'mxr-dynacomp.png' },
-  { id: 'origin-cali76', name: 'Origin Effects Cali76', brand: 'Origin Effects', categoryId: 'compressor', color: '#6B7280', textColor: '#fff', shortName: 'Cali76', image: 'origin-effects-cali76.png' },
+  { id: 'mxr-dynacomp', name: 'MXR Dyna Comp', brand: 'MXR', categoryId: 'compressor', color: '#EF4444', textColor: '#fff', shortName: 'Dyna Comp', image: 'mxr-m102.png' },
+  { id: 'origin-cali76', name: 'Origin Effects Cali76', brand: 'Origin Effects', categoryId: 'compressor', color: '#6B7280', textColor: '#fff', shortName: 'Cali76', image: 'origin-cali76.png' },
   // Overdrive / Distortion
   { id: 'ibanez-ts9', name: 'Ibanez Tube Screamer', brand: 'Ibanez', categoryId: 'drive', color: '#22C55E', textColor: '#fff', shortName: 'TS9', image: 'ibanez-ts9.png' },
   { id: 'klon-centaur', name: 'Klon Centaur', brand: 'Klon', categoryId: 'drive', color: '#D4A84B', textColor: '#1a1a1a', shortName: 'Centaur', image: 'klon-centaur.png' },
   { id: 'proco-rat', name: 'ProCo RAT', brand: 'ProCo', categoryId: 'drive', color: '#1a1a1a', textColor: '#fff', shortName: 'RAT', image: 'proco-rat.png' },
   { id: 'boss-bd2', name: 'Boss BD-2', brand: 'Boss', categoryId: 'drive', color: '#3B82F6', textColor: '#fff', shortName: 'BD-2', image: 'boss-bd2.png' },
-  { id: 'electro-harmonix-big-muff-pi', name: 'EHX Big Muff Pi', brand: 'Electro-Harmonix', categoryId: 'drive', color: '#7C3AED', textColor: '#fff', shortName: 'Big Muff', image: 'electro-harmonix-big-muff-pi.png' },
-  { id: 'jhs-morning-glory', name: 'JHS Morning Glory', brand: 'JHS', categoryId: 'drive', color: '#F59E0B', textColor: '#1a1a1a', shortName: 'Morning Glory', image: 'jhs-morning-glory.png' },
-  { id: 'eqd-plumes', name: 'EQD Plumes', brand: 'EarthQuaker Devices', categoryId: 'drive', color: '#10B981', textColor: '#fff', shortName: 'Plumes', image: 'earthquaker-devices-plumes.png' },
+  { id: 'electro-harmonix-big-muff-pi', name: 'EHX Big Muff Pi', brand: 'Electro-Harmonix', categoryId: 'drive', color: '#7C3AED', textColor: '#fff', shortName: 'Big Muff', image: 'ehx-big-muff-2.png' },
+  { id: 'jhs-morning-glory', name: 'JHS Morning Glory', brand: 'JHS', categoryId: 'drive', color: '#F59E0B', textColor: '#1a1a1a', shortName: 'Morning Glory', image: 'jhs-morning-glory-v4.png' },
+  { id: 'eqd-plumes', name: 'EQD Plumes', brand: 'EarthQuaker Devices', categoryId: 'drive', color: '#10B981', textColor: '#fff', shortName: 'Plumes', image: 'earthquaker-plumes.png' },
   { id: 'boss-od1', name: 'Boss OD-1', brand: 'Boss', categoryId: 'drive', color: '#F59E0B', textColor: '#1a1a1a', shortName: 'OD-1', image: 'boss-od1.png' },
   { id: 'analogman-king-of-tone', name: 'Analogman King of Tone', brand: 'Analogman', categoryId: 'drive', color: '#D4A84B', textColor: '#1a1a1a', shortName: 'King of Tone', image: 'analogman-king-of-tone.png' },
   { id: 'boss-mt2', name: 'Boss MT-2 Metal Zone', brand: 'Boss', categoryId: 'drive', color: '#374151', textColor: '#fff', shortName: 'MT-2', image: 'boss-mt2.png' },
@@ -121,29 +121,29 @@ const featuredPedals: Pedal[] = [
   { id: 'friedman-be-od', name: 'Friedman BE-OD', brand: 'Friedman', categoryId: 'drive', color: '#DC2626', textColor: '#fff', shortName: 'BE-OD', image: 'friedman-be-od.png' },
   // Modulation
   { id: 'boss-ce2w', name: 'Boss CE-2W', brand: 'Boss', categoryId: 'modulation', color: '#60A5FA', textColor: '#fff', shortName: 'CE-2W', image: 'boss-ce2w.png' },
-  { id: 'mxr-phase90', name: 'MXR Phase 90', brand: 'MXR', categoryId: 'modulation', color: '#F97316', textColor: '#fff', shortName: 'Phase 90', image: 'mxr-phase90.png' },
-  { id: 'walrus-audio-julia', name: 'Walrus Audio Julia', brand: 'Walrus Audio', categoryId: 'modulation', color: '#8B5CF6', textColor: '#fff', shortName: 'Julia', image: 'walrus-audio-julia.png' },
+  { id: 'mxr-phase90', name: 'MXR Phase 90', brand: 'MXR', categoryId: 'modulation', color: '#F97316', textColor: '#fff', shortName: 'Phase 90', image: 'mxr-m101.png' },
+  { id: 'walrus-audio-julia', name: 'Walrus Audio Julia', brand: 'Walrus Audio', categoryId: 'modulation', color: '#8B5CF6', textColor: '#fff', shortName: 'Julia', image: 'walrus-julia.png' },
   { id: 'strymon-mobius', name: 'Strymon Mobius', brand: 'Strymon', categoryId: 'modulation', color: '#0EA5E9', textColor: '#fff', shortName: 'Mobius', image: 'strymon-mobius.png' },
-  { id: 'dunlop-uni-vibe', name: 'Dunlop Uni-Vibe', brand: 'Dunlop', categoryId: 'modulation', color: '#DC2626', textColor: '#fff', shortName: 'Uni-Vibe', image: 'dunlop-uni-vibe.png' },
+  { id: 'dunlop-uni-vibe', name: 'Dunlop Uni-Vibe', brand: 'Dunlop', categoryId: 'modulation', color: '#DC2626', textColor: '#fff', shortName: 'Uni-Vibe', image: 'dunlop-uv1.png' },
   { id: 'boss-tr2', name: 'Boss TR-2', brand: 'Boss', categoryId: 'modulation', color: '#F59E0B', textColor: '#1a1a1a', shortName: 'TR-2', image: 'boss-tr2.png' },
   // Delay
   { id: 'boss-dd500', name: 'Boss DD-500', brand: 'Boss', categoryId: 'delay', color: '#2563EB', textColor: '#fff', shortName: 'DD-500', image: 'boss-dd500.png' },
   { id: 'strymon-timeline', name: 'Strymon Timeline', brand: 'Strymon', categoryId: 'delay', color: '#0EA5E9', textColor: '#fff', shortName: 'Timeline', image: 'strymon-timeline.png' },
-  { id: 'mxr-carbon-copy', name: 'MXR Carbon Copy', brand: 'MXR', categoryId: 'delay', color: '#059669', textColor: '#fff', shortName: 'Carbon Copy', image: 'mxr-carbon-copy.png' },
-  { id: 'strymon-el-capistan', name: 'Strymon El Capistan', brand: 'Strymon', categoryId: 'delay', color: '#D97706', textColor: '#fff', shortName: 'El Capistan', image: 'strymon-el-capistan.png' },
+  { id: 'mxr-carbon-copy', name: 'MXR Carbon Copy', brand: 'MXR', categoryId: 'delay', color: '#059669', textColor: '#fff', shortName: 'Carbon Copy', image: 'mxr-m169.png' },
+  { id: 'strymon-el-capistan', name: 'Strymon El Capistan', brand: 'Strymon', categoryId: 'delay', color: '#D97706', textColor: '#fff', shortName: 'El Capistan', image: 'strymon-elcap.png' },
   { id: 'boss-dd3', name: 'Boss DD-3', brand: 'Boss', categoryId: 'delay', color: '#2563EB', textColor: '#fff', shortName: 'DD-3', image: 'boss-dd3.png' },
-  { id: 'electro-harmonix-deluxe-memory-man', name: 'EHX Deluxe Memory Man', brand: 'Electro-Harmonix', categoryId: 'delay', color: '#6B4C9A', textColor: '#fff', shortName: 'Memory Man', image: 'electro-harmonix-deluxe-memory-man.png' },
+  { id: 'electro-harmonix-deluxe-memory-man', name: 'EHX Deluxe Memory Man', brand: 'Electro-Harmonix', categoryId: 'delay', color: '#6B4C9A', textColor: '#fff', shortName: 'Memory Man', image: 'ehx-og-memory-man.png' },
   // Reverb
   { id: 'strymon-bigsky', name: 'Strymon BigSky', brand: 'Strymon', categoryId: 'reverb', color: '#0EA5E9', textColor: '#fff', shortName: 'BigSky', image: 'strymon-bigsky.png' },
   { id: 'boss-rv6', name: 'Boss RV-6', brand: 'Boss', categoryId: 'reverb', color: '#6366F1', textColor: '#fff', shortName: 'RV-6', image: 'boss-rv6.png' },
-  { id: 'walrus-audio-slo', name: 'Walrus Audio Slö', brand: 'Walrus Audio', categoryId: 'reverb', color: '#EC4899', textColor: '#fff', shortName: 'Slö', image: 'walrus-audio-slo.png' },
+  { id: 'walrus-audio-slo', name: 'Walrus Audio Slö', brand: 'Walrus Audio', categoryId: 'reverb', color: '#EC4899', textColor: '#fff', shortName: 'Slö', image: 'walrus-slo.png' },
   { id: 'strymon-flint', name: 'Strymon Flint', brand: 'Strymon', categoryId: 'reverb', color: '#DC2626', textColor: '#fff', shortName: 'Flint', image: 'strymon-flint.png' },
-  { id: 'electro-harmonix-holy-grail', name: 'EHX Holy Grail', brand: 'Electro-Harmonix', categoryId: 'reverb', color: '#7C3AED', textColor: '#fff', shortName: 'Holy Grail', image: 'electro-harmonix-holy-grail.png' },
+  { id: 'electro-harmonix-holy-grail', name: 'EHX Holy Grail', brand: 'Electro-Harmonix', categoryId: 'reverb', color: '#7C3AED', textColor: '#fff', shortName: 'Holy Grail', image: 'ehx-holy-grail.png' },
   { id: 'source-audio-ventris', name: 'Source Audio Ventris', brand: 'Source Audio', categoryId: 'reverb', color: '#1e40af', textColor: '#fff', shortName: 'Ventris', image: 'source-audio-ventris.png' },
   // Utility
   { id: 'boss-rc5', name: 'Boss RC-5', brand: 'Boss', categoryId: 'utility', color: '#1a1a1a', textColor: '#fff', shortName: 'RC-5', image: 'boss-rc5.png' },
-  { id: 'ernie-ball-vp-jr', name: 'Ernie Ball VP Jr', brand: 'Ernie Ball', categoryId: 'utility', color: '#6B7280', textColor: '#fff', shortName: 'VP Jr', image: 'ernie-ball-vp-jr.png' },
-  { id: 'mxr-10-band-eq', name: 'MXR 10-Band EQ', brand: 'MXR', categoryId: 'utility', color: '#0EA5E9', textColor: '#fff', shortName: '10-Band EQ', image: 'mxr-10-band-eq.png' },
+  { id: 'ernie-ball-vp-jr', name: 'Ernie Ball VP Jr', brand: 'Ernie Ball', categoryId: 'utility', color: '#6B7280', textColor: '#fff', shortName: 'VP Jr', image: 'ernie-ball-vp.png' },
+  { id: 'mxr-10-band-eq', name: 'MXR 10-Band EQ', brand: 'MXR', categoryId: 'utility', color: '#0EA5E9', textColor: '#fff', shortName: '10-Band EQ', image: 'mxr-m108s.png' },
   { id: 'boss-ns2', name: 'Boss NS-2', brand: 'Boss', categoryId: 'utility', color: '#1e40af', textColor: '#fff', shortName: 'NS-2', image: 'boss-ns2.png' },
 ];
 
@@ -465,7 +465,7 @@ export default function PlanYourRig() {
 
   // Load full PedalPlayground library on mount
   useEffect(() => {
-    fetch('https://pedalplayground.com/data/pedals.json')
+    fetch('https://raw.githubusercontent.com/PedalPlayground/pedalplayground/master/public/data/pedals.json')
       .then((res) => res.json())
       .then((data: PPRawPedal[]) => {
         const converted = data.map(convertPPPedal);
@@ -1237,7 +1237,7 @@ export default function PlanYourRig() {
                             {usesEffectsLoop && loopPedals.length > 0 && (
                               <>
                                 <div className="px-3 py-1.5 rounded-lg text-[11px] sm:text-[12px] font-semibold bg-[#1d1d1f] text-white shadow-sm">
-                                  Amp ⤵ Send
+                                  Amp Downward Send
                                 </div>
                                 <div className="relative w-5 h-3 shrink-0">
                                   <div className="absolute inset-y-0 left-0 right-0 flex items-center">
