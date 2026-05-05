@@ -9,7 +9,6 @@ const navItems = [
   { label: 'Tone Tutoring', href: '/tone-tutoring' },
   { label: 'The Process', href: '/process' },
   { label: 'About', href: '/about' },
-  { label: 'Plan Your Rig', href: '/plan-your-rig' },
   { label: 'Blog', href: '/blog' },
 ];
 
