@@ -8,11 +8,12 @@
   --trd-dark-card: #1d1d1f;
   --trd-light-gray: #f5f5f7;
   --trd-white: #ffffff;
-  --trd-amber: #F5A623;
-  --trd-amber-dark: #D48A1A;
+  --trd-blue: #0071E3;
+  --trd-blue-dark: #005BB5;
+  --trd-purple: #BF5AF2;
+  --trd-pink: #FF375F;
+  --trd-amber: #F59E0B;
   --trd-green: #10B981;
-  --trd-green-light: #34d399;
-  /* cyan and blue removed — brand uses warm palette only */
   --trd-text: #1d1d1f;
   --trd-text-secondary: rgba(0, 0, 0, 0.5);
   --trd-border-light: rgba(0, 0, 0, 0.06);
@@ -31,24 +32,85 @@ body {
   color: var(--trd-text);
 }
 
-/* ─── Gradient Text Utility ─── */
+/* ─── Typography ─── */
+.trd-hero-headline {
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.trd-section-headline {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.trd-subheadline {
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.6;
+  color: rgba(245, 245, 247, 0.6);
+}
+
+/* ─── Gradient Text — Tie-Dye (Blue → Purple → Pink → Amber) ─── */
 .trd-gradient-text {
-  background: linear-gradient(135deg, var(--trd-amber), var(--trd-green));
+  background: linear-gradient(135deg, #0071E3, #BF5AF2, #FF375F, #F59E0B);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* trd-gradient-text-cyan removed — not part of warm brand palette */
+.trd-gradient-text-warm {
+  background: linear-gradient(135deg, #FF375F, #F59E0B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
-/* ─── Aurora Background ─── */
+/* ─── CTA Gradient Button ─── */
+.trd-cta-gradient {
+  background: linear-gradient(135deg, #0071E3, #BF5AF2);
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.trd-cta-gradient:hover {
+  background: linear-gradient(135deg, #005BB5, #9B3FD4);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(0, 113, 227, 0.3);
+}
+
+/* ─── Glow Pulse ─── */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 113, 227, 0.2), 0 0 40px rgba(191, 90, 242, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(0, 113, 227, 0.35), 0 0 60px rgba(191, 90, 242, 0.2); }
+}
+
+.trd-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ─── Aurora Backgrounds ─── */
 .trd-aurora::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(245, 166, 35, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 60%);
+    radial-gradient(ellipse at 20% 50%, rgba(0, 113, 227, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(191, 90, 242, 0.08) 0%, transparent 60%);
+  animation: aurora 8s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.trd-aurora-intense::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 60%, rgba(0, 113, 227, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 30%, rgba(191, 90, 242, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 80%, rgba(255, 55, 95, 0.08) 0%, transparent 50%);
   animation: aurora 8s ease-in-out infinite alternate;
   pointer-events: none;
 }
@@ -56,6 +118,17 @@ body {
 @keyframes aurora {
   0% { opacity: 0.6; }
   100% { opacity: 1; }
+}
+
+/* ─── Section Dividers ─── */
+.trd-divider-dark-to-light {
+  height: 80px;
+  background: linear-gradient(to bottom, #0a0a0a, #ffffff);
+}
+
+.trd-divider-light-to-dark {
+  height: 80px;
+  background: linear-gradient(to bottom, #ffffff, #0a0a0a);
 }
 
 /* ─── Pulse Dot ─── */
@@ -99,14 +172,14 @@ body {
 }
 
 .prose-trd a {
-  color: #F5A623;
+  color: #0071E3;
   text-decoration: underline;
   text-underline-offset: 2px;
   transition: color 0.15s;
 }
 
 .prose-trd a:hover {
-  color: #D48A1A;
+  color: #005BB5;
 }
 
 .prose-trd ul,
