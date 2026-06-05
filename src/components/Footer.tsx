@@ -10,9 +10,14 @@ export default function Footer() {
             <Link href="/" className="text-white font-semibold text-lg tracking-tight block mb-3">
               The Rig Doctor
             </Link>
-            <p className="text-[13px] leading-relaxed">
+            <p className="text-[13px] leading-relaxed mb-4">
               Custom pedalboard builds for touring artists and home players. Montgomery, TX.
             </p>
+            <div className="space-y-1.5 text-[13px]">
+              <a href="tel:+19365489254" className="block hover:text-white transition-colors">+1 (936) 548-9254</a>
+              <a href="mailto:info@therigdr.com" className="block hover:text-white transition-colors">info@therigdr.com</a>
+              <p className="text-white/30 text-[12px] pt-1">641 Amesbury Road, Montgomery, TX 77316</p>
+            </div>
           </div>
 
           {/* Services */}
@@ -41,7 +46,7 @@ export default function Footer() {
             <nav className="flex flex-col gap-2.5">
               <Link href="/about" className="text-[13px] hover:text-white transition-colors">About</Link>
               <Link href="/blog" className="text-[13px] hover:text-white transition-colors">Blog</Link>
-              <a href="mailto:info@therigdr.com" className="text-[13px] hover:text-white transition-colors">Contact</a>
+              <Link href="/contact" className="text-[13px] hover:text-white transition-colors">Contact</Link>
               <a href="https://www.instagram.com/therigdr" target="_blank" rel="noopener" className="text-[13px] hover:text-white transition-colors">Instagram</a>
             </nav>
           </div>
@@ -51,9 +56,10 @@ export default function Footer() {
         <div className="border-t border-white/[0.06] pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-[12px]">&copy; {new Date().getFullYear()} The Rig Doctor Inc. All rights reserved.</p>
           <div className="flex gap-6 text-[12px]">
-            <Link href="/policies/terms" className="hover:text-white transition-colors">Terms</Link>
-            <Link href="/policies/privacy" className="hover:text-white transition-colors">Privacy</Link>
-            <Link href="/policies/refund" className="hover:text-white transition-colors">Refund Policy</Link>
+            <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
+            <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+            <Link href="/refunds" className="hover:text-white transition-colors">Refund Policy</Link>
+            <Link href="/shipping" className="hover:text-white transition-colors">Shipping</Link>
           </div>
         </div>
       </div>
