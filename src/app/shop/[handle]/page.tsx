@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useParams } from 'next/navigation';
-/* Using native <img> instead of next/image to avoid Shopify CDN domain issues */
 import Section from '@/components/Section';
 import { getProduct, type ShopifyProduct } from '@/lib/shopify';
 import { buildGA4Item, trackViewItem, trackAddToCart, trackBeginCheckout } from '@/lib/analytics';
@@ -139,7 +139,7 @@ export default function ProductPage() {
 
   return (
     <>
-      {/* Breadcrumb — sits below the site Header */}
+      {/* Breadcrumb */}
       <div className="bg-white border-b border-black/[0.04] pt-16">
         <div className="max-w-[1200px] mx-auto px-6 py-3">
           <nav className="flex items-center gap-2 text-sm text-[#1d1d1f]/40">
@@ -159,11 +159,13 @@ export default function ProductPage() {
             <div className="space-y-4">
               <div className="relative aspect-square bg-[#f5f5f7] rounded-3xl overflow-hidden">
                 {currentImage ? (
-                  /* eslint-disable-next-line @next/next/no-img-element */
-                  <img
+                  <Image
                     src={currentImage.url}
                     alt={currentImage.altText || product.title}
-                    className="w-full h-full object-contain p-8"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-contain p-8"
+                    priority
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
@@ -186,10 +188,12 @@ export default function ProductPage() {
                           : 'border-transparent opacity-60 hover:opacity-100'
                       }`}
                     >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
+                      <Image
                         src={img.url}
                         alt={img.altText || `${product.title} ${i + 1}`}
+                        width={80}
+                        height={80}
+                        sizes="80px"
                         className="w-full h-full object-cover"
                       />
                     </button>
@@ -216,7 +220,7 @@ export default function ProductPage() {
                 </p>
               </div>
 
-              {/* Variants — dropdown for 6+ options, pills for fewer */}
+              {/* Variants */}
               {hasMultipleVariants && (
                 <div>
                   <p className="text-sm font-medium text-[#1d1d1f]/60 mb-3 uppercase tracking-wide">
@@ -370,7 +374,7 @@ export default function ProductPage() {
         </div>
       </Section>
 
-      {/* ──── Consultation CTA ──── */}
+      {/* Consultation CTA */}
       <section className="relative overflow-hidden bg-[#1d1d1f] py-16 sm:py-20">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(255,55,95,0.06)_0%,transparent_50%)]" />
         <div className="relative max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-8">
