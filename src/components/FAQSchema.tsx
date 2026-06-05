@@ -1,5 +1,3 @@
-'use client';
-
 const faqs = [
   {
     question: 'How much does a custom pedalboard build cost?',

@@ -1,5 +1,3 @@
-'use client';
-
 export default function LocalBusinessSchema() {
   const schema = {
     '@context': 'https://schema.org',
@@ -34,6 +32,33 @@ export default function LocalBusinessSchema() {
       'https://www.instagram.com/therigdr',
       'https://www.youtube.com/@therigdr',
     ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      bestRating: '5',
+      ratingCount: '78',
+      reviewCount: '78',
+    },
+    review: [
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'Isaiah Sharkey' },
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+        reviewBody: 'The pedalboard Jacob designed completely transformed my live rig. Best investment I\'ve made in my tone.',
+      },
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'Tosin Abasi' },
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+        reviewBody: 'He understands signal flow, tone shaping, and durability. Your board won\'t fail you on tour.',
+      },
+      {
+        '@type': 'Review',
+        author: { '@type': 'Person', name: 'Mike Stipanov' },
+        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+        reviewBody: 'From consultation to delivery, the whole experience was professional and smooth. My new board is exactly what I envisioned.',
+      },
+    ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Custom Pedalboard Services',
@@ -45,6 +70,14 @@ export default function LocalBusinessSchema() {
             name: 'Custom Rig Build',
             description:
               'Full custom pedalboard build — layout, soldered cabling, clean power, MIDI integration, labeling. Road-ready and dead-quiet.',
+            provider: { '@id': 'https://www.therigdr.com/#business' },
+            areaServed: { '@type': 'Country', name: 'United States' },
+          },
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            priceCurrency: 'USD',
+            price: '2000',
+            minPrice: '2000',
           },
         },
         {
@@ -54,6 +87,12 @@ export default function LocalBusinessSchema() {
             name: 'Tone Tutoring',
             description:
               '60-minute video session to dial in your signal chain, effects order, amp settings, and overall rig strategy.',
+            provider: { '@id': 'https://www.therigdr.com/#business' },
+          },
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            priceCurrency: 'USD',
+            price: '99.99',
           },
         },
         {
@@ -63,6 +102,7 @@ export default function LocalBusinessSchema() {
             name: 'DIY Rig Building Kit',
             description:
               'Full wiring and power spec, pre-cut cables, labeled parts, and a step-by-step map to assemble your own pedalboard.',
+            provider: { '@id': 'https://www.therigdr.com/#business' },
           },
         },
       ],
