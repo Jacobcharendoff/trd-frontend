@@ -4,6 +4,8 @@
  * Easily migrateable to a headless CMS later.
  */
 
+import { seoPosts } from './blog-posts-seo';
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -175,6 +177,7 @@ export const blogPosts: BlogPost[] = [
       label: 'Shop Mogami Cables',
     },
   },
+  ...seoPosts,
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
