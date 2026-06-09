@@ -5,7 +5,7 @@ export default function LocalBusinessSchema() {
     '@id': 'https://www.therigdr.com/#business',
     name: 'The Rig Doctor',
     description:
-      'Professional custom pedalboard builds and signal chain design for touring artists and home players. Hand-wired, stress-tested, lifetime support. US-based, shipping nationwide.',
+      'Professional custom pedalboard builder serving touring artists and home players. Hand-wired rigs, signal chain design, lifetime support. US-based, shipping nationwide.',
     url: 'https://www.therigdr.com',
     telephone: '+1-936-548-9254',
     email: 'info@therigdr.com',
@@ -26,8 +26,8 @@ export default function LocalBusinessSchema() {
       '@type': 'AggregateRating',
       ratingValue: '4.9',
       bestRating: '5',
-      ratingCount: '78',
-      reviewCount: '78',
+      ratingCount: '52',
+      reviewCount: '52',
     },
     review: [
       {

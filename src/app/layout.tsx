@@ -12,27 +12,33 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'The Rig Doctor | Custom Pedalboard Builds',
+    default: 'Custom Pedalboard Builder | The Rig Doctor',
     template: '%s | The Rig Doctor',
   },
   description:
-    'Professional custom pedalboard builds for touring artists and home players. 500+ rigs built. 17 years of experience. Free consultations. US-based, shipping nationwide.',
+    'America\'s premier custom pedalboard builder. 500+ hand-wired rigs for touring artists and home players. 17 years experience. Free consultations. Ships nationwide.',
   metadataBase: new URL('https://www.therigdr.com'),
   openGraph: {
     type: 'website',
     siteName: 'The Rig Doctor',
+    title: 'Custom Pedalboard Builder | The Rig Doctor',
+    description:
+      'America\'s premier custom pedalboard builder. 500+ hand-wired rigs. 17 years experience. Free consultations.',
     locale: 'en_US',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'The Rig Doctor — Custom Pedalboard Builds',
+        alt: 'The Rig Doctor — Custom Pedalboard Builder',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
+    title: 'Custom Pedalboard Builder | The Rig Doctor',
+    description:
+      '500+ hand-wired rigs. 17 years experience. Free consultations. Ships nationwide.',
     images: ['/og-image.png'],
   },
 };

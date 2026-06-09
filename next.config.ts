@@ -11,5 +11,19 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'raw.githubusercontent.com' },
     ],
   },
+  async redirects() {
+    return [
+      // Old Shopify collection pages (Google still indexing these)
+      { source: '/collections/:path*', destination: '/', permanent: true },
+      // Old Shopify product pages
+      { source: '/products/:path*', destination: '/shop', permanent: true },
+      // Old Shopify pages
+      { source: '/pages/:path*', destination: '/', permanent: true },
+      // Old Shopify blog
+      { source: '/blogs/:path*', destination: '/blog', permanent: true },
+      // Old cart URL
+      { source: '/cart', destination: '/shop', permanent: true },
+    ];
+  },
 };
 export default nextConfig;
