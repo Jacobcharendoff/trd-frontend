@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'The Tone Shop',
+  title: 'Build Essentials',
   description:
-    'Shop cables, pedalboards, switching equipment, and more. Everything you need to build a rig that works.',
+    'Accessories and services that complement every custom rig — tie-down mounts, cable management, and expert tone tutoring sessions.',
   openGraph: {
-    title: 'The Tone Shop | The Rig Doctor',
+    title: 'Build Essentials | The Rig Doctor',
     description:
-      'Professional cables, pedalboards, and switching equipment from The Rig Doctor.',
+      'Accessories and expert tone services from The Rig Doctor. Everything that complements a custom pedalboard build.',
     type: 'website',
     url: 'https://www.therigdr.com/shop',
   },
