@@ -5,6 +5,7 @@
  */
 
 import { seoPosts } from './blog-posts-seo';
+import { costPost } from './blog-post-cost';
 
 export interface BlogPost {
   slug: string;
@@ -31,6 +32,7 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
+  costPost,
   {
     slug: 'how-to-build-a-pedalboard',
     title: 'How to Build a Pedalboard: The Complete Guide',
@@ -116,7 +118,7 @@ export const blogPosts: BlogPost[] = [
         headingLevel: 2,
         content: `<p>Building your own board is rewarding, but there's a point where the complexity outweighs the DIY savings. If you're running more than 8-10 pedals, using an effects loop switcher, or need your board road-ready for touring — that's when a professional build pays for itself.</p>
 <p>A pro build means hand-soldered cables cut to exact length, proper power distribution, noise-free cable routing, and a board that won't let you down three songs into a set. It's the difference between a board you built and a board you can trust.</p>
-<p>We've built over 200 rigs at The Rig Doctor, and every build comes with lifetime support and free repairs. If you're thinking about a custom build, <a href="/book">book a free consultation</a> and let's talk about your rig.</p>`,
+<p>We've built over 500 rigs at The Rig Doctor, and every build comes with lifetime support and free repairs. If you're thinking about a custom build, <a href="/book">book a free consultation</a> and let's talk about your rig.</p>`,
       },
     ],
     cta: {
