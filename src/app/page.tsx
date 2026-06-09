@@ -25,13 +25,20 @@ export default function Home() {
               Hand-wired pedalboards built around how you actually play.
               One at a time. Built to last.
             </p>
-            <div className="flex justify-center gap-4 mb-20">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-20">
               <Link
                 href="/book"
-                className="trd-cta-gradient trd-glow-pulse inline-flex items-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
+                className="trd-cta-gradient trd-glow-pulse inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
               >
                 Start a Build
-                <svg className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </Link>
+              <Link
+                href="/tone-tutoring"
+                className="inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg border-2 border-white/20 text-white hover:border-white/50 hover:bg-white/[0.06] transition-all duration-300"
+              >
+                Get Help With Your Rig
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </Link>
             </div>
 
@@ -111,6 +118,25 @@ export default function Home() {
             />
           </video>
         </div>
+
+        {/* Post-video CTA */}
+        <div className="text-center mt-12">
+          <p className="text-[#1d1d1f]/50 text-base mb-6">Want this for your rig?</p>
+          <div className="flex flex-col sm:flex-row justify-center gap-3">
+            <Link
+              href="/book"
+              className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-[#1d1d1f]/90 transition-colors text-sm"
+            >
+              Book a Free Consultation
+            </Link>
+            <Link
+              href="/tone-tutoring"
+              className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full border-2 border-[#1d1d1f]/15 text-[#1d1d1f] hover:border-[#1d1d1f]/30 hover:bg-[#1d1d1f]/[0.03] transition-all text-sm"
+            >
+              Get Help With Your Rig
+            </Link>
+          </div>
+        </div>
       </Section>
 
       {/* light → dark transition */}
@@ -146,21 +172,31 @@ export default function Home() {
       <section className="relative overflow-hidden bg-[#1d1d1f] py-16 sm:py-20">
         {/* Tie-dye aurora glow */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(255,55,95,0.06)_0%,transparent_50%)]" />
-        <div className="relative max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-8">
-          <div>
-            <h3 className="text-2xl sm:text-3xl font-bold text-[#f5f5f7] tracking-tight">
-              Looking for a Rig Renovation?
-            </h3>
-            <p className="text-[#f5f5f7]/50 text-base mt-3">
-              Tell us what you&apos;re working with. We&apos;ll tell you what it needs.
-            </p>
+        <div className="relative max-w-4xl mx-auto px-6 text-center sm:text-left">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-8">
+            <div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#f5f5f7] tracking-tight">
+                Ready to fix your rig?
+              </h3>
+              <p className="text-[#f5f5f7]/50 text-base mt-3">
+                Whether you need a full build or just expert advice — we&apos;ve got you.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+              <Link
+                href="/book"
+                className="trd-cta-gradient trd-glow-pulse inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-base whitespace-nowrap"
+              >
+                Book a Build
+              </Link>
+              <Link
+                href="/tone-tutoring"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-base whitespace-nowrap border-2 border-white/20 text-white hover:border-white/40 hover:bg-white/[0.06] transition-all duration-300"
+              >
+                Get Tone Help
+              </Link>
+            </div>
           </div>
-          <Link
-            href="/book"
-            className="trd-cta-gradient trd-glow-pulse inline-flex items-center px-8 py-4 rounded-full font-semibold text-base whitespace-nowrap"
-          >
-            Book a Free Consultation
-          </Link>
         </div>
       </section>
 
@@ -296,6 +332,30 @@ export default function Home() {
           <p className="text-[#1d1d1f]/50 text-lg">Straight from the people who gig on these boards every week.</p>
         </div>
         <ReviewsMarquee />
+
+        {/* Post-reviews CTA */}
+        <div className="text-center mt-14 pt-10 border-t border-[#1d1d1f]/10">
+          <h3 className="text-2xl sm:text-3xl font-bold text-[#1d1d1f] tracking-tight mb-3">
+            Your rig deserves the same treatment.
+          </h3>
+          <p className="text-[#1d1d1f]/50 text-base mb-8 max-w-lg mx-auto">
+            Whether it&apos;s a full custom build or a quick tone check — let&apos;s make it right.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-3">
+            <Link
+              href="/book"
+              className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-[#1d1d1f]/90 transition-colors text-sm"
+            >
+              Book a Free Consultation
+            </Link>
+            <Link
+              href="/tone-tutoring"
+              className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full border-2 border-[#1d1d1f]/15 text-[#1d1d1f] hover:border-[#1d1d1f]/30 hover:bg-[#1d1d1f]/[0.03] transition-all text-sm"
+            >
+              Get Help With Your Rig
+            </Link>
+          </div>
+        </div>
       </Section>
 
       {/* ──── 9. FAQ ──── */}
@@ -321,8 +381,12 @@ export default function Home() {
               a: "We talk through your rig, your signal chain, what's bugging you, and what you want it to do. Then we put together a game plan and a quote. No pressure, no obligation.",
             },
             {
+              q: "What is Tone Tutoring?",
+              a: "A 60-minute 1-on-1 video session where we diagnose your tone issues — noise, hum, signal chain order, amp settings, effects, gear recommendations. You walk away with a plan. $99.99.",
+            },
+            {
               q: "Do I need to ship my board to you?",
-              a: "Most clients do, yeah. We're US-based and ship nationwide. We'll send you a shipping label and walk you through packing it safe.",
+              a: "For a full build, most clients do. We're US-based and ship nationwide. We'll send you a shipping label and walk you through packing it safe. For Tone Tutoring, it's all remote — just hop on a video call.",
             },
             {
               q: "What if something breaks?",
@@ -348,9 +412,13 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="text-center mt-10">
+        <div className="flex flex-col sm:flex-row justify-center gap-3 mt-10">
           <Link href="/book" className="text-[#0071E3] hover:text-[#005BB5] font-medium transition-colors">
-            Still have questions? Let&apos;s talk &rsaquo;
+            Book a consultation &rsaquo;
+          </Link>
+          <span className="hidden sm:inline text-[#1d1d1f]/20">|</span>
+          <Link href="/tone-tutoring" className="text-[#0071E3] hover:text-[#005BB5] font-medium transition-colors">
+            Book a tone session &rsaquo;
           </Link>
         </div>
       </Section>
