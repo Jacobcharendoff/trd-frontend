@@ -17,24 +17,22 @@ type StorefrontEntry = {
   /** Partial match against Shopify product title (case-insensitive) */
   titleMatch: string;
   /** Display category on the storefront */
-  category: 'Cables' | 'Accessories' | 'Services';
+  category: 'Accessories' | 'Services';
   /** Sort order — lower = first */
   order: number;
 };
 
 const STOREFRONT_WHITELIST: StorefrontEntry[] = [
-  { titleMatch: '2314',              category: 'Cables',      order: 1 },
-  { titleMatch: 'insert cable',      category: 'Cables',      order: 2 },
-  { titleMatch: 'stereo cable',      category: 'Cables',      order: 3 },
-  { titleMatch: '2524',              category: 'Cables',      order: 4 },
-  { titleMatch: '2534',              category: 'Cables',      order: 5 },
-  { titleMatch: 'tie down',          category: 'Accessories',  order: 6 },
-  { titleMatch: 'tie-down',          category: 'Accessories',  order: 6 },
-  { titleMatch: 'tiedown',           category: 'Accessories',  order: 6 },
-  { titleMatch: 'zip',               category: 'Accessories',  order: 7 },
-  { titleMatch: 'powergrip',         category: 'Accessories',  order: 8 },
-  { titleMatch: 'rig rendering',     category: 'Services',     order: 9 },
-  { titleMatch: 'tone tutor',        category: 'Services',     order: 10 },
+  { titleMatch: 'tie down',      category: 'Accessories', order: 1 },
+  { titleMatch: 'tie-down',      category: 'Accessories', order: 1 },
+  { titleMatch: 'tiedown',       category: 'Accessories', order: 1 },
+  { titleMatch: 'zip',           category: 'Accessories', order: 2 },
+  { titleMatch: 'powergrip',     category: 'Accessories', order: 3 },
+  { titleMatch: 'power grip',    category: 'Accessories', order: 3 },
+  { titleMatch: 'rig rendering', category: 'Services',    order: 4 },
+  { titleMatch: 'rig blueprint', category: 'Services',    order: 4 },
+  { titleMatch: 'blueprint',     category: 'Services',    order: 4 },
+  { titleMatch: 'tone tutor',    category: 'Services',    order: 5 },
 ];
 
 function matchWhitelist(title: string): StorefrontEntry | null {
@@ -47,7 +45,7 @@ function formatShopifyPrice(amount: string): number {
   return parseFloat(amount);
 }
 
-const CATEGORIES = ['Cables', 'Accessories', 'Services'] as const;
+const CATEGORIES = ['Accessories', 'Services'] as const;
 
 export default function ShopPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -142,10 +140,10 @@ export default function ShopPage() {
 
           <div className="relative z-10 max-w-[1080px] mx-auto px-6 py-32 w-full text-center">
             <h1 className="trd-hero-headline text-[#f5f5f7] mb-6">
-              The <span className="trd-gradient-text">Tone</span> Shop
+              Build <span className="trd-gradient-text">Essentials</span>
             </h1>
             <p className="trd-subheadline max-w-2xl mx-auto">
-              Cables, pedalboards, switching, and more — everything you need to build a rig that works.
+              The accessories and services that complement every custom rig.
             </p>
           </div>
         </div>
@@ -191,7 +189,7 @@ export default function ShopPage() {
         {/* ──── PRODUCT GRID ──── */}
         {loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[...Array(6)].map((_, i) => (
+            {[...Array(4)].map((_, i) => (
               <div key={i} className="bg-white rounded-2xl overflow-hidden border border-black/[0.06] animate-pulse">
                 <div className="w-full aspect-square bg-[#f5f5f7]" />
                 <div className="p-6 space-y-3">
@@ -245,14 +243,8 @@ export default function ShopPage() {
                     </p>
 
                     <div className="mb-6">
-                      <p className="text-2xl font-bold text-[#1d1d1f] flex items-baseline gap-2">
+                      <p className="text-2xl font-bold text-[#1d1d1f]">
                         <span>{getPriceDisplay(product.priceMin, product.priceMax)}</span>
-                        {product.compareAtMin != null && product.compareAtMin > 0 && product.compareAtMin !== product.priceMin && (
-                          <>
-                            <span className="text-lg font-normal text-[#1d1d1f]/40 line-through">${product.compareAtMin % 1 === 0 ? product.compareAtMin.toFixed(0) : product.compareAtMin.toFixed(2)}</span>
-                            <span className="text-xs font-medium text-green-600 bg-green-50 px-1.5 py-0.5 rounded-full">Sale</span>
-                          </>
-                        )}
                       </p>
                     </div>
 

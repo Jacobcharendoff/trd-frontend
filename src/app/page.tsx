@@ -170,10 +170,10 @@ export default function Home() {
       <Section theme="dark" id="service-tiers" reveal>
         <div className="text-center mb-16">
           <h2 className="trd-section-headline text-[#f5f5f7] mb-4">
-            Three ways to <span className="trd-gradient-text">get your tone right.</span>
+            Three paths to <span className="trd-gradient-text">better tone.</span>
           </h2>
           <p className="text-[#f5f5f7]/50 text-lg max-w-2xl mx-auto">
-            Depends on how hands-on you want to be.
+            Depends on where you are and how deep you want to go.
           </p>
         </div>
 
@@ -207,39 +207,37 @@ export default function Home() {
             <p className="text-[#f5f5f7]/25 text-sm italic mt-8">You know something&apos;s off.</p>
           </div>
 
-          {/* Tier 2 — DIY Kits */}
+          {/* Tier 2 — Tone Tutoring */}
           <div className="rounded-2xl p-8 bg-[#f5f5f7]/[0.06] border border-white/[0.08] flex flex-col hover:-translate-y-1 transition-all duration-500">
-            <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#f5f5f7]/30 mb-2">DIY Kits</p>
-            <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">Build it yourself</h3>
+            <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#f5f5f7]/30 mb-2">Tone Check</p>
+            <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">Get expert advice</h3>
             <p className="text-[#f5f5f7]/50 text-sm mb-6">
-              Same components we use. You do the assembly.
+              A 60-minute session to diagnose your tone issues and optimize your signal chain.
             </p>
-            <p className="text-3xl font-bold text-[#f5f5f7] mb-1">$750 – $1,500 <span className="text-lg font-normal text-[#f5f5f7]/50">USD</span></p>
-            <p className="text-[#f5f5f7]/30 text-sm mb-8">+ your time and patience</p>
+            <p className="text-3xl font-bold text-[#f5f5f7] mb-1">$99.99 <span className="text-lg font-normal text-[#f5f5f7]/50">USD</span></p>
+            <p className="text-[#f5f5f7]/30 text-sm mb-8">one session, real results</p>
 
             <div className="space-y-4 flex-grow">
               {[
-                { text: 'Decent signal path improvement', ok: true },
-                { text: 'Pick your own layout', ok: true },
-                { text: 'No isolated power design', ok: false },
-                { text: 'No hand-soldered connections', ok: false },
-                { text: 'No lifetime support', ok: false },
-                { text: 'Stage-ready if you test it enough', ok: true },
+                'Expert signal chain analysis',
+                'Amp settings dialed in',
+                'Effects order optimized',
+                'Noise, hum & buzz diagnosed',
+                'Gear recommendations',
+                '60-min 1-on-1 video session',
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <span className={`mt-0.5 flex-shrink-0 ${item.ok ? 'text-[#10B981]' : 'text-red-400/60'}`}>
-                    {item.ok ? '✓' : '✕'}
-                  </span>
-                  <span className={`text-sm leading-snug ${item.ok ? 'text-[#f5f5f7]/70' : 'text-[#f5f5f7]/40'}`}>{item.text}</span>
+                  <span className="text-[#10B981] mt-0.5 flex-shrink-0">✓</span>
+                  <span className="text-[#f5f5f7]/70 text-sm leading-snug">{item}</span>
                 </div>
               ))}
             </div>
 
             <Link
-              href="/book"
+              href="/tone-tutoring"
               className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full border-2 border-[#0071E3]/50 text-[#0071E3] hover:bg-[#0071E3] hover:text-white transition-all duration-300"
             >
-              Book a Consultation
+              Book a Tone Session
             </Link>
           </div>
 
@@ -319,16 +317,16 @@ export default function Home() {
               a: "Every rig is different, so every quote is different. Builds start from $2,000 and scale with complexity. Your consultation is free — we'll walk through what you need and give you a straight answer.",
             },
             {
-              q: "What if something breaks?",
-              a: "We stand behind our work. If something goes wrong with the build, reach out and we'll figure it out with you. We're not going to leave you hanging.",
+              q: "What is included in the free consultation?",
+              a: "We talk through your rig, your signal chain, what's bugging you, and what you want it to do. Then we put together a game plan and a quote. No pressure, no obligation.",
             },
             {
               q: "Do I need to ship my board to you?",
-              a: "Most clients do, yeah. We're in Houston, TX. We'll send you a shipping label and walk you through packing it safe. Local? Drop it off anytime.",
+              a: "Most clients do, yeah. We're US-based and ship nationwide. We'll send you a shipping label and walk you through packing it safe.",
             },
             {
-              q: "What is included in the free consultation?",
-              a: "We talk through your rig, your signal chain, what's bugging you, and what you want it to do. Then we put together a game plan and a quote. No pressure, no obligation.",
+              q: "What if something breaks?",
+              a: "We stand behind our work. If something goes wrong with the build, reach out and we'll figure it out with you. We're not going to leave you hanging.",
             },
             {
               q: "Do you build MIDI switching systems and audio loops?",
