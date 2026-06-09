@@ -82,9 +82,9 @@ export default function ContactPage() {
             </div>
             <h3 className="text-lg font-semibold text-[#1d1d1f] mb-2">Location</h3>
             <p className="text-[#1d1d1f]/70">
-              United States
+              Montgomery, TX
             </p>
-            <p className="text-sm text-[#1d1d1f]/50 mt-2">Shipping nationwide</p>
+            <p className="text-sm text-[#1d1d1f]/50 mt-2">Ships nationwide</p>
           </div>
         </div>
 
