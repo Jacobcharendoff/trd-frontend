@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: '%s | The Rig Doctor',
   },
   description:
-    'Professional custom pedalboard builds for touring artists and home players. 17 years of experience. 200+ rigs built. Montgomery, TX.',
+    'Professional custom pedalboard builds for touring artists and home players. 500+ rigs built. 17 years of experience. Free consultations. US-based, shipping nationwide.',
   metadataBase: new URL('https://www.therigdr.com'),
   openGraph: {
     type: 'website',
@@ -49,7 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ErrorInit />
         <Header />
         <ErrorBoundary>
-          <main className="pt-[90px]">{children}</main>
+          <main className="pt-14">{children}</main>
         </ErrorBoundary>
         <Footer />
       </body>

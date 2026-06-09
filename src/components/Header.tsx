@@ -2,58 +2,21 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 const navItems = [
   { label: 'Book a Build', href: '/book' },
-  { label: 'Shop', href: '/shop' },
   { label: 'Tone Tutoring', href: '/tone-tutoring' },
   { label: 'The Process', href: '/process' },
   { label: 'About', href: '/about' },
   { label: 'Blog', href: '/blog' },
 ];
 
-/* ── Announcement bar config ── */
-const announcement = {
-  text: 'Mogami 2314 Patch Cables — $19 (was $24). Sale ends May 1st.',
-  href: '/shop/mogami-2314-patch-cables',
-  cta: 'Shop Now →',
-};
-
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [bannerVisible, setBannerVisible] = useState(true);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* ── Announcement Bar ── */}
-      {bannerVisible && (
-        <div className="relative bg-gradient-to-r from-[#6366F1] via-[#A855F7] to-[#EC4899] text-white text-center">
-          <Link
-            href={announcement.href}
-            className="block px-10 py-2 text-[12px] sm:text-[13px] font-medium tracking-wide hover:opacity-90 transition-opacity"
-          >
-            <span className="hidden sm:inline">{announcement.text}</span>
-            <span className="sm:hidden">Mogami 2314 — $19 (was $24)</span>
-            {' '}
-            <span className="underline underline-offset-2 font-semibold">{announcement.cta}</span>
-          </Link>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              setBannerVisible(false);
-            }}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors p-1"
-            aria-label="Close announcement"
-          >
-            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-      )}
-
-      {/* ── Main Nav ── */}
+      {/* Main Nav */}
       <div className="bg-[rgba(29,29,31,0.92)] backdrop-blur-xl border-b border-white/[0.06]">
         <div className="max-w-[1080px] mx-auto px-6 h-14 flex items-center justify-between">
           {/* Logo */}

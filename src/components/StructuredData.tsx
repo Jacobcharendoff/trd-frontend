@@ -1,29 +1,19 @@
 export default function LocalBusinessSchema() {
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': 'ProfessionalService',
     '@id': 'https://www.therigdr.com/#business',
     name: 'The Rig Doctor',
     description:
-      'Professional custom pedalboard builds and signal chain design for touring artists and home players. Hand-wired, stress-tested, lifetime support.',
+      'Professional custom pedalboard builds and signal chain design for touring artists and home players. Hand-wired, stress-tested, lifetime support. US-based, shipping nationwide.',
     url: 'https://www.therigdr.com',
     telephone: '+1-936-548-9254',
     email: 'info@therigdr.com',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '641 Amesbury Road',
-      addressLocality: 'Montgomery',
-      addressRegion: 'TX',
-      postalCode: '77316',
       addressCountry: 'US',
     },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: 30.3888,
-      longitude: -95.6933,
-    },
     priceRange: '$$',
-    openingHours: 'Mo-Fr 09:00-17:00',
     areaServed: {
       '@type': 'Country',
       name: 'United States',
@@ -67,6 +57,22 @@ export default function LocalBusinessSchema() {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
+            name: 'Free Rig Build Consultation',
+            description:
+              'Free video consultation to discuss your rig, signal chain, and build requirements. No pressure, no obligation — just honest advice from a professional rig builder.',
+            provider: { '@id': 'https://www.therigdr.com/#business' },
+            areaServed: { '@type': 'Country', name: 'United States' },
+          },
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            priceCurrency: 'USD',
+            price: '0',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
             name: 'Custom Rig Build',
             description:
               'Full custom pedalboard build — layout, soldered cabling, clean power, MIDI integration, labeling. Road-ready and dead-quiet.',
@@ -93,16 +99,6 @@ export default function LocalBusinessSchema() {
             '@type': 'PriceSpecification',
             priceCurrency: 'USD',
             price: '99.99',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'DIY Rig Building Kit',
-            description:
-              'Full wiring and power spec, pre-cut cables, labeled parts, and a step-by-step map to assemble your own pedalboard.',
-            provider: { '@id': 'https://www.therigdr.com/#business' },
           },
         },
       ],

@@ -11,12 +11,11 @@ export default function Footer() {
               The Rig Doctor
             </Link>
             <p className="text-[13px] leading-relaxed mb-4">
-              Custom pedalboard builds for touring artists and home players. Montgomery, TX.
+              Custom pedalboard builds for touring artists and home players. US-based, shipping nationwide.
             </p>
             <div className="space-y-1.5 text-[13px]">
               <a href="tel:+19365489254" className="block hover:text-white transition-colors">+1 (936) 548-9254</a>
               <a href="mailto:info@therigdr.com" className="block hover:text-white transition-colors">info@therigdr.com</a>
-              <p className="text-white/30 text-[12px] pt-1">641 Amesbury Road, Montgomery, TX 77316</p>
             </div>
           </div>
 
@@ -30,12 +29,12 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Shop */}
+          {/* Resources */}
           <div>
-            <h4 className="text-white text-[11px] font-semibold uppercase tracking-widest mb-4">Shop</h4>
+            <h4 className="text-white text-[11px] font-semibold uppercase tracking-widest mb-4">Resources</h4>
             <nav className="flex flex-col gap-2.5">
-              <Link href="/shop" className="text-[13px] hover:text-white transition-colors">All Products</Link>
-              <Link href="/shop" className="text-[13px] hover:text-white transition-colors">Cables</Link>
+              <Link href="/blog" className="text-[13px] hover:text-white transition-colors">Blog</Link>
+              <Link href="/gallery" className="text-[13px] hover:text-white transition-colors">Build Gallery</Link>
               <Link href="/shop" className="text-[13px] hover:text-white transition-colors">Accessories</Link>
             </nav>
           </div>
@@ -45,7 +44,6 @@ export default function Footer() {
             <h4 className="text-white text-[11px] font-semibold uppercase tracking-widest mb-4">Company</h4>
             <nav className="flex flex-col gap-2.5">
               <Link href="/about" className="text-[13px] hover:text-white transition-colors">About</Link>
-              <Link href="/blog" className="text-[13px] hover:text-white transition-colors">Blog</Link>
               <Link href="/contact" className="text-[13px] hover:text-white transition-colors">Contact</Link>
               <a href="https://www.instagram.com/therigdr" target="_blank" rel="noopener" className="text-[13px] hover:text-white transition-colors">Instagram</a>
             </nav>
