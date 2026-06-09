@@ -6,11 +6,11 @@ import Section from '@/components/Section';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Meet Jacob Charendoff and the team behind The Rig Doctor. 17+ years building custom pedalboards in Montgomery, TX for touring artists and home players nationwide.',
+    'Meet Mason Marangell, Vince DiGoia, and Jacob Charendoff — the founders behind The Rig Doctor. 17+ years building custom pedalboards in Montgomery, TX for touring artists and home players nationwide.',
   openGraph: {
     title: 'About The Rig Doctor',
     description:
-      'Meet Jacob and the team behind The Rig Doctor. 17+ years building custom pedalboards for touring artists and home players.',
+      'Meet the founders behind The Rig Doctor. 17+ years building custom pedalboards for touring artists and home players.',
   },
 };
 
@@ -77,18 +77,18 @@ export default function AboutPage() {
           We started building pedalboards because nobody was doing it right.
         </h1>
         <p className="text-lg text-[#f5f5f7]/60 max-w-2xl">
-          17 years. 500+ rigs. One standard: your board works perfectly,
-          every night, no exceptions.
+          17 years. 500+ rigs. Three founders who play guitar and actually
+          care whether your signal chain is clean.
         </p>
       </Section>
 
-      {/* ── Founder Story ── */}
+      {/* ── The Founders ── */}
       <Section theme="light">
         <div className="md:grid md:grid-cols-2 md:gap-16 items-center">
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-8 md:mb-0 border border-black/[0.04]">
             <Image
               src="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jacob_S.jpg"
-              alt="Jacob Charendoff building a custom pedalboard at The Rig Doctor workshop"
+              alt="The Rig Doctor workshop — custom pedalboard build in progress"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -97,31 +97,31 @@ export default function AboutPage() {
           </div>
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#F5A623] mb-3">
-              Meet Jacob
+              The Founders
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1d1d1f] mb-6">
-              This started with my own rig.
+              Three guitarists. One obsession.
             </h2>
             <div className="space-y-4 text-[15px] text-black/60 leading-relaxed">
               <p>
-                I built my first pedalboard in 2009 because the one I had was
-                a mess. Cables everywhere, noise I couldn&apos;t track down, and a
-                setup that took 20 minutes before every gig. So I taught myself
-                how to do it properly — soldered cables, isolated power, clean
-                signal routing.
+                The Rig Doctor was founded by Mason Marangell, Vince DiGoia,
+                and Jacob Charendoff — three players who got tired of watching
+                great guitarists fight bad rigs. Mason started building boards
+                because the ones he could buy weren&apos;t good enough. Vince
+                brought the ear — if a rig doesn&apos;t sound right, he&apos;ll find
+                the problem before it leaves the bench. Jacob brought the
+                reach — connecting players with the builds they actually need.
               </p>
               <p>
-                Other guitarists saw my board and asked me to build theirs.
-                Then their bandmates asked. Then touring artists started
-                calling. One rig turned into ten. Ten turned into a hundred.
-                Now we&apos;re past 500.
+                Together, we&apos;ve built over 500 custom rigs for touring
+                artists, session players, and weekend warriors. Every board
+                is hand-wired by someone who plays guitar and knows what a
+                clean signal chain sounds like under stage lights.
               </p>
               <p>
-                The Rig Doctor isn&apos;t a factory. Every board is built by hand,
-                by someone who plays guitar and actually cares whether your
-                signal chain is clean. I still build boards personally, and
-                every single rig that leaves this shop gets the same attention
-                — whether it&apos;s headed to a stadium tour or a Sunday jam.
+                This isn&apos;t a factory. It&apos;s three guys who care whether your
+                board works perfectly on the 200th gig the same way it did
+                on the first. That&apos;s it. That&apos;s the whole pitch.
               </p>
             </div>
           </div>
