@@ -61,7 +61,7 @@ function Hero() {
                 ))}
               </div>
 
-              <p className="text-[14px] text-white/[0.65]">Most builds ship in 2-4 weeks from approval.</p>
+              <p className="text-[14px] text-white/[0.65]">Most builds ship in 4–8 weeks from approval.</p>
 
               {/* Agenda card */}
               <div className="trd-glass-dark p-6 space-y-4">
