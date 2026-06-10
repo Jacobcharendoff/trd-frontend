@@ -263,13 +263,13 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/book"
-              className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48A1A] text-black font-semibold px-8 py-4 rounded-lg transition-colors"
+              className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48A1A] text-black font-semibold px-8 py-4 rounded-full transition-colors"
             >
               Book a Free Consultation
             </Link>
             <Link
               href="/tone-tutoring"
-              className="inline-flex items-center gap-2 border border-white/20 hover:border-white/40 text-[#f5f5f7] font-semibold px-8 py-4 rounded-lg transition-colors"
+              className="inline-flex items-center gap-2 border border-white/20 hover:border-white/40 text-[#f5f5f7] font-semibold px-8 py-4 rounded-full transition-colors"
             >
               Tone Tutoring — $99
             </Link>
