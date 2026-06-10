@@ -89,10 +89,10 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3">
             <Link
-              href="/book"
+              href="/custom-builds"
               className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-[#1d1d1f]/90 transition-colors text-sm"
             >
-              Book a Free Consultation
+              See Our Custom Builds
             </Link>
             <Link
               href="/tone-tutoring"
@@ -166,12 +166,17 @@ export default function Home() {
               Book a Free Consultation
             </Link>
             <Link
-              href="/tone-tutoring"
+              href="/process"
               className="inline-flex items-center justify-center font-semibold px-8 py-3.5 rounded-full border-2 border-[#1d1d1f]/15 text-[#1d1d1f] hover:border-[#1d1d1f]/30 hover:bg-[#1d1d1f]/[0.03] transition-all text-sm"
             >
-              Get Expert Tone Advice — $99
+              See Our Full Process
             </Link>
           </div>
+          <p className="mt-4">
+            <Link href="/process" className="text-sm text-[#1d1d1f]/40 hover:text-[#1d1d1f]/70 transition-colors">
+              How we build your rig — from consultation to your doorstep →
+            </Link>
+          </p>
         </div>
       </Section>
 
@@ -190,6 +195,15 @@ export default function Home() {
           </p>
         </div>
         <GallerySlider />
+        <div className="text-center mt-10">
+          <Link
+            href="/custom-builds"
+            className="inline-flex items-center gap-2 text-[#34D399] font-medium hover:underline transition-colors"
+          >
+            Explore our custom builds
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </Link>
+        </div>
       </Section>
 
       {/* dark → light transition */}
@@ -207,6 +221,22 @@ export default function Home() {
           </p>
         </div>
         <BeforeAfter />
+        <div className="text-center mt-12">
+          <div className="flex flex-col sm:flex-row justify-center gap-3">
+            <Link
+              href="/custom-builds"
+              className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-[#1d1d1f]/90 transition-colors text-sm"
+            >
+              See Our Custom Builds
+            </Link>
+            <Link
+              href="/process"
+              className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full border-2 border-[#1d1d1f]/15 text-[#1d1d1f] hover:border-[#1d1d1f]/30 hover:bg-[#1d1d1f]/[0.03] transition-all text-sm"
+            >
+              How We Build Your Rig
+            </Link>
+          </div>
+        </div>
       </Section>
 
       {/* ──── MID-PAGE CTA — Decision point ──── */}
@@ -222,10 +252,10 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
-              href="/book"
+              href="/custom-builds"
               className="trd-cta-gradient trd-glow-pulse inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-base whitespace-nowrap"
             >
-              Book a Free Consultation
+              Explore Custom Builds
             </Link>
             <Link
               href="/tone-tutoring"
@@ -349,10 +379,10 @@ export default function Home() {
             </div>
 
             <Link
-              href="/book"
+              href="/custom-builds"
               className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full bg-[#0071E3] hover:bg-[#005BB5] text-white transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,113,227,0.40)]"
             >
-              Book a Free Consultation
+              Explore Custom Builds
             </Link>
           </div>
         </div>
@@ -440,10 +470,10 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
-              href="/book"
+              href="/custom-builds"
               className="trd-cta-gradient trd-glow-pulse inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
             >
-              Book a Free Consultation
+              Explore Custom Builds
             </Link>
             <Link
               href="/tone-tutoring"
