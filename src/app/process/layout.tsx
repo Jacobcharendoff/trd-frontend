@@ -1,16 +1,20 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'The Process',
+  title: 'How We Build Your Rig',
   description:
-    'How The Rig Doctor builds your custom pedalboard. From free consultation to gig-ready delivery. 4 simple steps, 2-4 week build time, lifetime support.',
+    'See exactly how The Rig Doctor builds a custom pedalboard — from free consultation to signal testing to your doorstep. 5-step process, 4–8 week turnaround, lifetime support.',
   openGraph: {
-    title: 'How We Build Yours — The Rig Doctor',
+    title: 'How We Build — The Rig Doctor',
     description:
-      'From free consultation to gig-ready delivery. 4 steps, lifetime support.',
+      'From consultation to doorstep: the 5-step process behind every Rig Doctor custom pedalboard build.',
+    url: 'https://www.therigdr.com/process',
+  },
+  alternates: {
+    canonical: 'https://www.therigdr.com/process',
   },
 };
 
 export default function ProcessLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return children;
 }
