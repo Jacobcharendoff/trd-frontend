@@ -1,16 +1,20 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Book a Consultation',
+  title: 'Book a Free Consultation',
   description:
-    'Schedule a free 30-minute consultation to design your custom pedalboard. Talk through your setup, goals, and ideal rig with a pro builder.',
+    'Book a free 30-minute video consultation with The Rig Doctor. Discuss your rig, get a custom build plan, and receive a straight quote. No obligation.',
   openGraph: {
-    title: 'Book a Free Consultation — The Rig Doctor',
+    title: 'Book a Free Consultation | The Rig Doctor',
     description:
-      'Schedule a free 30-minute call. Talk through your setup and goals with a pro rig builder.',
+      'Free 30-minute consultation. Tell us about your rig and get a custom build plan.',
   },
 };
 
-export default function BookLayout({ children }: { children: React.ReactNode }) {
+export default function BookLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return children;
 }
