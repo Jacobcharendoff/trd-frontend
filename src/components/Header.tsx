@@ -4,10 +4,10 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 const navItems = [
-  { label: 'Book a Build', href: '/book' },
+  { label: 'Custom Builds', href: '/custom-builds' },
   { label: 'Tone Tutoring', href: '/tone-tutoring' },
-  { label: 'The Process', href: '/process' },
-  { label: 'About', href: '/about' },
+  { label: 'How We Build', href: '/process' },
+  { label: 'Gallery', href: '/gallery' },
   { label: 'Blog', href: '/blog' },
 ];
 
@@ -47,7 +47,7 @@ export default function Header() {
               href="/book"
               className="text-[13px] font-medium text-black bg-white rounded-full px-5 py-2 hover:bg-white/90 transition-colors"
             >
-              Start a Build
+              Book a Consultation
             </Link>
           </div>
 
@@ -86,7 +86,7 @@ export default function Header() {
                 onClick={() => setMobileOpen(false)}
                 className="text-[15px] font-medium text-black bg-white rounded-full px-6 py-3 text-center mt-2 hover:bg-white/90 transition-colors"
               >
-                Start a Build
+                Book a Consultation
               </Link>
             </nav>
           </div>
