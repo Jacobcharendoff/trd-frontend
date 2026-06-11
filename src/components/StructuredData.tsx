@@ -98,7 +98,7 @@ export default function LocalBusinessSchema() {
           priceSpecification: {
             '@type': 'PriceSpecification',
             priceCurrency: 'USD',
-            price: '99.99',
+            price: '99',
           },
         },
       ],

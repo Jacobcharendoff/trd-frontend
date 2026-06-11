@@ -55,8 +55,8 @@ export const products: Product[] = [
     handle: 'tone-tutoring',
     description: 'Your tone, unlocked. One-on-one session to dial in your rig.',
     category: 'Services',
-    priceMin: 99.99,
-    priceMax: 149.99,
+    priceMin: 99.0,
+    priceMax: 99.0,
   },
   {
     id: '5',

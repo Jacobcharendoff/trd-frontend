@@ -27,7 +27,7 @@ const faqs = [
   {
     question: 'What is Tone Tutoring?',
     answer:
-      'Tone Tutoring is a 60-minute one-on-one video session where we help you dial in your signal chain, effects order, amp settings, and overall rig strategy. It is $99.99 USD and built for players who want better tone without buying more gear.',
+      'Tone Tutoring is a 60-minute one-on-one video session where we help you dial in your signal chain, effects order, amp settings, and overall rig strategy. It is $99 USD and built for players who want better tone without buying more gear.',
   },
   {
     question: 'Can you integrate MIDI switching into my pedalboard?',
