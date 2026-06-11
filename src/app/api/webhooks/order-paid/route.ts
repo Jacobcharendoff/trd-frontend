@@ -200,7 +200,7 @@ function buildToneTutoringEmail(firstName: string) {
 
 function buildGiftCardBuyerEmail(firstName: string, amount: string) {
   const name = firstName || 'there';
-  const amountText = amount ? `a ${amount} TRD gift card` : 'a TRD gift card';
+  const amountText = amount ? `a ${amount} gift card` : 'a gift card';
   return {
     subject: "Great call — here's what happens next",
     html: `
@@ -244,22 +244,11 @@ function buildGiftCardBuyerEmail(firstName: string, amount: string) {
 
                     <p style="margin: 0 0 20px 0;">Hey ${name},</p>
 
-                    <p style="margin: 0 0 20px 0;">Vince here. Thanks for grabbing ${amountText} — that's a seriously cool gift.</p>
+                    <p style="margin: 0 0 20px 0;">Vince here. Thanks for grabbing ${amountText} from The Rig Doctor — that's a seriously cool gift.</p>
 
-                    <p style="margin: 0 0 20px 0;">Here's what happens next: your recipient is going to get an email from us with their gift card code and a link to the shop. All they do is enter the code at checkout and they're set.</p>
+                    <p style="margin: 0 0 20px 0;">Here's what happens next: your recipient is going to get an email from us with their gift card code and a link to the site. All they do is enter the code at checkout and they're set.</p>
 
-                    <p style="margin: 0 0 20px 0;">There's plenty to spend it on — everything in the <a href="https://www.therigdr.com/shop?utm_source=email&utm_medium=transactional&utm_campaign=gift_card_buyer" style="color: #3b82f6; text-decoration: none; font-weight: 500;">Tone Shop</a> (patch cables, power supplies, mounts), <a href="https://www.therigdr.com/tone-tutoring?utm_source=email&utm_medium=transactional&utm_campaign=gift_card_buyer" style="color: #3b82f6; text-decoration: none; font-weight: 500;">Tone Tutoring</a> sessions where I hop on a call and help them sort out their signal chain, or even a custom pedalboard build if they want to go all in.</p>
-
-                    <p style="margin: 0 0 20px 0;">If they're not sure where to start, tell them to shoot me a message. I'll point them in the right direction.</p>
-
-                    <!-- CTA Button -->
-                    <table role="presentation" cellpadding="0" cellspacing="0" style="margin: 28px 0;">
-                      <tr>
-                        <td align="center" style="border-radius: 980px; background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);">
-                          <a href="https://www.therigdr.com/shop?utm_source=email&utm_medium=transactional&utm_campaign=gift_card_buyer&utm_content=cta" style="display: inline-block; padding: 14px 32px; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 15px; font-weight: 600; color: #ffffff; text-decoration: none; border-radius: 980px;">Browse the Tone Shop</a>
-                        </td>
-                      </tr>
-                    </table>
+                    <p style="margin: 0 0 20px 0;">There's plenty to spend it on — custom pedalboard builds, rewires, Tone Tutoring sessions where I hop on a call and help them dial in their signal chain, plus cables, power supplies, and all the gear on the site. If they're not sure where to start, tell them to shoot me a message. Happy to point them in the right direction.</p>
 
                     <p style="margin: 0 0 20px 0;">Appreciate you thinking of a guitarist.</p>
 
