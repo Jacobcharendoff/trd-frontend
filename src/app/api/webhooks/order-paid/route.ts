@@ -97,7 +97,7 @@ function buildToneTutoringEmail(firstName: string) {
 
                     <p style="margin: 0 0 20px 0;">Vince here from The Rig Doctor. I'll be the one on the other end of your Tone Tutoring session. Thanks for booking, really looking forward to digging into your rig.</p>
 
-                    <p style="margin: 0 0 20px 0;">Shoot me back a few dates and times that work and we'll get it on the calendar. We run sessions on Google Meet. I'll send you a link once we lock something in. Just click it and you're good, nothing to install.</p>
+                    <p style="margin: 0 0 20px 0;">Shoot me a few dates and times over the next week or two that work for you and we'll get it on the calendar. We run sessions on Google Meet. I'll send you a link once we lock something in. Just click it and you're good, nothing to install.</p>
 
                     <p style="margin: 0 0 20px 0;">If you want to hit the ground running, send over whatever's on your mind ahead of time. What's on your board, what's bugging you, what you're hoping to get out of the hour. Could be killing hum and buzz, cleaning up the signal chain, figuring out what gear to actually buy next. Whatever it is, the more I know going in, the more we get done.</p>
 
