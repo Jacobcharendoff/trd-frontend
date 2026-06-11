@@ -87,7 +87,7 @@ export default function ToneTutoringPage() {
 
             <div className="mt-12 pt-12 border-t border-white/10 text-center">
               <p className="text-[#f5f5f7]/60 text-sm mb-2">Starting at</p>
-              <p className="text-3xl sm:text-4xl font-bold trd-gradient-text">$99.99 USD</p>
+              <p className="text-3xl sm:text-4xl font-bold trd-gradient-text">$99 USD</p>
             </div>
           </div>
         </div>
@@ -228,7 +228,7 @@ export default function ToneTutoringPage() {
             <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">60-Minute Session</h3>
             <p className="text-[#f5f5f7]/60 mb-6">One hour, one rig, full attention.</p>
             <div className="mb-8">
-              <p className="text-4xl font-bold trd-gradient-text mb-1">$99.99</p>
+              <p className="text-4xl font-bold trd-gradient-text mb-1">$99</p>
               <p className="text-sm text-[#f5f5f7]/60">USD</p>
             </div>
             <ul className="space-y-3 mb-8">
@@ -263,7 +263,7 @@ export default function ToneTutoringPage() {
         <div className="space-y-4 max-w-3xl">
           <AccordionItem title="I'm kind of a beginner. Is this for me?" content="Yeah. You don't need a massive rig to get something out of this. Whether you've got three pedals or thirty, we meet you where you are. The fundamentals of good tone are the same at every level." />
           <AccordionItem title="Do I need my gear set up?" content="That's the whole point. Have your guitar, amp, and whatever pedals you've got ready to go. If your setup isn't fully built yet, no problem. We can plan it out together." />
-          <AccordionItem title="What platform?" content="Zoom. It works, it's easy, nothing weird to install." />
+          <AccordionItem title="What platform?" content="Google Meet. We send you a link — just click and you're in." />
           <AccordionItem title="Can you help me pick new gear?" content="That's one of our favorite things to do. We'll talk about what you're going for, what your budget looks like, and give you honest recs. Not whatever's trending this week." />
           <AccordionItem title="How's this different from the free build consultation?" content="The free consult is a 20-minute chat for people thinking about a custom build. Tone Tutoring is a full hour of hands-on coaching where we actually dig into your rig and optimize what you've got. Way more detailed." />
           <AccordionItem title="Can I book more than one session?" content="Absolutely. A lot of guys do a session, make the changes, play for a week, then come back. You get way more out of it that way. Just book another one when you're ready." />

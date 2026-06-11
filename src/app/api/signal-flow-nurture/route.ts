@@ -90,7 +90,7 @@ function email3(firstName: string) {
 
   <p>Tone Tutoring is 60 minutes on a video call where we go through your whole signal chain together. You show me your board, I tell you what I'd change and why. You get a recording of the session and follow-up notes so you can actually do the work after we hang up.</p>
 
-  <p>It's $99.99. Most guys tell me they would've saved twice that in pedals they bought trying to fix a problem that turned out to be a wiring issue.</p>
+  <p>It's $99. Most guys tell me they would've saved twice that in pedals they bought trying to fix a problem that turned out to be a wiring issue.</p>
 
   <p style="margin: 24px 0;">
     <a href="${TONE_TUTORING_URL}" style="display: inline-block; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; padding: 14px 32px; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 16px;">Book a Tone Tutoring Session</a>

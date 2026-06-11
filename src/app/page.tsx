@@ -318,7 +318,7 @@ export default function Home() {
             <p className="text-[#f5f5f7]/50 text-sm mb-6">
               A 60-minute 1-on-1 video session. We diagnose your tone issues and tell you exactly what to fix.
             </p>
-            <p className="text-3xl font-bold text-[#f5f5f7] mb-1">$99.99 <span className="text-lg font-normal text-[#f5f5f7]/50">USD</span></p>
+            <p className="text-3xl font-bold text-[#f5f5f7] mb-1">$99 <span className="text-lg font-normal text-[#f5f5f7]/50">USD</span></p>
             <p className="text-[#f5f5f7]/30 text-sm mb-8">one session, real answers</p>
 
             <div className="space-y-4 flex-grow">
@@ -423,7 +423,7 @@ export default function Home() {
             },
             {
               q: "What is Tone Tutoring?",
-              a: "A 60-minute 1-on-1 video call where we diagnose your tone issues — noise, hum, signal chain order, amp settings, effects placement, gear recommendations. You walk away with a clear plan. $99.99 USD.",
+              a: "A 60-minute 1-on-1 video call where we diagnose your tone issues — noise, hum, signal chain order, amp settings, effects placement, gear recommendations. You walk away with a clear plan. $99 USD.",
             },
             {
               q: "How long does a build take?",
