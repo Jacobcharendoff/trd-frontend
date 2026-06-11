@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getAllProducts, type ShopifyProduct } from '@/lib/shopify';
-import { products as staticProducts, formatPrice, getPriceDisplay } from '@/lib/products';
+import { products as staticProducts, getPriceDisplay } from '@/lib/products';
 
 const POPULAR_HANDLES = [
   'mogami-2314-patch-cables',
