@@ -18,7 +18,8 @@ import crypto from 'crypto';
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const SHOPIFY_WEBHOOK_SECRET = process.env.SHOPIFY_WEBHOOK_SECRET;
-const VINCE_FROM = process.env.RESEND_VINCE_FROM_EMAIL || 'Vince <vince@therigdr.com>';
+const VINCE_FROM = process.env.RESEND_VINCE_FROM_EMAIL || 'Vince @ The Rig Doctor <vince@therigdr.com>';
+const VINCE_BCC = 'vince@therigdr.com';
 
 // Match any Tone Tutoring product by title keywords
 const TONE_TUTORING_KEYWORDS = ['tone tutoring', 'tone consulting', '1:1 tone'];
@@ -174,6 +175,7 @@ async function sendEmail(to: string, subject: string, html: string) {
     body: JSON.stringify({
       from: VINCE_FROM,
       to,
+      bcc: VINCE_BCC,
       subject,
       html,
       reply_to: 'vince@therigdr.com',
