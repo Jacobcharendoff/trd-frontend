@@ -10,29 +10,33 @@ export default function Footer() {
             <Link href="/" className="text-white font-semibold text-lg tracking-tight block mb-3">
               The Rig Doctor
             </Link>
-            <p className="text-[13px] leading-relaxed">
-              Custom pedalboard builds for touring artists and home players. Montgomery, TX.
+            <p className="text-[13px] leading-relaxed mb-4">
+              Custom pedalboard builds for touring artists and home players. Montgomery, TX — shipping nationwide.
             </p>
+            <div className="space-y-1.5 text-[13px]">
+              <a href="tel:+19365489254" className="block hover:text-white transition-colors">+1 (936) 548-9254</a>
+              <a href="mailto:info@therigdr.com" className="block hover:text-white transition-colors">info@therigdr.com</a>
+            </div>
           </div>
 
           {/* Services */}
           <div>
             <h4 className="text-white text-[11px] font-semibold uppercase tracking-widest mb-4">Services</h4>
             <nav className="flex flex-col gap-2.5">
-              <Link href="/book" className="text-[13px] hover:text-white transition-colors">Custom Builds</Link>
+              <Link href="/custom-builds" className="text-[13px] hover:text-white transition-colors">Custom Builds</Link>
               <Link href="/tone-tutoring" className="text-[13px] hover:text-white transition-colors">Tone Tutoring</Link>
-              <Link href="/process" className="text-[13px] hover:text-white transition-colors">The Process</Link>
+              <Link href="/process" className="text-[13px] hover:text-white transition-colors">How We Build</Link>
+              <Link href="/gift-cards" className="text-[13px] hover:text-white transition-colors">Gift Cards</Link>
+              <Link href="/book" className="text-[13px] hover:text-white transition-colors">Book a Consultation</Link>
             </nav>
           </div>
 
-          {/* Shop */}
+          {/* Resources */}
           <div>
-            <h4 className="text-white text-[11px] font-semibold uppercase tracking-widest mb-4">Shop</h4>
+            <h4 className="text-white text-[11px] font-semibold uppercase tracking-widest mb-4">Resources</h4>
             <nav className="flex flex-col gap-2.5">
-              <Link href="/shop" className="text-[13px] hover:text-white transition-colors">All Products</Link>
-              <Link href="/gift-cards" className="text-[13px] hover:text-white transition-colors">Gift Cards</Link>
-              <Link href="/shop" className="text-[13px] hover:text-white transition-colors">Cables</Link>
-              <Link href="/shop" className="text-[13px] hover:text-white transition-colors">Accessories</Link>
+              <Link href="/blog" className="text-[13px] hover:text-white transition-colors">Blog</Link>
+              <Link href="/gallery" className="text-[13px] hover:text-white transition-colors">Build Gallery</Link>
             </nav>
           </div>
 
@@ -41,8 +45,7 @@ export default function Footer() {
             <h4 className="text-white text-[11px] font-semibold uppercase tracking-widest mb-4">Company</h4>
             <nav className="flex flex-col gap-2.5">
               <Link href="/about" className="text-[13px] hover:text-white transition-colors">About</Link>
-              <Link href="/blog" className="text-[13px] hover:text-white transition-colors">Blog</Link>
-              <a href="mailto:info@therigdr.com" className="text-[13px] hover:text-white transition-colors">Contact</a>
+              <Link href="/contact" className="text-[13px] hover:text-white transition-colors">Contact</Link>
               <a href="https://www.instagram.com/therigdr" target="_blank" rel="noopener" className="text-[13px] hover:text-white transition-colors">Instagram</a>
             </nav>
           </div>
@@ -52,9 +55,10 @@ export default function Footer() {
         <div className="border-t border-white/[0.06] pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-[12px]">&copy; {new Date().getFullYear()} The Rig Doctor Inc. All rights reserved.</p>
           <div className="flex gap-6 text-[12px]">
-            <Link href="/policies/terms" className="hover:text-white transition-colors">Terms</Link>
-            <Link href="/policies/privacy" className="hover:text-white transition-colors">Privacy</Link>
-            <Link href="/policies/refund" className="hover:text-white transition-colors">Refund Policy</Link>
+            <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
+            <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+            <Link href="/refunds" className="hover:text-white transition-colors">Refund Policy</Link>
+            <Link href="/shipping" className="hover:text-white transition-colors">Shipping</Link>
           </div>
         </div>
       </div>

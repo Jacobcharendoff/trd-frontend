@@ -4,13 +4,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 const navItems = [
-  { label: 'Book a Build', href: '/book' },
-  { label: 'Shop', href: '/shop' },
+  { label: 'Custom Builds', href: '/custom-builds' },
   { label: 'Tone Tutoring', href: '/tone-tutoring' },
   { label: 'Gift Cards', href: '/gift-cards' },
-  { label: 'The Process', href: '/process' },
-  { label: 'About', href: '/about' },
-  { label: 'Plan Your Rig', href: '/plan-your-rig' },
+  { label: 'How We Build', href: '/process' },
+  { label: 'Gallery', href: '/gallery' },
   { label: 'Blog', href: '/blog' },
 ];
 
@@ -58,11 +56,12 @@ export default function Header() {
       <div className="bg-[rgba(29,29,31,0.92)] backdrop-blur-xl border-b border-white/[0.06]">
         <div className="max-w-[1080px] mx-auto px-6 h-14 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 text-white font-semibold text-[15px] tracking-tight hover:opacity-80 transition-opacity">
-            <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-            </svg>
-            The Rig Doctor
+          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+            <img
+              src="/trd-logo.svg"
+              alt="The Rig Doctor"
+              className="h-7 w-auto"
+            />
           </Link>
 
           {/* Desktop Nav */}
@@ -84,7 +83,7 @@ export default function Header() {
               href="/book"
               className="text-[13px] font-medium text-black bg-white rounded-full px-5 py-2 hover:bg-white/90 transition-colors"
             >
-              Start a Build
+              Book a Consultation
             </Link>
           </div>
 
@@ -123,7 +122,7 @@ export default function Header() {
                 onClick={() => setMobileOpen(false)}
                 className="text-[15px] font-medium text-black bg-white rounded-full px-6 py-3 text-center mt-2 hover:bg-white/90 transition-colors"
               >
-                Start a Build
+                Book a Consultation
               </Link>
             </nav>
           </div>
