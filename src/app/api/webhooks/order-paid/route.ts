@@ -6,7 +6,7 @@ import crypto from 'crypto';
  *
  * Receives orders/paid webhooks from Shopify.
  * When the order contains a Tone Tutoring product,
- * sends a personalized post-purchase email from Vince
+ * sends a branded post-purchase email from Vince
  * via Resend with scheduling instructions.
  *
  * Webhook setup:
@@ -48,30 +48,116 @@ function verifyWebhook(rawBody: string, hmacHeader: string | null): boolean {
   }
 }
 
-// ── Email content ──────────────────────────────────────────
+// ── Branded email template ─────────────────────────────────
 
 function buildToneTutoringEmail(firstName: string) {
   const name = firstName || 'there';
   return {
     subject: "Let's lock in your session",
     html: `
-<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 560px; margin: 0 auto; color: #1d1d1f; line-height: 1.7; font-size: 16px;">
-  <p>Hey ${name},</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Let's lock in your session</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f5f5f7; -webkit-font-smoothing: antialiased;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f5f7;">
+    <tr>
+      <td align="center" style="padding: 40px 20px;">
+        <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width: 560px; width: 100%;">
 
-  <p>Vince here from The Rig Doctor. I'll be the one on the other end of your Tone Tutoring session. Thanks for booking, really looking forward to digging into your rig.</p>
+          <!-- Header -->
+          <tr>
+            <td style="padding: 0 0 32px 0; text-align: center;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 700; color: #1d1d1f; letter-spacing: -0.02em; text-align: center; padding-bottom: 16px;">
+                    The Rig Doctor
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <div style="width: 60px; height: 3px; background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899); border-radius: 2px;"></div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
-  <p>Shoot me back a few dates and times that work and we'll get it on the calendar. We run sessions on Google Meet. I'll send you a link once we lock something in. Just click it and you're good, nothing to install.</p>
+          <!-- Email body card -->
+          <tr>
+            <td style="background-color: #ffffff; border-radius: 16px; padding: 40px 36px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 16px; color: #1d1d1f; line-height: 1.7;">
 
-  <p>If you want to hit the ground running, send over whatever's on your mind ahead of time. What's on your board, what's bugging you, what you're hoping to get out of the hour. Could be killing hum and buzz, cleaning up the signal chain, figuring out what gear to actually buy next. Whatever it is, the more I know going in, the more we get done.</p>
+                    <p style="margin: 0 0 20px 0;">Hey ${name},</p>
 
-  <p>Looking forward to it.</p>
+                    <p style="margin: 0 0 20px 0;">Vince here from The Rig Doctor. I'll be the one on the other end of your Tone Tutoring session. Thanks for booking, really looking forward to digging into your rig.</p>
 
-  <p>
-    Vince<br/>
-    <span style="color: #86868b;">The Rig Doctor</span><br/>
-    <span style="color: #86868b;">Call or text anytime: (936) 548-9254</span>
-  </p>
-</div>
+                    <p style="margin: 0 0 20px 0;">Shoot me back a few dates and times that work and we'll get it on the calendar. We run sessions on Google Meet. I'll send you a link once we lock something in. Just click it and you're good, nothing to install.</p>
+
+                    <p style="margin: 0 0 20px 0;">If you want to hit the ground running, send over whatever's on your mind ahead of time. What's on your board, what's bugging you, what you're hoping to get out of the hour. Could be killing hum and buzz, cleaning up the signal chain, figuring out what gear to actually buy next. Whatever it is, the more I know going in, the more we get done.</p>
+
+                    <p style="margin: 0 0 20px 0;">Looking forward to it.</p>
+
+                    <!-- Signature -->
+                    <table role="presentation" cellpadding="0" cellspacing="0" style="margin-top: 12px;">
+                      <tr>
+                        <td style="border-left: 3px solid #3b82f6; padding-left: 16px;">
+                          <p style="margin: 0; font-weight: 600; color: #1d1d1f; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 16px;">Vince</p>
+                          <p style="margin: 4px 0 0 0; color: #86868b; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 14px;">Head Rig Builder, The Rig Doctor</p>
+                          <p style="margin: 4px 0 0 0; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 14px;">
+                            <a href="tel:+19365489254" style="color: #3b82f6; text-decoration: none;">(936) 548-9254</a>
+                            <span style="color: #d1d1d6; padding: 0 8px;">·</span>
+                            <a href="mailto:vince@therigdr.com" style="color: #3b82f6; text-decoration: none;">vince@therigdr.com</a>
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="padding: 32px 0 0 0; text-align: center;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center" style="padding-bottom: 16px;">
+                    <a href="https://www.therigdr.com" style="color: #86868b; text-decoration: none; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 500;">therigdr.com</a>
+                    <span style="color: #d1d1d6; padding: 0 10px;">·</span>
+                    <a href="https://www.instagram.com/therigdr" style="color: #86868b; text-decoration: none; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 500;">Instagram</a>
+                    <span style="color: #d1d1d6; padding: 0 10px;">·</span>
+                    <a href="https://www.youtube.com/@therigdr" style="color: #86868b; text-decoration: none; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 500;">YouTube</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" style="font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 12px; color: #aeaeb2; line-height: 1.5;">
+                    Custom pedalboard builds, signal chain optimization,<br>
+                    and 1-on-1 tone consulting for guitarists who give a damn.
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding-top: 12px; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11px; color: #c7c7cc;">
+                    Montgomery, TX
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
     `.trim(),
   };
 }
@@ -137,7 +223,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Email service not configured' }, { status: 500 });
     }
 
-    // Send the post-purchase email from Vince
+    // Send the branded post-purchase email from Vince
     const email = buildToneTutoringEmail(customerFirstName);
     const result = await sendEmail(customerEmail, email.subject, email.html);
 
@@ -147,7 +233,6 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     console.error('Order paid webhook error:', err);
     // Return 200 anyway so Shopify doesn't retry
-    // (log the error for debugging)
     return NextResponse.json({ error: 'Internal error', logged: true }, { status: 200 });
   }
 }
