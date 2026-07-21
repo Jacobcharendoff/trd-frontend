@@ -54,7 +54,7 @@ export default function TermsPage() {
           <div>
             <h2 className="text-2xl font-bold text-[#1d1d1f] mb-4">Intellectual Property</h2>
             <p className="text-[#1d1d1f]/70 leading-relaxed">
-              All content on this website \u2014 including text, images, logos, graphics, and design \u2014 is the property of The Rig Doctor Inc. and is protected by copyright and trademark laws. You may not reproduce, distribute, or use any content from this site without our written permission.
+              All content on this website — including text, images, logos, graphics, and design — is the property of The Rig Doctor Inc. and is protected by copyright and trademark laws. You may not reproduce, distribute, or use any content from this site without our written permission.
             </p>
           </div>
 
@@ -89,7 +89,7 @@ export default function TermsPage() {
           <div>
             <h2 className="text-2xl font-bold text-[#1d1d1f] mb-4">Contact</h2>
             <p className="text-[#1d1d1f]/70 leading-relaxed">
-              Questions about these terms? Contact us at info@therigdr.com or write to The Rig Doctor Inc., 641 Amesbury Rd, Montgomery, TX 77316.
+              Questions about these terms? Contact us at info@therigdr.com or write to The Rig Doctor Inc., Houston, Texas.
             </p>
           </div>
         </div>

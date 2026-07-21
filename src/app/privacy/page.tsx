@@ -24,7 +24,7 @@ export default function PrivacyPage() {
           <div>
             <h2 className="text-2xl font-bold text-[#1d1d1f] mb-4">Who We Are</h2>
             <p className="text-[#1d1d1f]/70 leading-relaxed">
-              The Rig Doctor Inc. (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) operates the website therigdr.com. We are located at 641 Amesbury Rd, Montgomery, TX 77316, United States. This privacy policy explains how we collect, use, and protect your personal information when you visit our website or purchase our products and services.
+              The Rig Doctor Inc. (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) operates the website therigdr.com. We are located in Houston, Texas, United States. This privacy policy explains how we collect, use, and protect your personal information when you visit our website or purchase our products and services.
             </p>
           </div>
 
@@ -90,7 +90,7 @@ export default function PrivacyPage() {
           <div>
             <h2 className="text-2xl font-bold text-[#1d1d1f] mb-4">Contact Us</h2>
             <p className="text-[#1d1d1f]/70 leading-relaxed">
-              If you have questions about this privacy policy or our data practices, contact us at info@therigdr.com or write to us at The Rig Doctor Inc., 641 Amesbury Rd, Montgomery, TX 77316.
+              If you have questions about this privacy policy or our data practices, contact us at info@therigdr.com or write to us at The Rig Doctor Inc., Houston, Texas.
             </p>
           </div>
         </div>
