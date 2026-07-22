@@ -23,7 +23,7 @@ export default function ConsultationPopup() {
       return;
     }
 
-    // Don't show on /book page — the calendar is already right there
+    // Don't show on /book page
     if (window.location.pathname === '/book') {
       setIsDismissed(true);
       return;
@@ -37,7 +37,7 @@ export default function ConsultationPopup() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Scroll trigger at 60% — only after 90s delay
+  // Scroll trigger at 60%
   useEffect(() => {
     if (isDismissed) return;
     const handleScroll = () => {
@@ -82,9 +82,8 @@ export default function ConsultationPopup() {
       className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-end lg:items-center justify-center z-50 animate-popup-fade"
       onClick={handleBackdropClick}
     >
-      {/* ─── Desktop layout — image banner + embedded calendar ─── */}
+      {/* Desktop layout */}
       <div className="hidden lg:flex lg:flex-col max-w-[520px] w-full bg-white rounded-3xl shadow-2xl overflow-hidden animate-popup-scale max-h-[85vh] relative">
-        {/* Close */}
         <button
           onClick={handleClose}
           className="absolute top-3 right-3 z-20 bg-black/40 backdrop-blur-sm rounded-full p-1.5 text-white/80 hover:text-white transition-colors"
@@ -95,7 +94,6 @@ export default function ConsultationPopup() {
           </svg>
         </button>
 
-        {/* Before/after image banner */}
         <div className="relative w-full h-[280px] flex-shrink-0 bg-[#0a0a0a] overflow-hidden">
           <div
             className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
@@ -120,7 +118,6 @@ export default function ConsultationPopup() {
             />
           </div>
 
-          {/* Before / After label */}
           <div className="absolute top-4 left-4 z-10">
             <span className="bg-black/50 backdrop-blur-sm text-white text-xs font-semibold tracking-wider uppercase px-3 py-1.5 rounded-full">
               {showAfter ? 'After' : 'Before'}
@@ -128,7 +125,6 @@ export default function ConsultationPopup() {
           </div>
         </div>
 
-        {/* Copy */}
         <div className="px-6 pt-6 pb-3 text-center">
           <h2 className="text-xl font-bold text-[#1d1d1f] mb-1">
             This could be your board.
@@ -138,7 +134,6 @@ export default function ConsultationPopup() {
           </p>
         </div>
 
-        {/* HubSpot Calendar — direct iframe, no embed script dependency */}
         <div className="flex-1 overflow-y-auto px-4 pb-2 min-h-0">
           <iframe
             src="https://meetings-na2.hubspot.com/trd/rig-build-consultation?embed=true"
@@ -147,7 +142,6 @@ export default function ConsultationPopup() {
           />
         </div>
 
-        {/* Dismiss */}
         <div className="px-6 pb-4 text-center flex-shrink-0">
           <button
             onClick={handleClose}
@@ -158,9 +152,8 @@ export default function ConsultationPopup() {
         </div>
       </div>
 
-      {/* ─── Mobile: slide-up sheet ─── */}
+      {/* Mobile: slide-up sheet */}
       <div className="lg:hidden w-full bg-white rounded-t-3xl shadow-2xl overflow-hidden flex flex-col animate-popup-slide-up max-h-[85vh]">
-        {/* Before/after crossfade — compact but uncropped */}
         <div className="relative w-full h-[220px] flex-shrink-0 bg-[#0a0a0a]">
           <div
             className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
@@ -202,7 +195,6 @@ export default function ConsultationPopup() {
           </button>
         </div>
 
-        {/* Copy + CTA */}
         <div className="px-6 py-5 text-center">
           <h2 className="text-lg font-bold text-[#1d1d1f] mb-1">
             This could be your board.
@@ -227,30 +219,6 @@ export default function ConsultationPopup() {
           </button>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes popupFade {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes popupScale {
-          from { opacity: 0; transform: scale(0.96) translateY(10px); }
-          to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        @keyframes popupSlideUp {
-          from { transform: translateY(100%); }
-          to { transform: translateY(0); }
-        }
-        .animate-popup-fade {
-          animation: popupFade 0.3s ease-out;
-        }
-        .animate-popup-scale {
-          animation: popupScale 0.35s ease-out;
-        }
-        .animate-popup-slide-up {
-          animation: popupSlideUp 0.4s ease-out;
-        }
-      `}</style>
     </div>
   );
 }

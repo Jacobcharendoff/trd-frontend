@@ -28,7 +28,7 @@ const steps: CinemaStep[] = [
     desc: 'Every run is labeled, laced, and built to handle hundreds of shows. When you open the back of this board, it makes sense.',
     image:
       'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Cable_Work.png',
-    color: '#00B4D8',
+    color: '#BF5AF2',
   },
   {
     num: '03',
@@ -53,7 +53,7 @@ export default function CinemaSection() {
 
   return (
     <section id="how-we-build" className="relative bg-[#0a0a0a] py-20 sm:py-28">
-      <div className="max-w-[1200px] mx-auto px-6">
+      <div className="max-w-[1080px] mx-auto px-6">
         {/* Section header */}
         <div className="text-center mb-16">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/30 mb-4">
@@ -156,7 +156,6 @@ export default function CinemaSection() {
                   />
                 </div>
               ))}
-              {/* Active step color accent line */}
               <div
                 className="absolute bottom-0 left-0 right-0 h-[3px] transition-colors duration-500"
                 style={{ backgroundColor: steps[activeStep].color }}
