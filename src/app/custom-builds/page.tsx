@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Section from '@/components/Section';
 import BuildTimeline from '@/components/BuildTimeline';
 
-/* ──── Inline FAQ Schema for this page ──── */
+/* ---- Inline FAQ Schema for this page ---- */
 const customBuildsFAQs = [
   {
     q: 'How much does a custom pedalboard build cost?',
@@ -60,13 +60,13 @@ function CustomBuildsFAQSchema() {
   );
 }
 
-/* ──── Page ──── */
+/* ---- Page ---- */
 export default function CustomBuildsPage() {
   return (
     <>
       <CustomBuildsFAQSchema />
 
-      {/* ── 1. HERO ── */}
+      {/* -- 1. HERO -- */}
       <div className="relative w-full overflow-hidden">
         <div className="relative min-h-screen flex items-end justify-center bg-black trd-aurora-intense">
           <video
@@ -83,7 +83,7 @@ export default function CustomBuildsPage() {
             />
           </video>
 
-          <div className="relative z-10 max-w-[1200px] mx-auto px-6 pb-24 pt-40 w-full text-center">
+          <div className="relative z-10 max-w-[1080px] mx-auto px-6 pb-24 pt-40 w-full text-center">
             <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-6">
               Custom Pedalboard Builds &bull; Houston, TX &bull; Ships Nationwide
             </p>
@@ -134,7 +134,7 @@ export default function CustomBuildsPage() {
 
       <div className="trd-divider-dark-to-light" />
 
-      {/* ── 2. WHAT'S INCLUDED ── */}
+      {/* -- 2. WHAT'S INCLUDED -- */}
       <Section theme="light" id="whats-included" reveal>
         <div className="text-center mb-16">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">What You Get</p>
@@ -195,7 +195,7 @@ export default function CustomBuildsPage() {
         </div>
       </Section>
 
-      {/* ── 3. BUILD CATEGORIES ── */}
+      {/* -- 3. BUILD CATEGORIES -- */}
       <Section theme="lightGray" id="build-types" reveal>
         <div className="text-center mb-16">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Build Categories</p>
@@ -255,7 +255,7 @@ export default function CustomBuildsPage() {
 
       <div className="trd-divider-light-to-dark" />
 
-      {/* ── 4. GALLERY STRIP ── */}
+      {/* -- 4. GALLERY STRIP -- */}
       <Section theme="dark" id="recent-builds" reveal>
         <div className="text-center mb-10">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-4">Recent Builds</p>
@@ -295,7 +295,7 @@ export default function CustomBuildsPage() {
 
       <div className="trd-divider-dark-to-light" />
 
-      {/* ── 5. THE PROCESS ── */}
+      {/* -- 5. THE PROCESS -- */}
       <Section theme="light" id="the-process" reveal>
         <div className="text-center mb-16">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">How It Works</p>
@@ -330,7 +330,7 @@ export default function CustomBuildsPage() {
 
       <BuildTimeline theme="light" />
 
-      {/* ── 6. PRICING ── */}
+      {/* -- 6. PRICING -- */}
       <section className="relative overflow-hidden bg-[#1d1d1f] py-20 sm:py-28">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%)]" />
         <div className="relative max-w-3xl mx-auto px-6 text-center">
@@ -369,7 +369,7 @@ export default function CustomBuildsPage() {
         </div>
       </section>
 
-      {/* ── 7. FAQ ── */}
+      {/* -- 7. FAQ -- */}
       <Section theme="lightGray" id="faq" reveal>
         <div className="text-center mb-12">
           <h2 className="trd-section-headline text-[#1d1d1f]">
@@ -395,7 +395,7 @@ export default function CustomBuildsPage() {
         </div>
       </Section>
 
-      {/* ── 8. CLOSING CTA ── */}
+      {/* -- 8. CLOSING CTA -- */}
       <section className="relative overflow-hidden bg-[#1d1d1f] py-20 sm:py-28">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(255,55,95,0.06)_0%,transparent_50%)]" />
         <div className="relative max-w-3xl mx-auto px-6 text-center">

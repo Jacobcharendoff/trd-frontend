@@ -198,7 +198,7 @@ function ProcessSection() {
       <div className="text-center mt-20 space-y-4">
         <p className="text-[18px] text-[#1d1d1f] font-medium">
           Custom builds typically start from{' '}
-          <span className="trd-gradient-text font-bold">$2,000 USD</span>
+          <span className="trd-gradient-text font-bold">$1,999 USD</span>
         </p>
         <p className="text-[14px] text-[#1d1d1f]/40">
           Every rig is different. Your consultation is free — we give you a straight quote.

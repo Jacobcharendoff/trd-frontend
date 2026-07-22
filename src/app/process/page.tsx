@@ -22,7 +22,7 @@ const processFAQs = [
   },
   {
     q: 'How much does a custom build cost?',
-    a: 'Builds start from $2,000 USD. Final price depends on board size, pedal count, power requirements, MIDI complexity, and cable routing. You get a firm quote after the consultation — no surprises.',
+    a: 'Builds start from $1,999 USD. Final price depends on board size, pedal count, power requirements, MIDI complexity, and cable routing. You get a firm quote after the consultation — no surprises.',
   },
   {
     q: 'What kind of support do I get after the build?',
