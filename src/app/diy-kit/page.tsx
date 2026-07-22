@@ -172,6 +172,9 @@ export default function DiyKitPage() {
         </div>
       </section>
 
+      {/* Timeline */}
+      <BuildTimeline theme="light" />
+
       {/* CTA */}
       <section className="py-20 sm:py-28 bg-[#0a0a0a] text-center">
         <div className="max-w-[680px] mx-auto px-6">
