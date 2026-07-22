@@ -233,7 +233,7 @@ export default function ProcessPage() {
                 {step.details.map((detail) => (
                   <li key={detail} className="flex items-start gap-3">
                     <svg
-                      className="w-5 h-5 text-[#10B981] flex-shrink-0 mt-0.5"
+                      className="w-5 h-5 text-[#0071E3] flex-shrink-0 mt-0.5"
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth={2}
@@ -335,7 +335,7 @@ export default function ProcessPage() {
 
       {/* ── CLOSING CTA ── */}
       <section className="relative overflow-hidden bg-[#1d1d1f] py-20 sm:py-28">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(255,55,95,0.06)_0%,transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(191,90,242,0.06)_0%,transparent_50%)]" />
         <div className="relative max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f5f5f7] tracking-tight mb-4">
             Step one is a conversation.

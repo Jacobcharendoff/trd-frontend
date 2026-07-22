@@ -33,7 +33,7 @@ function Hero() {
             {/* Left: Content */}
             <div className="space-y-8">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/[0.05] border border-white/[0.08] rounded-full">
-                <span className="inline-block w-2 h-2 rounded-full bg-[#10B981] trd-pulse-dot" />
+                <span className="inline-block w-2 h-2 rounded-full bg-[#0071E3] trd-pulse-dot" />
                 <span className="text-[13px] text-white/[0.85]">Custom builds &middot; Houston, TX</span>
               </div>
 
@@ -49,7 +49,7 @@ function Hero() {
               <div className="flex flex-wrap gap-6 py-4">
                 {[
                   { icon: 'M12 8v4l3 2m6-3a9 9 0 11-18 0 9 9 0 0118 0z', color: '#0071E3', label: '30 minutes' },
-                  { icon: 'M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z', color: '#10B981', label: 'Google Meet' },
+                  { icon: 'M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z', color: '#BF5AF2', label: 'Google Meet' },
                   { icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z', color: '#0071E3', label: 'Complimentary' },
                 ].map((meta) => (
                   <div key={meta.label} className="flex items-center gap-3">
@@ -69,7 +69,7 @@ function Hero() {
                 <ul className="space-y-3">
                   {["What you play and the tone you're chasing", "Your current rig — what's working, what's not", "A custom build plan with timeline and pricing"].map((item) => (
                     <li key={item} className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-[#10B981] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-5 h-5 text-[#0071E3] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                       <span className="text-[14px] text-white/[0.85]">{item}</span>
@@ -80,7 +80,7 @@ function Hero() {
 
               <p className="text-[14px] text-white/[0.65]">
                 Looking for signal chain feedback or a one-off consultation?{' '}
-                <Link href="/tone-tutoring" className="text-[#34d399] hover:text-[#10B981] transition-colors font-medium">
+                <Link href="/tone-tutoring" className="text-[#0071E3] hover:text-[#005BB5] transition-colors font-medium">
                   Check out Tone Tutoring &rarr;
                 </Link>
               </p>

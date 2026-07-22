@@ -27,7 +27,7 @@ function AccordionItem({ title, content }: { title: string; content: string }) {
 export default function ToneTutoringPage() {
   return (
     <>
-      {/* ──── HERO ──── */}
+      {/* ---- HERO ---- */}
       <div className="relative w-full bg-black overflow-hidden">
         <div className="relative trd-aurora-intense min-h-screen flex items-end justify-center">
           <video
@@ -95,7 +95,7 @@ export default function ToneTutoringPage() {
 
       <div className="trd-divider-dark-to-light" />
 
-      {/* ──── THE PROBLEM ──── */}
+      {/* ---- THE PROBLEM ---- */}
       <Section theme="light" id="pain-points" reveal>
         <div className="mb-12">
           <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
@@ -127,7 +127,7 @@ export default function ToneTutoringPage() {
         </div>
       </Section>
 
-      {/* ──── WHAT YOU GET ──── */}
+      {/* ---- WHAT YOU GET ---- */}
       <Section theme="lightGray" id="what-you-get" reveal>
         <div className="mb-12">
           <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
@@ -146,7 +146,7 @@ export default function ToneTutoringPage() {
             { title: 'Follow-up Notes', desc: "Within 24 hours you get written notes with specific next steps. Not vague advice. Actual things to go do." },
           ].map((item) => (
             <div key={item.title} className="bg-white rounded-2xl p-8 flex gap-4 border border-black/[0.04]">
-              <div className="text-[#10B981] text-lg font-bold flex-shrink-0 mt-0.5">&#10003;</div>
+              <div className="text-[#0071E3] text-lg font-bold flex-shrink-0 mt-0.5">&#10003;</div>
               <div>
                 <h3 className="text-lg font-semibold text-[#1d1d1f] mb-2">{item.title}</h3>
                 <p className="text-[#1d1d1f]/60 leading-relaxed">{item.desc}</p>
@@ -156,7 +156,7 @@ export default function ToneTutoringPage() {
         </div>
       </Section>
 
-      {/* ──── HOW IT WORKS ──── */}
+      {/* ---- HOW IT WORKS ---- */}
       <Section theme="light" id="process" reveal>
         <div className="mb-12">
           <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
@@ -180,7 +180,7 @@ export default function ToneTutoringPage() {
         </div>
       </Section>
 
-      {/* ──── REVIEWS ──── */}
+      {/* ---- REVIEWS ---- */}
       <Section theme="lightGray" id="reviews" reveal>
         <div className="mb-12">
           <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
@@ -197,7 +197,7 @@ export default function ToneTutoringPage() {
             <div key={review.name} className="bg-white rounded-2xl p-8 border border-black/[0.06]">
               <div className="mb-4 flex gap-1">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-4 h-4" fill="#F5A623" viewBox="0 0 20 20">
+                  <svg key={i} className="w-4 h-4" fill="#BF5AF2" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}
@@ -214,7 +214,7 @@ export default function ToneTutoringPage() {
 
       <div className="trd-divider-gray-to-dark" />
 
-      {/* ──── PRICING ──── */}
+      {/* ---- PRICING ---- */}
       <Section theme="dark" id="pricing" reveal>
         <div className="mb-12">
           <h2 className="trd-section-headline text-[#f5f5f7] mb-4">
@@ -234,7 +234,7 @@ export default function ToneTutoringPage() {
             <ul className="space-y-3 mb-8">
               {['60-minute 1-on-1 video session', 'Full signal chain audit', 'Session recording delivered', 'Follow-up notes within 24 hrs', 'Honest gear recommendations'].map((item) => (
                 <li key={item} className="flex gap-3">
-                  <span className="text-[#10B981]">&#10003;</span>
+                  <span className="text-[#0071E3]">&#10003;</span>
                   <span className="text-[#f5f5f7]/80">{item}</span>
                 </li>
               ))}
@@ -252,7 +252,7 @@ export default function ToneTutoringPage() {
 
       <div className="trd-divider-dark-to-light" />
 
-      {/* ──── FAQ ──── */}
+      {/* ---- FAQ ---- */}
       <Section theme="light" id="faq" reveal>
         <div className="mb-12">
           <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
@@ -273,7 +273,7 @@ export default function ToneTutoringPage() {
 
       <div className="trd-divider-light-to-dark" />
 
-      {/* ──── CLOSING CTA ──── */}
+      {/* ---- CLOSING CTA ---- */}
       <Section theme="dark" id="final-cta" reveal className="text-center">
         <div className="mb-8">
           <h2 className="trd-section-headline text-[#f5f5f7] mb-4">

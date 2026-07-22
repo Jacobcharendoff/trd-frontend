@@ -198,7 +198,7 @@ export default function Home() {
         <div className="text-center mt-10">
           <Link
             href="/custom-builds"
-            className="inline-flex items-center gap-2 text-[#34D399] font-medium hover:underline transition-colors"
+            className="inline-flex items-center gap-2 text-[#0071E3] font-medium hover:underline transition-colors"
           >
             Explore our custom builds
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
@@ -241,7 +241,7 @@ export default function Home() {
 
       {/* ──── MID-PAGE CTA — Decision point ──── */}
       <section className="relative overflow-hidden bg-[#1d1d1f] py-16 sm:py-20">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(255,55,95,0.06)_0%,transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(191,90,242,0.06)_0%,transparent_50%)]" />
         <div className="relative max-w-4xl mx-auto px-6 text-center">
           <h3 className="text-2xl sm:text-3xl font-bold text-[#f5f5f7] tracking-tight mb-3">
             Two ways to get started.
@@ -331,7 +331,7 @@ export default function Home() {
                 '60-min 1-on-1 video call',
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <span className="text-[#10B981] mt-0.5 flex-shrink-0">✓</span>
+                  <span className="text-[#0071E3] mt-0.5 flex-shrink-0">✓</span>
                   <span className="text-[#f5f5f7]/70 text-sm leading-snug">{item}</span>
                 </div>
               ))}
@@ -372,7 +372,7 @@ export default function Home() {
                 'Bulletproof on any stage',
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <span className="text-[#10B981] mt-0.5 flex-shrink-0">✓</span>
+                  <span className="text-[#0071E3] mt-0.5 flex-shrink-0">✓</span>
                   <span className="text-[#f5f5f7]/80 text-sm leading-snug">{item}</span>
                 </div>
               ))}
@@ -460,7 +460,7 @@ export default function Home() {
 
       {/* ──── 11. CLOSING CTA — Final push ──── */}
       <section className="relative overflow-hidden bg-[#1d1d1f] py-20 sm:py-28">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(255,55,95,0.06)_0%,transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(191,90,242,0.06)_0%,transparent_50%)]" />
         <div className="relative max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f5f5f7] tracking-tight mb-4">
             Your tone is worth getting right.
