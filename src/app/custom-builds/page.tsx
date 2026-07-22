@@ -7,7 +7,7 @@ import BuildTimeline from '@/components/BuildTimeline';
 const customBuildsFAQs = [
   {
     q: 'How much does a custom pedalboard build cost?',
-    a: 'Builds start from $1,500 USD and scale with complexity. Price depends on board size, number of pedals, power requirements, MIDI integration, and cable routing. Every build is quoted individually after your free consultation.',
+    a: 'Builds start from $1,999 USD and scale with complexity. Price depends on board size, number of pedals, power requirements, MIDI integration, and cable routing. Every build is quoted individually after your free consultation.',
   },
   {
     q: 'How long does a custom pedalboard build take?',
@@ -336,7 +336,7 @@ export default function CustomBuildsPage() {
         <div className="relative max-w-3xl mx-auto px-6 text-center">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-4">Pricing</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f5f5f7] tracking-tight mb-6">
-            Builds start from <span className="trd-gradient-text">$1,500 USD</span>
+            Builds start from <span className="trd-gradient-text">$1,999 USD</span>
           </h2>
           <p className="text-lg text-[#f5f5f7]/60 mb-4 max-w-xl mx-auto">
             Every rig is different, so every quote is different. Price depends on:
