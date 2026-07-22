@@ -1,5 +1,32 @@
 @import "tailwindcss";
 
+/* ─── Tailwind v4 Theme Bridge ───
+   Maps design tokens to first-class Tailwind utilities.
+   Usage: bg-trd-dark, text-trd-blue, border-trd-border-light, etc.
+*/
+@theme {
+  --color-trd-black: #000000;
+  --color-trd-dark: #0a0a0a;
+  --color-trd-dark-card: #1d1d1f;
+  --color-trd-light-gray: #f5f5f7;
+  --color-trd-white: #ffffff;
+  --color-trd-blue: #0071E3;
+  --color-trd-blue-dark: #005BB5;
+  --color-trd-purple: #BF5AF2;
+  --color-trd-pink: #FF375F;
+  --color-trd-amber: #F59E0B;
+  --color-trd-green: #10B981;
+  --color-trd-green-light: #34D399;
+  --color-trd-text: #1d1d1f;
+  --color-trd-text-secondary: rgba(0, 0, 0, 0.5);
+  --color-trd-text-muted: rgba(0, 0, 0, 0.4);
+  --color-trd-text-on-dark: #f5f5f7;
+  --color-trd-text-on-dark-secondary: rgba(245, 245, 247, 0.6);
+  --color-trd-text-on-dark-muted: rgba(255, 255, 255, 0.4);
+  --color-trd-border-light: rgba(0, 0, 0, 0.06);
+  --color-trd-border-dark: rgba(255, 255, 255, 0.08);
+}
+
 /* ─── TRD Global Design System ─── */
 
 :root {
@@ -53,7 +80,13 @@ body {
   color: rgba(245, 245, 247, 0.6);
 }
 
-/* ─── Gradient Text — Tie-Dye (Blue → Purple → Pink → Amber) ─── */
+.trd-subheadline-light {
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.6;
+  color: rgba(29, 29, 31, 0.6);
+}
+
+/* ─── Gradient Text — Tie-Dye (Blue > Purple > Pink > Amber) ─── */
 .trd-gradient-text {
   background: linear-gradient(135deg, #0071E3, #BF5AF2, #FF375F, #F59E0B);
   -webkit-background-clip: text;
@@ -151,7 +184,7 @@ body {
   animation: pulse-dot 2s ease-in-out infinite;
 }
 
-/* ─── Glass Card ─── */
+/* ─── Glass Cards ─── */
 .trd-glass-dark {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -162,6 +195,64 @@ body {
   background: var(--trd-light-gray);
   border: 1px solid var(--trd-border-light);
   border-radius: 16px;
+}
+
+/* ─── Marquee (Reviews, Products) ─── */
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 60s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right 60s linear infinite;
+}
+
+/* ─── Review Card ─── */
+.trd-review-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  min-width: 320px;
+  max-width: 400px;
+  flex-shrink: 0;
+}
+
+/* ─── Popup Animations (ConsultationPopup, ExitIntent) ─── */
+@keyframes popup-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popup-scale {
+  from { opacity: 0; transform: scale(0.96) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes popup-slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.animate-popup-fade {
+  animation: popup-fade 0.3s ease-out;
+}
+
+.animate-popup-scale {
+  animation: popup-scale 0.35s ease-out;
+}
+
+.animate-popup-slide-up {
+  animation: popup-slide-up 0.4s ease-out;
 }
 
 /* ─── Blog Article Typography ─── */
