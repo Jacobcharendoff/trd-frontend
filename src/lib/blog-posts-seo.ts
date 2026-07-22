@@ -320,7 +320,7 @@ export const seoPosts: BlogPost[] = [
       {
         heading: 'I\'m Not Going to Tell You That DIY Is Bad',
         headingLevel: 2,
-        content: `<p>Let's get this out of the way: I built pedalboards for a living, and I'm still going to be honest with you. If you have four pedals, a One Spot daisy chain, and a Pedaltrain Nano — you don't need a professional build. Zip-tie your pedals down, run some patch cables, plug in, and go play. Spend the money on a lesson or a better overdrive.</p>
+        content: `<p>Let's get this out of the way: I built pedalboards for a living, and I'm still going to be honest with you. If you have four pedals, a One Spot daisy chain, and a Pedaltrain Nano — you don't need a professional build. Strap your pedals down, run some patch cables, plug in, and go play. Spend the money on a lesson or a better overdrive.</p>
 <p>DIY makes total sense for simple setups. It's fun, it's educational, and the stakes are low. If you wire something wrong, the worst that happens is some noise or a dead signal that you can troubleshoot in 10 minutes. There's real value in understanding your own rig, and the best way to learn is to build one.</p>
 <p>But there's a point where DIY stops being fun and starts being a time-sucking, tone-killing headache. That point is different for everyone, but after building 200+ rigs, I've gotten pretty good at identifying it. Let me tell you what I see when a player brings in a board they've been fighting with for months.</p>`,
       },
@@ -356,7 +356,7 @@ export const seoPosts: BlogPost[] = [
 <li>Power supply (CIOKS DC7): ~$300</li>
 <li>Power cables and adapters: ~$50-80</li>
 <li>MIDI cables: ~$40-60</li>
-<li>Velcro, zip ties, cable management: ~$30-50</li>
+<li>Mounting supplies, cable management: ~$30-50</li>
 <li>Your time: 20-40 hours (conservatively)</li>
 </ul>
 <p>You're looking at $740-840 in parts alone, plus your time. And if you buy cheap patch cables that fail, you'll end up replacing them anyway.</p>
@@ -458,7 +458,7 @@ export const seoPosts: BlogPost[] = [
         content: `<p>Your pedalboard gets picked up, set down, stacked under gear, slid across stages, and occasionally dropped. The physical construction has to handle that.</p>
 <ul>
 <li><strong>Road case or padded bag:</strong> A Pedaltrain soft case is fine for local gigs. For touring, get a hard case — ATA-rated if possible. A good road case from Pedaltrain, SKB, or a custom builder protects against drops, stacking weight, and weather. It's the difference between "my board fell off the trailer and it's fine" and "my board fell off the trailer and three pedals are broken."</li>
-<li><strong>Secure pedal mounting:</strong> Dual Lock (3M) over standard Velcro, every time. Dual Lock has a mushroom-shaped interlocking design that holds 5x stronger than regular hook-and-loop. A pedal mounted with Dual Lock is not coming off unless you deliberately pull it. Standard Velcro loosens over time, especially in heat.</li>
+<li><strong>Secure pedal mounting:</strong> Use professional-grade mounting that holds strong under road conditions. Your pedals should not come off unless you deliberately pull them. Cheap mounting solutions loosen over time, especially in heat.</li>
 <li><strong>No loose components:</strong> Every cable, every power cable, every adapter should be secured to the board or routed through channels. Nothing should move when you pick up the board and shake it. If anything rattles or swings, it's going to pull loose eventually.</li>
 <li><strong>Accessible battery compartments:</strong> If any pedals run on batteries as a backup power option, make sure you can access the battery compartment without removing the pedal from the board. This sounds obvious, but I've seen boards where the only way to change a 9V battery is to rip the pedal off and unplug everything.</li>
 </ul>`,
