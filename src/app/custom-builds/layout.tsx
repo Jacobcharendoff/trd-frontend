@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Custom Pedalboard Builds',
   description:
-    'Hand-wired custom pedalboard builds for touring artists and home players. Fully isolated power, engineered signal paths, lifetime support. Builds from $2,000 USD. Ships nationwide.',
+    'Hand-wired custom pedalboard builds for touring artists and home players. Fully isolated power, engineered signal paths, lifetime support. Builds from $1,500 USD. Ships nationwide.',
   openGraph: {
     title: 'Custom Pedalboard Builds | The Rig Doctor',
     description:
