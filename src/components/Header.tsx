@@ -68,7 +68,7 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* -- Announcement Bar -- */}
       {bannerVisible && (
-        <div className="relative bg-gradient-to-r from-[#6366F1] via-[#A855F7] to-[#EC4899] text-white text-center">
+        <div className="relative bg-[#1d1d1f] text-white text-center">
           <Link
             href={announcement.href}
             className="block px-10 py-2 text-[12px] sm:text-[13px] font-medium tracking-wide hover:opacity-90 transition-opacity"
