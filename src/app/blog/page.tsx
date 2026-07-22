@@ -24,7 +24,7 @@ export default function BlogIndex() {
     <>
       {/* ── Hero ── */}
       <Section theme="dark" className="!py-16 md:!py-24">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#F5A623] mb-4">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#0071E3] mb-4">
           From the Workbench
         </p>
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#f5f5f7] mb-4">
@@ -56,10 +56,10 @@ export default function BlogIndex() {
               </div>
             )}
             <div>
-              <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#F5A623] mb-3">
+              <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#0071E3] mb-3">
                 {featured.category}
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1d1d1f] mb-3 group-hover:text-[#F5A623] transition-colors">
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1d1d1f] mb-3 group-hover:text-[#0071E3] transition-colors">
                 {featured.title}
               </h2>
               <p className="text-[15px] text-black/50 leading-relaxed mb-4">
@@ -108,10 +108,10 @@ export default function BlogIndex() {
                   </div>
                 )}
                 <div className="p-5">
-                  <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#F5A623] mb-2">
+                  <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#0071E3] mb-2">
                     {post.category}
                   </span>
-                  <h3 className="text-[15px] font-semibold text-[#1d1d1f] mb-2 group-hover:text-[#F5A623] transition-colors leading-snug">
+                  <h3 className="text-[15px] font-semibold text-[#1d1d1f] mb-2 group-hover:text-[#0071E3] transition-colors leading-snug">
                     {post.title}
                   </h3>
                   <p className="text-[13px] text-black/45 leading-relaxed line-clamp-2">
@@ -139,7 +139,7 @@ export default function BlogIndex() {
           </p>
           <Link
             href="/book"
-            className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48A1A] text-black font-semibold px-8 py-4 rounded-lg transition-colors"
+            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-lg transition-colors"
           >
             Book a Free Consultation
           </Link>

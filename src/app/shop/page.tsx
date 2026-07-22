@@ -173,8 +173,8 @@ export default function ShopPage() {
             {loading ? 'Loading products...' : `Showing ${filteredProducts.length} ${filteredProducts.length === 1 ? 'product' : 'products'}`}
           </p>
           {isLive && (
-            <span className="inline-flex items-center gap-1 text-xs font-medium text-[#10B981] bg-[#10B981]/10 px-2 py-0.5 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
+            <span className="inline-flex items-center gap-1 text-xs font-medium text-[#0071E3] bg-[#0071E3]/10 px-2 py-0.5 rounded-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0071E3] animate-pulse" />
               Live
             </span>
           )}

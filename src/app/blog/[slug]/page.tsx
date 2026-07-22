@@ -93,7 +93,7 @@ export default async function BlogPost({ params }: PageProps) {
             Back to Blog
           </Link>
 
-          <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#F5A623] mb-4">
+          <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#0071E3] mb-4">
             {post.category}
           </span>
 
@@ -166,7 +166,7 @@ export default async function BlogPost({ params }: PageProps) {
             </h2>
             <Link
               href={post.cta.href}
-              className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48A1A] text-black font-semibold px-8 py-4 rounded-lg transition-colors"
+              className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-lg transition-colors"
             >
               {post.cta.label}
             </Link>
@@ -199,10 +199,10 @@ export default async function BlogPost({ params }: PageProps) {
                   </div>
                 )}
                 <div className="p-5">
-                  <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#F5A623] mb-2">
+                  <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#0071E3] mb-2">
                     {rp.category}
                   </span>
-                  <h3 className="text-[15px] font-semibold text-[#1d1d1f] mb-2 group-hover:text-[#F5A623] transition-colors leading-snug">
+                  <h3 className="text-[15px] font-semibold text-[#1d1d1f] mb-2 group-hover:text-[#0071E3] transition-colors leading-snug">
                     {rp.title}
                   </h3>
                   <p className="text-[13px] text-black/45 leading-relaxed line-clamp-2">

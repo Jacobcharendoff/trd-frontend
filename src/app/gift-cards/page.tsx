@@ -256,8 +256,8 @@ export default function GiftCardsPage() {
 
           {/* Use Case 3 */}
           <div className="bg-[#f5f5f7] rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
-            <div className="w-12 h-12 rounded-2xl bg-[#FF375F]/10 flex items-center justify-center mb-6">
-              <svg viewBox="0 0 24 24" className="w-6 h-6 text-[#FF375F]" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <div className="w-12 h-12 rounded-2xl bg-[#BF5AF2]/10 flex items-center justify-center mb-6">
+              <svg viewBox="0 0 24 24" className="w-6 h-6 text-[#BF5AF2]" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
               </svg>
             </div>
@@ -265,7 +265,7 @@ export default function GiftCardsPage() {
             <p className="text-[#1d1d1f]/60 leading-relaxed mb-4">
               Maybe they need cables, a new board, or a session first and a build later. The card works site-wide, so they use it however they want. No restrictions.
             </p>
-            <p className="text-sm text-[#FF375F] font-medium">Works on anything at therigdr.com</p>
+            <p className="text-sm text-[#BF5AF2] font-medium">Works on anything at therigdr.com</p>
           </div>
         </div>
       </Section>
@@ -325,7 +325,7 @@ export default function GiftCardsPage() {
             <div key={review.name} className="bg-[#f5f5f7] rounded-2xl p-8">
               <div className="mb-4 flex gap-1">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-4 h-4" fill="#EAB308" viewBox="0 0 20 20">
+                  <svg key={i} className="w-4 h-4" fill="#BF5AF2" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}
@@ -440,7 +440,7 @@ function DarkAccordionItem({ title, content }: { title: string; content: string 
       >
         <h3 className="text-lg font-semibold text-[#f5f5f7] text-left">{title}</h3>
         <span
-          className={`text-[#F5A623] text-2xl font-light transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}
+          className={`text-[#0071E3] text-2xl font-light transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}
         >
           +
         </span>
