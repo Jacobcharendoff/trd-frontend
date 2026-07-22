@@ -287,7 +287,7 @@ export default function CustomBuildsPage() {
           ))}
         </div>
         <div className="text-center mt-8">
-          <Link href="/gallery" className="text-[#34d399] hover:text-[#10B981] transition-colors font-medium text-sm">
+          <Link href="/gallery" className="text-[#0071E3] hover:text-[#005BB5] transition-colors font-medium text-sm">
             View full gallery &rarr;
           </Link>
         </div>
@@ -344,7 +344,7 @@ export default function CustomBuildsPage() {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-10 max-w-lg mx-auto">
             {['Board size', 'Pedal count', 'Power needs', 'MIDI complexity', 'Cable routing', 'Rush timeline'].map((factor) => (
               <div key={factor} className="flex items-center gap-2">
-                <span className="text-[#10B981] text-sm">&bull;</span>
+                <span className="text-[#0071E3] text-sm">&bull;</span>
                 <span className="text-sm text-[#f5f5f7]/70">{factor}</span>
               </div>
             ))}
@@ -397,7 +397,7 @@ export default function CustomBuildsPage() {
 
       {/* -- 8. CLOSING CTA -- */}
       <section className="relative overflow-hidden bg-[#1d1d1f] py-20 sm:py-28">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(255,55,95,0.06)_0%,transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(191,90,242,0.06)_0%,transparent_50%)]" />
         <div className="relative max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f5f5f7] tracking-tight mb-4">
             Your tone is worth getting right.

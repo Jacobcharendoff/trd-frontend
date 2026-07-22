@@ -62,7 +62,7 @@ export default function PricingPage() {
             <ul className="space-y-3 mb-8 flex-1">
               {['60-minute video session', 'Signal chain analysis', 'Personalized rig blueprint', 'Pedal order recommendations', 'Gain staging walkthrough', 'Recording of your session'].map((f) => (
                 <li key={f} className="flex items-start gap-3 text-sm">
-                  <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#10B981]" viewBox="0 0 16 16" fill="currentColor">
+                  <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#0071E3]" viewBox="0 0 16 16" fill="currentColor">
                     <path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z" />
                   </svg>
                   <span className="text-[#1d1d1f]/70">{f}</span>
@@ -90,7 +90,7 @@ export default function PricingPage() {
             <ul className="space-y-3 mb-8 flex-1">
               {['Hand-soldered Mogami patch cables', 'Custom rig blueprint', '60-min Tone Tutoring session', 'Pedalboard essentials kit', 'Signal chain layout diagram', 'Build support via text'].map((f) => (
                 <li key={f} className="flex items-start gap-3 text-sm">
-                  <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#10B981]" viewBox="0 0 16 16" fill="currentColor">
+                  <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#0071E3]" viewBox="0 0 16 16" fill="currentColor">
                     <path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z" />
                   </svg>
                   <span className="text-[#1d1d1f]/70">{f}</span>
@@ -106,9 +106,9 @@ export default function PricingPage() {
           </div>
 
           {/* Custom Build — Featured */}
-          <div className="relative bg-[#1d1d1f] rounded-2xl p-8 flex flex-col ring-2 ring-[#F5A623]/30 hover:-translate-y-1 transition-all duration-300 shadow-[0_0_40px_rgba(245,166,35,0.1)]">
+          <div className="relative bg-[#1d1d1f] rounded-2xl p-8 flex flex-col ring-2 ring-[#0071E3]/30 hover:-translate-y-1 transition-all duration-300 shadow-[0_0_40px_rgba(0,113,227,0.1)]">
             <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-              <span className="bg-gradient-to-r from-[#F5A623] to-[#10B981] text-white text-[11px] font-semibold tracking-wider uppercase px-4 py-1 rounded-full">
+              <span className="bg-gradient-to-r from-[#0071E3] to-[#BF5AF2] text-white text-[11px] font-semibold tracking-wider uppercase px-4 py-1 rounded-full">
                 Most Popular
               </span>
             </div>
@@ -123,7 +123,7 @@ export default function PricingPage() {
             <ul className="space-y-3 mb-8 flex-1">
               {['Free 30-min consultation', 'Custom design + rig blueprint', 'Hand-soldered Mogami cables', 'Isolated power solution', 'Full signal chain optimization', 'Lifetime support + free repairs', 'Ships nationwide'].map((f) => (
                 <li key={f} className="flex items-start gap-3 text-sm">
-                  <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#10B981]" viewBox="0 0 16 16" fill="currentColor">
+                  <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#0071E3]" viewBox="0 0 16 16" fill="currentColor">
                     <path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z" />
                   </svg>
                   <span className="text-white/70">{f}</span>
@@ -132,7 +132,7 @@ export default function PricingPage() {
             </ul>
             <Link
               href="/book"
-              className="block text-center rounded-full px-6 py-3.5 text-sm font-medium bg-[#F5A623] text-[#1d1d1f] hover:bg-[#F5A623]/90 transition-colors"
+              className="block text-center rounded-full px-6 py-3.5 text-sm font-medium bg-[#0071E3] text-white hover:bg-[#005BB5] transition-colors"
             >
               Book a Consultation
             </Link>
@@ -201,7 +201,7 @@ export default function PricingPage() {
 
       {/* CTA */}
       <section className="relative overflow-hidden bg-[#1d1d1f] py-20 sm:py-28">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(245,166,35,0.08)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(16,185,129,0.06)_0%,transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.08)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.06)_0%,transparent_55%)]" />
         <div className="relative max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f5f5f7] tracking-tight mb-4">
             Ready to build?

@@ -68,9 +68,9 @@ const artists = [
 export default function AboutPage() {
   return (
     <>
-      {/* ── Hero ── */}
+      {/* -- Hero -- */}
       <Section theme="dark" className="!py-20 md:!py-32">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#F5A623] mb-4">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#0071E3] mb-4">
           Our Story
         </p>
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#f5f5f7] mb-6 max-w-3xl">
@@ -82,7 +82,7 @@ export default function AboutPage() {
         </p>
       </Section>
 
-      {/* ── The Founders ── */}
+      {/* -- The Founders -- */}
       <Section theme="light">
         <div className="md:grid md:grid-cols-2 md:gap-16 items-center">
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-8 md:mb-0 border border-black/[0.04]">
@@ -96,7 +96,7 @@ export default function AboutPage() {
             />
           </div>
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#F5A623] mb-3">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#0071E3] mb-3">
               The Founders
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1d1d1f] mb-6">
@@ -128,10 +128,10 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {/* ── The Approach ── */}
+      {/* -- The Approach -- */}
       <Section theme="lightGray">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#F5A623] mb-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#0071E3] mb-3">
             How We Work
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1d1d1f] mb-4">
@@ -173,10 +173,10 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {/* ── Artists ── */}
+      {/* -- Artists -- */}
       <Section theme="light">
         <div className="text-center mb-10">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#F5A623] mb-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#0071E3] mb-3">
             Who We Build For
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1d1d1f] mb-4">
@@ -213,7 +213,7 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {/* ── Stats ── */}
+      {/* -- Stats -- */}
       <Section theme="dark">
         <div className="grid grid-cols-3 gap-6 text-center">
           {[
@@ -233,10 +233,10 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {/* ── Location ── */}
+      {/* -- Location -- */}
       <Section theme="lightGray">
         <div className="max-w-2xl mx-auto text-center">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#F5A623] mb-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#0071E3] mb-3">
             Based in Texas, Ships Nationwide
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1d1d1f] mb-4">
@@ -250,7 +250,7 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {/* ── CTA ── */}
+      {/* -- CTA -- */}
       <Section theme="dark">
         <div className="text-center">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#f5f5f7] mb-4">
@@ -263,7 +263,7 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/book"
-              className="inline-flex items-center gap-2 bg-[#F5A623] hover:bg-[#D48A1A] text-black font-semibold px-8 py-4 rounded-full transition-colors"
+              className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-full transition-colors"
             >
               Book a Free Consultation
             </Link>
