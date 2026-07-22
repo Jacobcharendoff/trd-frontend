@@ -358,7 +358,7 @@ export default function Home() {
             <p className="text-[#f5f5f7]/50 text-sm mb-6">
               Ship us your pedals. We design, wire, and build your dream rig from scratch.
             </p>
-            <p className="text-3xl font-bold text-[#f5f5f7] mb-1">From $2,000 <span className="text-lg font-normal text-[#f5f5f7]/50">USD</span></p>
+            <p className="text-3xl font-bold text-[#f5f5f7] mb-1">From $1,999 <span className="text-lg font-normal text-[#f5f5f7]/50">USD</span></p>
             <p className="text-[#f5f5f7]/30 text-sm mb-8">turnkey, guaranteed</p>
 
             <div className="space-y-4 flex-grow">
@@ -419,7 +419,7 @@ export default function Home() {
             },
             {
               q: "How much does a custom build cost?",
-              a: "Every rig is different, so every quote is different. Builds start from $2,000 USD and scale with complexity. Your consultation is free — we'll walk through what you need and give you a straight answer.",
+              a: "Every rig is different, so every quote is different. Builds start from $1,999 USD and scale with complexity. Your consultation is free — we'll walk through what you need and give you a straight answer.",
             },
             {
               q: "What is Tone Tutoring?",
