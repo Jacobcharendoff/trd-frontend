@@ -30,7 +30,7 @@ const customBuildsFAQs = [
   },
   {
     q: 'Where is The Rig Doctor located?',
-    a: 'We are based in Montgomery, TX and ship nationwide across the United States. The consultation is remote via Google Meet, and your pedals ship to and from our shop.',
+    a: 'We are based in Houston, TX and ship nationwide across the United States. The consultation is remote via Google Meet, and your pedals ship to and from our shop.',
   },
   {
     q: 'What happens during the free consultation?',
@@ -84,7 +84,7 @@ export default function CustomBuildsPage() {
 
           <div className="relative z-10 max-w-[1200px] mx-auto px-6 pb-24 pt-40 w-full text-center">
             <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-6">
-              Custom Pedalboard Builds &bull; Montgomery, TX &bull; Ships Nationwide
+              Custom Pedalboard Builds &bull; Houston, TX &bull; Ships Nationwide
             </p>
             <h1 className="trd-hero-headline text-[#f5f5f7] mb-6">
               Your rig, built from scratch.
@@ -150,7 +150,7 @@ export default function CustomBuildsPage() {
             {
               icon: 'M13 10V3L4 14h7v7l9-11h-7z',
               title: 'Fully Isolated Power',
-              desc: 'Every pedal gets clean, isolated power. No shared grounds, no noise bleed, no hum. We design the power layout specific to your pedals’ draw requirements.',
+              desc: 'Every pedal gets clean, isolated power. No shared grounds, no noise bleed, no hum. We design the power layout specific to your pedals\' draw requirements.',
             },
             {
               icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z',
@@ -170,7 +170,7 @@ export default function CustomBuildsPage() {
             {
               icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
               title: 'Lifetime Support',
-              desc: 'Your build doesn’t end when it ships. Need to swap a pedal? Add MIDI later? Something acting up? Call us. We’re here.',
+              desc: 'Your build doesn\'t end when it ships. Need to swap a pedal? Add MIDI later? Something acting up? Call us. We\'re here.',
             },
             {
               icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z',
@@ -210,7 +210,7 @@ export default function CustomBuildsPage() {
           {[
             {
               title: 'Touring Rigs',
-              desc: 'Built to survive the road. Reinforced mounting, redundant power, quick-swap capability, and cable management that holds up night after night. For players who can’t afford a bad show.',
+              desc: 'Built to survive the road. Reinforced mounting, redundant power, quick-swap capability, and cable management that holds up night after night. For players who can\'t afford a bad show.',
               image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Javy_B.png?v=1773867365',
               alt: 'Custom touring pedalboard build by The Rig Doctor',
             },
@@ -228,7 +228,7 @@ export default function CustomBuildsPage() {
             },
             {
               title: 'Home Player Boards',
-              desc: 'You don’t tour, but your tone still matters. Clean layout, proper power, no noise, and a board that makes you want to play more. Pro quality for your practice space.',
+              desc: 'You don\'t tour, but your tone still matters. Clean layout, proper power, no noise, and a board that makes you want to play more. Pro quality for your practice space.',
               image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Hunter_W._1.jpg?v=1774980806',
               alt: 'Custom home player pedalboard build',
             },

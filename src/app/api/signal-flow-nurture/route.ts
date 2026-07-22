@@ -16,7 +16,7 @@ const PDF_URL =
   'https://ul04rn4k3jtypxsy.public.blob.vercel-storage.com/Signal_Flow_Cheat_Sheet-ht17iWYR53dcOwLBPjes5W2F4jgaNa.pdf';
 const TONE_TUTORING_URL = 'https://www.therigdr.com/tone-tutoring';
 
-// ── Email content ──────────────────────────────────────────
+// ── Email content ──────────────────────────────────────────────────────
 
 function email1(firstName: string) {
   const name = firstName || 'there';
@@ -98,13 +98,13 @@ function email3(firstName: string) {
 
   <p>Either way, thanks for downloading the cheat sheet. Hope it's been useful.</p>
 
-  <p>Vince<br/><span style="color: #86868b;">The Rig Doctor · Montgomery, TX</span></p>
+  <p>Vince<br/><span style="color: #86868b;">The Rig Doctor · Houston, TX</span></p>
 </div>
     `.trim(),
   };
 }
 
-// ── Resend send helper ─────────────────────────────────────
+// ── Resend send helper ─────────────────────────────────────────────────
 
 const VINCE_FROM_EMAIL = process.env.RESEND_VINCE_FROM_EMAIL || 'Vince <vince@therigdr.com>';
 
@@ -139,7 +139,7 @@ async function sendEmail(params: {
   return res.json();
 }
 
-// ── API route handler ──────────────────────────────────────
+// ── API route handler ──────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
   try {

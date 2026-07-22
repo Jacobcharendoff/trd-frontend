@@ -31,7 +31,7 @@ export default function RefundsPage() {
           <div>
             <h2 className="text-2xl font-bold text-[#1d1d1f] mb-4">Cables and Accessories</h2>
             <p className="text-[#1d1d1f]/70 leading-relaxed">
-              Patch cables, instrument cables, power cables, and accessories may be returned within 30 days of delivery for a full refund, provided they are in original, unused condition. If a cable or accessory arrives defective, we will replace it at no cost \u2014 just contact us and we will send a prepaid return label.
+              Patch cables, instrument cables, power cables, and accessories may be returned within 30 days of delivery for a full refund, provided they are in original, unused condition. If a cable or accessory arrives defective, we will replace it at no cost — just contact us and we will send a prepaid return label.
             </p>
           </div>
 
@@ -59,14 +59,14 @@ export default function RefundsPage() {
           <div>
             <h2 className="text-2xl font-bold text-[#1d1d1f] mb-4">How to Request a Refund</h2>
             <p className="text-[#1d1d1f]/70 leading-relaxed">
-              To request a refund or return, email us at info@therigdr.com with your order number and a description of the issue. We will respond within 2 business days. Approved refunds are processed to the original payment method within 5\u201310 business days.
+              To request a refund or return, email us at info@therigdr.com with your order number and a description of the issue. We will respond within 2 business days. Approved refunds are processed to the original payment method within 5–10 business days.
             </p>
           </div>
 
           <div>
             <h2 className="text-2xl font-bold text-[#1d1d1f] mb-4">Return Shipping</h2>
             <p className="text-[#1d1d1f]/70 leading-relaxed">
-              For defective products, we cover return shipping costs. For non-defective returns within the 30-day window, the customer is responsible for return shipping. All returns should be shipped to: The Rig Doctor Inc., 641 Amesbury Rd, Montgomery, TX 77316.
+              For defective products, we cover return shipping costs. For non-defective returns within the 30-day window, the customer is responsible for return shipping. All returns should be shipped to: The Rig Doctor Inc., Houston, TX.
             </p>
           </div>
 

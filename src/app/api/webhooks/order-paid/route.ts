@@ -39,7 +39,7 @@ function isGiftCardOrder(lineItems: Array<any>): boolean {
   return lineItems.some((item) => item.gift_card === true);
 }
 
-// ── HMAC verification ──────────────────────────────────────
+// ── HMAC verification ──────────────────────────────────────────────────
 
 function verifyWebhook(rawBody: string, hmacHeader: string | null): boolean {
   if (!SHOPIFY_WEBHOOK_SECRET || !hmacHeader) return false;
@@ -57,7 +57,7 @@ function verifyWebhook(rawBody: string, hmacHeader: string | null): boolean {
   }
 }
 
-// ── Tone Tutoring email template ────────────────────────────
+// ── Tone Tutoring email template ────────────────────────────────────────
 
 function buildToneTutoringEmail(firstName: string) {
   const name = firstName || 'there';
@@ -154,7 +154,7 @@ function buildToneTutoringEmail(firstName: string) {
                 </tr>
                 <tr>
                   <td align="center" style="padding-top: 12px; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 11px; color: #c7c7cc;">
-                    Montgomery, TX
+                    Houston, TX
                   </td>
                 </tr>
               </table>
@@ -171,7 +171,7 @@ function buildToneTutoringEmail(firstName: string) {
   };
 }
 
-// ── Gift Card buyer thank-you email template ────────────────
+// ── Gift Card buyer thank-you email template ────────────────────────────
 
 function buildGiftCardBuyerEmail(firstName: string, amount: string) {
   const name = firstName || 'there';
@@ -284,7 +284,7 @@ function buildGiftCardBuyerEmail(firstName: string, amount: string) {
 <tr>
   <td style="padding: 28px 40px 40px; text-align: center;" class="section-pad">
     <p style="font-family:'Inter',sans-serif; font-size:12px; color:rgba(255,255,255,0.3); line-height:1.8; margin:0;">
-      The Rig Doctor &bull; Montgomery, TX<br/>
+      The Rig Doctor &bull; Houston, TX<br/>
       Hand-wired pedalboards built around how you actually play.<br/><br/>
       <a href="https://www.therigdr.com?utm_source=email&utm_medium=transactional&utm_campaign=gift_card_buyer" style="color:rgba(255,255,255,0.4); text-decoration:underline;">therigdr.com</a>
       &nbsp;&bull;&nbsp;
@@ -302,7 +302,7 @@ function buildGiftCardBuyerEmail(firstName: string, amount: string) {
   };
 }
 
-// ── Resend helper ──────────────────────────────────────────
+// ── Resend helper ──────────────────────────────────────────────────────
 
 interface SendEmailOptions {
   from: string;
@@ -335,7 +335,7 @@ async function sendEmail({ from, to, bcc, subject, html, replyTo }: SendEmailOpt
   return res.json();
 }
 
-// ── Webhook handler ────────────────────────────────────────
+// ── Webhook handler ────────────────────────────────────────────────────
 
 export async function POST(req: NextRequest) {
   try {

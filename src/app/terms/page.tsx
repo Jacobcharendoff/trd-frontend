@@ -75,7 +75,7 @@ export default function TermsPage() {
           <div>
             <h2 className="text-2xl font-bold text-[#1d1d1f] mb-4">Governing Law</h2>
             <p className="text-[#1d1d1f]/70 leading-relaxed">
-              These terms are governed by the laws of the State of Texas, United States. Any disputes arising from these terms or your use of our website shall be resolved in the courts of Montgomery County, Texas.
+              These terms are governed by the laws of the State of Texas, United States. Any disputes arising from these terms or your use of our website shall be resolved in the courts of Harris County, Texas.
             </p>
           </div>
 

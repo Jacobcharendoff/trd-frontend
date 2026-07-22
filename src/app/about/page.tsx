@@ -6,7 +6,7 @@ import Section from '@/components/Section';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Meet Mason Marangell, Vince DiGoia, and Jacob Charendoff — the founders behind The Rig Doctor. 17+ years building custom pedalboards in Montgomery, TX for touring artists and home players nationwide.',
+    'Meet Mason Marangell, Vince DiGoia, and Jacob Charendoff — the founders behind The Rig Doctor. 17+ years building custom pedalboards in Houston, TX for touring artists and home players nationwide.',
   openGraph: {
     title: 'About The Rig Doctor',
     description:
@@ -240,10 +240,10 @@ export default function AboutPage() {
             Based in Texas, Ships Nationwide
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1d1d1f] mb-4">
-            Montgomery, TX
+            Houston, TX
           </h2>
           <p className="text-[15px] text-black/50 leading-relaxed">
-            Our workshop is in Montgomery, Texas — just north of Houston.
+            Our workshop is in Houston, Texas.
             We build for guitarists across the entire US. Ship us your
             pedals, we&apos;ll ship you back a rig you can trust.
           </p>

@@ -24,14 +24,14 @@ export default function ShippingPage() {
           <div>
             <h2 className="text-2xl font-bold text-[#1d1d1f] mb-4">Where We Ship</h2>
             <p className="text-[#1d1d1f]/70 leading-relaxed">
-              We ship to all 50 US states from our workshop in Montgomery, Texas. International shipping is available on a case-by-case basis \u2014 contact us at info@therigdr.com for a quote.
+              We ship to all 50 US states from our workshop in Houston, Texas. International shipping is available on a case-by-case basis — contact us at info@therigdr.com for a quote.
             </p>
           </div>
 
           <div>
             <h2 className="text-2xl font-bold text-[#1d1d1f] mb-4">Processing Times</h2>
             <p className="text-[#1d1d1f]/70 leading-relaxed mb-4">
-              In-stock items such as patch cables, instrument cables, and accessories typically ship within 1\u20133 business days of your order being placed.
+              In-stock items such as patch cables, instrument cables, and accessories typically ship within 1–3 business days of your order being placed.
             </p>
             <p className="text-[#1d1d1f]/70 leading-relaxed">
               Custom pedalboard builds have variable timelines depending on complexity and component availability. Your estimated build and ship date will be communicated during the consultation process. We will keep you updated throughout the build.
@@ -72,7 +72,7 @@ export default function ShippingPage() {
           <div>
             <h2 className="text-2xl font-bold text-[#1d1d1f] mb-4">Local Pickup</h2>
             <p className="text-[#1d1d1f]/70 leading-relaxed">
-              Local pickup is available by appointment at our workshop in Montgomery, TX. Select &quot;Local Pickup&quot; at checkout or contact us to arrange a time. We love meeting the people who play the rigs we build.
+              Local pickup is available by appointment at our workshop in Houston, TX. Select &quot;Local Pickup&quot; at checkout or contact us to arrange a time. We love meeting the people who play the rigs we build.
             </p>
           </div>
 
