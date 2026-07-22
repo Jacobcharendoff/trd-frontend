@@ -8,7 +8,6 @@ import { products as staticProducts, getPriceDisplay } from '@/lib/products';
 
 const POPULAR_HANDLES = [
   'mogami-2314-patch-cables',
-  'powergrip-6-20-ft',
   'insert-cables-trs-to-dual-ts',
   'stereo-cables-trs',
   'power-cables',

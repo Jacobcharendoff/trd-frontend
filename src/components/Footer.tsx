@@ -36,6 +36,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white text-[11px] font-semibold uppercase tracking-widest mb-4">Resources</h4>
             <nav className="flex flex-col gap-2.5">
+              <Link href="/process" className="text-[13px] hover:text-white transition-colors">How We Build</Link>
               <Link href="/blog" className="text-[13px] hover:text-white transition-colors">Blog</Link>
               <Link href="/gallery" className="text-[13px] hover:text-white transition-colors">Build Gallery</Link>
             </nav>

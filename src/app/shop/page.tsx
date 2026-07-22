@@ -23,8 +23,6 @@ type StorefrontEntry = {
 };
 
 const STOREFRONT_WHITELIST: StorefrontEntry[] = [
-  { titleMatch: 'powergrip',     category: 'Accessories', order: 3 },
-  { titleMatch: 'power grip',    category: 'Accessories', order: 3 },
   { titleMatch: 'rig rendering', category: 'Services',    order: 4 },
   { titleMatch: 'rig blueprint', category: 'Services',    order: 4 },
   { titleMatch: 'blueprint',     category: 'Services',    order: 4 },
