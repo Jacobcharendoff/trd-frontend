@@ -23,7 +23,15 @@ const caseStudies: CaseStudy[] = [
     beforeImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Ryan_Before.png?v=1777143983',
     afterImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Ryan_After.jpg?v=1777143984',
   },
-  // More case studies coming — need before/after shots
+  {
+    playerName: 'Ben',
+    playerRole: 'Worship guitarist',
+    heading: 'From chaos to clarity',
+    story: 'Ben came to us with pedals scattered across two boards and a rats nest of cables. We consolidated everything into one clean, road-ready rig with proper power isolation and signal routing.',
+    tags: ['Full Rebuild', 'Cable Management', 'Power Isolation'],
+    beforeImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Ben_Before.jpg',
+    afterImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Ben_After.jpg',
+  },
 ];
 
 function BeforeAfterSlider({ beforeImage, afterImage }: { beforeImage: string; afterImage: string }) {

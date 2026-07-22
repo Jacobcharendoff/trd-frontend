@@ -1,18 +1,34 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
-const navItems = [
-  { label: 'Custom Builds', href: '/custom-builds' },
+interface NavChild {
+  label: string;
+  href: string;
+}
+
+interface NavItem {
+  label: string;
+  href?: string;
+  children?: NavChild[];
+}
+
+const navItems: NavItem[] = [
+  {
+    label: 'Rig Building',
+    children: [
+      { label: 'Custom Builds', href: '/custom-builds' },
+      { label: 'DIY Kit', href: '/diy-kit' },
+    ],
+  },
   { label: 'Tone Tutoring', href: '/tone-tutoring' },
-  { label: 'Gift Cards', href: '/gift-cards' },
-  { label: 'How We Build', href: '/process' },
+  { label: 'Pricing', href: '/pricing' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Blog', href: '/blog' },
 ];
 
-/* ── Announcement bar config ── */
+/* -- Announcement bar config -- */
 const announcement = {
   text: 'Gift Cards now available — give the gift of better tone.',
   href: '/gift-cards',
@@ -22,10 +38,35 @@ const announcement = {
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [bannerVisible, setBannerVisible] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileRigOpen, setMobileRigOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  /* -- Scroll listener -- */
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  /* -- Close dropdown on click outside -- */
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* ── Announcement Bar ── */}
+      {/* -- Announcement Bar -- */}
       {bannerVisible && (
         <div className="relative bg-gradient-to-r from-[#6366F1] via-[#A855F7] to-[#EC4899] text-white text-center">
           <Link
@@ -52,8 +93,14 @@ export default function Header() {
         </div>
       )}
 
-      {/* ── Main Nav ── */}
-      <div className="bg-[rgba(29,29,31,0.92)] backdrop-blur-xl border-b border-white/[0.06]">
+      {/* -- Main Nav -- */}
+      <div
+        className={`transition-all duration-300 ease-in-out ${
+          scrolled
+            ? 'bg-[rgba(255,255,255,0.85)] backdrop-blur-xl border-b border-black/[0.06]'
+            : 'bg-transparent border-b border-transparent'
+        }`}
+      >
         <div className="max-w-[1080px] mx-auto px-6 h-14 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
@@ -61,27 +108,89 @@ export default function Header() {
               src="/trd-logo.svg"
               alt="The Rig Doctor"
               className="h-7 w-auto"
+              style={{
+                filter: scrolled ? 'brightness(0)' : 'brightness(1)',
+                transition: 'filter 300ms ease',
+              }}
             />
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-[13px] text-white/[0.85] hover:text-white transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) =>
+              item.children ? (
+                <div
+                  key={item.label}
+                  ref={dropdownRef}
+                  className="relative"
+                  onMouseEnter={() => setDropdownOpen(true)}
+                  onMouseLeave={() => setDropdownOpen(false)}
+                >
+                  <button
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                    className={`flex items-center gap-1 text-[13px] transition-colors duration-300 ${
+                      scrolled
+                        ? 'text-[#1d1d1f]/85 hover:text-[#1d1d1f]'
+                        : 'text-white/[0.85] hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                    <svg
+                      viewBox="0 0 12 12"
+                      className={`w-3 h-3 transition-transform duration-200 ${
+                        dropdownOpen ? 'rotate-180' : ''
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path d="M3 4.5l3 3 3-3" />
+                    </svg>
+                  </button>
+
+                  {/* Dropdown Panel */}
+                  {dropdownOpen && (
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2">
+                      <div className="bg-white/90 backdrop-blur-xl rounded-xl border border-black/[0.06] shadow-lg py-2 min-w-[180px]">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            onClick={() => setDropdownOpen(false)}
+                            className="block px-4 py-2.5 text-[13px] text-[#1d1d1f]/85 hover:bg-black/[0.04] hover:text-[#1d1d1f] transition-colors"
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href!}
+                  className={`text-[13px] transition-colors duration-300 ${
+                    scrolled
+                      ? 'text-[#1d1d1f]/85 hover:text-[#1d1d1f]'
+                      : 'text-white/[0.85] hover:text-white'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
           </nav>
 
           {/* CTA */}
           <div className="hidden md:flex items-center gap-4">
             <Link
               href="/book"
-              className="text-[13px] font-medium text-black bg-white rounded-full px-5 py-2 hover:bg-white/90 transition-colors"
+              className={`text-[13px] font-medium rounded-full px-5 py-2 transition-colors duration-300 ${
+                scrolled
+                  ? 'text-white bg-[#1d1d1f] hover:bg-[#1d1d1f]/90'
+                  : 'text-black bg-white hover:bg-white/90'
+              }`}
             >
               Book a Consultation
             </Link>
@@ -90,7 +199,9 @@ export default function Header() {
           {/* Mobile Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden text-white p-2"
+            className={`md:hidden p-2 transition-colors duration-300 ${
+              scrolled ? 'text-[#1d1d1f]' : 'text-white'
+            }`}
             aria-label="Toggle menu"
           >
             <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2">
@@ -105,22 +216,80 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {mobileOpen && (
-          <div className="md:hidden bg-[rgba(29,29,31,0.98)] backdrop-blur-xl border-t border-white/[0.06] px-6 py-6">
+          <div
+            className={`md:hidden backdrop-blur-xl px-6 py-6 transition-colors duration-300 ${
+              scrolled
+                ? 'bg-[rgba(255,255,255,0.98)] border-t border-black/[0.06]'
+                : 'bg-[rgba(29,29,31,0.98)] border-t border-white/[0.06]'
+            }`}
+          >
             <nav className="flex flex-col gap-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-[15px] text-white/[0.85] hover:text-white transition-colors"
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {navItems.map((item) =>
+                item.children ? (
+                  <div key={item.label}>
+                    <button
+                      onClick={() => setMobileRigOpen(!mobileRigOpen)}
+                      className={`flex items-center justify-between w-full text-[15px] transition-colors duration-300 ${
+                        scrolled
+                          ? 'text-[#1d1d1f]/85 hover:text-[#1d1d1f]'
+                          : 'text-white/[0.85] hover:text-white'
+                      }`}
+                    >
+                      {item.label}
+                      <svg
+                        viewBox="0 0 12 12"
+                        className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                          mobileRigOpen ? 'rotate-180' : ''
+                        }`}
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path d="M3 4.5l3 3 3-3" />
+                      </svg>
+                    </button>
+                    {mobileRigOpen && (
+                      <div className="mt-2 ml-4 flex flex-col gap-3">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            onClick={() => setMobileOpen(false)}
+                            className={`text-[14px] transition-colors duration-300 ${
+                              scrolled
+                                ? 'text-[#1d1d1f]/70 hover:text-[#1d1d1f]'
+                                : 'text-white/70 hover:text-white'
+                            }`}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href!}
+                    onClick={() => setMobileOpen(false)}
+                    className={`text-[15px] transition-colors duration-300 ${
+                      scrolled
+                        ? 'text-[#1d1d1f]/85 hover:text-[#1d1d1f]'
+                        : 'text-white/[0.85] hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                )
+              )}
               <Link
                 href="/book"
                 onClick={() => setMobileOpen(false)}
-                className="text-[15px] font-medium text-black bg-white rounded-full px-6 py-3 text-center mt-2 hover:bg-white/90 transition-colors"
+                className={`text-[15px] font-medium rounded-full px-6 py-3 text-center mt-2 transition-colors duration-300 ${
+                  scrolled
+                    ? 'text-white bg-[#1d1d1f] hover:bg-[#1d1d1f]/90'
+                    : 'text-black bg-white hover:bg-white/90'
+                }`}
               >
                 Book a Consultation
               </Link>

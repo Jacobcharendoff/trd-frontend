@@ -11,7 +11,7 @@ export default function Footer() {
               The Rig Doctor
             </Link>
             <p className="text-[13px] leading-relaxed mb-4">
-              Custom pedalboard builds for touring artists and home players. Montgomery, TX — shipping nationwide.
+              Custom pedalboard builds for touring artists and home players. Houston, TX — shipping nationwide.
             </p>
             <div className="space-y-1.5 text-[13px]">
               <a href="tel:+19365489254" className="block hover:text-white transition-colors">+1 (936) 548-9254</a>
@@ -25,7 +25,8 @@ export default function Footer() {
             <nav className="flex flex-col gap-2.5">
               <Link href="/custom-builds" className="text-[13px] hover:text-white transition-colors">Custom Builds</Link>
               <Link href="/tone-tutoring" className="text-[13px] hover:text-white transition-colors">Tone Tutoring</Link>
-              <Link href="/process" className="text-[13px] hover:text-white transition-colors">How We Build</Link>
+              <Link href="/pricing" className="text-[13px] hover:text-white transition-colors">Pricing</Link>
+              <Link href="/diy-kit" className="text-[13px] hover:text-white transition-colors">DIY Kit</Link>
               <Link href="/gift-cards" className="text-[13px] hover:text-white transition-colors">Gift Cards</Link>
               <Link href="/book" className="text-[13px] hover:text-white transition-colors">Book a Consultation</Link>
             </nav>
