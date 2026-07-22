@@ -13,10 +13,6 @@
   --color-trd-blue: #0071E3;
   --color-trd-blue-dark: #005BB5;
   --color-trd-purple: #BF5AF2;
-  --color-trd-pink: #FF375F;
-  --color-trd-amber: #F59E0B;
-  --color-trd-green: #10B981;
-  --color-trd-green-light: #34D399;
   --color-trd-text: #1d1d1f;
   --color-trd-text-secondary: rgba(0, 0, 0, 0.5);
   --color-trd-text-muted: rgba(0, 0, 0, 0.4);
@@ -38,9 +34,6 @@
   --trd-blue: #0071E3;
   --trd-blue-dark: #005BB5;
   --trd-purple: #BF5AF2;
-  --trd-pink: #FF375F;
-  --trd-amber: #F59E0B;
-  --trd-green: #10B981;
   --trd-text: #1d1d1f;
   --trd-text-secondary: rgba(0, 0, 0, 0.5);
   --trd-border-light: rgba(0, 0, 0, 0.06);
@@ -86,16 +79,16 @@ body {
   color: rgba(29, 29, 31, 0.6);
 }
 
-/* ─── Gradient Text — Tie-Dye (Blue > Purple > Pink > Amber) ─── */
+/* ─── Gradient Text (Blue > Purple) ─── */
 .trd-gradient-text {
-  background: linear-gradient(135deg, #0071E3, #BF5AF2, #FF375F, #F59E0B);
+  background: linear-gradient(135deg, #0071E3, #BF5AF2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .trd-gradient-text-warm {
-  background: linear-gradient(135deg, #FF375F, #F59E0B);
+  background: linear-gradient(135deg, #BF5AF2, #0071E3);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -142,8 +135,7 @@ body {
   inset: 0;
   background:
     radial-gradient(ellipse at 20% 60%, rgba(0, 113, 227, 0.18) 0%, transparent 55%),
-    radial-gradient(ellipse at 75% 30%, rgba(191, 90, 242, 0.14) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 80%, rgba(255, 55, 95, 0.08) 0%, transparent 50%);
+    radial-gradient(ellipse at 75% 30%, rgba(191, 90, 242, 0.14) 0%, transparent 55%);
   animation: aurora 8s ease-in-out infinite alternate;
   pointer-events: none;
 }

@@ -61,7 +61,7 @@ export default function ContactWidget() {
         <div
           className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full opacity-[0.04]"
           style={{
-            background: 'radial-gradient(circle at center, #00C9FF 0%, transparent 70%)',
+            background: 'radial-gradient(circle at center, #BF5AF2 0%, transparent 70%)',
           }}
         />
       </div>
@@ -84,8 +84,8 @@ export default function ContactWidget() {
 
         {status === 'sent' ? (
           <div className="text-center py-14 rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm px-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#10B981]/10 border border-[#10B981]/20 mb-6">
-              <svg className="w-10 h-10 text-[#10B981]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#0071E3]/10 border border-[#0071E3]/20 mb-6">
+              <svg className="w-10 h-10 text-[#0071E3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>

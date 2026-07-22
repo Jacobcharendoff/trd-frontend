@@ -36,7 +36,7 @@ async function sendNotificationEmail(data: {
         subject: `New inquiry from ${fullName}`,
         html: `
           <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 560px; margin: 0 auto; padding: 32px 24px; color: #1d1d1f;">
-            <div style="border-bottom: 2px solid #F5A623; padding-bottom: 16px; margin-bottom: 24px;">
+            <div style="border-bottom: 2px solid #0071E3; padding-bottom: 16px; margin-bottom: 24px;">
               <h2 style="margin: 0; font-size: 20px; font-weight: 600; color: #1d1d1f;">New Website Inquiry</h2>
             </div>
 
@@ -47,7 +47,7 @@ async function sendNotificationEmail(data: {
               </tr>
               <tr>
                 <td style="padding: 8px 0; color: #86868b; font-size: 14px; vertical-align: top;">Email</td>
-                <td style="padding: 8px 0; font-size: 14px;"><a href="mailto:${email}" style="color: #F5A623; text-decoration: none;">${email}</a></td>
+                <td style="padding: 8px 0; font-size: 14px;"><a href="mailto:${email}" style="color: #0071E3; text-decoration: none;">${email}</a></td>
               </tr>
               <tr>
                 <td style="padding: 8px 0; color: #86868b; font-size: 14px; vertical-align: top;">Phone</td>
@@ -106,7 +106,7 @@ async function sendCustomerConfirmation(data: {
           <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 520px; margin: 0 auto; padding: 40px 24px; color: #1d1d1f;">
             <div style="margin-bottom: 32px;">
               <h1 style="margin: 0 0 4px; font-size: 24px; font-weight: 700; color: #1d1d1f;">The Rig Doctor</h1>
-              <div style="width: 40px; height: 3px; background: #F5A623; border-radius: 2px;"></div>
+              <div style="width: 40px; height: 3px; background: #0071E3; border-radius: 2px;"></div>
             </div>
 
             <p style="font-size: 16px; line-height: 1.7; margin: 0 0 16px; color: #1d1d1f;">
@@ -131,7 +131,7 @@ async function sendCustomerConfirmation(data: {
             <div style="border-top: 1px solid rgba(0,0,0,0.06); padding-top: 20px;">
               <p style="margin: 0; font-size: 12px; color: #86868b; line-height: 1.5;">
                 The Rig Doctor · Custom Pedalboards & Rig Builds<br>
-                <a href="https://www.therigdr.com" style="color: #F5A623; text-decoration: none;">therigdr.com</a>
+                <a href="https://www.therigdr.com" style="color: #0071E3; text-decoration: none;">therigdr.com</a>
               </p>
             </div>
           </div>

@@ -42,7 +42,7 @@ const comparisonData = [
 
 function CheckIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="w-5 h-5 text-[#10B981] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg viewBox="0 0 24 24" className="w-5 h-5 text-[#0071E3] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
       <path d="M22 4 12 14.01l-3-3" />
     </svg>
@@ -108,7 +108,7 @@ export default function ComparisonTable() {
                 <div className="text-xs font-medium text-[#1d1d1f]/40 uppercase tracking-wide mb-1.5 text-center lg:text-left lg:hidden">
                   {item.feature}
                 </div>
-                <div className="bg-gradient-to-br from-[#10B981]/[0.04] to-[#0071E3]/[0.04] border border-[#10B981]/10 rounded-xl p-4 flex items-start gap-3">
+                <div className="bg-gradient-to-br from-[#0071E3]/[0.04] to-[#0071E3]/[0.04] border border-[#0071E3]/10 rounded-xl p-4 flex items-start gap-3">
                   <CheckIcon />
                   <div>
                     <p className="text-xs font-medium text-[#1d1d1f]/40 uppercase tracking-wide mb-1 hidden lg:block">{item.feature}</p>

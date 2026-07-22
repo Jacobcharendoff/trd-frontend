@@ -58,12 +58,12 @@ export default function BuildTimeline({ theme = 'dark' }: BuildTimelineProps) {
                 style={{
                   background: `linear-gradient(135deg, ${
                     i === 0
-                      ? '#F5A623, #E09100'
+                      ? '#0071E3, #BF5AF2'
                       : i === 1
-                      ? '#F5A623, #10B981'
+                      ? '#BF5AF2, #0071E3'
                       : i === 2
-                      ? '#10B981, #34D399'
-                      : '#34D399, #F5A623'
+                      ? '#0071E3, #BF5AF2'
+                      : '#BF5AF2, #0071E3'
                   })`,
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',

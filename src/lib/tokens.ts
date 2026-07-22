@@ -24,9 +24,7 @@ export const colors = {
   // Accent — matches Dawn theme
   blue: '#0071E3',
   blueDark: '#005BB5',
-  cyan: '#00B4D8',
-  green: '#34D399',
-  greenCheck: '#10B981',
+  purple: '#BF5AF2',
 
   // Borders
   borderLight: 'rgba(0, 0, 0, 0.06)',
@@ -34,9 +32,9 @@ export const colors = {
 } as const;
 
 export const gradients = {
-  aurora: 'radial-gradient(ellipse at 20% 50%, rgba(0,113,227,0.12) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(0,180,216,0.08) 0%, transparent 60%)',
-  trdAccent: 'linear-gradient(135deg, #0071E3, #00B4D8, #34D399)',
-  cyanGreen: 'linear-gradient(135deg, #00B4D8, #34D399)',
+  aurora: 'radial-gradient(ellipse at 20% 50%, rgba(0,113,227,0.12) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(191,90,242,0.08) 0%, transparent 60%)',
+  trdAccent: 'linear-gradient(135deg, #0071E3, #BF5AF2)',
+  purpleBlue: 'linear-gradient(135deg, #BF5AF2, #0071E3)',
   blueGlow: 'radial-gradient(ellipse at center, rgba(0,113,227,0.15) 0%, transparent 70%)',
 } as const;
 

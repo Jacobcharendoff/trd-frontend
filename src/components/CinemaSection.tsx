@@ -36,7 +36,7 @@ const steps: CinemaStep[] = [
     desc: 'Isolated power rails kill the hum and buzz. That mystery noise you can never track down? We know where it lives.',
     image:
       'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Power_Protection.png',
-    color: '#34D399',
+    color: '#0071E3',
   },
   {
     num: '04',
@@ -44,7 +44,7 @@ const steps: CinemaStep[] = [
     desc: "Your board leaves here ready to plug in. We stress-test everything so you don't think about it at the gig.",
     image:
       'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Stage-Ready.jpg',
-    color: '#0071E3',
+    color: '#BF5AF2',
   },
 ];
 
