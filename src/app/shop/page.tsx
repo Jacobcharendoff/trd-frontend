@@ -23,10 +23,6 @@ type StorefrontEntry = {
 };
 
 const STOREFRONT_WHITELIST: StorefrontEntry[] = [
-  { titleMatch: 'tie down',      category: 'Accessories', order: 1 },
-  { titleMatch: 'tie-down',      category: 'Accessories', order: 1 },
-  { titleMatch: 'tiedown',       category: 'Accessories', order: 1 },
-  { titleMatch: 'zip',           category: 'Accessories', order: 2 },
   { titleMatch: 'powergrip',     category: 'Accessories', order: 3 },
   { titleMatch: 'power grip',    category: 'Accessories', order: 3 },
   { titleMatch: 'rig rendering', category: 'Services',    order: 4 },

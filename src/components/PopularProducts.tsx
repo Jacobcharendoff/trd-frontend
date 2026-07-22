@@ -11,7 +11,6 @@ const POPULAR_HANDLES = [
   'powergrip-6-20-ft',
   'insert-cables-trs-to-dual-ts',
   'stereo-cables-trs',
-  'tie-down-mounts',
   'power-cables',
 ];
 

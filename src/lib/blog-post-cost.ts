@@ -30,7 +30,7 @@ export const costPost: BlogPost = {
       headingLevel: 2,
       content: `<p>Here's the realistic range for a complete pedalboard setup in 2026, not counting the pedals themselves:</p>
 <ul>
-<li><strong>DIY basic (3–5 pedals):</strong> $150–$350 — board, daisy-chain power, pre-made patch cables, Velcro</li>
+<li><strong>DIY basic (3–5 pedals):</strong> $150–$350 — board, daisy-chain power, pre-made patch cables, mounting tape</li>
 <li><strong>DIY serious (6–10 pedals):</strong> $400–$800 — quality board, isolated power supply, soldered cables, cable management</li>
 <li><strong>Professional build (6–10 pedals):</strong> $800–$1,500 — hand-soldered custom cables, isolated power, clean routing, stress-tested</li>
 <li><strong>Professional build with switching (10+ pedals):</strong> $1,500–$3,000+ — programmable loop switcher, MIDI integration, complex signal routing</li>
@@ -65,7 +65,7 @@ export const costPost: BlogPost = {
 <li><strong>Patch cables (quality soldered, 8 connections):</strong> $80–$160</li>
 <li><strong>Instrument cables (guitar-to-board, board-to-amp):</strong> $40–$80</li>
 <li><strong>DC power cables (custom lengths):</strong> $30–$60</li>
-<li><strong>Velcro / Dual-Lock:</strong> $15–$25</li>
+<li><strong>Mounting supplies:</strong> $15–$25</li>
 <li><strong>Cable ties, mounting hardware:</strong> $10–$20</li>
 </ul>
 <p><strong>Total: $445–$745</strong> — and that's before your time. If you've never soldered cables before, add a soldering station ($40–$80) and plan on your first few cables being practice runs.</p>

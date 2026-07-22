@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Build Essentials',
   description:
-    'Accessories and services that complement every custom rig — tie-down mounts, cable management, and expert tone tutoring sessions.',
+    'Accessories and services that complement every custom rig — cable management, power solutions, and expert tone tutoring sessions.',
   openGraph: {
     title: 'Build Essentials | The Rig Doctor',
     description:
