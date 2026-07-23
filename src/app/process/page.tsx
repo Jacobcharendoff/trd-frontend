@@ -281,11 +281,15 @@ export default function ProcessPage() {
               { label: 'Design', time: 'Week 1', desc: 'Diagram + quote' },
               { label: 'Build', time: 'Weeks 2–7', desc: 'Hands-on work' },
               { label: 'Delivery', time: 'Week 4–8', desc: 'At your door' },
-            ].map((item) => (
+            ].map((item, idx) => (
               <div
                 key={item.label}
-                className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 text-center"
+                className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 text-center relative overflow-hidden"
               >
+                <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-[#0071E3] to-[#BF5AF2]" />
+                <div className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#0071E3]/10 mb-3">
+                  <span className="text-[#0071E3] text-sm font-bold">{idx + 1}</span>
+                </div>
                 <p className="text-sm text-[#f5f5f7]/40 font-medium mb-1">{item.label}</p>
                 <p className="text-2xl font-bold trd-gradient-text mb-1">{item.time}</p>
                 <p className="text-sm text-[#f5f5f7]/50">{item.desc}</p>

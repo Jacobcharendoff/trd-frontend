@@ -197,6 +197,17 @@ body {
   }
 }
 
+/* ─── Section Headline Accent ─── */
+.trd-section-headline::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, #0071E3, #BF5AF2);
+  border-radius: 2px;
+  margin: 16px auto 0;
+}
+
 /* ─── Marquee (Reviews, Products) ─── */
 @keyframes marquee-left {
   0% { transform: translateX(0); }
