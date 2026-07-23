@@ -19,7 +19,7 @@ export default function DiyKitPage() {
     <>
       {/* Hero */}
       <div className="relative w-full overflow-hidden">
-        <div className="relative flex items-end justify-center bg-black trd-aurora-intense pt-36 pb-20 sm:pt-44 sm:pb-28">
+        <div className="relative flex items-end justify-center bg-black pt-36 pb-20 sm:pt-44 sm:pb-28">
           <div className="relative z-10 max-w-[1080px] mx-auto px-6 text-center">
             <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-6">Starting at $749</p>
             <h1 className="trd-hero-headline text-[#f5f5f7] mb-6">
@@ -32,7 +32,7 @@ export default function DiyKitPage() {
             </p>
             <Link
               href="/book"
-              className="trd-cta-gradient trd-glow-pulse inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
+              className="trd-cta-gradient inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
             >
               Get Started
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
@@ -40,8 +40,6 @@ export default function DiyKitPage() {
           </div>
         </div>
       </div>
-
-      <div className="trd-divider-dark-to-light" />
 
       {/* What's Included */}
       <Section theme="light" id="kit-contents" reveal>
@@ -134,12 +132,8 @@ export default function DiyKitPage() {
         </div>
       </Section>
 
-      <div className="trd-divider-light-to-dark" />
-
       {/* Timeline */}
       <BuildTimeline theme="dark" />
-
-      <div className="trd-divider-dark-to-light" />
 
       {/* Upgrade CTA */}
       <Section theme="light" id="upgrade" reveal>
@@ -180,7 +174,7 @@ export default function DiyKitPage() {
           </p>
           <Link
             href="/book"
-            className="trd-cta-gradient trd-glow-pulse inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
+            className="trd-cta-gradient inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
           >
             Book a Consultation
           </Link>

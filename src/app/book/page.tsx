@@ -26,14 +26,14 @@ function Hero() {
   return (
     <>
       {/* Dark hero — cinematic first impression */}
-      <div className="relative bg-black pt-32 pb-20 overflow-hidden trd-aurora">
+      <div className="relative bg-black pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-black pointer-events-none" />
         <div className="relative max-w-[1080px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left: Content */}
             <div className="space-y-8">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/[0.05] border border-white/[0.08] rounded-full">
-                <span className="inline-block w-2 h-2 rounded-full bg-[#0071E3] trd-pulse-dot" />
+                <span className="inline-block w-2 h-2 rounded-full bg-[#0071E3]" />
                 <span className="text-[13px] text-white/[0.85]">Custom builds &middot; Houston, TX</span>
               </div>
 
@@ -212,7 +212,6 @@ function ProcessSection() {
 function TransformationSection() {
   return (
     <>
-      <div className="trd-divider-light-to-dark" />
       <Section theme="dark" id="before-after" reveal>
         <div className="text-center mb-16">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-4">
@@ -227,7 +226,6 @@ function TransformationSection() {
         </div>
         <BeforeAfter theme="dark" />
       </Section>
-      <div className="trd-divider-dark-to-light" />
     </>
   );
 }
@@ -274,7 +272,6 @@ function GalleryStrip() {
 function TrustedBy() {
   return (
     <>
-      <div className="trd-divider-light-to-dark" />
       <Section theme="dark" reveal>
         <div className="text-center mb-12">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-4">On the Road</p>

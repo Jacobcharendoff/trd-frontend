@@ -23,10 +23,10 @@ type StorefrontEntry = {
 };
 
 const STOREFRONT_WHITELIST: StorefrontEntry[] = [
-  { titleMatch: 'rig rendering', category: 'Services',    order: 4 },
-  { titleMatch: 'rig blueprint', category: 'Services',    order: 4 },
-  { titleMatch: 'blueprint',     category: 'Services',    order: 4 },
-  { titleMatch: 'tone tutor',    category: 'Services',    order: 5 },
+  { titleMatch: 'rig rendering', category: 'Services', order: 4 },
+  { titleMatch: 'rig blueprint', category: 'Services', order: 4 },
+  { titleMatch: 'blueprint', category: 'Services', order: 4 },
+  { titleMatch: 'tone tutor', category: 'Services', order: 5 },
 ];
 
 function matchWhitelist(title: string): StorefrontEntry | null {
@@ -116,7 +116,7 @@ export default function ShopPage() {
     <>
       {/* ──── HERO SECTION ──── */}
       <div className="relative w-full overflow-hidden">
-        <div className="relative min-h-screen flex items-center justify-center bg-black trd-aurora-intense">
+        <div className="relative min-h-screen flex items-center justify-center bg-black">
           {/* Background Video */}
           <video
             autoPlay
@@ -142,9 +142,6 @@ export default function ShopPage() {
           </div>
         </div>
       </div>
-
-      {/* dark → light transition */}
-      <div className="trd-divider-dark-to-light" />
 
       {/* ──── CATEGORY FILTERS ──── */}
       <Section theme="light" id="shop-filters" reveal={false}>
