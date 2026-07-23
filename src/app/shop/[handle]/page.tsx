@@ -361,7 +361,7 @@ export default function ProductPage() {
         <div className="flex gap-4 justify-center flex-wrap">
           <Link
             href="/book"
-            className="inline-flex items-center gap-2 trd-cta-gradient text-white font-semibold px-8 py-4 rounded-full trd-glow-pulse"
+            className="inline-flex items-center gap-2 trd-cta-gradient text-white font-semibold px-8 py-4 rounded-full"
           >
             Book a Free Call
           </Link>
@@ -388,7 +388,7 @@ export default function ProductPage() {
           </div>
           <Link
             href="/book"
-            className="trd-cta-gradient trd-glow-pulse inline-flex items-center px-8 py-4 rounded-full font-semibold text-base whitespace-nowrap"
+            className="trd-cta-gradient inline-flex items-center px-8 py-4 rounded-full font-semibold text-base whitespace-nowrap"
           >
             Book a Free Consultation
           </Link>

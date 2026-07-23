@@ -108,7 +108,7 @@ export default function GiftCardsPage() {
     <>
       {/* ──── HERO ──── */}
       <div className="relative w-full bg-black overflow-hidden">
-        <div className="relative trd-aurora min-h-screen flex items-center justify-center">
+        <div className="relative min-h-screen flex items-center justify-center">
           <div className="absolute inset-0 pointer-events-none" />
 
           <div className="relative z-10 max-w-[1080px] mx-auto px-6 pt-32 pb-20 w-full">
@@ -180,7 +180,7 @@ export default function GiftCardsPage() {
               {/* CTA */}
               <a
                 href={checkoutUrl}
-                className="inline-flex items-center gap-2 text-white font-semibold px-10 py-4 rounded-full trd-cta-gradient trd-glow-pulse text-lg"
+                className="inline-flex items-center gap-2 text-white font-semibold px-10 py-4 rounded-full trd-cta-gradient text-lg"
               >
                 Buy {selected?.label} Gift Card
               </a>
@@ -203,16 +203,13 @@ export default function GiftCardsPage() {
               </div>
               <div className="hidden sm:block w-px h-12 bg-white/10" />
               <div>
-                <p className="text-2xl sm:text-3xl font-bold trd-gradient-text-warm mb-2">Everything</p>
+                <p className="text-2xl sm:text-3xl font-bold text-[#0071E3] mb-2">Everything</p>
                 <p className="text-sm text-[#f5f5f7]/60">Works site-wide</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* ──── DARK → LIGHT DIVIDER ──── */}
-      <div className="trd-divider-dark-to-light" />
 
       {/* ──── USE CASES (LIGHT) ──── */}
       <Section theme="light" id="use-cases" reveal>
@@ -340,9 +337,6 @@ export default function GiftCardsPage() {
         </div>
       </Section>
 
-      {/* ──── LIGHT → DARK DIVIDER ──── */}
-      <div className="trd-divider-light-to-dark" />
-
       {/* ──── PERFECT FOR (DARK) ──── */}
       <Section theme="dark" id="perfect-for" reveal>
         <div className="border border-[#0071E3]/30 bg-[#0071E3]/[0.05] rounded-2xl p-8 sm:p-12 text-center">
@@ -418,7 +412,7 @@ export default function GiftCardsPage() {
         <div className="mt-12">
           <a
             href={checkoutUrl}
-            className="inline-flex items-center gap-2 text-white font-semibold px-10 py-4 rounded-full trd-cta-gradient trd-glow-pulse text-lg"
+            className="inline-flex items-center gap-2 text-white font-semibold px-10 py-4 rounded-full trd-cta-gradient text-lg"
           >
             Buy a Gift Card
           </a>
