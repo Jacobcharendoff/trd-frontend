@@ -33,9 +33,9 @@ export default function Section({
   useEffect(() => {
     if (!reveal || !ref.current) return;
 
-    // If element is already in the viewport on mount, show immediately
+    // If section is already near viewport on mount, reveal immediately
     const rect = ref.current.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
+    if (rect.top < window.innerHeight * 0.9) {
       setVisible(true);
       return;
     }
@@ -48,20 +48,14 @@ export default function Section({
         }
       },
       {
-        threshold: 0.02,
-        rootMargin: '100px'
+        threshold: 0.05,
+        rootMargin: '0px 0px -40px 0px',
       }
     );
 
     observer.observe(ref.current);
 
-    // Fallback: ensure visibility after 1.5s no matter what
-    const timeoutId = setTimeout(() => {
-      setVisible(true);
-    }, 1500);
-
     return () => {
-      clearTimeout(timeoutId);
       observer.disconnect();
     };
   }, [reveal]);
@@ -73,11 +67,14 @@ export default function Section({
       className={`
         ${themeClasses[theme]}
         ${noPadding ? '' : 'py-20 md:py-28 lg:py-32'}
-        ${reveal ? `transition-all duration-700 ease-out ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}` : ''}
         ${className}
       `}
     >
-      <div className="max-w-[980px] mx-auto px-6">
+      <div
+        className={`max-w-[980px] mx-auto px-6${
+          reveal ? ` trd-reveal${visible ? ' is-visible' : ''}` : ''
+        }`}
+      >
         {children}
       </div>
     </section>
