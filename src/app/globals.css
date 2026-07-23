@@ -19,8 +19,8 @@
   --color-trd-text-on-dark: #f5f5f7;
   --color-trd-text-on-dark-secondary: rgba(245, 245, 247, 0.6);
   --color-trd-text-on-dark-muted: rgba(255, 255, 255, 0.4);
-  --color-trd-border-light: rgba(0, 0, 0, 0.06);
-  --color-trd-border-dark: rgba(255, 255, 255, 0.08);
+  --color-trd-border-light: rgba(0, 0, 0, 0.04);
+  --color-trd-border-dark: rgba(255, 255, 255, 0.04);
 }
 
 /* ─── TRD Global Design System ─── */
@@ -35,9 +35,9 @@
   --trd-blue-dark: #005BB5;
   --trd-purple: #BF5AF2;
   --trd-text: #1d1d1f;
-  --trd-text-secondary: rgba(0, 0, 0, 0.5);
-  --trd-border-light: rgba(0, 0, 0, 0.06);
-  --trd-border-dark: rgba(255, 255, 255, 0.08);
+  --trd-text-secondary: rgba(0, 0, 0, 0.56);
+  --trd-border-light: rgba(0, 0, 0, 0.04);
+  --trd-border-dark: rgba(255, 255, 255, 0.04);
 }
 
 html {
@@ -47,39 +47,43 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
   background: var(--trd-white);
   color: var(--trd-text);
 }
 
-/* ─── Typography ─── */
+/* ─── Typography (Apple-calibrated) ─── */
 .trd-hero-headline {
-  font-size: clamp(36px, 6vw, 64px);
+  font-size: clamp(40px, 7vw, 72px);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
 }
 
 .trd-section-headline {
-  font-size: clamp(28px, 4vw, 44px);
+  font-size: clamp(32px, 5vw, 48px);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
 .trd-subheadline {
-  font-size: clamp(16px, 2vw, 20px);
-  line-height: 1.6;
-  color: rgba(245, 245, 247, 0.6);
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(245, 245, 247, 0.72);
 }
 
 .trd-subheadline-light {
-  font-size: clamp(16px, 2vw, 20px);
-  line-height: 1.6;
-  color: rgba(29, 29, 31, 0.6);
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(29, 29, 31, 0.56);
 }
 
-/* ─── Gradient Text (Blue > Purple) ─── */
+/* ─── Gradient Text ───
+   USE SPARINGLY: hero headline only. Solid color for all other text.
+*/
 .trd-gradient-text {
   background: linear-gradient(135deg, #0071E3, #BF5AF2);
   -webkit-background-clip: text;
@@ -87,6 +91,7 @@ body {
   background-clip: text;
 }
 
+/* Warm variant kept for backward compat, identical to gradient-text reversed */
 .trd-gradient-text-warm {
   background: linear-gradient(135deg, #BF5AF2, #0071E3);
   -webkit-background-clip: text;
@@ -94,99 +99,75 @@ body {
   background-clip: text;
 }
 
-/* ─── CTA Gradient Button ─── */
+/* ─── CTA Button (Solid Blue, Apple-style) ─── */
 .trd-cta-gradient {
-  background: linear-gradient(135deg, #0071E3, #BF5AF2);
+  background: #0071E3;
   color: #ffffff;
-  transition: all 0.3s ease;
+  transition: background 0.2s ease;
 }
 
 .trd-cta-gradient:hover {
-  background: linear-gradient(135deg, #005BB5, #9B3FD4);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 30px rgba(0, 113, 227, 0.3);
+  background: #005BB5;
+  transform: none;
+  box-shadow: none;
 }
 
-/* ─── Glow Pulse ─── */
-@keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 20px rgba(0, 113, 227, 0.2), 0 0 40px rgba(191, 90, 242, 0.1); }
-  50% { box-shadow: 0 0 30px rgba(0, 113, 227, 0.35), 0 0 60px rgba(191, 90, 242, 0.2); }
-}
-
-.trd-glow-pulse {
-  animation: glow-pulse 3s ease-in-out infinite;
-}
-
-/* ─── Aurora Backgrounds ─── */
-.trd-aurora::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 50%, rgba(0, 113, 227, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 50%, rgba(191, 90, 242, 0.08) 0%, transparent 60%);
-  animation: aurora 8s ease-in-out infinite alternate;
-  pointer-events: none;
-}
-
-.trd-aurora-intense::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 60%, rgba(0, 113, 227, 0.18) 0%, transparent 55%),
-    radial-gradient(ellipse at 75% 30%, rgba(191, 90, 242, 0.14) 0%, transparent 55%);
-  animation: aurora 8s ease-in-out infinite alternate;
-  pointer-events: none;
-}
-
-@keyframes aurora {
-  0% { opacity: 0.6; }
-  100% { opacity: 1; }
-}
-
-/* ─── Section Dividers ─── */
-.trd-divider-dark-to-light {
-  height: 80px;
-  background: linear-gradient(to bottom, #0a0a0a, #ffffff);
-}
-
-.trd-divider-light-to-dark {
-  height: 80px;
-  background: linear-gradient(to bottom, #ffffff, #0a0a0a);
-}
-
-.trd-divider-gray-to-dark {
-  height: 80px;
-  background: linear-gradient(to bottom, #f5f5f7, #0a0a0a);
-}
-
-.trd-divider-dark-to-gray {
-  height: 80px;
-  background: linear-gradient(to bottom, #0a0a0a, #f5f5f7);
-}
-
-/* ─── Pulse Dot ─── */
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-
-.trd-pulse-dot {
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-
-/* ─── Glass Cards ─── */
+/* ─── Cards (Solid, no glass morphism) ─── */
 .trd-glass-dark {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #1d1d1f;
+  border: none;
   border-radius: 16px;
 }
 
 .trd-glass-light {
   background: var(--trd-light-gray);
-  border: 1px solid var(--trd-border-light);
+  border: none;
   border-radius: 16px;
+}
+
+/* ─── Review Card (Clean, solid) ─── */
+.trd-review-card {
+  background: #1d1d1f;
+  border: none;
+  border-radius: 16px;
+  padding: 24px;
+  min-width: 320px;
+  max-width: 400px;
+  flex-shrink: 0;
+}
+
+/* ─── Aurora Backgrounds ───
+   DEPRECATED: Kept as no-ops for backward compat.
+   Hero sections should use solid bg-[#0a0a0a] instead.
+*/
+.trd-aurora::before,
+.trd-aurora-intense::before {
+  display: none;
+}
+
+/* ─── Glow Pulse ───
+   DEPRECATED: No-op. Buttons should be clean and still.
+*/
+.trd-glow-pulse {
+  animation: none;
+}
+
+/* ─── Pulse Dot ───
+   DEPRECATED: No-op. Use a static dot instead.
+*/
+.trd-pulse-dot {
+  animation: none;
+}
+
+/* ─── Section Dividers ───
+   DEPRECATED: No-ops. Sections transition through padding, not gradient bands.
+*/
+.trd-divider-dark-to-light,
+.trd-divider-light-to-dark,
+.trd-divider-gray-to-dark,
+.trd-divider-dark-to-gray {
+  height: 0;
+  background: none;
 }
 
 /* ─── Marquee (Reviews, Products) ─── */
@@ -206,17 +187,6 @@ body {
 
 .animate-marquee-right {
   animation: marquee-right 60s linear infinite;
-}
-
-/* ─── Review Card ─── */
-.trd-review-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 24px;
-  min-width: 320px;
-  max-width: 400px;
-  flex-shrink: 0;
 }
 
 /* ─── Popup Animations (ConsultationPopup, ExitIntent) ─── */
@@ -249,10 +219,10 @@ body {
 
 /* ─── Blog Article Typography ─── */
 .prose-trd p {
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.75;
-  color: rgba(0, 0, 0, 0.7);
-  margin-bottom: 1.25rem;
+  color: rgba(0, 0, 0, 0.56);
+  margin-bottom: 1.5rem;
 }
 
 .prose-trd p:last-child {
@@ -277,10 +247,10 @@ body {
 
 .prose-trd ul,
 .prose-trd ol {
-  margin: 1rem 0 1.25rem 1.5rem;
-  font-size: 16px;
+  margin: 1rem 0 1.5rem 1.5rem;
+  font-size: 17px;
   line-height: 1.75;
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(0, 0, 0, 0.56);
 }
 
 .prose-trd li {

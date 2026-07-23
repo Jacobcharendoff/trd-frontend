@@ -10,8 +10,8 @@ import { type ReactNode } from 'react';
  * Renders as <Link> when href is provided, <button> otherwise.
  *
  * Variants:
- *   primary   — Gradient CTA with glow pulse (dark backgrounds)
- *   solid     — Solid fill (theme-aware: dark fill on light bg, amber on dark bg)
+ *   primary   — Solid blue CTA (Apple-style)
+ *   solid     — Solid fill (theme-aware)
  *   outline   — Border-only ghost button (theme-aware)
  *   secondary — Subtle dark button for light backgrounds
  */
@@ -58,7 +58,7 @@ function getVariantClasses(variant: ButtonVariant, theme: ButtonTheme): string {
 
     case 'solid':
       return onDark
-        ? 'bg-trd-amber text-trd-dark-card hover:bg-trd-amber/90 transition-colors'
+        ? 'bg-trd-blue text-white hover:bg-trd-blue-dark transition-colors'
         : 'bg-trd-dark-card text-white hover:bg-trd-dark-card/90 transition-colors';
 
     case 'outline':
@@ -89,7 +89,6 @@ export default function Button({
     'inline-flex items-center justify-center gap-2 font-semibold rounded-full',
     sizeClasses[size],
     getVariantClasses(variant, theme),
-    variant === 'primary' && glow ? 'trd-glow-pulse' : '',
     className,
   ]
     .filter(Boolean)
