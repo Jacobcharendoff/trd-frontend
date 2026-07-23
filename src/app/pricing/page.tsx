@@ -19,7 +19,7 @@ export default function PricingPage() {
     <>
       {/* Hero */}
       <div className="relative w-full overflow-hidden">
-        <div className="relative flex items-end justify-center bg-black trd-aurora-intense pt-36 pb-20 sm:pt-44 sm:pb-28">
+        <div className="relative flex items-end justify-center bg-black pt-36 pb-20 sm:pt-44 sm:pb-28">
           <div className="relative z-10 max-w-[1080px] mx-auto px-6 text-center">
             <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-6">Transparent Pricing</p>
             <h1 className="trd-hero-headline text-[#f5f5f7] mb-6">
@@ -33,8 +33,6 @@ export default function PricingPage() {
           </div>
         </div>
       </div>
-
-      <div className="trd-divider-dark-to-light" />
 
       {/* Pricing Cards */}
       <Section theme="light" id="pricing-tiers" reveal>
@@ -145,12 +143,8 @@ export default function PricingPage() {
         </p>
       </Section>
 
-      <div className="trd-divider-light-to-dark" />
-
       {/* Timeline */}
       <BuildTimeline theme="dark" />
-
-      <div className="trd-divider-dark-to-light" />
 
       {/* FAQ */}
       <Section theme="lightGray" id="pricing-faq" reveal>
@@ -212,7 +206,7 @@ export default function PricingPage() {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
               href="/book"
-              className="trd-cta-gradient trd-glow-pulse inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
+              className="trd-cta-gradient inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
             >
               Book a Consultation
             </Link>

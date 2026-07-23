@@ -104,7 +104,7 @@ export default function GalleryPage() {
       {/* Hero Section */}
       <Section theme="dark" reveal noPadding>
         <div className="relative w-full bg-black overflow-hidden">
-          <div className="relative trd-aurora min-h-[60vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
+          <div className="relative min-h-[60vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
             <div className="text-center">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
                 Off the bench.
@@ -124,7 +124,7 @@ export default function GalleryPage() {
                 </div>
                 <div className="w-px h-10 bg-white/10" />
                 <div className="text-center">
-                  <p className="text-2xl sm:text-3xl font-bold trd-gradient-text-warm">50+</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-[#0071E3]">50+</p>
                   <p className="text-sm text-[#f5f5f7]/50 mt-1">touring artists</p>
                 </div>
               </div>
@@ -217,7 +217,7 @@ export default function GalleryPage() {
                 <div
                   className="text-5xl font-bold mb-6"
                   style={{
-                    background: 'linear-gradient(135deg, var(--trd-blue), var(--trd-green))',
+                    background: 'linear-gradient(135deg, var(--trd-blue), var(--trd-purple))',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
