@@ -29,7 +29,7 @@ export default function ToneTutoringPage() {
     <>
       {/* ---- HERO ---- */}
       <div className="relative w-full bg-black overflow-hidden">
-        <div className="relative trd-aurora-intense min-h-screen flex items-end justify-center">
+        <div className="relative min-h-screen flex items-end justify-center">
           <video
             autoPlay
             muted
@@ -61,7 +61,7 @@ export default function ToneTutoringPage() {
               <div className="flex gap-4 justify-center mb-16">
                 <a
                   href="/api/checkout?handle=tone-tutoring-follow-up"
-                  className="trd-cta-gradient trd-glow-pulse inline-flex items-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
+                  className="trd-cta-gradient inline-flex items-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
                 >
                   Book a Session
                 </a>
@@ -92,8 +92,6 @@ export default function ToneTutoringPage() {
           </div>
         </div>
       </div>
-
-      <div className="trd-divider-dark-to-light" />
 
       {/* ---- THE PROBLEM ---- */}
       <Section theme="light" id="pain-points" reveal>
@@ -212,8 +210,6 @@ export default function ToneTutoringPage() {
         </div>
       </Section>
 
-      <div className="trd-divider-gray-to-dark" />
-
       {/* ---- PRICING ---- */}
       <Section theme="dark" id="pricing" reveal>
         <div className="mb-12">
@@ -250,8 +246,6 @@ export default function ToneTutoringPage() {
         </p>
       </Section>
 
-      <div className="trd-divider-dark-to-light" />
-
       {/* ---- FAQ ---- */}
       <Section theme="light" id="faq" reveal>
         <div className="mb-12">
@@ -271,8 +265,6 @@ export default function ToneTutoringPage() {
         </div>
       </Section>
 
-      <div className="trd-divider-light-to-dark" />
-
       {/* ---- CLOSING CTA ---- */}
       <Section theme="dark" id="final-cta" reveal className="text-center">
         <div className="mb-8">
@@ -286,7 +278,7 @@ export default function ToneTutoringPage() {
         <div className="mt-12">
           <a
             href="/api/checkout?handle=tone-tutoring-follow-up"
-            className="trd-cta-gradient trd-glow-pulse inline-flex items-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
+            className="trd-cta-gradient inline-flex items-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
           >
             Book a Session
           </a>

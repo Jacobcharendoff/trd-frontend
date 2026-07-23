@@ -138,7 +138,7 @@ export default function ProcessPage() {
 
       {/* ── HERO ── */}
       <div className="relative w-full overflow-hidden">
-        <div className="relative min-h-[85vh] flex items-end justify-center bg-black trd-aurora-intense">
+        <div className="relative min-h-[85vh] flex items-end justify-center bg-black">
           <video
             autoPlay
             muted
@@ -183,8 +183,6 @@ export default function ProcessPage() {
           </div>
         </div>
       </div>
-
-      <div className="trd-divider-dark-to-light" />
 
       {/* ── STEPS ── */}
       {steps.map((step, idx) => (
@@ -346,7 +344,7 @@ export default function ProcessPage() {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
               href="/book"
-              className="trd-cta-gradient trd-glow-pulse inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
+              className="trd-cta-gradient inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
             >
               Book a Free Consultation
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
