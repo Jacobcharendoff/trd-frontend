@@ -199,7 +199,7 @@ export default function ContactWidget() {
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className="inline-flex items-center gap-2 font-semibold px-10 py-4 rounded-full text-white trd-cta-gradient trd-glow-pulse transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+                className="inline-flex items-center gap-2 font-semibold px-10 py-4 rounded-full text-white trd-cta-gradient transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
               >
                 {status === 'sending' ? (
                   <>

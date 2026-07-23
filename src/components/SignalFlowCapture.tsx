@@ -126,7 +126,7 @@ export default function SignalFlowCapture() {
                     href={PDF_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="trd-cta-gradient trd-glow-pulse inline-flex items-center gap-3 font-semibold px-10 py-4 rounded-full text-lg"
+                    className="trd-cta-gradient inline-flex items-center gap-3 font-semibold px-10 py-4 rounded-full text-lg"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -153,7 +153,7 @@ export default function SignalFlowCapture() {
                   <button
                     type="submit"
                     disabled={status === 'submitting'}
-                    className="trd-cta-gradient trd-glow-pulse px-8 py-3.5 rounded-full font-semibold text-base whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+                    className="trd-cta-gradient px-8 py-3.5 rounded-full font-semibold text-base whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
                   >
                     {status === 'submitting' ? 'Opening...' : 'Get the PDF'}
                   </button>

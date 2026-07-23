@@ -8,7 +8,7 @@ export default function ContactPage() {
     <div>
       {/* Hero with Background Video */}
       <div className="relative w-full overflow-hidden">
-        <div className="relative min-h-screen flex items-center justify-center bg-black trd-aurora-intense">
+        <div className="relative min-h-screen flex items-center justify-center bg-black">
           <video
             autoPlay
             muted
@@ -37,9 +37,6 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-
-      {/* dark → light transition */}
-      <div className="trd-divider-dark-to-light" />
 
       {/* Contact Info Cards */}
       <Section theme="light" reveal>
@@ -98,7 +95,7 @@ export default function ContactPage() {
           </p>
           <Link
             href="/book"
-            className="inline-flex items-center gap-2 rounded-full trd-cta-gradient trd-glow-pulse px-8 py-4 text-lg font-semibold text-white transition"
+            className="inline-flex items-center gap-2 rounded-full trd-cta-gradient px-8 py-4 text-lg font-semibold text-white transition"
           >
             Book a Consultation
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
