@@ -12,7 +12,7 @@ export default function Home() {
     <>
       {/* ──── 1. HERO — Immediately tell them what we do ──── */}
       <div className="relative w-full overflow-hidden">
-        <div className="relative min-h-screen flex items-end justify-center bg-black trd-aurora-intense">
+        <div className="relative min-h-screen flex items-end justify-center bg-black">
           <HeroVideo />
 
           <div className="relative z-10 max-w-[1200px] mx-auto px-6 pb-24 pt-40 w-full text-center">
@@ -29,7 +29,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-20">
               <Link
                 href="/book"
-                className="trd-cta-gradient trd-glow-pulse inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
+                className="trd-cta-gradient inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
               >
                 Book a Free Consultation
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
@@ -54,7 +54,7 @@ export default function Home() {
               </div>
               <div className="w-px h-10 bg-white/10" />
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold trd-gradient-text-warm">50+</p>
+                <p className="text-2xl sm:text-3xl font-bold text-[#0071E3]">50+</p>
                 <p className="text-sm text-[#f5f5f7]/50 mt-1">touring artists</p>
               </div>
             </div>
@@ -68,9 +68,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      {/* dark → light transition */}
-      <div className="trd-divider-dark-to-light" />
 
       {/* ──── 2. THE PROBLEM — Speak to their pain ──── */}
       <Section theme="light" id="the-problem" reveal>
@@ -104,9 +101,6 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* light → dark transition */}
-      <div className="trd-divider-light-to-dark" />
-
       {/* ──── 3. SOCIAL PROOF — Who trusts us ──── */}
       <Section theme="dark" id="testimonials" reveal>
         <div className="text-center mb-12">
@@ -125,9 +119,6 @@ export default function Home() {
 
       {/* ──── 4. HOW WE BUILD — Show the process ──── */}
       <CinemaSection />
-
-      {/* dark → light transition */}
-      <div className="trd-divider-dark-to-light" />
 
       {/* ──── 5. WATCH IT HAPPEN — Video proof ──── */}
       <Section theme="light" id="video-build" reveal>
@@ -180,9 +171,6 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* light → dark transition */}
-      <div className="trd-divider-light-to-dark" />
-
       {/* ──── 6. GALLERY — Volume of proof ──── */}
       <Section theme="dark" id="gallery" reveal>
         <div className="text-center mb-10">
@@ -205,9 +193,6 @@ export default function Home() {
           </Link>
         </div>
       </Section>
-
-      {/* dark → light transition */}
-      <div className="trd-divider-dark-to-light" />
 
       {/* ──── 7. BEFORE/AFTER — The transformation ──── */}
       <Section theme="light" id="transformations" reveal>
@@ -253,7 +238,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
               href="/custom-builds"
-              className="trd-cta-gradient trd-glow-pulse inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-base whitespace-nowrap"
+              className="trd-cta-gradient inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-base whitespace-nowrap"
             >
               Explore Custom Builds
             </Link>
@@ -388,9 +373,6 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* dark → light transition */}
-      <div className="trd-divider-dark-to-light" />
-
       {/* ──── 9. REVIEWS — Volume of social proof ──── */}
       <Section theme="light" id="customer-reviews" reveal>
         <div className="text-center mb-12">
@@ -471,7 +453,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
               href="/custom-builds"
-              className="trd-cta-gradient trd-glow-pulse inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
+              className="trd-cta-gradient inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
             >
               Explore Custom Builds
             </Link>

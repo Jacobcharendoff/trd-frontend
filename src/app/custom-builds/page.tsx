@@ -68,7 +68,7 @@ export default function CustomBuildsPage() {
 
       {/* -- 1. HERO -- */}
       <div className="relative w-full overflow-hidden">
-        <div className="relative min-h-screen flex items-end justify-center bg-black trd-aurora-intense">
+        <div className="relative min-h-screen flex items-end justify-center bg-black">
           <video
             autoPlay
             muted
@@ -99,7 +99,7 @@ export default function CustomBuildsPage() {
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
               <Link
                 href="/book"
-                className="trd-cta-gradient trd-glow-pulse inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
+                className="trd-cta-gradient inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
               >
                 Book a Free Consultation
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
@@ -124,15 +124,13 @@ export default function CustomBuildsPage() {
               </div>
               <div className="w-px h-10 bg-white/10" />
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold trd-gradient-text-warm">4–8 wk</p>
+                <p className="text-2xl sm:text-3xl font-bold text-[#0071E3]">4–8 wk</p>
                 <p className="text-sm text-[#f5f5f7]/50 mt-1">typical turnaround</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="trd-divider-dark-to-light" />
 
       {/* -- 2. WHAT'S INCLUDED -- */}
       <Section theme="light" id="whats-included" reveal>
@@ -253,8 +251,6 @@ export default function CustomBuildsPage() {
         </div>
       </Section>
 
-      <div className="trd-divider-light-to-dark" />
-
       {/* -- 4. GALLERY STRIP -- */}
       <Section theme="dark" id="recent-builds" reveal>
         <div className="text-center mb-10">
@@ -292,8 +288,6 @@ export default function CustomBuildsPage() {
           </Link>
         </div>
       </Section>
-
-      <div className="trd-divider-dark-to-light" />
 
       {/* -- 5. THE PROCESS -- */}
       <Section theme="light" id="the-process" reveal>
@@ -355,7 +349,7 @@ export default function CustomBuildsPage() {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
               href="/book"
-              className="trd-cta-gradient trd-glow-pulse inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
+              className="trd-cta-gradient inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
             >
               Get a Free Quote
             </Link>
@@ -407,7 +401,7 @@ export default function CustomBuildsPage() {
           </p>
           <Link
             href="/book"
-            className="trd-cta-gradient trd-glow-pulse inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
+            className="trd-cta-gradient inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
           >
             Book a Free Consultation
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
