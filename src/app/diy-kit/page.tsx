@@ -4,11 +4,11 @@ import Section from '@/components/Section';
 import BuildTimeline from '@/components/BuildTimeline';
 
 export const metadata: Metadata = {
-  title: 'DIY Kit | The Rig Doctor',
+  title: 'DIY Pedalboard Kit',
   description:
     'Build your own pedalboard the right way. Pro-grade Mogami cables, custom rig blueprint, 60-min Tone Tutoring session, and everything you need to get started. Starting at $749.',
   openGraph: {
-    title: 'DIY Kit | The Rig Doctor',
+    title: 'DIY Pedalboard Kit | The Rig Doctor',
     description:
       'Build your own pedalboard the right way. Pro-grade components + expert guidance. Starting at $749.',
   },

@@ -4,11 +4,11 @@ import Section from '@/components/Section';
 import BuildTimeline from '@/components/BuildTimeline';
 
 export const metadata: Metadata = {
-  title: 'Pricing | The Rig Doctor',
+  title: 'Custom Build Pricing',
   description:
     'Transparent pricing for custom pedalboard builds, DIY kits, and tone tutoring sessions. Custom builds from $1,999. Houston, TX — shipping nationwide.',
   openGraph: {
-    title: 'Pricing | The Rig Doctor',
+    title: 'Custom Build Pricing | The Rig Doctor',
     description:
       'Transparent pricing for custom pedalboard builds, DIY kits, and tone tutoring. Houston, TX — shipping nationwide.',
   },
