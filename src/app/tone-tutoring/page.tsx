@@ -52,8 +52,9 @@ export default function ToneTutoringPage() {
             </div>
             <div className="mb-8 text-center">
               <h1 className="trd-hero-headline text-[#f5f5f7] mb-6">
-                Your tone,{' '}
-                <span className="trd-gradient-text">sorted.</span>
+                Tone Tutoring.
+                <br />
+                <span className="trd-gradient-text">Your tone, sorted.</span>
               </h1>
               <p className="trd-subheadline max-w-2xl mx-auto mb-8">
                 Hop on a video call with the guys who build rigs for touring artists. Bring your board, your questions, and whatever&apos;s been bugging you. We&apos;ll figure it out together.

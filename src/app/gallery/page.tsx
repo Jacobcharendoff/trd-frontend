@@ -107,7 +107,7 @@ export default function GalleryPage() {
           <div className="relative min-h-[60vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
             <div className="text-center">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                Off the bench.
+                Custom builds, off the bench.
               </h1>
               <p className="text-lg sm:text-xl text-[#f5f5f7]/70 max-w-2xl mx-auto leading-relaxed">
                 Every board tells a story. Here are some of ours.

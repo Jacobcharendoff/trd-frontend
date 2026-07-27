@@ -88,7 +88,7 @@ export default function CustomBuildsPage() {
               Custom Pedalboard Builds &bull; Houston, TX &bull; Ships Nationwide
             </p>
             <h1 className="trd-hero-headline text-[#f5f5f7] mb-6">
-              Your rig, built from scratch.
+              Custom pedalboard builds.
               <br />
               <span className="trd-gradient-text">Hand-wired. Road-tested. Bulletproof.</span>
             </h1>

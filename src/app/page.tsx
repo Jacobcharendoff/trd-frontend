@@ -18,7 +18,7 @@ export default function Home() {
           <div className="relative z-10 max-w-[1200px] mx-auto px-6 pb-24 pt-40 w-full text-center">
             <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-6">Custom Pedalboard Builds &bull; Expert Tone Advice</p>
             <h1 className="trd-hero-headline text-[#f5f5f7] mb-6">
-              We build pedalboards.
+              We build custom pedalboards.
               <br />
               <span className="trd-gradient-text">We fix tone problems.</span>
             </h1>
