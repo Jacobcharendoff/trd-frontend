@@ -10,6 +10,56 @@ const NOTIFICATION_EMAIL = 'info@therigdr.com';
 // Jacob's HubSpot owner ID — tickets and contacts get assigned to him
 const OWNER_ID = '61103251';
 
+// Twilio SMS — instant notification to Jacob's cell
+const TWILIO_SID = process.env.TWILIO_ACCOUNT_SID;
+const TWILIO_AUTH = process.env.TWILIO_AUTH_TOKEN;
+const TWILIO_FROM = process.env.TWILIO_PHONE_NUMBER;
+const JACOB_CELL = '+16476802324';
+
+async function sendSmsNotification(data: {
+  firstName: string;
+  lastName: string;
+  phone: string;
+  message: string;
+}) {
+  if (!TWILIO_SID || !TWILIO_AUTH || !TWILIO_FROM) return;
+
+  const { firstName, lastName, phone, message } = data;
+  const name = `${firstName}${lastName ? ' ' + lastName : ''}`;
+  const preview = message.length > 120 ? message.slice(0, 120) + '...' : message;
+
+  let body = `New TRD inquiry from ${name}`;
+  if (phone) body += `\nPhone: ${phone}`;
+  body += `\n\n"${preview}"`;
+
+  try {
+    const params = new URLSearchParams({
+      To: JACOB_CELL,
+      From: TWILIO_FROM,
+      Body: body,
+    });
+
+    const res = await fetch(
+      `https://api.twilio.com/2010-04-01/Accounts/${TWILIO_SID}/Messages.json`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          Authorization: `Basic ${Buffer.from(`${TWILIO_SID}:${TWILIO_AUTH}`).toString('base64')}`,
+        },
+        body: params.toString(),
+      }
+    );
+
+    if (!res.ok) {
+      const errBody = await res.text();
+      console.error('[Contact Form] Twilio SMS error:', res.status, errBody);
+    }
+  } catch (smsErr) {
+    console.error('[Contact Form] SMS notification failed:', smsErr);
+  }
+}
+
 async function sendNotificationEmail(data: {
   firstName: string;
   lastName: string;
@@ -271,6 +321,9 @@ export async function POST(req: NextRequest) {
 
     // ── Step 4: Send confirmation email to customer ──
     await sendCustomerConfirmation({ firstName, email });
+
+    // ── Step 5: SMS notification to Jacob's cell ──
+    await sendSmsNotification({ firstName, lastName: lastName || '', phone: phone || '', message });
 
     return NextResponse.json({
       success: true,
