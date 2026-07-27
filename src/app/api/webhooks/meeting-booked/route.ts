@@ -4,34 +4,31 @@ import { NextRequest, NextResponse } from 'next/server';
  * Meeting Booked Webhook
  *
  * Receives a POST when a rig build consultation is booked via HubSpot Meetings.
- * Sends an SMS to Jacob's cell so he can prep and reach out immediately.
+ * Tags the contact in HubSpot so the trd-welcome-imessage scheduled task
+ * picks them up and sends a personalized iMessage from Jacob's number.
  *
- * Wire this up in one of two ways:
- * 1. HubSpot Workflow: Trigger = "Meeting booked" → Action = Webhook POST to
- *    https://www.therigdr.com/api/webhooks/meeting-booked
- * 2. Make.com Scenario: HubSpot "Watch Meetings" → HTTP POST to this URL
+ * Wire this up via Make.com:
+ * HubSpot "Watch Meetings" trigger → HTTP POST to
+ * https://www.therigdr.com/api/webhooks/meeting-booked?secret=YOUR_SECRET
  *
- * Expected payload (flexible — handles both HubSpot and Make.com formats):
+ * Expected payload (flexible -- handles HubSpot and Make.com formats):
  * {
- *   contactName: "John Smith",
  *   contactEmail: "john@example.com",
+ *   contactName: "John Smith",
  *   contactPhone: "+15551234567",
  *   meetingTime: "2026-08-01T14:00:00Z",
- *   meetingTitle: "Rig Build Consultation"
+ *   contactId: "12345"  // optional: HubSpot contact ID
  * }
  */
 
-const TWILIO_SID = process.env.TWILIO_ACCOUNT_SID;
-const TWILIO_AUTH = process.env.TWILIO_AUTH_TOKEN;
-const TWILIO_FROM = process.env.TWILIO_PHONE_NUMBER;
-const JACOB_CELL = '+16476802324';
+const HUBSPOT_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
 
 // Simple auth token to prevent random POSTs
 const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
 
 export async function POST(req: NextRequest) {
   try {
-    // Optional: verify webhook secret via query param or header
+    // Verify webhook secret via query param or header
     const secret = req.nextUrl.searchParams.get('secret')
       || req.headers.get('x-webhook-secret');
     if (WEBHOOK_SECRET && secret !== WEBHOOK_SECRET) {
@@ -40,83 +37,122 @@ export async function POST(req: NextRequest) {
 
     const body = await req.json();
 
-    // Parse flexibly — different sources send different shapes
-    const contactName = body.contactName
-      || body.properties?.firstname?.value
-      || body.firstName
-      || 'Someone';
+    // Parse flexibly -- different sources send different shapes
+    const contactEmail = body.contactEmail
+      || body.properties?.email?.value
+      || body.email
+      || '';
 
     const contactPhone = body.contactPhone
       || body.properties?.phone?.value
       || body.phone
       || '';
 
-    const contactEmail = body.contactEmail
-      || body.properties?.email?.value
-      || body.email
+    const contactName = body.contactName
+      || body.properties?.firstname?.value
+      || body.firstName
       || '';
 
-    const meetingTime = body.meetingTime
-      || body.properties?.hs_meeting_start_time?.value
-      || body.startTime
+    // We can receive a HubSpot contact ID directly, or look up by email
+    let contactId = body.contactId
+      || body.properties?.hs_object_id?.value
       || '';
 
-    // Format the meeting time for the SMS
-    let formattedTime = 'TBD';
-    if (meetingTime) {
-      try {
-        const d = new Date(meetingTime);
-        formattedTime = d.toLocaleString('en-US', {
-          weekday: 'short',
-          month: 'short',
-          day: 'numeric',
-          hour: 'numeric',
-          minute: '2-digit',
-          timeZone: 'America/Chicago',
-        });
-      } catch {
-        formattedTime = meetingTime;
-      }
+    if (!HUBSPOT_TOKEN) {
+      console.warn('[Meeting Webhook] HUBSPOT_ACCESS_TOKEN not set -- skipping');
+      return NextResponse.json({ ok: true, skipped: 'no hubspot token' });
     }
 
-    // Build SMS
-    let smsBody = `New consult booked!\n${contactName} — ${formattedTime}`;
-    if (contactPhone) smsBody += `\nPhone: ${contactPhone}`;
-    if (contactEmail) smsBody += `\nEmail: ${contactEmail}`;
-
-    // Send SMS to Jacob
-    if (TWILIO_SID && TWILIO_AUTH && TWILIO_FROM) {
+    // If no contactId, look up by email
+    if (!contactId && contactEmail) {
       try {
-        const params = new URLSearchParams({
-          To: JACOB_CELL,
-          From: TWILIO_FROM,
-          Body: smsBody,
-        });
-
-        const res = await fetch(
-          `https://api.twilio.com/2010-04-01/Accounts/${TWILIO_SID}/Messages.json`,
+        const searchRes = await fetch(
+          'https://api.hubapi.com/crm/v3/objects/contacts/search',
           {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
-              Authorization: `Basic ${Buffer.from(`${TWILIO_SID}:${TWILIO_AUTH}`).toString('base64')}`,
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${HUBSPOT_TOKEN}`,
             },
-            body: params.toString(),
+            body: JSON.stringify({
+              filterGroups: [
+                {
+                  filters: [
+                    { propertyName: 'email', operator: 'EQ', value: contactEmail },
+                  ],
+                },
+              ],
+            }),
           }
         );
-
-        if (!res.ok) {
-          const errBody = await res.text();
-          console.error('[Meeting Webhook] Twilio error:', res.status, errBody);
-        }
-      } catch (smsErr) {
-        console.error('[Meeting Webhook] SMS failed:', smsErr);
+        const searchData = await searchRes.json();
+        contactId = searchData.results?.[0]?.id || '';
+      } catch (searchErr) {
+        console.error('[Meeting Webhook] Contact search failed:', searchErr);
       }
-    } else {
-      console.warn('[Meeting Webhook] Twilio env vars not set — SMS skipped');
     }
 
-    return NextResponse.json({ ok: true });
+    if (!contactId) {
+      // No contact found and no ID provided -- create one if we have enough info
+      if (contactEmail) {
+        try {
+          const createRes = await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${HUBSPOT_TOKEN}`,
+            },
+            body: JSON.stringify({
+              properties: {
+                email: contactEmail,
+                firstname: contactName,
+                phone: contactPhone,
+                hs_lead_status: 'NEW',
+                hubspot_owner_id: '61103251',
+                leadsource: 'Rig Build Consultation',
+                description: 'Rig Build Consultation',
+                lifecyclestage: 'lead',
+              },
+            }),
+          });
+          const createData = await createRes.json();
+          contactId = createData.id || '';
+          console.log('[Meeting Webhook] Created contact:', contactId);
+        } catch (createErr) {
+          console.error('[Meeting Webhook] Contact create failed:', createErr);
+        }
+      } else {
+        console.warn('[Meeting Webhook] No email or contactId -- cannot tag contact');
+        return NextResponse.json({ ok: true, skipped: 'no contact identifier' });
+      }
+    } else {
+      // Update existing contact with booking tag
+      try {
+        await fetch(
+          `https://api.hubapi.com/crm/v3/objects/contacts/${contactId}`,
+          {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${HUBSPOT_TOKEN}`,
+            },
+            body: JSON.stringify({
+              properties: {
+                hs_lead_status: 'NEW',
+                description: 'Rig Build Consultation',
+                leadsource: 'Rig Build Consultation',
+                phone: contactPhone || undefined,
+              },
+            }),
+          }
+        );
+        console.log('[Meeting Webhook] Tagged contact:', contactId);
+      } catch (updateErr) {
+        console.error('[Meeting Webhook] Contact update failed:', updateErr);
+      }
+    }
+
+    return NextResponse.json({ ok: true, contactId });
   } catch (err) {
     console.error('[Meeting Webhook] Error:', err);
     return NextResponse.json(
