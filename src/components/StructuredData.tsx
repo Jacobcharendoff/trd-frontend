@@ -11,7 +11,16 @@ export default function LocalBusinessSchema() {
     email: 'info@therigdr.com',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: '641 Amesbury Rd',
+      addressLocality: 'Montgomery',
+      addressRegion: 'TX',
+      postalCode: '77316',
       addressCountry: 'US',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 30.3886,
+      longitude: -95.6933,
     },
     priceRange: '$$',
     areaServed: {
@@ -113,6 +122,35 @@ export default function LocalBusinessSchema() {
   );
 }
 
+export function WebSiteSchema() {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'The Rig Doctor',
+    url: 'https://www.therigdr.com',
+    description:
+      'Custom pedalboard builds, DIY kits, and tone tutoring for guitarists. Hand-wired rigs built in Montgomery, TX — shipping nationwide.',
+    publisher: {
+      '@id': 'https://www.therigdr.com/#business',
+    },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: 'https://www.therigdr.com/blog?q={search_term_string}',
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 export function BlogPostSchema({
   title,
   description,
@@ -140,6 +178,56 @@ export function BlogPostSchema({
       name: 'The Rig Doctor',
       url: 'https://www.therigdr.com',
     },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+export function PricingFAQSchema() {
+  const faqs = [
+    {
+      question: 'What determines the final price of a custom build?',
+      answer:
+        'Pedal count, routing complexity, power requirements, and whether you need extras like MIDI integration or effects loops. We quote everything upfront after your consultation so there are no surprises.',
+    },
+    {
+      question: "What's included in the DIY Kit?",
+      answer:
+        'Hand-soldered Mogami patch cables, a custom rig blueprint designed for your specific pedals, a 60-minute Tone Tutoring session to walk through the build, and a pedalboard essentials kit with everything you need to get started.',
+    },
+    {
+      question: 'Can I upgrade from a DIY Kit to a Custom Build?',
+      answer:
+        'Absolutely. If you start with a DIY Kit and decide you want us to take it from there, we will credit the kit price toward your custom build.',
+    },
+    {
+      question: 'Do you offer rush builds?',
+      answer:
+        'Yes. If you have a tour date, recording session, or studio deadline, let us know and we will work with your timeline. Rush pricing varies by complexity.',
+    },
+    {
+      question: 'What does lifetime support actually mean?',
+      answer:
+        'Every custom build comes with free repairs and adjustments for life. Swap a pedal, change your signal chain, need a patch cable replaced. We have got you covered, no charge.',
+    },
+  ];
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
   };
 
   return (
