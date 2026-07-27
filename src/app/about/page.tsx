@@ -11,6 +11,21 @@ export const metadata: Metadata = {
     title: 'About The Rig Doctor',
     description:
       'Meet the founders behind The Rig Doctor. 17+ years building custom pedalboards for touring artists and home players.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'About The Rig Doctor — Mason, Vince, and Jacob',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About The Rig Doctor',
+    description:
+      'Meet Mason, Vince, and Jacob. 17+ years building custom pedalboards for touring artists and home players.',
+    images: ['/og-image.png'],
   },
 };
 

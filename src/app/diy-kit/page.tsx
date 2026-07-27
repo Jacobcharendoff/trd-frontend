@@ -11,6 +11,21 @@ export const metadata: Metadata = {
     title: 'DIY Pedalboard Kit | The Rig Doctor',
     description:
       'Build your own pedalboard the right way. Pro-grade components + expert guidance. Starting at $749.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'DIY Pedalboard Kit — The Rig Doctor',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'DIY Pedalboard Kit | The Rig Doctor',
+    description:
+      'Build your own pedalboard the right way. Pro-grade components + expert guidance. Starting at $749.',
+    images: ['/og-image.png'],
   },
 };
 

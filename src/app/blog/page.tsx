@@ -12,6 +12,21 @@ export const metadata: Metadata = {
     title: 'Blog | The Rig Doctor',
     description:
       'Pedalboard build guides, signal chain tips, and gear advice from The Rig Doctor.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'The Rig Doctor Blog',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog | The Rig Doctor',
+    description:
+      'Pedalboard build guides, signal chain tips, and gear advice from The Rig Doctor.',
+    images: ['/og-image.png'],
   },
 };
 

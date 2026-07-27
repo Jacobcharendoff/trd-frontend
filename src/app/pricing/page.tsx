@@ -12,6 +12,21 @@ export const metadata: Metadata = {
     title: 'Custom Build Pricing | The Rig Doctor',
     description:
       'Transparent pricing for custom pedalboard builds, DIY kits, and tone tutoring. Houston, TX — shipping nationwide.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Custom Build Pricing — The Rig Doctor',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Custom Build Pricing | The Rig Doctor',
+    description:
+      'Transparent pricing for custom pedalboard builds, DIY kits, and tone tutoring. From $1,999 USD.',
+    images: ['/og-image.png'],
   },
 };
 
