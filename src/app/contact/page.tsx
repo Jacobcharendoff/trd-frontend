@@ -120,11 +120,12 @@ function ContactForm() {
         </div>
         <div>
           <label htmlFor="phone" className="block text-sm font-medium text-[#1d1d1f] mb-2">
-            Phone <span className="text-[#1d1d1f]/30 font-normal">(optional)</span>
+            Phone <span className="text-[#0071E3]">*</span>
           </label>
           <input
             id="phone"
             type="tel"
+            required
             value={form.phone}
             onChange={(e) => update('phone', e.target.value)}
             className="w-full px-4 py-3 bg-[#f5f5f7] border border-black/[0.06] rounded-xl text-[#1d1d1f] placeholder:text-[#1d1d1f]/30 focus:outline-none focus:ring-2 focus:ring-[#0071E3]/30 focus:border-[#0071E3] transition-all"
@@ -229,7 +230,7 @@ export default function ContactPage() {
 
           <div className="relative z-10 max-w-[1080px] mx-auto px-6 py-32 w-full text-center">
             <h1 className="trd-hero-headline text-[#f5f5f7] mb-6">
-              Get in <span className="trd-gradient-text">Touch</span>
+              Contact <span className="trd-gradient-text">The Rig Doctor</span>
             </h1>
             <p className="trd-subheadline max-w-2xl mx-auto">
               Questions about a build, need help with your rig, or just want to talk tone? We&apos;re here.
