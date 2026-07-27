@@ -2,63 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const HUBSPOT_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-// therigdr.com verified in Resend on Apr 28, 2026 — branded emails active
+// therigdr.com verified in Resend on Apr 28, 2026 -- branded emails active
 const VERIFIED_DOMAIN = true;
 const FROM_ADDRESS = 'The Rig Doctor <notifications@therigdr.com>';
 const NOTIFICATION_EMAIL = 'info@therigdr.com';
 
-// Jacob's HubSpot owner ID — tickets and contacts get assigned to him
+// Jacob's HubSpot owner ID -- tickets and contacts get assigned to him
 const OWNER_ID = '61103251';
-
-// Twilio SMS — instant notification to Jacob's cell
-const TWILIO_SID = process.env.TWILIO_ACCOUNT_SID;
-const TWILIO_AUTH = process.env.TWILIO_AUTH_TOKEN;
-const TWILIO_FROM = process.env.TWILIO_PHONE_NUMBER;
-const JACOB_CELL = '+16476802324';
-
-async function sendSmsNotification(data: {
-  firstName: string;
-  lastName: string;
-  phone: string;
-  message: string;
-}) {
-  if (!TWILIO_SID || !TWILIO_AUTH || !TWILIO_FROM) return;
-
-  const { firstName, lastName, phone, message } = data;
-  const name = `${firstName}${lastName ? ' ' + lastName : ''}`;
-  const preview = message.length > 120 ? message.slice(0, 120) + '...' : message;
-
-  let body = `New TRD inquiry from ${name}`;
-  if (phone) body += `\nPhone: ${phone}`;
-  body += `\n\n"${preview}"`;
-
-  try {
-    const params = new URLSearchParams({
-      To: JACOB_CELL,
-      From: TWILIO_FROM,
-      Body: body,
-    });
-
-    const res = await fetch(
-      `https://api.twilio.com/2010-04-01/Accounts/${TWILIO_SID}/Messages.json`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          Authorization: `Basic ${Buffer.from(`${TWILIO_SID}:${TWILIO_AUTH}`).toString('base64')}`,
-        },
-        body: params.toString(),
-      }
-    );
-
-    if (!res.ok) {
-      const errBody = await res.text();
-      console.error('[Contact Form] Twilio SMS error:', res.status, errBody);
-    }
-  } catch (smsErr) {
-    console.error('[Contact Form] SMS notification failed:', smsErr);
-  }
-}
 
 async function sendNotificationEmail(data: {
   firstName: string;
@@ -135,8 +85,6 @@ async function sendCustomerConfirmation(data: {
   firstName: string;
   email: string;
 }) {
-  // Only send customer-facing emails once therigdr.com domain is verified in Resend.
-  // onboarding@resend.dev can only deliver to the account owner's email.
   if (!RESEND_API_KEY || !VERIFIED_DOMAIN) return;
 
   const { firstName, email } = data;
@@ -164,7 +112,7 @@ async function sendCustomerConfirmation(data: {
             </p>
 
             <p style="font-size: 16px; line-height: 1.7; margin: 0 0 16px; color: #1d1d1f;">
-              Thanks for reaching out — we got your message and we're on it. Someone from the team will get back to you shortly, usually within 24 hours.
+              Thanks for reaching out -- we got your message and we're on it. Someone from the team will get back to you shortly.
             </p>
 
             <p style="font-size: 16px; line-height: 1.7; margin: 0 0 24px; color: #1d1d1f;">
@@ -180,7 +128,7 @@ async function sendCustomerConfirmation(data: {
 
             <div style="border-top: 1px solid rgba(0,0,0,0.06); padding-top: 20px;">
               <p style="margin: 0; font-size: 12px; color: #86868b; line-height: 1.5;">
-                The Rig Doctor · Custom Pedalboards & Rig Builds<br>
+                The Rig Doctor - Custom Pedalboards & Rig Builds<br>
                 <a href="https://www.therigdr.com" style="color: #0071E3; text-decoration: none;">therigdr.com</a>
               </p>
             </div>
@@ -215,7 +163,7 @@ export async function POST(req: NextRequest) {
     let contactId: string | null = null;
 
     if (HUBSPOT_TOKEN) {
-      // ── Step 1: Create or update contact ──
+      // -- Step 1: Create or update contact --
       try {
         const searchRes = await fetch(
           'https://api.hubapi.com/crm/v3/objects/contacts/search',
@@ -247,6 +195,7 @@ export async function POST(req: NextRequest) {
           phone: phone || '',
           hs_lead_status: 'NEW',
           hubspot_owner_id: OWNER_ID,
+          leadsource: 'Website Contact Form',
         };
 
         if (existingContact) {
@@ -279,7 +228,7 @@ export async function POST(req: NextRequest) {
         console.error('[Contact Form] Contact create/update failed:', contactErr);
       }
 
-      // ── Step 2: Create note associated to contact ──
+      // -- Step 2: Create note associated to contact --
       if (contactId) {
         try {
           await fetch('https://api.hubapi.com/crm/v3/objects/notes', {
@@ -310,20 +259,16 @@ export async function POST(req: NextRequest) {
           console.error('[Contact Form] Note creation failed:', noteErr);
         }
       }
-
-      // Ticket creation removed — HubSpot's built-in ticket auto-reply
-      // sends a generic "your request has been received" email that duplicates
-      // our branded Resend confirmation. Contact + note is sufficient for CRM tracking.
     }
 
-    // ── Step 3: Send notification email to Jacob ──
+    // -- Step 3: Send notification email to Jacob --
     await sendNotificationEmail({ firstName, lastName: lastName || '', email, phone: phone || '', message });
 
-    // ── Step 4: Send confirmation email to customer ──
+    // -- Step 4: Send confirmation email to customer --
     await sendCustomerConfirmation({ firstName, email });
 
-    // ── Step 5: SMS notification to Jacob's cell ──
-    await sendSmsNotification({ firstName, lastName: lastName || '', phone: phone || '', message });
+    // Step 5: Welcome iMessage is handled by the trd-welcome-imessage scheduled task
+    // which polls HubSpot every 3 min for contacts with hs_lead_status=NEW + phone
 
     return NextResponse.json({
       success: true,

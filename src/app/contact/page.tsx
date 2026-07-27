@@ -63,7 +63,7 @@ function ContactForm() {
         </div>
         <h3 className="text-2xl font-bold text-[#1d1d1f] mb-3">Message sent.</h3>
         <p className="text-[#1d1d1f]/60 text-lg max-w-md mx-auto">
-          We got it. Someone from the team will get back to you within 24 hours. Check your inbox for a confirmation.
+          We got it. Check your phone - we'll text you shortly.
         </p>
       </div>
     );
@@ -198,7 +198,7 @@ function ContactForm() {
       </button>
 
       <p className="text-center text-sm text-[#1d1d1f]/40">
-        We typically respond within 24 hours.
+        We'll text you back within minutes.
       </p>
     </form>
   );
@@ -297,7 +297,7 @@ export default function ContactPage() {
             Tell us about your <span className="trd-gradient-text">rig.</span>
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg max-w-xl mx-auto">
-            Not ready to book a call? No problem. Drop us a message and we&apos;ll get back to you within 24 hours.
+            Drop us a message and we'll text you back within minutes.
           </p>
         </div>
         <ContactForm />
