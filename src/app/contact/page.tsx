@@ -20,8 +20,10 @@ function ContactForm() {
     phone: '',
     interest: '',
     message: '',
+    company: '', // honeypot - invisible to humans
   });
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [loadedAt] = useState(() => Date.now());
 
   const update = (field: string, value: string) =>
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -41,12 +43,14 @@ function ContactForm() {
           phone: form.phone,
           interest: form.interest,
           message: form.message,
+          company: form.company, // honeypot
+          _t: loadedAt, // timing check
         }),
       });
 
       if (!res.ok) throw new Error('Failed');
       setStatus('sent');
-      setForm({ firstName: '', lastName: '', email: '', phone: '', interest: '', message: '' });
+      setForm({ firstName: '', lastName: '', email: '', phone: '', interest: '', message: '', company: '' });
     } catch {
       setStatus('error');
     }
@@ -70,6 +74,20 @@ function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
+      {/* Honeypot - hidden from humans, bots will fill it */}
+      <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: '-9999px', opacity: 0, height: 0, overflow: 'hidden', tabIndex: -1 } as React.CSSProperties}>
+        <label htmlFor="company">Company</label>
+        <input
+          id="company"
+          type="text"
+          name="company"
+          autoComplete="off"
+          tabIndex={-1}
+          value={form.company}
+          onChange={(e) => update('company', e.target.value)}
+        />
+      </div>
+
       {/* Name row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>

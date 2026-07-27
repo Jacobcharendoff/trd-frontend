@@ -10,6 +10,9 @@ const NOTIFICATION_EMAIL = 'info@therigdr.com';
 // Jacob's HubSpot owner ID -- tickets and contacts get assigned to him
 const OWNER_ID = '61103251';
 
+// Minimum time (ms) a human would take to fill out the form
+const MIN_SUBMIT_TIME_MS = 2000;
+
 async function sendNotificationEmail(data: {
   firstName: string;
   lastName: string;
@@ -22,7 +25,6 @@ async function sendNotificationEmail(data: {
 
   const { firstName, lastName, email, phone, interest, message } = data;
   const fullName = `${firstName}${lastName ? ' ' + lastName : ''}`;
-  const displayMessage = interest ? `[${interest}] ${message}` : message;
 
   try {
     const res = await fetch('https://api.resend.com/emails', {
@@ -155,7 +157,23 @@ async function sendCustomerConfirmation(data: {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { firstName, lastName, email, phone, interest, message } = body;
+    const { firstName, lastName, email, phone, interest, message, company, _t } = body;
+
+    // ── Honeypot check: if the hidden "company" field is filled, it's a bot ──
+    if (company) {
+      console.log('[Contact Form] Honeypot triggered, silently dropping submission');
+      // Return 200 so bots think it worked
+      return NextResponse.json({ success: true, hubspot: null });
+    }
+
+    // ── Timing check: if submitted faster than 2 seconds, likely a bot ──
+    if (_t && typeof _t === 'number') {
+      const elapsed = Date.now() - _t;
+      if (elapsed < MIN_SUBMIT_TIME_MS) {
+        console.log(`[Contact Form] Speed bot detected (${elapsed}ms), silently dropping`);
+        return NextResponse.json({ success: true, hubspot: null });
+      }
+    }
 
     // Validation
     if (!firstName || !email || !message) {
@@ -166,7 +184,6 @@ export async function POST(req: NextRequest) {
     }
 
     const fullName = `${firstName}${lastName ? ' ' + lastName : ''}`;
-    const displayMessage = interest ? `[${interest}] ${message}` : message;
     let contactId: string | null = null;
 
     if (HUBSPOT_TOKEN) {
