@@ -15,12 +15,14 @@ async function sendNotificationEmail(data: {
   lastName: string;
   email: string;
   phone: string;
+  interest: string;
   message: string;
 }) {
   if (!RESEND_API_KEY) return;
 
-  const { firstName, lastName, email, phone, message } = data;
+  const { firstName, lastName, email, phone, interest, message } = data;
   const fullName = `${firstName}${lastName ? ' ' + lastName : ''}`;
+  const displayMessage = interest ? `[${interest}] ${message}` : message;
 
   try {
     const res = await fetch('https://api.resend.com/emails', {
@@ -53,6 +55,10 @@ async function sendNotificationEmail(data: {
                 <td style="padding: 8px 0; color: #86868b; font-size: 14px; vertical-align: top;">Phone</td>
                 <td style="padding: 8px 0; font-size: 14px;">${phone || 'Not provided'}</td>
               </tr>
+              ${interest ? `<tr>
+                <td style="padding: 8px 0; color: #86868b; font-size: 14px; vertical-align: top;">Interest</td>
+                <td style="padding: 8px 0; font-size: 14px; font-weight: 500;">${interest}</td>
+              </tr>` : ''}
             </table>
 
             <div style="background: #f5f5f7; border-radius: 12px; padding: 20px; margin-bottom: 24px;">
@@ -149,7 +155,7 @@ async function sendCustomerConfirmation(data: {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { firstName, lastName, email, phone, message } = body;
+    const { firstName, lastName, email, phone, interest, message } = body;
 
     // Validation
     if (!firstName || !email || !message) {
@@ -160,6 +166,7 @@ export async function POST(req: NextRequest) {
     }
 
     const fullName = `${firstName}${lastName ? ' ' + lastName : ''}`;
+    const displayMessage = interest ? `[${interest}] ${message}` : message;
     let contactId: string | null = null;
 
     if (HUBSPOT_TOKEN) {
@@ -196,6 +203,7 @@ export async function POST(req: NextRequest) {
           hs_lead_status: 'NEW',
           hubspot_owner_id: OWNER_ID,
           leadsource: 'Website Contact Form',
+          description: interest || 'General Question',
         };
 
         if (existingContact) {
@@ -239,7 +247,7 @@ export async function POST(req: NextRequest) {
             },
             body: JSON.stringify({
               properties: {
-                hs_note_body: `<strong>Website Contact Form</strong><br><br><strong>Name:</strong> ${fullName}<br><strong>Email:</strong> ${email}<br><strong>Phone:</strong> ${phone || 'Not provided'}<br><br><strong>Message:</strong><br>${message}`,
+                hs_note_body: `<strong>Website Contact Form</strong>${interest ? `<br><strong>Interest:</strong> ${interest}` : ''}<br><br><strong>Name:</strong> ${fullName}<br><strong>Email:</strong> ${email}<br><strong>Phone:</strong> ${phone || 'Not provided'}<br><br><strong>Message:</strong><br>${message}`,
                 hs_timestamp: new Date().toISOString(),
               },
               associations: [
@@ -262,13 +270,14 @@ export async function POST(req: NextRequest) {
     }
 
     // -- Step 3: Send notification email to Jacob --
-    await sendNotificationEmail({ firstName, lastName: lastName || '', email, phone: phone || '', message });
+    await sendNotificationEmail({ firstName, lastName: lastName || '', email, phone: phone || '', interest: interest || '', message });
 
     // -- Step 4: Send confirmation email to customer --
     await sendCustomerConfirmation({ firstName, email });
 
     // Step 5: Welcome iMessage is handled by the trd-welcome-imessage scheduled task
-    // which polls HubSpot every 3 min for contacts with hs_lead_status=NEW + phone
+    // which polls HubSpot every 30 min for contacts with hs_lead_status=NEW + phone
+    // and sends interest-aware opening messages based on the description property
 
     return NextResponse.json({
       success: true,

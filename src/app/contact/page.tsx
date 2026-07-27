@@ -39,9 +39,8 @@ function ContactForm() {
           lastName: form.lastName,
           email: form.email,
           phone: form.phone,
-          message: form.interest
-            ? `[${form.interest}] ${form.message}`
-            : form.message,
+          interest: form.interest,
+          message: form.message,
         }),
       });
 
