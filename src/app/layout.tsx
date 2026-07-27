@@ -6,7 +6,7 @@ import HubSpotTracking from '@/components/HubSpotTracking';
 import UTMCapture from '@/components/UTMCapture';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import ErrorInit from '@/components/ErrorInit';
-import LocalBusinessSchema from '@/components/StructuredData';
+import LocalBusinessSchema, { WebSiteSchema } from '@/components/StructuredData';
 import FAQSchema from '@/components/FAQSchema';
 import './globals.css';
 
@@ -48,6 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="antialiased">
         <LocalBusinessSchema />
+        <WebSiteSchema />
         <FAQSchema />
         <Analytics />
         <HubSpotTracking />

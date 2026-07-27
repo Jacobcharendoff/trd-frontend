@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Section from '@/components/Section';
 import BuildTimeline from '@/components/BuildTimeline';
+import { PricingFAQSchema } from '@/components/StructuredData';
 
 export const metadata: Metadata = {
   title: 'Custom Build Pricing',
@@ -17,6 +18,8 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <>
+      <PricingFAQSchema />
+
       {/* Hero */}
       <div className="relative w-full overflow-hidden">
         <div className="relative flex items-end justify-center bg-black pt-36 pb-20 sm:pt-44 sm:pb-28">
