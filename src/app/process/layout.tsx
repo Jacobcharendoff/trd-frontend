@@ -1,20 +1,31 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'How We Build Your Rig',
+  title: 'Our Build Process',
   description:
-    'Five steps from free consultation to stage-ready pedalboard. See how The Rig Doctor designs, builds, and delivers custom rigs. 4–8 week turnaround. Ships nationwide.',
+    'From consultation to your doorstep. How The Rig Doctor designs, wires, and builds your custom pedalboard. Five steps to a stage-ready rig.',
   openGraph: {
-    title: 'How We Build Your Rig | The Rig Doctor',
+    title: 'Our Build Process | The Rig Doctor',
     description:
-      'Five steps from consultation to stage-ready. See our custom pedalboard build process.',
+      'From consultation to your doorstep. How The Rig Doctor builds your custom pedalboard in five steps.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'The Rig Doctor build process',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Our Build Process | The Rig Doctor',
+    description:
+      'Five steps from consultation to stage-ready. How The Rig Doctor builds your custom pedalboard.',
+    images: ['/og-image.png'],
   },
 };
 
-export default function ProcessLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return children;
+export default function ProcessLayout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
 }
