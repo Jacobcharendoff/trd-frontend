@@ -102,15 +102,24 @@ export default function Header() {
         }`}
       >
         <div className="max-w-[1080px] mx-auto px-6 h-14 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+          {/* Logo — white on dark hero, TRD blue on scrolled/light */}
+          <Link href="/" className="relative flex items-center hover:opacity-80 transition-opacity">
             <img
               src="/trd-logo.svg"
               alt="The Rig Doctor"
               className="h-7 w-auto"
               style={{
-                filter: scrolled ? 'brightness(0)' : 'brightness(1)',
-                transition: 'filter 300ms ease',
+                opacity: scrolled ? 0 : 1,
+                transition: 'opacity 300ms ease',
+              }}
+            />
+            <img
+              src="/trd-logo-blue.svg"
+              alt=""
+              className="h-7 w-auto absolute left-0 top-1/2 -translate-y-1/2"
+              style={{
+                opacity: scrolled ? 1 : 0,
+                transition: 'opacity 300ms ease',
               }}
             />
           </Link>
