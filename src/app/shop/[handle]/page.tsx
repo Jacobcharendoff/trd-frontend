@@ -215,7 +215,7 @@ export default function ProductPage() {
                   )}
                   <span className="text-base font-normal text-[#1d1d1f]/40">USD</span>
                   {compareAtPrice && (
-                    <span className="text-sm font-medium text-green-600 bg-green-50 px-2 py-0.5 rounded-full">Sale</span>
+                    <span className="text-sm font-medium text-[#0071E3] bg-[#0071E3]/10 px-2 py-0.5 rounded-full">Sale</span>
                   )}
                 </p>
               </div>
@@ -376,7 +376,7 @@ export default function ProductPage() {
 
       {/* Consultation CTA */}
       <section className="relative overflow-hidden bg-[#1d1d1f] py-16 sm:py-20">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(255,55,95,0.06)_0%,transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(191,90,242,0.06)_0%,transparent_50%)]" />
         <div className="relative max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-8">
           <div>
             <h3 className="text-2xl sm:text-3xl font-bold text-[#f5f5f7] tracking-tight">
