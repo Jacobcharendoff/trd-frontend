@@ -6,6 +6,7 @@ import GallerySlider from '@/components/GallerySlider';
 import CinemaSection from '@/components/CinemaSection';
 import ReviewsMarquee from '@/components/ReviewsMarquee';
 import HeroVideo from '@/components/HeroVideo';
+import LeadCaptureForm from '@/components/LeadCaptureForm';
 
 export default function Home() {
   return (
@@ -185,10 +186,10 @@ export default function Home() {
         <GallerySlider />
         <div className="text-center mt-10">
           <Link
-            href="/custom-builds"
+            href="/book"
             className="inline-flex items-center gap-2 text-[#0071E3] font-medium hover:underline transition-colors"
           >
-            Explore our custom builds
+            Book a Free Consultation
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </Link>
         </div>
@@ -237,10 +238,10 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
-              href="/custom-builds"
+              href="/book"
               className="trd-cta-gradient inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-base whitespace-nowrap"
             >
-              Explore Custom Builds
+              Book a Free Consultation
             </Link>
             <Link
               href="/tone-tutoring"
@@ -373,6 +374,20 @@ export default function Home() {
         </div>
       </Section>
 
+      {/* ──── LEAD CAPTURE — Catch visitors not ready to book ──── */}
+      <Section theme="lightGray" id="get-in-touch" reveal>
+        <div className="text-center mb-10">
+          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Not Ready to Book?</p>
+          <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
+            Tell us about your rig.
+          </h2>
+          <p className="text-[#1d1d1f]/50 text-lg max-w-xl mx-auto">
+            Drop your info and we will reach out to talk through your build. No pressure, no spam.
+          </p>
+        </div>
+        <LeadCaptureForm />
+      </Section>
+
       {/* ──── 9. REVIEWS — Volume of social proof ──── */}
       <Section theme="light" id="customer-reviews" reveal>
         <div className="text-center mb-12">
@@ -452,10 +467,10 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
-              href="/custom-builds"
+              href="/book"
               className="trd-cta-gradient inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
             >
-              Explore Custom Builds
+              Book a Free Consultation
             </Link>
             <Link
               href="/tone-tutoring"

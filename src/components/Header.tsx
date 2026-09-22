@@ -30,9 +30,9 @@ const navItems: NavItem[] = [
 
 /* -- Announcement bar config -- */
 const announcement = {
-  text: 'Gift Cards now available — give the gift of better tone.',
-  href: '/gift-cards',
-  cta: 'Shop Gift Cards →',
+  text: 'Only 3 Build Spots Left for 2026.',
+  href: '/book',
+  cta: 'Book Your Free Consultation →',
 };
 
 export default function Header() {
@@ -74,7 +74,7 @@ export default function Header() {
             className="block px-10 py-2 text-[12px] sm:text-[13px] font-medium tracking-wide hover:opacity-90 transition-opacity"
           >
             <span className="hidden sm:inline">{announcement.text}</span>
-            <span className="sm:hidden">Gift Cards now available</span>
+            <span className="sm:hidden">3 Build Spots Left</span>
             {' '}
             <span className="underline underline-offset-2 font-semibold">{announcement.cta}</span>
           </Link>

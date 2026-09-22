@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import StickyBottomCTA from '@/components/StickyBottomCTA';
 import Analytics from '@/components/Analytics';
 import HubSpotTracking from '@/components/HubSpotTracking';
 import UTMCapture from '@/components/UTMCapture';
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="pt-14">{children}</main>
         </ErrorBoundary>
         <Footer />
+        <StickyBottomCTA />
       </body>
     </html>
   );
