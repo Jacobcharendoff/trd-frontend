@@ -18,7 +18,7 @@ export default function Home() {
           <HeroVideo />
 
           <div className="relative z-10 max-w-[1200px] mx-auto px-6 pb-24 pt-40 w-full text-center">
-            <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-6">Only 18 Custom Builds Per Year</p>
+            <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-6">Only 2 Spots Left This Year</p>
             <h1 className="trd-hero-headline text-[#f5f5f7] mb-6">
               Your tone deserves better than
               <br />
@@ -26,7 +26,7 @@ export default function Home() {
             </h1>
             <p className="trd-subheadline max-w-2xl mx-auto mb-12">
               Hand-wired pedalboards for guitarists who refuse to settle.
-              500+ builds. 17 years at the bench. We only take 18 a year now.
+              300+ builds. 17 years at the bench. Only 2 spots left this year.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-20">
               <Link
@@ -46,7 +46,7 @@ export default function Home() {
 
             <div className="flex justify-center items-center gap-8 sm:gap-16 pt-8 border-t border-white/10">
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-white">500+</p>
+                <p className="text-2xl sm:text-3xl font-bold text-white">300+</p>
                 <p className="text-sm text-[#f5f5f7]/50 mt-1">rigs built</p>
               </div>
               <div className="w-px h-10 bg-white/10" />
@@ -56,8 +56,8 @@ export default function Home() {
               </div>
               <div className="w-px h-10 bg-white/10" />
               <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-[#0071E3]">18</p>
-                <p className="text-sm text-[#f5f5f7]/50 mt-1">builds per year</p>
+                <p className="text-2xl sm:text-3xl font-bold text-[#0071E3]">2</p>
+                <p className="text-sm text-[#f5f5f7]/50 mt-1">spots left</p>
               </div>
             </div>
           </div>
@@ -100,12 +100,12 @@ export default function Home() {
         <div className="relative max-w-3xl mx-auto px-6 text-center">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/30 mb-4">Limited Availability</p>
           <h3 className="text-3xl sm:text-4xl font-bold text-[#f5f5f7] tracking-tight mb-3">
-            We only build <span className="trd-gradient-text">18 rigs a year.</span>
+            Only <span className="trd-gradient-text">2 spots left</span> this year.
           </h3>
           <p className="text-[#f5f5f7]/50 text-base mb-8 max-w-xl mx-auto">
             Every build gets our full attention. No assembly line. No outsourcing.
-            When the slots fill up, the waitlist opens. Tell us about your rig and
-            we will let you know where you stand.
+            We cap it at 18 builds a year and we are almost done. Tell us about
+            your rig before the last spots are gone.
           </p>
           <Link
             href="/book"
@@ -140,7 +140,7 @@ export default function Home() {
         <div className="text-center mb-10">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-4">The Work</p>
           <h2 className="trd-section-headline text-[#f5f5f7] mb-2">
-            500+ rigs built. <span className="trd-gradient-text">One at a time.</span>
+            300+ rigs built. <span className="trd-gradient-text">One at a time.</span>
           </h2>
           <p className="text-[#f5f5f7]/50 text-lg max-w-2xl mx-auto">
             Every board is different because every player is different.
@@ -301,7 +301,7 @@ export default function Home() {
             Tell us about your rig.
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg max-w-xl mx-auto">
-            We are booking builds for next quarter. Drop your info and we will
+            We are almost full for the year. Drop your info and we will
             reach out to talk through what you need. No pressure, no spam.
           </p>
         </div>
@@ -320,7 +320,7 @@ export default function Home() {
           {[
             {
               q: "Why only 18 builds a year?",
-              a: "Because every build gets our full attention. We are not an assembly line. Each rig is designed, wired, and tested by the same hands. That is how we guarantee the quality that touring artists depend on.",
+              a: "Because every build gets our full attention. We are not an assembly line. Each rig is designed, wired, and tested by the same hands. That is how we guarantee the quality that touring artists depend on. We are down to the last 2 spots for this year.",
             },
             {
               q: "How much does a custom build cost?",
@@ -368,7 +368,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(191,90,242,0.06)_0%,transparent_50%)]" />
         <div className="relative max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f5f5f7] tracking-tight mb-4">
-            18 builds a year. That is it.
+            2 spots left. That is it.
           </h2>
           <p className="text-[#f5f5f7]/50 text-lg mb-10 max-w-xl mx-auto">
             Your tone is worth getting right. Tell us what you play and
