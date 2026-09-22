@@ -7,7 +7,6 @@ import Section from '@/components/Section';
 const INTEREST_OPTIONS = [
   { value: '', label: 'Select one...' },
   { value: 'Custom Build', label: 'Custom Pedalboard Build' },
-  { value: 'DIY Kit', label: 'DIY Kit' },
   { value: 'Tone Tutoring', label: 'Tone Tutoring Session' },
   { value: 'General Question', label: 'General Question' },
 ];
@@ -330,7 +329,7 @@ export default function ContactPage() {
             Rather just <span className="trd-gradient-text">talk?</span>
           </h2>
           <p className="text-lg text-[#f5f5f7]/60 mb-8 max-w-xl mx-auto">
-            Book a free 30-minute consultation. We&apos;ll talk through your rig, your playing style, and figure out exactly what you need.
+            Book a free 30-minute consultation and let&apos;s talk about your rig.
           </p>
           <Link
             href="/book"
