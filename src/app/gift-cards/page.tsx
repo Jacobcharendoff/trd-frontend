@@ -21,7 +21,7 @@ interface Denomination {
 const fallbackDenominations: Denomination[] = [
   { variantId: '', amount: 25, label: '$25', hint: 'A little something toward their next upgrade', imageUrl: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Gift_Card_25.png?v=1781196422' },
   { variantId: '', amount: 100, label: '$100', hint: 'Covers one Tone Tutoring session', imageUrl: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Gift_Card_100.png?v=1781196431' },
-  { variantId: '', amount: 250, label: '$250', hint: 'Session + accessories, or a dent in a build', imageUrl: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Gift_Card_250.png?v=1781196439' },
+  { variantId: '', amount: 250, label: '$250', hint: 'A session and a dent in a build', imageUrl: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Gift_Card_250.png?v=1781196439' },
   { variantId: '', amount: 500, label: '$500', hint: 'Real money toward a custom build', imageUrl: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Gift_Card_500.png?v=1781196450' },
   { variantId: '', amount: 1000, label: '$1,000', hint: 'Half a custom pedalboard build', imageUrl: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Gift_Card_1000.png?v=1781196459' },
 ];
@@ -246,7 +246,7 @@ export default function GiftCardsPage() {
             </div>
             <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">Put It Toward a Custom Build</h3>
             <p className="text-[#1d1d1f]/60 leading-relaxed mb-4">
-              Know someone who&apos;s been talking about getting a real pedalboard built? A gift card takes a chunk off the quote. Stack multiple cards if you want to go big. Builds start from $2,000.
+              Know someone who&apos;s been talking about getting a real pedalboard built? A gift card takes a chunk off the quote. Stack multiple cards if you want to go big. Builds start from $1,999.
             </p>
             <p className="text-sm text-[#BF5AF2] font-medium">Any amount helps toward a build</p>
           </div>
@@ -260,7 +260,7 @@ export default function GiftCardsPage() {
             </div>
             <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">Let Them Choose</h3>
             <p className="text-[#1d1d1f]/60 leading-relaxed mb-4">
-              Maybe they need cables, a new board, or a session first and a build later. The card works site-wide, so they use it however they want. No restrictions.
+              Maybe they need a new board, or a session first and a build later. The card works site-wide, so they use it however they want. No restrictions.
             </p>
             <p className="text-sm text-[#BF5AF2] font-medium">Works on anything at therigdr.com</p>
           </div>
@@ -299,7 +299,7 @@ export default function GiftCardsPage() {
             <div className="text-4xl font-bold trd-gradient-text mb-4">3</div>
             <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">They Redeem It</h3>
             <p className="text-[#1d1d1f]/60 leading-relaxed">
-              They enter the code at checkout on anything at therigdr.com. Tone Tutoring, build deposits, accessories, whatever they need. No expiration.
+              They enter the code at checkout on anything at therigdr.com. Tone Tutoring, build deposits, whatever they need. No expiration.
             </p>
           </div>
         </div>
@@ -457,7 +457,7 @@ function formatLabel(amount: number): string {
 function getHint(amount: number): string {
   if (amount <= 25) return 'A little something toward their next upgrade';
   if (amount <= 100) return 'Covers one Tone Tutoring session';
-  if (amount <= 250) return 'Session + accessories, or a dent in a build';
+  if (amount <= 250) return 'A session and a dent in a build';
   if (amount <= 500) return 'Real money toward a custom build';
   return 'Half a custom pedalboard build';
 }
