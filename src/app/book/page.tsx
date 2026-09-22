@@ -80,14 +80,14 @@ function BuildGalleryHero() {
         </div>
 
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white mb-4">
-          {'Your rig, '}
-          <span className="trd-gradient-text">built from scratch.</span>
+          {'Stop gigging with a '}
+          <span className="trd-gradient-text">rat&apos;s nest.</span>
         </h1>
 
         <p className="text-[18px] text-white/[0.65] leading-relaxed max-w-2xl mx-auto mb-8">
-          Hand-wired pedalboards for players who give a damn about their tone.
-          Tell us what you play and what&apos;s driving you crazy. We&apos;ll tell you
-          exactly what we&apos;d do about it.
+          You know the drill. Ground loops, spaghetti wiring, 15 minutes of setup
+          while your band waits. We build boards that show up dead quiet and
+          stage-ready. Uncase, plug in, play.
         </p>
 
         <div className="flex justify-center items-center gap-8 sm:gap-12">
@@ -150,11 +150,13 @@ function LeadForm() {
             Start Here
           </p>
           <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
-            Tell us about <span className="trd-gradient-text">your rig.</span>
+            Tell us what&apos;s going on with <span className="trd-gradient-text">your rig.</span>
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg max-w-xl mx-auto">
-            Drop your info and we&apos;ll get back to you within 24 hours.
-            Just a conversation about your rig. No sales pitch, no spam.
+            Hum you can&apos;t track down? Tone suck you can&apos;t explain? Board
+            that looks like a garage sale? Whatever it is, we&apos;ve probably
+            fixed it a hundred times. Drop your info and we&apos;ll get back
+            to you within 24 hours. Just a conversation. No pitch.
           </p>
         </div>
 
@@ -187,7 +189,7 @@ function LeadForm() {
           />
 
           <textarea
-            placeholder="What's going on with your rig? Noise, hum, a rat's nest of cables, time for a full rebuild? Whatever it is, tell us everything."
+            placeholder="What's bugging you about your setup? Noise, hum, tap-dancing between pedals, a rat's nest of cables under the board, tone that disappears by the third pedal in the chain... tell us everything. The more detail the better."
             rows={4}
             value={formData.rig}
             onChange={(e) => setFormData({ ...formData, rig: e.target.value })}
@@ -227,10 +229,10 @@ function LeadForm() {
         {/* Tone Tutoring callout */}
         <div className="mt-10 bg-[#f5f5f7] border border-[#1d1d1f]/[0.06] rounded-2xl p-5 text-center">
           <p className="text-[14px] text-[#1d1d1f]/[0.85] mb-1 font-medium">
-            Not ready for a full build?
+            Not sure you need a full build yet?
           </p>
           <p className="text-[13px] text-[#1d1d1f]/[0.55]">
-            No worries. Get a 1-on-1 Tone Tutoring session with Jacob and figure out exactly what your rig needs.{' '}
+            Grab a Tone Tutoring session first. An hour on video with Jacob, just you and your rig. He&apos;ll tell you exactly what&apos;s going on and what he&apos;d do about it. No pressure either way.{' '}
             <Link href="/tone-tutoring" className="text-[#0071E3] hover:text-[#005BB5] transition-colors font-semibold">
               Book Tone Tutoring ($99) &rarr;
             </Link>
@@ -247,21 +249,21 @@ function ProcessSection() {
     {
       number: '01',
       title: 'We Map It Out',
-      description: 'Your specs, signal chain, component list. We photograph your current board and plan the rebuild down to the last cable. Nothing gets missed.',
+      description: 'You tell us everything. What you play, what pedals you’re running, what’s driving you nuts. We photograph your current board, diagram the signal chain, and plan the rebuild down to every cable length. No surprises.',
       image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jacob_S.png',
       imageAlt: 'Detailed rig planning and wiring diagram',
     },
     {
       number: '02',
       title: 'We Build It',
-      description: 'Every connection hand-soldered. Every cable custom-cut. Isolated power, clean signal path, cable management that holds up night after night. We road-test it before it ships.',
+      description: 'Every connection hand-soldered. Every cable cut to length. Isolated power, clean signal path, cable management that actually holds up 200 shows in. We road-test the whole thing before it ships. Flip it over and look at the wiring. That’s the standard.',
       image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/John_A._1.png',
       imageAlt: 'Hand-soldered pedalboard build in progress',
     },
     {
       number: '03',
-      title: 'You Play It',
-      description: 'Board shows up ready to gig. Plug in, stomp through your presets, and hear the difference. Dead quiet. Zero signal loss. And if anything ever comes up, we’re a phone call away.',
+      title: 'You Plug In',
+      description: 'Board shows up stage-ready. Uncase it, plug in, and hear the difference. Dead quiet. Zero tone suck. Your band will think you got a new amp. Nope. Same amp. Just a proper signal chain now.',
       image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Saxon_W..jpg',
       imageAlt: 'Finished custom pedalboard ready to play',
     },
@@ -271,13 +273,13 @@ function ProcessSection() {
     <Section theme="light" id="process" reveal>
       <div className="text-center mb-16">
         <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">
-          The Process
+          How It Works
         </p>
         <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
-          From call to <span className="trd-gradient-text">stage-ready.</span>
+          From spaghetti to <span className="trd-gradient-text">stage-ready.</span>
         </h2>
         <p className="text-[#1d1d1f]/50 text-lg max-w-2xl mx-auto">
-          Three steps. No surprises. You know exactly what&apos;s happening the whole way through.
+          Three steps. You know exactly what&apos;s happening the whole way through.
         </p>
       </div>
 
@@ -321,11 +323,11 @@ function ProcessSection() {
 
       <div className="text-center mt-20 space-y-4">
         <p className="text-[18px] text-[#1d1d1f] font-medium">
-          Custom builds typically start from{' '}
+          Builds typically start from{' '}
           <span className="trd-gradient-text font-bold">$1,999 USD</span>
         </p>
         <p className="text-[14px] text-[#1d1d1f]/40">
-          Every rig is different, so every quote is different. The consultation is free and you&apos;ll get a straight number.
+          Every rig is different, so every quote is different. The consultation is free and you&apos;ll get a straight number. Buy once, cry once.
         </p>
       </div>
     </Section>
@@ -341,10 +343,10 @@ function TransformationSection() {
           The Difference
         </p>
         <h2 className="trd-section-headline text-[#f5f5f7] mb-2">
-          Same pedals. <span className="trd-gradient-text">Completely different rig.</span>
+          Same pedals. Same player. <span className="trd-gradient-text">Completely different rig.</span>
         </h2>
         <p className="text-[#f5f5f7]/50 text-lg">
-          Drag the slider and see what changes when we get our hands on it.
+          The only thing that changed is who wired it. Drag the slider.
         </p>
       </div>
       <BeforeAfter theme="dark" />
@@ -369,9 +371,12 @@ function GalleryStrip() {
         <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">
           Recent Builds
         </p>
-        <h2 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f]">
-          Every board tells a story.
+        <h2 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] mb-2">
+          Flip it over. Look at the wiring.
         </h2>
+        <p className="text-[#1d1d1f]/50 text-lg max-w-xl mx-auto">
+          Color-coded cables. Labeled jacks. Every cable cut to length. This is what 17 years at the bench looks like.
+        </p>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
         {images.map((img, idx) => (
@@ -397,7 +402,7 @@ function TrustedBy() {
       <div className="text-center mb-12">
         <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-4">On the Road</p>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-2">
-          Trusted by players who <span className="trd-gradient-text">can&apos;t afford a bad night.</span>
+          200+ shows. Zero failures. <span className="trd-gradient-text">That&apos;s the review.</span>
         </h2>
       </div>
       <TestimonialCarousel theme="dark" />
