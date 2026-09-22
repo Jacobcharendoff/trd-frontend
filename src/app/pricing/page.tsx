@@ -7,11 +7,11 @@ import { PricingFAQSchema } from '@/components/StructuredData';
 export const metadata: Metadata = {
   title: 'Custom Build Pricing',
   description:
-    'Transparent pricing for custom pedalboard builds, DIY kits, and tone tutoring sessions. Custom builds from $1,999. Houston, TX — shipping nationwide.',
+    'Transparent pricing for custom pedalboard builds and tone tutoring sessions. Custom builds from $1,999. Houston, TX — shipping nationwide.',
   openGraph: {
     title: 'Custom Build Pricing | The Rig Doctor',
     description:
-      'Transparent pricing for custom pedalboard builds, DIY kits, and tone tutoring. Houston, TX — shipping nationwide.',
+      'Transparent pricing for custom pedalboard builds and tone tutoring. Houston, TX — shipping nationwide.',
     images: [
       {
         url: '/og-image.png',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Custom Build Pricing | The Rig Doctor',
     description:
-      'Transparent pricing for custom pedalboard builds, DIY kits, and tone tutoring. From $1,999 USD.',
+      'Transparent pricing for custom pedalboard builds and tone tutoring. From $1,999 USD.',
     images: ['/og-image.png'],
   },
 };
@@ -57,14 +57,14 @@ export default function PricingPage() {
         <div className="text-center mb-16">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Choose Your Path</p>
           <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
-            Three ways to <span className="trd-gradient-text">better tone.</span>
+            Two ways to <span className="trd-gradient-text">better tone.</span>
           </h2>
           <p className="text-lg text-[#1d1d1f]/60 max-w-2xl mx-auto">
-            Expert advice, hands-on kit, or full custom build. Depends on where you are.
+            Expert advice or full custom build. Depends on where you are.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
           {/* Tone Tutoring */}
           <div className="bg-[#f5f5f7] rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-300">
             <h3 className="text-lg font-semibold text-[#1d1d1f] mb-4">Tone Tutoring</h3>
@@ -90,34 +90,6 @@ export default function PricingPage() {
               className="block text-center rounded-full px-6 py-3.5 text-sm font-medium bg-[#1d1d1f] text-white hover:bg-[#1d1d1f]/90 transition-colors"
             >
               Book a Session
-            </Link>
-          </div>
-
-          {/* DIY Kit */}
-          <div className="bg-[#f5f5f7] rounded-2xl p-8 flex flex-col hover:-translate-y-1 transition-all duration-300">
-            <h3 className="text-lg font-semibold text-[#1d1d1f] mb-4">DIY Kit</h3>
-            <div className="mb-4">
-              <span className="text-4xl font-bold tracking-tight text-[#1d1d1f]">$749</span>
-              <span className="text-sm ml-1 text-[#1d1d1f]/50">starting at</span>
-            </div>
-            <p className="text-sm text-[#1d1d1f]/60 leading-relaxed mb-8">
-              Everything you need to build your own pedalboard the right way. Pro-grade components, custom layout, and expert guidance.
-            </p>
-            <ul className="space-y-3 mb-8 flex-1">
-              {['Hand-soldered Mogami patch cables', 'Custom rig blueprint', '60-min Tone Tutoring session', 'Pedalboard essentials kit', 'Signal chain layout diagram', 'Build support via text'].map((f) => (
-                <li key={f} className="flex items-start gap-3 text-sm">
-                  <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#0071E3]" viewBox="0 0 16 16" fill="currentColor">
-                    <path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z" />
-                  </svg>
-                  <span className="text-[#1d1d1f]/70">{f}</span>
-                </li>
-              ))}
-            </ul>
-            <Link
-              href="/diy-kit"
-              className="block text-center rounded-full px-6 py-3.5 text-sm font-medium bg-[#1d1d1f] text-white hover:bg-[#1d1d1f]/90 transition-colors"
-            >
-              Get Your Kit
             </Link>
           </div>
 
@@ -177,14 +149,6 @@ export default function PricingPage() {
             {
               q: 'What determines the final price of a custom build?',
               a: 'Pedal count, routing complexity, power requirements, and whether you need extras like MIDI integration or effects loops. We quote everything upfront after your consultation so there are no surprises.',
-            },
-            {
-              q: "What's included in the DIY Kit?",
-              a: 'Hand-soldered Mogami patch cables, a custom rig blueprint designed for your specific pedals, a 60-minute Tone Tutoring session to walk through the build, and a pedalboard essentials kit with everything you need to get started.',
-            },
-            {
-              q: 'Can I upgrade from a DIY Kit to a Custom Build?',
-              a: 'Absolutely. If you start with a DIY Kit and decide you want us to take it from there, we will credit the kit price toward your custom build.',
             },
             {
               q: 'Do you offer rush builds?',
