@@ -19,7 +19,6 @@ const navItems: NavItem[] = [
     label: 'Rig Building',
     children: [
       { label: 'Custom Builds', href: '/custom-builds' },
-      { label: 'DIY Kit', href: '/diy-kit' },
     ],
   },
   { label: 'Tone Tutoring', href: '/tone-tutoring' },
