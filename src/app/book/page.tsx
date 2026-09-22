@@ -91,7 +91,7 @@ function BuildGalleryHero() {
 
         <div className="flex justify-center items-center gap-8 sm:gap-12">
           {[
-            { value: '500+', label: 'rigs built' },
+            { value: '300+', label: 'rigs built' },
             { value: '17', label: 'years at the bench' },
             { value: '4-8', label: 'weeks to ship' },
           ].map((stat) => (
