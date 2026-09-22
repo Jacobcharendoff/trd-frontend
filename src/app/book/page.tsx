@@ -78,12 +78,15 @@ function Hero() {
                 </ul>
               </div>
 
-              <p className="text-[14px] text-white/[0.65]">
-                Looking for signal chain feedback or a one-off consultation?{' '}
-                <Link href="/tone-tutoring" className="text-[#0071E3] hover:text-[#005BB5] transition-colors font-medium">
-                  Check out Tone Tutoring &rarr;
-                </Link>
-              </p>
+              <div className="bg-white/[0.05] border border-[#BF5AF2]/30 rounded-2xl p-5 mt-2">
+                <p className="text-[14px] text-white/[0.85] mb-1 font-medium">This consultation is free.</p>
+                <p className="text-[13px] text-white/[0.65]">
+                  Looking for a paid 1-on-1 tone session instead?{' '}
+                  <Link href="/tone-tutoring" className="text-[#BF5AF2] hover:text-[#BF5AF2]/80 transition-colors font-semibold">
+                    Book Tone Tutoring ($99) &rarr;
+                  </Link>
+                </p>
+              </div>
             </div>
 
             {/* Right: Calendar (desktop) */}
