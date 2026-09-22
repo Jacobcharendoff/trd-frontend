@@ -87,7 +87,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3">
             <Link
-              href="/custom-builds"
+              href="/book"
               className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-[#1d1d1f]/90 transition-colors text-sm"
             >
               See Our Custom Builds
@@ -210,7 +210,7 @@ export default function Home() {
         <div className="text-center mt-12">
           <div className="flex flex-col sm:flex-row justify-center gap-3">
             <Link
-              href="/custom-builds"
+              href="/book"
               className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-[#1d1d1f]/90 transition-colors text-sm"
             >
               See Our Custom Builds
@@ -365,7 +365,7 @@ export default function Home() {
             </div>
 
             <Link
-              href="/custom-builds"
+              href="/book"
               className="mt-8 block text-center font-semibold py-3.5 px-6 rounded-full bg-[#0071E3] hover:bg-[#005BB5] text-white transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,113,227,0.40)]"
             >
               Explore Custom Builds
