@@ -20,13 +20,13 @@ export default function Home() {
           <div className="relative z-10 max-w-[1200px] mx-auto px-6 pb-24 pt-40 w-full text-center">
             <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-6">Only 2 Spots Left This Year</p>
             <h1 className="trd-hero-headline text-[#f5f5f7] mb-6">
-              Your tone deserves better than
+              You didn&apos;t spend thousands on gear
               <br />
-              <span className="trd-gradient-text">zip ties and patch cables.</span>
+              <span className="trd-gradient-text">to zip-tie it together.</span>
             </h1>
             <p className="trd-subheadline max-w-2xl mx-auto mb-12">
-              Hand-wired pedalboards for guitarists who refuse to settle.
-              300+ builds. 17 years at the bench. Only 2 spots left this year.
+              Hand-wired pedalboards. Built one at a time by guys who actually play.
+              300+ rigs. 17 years deep. And we&apos;ve only got 2 spots left this year.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 mb-20">
               <Link
@@ -79,8 +79,8 @@ export default function Home() {
             Does your rig look like this?
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg max-w-2xl mx-auto">
-            Same pedals. Same amp. Same player. The only difference is who wired it.
-            Drag the slider and see what changes when we get our hands on it.
+            Same pedals. Same amp. Same player. The only thing that changed
+            is who wired it. Drag the slider.
           </p>
         </div>
         <BeforeAfter />
@@ -103,9 +103,10 @@ export default function Home() {
             Only <span className="trd-gradient-text">2 spots left</span> this year.
           </h3>
           <p className="text-[#f5f5f7]/50 text-base mb-8 max-w-xl mx-auto">
-            Every build gets our full attention. No assembly line. No outsourcing.
-            We cap it at 18 builds a year and we are almost done. Tell us about
-            your rig before the last spots are gone.
+            We could take on more. But every build gets our full attention,
+            start to finish. No assembly line, no outsourcing. We cap it
+            because we actually want to do great work. And we&apos;re almost
+            done for the year.
           </p>
           <Link
             href="/book"
@@ -125,8 +126,9 @@ export default function Home() {
             Trusted by players who can&apos;t afford a bad night.
           </h2>
           <p className="text-[#f5f5f7]/50 text-lg max-w-2xl mx-auto">
-            Touring artists, session players, worship leaders. If your rig
-            fails on stage, the gig fails. That is why they come to us.
+            These guys gig for a living. Session players, touring artists, worship
+            leaders. When your board goes down on stage, nothing else matters.
+            That&apos;s why they trust us.
           </p>
         </div>
         <TestimonialCarousel theme="dark" />
@@ -143,8 +145,8 @@ export default function Home() {
             300+ rigs built. <span className="trd-gradient-text">One at a time.</span>
           </h2>
           <p className="text-[#f5f5f7]/50 text-lg max-w-2xl mx-auto">
-            Every board is different because every player is different.
-            Here is what it looks like when we are done.
+            No two players are the same, so no two boards are either.
+            Here&apos;s what happens when we get done with yours.
           </p>
         </div>
         <GallerySlider />
@@ -166,7 +168,7 @@ export default function Home() {
           <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
             Bare enclosure to road-ready in 60 seconds.
           </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">Every cable soldered. Every connection verified. This is what a Rig Doctor build looks like.</p>
+          <p className="text-[#1d1d1f]/50 text-lg">Every cable hand-soldered. Every connection tested. This is how we build.</p>
         </div>
 
         <div className="relative w-full rounded-3xl overflow-hidden bg-[#0a0a0a] aspect-video max-w-4xl mx-auto shadow-2xl">
@@ -195,7 +197,7 @@ export default function Home() {
             From conversation to <span className="trd-gradient-text">stage-ready.</span>
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg max-w-2xl mx-auto">
-            Three steps. No surprises. You know exactly what is happening at every stage.
+            Three steps. No surprises. You know exactly what&apos;s happening the whole way through.
           </p>
         </div>
 
@@ -204,19 +206,19 @@ export default function Home() {
             {
               number: '01',
               title: 'We Talk',
-              desc: 'Tell us what you play, what is driving you nuts, and what your dream rig looks like. We map out the build, the signal chain, and the full component list.',
+              desc: 'You tell us what you play, what’s bugging you about your tone, and what your dream board looks like. We’ll map out the signal chain, the components, and a game plan.',
               image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jacob_S.png',
             },
             {
               number: '02',
               title: 'We Build',
-              desc: 'Every connection hand-soldered. Every cable custom-cut. Isolated power, engineered signal path, cable management that stays clean on the road.',
+              desc: 'Every connection hand-soldered. Custom-cut cables. Isolated power, engineered signal path, cable management that actually holds up on the road. This is where it all comes together.',
               image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/John_A._1.png',
             },
             {
               number: '03',
               title: 'You Play',
-              desc: 'Board arrives road-ready. Plug in, hit your presets, and hear the difference. Dead quiet. Zero signal loss. And we are a phone call away if you ever need us.',
+              desc: 'Board shows up road-ready. Plug in, stomp through your presets, and hear the difference. Dead quiet. Zero signal loss. And we’re a phone call away if you ever need anything.',
               image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Saxon_W..jpg',
             },
           ].map((step) => (
@@ -244,7 +246,7 @@ export default function Home() {
             Custom builds start from <span className="trd-gradient-text font-bold">$1,999 USD</span>
           </p>
           <p className="text-[14px] text-[#1d1d1f]/40 mb-6">
-            Every rig is different. Your consultation is free. We give you a straight quote.
+            Every rig is different, so every quote is different. The consultation is free and you&apos;ll get a straight number.
           </p>
           <Link
             href="/book"
@@ -260,11 +262,12 @@ export default function Home() {
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Not Ready for a Build?</p>
           <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
-            Get expert advice on your current rig.
+            Let&apos;s talk about your rig first.
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg leading-relaxed mb-8 max-w-xl mx-auto">
-            A 60-minute 1-on-1 video call. We diagnose your tone issues and
-            tell you exactly what to fix. Signal chain, amp settings, effects order, noise. All of it.
+            60 minutes, just you and Jacob on a video call. We&apos;ll go through
+            your whole signal chain. Amp settings, effects order, noise issues,
+            gear recommendations. You&apos;ll walk away knowing exactly what to change.
           </p>
           <div className="inline-flex items-baseline gap-2 mb-8">
             <span className="text-4xl font-bold text-[#1d1d1f]">$99</span>
@@ -286,9 +289,9 @@ export default function Home() {
         <div className="text-center mb-12">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Real Reviews</p>
           <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
-            Hear it from guitarists who&apos;ve been through it.
+            Don&apos;t take our word for it.
           </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">They had the same problems. Here is what happened after.</p>
+          <p className="text-[#1d1d1f]/50 text-lg">These players had the same problems you do. Here&apos;s what they said after.</p>
         </div>
         <ReviewsMarquee />
       </Section>
@@ -301,8 +304,8 @@ export default function Home() {
             Tell us about your rig.
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg max-w-xl mx-auto">
-            We are almost full for the year. Drop your info and we will
-            reach out to talk through what you need. No pressure, no spam.
+            We&apos;ve only got 2 spots left this year. Drop your info and we&apos;ll
+            reach out to talk through what you need. Just a conversation, nothing pushy.
           </p>
         </div>
         <LeadCaptureForm />
@@ -320,31 +323,31 @@ export default function Home() {
           {[
             {
               q: "Why only 18 builds a year?",
-              a: "Because every build gets our full attention. We are not an assembly line. Each rig is designed, wired, and tested by the same hands. That is how we guarantee the quality that touring artists depend on. We are down to the last 2 spots for this year.",
+              a: "Because we're not trying to be a factory. Every board gets our full attention. Same hands design it, wire it, and test it. That's how we can guarantee what we guarantee. Right now we're down to the last 2 spots for this year.",
             },
             {
               q: "How much does a custom build cost?",
-              a: "Every rig is different, so every quote is different. Builds start from $1,999 USD and scale with complexity. Your consultation is free and we will give you a straight answer.",
+              a: "Builds start at $1,999 USD and go up from there depending on what you need. Every rig is different, so every quote is different. The consultation is free and you'll get a straight number.",
             },
             {
               q: "What is Tone Tutoring?",
-              a: "A 60-minute 1-on-1 video call where we diagnose your tone issues. Noise, hum, signal chain order, amp settings, effects placement, gear recommendations. You walk away with a clear plan. $99 USD.",
+              a: "An hour on video with Jacob. We'll go through your whole signal chain, talk amp settings, effects order, noise issues, the works. You walk away with a clear plan. $99 USD.",
             },
             {
               q: "How long does a build take?",
-              a: "Most builds ship in 4-8 weeks depending on complexity and parts sourcing. Touring emergency? We do rush builds. Just let us know.",
+              a: "Most builds ship in 4 to 8 weeks. Depends on complexity and parts. Got a tour coming up? We do rush builds. Just say the word.",
             },
             {
               q: "Do I need to ship my board to you?",
-              a: "For a custom build, most clients ship their pedals to us. We are US-based and ship nationwide. We will send a label and walk you through packing it. For Tone Tutoring, it is all remote via video call.",
+              a: "Most guys ship their pedals to us. We're based in Houston and ship nationwide. We'll send you a label and walk you through packing everything up. Tone Tutoring is all remote, just a video call.",
             },
             {
               q: "What if something breaks after the build?",
-              a: "We stand behind our work. If something goes wrong, reach out and we will figure it out with you. We are not going to leave you hanging.",
+              a: "We stand behind everything we build. If something goes sideways, call us and we'll sort it out. We're not going to leave you hanging.",
             },
             {
               q: "Do you build MIDI switching systems?",
-              a: "Absolutely. Full MIDI-controlled rigs with loop switchers, preset routing, the whole deal. That is where things get really fun.",
+              a: "All day long. MIDI-controlled rigs, loop switchers, preset routing, the whole nine yards. That's actually where things get really fun for us.",
             },
           ].map((item, idx) => (
             <details key={idx} className="group cursor-pointer">
@@ -368,11 +371,12 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(191,90,242,0.06)_0%,transparent_50%)]" />
         <div className="relative max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f5f5f7] tracking-tight mb-4">
-            2 spots left. That is it.
+            2 spots left. That&apos;s it.
           </h2>
           <p className="text-[#f5f5f7]/50 text-lg mb-10 max-w-xl mx-auto">
-            Your tone is worth getting right. Tell us what you play and
-            we will tell you exactly what we would do about it.
+            You&apos;ve put serious money into your gear. Let&apos;s make sure it
+            sounds like it. Tell us what you play and we&apos;ll tell you exactly
+            what we&apos;d do.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
