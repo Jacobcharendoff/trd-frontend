@@ -85,8 +85,9 @@ function BuildGalleryHero() {
         </h1>
 
         <p className="text-[18px] text-white/[0.65] leading-relaxed max-w-2xl mx-auto mb-8">
-          Hand-wired pedalboards for guitarists who refuse to settle. Tell us what you play and
-          what is driving you nuts. We will tell you exactly what we would do about it.
+          Hand-wired pedalboards for players who give a damn about their tone.
+          Tell us what you play and what&apos;s driving you crazy. We&apos;ll tell you
+          exactly what we&apos;d do about it.
         </p>
 
         <div className="flex justify-center items-center gap-8 sm:gap-12">
@@ -152,7 +153,8 @@ function LeadForm() {
             Tell us about <span className="trd-gradient-text">your rig.</span>
           </h2>
           <p className="text-[#1d1d1f]/50 text-lg max-w-xl mx-auto">
-            Drop your info and we will reach out within 24 hours to talk through your build. No pressure, no spam.
+            Drop your info and we&apos;ll get back to you within 24 hours.
+            Just a conversation about your rig. No sales pitch, no spam.
           </p>
         </div>
 
@@ -185,7 +187,7 @@ function LeadForm() {
           />
 
           <textarea
-            placeholder="What is going on with your rig? Noise, hum, messy cables, need a full rebuild - tell us everything."
+            placeholder="What's going on with your rig? Noise, hum, a rat's nest of cables, time for a full rebuild? Whatever it is, tell us everything."
             rows={4}
             value={formData.rig}
             onChange={(e) => setFormData({ ...formData, rig: e.target.value })}
@@ -228,7 +230,7 @@ function LeadForm() {
             Not ready for a full build?
           </p>
           <p className="text-[13px] text-[#1d1d1f]/[0.55]">
-            Get expert advice on your current rig with a 1-on-1 Tone Tutoring session.{' '}
+            No worries. Get a 1-on-1 Tone Tutoring session with Jacob and figure out exactly what your rig needs.{' '}
             <Link href="/tone-tutoring" className="text-[#0071E3] hover:text-[#005BB5] transition-colors font-semibold">
               Book Tone Tutoring ($99) &rarr;
             </Link>
@@ -245,21 +247,21 @@ function ProcessSection() {
     {
       number: '01',
       title: 'We Map It Out',
-      description: 'Your specs, wiring diagram, signal chain order, component list. Everything documented so nothing gets lost. We photograph your current board and plan the rebuild piece by piece.',
+      description: 'Your specs, signal chain, component list. We photograph your current board and plan the rebuild down to the last cable. Nothing gets missed.',
       image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jacob_S.png',
       imageAlt: 'Detailed rig planning and wiring diagram',
     },
     {
       number: '02',
       title: 'We Build It',
-      description: 'Every connection hand-soldered. Every cable custom-cut. Isolated power, engineered signal path, cable management that stays clean on the road. We road-test it before it ships.',
+      description: 'Every connection hand-soldered. Every cable custom-cut. Isolated power, clean signal path, cable management that holds up night after night. We road-test it before it ships.',
       image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/John_A._1.png',
       imageAlt: 'Hand-soldered pedalboard build in progress',
     },
     {
       number: '03',
       title: 'You Play It',
-      description: 'Board arrives road-ready. Plug in, hit your presets, and hear the difference. Dead quiet. Zero signal loss. And if anything ever goes wrong, we are a phone call away.',
+      description: 'Board shows up ready to gig. Plug in, stomp through your presets, and hear the difference. Dead quiet. Zero signal loss. And if anything ever comes up, we’re a phone call away.',
       image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Saxon_W..jpg',
       imageAlt: 'Finished custom pedalboard ready to play',
     },
@@ -275,7 +277,7 @@ function ProcessSection() {
           From call to <span className="trd-gradient-text">stage-ready.</span>
         </h2>
         <p className="text-[#1d1d1f]/50 text-lg max-w-2xl mx-auto">
-          Three steps. No surprises. You know exactly what is happening at every stage.
+          Three steps. No surprises. You know exactly what&apos;s happening the whole way through.
         </p>
       </div>
 
@@ -323,7 +325,7 @@ function ProcessSection() {
           <span className="trd-gradient-text font-bold">$1,999 USD</span>
         </p>
         <p className="text-[14px] text-[#1d1d1f]/40">
-          Every rig is different. Your consultation is free. We give you a straight quote.
+          Every rig is different, so every quote is different. The consultation is free and you&apos;ll get a straight number.
         </p>
       </div>
     </Section>
