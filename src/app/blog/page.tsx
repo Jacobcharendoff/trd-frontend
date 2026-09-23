@@ -47,7 +47,7 @@ export default function BlogIndex() {
         </h1>
         <p className="text-lg text-[#f5f5f7]/60 max-w-2xl">
           Build guides, signal chain breakdowns, cable science, and gear
-          advice — from someone who&apos;s actually built 500+ rigs.
+          advice — from someone who&apos;s actually built 300+ rigs.
         </p>
       </Section>
 
@@ -149,7 +149,7 @@ export default function BlogIndex() {
             Rather have us build it for you?
           </h2>
           <p className="text-lg text-[#f5f5f7]/60 mb-8 max-w-xl mx-auto">
-            17 years. 500+ builds. Lifetime support. Let&apos;s talk about your
+            17 years. 300+ builds. Lifetime support. Let&apos;s talk about your
             rig.
           </p>
           <Link
