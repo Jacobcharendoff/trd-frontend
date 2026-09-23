@@ -114,7 +114,7 @@ export default function GalleryPage() {
               </p>
               <div className="flex justify-center items-center gap-8 sm:gap-16 mt-10 pt-8 border-t border-white/10">
                 <div className="text-center">
-                  <p className="text-2xl sm:text-3xl font-bold text-white">500+</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-white">300+</p>
                   <p className="text-sm text-[#f5f5f7]/50 mt-1">rigs built</p>
                 </div>
                 <div className="w-px h-10 bg-white/10" />
