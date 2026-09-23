@@ -17,14 +17,14 @@ export const metadata: Metadata = {
     template: '%s | The Rig Doctor',
   },
   description:
-    'America\'s premier custom pedalboard builder. 500+ hand-wired rigs for touring artists and home players. 17 years experience. Free consultations. Ships nationwide.',
+    'America\'s premier custom pedalboard builder. 300+ hand-wired rigs for touring artists and home players. 17 years experience. Free consultations. Ships nationwide.',
   metadataBase: new URL('https://www.therigdr.com'),
   openGraph: {
     type: 'website',
     siteName: 'The Rig Doctor',
     title: 'Custom Pedalboard Builder | The Rig Doctor',
     description:
-      'America\'s premier custom pedalboard builder. 500+ hand-wired rigs. 17 years experience. Free consultations.',
+      'America\'s premier custom pedalboard builder. 300+ hand-wired rigs. 17 years experience. Free consultations.',
     locale: 'en_US',
     images: [
       {
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Custom Pedalboard Builder | The Rig Doctor',
     description:
-      '500+ hand-wired rigs. 17 years experience. Free consultations. Ships nationwide.',
+      '300+ hand-wired rigs. 17 years experience. Free consultations. Ships nationwide.',
     images: ['/og-image.png'],
   },
 };
