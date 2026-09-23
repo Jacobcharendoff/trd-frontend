@@ -26,10 +26,10 @@ export default function StickyBottomCTA() {
         <div className="flex items-center gap-3">
           <span className="hidden sm:inline-flex items-center gap-2 text-[13px] text-[#f5f5f7]/70">
             <span className="inline-block w-2 h-2 rounded-full bg-[#0071E3] animate-pulse" />
-            Only 3 build spots left for 2026
+            Only 2 build spots left for 2026
           </span>
           <span className="sm:hidden text-[13px] text-[#f5f5f7]/70">
-            3 spots left for 2026
+            2 spots left for 2026
           </span>
         </div>
         <Link
