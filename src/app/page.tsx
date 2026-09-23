@@ -137,6 +137,97 @@ export default function Home() {
       {/* ──── 5. HOW WE BUILD — Cinema section ──── */}
       <CinemaSection />
 
+      {/* ──── 5.5. MEET THE BUILDERS — Mason & Vince ──── */}
+      <Section theme="lightGray" id="builders" reveal>
+        <div className="text-center mb-16">
+          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Who&apos;s Building Your Rig</p>
+          <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
+            Two guys. <span className="trd-gradient-text">300+ builds between them.</span>
+          </h2>
+          <p className="text-[#1d1d1f]/50 text-lg max-w-2xl mx-auto">
+            Your board doesn&apos;t get handed off to some junior tech. These are the only two people who touch your rig.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {/* Mason */}
+          <div className="bg-white rounded-2xl overflow-hidden border border-black/[0.04] hover:shadow-lg transition-shadow duration-300">
+            <div className="relative aspect-[4/3] overflow-hidden bg-[#0a0a0a]">
+              <Image
+                src="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Vince_D.png?v=1773867366"
+                alt="Mason Marangella working on a rig build"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                <h3 className="text-2xl font-bold text-white">Mason Marangella</h3>
+                <p className="text-white/60 text-sm">Founder, Vertex Effects</p>
+              </div>
+            </div>
+            <div className="p-6 sm:p-8">
+              <p className="text-[#1d1d1f]/60 text-[15px] leading-relaxed mb-4">
+                17+ years at the bench. Mason founded Vertex Effects Systems back in 2009 and built the &quot;Vertex by Gator&quot; pedalboard series you&apos;ve probably seen in shops. He&apos;s the reason people started calling this whole thing &quot;The Rig Doctor.&quot;
+              </p>
+              <p className="text-[#1d1d1f]/60 text-[15px] leading-relaxed mb-6">
+                He&apos;s built rigs for Andy Timmons, Oz Noy, Michael Landau, Kirk Fletcher, Josh Smith, and Matt Schofield. Not endorsement deals. Real builds that went on real tours.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {['17+ Years', 'Vertex Effects', 'Andy Timmons', 'Michael Landau', 'Josh Smith'].map((tag) => (
+                  <span key={tag} className="text-xs font-medium px-3 py-1 rounded-full bg-[#f5f5f7] text-[#1d1d1f]/50">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Vince */}
+          <div className="bg-white rounded-2xl overflow-hidden border border-black/[0.04] hover:shadow-lg transition-shadow duration-300">
+            <div className="relative aspect-[4/3] overflow-hidden bg-[#0a0a0a]">
+              <Image
+                src="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Vince_D._2.jpg?v=1777143325"
+                alt="Vince DiGioia in the studio"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                <h3 className="text-2xl font-bold text-white">Vince DiGioia</h3>
+                <p className="text-white/60 text-sm">Engineer, Producer, Rig Builder</p>
+              </div>
+            </div>
+            <div className="p-6 sm:p-8">
+              <p className="text-[#1d1d1f]/60 text-[15px] leading-relaxed mb-4">
+                15+ years building rigs, soldering cables, and troubleshooting bad tone. Vince is a player, studio owner, and audio engineer out of Houston and Austin. He plays lead guitar with 35 Drive and has toured with Roger Creager, Josh Abbott Band, Reckless Kelly, and Pat Green.
+              </p>
+              <p className="text-[#1d1d1f]/60 text-[15px] leading-relaxed mb-6">
+                He knows what a board needs to survive a 200-show year because he&apos;s lived it. When your rig shows up at TRD, Vince is one of the two sets of hands on it. Nobody else.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {['15+ Years', 'Studio Owner', '35 Drive', 'Roger Creager', 'Josh Abbott Band'].map((tag) => (
+                  <span key={tag} className="text-xs font-medium px-3 py-1 rounded-full bg-[#f5f5f7] text-[#1d1d1f]/50">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="text-center mt-12">
+          <p className="text-[#1d1d1f]/40 text-sm mb-6">
+            Two working musicians who build for working musicians. That&apos;s the whole pitch.
+          </p>
+          <Link
+            href="/book"
+            className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-[#1d1d1f]/90 transition-colors text-sm"
+          >
+            Talk to Us About Your Rig
+          </Link>
+        </div>
+      </Section>
+
       {/* ──── 6. BUILD GALLERY — The gear porn ──── */}
       <Section theme="dark" id="gallery" reveal>
         <div className="text-center mb-10">
@@ -207,19 +298,19 @@ export default function Home() {
             {
               number: '01',
               title: 'We Talk',
-              desc: 'Tell us what you play and what’s bugging you. Maybe it’s a hum you can’t track down, or you’re tap-dancing between three pedals when you should be playing. We’ll go through your signal chain and figure out exactly what the board needs.',
+              desc: 'Tell us what you play and what's bugging you. Maybe it's a hum you can't track down, or you're tap-dancing between three pedals when you should be playing. We'll go through your signal chain and figure out exactly what the board needs.',
               image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jacob_S.png',
             },
             {
               number: '02',
               title: 'We Build',
-              desc: 'Hand-soldered connections. Cables cut to fit, not cut to close-enough. Isolated power so your drive pedals aren’t picking up noise from your digital stuff. We road-test the whole thing before it ships. And yeah, flip it over and look at the wiring.',
+              desc: 'Hand-soldered connections. Cables cut to fit, not cut to close-enough. Isolated power so your drive pedals aren't picking up noise from your digital stuff. We road-test the whole thing before it ships. And yeah, flip it over and look at the wiring.',
               image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/John_A._1.png',
             },
             {
               number: '03',
               title: 'You Plug In',
-              desc: 'Uncase it, plug in, and you’ll hear the difference before you finish your first chord. Dead quiet noise floor. Your band is going to think you bought a new amp. You didn’t. It’s just wired right now.',
+              desc: 'Uncase it, plug in, and you'll hear the difference before you finish your first chord. Dead quiet noise floor. Your band is going to think you bought a new amp. You didn't. It's just wired right now.',
               image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Saxon_W..jpg',
             },
           ].map((step) => (
@@ -326,31 +417,31 @@ export default function Home() {
           {[
             {
               q: "Why only 18 builds a year?",
-              a: "Same hands wire every board from start to finish. That’s the only way we can guarantee the work. We could take on more, but then we’d be cutting corners, and that’s not something we’re willing to do. We’re down to the last 2 spots for this year.",
+              a: "Same hands wire every board from start to finish. That's the only way we can guarantee the work. We could take on more, but then we'd be cutting corners, and that's not something we're willing to do. We're down to the last 2 spots for this year.",
             },
             {
               q: "How much does a custom build cost?",
-              a: "Starts at $1,999 USD and goes up depending on how complex the rig is. MIDI switching, loop systems, that kind of thing adds to it. The consultation is free and you’ll get a real number up front. No surprises after the fact.",
+              a: "Starts at $1,999 USD and goes up depending on how complex the rig is. MIDI switching, loop systems, that kind of thing adds to it. The consultation is free and you'll get a real number up front. No surprises after the fact.",
             },
             {
               q: "What is Tone Tutoring?",
-              a: "An hour on video with Jacob going through your whole signal chain. Your amp settings, your effects order, that noise you can’t figure out. $99 USD. A lot of guys tell us they wish they’d done it years ago.",
+              a: "An hour on video with Jacob going through your whole signal chain. Your amp settings, your effects order, that noise you can't figure out. $99 USD. A lot of guys tell us they wish they'd done it years ago.",
             },
             {
               q: "How long does a build take?",
-              a: "Usually 4 to 8 weeks depending on what we’re building and whether we’re waiting on any parts. If you’ve got a tour date coming up, let us know and we’ll make it work.",
+              a: "Usually 4 to 8 weeks depending on what we're building and whether we're waiting on any parts. If you've got a tour date coming up, let us know and we'll make it work.",
             },
             {
               q: "Do I need to ship my pedals to you?",
-              a: "Yeah, most guys ship everything to us in Houston. We’ll send you a label and walk you through how to pack it so nothing gets damaged. Tone Tutoring is all remote though, just a video call.",
+              a: "Yeah, most guys ship everything to us in Houston. We'll send you a label and walk you through how to pack it so nothing gets damaged. Tone Tutoring is all remote though, just a video call.",
             },
             {
               q: "What if something goes wrong after?",
-              a: "Call us. Seriously. We’ve had guys reach out six months, a year later with a question and we get back to them the same day. We’re not going to build you a board and then disappear.",
+              a: "Call us. Seriously. We've had guys reach out six months, a year later with a question and we get back to them the same day. We're not going to build you a board and then disappear.",
             },
             {
               q: "Do you do MIDI and switching rigs?",
-              a: "That’s actually where things get fun for us. MIDI-controlled rigs, loop switchers, preset routing, the whole deal. Some of our best work is on complex switching systems where everything needs to talk to everything else.",
+              a: "That's actually where things get fun for us. MIDI-controlled rigs, loop switchers, preset routing, the whole deal. Some of our best work is on complex switching systems where everything needs to talk to everything else.",
             },
           ].map((item, idx) => (
             <details key={idx} className="group cursor-pointer">
