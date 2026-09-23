@@ -298,19 +298,19 @@ export default function Home() {
             {
               number: '01',
               title: 'We Talk',
-              desc: 'Tell us what you play and what's bugging you. Maybe it's a hum you can't track down, or you're tap-dancing between three pedals when you should be playing. We'll go through your signal chain and figure out exactly what the board needs.',
+              desc: 'Tell us what you play and what’s bugging you. Maybe it’s a hum you can’t track down, or you’re tap-dancing between three pedals when you should be playing. We’ll go through your signal chain and figure out exactly what the board needs.',
               image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jacob_S.png',
             },
             {
               number: '02',
               title: 'We Build',
-              desc: 'Hand-soldered connections. Cables cut to fit, not cut to close-enough. Isolated power so your drive pedals aren't picking up noise from your digital stuff. We road-test the whole thing before it ships. And yeah, flip it over and look at the wiring.',
+              desc: 'Hand-soldered connections. Cables cut to fit, not cut to close-enough. Isolated power so your drive pedals aren’t picking up noise from your digital stuff. We road-test the whole thing before it ships. And yeah, flip it over and look at the wiring.',
               image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/John_A._1.png',
             },
             {
               number: '03',
               title: 'You Plug In',
-              desc: 'Uncase it, plug in, and you'll hear the difference before you finish your first chord. Dead quiet noise floor. Your band is going to think you bought a new amp. You didn't. It's just wired right now.',
+              desc: 'Uncase it, plug in, and you’ll hear the difference before you finish your first chord. Dead quiet noise floor. Your band is going to think you bought a new amp. You didn’t. It’s just wired right now.',
               image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Saxon_W..jpg',
             },
           ].map((step) => (
@@ -377,6 +377,41 @@ export default function Home() {
           </div>
         </div>
       </Section>
+
+      {/* ──── 9.5. EMAIL CAPTURE — 20% off Tone Tutoring ──── */}
+      <section className="relative overflow-hidden bg-[#1d1d1f] py-16 sm:py-20">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%)]" />
+        <div className="relative max-w-2xl mx-auto px-6 text-center">
+          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/30 mb-4">Exclusive Offer</p>
+          <h3 className="text-3xl sm:text-4xl font-bold text-[#f5f5f7] tracking-tight mb-3">
+            Get <span className="trd-gradient-text">20% off</span> your first Tone Tutoring session.
+          </h3>
+          <p className="text-[#f5f5f7]/50 text-base mb-8 max-w-lg mx-auto">
+            Drop your email and we&apos;ll send you a code for $20 off your first session.
+            One hour with Jacob going through your whole signal chain. No strings attached.
+          </p>
+          <form
+            className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+            action="#"
+            data-hubspot-form="tone-tutoring-discount"
+          >
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="your@email.com"
+              className="flex-1 px-5 py-3.5 rounded-full bg-white/10 border border-white/15 text-white placeholder:text-white/30 focus:outline-none focus:border-[#0071E3] focus:ring-1 focus:ring-[#0071E3] text-sm"
+            />
+            <button
+              type="submit"
+              className="trd-cta-gradient px-8 py-3.5 rounded-full font-semibold text-sm whitespace-nowrap"
+            >
+              Send My Code
+            </button>
+          </form>
+          <p className="text-[#f5f5f7]/25 text-xs mt-4">No spam. Just the discount code and maybe a rig tip or two.</p>
+        </div>
+      </section>
 
       {/* ──── 10. REVIEWS — Volume of social proof ──── */}
       <Section theme="lightGray" id="customer-reviews" reveal>
@@ -462,7 +497,7 @@ export default function Home() {
 
       {/* ──── 13. CLOSING CTA — Final push with scarcity ──── */}
       <section className="relative overflow-hidden bg-[#1d1d1f] py-20 sm:py-28">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(191,90,242,0.06)_0%,transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial_gradient(ellipse_at_50%_80%,rgba(191,90,242,0.06)_0%,transparent_50%)]" />
         <div className="relative max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f5f5f7] tracking-tight mb-4">
             2 spots left. That&apos;s it.
