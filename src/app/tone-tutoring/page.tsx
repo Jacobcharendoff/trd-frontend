@@ -76,7 +76,7 @@ export default function ToneTutoringPage() {
               </div>
               <div className="hidden sm:block w-px h-12 bg-white/10" />
               <div>
-                <p className="text-2xl sm:text-3xl font-bold text-white mb-2">500+</p>
+                <p className="text-2xl sm:text-3xl font-bold text-white mb-2">300+</p>
                 <p className="text-sm text-[#f5f5f7]/60">Rigs built</p>
               </div>
               <div className="hidden sm:block w-px h-12 bg-white/10" />
@@ -121,7 +121,7 @@ export default function ToneTutoringPage() {
             That&apos;s what this session is for.
           </h3>
           <p className="text-[#1d1d1f]/60 text-lg max-w-2xl">
-            One hour, one-on-one, with someone who&apos;s wired 500+ boards and toured with artists you listen to. Bring your rig, your questions, whatever&apos;s on your mind. We&apos;ll work through it.
+            One hour, one-on-one, with someone who&apos;s wired 300+ boards and toured with artists you listen to. Bring your rig, your questions, whatever&apos;s on your mind. We&apos;ll work through it.
           </p>
         </div>
       </Section>
