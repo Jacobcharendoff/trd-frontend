@@ -132,10 +132,36 @@ export default function Home() {
           </p>
         </div>
         <TestimonialCarousel theme="dark" />
+        <div className="text-center mt-12">
+          <Link
+            href="/book"
+            className="trd-cta-gradient inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full text-sm"
+          >
+            Build With the Same Team
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </Link>
+        </div>
       </Section>
 
       {/* ──── 5. HOW WE BUILD — Cinema section ──── */}
       <CinemaSection />
+
+      {/* ──── 5→5.5 CONVERSION BRIDGE — Cinema to Builders ──── */}
+      <section className="relative overflow-hidden bg-[#0a0a0a] py-14 sm:py-16">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(0,113,227,0.08)_0%,transparent_60%)]" />
+        <div className="relative max-w-2xl mx-auto px-6 text-center">
+          <p className="text-[#f5f5f7]/50 text-lg mb-6">
+            That&apos;s four stages of work most builders skip. We do all of them on every single rig.
+          </p>
+          <Link
+            href="/book"
+            className="trd-cta-gradient inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full text-sm"
+          >
+            See What We&apos;d Do With Yours
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </Link>
+        </div>
+      </section>
 
       {/* ──── 5.5. MEET THE BUILDERS — Mason & Vince ──── */}
       <Section theme="lightGray" id="builders" reveal>
@@ -245,7 +271,7 @@ export default function Home() {
         <div className="text-center mt-10">
           <Link
             href="/book"
-            className="inline-flex items-center gap-2 text-[#0071E3] font-medium hover:underline transition-colors"
+            className="trd-cta-gradient inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full text-sm"
           >
             Start Your Build
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
@@ -278,6 +304,14 @@ export default function Home() {
               type="video/mp4"
             />
           </video>
+        </div>
+        <div className="text-center mt-12">
+          <Link
+            href="/book"
+            className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-[#1d1d1f]/90 transition-colors text-sm"
+          >
+            Get Your Rig Built Like This
+          </Link>
         </div>
       </Section>
 
@@ -423,6 +457,14 @@ export default function Home() {
           <p className="text-[#1d1d1f]/50 text-lg">These guys came to us with the same stuff you&apos;re dealing with. Read what they said after.</p>
         </div>
         <ReviewsMarquee />
+        <div className="text-center mt-12">
+          <Link
+            href="/book"
+            className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-[#1d1d1f]/90 transition-colors text-sm"
+          >
+            Join the List
+          </Link>
+        </div>
       </Section>
 
       {/* ──── 11. LEAD CAPTURE — Join the waitlist ──── */}
@@ -452,31 +494,31 @@ export default function Home() {
           {[
             {
               q: "Why only 18 builds a year?",
-              a: "Same hands wire every board from start to finish. That's the only way we can guarantee the work. We could take on more, but then we'd be cutting corners, and that's not something we're willing to do. We're down to the last 2 spots for this year.",
+              a: "Same hands wire every board from start to finish. That’s the only way we can guarantee the work. We could take on more, but then we’d be cutting corners, and that’s not something we’re willing to do. We’re down to the last 2 spots for this year.",
             },
             {
               q: "How much does a custom build cost?",
-              a: "Starts at $1,999 USD and goes up depending on how complex the rig is. MIDI switching, loop systems, that kind of thing adds to it. The consultation is free and you'll get a real number up front. No surprises after the fact.",
+              a: "Starts at $1,999 USD and goes up depending on how complex the rig is. MIDI switching, loop systems, that kind of thing adds to it. The consultation is free and you’ll get a real number up front. No surprises after the fact.",
             },
             {
               q: "What is Tone Tutoring?",
-              a: "An hour on video with Jacob going through your whole signal chain. Your amp settings, your effects order, that noise you can't figure out. $99 USD. A lot of guys tell us they wish they'd done it years ago.",
+              a: "An hour on video with Jacob going through your whole signal chain. Your amp settings, your effects order, that noise you can’t figure out. $99 USD. A lot of guys tell us they wish they’d done it years ago.",
             },
             {
               q: "How long does a build take?",
-              a: "Usually 4 to 8 weeks depending on what we're building and whether we're waiting on any parts. If you've got a tour date coming up, let us know and we'll make it work.",
+              a: "Usually 4 to 8 weeks depending on what we’re building and whether we’re waiting on any parts. If you’ve got a tour date coming up, let us know and we’ll make it work.",
             },
             {
               q: "Do I need to ship my pedals to you?",
-              a: "Yeah, most guys ship everything to us in Houston. We'll send you a label and walk you through how to pack it so nothing gets damaged. Tone Tutoring is all remote though, just a video call.",
+              a: "Yeah, most guys ship everything to us in Houston. We’ll send you a label and walk you through how to pack it so nothing gets damaged. Tone Tutoring is all remote though, just a video call.",
             },
             {
               q: "What if something goes wrong after?",
-              a: "Call us. Seriously. We've had guys reach out six months, a year later with a question and we get back to them the same day. We're not going to build you a board and then disappear.",
+              a: "Call us. Seriously. We’ve had guys reach out six months, a year later with a question and we get back to them the same day. We’re not going to build you a board and then disappear.",
             },
             {
               q: "Do you do MIDI and switching rigs?",
-              a: "That's actually where things get fun for us. MIDI-controlled rigs, loop switchers, preset routing, the whole deal. Some of our best work is on complex switching systems where everything needs to talk to everything else.",
+              a: "That’s actually where things get fun for us. MIDI-controlled rigs, loop switchers, preset routing, the whole deal. Some of our best work is on complex switching systems where everything needs to talk to everything else.",
             },
           ].map((item, idx) => (
             <details key={idx} className="group cursor-pointer">
@@ -497,7 +539,7 @@ export default function Home() {
 
       {/* ──── 13. CLOSING CTA — Final push with scarcity ──── */}
       <section className="relative overflow-hidden bg-[#1d1d1f] py-20 sm:py-28">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial_gradient(ellipse_at_50%_80%,rgba(191,90,242,0.06)_0%,transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(191,90,242,0.06)_0%,transparent_50%)]" />
         <div className="relative max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f5f5f7] tracking-tight mb-4">
             2 spots left. That&apos;s it.
