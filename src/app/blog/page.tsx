@@ -142,7 +142,29 @@ export default function BlogIndex() {
         </Section>
       )}
 
-      {/* ── CTA ── */}
+      {/* ── Tone Tutoring CTA — for the rig-issue persona ── */}
+      <Section theme="light">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Still Chasing the Problem?</p>
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1d1d1f] mb-4">
+            Reading about it only gets you so far.
+          </h2>
+          <p className="text-[#1d1d1f]/50 text-[15px] leading-relaxed mb-3 max-w-xl mx-auto">
+            If you&apos;re here because something in your rig isn&apos;t right and you can&apos;t figure out what, you&apos;re not alone. That hum, that tone suck, that thing where it sounds great at home and terrible on stage. We&apos;ve heard it all.
+          </p>
+          <p className="text-[#1d1d1f]/50 text-[15px] leading-relaxed mb-8 max-w-xl mx-auto">
+            Book a Tone Tutoring session. One hour on video with someone who&apos;s diagnosed this stuff hundreds of times. $99 and you&apos;ll know exactly what&apos;s wrong.
+          </p>
+          <Link
+            href="/tone-tutoring"
+            className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full border-2 border-[#1d1d1f]/15 text-[#1d1d1f] hover:border-[#1d1d1f]/30 hover:bg-[#1d1d1f]/[0.03] transition-all text-sm"
+          >
+            Book a Tone Session &mdash; $99
+          </Link>
+        </div>
+      </Section>
+
+      {/* ── Build CTA ── */}
       <Section theme="dark">
         <div className="text-center">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#f5f5f7] mb-4">
