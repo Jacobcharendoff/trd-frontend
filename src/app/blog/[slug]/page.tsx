@@ -1,61 +1,67 @@
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { getPostBySlug, getAllPosts, getRelatedPosts } from '@/lib/blog';
-import Section from '@/components/Section';
 
-interface PageProps {
-  params: Promise<{ slug: string }>;
-}
+import { getPostBySlug, getAllPosts, getRelatedPosts } from '@/lib/blog';
+
+type Params = Promise<{ slug: string }>;
 
 export async function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return {};
 
   return {
-    title: post.title,
+    title: `${post.title} | The Rig Doctor`,
     description: post.description,
     openGraph: {
       title: post.title,
       description: post.description,
       type: 'article',
       publishedTime: post.publishedAt,
+      ...(post.updatedAt && { modifiedTime: post.updatedAt }),
       authors: [post.author],
-      images: post.heroImage
-        ? [{ url: post.heroImage, width: 1200, height: 630, alt: post.heroAlt || post.title }]
-        : undefined,
+      tags: post.tags,
+      ...(post.heroImage && {
+        images: [{ url: post.heroImage, alt: post.heroAlt || post.title }],
+      }),
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.description,
-      images: post.heroImage ? [post.heroImage] : undefined,
+      ...(post.heroImage && { images: [post.heroImage] }),
     },
   };
 }
 
-export default async function BlogPost({ params }: PageProps) {
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Params;
+}) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const related = getRelatedPosts(slug, 2);
+  const related = getRelatedPosts(slug);
 
-  // Article JSON-LD
-  const jsonLd = {
+  /* ── structured data ───────────────────────────────── */
+  const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
     description: post.description,
-    image: post.heroImage,
     datePublished: post.publishedAt,
-    dateModified: post.updatedAt || post.publishedAt,
+    ...(post.updatedAt && { dateModified: post.updatedAt }),
     author: {
       '@type': 'Person',
       name: post.author,
@@ -63,157 +69,198 @@ export default async function BlogPost({ params }: PageProps) {
     publisher: {
       '@type': 'Organization',
       name: 'The Rig Doctor',
-      url: 'https://www.therigdr.com',
+      url: 'https://therigdr.com',
     },
+    ...(post.heroImage && {
+      image: post.heroImage,
+    }),
   };
+
+  const faqJsonLd = post.faqs?.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: post.faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer,
+          },
+        })),
+      }
+    : null;
 
   return (
     <>
+      {/* Article JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
 
-      {/* ── Article Header ── */}
-      <Section theme="dark" className="!py-16 md:!py-24">
-        <div className="max-w-3xl">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-1.5 text-[13px] text-[#f5f5f7]/50 hover:text-[#f5f5f7]/80 transition-colors mb-6"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-            Back to Blog
-          </Link>
+      {/* FAQPage JSON-LD (conditional) */}
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
 
-          <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#0071E3] mb-4">
-            {post.category}
-          </span>
+      {/* ── Breadcrumbs ───────────────────────────────── */}
+      <nav
+        aria-label="Breadcrumb"
+        className="mx-auto max-w-3xl px-6 pt-28 pb-4 text-sm"
+      >
+        <ol className="flex items-center gap-2 text-black/50">
+          <li>
+            <Link href="/" className="hover:text-black transition-colors">
+              Home
+            </Link>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li>
+            <Link href="/blog" className="hover:text-black transition-colors">
+              Blog
+            </Link>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li className="text-black/80 truncate max-w-[200px]">
+            {post.title}
+          </li>
+        </ol>
+      </nav>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#f5f5f7] leading-[1.1] mb-6">
+      {/* ── Article ───────────────────────────────────── */}
+      <article className="mx-auto max-w-3xl px-6 pb-24">
+        {/* Header */}
+        <header className="mb-12">
+          <div className="flex items-center gap-3 text-sm text-black/50 mb-4">
+            <span className="rounded-full bg-[#f5f5f7] px-3 py-1 text-xs font-medium text-black/70">
+              {post.category}
+            </span>
+            <time dateTime={post.publishedAt}>
+              {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </time>
+            <span>{post.readTime}</span>
+          </div>
+
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] leading-[1.1] mb-6">
             {post.title}
           </h1>
 
-          <div className="flex items-center gap-3 text-[13px] text-[#f5f5f7]/40">
-            <span>{post.author}</span>
-            <span className="w-1 h-1 rounded-full bg-white/20" />
-            <span>{post.readTime}</span>
-            <span className="w-1 h-1 rounded-full bg-white/20" />
-            <time dateTime={post.publishedAt}>
-              {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                month: 'long',
-                day: 'numeric',
-                year: 'numeric',
-              })}
-            </time>
-          </div>
-        </div>
-      </Section>
+          <p className="text-lg text-black/60 leading-relaxed mb-6">
+            {post.description}
+          </p>
 
-      {/* ── Hero Image ── */}
-      {post.heroImage && (
-        <Section theme="light" className="!py-0 !-mt-8">
-          <div className="relative aspect-[2/1] rounded-2xl overflow-hidden border border-black/[0.04]">
-            <Image
+          <div className="flex items-center gap-3 text-sm text-black/50">
+            <span>By {post.author}</span>
+          </div>
+        </header>
+
+        {/* Hero image */}
+        {post.heroImage && (
+          <div className="mb-12 overflow-hidden rounded-2xl">
+            <img
               src={post.heroImage}
               alt={post.heroAlt || post.title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1080px) 100vw, 1080px"
-              priority
+              className="w-full object-cover"
+              loading="eager"
             />
           </div>
-        </Section>
-      )}
+        )}
 
-      {/* ── Article Body ── */}
-      <Section theme="light" className="!py-12 md:!py-16">
-        <article className="max-w-3xl mx-auto">
+        {/* Content sections */}
+        <div className="prose prose-lg max-w-none prose-headings:text-[#1d1d1f] prose-headings:font-bold prose-headings:tracking-tight prose-p:text-black/70 prose-p:leading-relaxed prose-a:text-[#0071E3] prose-a:no-underline hover:prose-a:underline prose-strong:text-[#1d1d1f] prose-li:text-black/70 prose-ul:text-black/70">
           {post.sections.map((section, i) => (
-            <div key={i} className="mb-8 last:mb-0">
+            <div key={i} className={i > 0 ? 'mt-10' : ''}>
               {section.heading &&
                 (section.headingLevel === 3 ? (
-                  <h3 className="text-xl font-bold tracking-tight text-[#1d1d1f] mb-4 mt-10">
-                    {section.heading}
-                  </h3>
+                  <h3>{section.heading}</h3>
                 ) : (
-                  <h2 className="text-2xl font-bold tracking-tight text-[#1d1d1f] mb-4 mt-12 first:mt-0">
-                    {section.heading}
-                  </h2>
+                  <h2>{section.heading}</h2>
                 ))}
               <div
-                className="prose-trd"
                 dangerouslySetInnerHTML={{ __html: section.content }}
               />
             </div>
           ))}
-        </article>
-      </Section>
+        </div>
 
-      {/* ── CTA Banner ── */}
-      {post.cta && (
-        <Section theme="lightGray" className="!py-12 md:!py-16">
-          <div className="max-w-3xl mx-auto bg-[#0a0a0a] rounded-2xl p-8 md:p-12 text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#f5f5f7] mb-4">
-              {post.cta.text}
-            </h2>
-            <Link
-              href={post.cta.href}
-              className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-lg transition-colors"
-            >
-              {post.cta.label}
-            </Link>
-          </div>
-        </Section>
-      )}
-
-      {/* ── Related Posts ── */}
-      {related.length > 0 && (
-        <Section theme="light">
-          <h2 className="text-2xl font-bold tracking-tight text-[#1d1d1f] mb-8">
-            Keep reading
-          </h2>
-          <div className="grid sm:grid-cols-2 gap-6">
-            {related.map((rp) => (
-              <Link
-                key={rp.slug}
-                href={`/blog/${rp.slug}`}
-                className="group block bg-[#f5f5f7] rounded-2xl overflow-hidden border border-black/[0.04] hover:border-black/[0.1] transition-colors"
+        {/* Tags */}
+        <div className="mt-12 pt-8 border-t border-black/[0.06]">
+          <div className="flex flex-wrap gap-2">
+            {post.tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full bg-[#f5f5f7] px-3 py-1 text-xs text-black/60"
               >
-                {rp.heroImage && (
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <Image
-                      src={rp.heroImage}
-                      alt={rp.heroAlt || rp.title}
-                      fill
-                      className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                      sizes="(max-width: 640px) 100vw, 50vw"
-                    />
-                  </div>
-                )}
-                <div className="p-5">
-                  <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#0071E3] mb-2">
-                    {rp.category}
-                  </span>
-                  <h3 className="text-[15px] font-semibold text-[#1d1d1f] mb-2 group-hover:text-[#0071E3] transition-colors leading-snug">
-                    {rp.title}
-                  </h3>
-                  <p className="text-[13px] text-black/45 leading-relaxed line-clamp-2">
-                    {rp.description}
-                  </p>
-                </div>
-              </Link>
+                {tag}
+              </span>
             ))}
           </div>
-        </Section>
-      )}
+        </div>
+
+        {/* CTA */}
+        {post.cta && (
+          <div className="mt-12 rounded-2xl bg-[#f5f5f7] p-8 md:p-12 text-center">
+            <p className="text-xl font-semibold text-[#1d1d1f] mb-4">
+              {post.cta.text}
+            </p>
+            <Link
+              href={post.cta.href}
+              className="inline-flex items-center gap-2 rounded-full bg-[#0071E3] px-8 py-3 text-sm font-medium text-white hover:bg-[#005BB5] transition-colors"
+            >
+              {post.cta.label}
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </Link>
+          </div>
+        )}
+
+        {/* Related posts */}
+        {related.length > 0 && (
+          <div className="mt-16">
+            <h2 className="text-2xl font-bold text-[#1d1d1f] mb-8">
+              Related Articles
+            </h2>
+            <div className="grid gap-6 sm:grid-cols-2">
+              {related.map((r) => (
+                <Link
+                  key={r.slug}
+                  href={`/blog/${r.slug}`}
+                  className="group rounded-2xl border border-black/[0.06] p-6 hover:border-black/[0.12] transition-colors"
+                >
+                  <span className="text-xs text-black/50 mb-2 block">
+                    {r.category}
+                  </span>
+                  <h3 className="font-semibold text-[#1d1d1f] group-hover:text-[#0071E3] transition-colors mb-2">
+                    {r.title}
+                  </h3>
+                  <p className="text-sm text-black/50 line-clamp-2">
+                    {r.description}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+      </article>
     </>
   );
 }
