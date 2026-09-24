@@ -6,7 +6,8 @@ export const costPost: BlogPost = {
   description:
     'Honest pricing breakdown for custom pedalboard builds — from DIY setups under $300 to professional touring rigs over $2,000. What you\'re actually paying for and when a pro build is worth it.',
   publishedAt: '2026-06-09',
-  author: 'Jacob Charendoff',
+  updatedAt: '2026-09-24',
+  author: 'Jacob Charendoff, Founder of The Rig Doctor',
   readTime: '10 min read',
   category: 'Guides',
   tags: [
@@ -20,10 +21,28 @@ export const costPost: BlogPost = {
     'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jacob_S.jpg',
   heroAlt:
     'Custom pedalboard build in progress at The Rig Doctor workshop',
+  faqs: [
+    {
+      question: 'Can I save money by supplying my own cables and power supply?',
+      answer: 'Yes — and we\'re happy to work with components you already own if they meet our quality standards. If your cables or power supply are part of the problem you\'re trying to solve, we\'ll tell you honestly. We don\'t upsell components you don\'t need.',
+    },
+    {
+      question: 'Do I need to ship my pedals to you?',
+      answer: 'For a custom build, yes — we need your actual pedals to build around. We handle the layout, wiring, testing, and ship the complete board back to you ready to plug in and play. Shipping both ways is typically $30–$60 depending on board size and your location.',
+    },
+    {
+      question: 'How long does a custom build take?',
+      answer: 'Most builds ship within 2–3 weeks from when we receive your pedals. Complex builds with switching systems or unusual requirements may take longer — we\'ll give you a timeline upfront.',
+    },
+    {
+      question: 'Is a custom build worth it for a bedroom player?',
+      answer: 'It depends on what you value. If you\'re running 4–5 pedals and play at home, a clean DIY build can serve you well. But if noise is driving you crazy, your setup takes 10 minutes to connect every time you play, or you just want it done right — a professional build transforms your playing experience regardless of where you plug in.',
+    },
+  ],
   sections: [
     {
       content: `<p>"How much does a custom pedalboard cost?" is the number-one question we get. And the honest answer is: it depends. A simple five-pedal board and a fully-switched touring rig with MIDI control are completely different projects. But you deserve real numbers, not vague hand-waving — so here's what things actually cost in 2026, whether you build it yourself or hire a pro.</p>
-<p>We've built over 500 custom pedalboards at The Rig Doctor, from bedroom players running four pedals to touring artists carrying 20+ effects with programmable switching systems. This guide covers the full range so you can make an informed decision about what makes sense for your rig and your budget.</p>`,
+<p>We've built over 300 custom pedalboards at The Rig Doctor, from bedroom players running four pedals to touring artists carrying 20+ effects with programmable switching systems. This guide covers the full range so you can make an informed decision about what makes sense for your rig and your budget.</p>`,
     },
     {
       heading: 'The quick answer: custom pedalboard cost ranges',
@@ -69,7 +88,7 @@ export const costPost: BlogPost = {
 <li><strong>Cable ties, mounting hardware:</strong> $10–$20</li>
 </ul>
 <p><strong>Total: $445–$745</strong> — and that's before your time. If you've never soldered cables before, add a soldering station ($40–$80) and plan on your first few cables being practice runs.</p>
-<p>Building your own board is absolutely worth it if you enjoy the process, have the tools, and want to learn. Some of our best customers are players who built their first board themselves, realized how much goes into a truly clean build, and called us for the second one.</p>`,
+<p>Building your own board is absolutely worth it if you enjoy the process, have the tools, and want to learn. Some of our best customers are players who built their first board themselves, realized how much goes into a truly clean build, and called us for the second one. If you're considering DIY, check out our <a href="/blog/how-to-build-a-pedalboard">complete pedalboard build guide</a> for step-by-step instructions.</p>`,
     },
     {
       heading: 'When a professional build pays for itself',
@@ -77,8 +96,8 @@ export const costPost: BlogPost = {
       content: `<p>A professional build costs more upfront. The question is whether it saves you money and headaches over the life of the board. Here's when the math tilts toward hiring a pro:</p>
 <p><strong>You gig regularly.</strong> A board failure at a gig costs you — in reputation, in the moment, and potentially in future bookings. A professionally-built board with hand-soldered connections and proper cable management is dramatically less likely to fail. Every cable on a Rig Doctor build has a permanent molecular bond at the connector. Crimped and solderless cables rely on mechanical pressure that loosens over time, especially with the vibration of loading in and out of vehicles.</p>
 <p><strong>You're running more than 8 pedals.</strong> Complexity scales exponentially, not linearly. A 12-pedal board isn't 50% harder than an 8-pedal board — it's three times harder. More pedals means more potential noise sources, more signal-path decisions, and tighter physical spacing. This is where professional layout planning makes the biggest difference.</p>
-<p><strong>You're using a switching system.</strong> Programmable loop switchers (RJM, GigRig, Boss ES-8) turn your pedalboard into a complex system with signal routing, MIDI control, and multiple audio paths. Wiring one incorrectly doesn't just cause noise — it can damage gear. If you're investing $500+ in a switcher, having a pro wire it is insurance.</p>
-<p><strong>Your time is worth money.</strong> A mid-complexity build takes an experienced builder 6–8 hours. If it's your first build, double that — plus research time, troubleshooting, and likely redoing at least a few cables. If your hourly rate as a musician or professional is $50+, the labor component of a pro build can actually be cheaper than doing it yourself.</p>`,
+<p><strong>You're using a switching system.</strong> Programmable loop switchers (RJM, GigRig, Boss ES-8) turn your pedalboard into a complex system with signal routing, MIDI control, and multiple audio paths. Wiring one incorrectly doesn't just cause noise — it can damage gear. If you're investing $500+ in a switcher, having a pro wire it is insurance. Our <a href="/blog/midi-pedalboard-switching-guide">MIDI switching guide</a> covers the basics if you want to understand how these systems work.</p>
+<p><strong>Your time is worth money.</strong> A mid-complexity build takes an experienced builder 6–8 hours. If it's your first build, double that — plus research time, troubleshooting, and likely redoing at least a few cables. If your hourly rate as a musician or professional is $50+, the labor component of a pro build can actually be cheaper than doing it yourself. We break down the full comparison in our <a href="/blog/custom-pedalboard-build-vs-diy">custom build vs DIY guide</a>.</p>`,
     },
     {
       heading: 'What\'s included in a Rig Doctor custom build',
@@ -93,7 +112,7 @@ export const costPost: BlogPost = {
 <li><strong>Lifetime support</strong> — something goes wrong down the road? We fix it. That's not a warranty with fine print — it's a handshake</li>
 </ul>
 <p>Pricing is based on your specific build — number of pedals, complexity of the signal path, whether you're running a switching system, and any special requirements. We don't publish fixed prices because no two rigs are the same, and quoting a "starting at" number without seeing your setup would be dishonest.</p>
-<p>The consultation is free and there's no pressure. Most players walk away with a better understanding of their rig whether they hire us or not.</p>`,
+<p>The consultation is free and there's no pressure. Most players walk away with a better understanding of their rig whether they hire us or not. Not sure you need a full build? Our <a href="/blog/what-is-tone-tutoring">Tone Tutoring sessions</a> are a great place to start at just $99.</p>`,
     },
     {
       heading: 'How to get a quote for your build',
