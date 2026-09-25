@@ -18,7 +18,7 @@ import {
 
 const CDN = 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/';
 const BUY = '/api/checkout?handle=tone-tutoring-follow-up';
-const VIDEO_ID = '5f0a62a68694406d95b83a837a56c2d0';
+const VIDEO_ID = '21a7252cb5764170a234e7dd476193e1';
 
 const sessions = [
   { Icon: IconQuiet, title: 'The noise hunt', body: "There's a hum or hiss you've been living with. We track down where it's coming from live on the call, cable by cable, and tell you exactly how to kill it." },
@@ -71,7 +71,7 @@ export default function ToneTutoringPage() {
             preload="auto"
             className="absolute inset-0 w-full h-full object-cover opacity-45"
           >
-            <source src={`https://cdn.shopify.com/videos/c/vp/${VIDEO_ID}/${VIDEO_ID}.HD-720p-3.0Mbps-71202543.mp4`} type="video/mp4" />
+            <source src={`https://cdn.shopify.com/videos/c/vp/${VIDEO_ID}/${VIDEO_ID}.HD-720p-4.5Mbps-70111310.mp4`} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/60" />
           <div className="relative z-10 max-w-[1200px] mx-auto px-6 pb-16 sm:pb-20 pt-28 w-full text-center">
