@@ -1,291 +1,307 @@
-'use client';
-
 import Link from 'next/link';
-import { useState } from 'react';
-import Section from '@/components/Section';
+import Image from 'next/image';
+import ReviewsMarquee from '@/components/ReviewsMarquee';
+import Reveal from '@/components/home/Reveal';
+import ToneOptIn from '@/components/home/ToneOptIn';
+import ParallaxImage from '@/components/home/ParallaxImage';
+import {
+  IconQuiet,
+  IconBlueprint,
+  IconRoadCase,
+  IconVideo,
+  IconCable,
+  IconSolder,
+  IconLifetime,
+  IconShip,
+  IconArrow,
+} from '@/components/home/Icons';
 
-function AccordionItem({ title, content }: { title: string; content: string }) {
-  const [isOpen, setIsOpen] = useState(false);
+const CDN = 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/';
+const BUY = '/api/checkout?handle=tone-tutoring-follow-up';
+const VIDEO_ID = '5f0a62a68694406d95b83a837a56c2d0';
+
+const sessions = [
+  { Icon: IconQuiet, title: 'The noise hunt', body: "There's a hum or hiss you've been living with. We track down where it's coming from live on the call, cable by cable, and tell you exactly how to kill it." },
+  { Icon: IconBlueprint, title: 'The chain order fix', body: 'Compressor before or after the drive? What goes in the loop? We map your whole signal chain and put it in the order that actually works for your amp.' },
+  { Icon: IconRoadCase, title: 'Bedroom to stage', body: 'Sounds great at home, falls apart at rehearsal or at the gig. We figure out why and set you up for the room you actually play in.' },
+  { Icon: IconVideo, title: 'The full rig walkthrough', body: "Every pedal, cable and setting. What's helping, what's fighting you, and a clear plan for what to change first." },
+  { Icon: IconCable, title: 'Before you buy', body: "Eyeing a new pedal, a switcher or a full build? We'll tell you straight if you need it. Plenty of players leave without buying a thing." },
+];
+
+const included = [
+  { title: '60 minutes, one on one', body: 'Just you, your rig and a builder on video. Full attention.' },
+  { title: 'Signal chain audit', body: 'We map your whole chain and tell you if the order is working for you or fighting you.' },
+  { title: 'Pedal placement plan', body: 'Where everything should sit on the board, and why it matters.' },
+  { title: 'A tone roadmap', body: 'A line from where you are now to the sound in your head.' },
+  { title: 'The recording', body: 'The whole call is recorded, so you can watch it back any time.' },
+  { title: 'Written next steps', body: 'Notes with specific changes to make, in your inbox within 24 hours.' },
+];
+
+const faqs = [
+  { q: "I'm kind of a beginner. Is this for me?", a: "Yeah. Whether you've got three pedals or thirty, we meet you where you are. The fundamentals of good tone are the same at every level." },
+  { q: 'Do I need my gear set up?', a: "That's the whole point. Have your guitar, amp and pedals ready to go. If your setup isn't built yet, no problem. We can plan it out together." },
+  { q: 'What platform do you use?', a: "Google Meet. We send you a link. Click and you're in." },
+  { q: 'Can you help me pick new gear?', a: "It's one of our favorite things to do. We'll talk about what you're going for and your budget, and give you honest recommendations. Not whatever's trending this week." },
+  { q: "How's this different from the free build consultation?", a: 'The free consultation is a 30-minute call for players thinking about a custom build. Tone Tutoring is a full hour of hands-on coaching where we dig into your rig and get the most out of what you already own.' },
+  { q: 'Can I book more than one session?', a: 'Absolutely. A lot of players do a session, make the changes, play for a week, then come back. Book another whenever you are ready.' },
+  { q: "What if I don't get anything out of it?", a: "Reach out and we'll make it right. If you didn't get value, that's on us." },
+];
+
+function BuyButton({ className = '', children }: { className?: string; children: React.ReactNode }) {
   return (
-    <div className="border border-black/[0.06] rounded-2xl overflow-hidden bg-white">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-8 py-6 flex justify-between items-center hover:bg-[#f5f5f7]/50 transition-colors duration-200"
-      >
-        <h3 className="text-lg font-semibold text-[#1d1d1f] text-left">{title}</h3>
-        <span className={`text-[#0071E3] text-2xl transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}>+</span>
-      </button>
-      {isOpen && (
-        <div className="px-8 py-6 border-t border-black/[0.06] bg-[#f5f5f7]/30">
-          <p className="text-[#1d1d1f]/70 leading-relaxed">{content}</p>
-        </div>
-      )}
-    </div>
+    <a href={BUY} className={`trd-cta-gradient inline-flex items-center justify-center gap-2 rounded-full font-semibold ${className}`}>
+      {children}
+      <IconArrow />
+    </a>
   );
 }
 
 export default function ToneTutoringPage() {
   return (
     <>
-      {/* ---- HERO ---- */}
-      <div className="relative w-full bg-black overflow-hidden">
-        <div className="relative min-h-screen flex items-end justify-center">
+      {/* ───────── HERO ───────── */}
+      <section className="relative bg-black overflow-hidden">
+        <div className="relative min-h-[calc(100svh-100px)] flex items-end">
           <video
-            poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/preview_images/5f0a62a68694406d95b83a837a56c2d0.thumbnail.0000000000.jpg"
+            poster={`${CDN}preview_images/${VIDEO_ID}.thumbnail.0000000000.jpg`}
             autoPlay
             muted
             loop
             playsInline
             preload="auto"
-            className="absolute inset-0 w-full h-full object-cover opacity-30"
+            className="absolute inset-0 w-full h-full object-cover opacity-45"
           >
-            <source
-              src="https://cdn.shopify.com/videos/c/vp/5f0a62a68694406d95b83a837a56c2d0/5f0a62a68694406d95b83a837a56c2d0.HD-720p-3.0Mbps-71202543.mp4"
-              type="video/mp4"
-            />
+            <source src={`https://cdn.shopify.com/videos/c/vp/${VIDEO_ID}/${VIDEO_ID}.HD-720p-3.0Mbps-71202543.mp4`} type="video/mp4" />
           </video>
-          <div className="absolute inset-0 pointer-events-none" />
-          <div className="relative z-10 max-w-[1080px] mx-auto px-6 pt-32 pb-20 w-full">
-            <div className="flex justify-center mb-6">
-              <div className="inline-block bg-white/[0.08] border border-[#0071E3]/40 rounded-full px-4 py-2">
-                <p className="text-sm font-semibold text-[#0071E3]">1-on-1 Video Session</p>
-              </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/60" />
+          <div className="relative z-10 max-w-[1200px] mx-auto px-6 pb-16 sm:pb-20 pt-28 w-full text-center">
+            <p className="trd-eyebrow text-white/55 mb-6">Tone Tutoring &middot; 60 min, one on one, on video</p>
+            <h1 className="trd-hero-headline text-white mb-6">
+              An hour on your rig.
+              <br />
+              <span className="trd-gradient-text">Your tone, sorted.</span>
+            </h1>
+            <p className="trd-subheadline max-w-2xl mx-auto mb-10">
+              Get on a video call with the guys who build rigs for touring artists. Bring your board and whatever&apos;s
+              been bugging you. You leave knowing exactly what to change.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+              <BuyButton className="px-9 py-4 text-[17px]">Book a session &middot; $99</BuyButton>
+              <a href="#twenty-off" className="trd-cta-ghost-dark inline-flex items-center justify-center px-9 py-4 rounded-full font-semibold text-[17px]">
+                Get 20% off your first
+              </a>
             </div>
-            <div className="mb-8 text-center">
-              <h1 className="trd-hero-headline text-[#f5f5f7] mb-6">
-                Tone Tutoring.
-                <br />
-                <span className="trd-gradient-text">Your tone, sorted.</span>
-              </h1>
-              <p className="trd-subheadline max-w-2xl mx-auto mb-8">
-                Hop on a video call with the guys who build rigs for touring artists. Bring your board, your questions, and whatever&apos;s been bugging you. We&apos;ll figure it out together.
-              </p>
-              <div className="flex gap-4 justify-center mb-16">
-                <a
-                  href="/api/checkout?handle=tone-tutoring-follow-up"
-                  className="trd-cta-gradient inline-flex items-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
-                >
-                  Book a Session
-                </a>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-12 text-center pt-12 border-t border-white/10">
-              <div>
-                <p className="text-2xl sm:text-3xl font-bold text-white mb-2">17+</p>
-                <p className="text-sm text-[#f5f5f7]/60">Years at the bench</p>
-              </div>
-              <div className="hidden sm:block w-px h-12 bg-white/10" />
-              <div>
-                <p className="text-2xl sm:text-3xl font-bold text-white mb-2">300+</p>
-                <p className="text-sm text-[#f5f5f7]/60">Rigs built</p>
-              </div>
-              <div className="hidden sm:block w-px h-12 bg-white/10" />
-              <div>
-                <p className="text-2xl sm:text-3xl font-bold text-white mb-2">50+</p>
-                <p className="text-sm text-[#f5f5f7]/60">Touring artists</p>
-              </div>
-            </div>
-
-            <div className="mt-12 pt-12 border-t border-white/10 text-center">
-              <p className="text-[#f5f5f7]/60 text-sm mb-2">Starting at</p>
-              <p className="text-3xl sm:text-4xl font-bold trd-gradient-text">$99 USD</p>
+            <div className="mt-14 flex justify-center items-center gap-8 sm:gap-16 pt-8 border-t border-white/10 max-w-xl mx-auto">
+              {[
+                ['17+', 'years at the bench'],
+                ['300+', 'rigs built'],
+                ['50+', 'touring artists'],
+              ].map(([n, l]) => (
+                <div key={l}>
+                  <p className="text-2xl sm:text-3xl font-bold text-white">{n}</p>
+                  <p className="text-[13px] text-white/50 mt-1">{l}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* ---- THE PROBLEM ---- */}
-      <Section theme="light" id="pain-points" reveal>
-        <div className="mb-12">
-          <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
-            Sound familiar?
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {[
-            { title: 'Too many options, not enough clarity', desc: "You've watched dozens of YouTube demos this week. Every one says something different. You're more confused now than when you started." },
-            { title: 'It sounded great in the store', desc: "But at home, at rehearsal, on stage? Not even close. There's a reason for that, and it's usually fixable." },
-            { title: 'The chain order question', desc: "Compressor before or after the drive? Does your loop order actually matter? Short answer: yes. More than most players realize." },
-            { title: 'Nobody to just ask', desc: "Reddit says one thing, the gear shop says another, your buddy swears by something else. You want someone who does this for a living." },
-          ].map((pain) => (
-            <div key={pain.title} className="bg-[#f5f5f7] rounded-2xl p-8">
-              <h3 className="text-lg font-semibold text-[#1d1d1f] mb-3">{pain.title}</h3>
-              <p className="text-[#1d1d1f]/60 leading-relaxed">{pain.desc}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="border border-[#0071E3]/20 bg-[#0071E3]/[0.04] rounded-2xl p-8 sm:p-12">
-          <h3 className="text-2xl sm:text-3xl font-bold text-[#1d1d1f] mb-4">
-            That&apos;s what this session is for.
-          </h3>
-          <p className="text-[#1d1d1f]/60 text-lg max-w-2xl">
-            One hour, one-on-one, with someone who&apos;s wired 300+ boards and toured with artists you listen to. Bring your rig, your questions, whatever&apos;s on your mind. We&apos;ll work through it.
-          </p>
-        </div>
-      </Section>
-
-      {/* ---- WHAT YOU GET ---- */}
-      <Section theme="lightGray" id="what-you-get" reveal>
-        <div className="mb-12">
-          <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
-            What&apos;s included.
-          </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">Every session, no exceptions.</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {[
-            { title: 'Full Rig Walkthrough', desc: "Show us what you've got. We go through every pedal, every cable, every setting and tell you what's helping and what's working against you." },
-            { title: 'Signal Chain Audit', desc: "We map your whole chain and figure out if the order is working for you or fighting you. Most players are surprised by what we find." },
-            { title: 'Pedal Placement', desc: "Where your stuff sits on the board matters more than you'd think. We'll show you why and give you a plan to fix it." },
-            { title: 'Tone Roadmap', desc: "Where are you trying to go? We'll draw a line from where you are now to the sound in your head." },
-            { title: 'Session Recording', desc: "The whole call is recorded. No scrambling for notes. Watch it back whenever you need a refresher." },
-            { title: 'Follow-up Notes', desc: "Within 24 hours you get written notes with specific next steps. Not vague advice. Actual things to go do." },
-          ].map((item) => (
-            <div key={item.title} className="bg-white rounded-2xl p-8 flex gap-4 border border-black/[0.04]">
-              <div className="text-[#0071E3] text-lg font-bold flex-shrink-0 mt-0.5">&#10003;</div>
-              <div>
-                <h3 className="text-lg font-semibold text-[#1d1d1f] mb-2">{item.title}</h3>
-                <p className="text-[#1d1d1f]/60 leading-relaxed">{item.desc}</p>
+      {/* ───────── WHAT PLAYERS BOOK IT FOR ───────── */}
+      <section className="bg-white py-24 sm:py-32">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <Reveal className="max-w-3xl mb-14 sm:mb-16">
+            <p className="trd-eyebrow text-black/40 mb-5">What players book it for</p>
+            <h2 className="text-black font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(36px,5vw,64px)]">
+              Pick the one that <span className="trd-gradient-text">sounds like you.</span>
+            </h2>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {sessions.map(({ Icon, title, body }, i) => (
+              <Reveal key={title} delay={(i % 3) * 90}>
+                <a href={BUY} className="group block h-full bg-[#f5f5f7] hover:bg-black rounded-[28px] p-8 sm:p-9 transition-colors duration-500">
+                  <div className="flex items-center justify-between mb-8">
+                    <span className="trd-icon-ring w-12 h-12 text-black group-hover:text-white transition-colors duration-500">
+                      <Icon size={24} />
+                    </span>
+                    <span className="text-black/30 group-hover:text-white/40 text-[13px] font-semibold tracking-[0.2em]">0{i + 1}</span>
+                  </div>
+                  <h3 className="text-2xl font-bold tracking-tight text-black group-hover:text-white mb-3 transition-colors duration-500">{title}</h3>
+                  <p className="text-black/55 group-hover:text-white/65 text-[16px] leading-relaxed transition-colors duration-500">{body}</p>
+                  <span className="mt-6 inline-flex items-center gap-2 text-[14px] font-semibold text-black group-hover:text-white transition-colors duration-500">
+                    Book this session <IconArrow />
+                  </span>
+                </a>
+              </Reveal>
+            ))}
+            <Reveal delay={180}>
+              <div className="relative h-full min-h-[320px] rounded-[28px] overflow-hidden bg-black">
+                <Image src={`${CDN}Tone_Consultation_Screen_1.png`} alt="A Tone Tutoring session on video" fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent" />
+                <div className="absolute bottom-0 p-8">
+                  <p className="text-white text-xl font-bold tracking-tight mb-1">Not sure which?</p>
+                  <p className="text-white/65 text-[15px] leading-relaxed">Book the hour and bring all of it. We&apos;ll start with whatever&apos;s bugging you most.</p>
+                </div>
               </div>
-            </div>
-          ))}
+            </Reveal>
+          </div>
         </div>
-      </Section>
+      </section>
 
-      {/* ---- HOW IT WORKS ---- */}
-      <Section theme="light" id="process" reveal>
-        <div className="mb-12">
-          <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
-            Four steps. Pretty straightforward.
+      {/* ───────── WHAT'S INCLUDED ───────── */}
+      <section className="bg-black py-24 sm:py-32">
+        <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[1fr_1.05fr] gap-12 lg:gap-16 items-center">
+          <div>
+            <Reveal>
+              <p className="trd-eyebrow text-white/45 mb-5">Every session, no exceptions</p>
+              <h2 className="text-white font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(34px,4.5vw,56px)] mb-12">
+                What you <span className="trd-gradient-text">walk away with.</span>
+              </h2>
+            </Reveal>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-9">
+              {included.map(({ title, body }, i) => (
+                <Reveal as="li" key={title} delay={i * 60}>
+                  <div className="w-8 h-px mb-4" style={{ background: 'var(--trd-spectral)' }} />
+                  <h3 className="text-white font-semibold text-[17px] mb-1.5">{title}</h3>
+                  <p className="text-white/55 text-[15px] leading-relaxed">{body}</p>
+                </Reveal>
+              ))}
+            </ul>
+          </div>
+          <Reveal>
+            <ParallaxImage
+              src={`${CDN}RD_Pretty_Board_Pic.png`}
+              alt="A finished pedalboard with switching and lit footswitches"
+              strength={8}
+              className="rounded-[28px] aspect-[4/3] lg:aspect-[4/4.4] bg-[#111]"
+              sizes="(max-width: 1024px) 100vw, 55vw"
+            />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ───────── HOW IT WORKS ───────── */}
+      <section className="bg-white py-24 sm:py-32">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <Reveal className="max-w-3xl mb-14 sm:mb-16">
+            <p className="trd-eyebrow text-black/40 mb-5">How it works</p>
+            <h2 className="text-black font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(36px,5vw,64px)]">
+              Four steps. <span className="trd-gradient-text">Pretty simple.</span>
+            </h2>
+          </Reveal>
+          <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { Icon: IconShip, t: 'Book your time', d: 'Grab a slot. Takes 30 seconds.' },
+              { Icon: IconBlueprint, t: 'Tell us about your rig', d: "A quick form on your gear, your style and what's bugging you, so we show up prepared." },
+              { Icon: IconVideo, t: 'Get on the call', d: 'Plug in, play, and we dig into it together in real time.' },
+              { Icon: IconLifetime, t: 'Keep the game plan', d: 'The recording and written notes land in your inbox within 24 hours.' },
+            ].map(({ Icon, t, d }, i) => (
+              <Reveal as="li" key={t} delay={i * 90} className="bg-[#f5f5f7] rounded-[28px] p-8">
+                <div className="flex items-center justify-between mb-8">
+                  <span className="trd-icon-ring w-12 h-12 text-black">
+                    <Icon size={24} />
+                  </span>
+                  <span className="text-4xl font-bold trd-gradient-text">{i + 1}</span>
+                </div>
+                <h3 className="text-xl font-bold tracking-tight text-black mb-2">{t}</h3>
+                <p className="text-black/55 text-[15px] leading-relaxed">{d}</p>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ───────── REVIEWS ───────── */}
+      <section className="bg-[#f5f5f7] py-24 sm:py-32">
+        <Reveal className="text-center max-w-3xl mx-auto px-6 mb-12">
+          <p className="trd-eyebrow text-black/40 mb-5">From the players</p>
+          <h2 className="text-black font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(34px,4.5vw,56px)]">
+            &ldquo;Talked me out of buying 3 pedals <span className="trd-gradient-text">I didn&apos;t need.&rdquo;</span>
           </h2>
-        </div>
+        </Reveal>
+        <ReviewsMarquee />
+      </section>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { num: '1', title: 'Pick a time', desc: "Grab a slot and book your session. Takes 30 seconds." },
-            { num: '2', title: 'Tell us about your rig', desc: "Quick form about your gear, your style, and what's bugging you. Helps us come prepared." },
-            { num: '3', title: 'Get on the call', desc: "We dig into your rig together. Real-time feedback. Real answers." },
-            { num: '4', title: 'Get your game plan', desc: "Recording and written notes hit your inbox within 24 hours. Go make some noise." },
-          ].map((step) => (
-            <div key={step.num} className="bg-[#f5f5f7] rounded-2xl p-8 flex flex-col">
-              <div className="text-4xl font-bold trd-gradient-text mb-4">{step.num}</div>
-              <h3 className="text-lg font-semibold text-[#1d1d1f] mb-3">{step.title}</h3>
-              <p className="text-[#1d1d1f]/60 leading-relaxed">{step.desc}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* ---- REVIEWS ---- */}
-      <Section theme="lightGray" id="reviews" reveal>
-        <div className="mb-12">
-          <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
-            From players who&apos;ve done it.
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { quote: "Jacob completely rethought my signal chain. I thought I had it figured out. I was wrong. My tone is night and day different now.", name: 'Marcus T.', role: 'Gigging Guitarist' },
-            { quote: "I was drowning in gear options and didn't know what I actually needed. One session, clear plan. Stopped wasting money on stuff that doesn't serve my sound.", name: 'Sarah L.', role: 'Songwriter' },
-            { quote: "An hour with someone who actually knows what they're talking about is worth more than a hundred YouTube videos. Best money I've spent on my tone.", name: 'Jake D.', role: 'Session Player' },
-          ].map((review) => (
-            <div key={review.name} className="bg-white rounded-2xl p-8 border border-black/[0.06]">
-              <div className="mb-4 flex gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-4 h-4" fill="#BF5AF2" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-[#1d1d1f]/80 leading-relaxed mb-6">&ldquo;{review.quote}&rdquo;</p>
-              <div>
-                <p className="font-semibold text-[#1d1d1f]">{review.name}</p>
-                <p className="text-sm text-[#1d1d1f]/50">{review.role}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* ---- PRICING ---- */}
-      <Section theme="dark" id="pricing" reveal>
-        <div className="mb-12">
-          <h2 className="trd-section-headline text-[#f5f5f7] mb-4">
-            Pricing. No surprises.
-          </h2>
-          <p className="text-[#f5f5f7]/60 text-lg">One session. Everything you need.</p>
-        </div>
-
-        <div className="max-w-xl mx-auto mb-8">
-          <div className="trd-glass-dark p-10 hover:bg-white/[0.06] transition-colors duration-300 border border-[#0071E3]/20">
-            <h3 className="text-2xl font-bold text-[#f5f5f7] mb-2">60-Minute Session</h3>
-            <p className="text-[#f5f5f7]/60 mb-6">One hour, one rig, full attention.</p>
-            <div className="mb-8">
-              <p className="text-4xl font-bold trd-gradient-text mb-1">$99</p>
-              <p className="text-sm text-[#f5f5f7]/60">USD</p>
-            </div>
-            <ul className="space-y-3 mb-8">
-              {['60-minute 1-on-1 video session', 'Full signal chain audit', 'Session recording delivered', 'Follow-up notes within 24 hrs', 'Honest gear recommendations'].map((item) => (
-                <li key={item} className="flex gap-3">
-                  <span className="text-[#0071E3]">&#10003;</span>
-                  <span className="text-[#f5f5f7]/80">{item}</span>
+      {/* ───────── PRICING + 20% OFF ───────── */}
+      <section id="twenty-off" className="bg-white py-24 sm:py-32 scroll-mt-28">
+        <div className="max-w-[1100px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-5">
+          <Reveal className="bg-black rounded-[28px] p-9 sm:p-11 flex flex-col">
+            <p className="trd-eyebrow text-white/45 mb-4">One session, everything included</p>
+            <h2 className="text-white text-3xl font-bold tracking-tight mb-2">60-minute session</h2>
+            <p className="text-white/55 mb-8">One hour, one rig, full attention.</p>
+            <p className="text-6xl font-bold text-white tracking-tight mb-1">$99</p>
+            <p className="text-white/45 text-sm mb-8">USD</p>
+            <ul className="space-y-3 mb-10">
+              {['60-minute 1-on-1 video session', 'Full signal chain audit', 'Session recording', 'Written next steps within 24 hours', 'Honest gear recommendations'].map((item) => (
+                <li key={item} className="flex gap-3 items-start text-white/80 text-[15px]">
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full shrink-0" style={{ background: 'var(--trd-spectral)' }} />
+                  {item}
                 </li>
               ))}
             </ul>
-            <a href="/api/checkout?handle=tone-tutoring-follow-up" className="w-full block text-center trd-cta-gradient font-semibold px-8 py-4 rounded-full text-lg">
-              Book Your Session
-            </a>
+            <div className="mt-auto">
+              <BuyButton className="w-full px-8 py-4 text-[17px]">Book your session</BuyButton>
+              <p className="text-white/40 text-[13px] text-center mt-4">Sessions run on Google Meet. Just bring your guitar and a camera.</p>
+            </div>
+          </Reveal>
+          <Reveal delay={120} className="bg-[#f5f5f7] rounded-[28px] p-9 sm:p-11 flex flex-col">
+            <span className="trd-icon-ring w-12 h-12 text-black mb-8">
+              <IconSolder size={24} />
+            </span>
+            <p className="trd-eyebrow text-black/40 mb-4">First session?</p>
+            <h2 className="text-black text-3xl sm:text-4xl font-bold tracking-tight leading-[1.05] mb-4">
+              Take <span className="trd-gradient-text">20% off</span> your first hour.
+            </h2>
+            <p className="text-black/55 text-[16px] leading-relaxed mb-8">
+              Drop your email and we&apos;ll send your code right away, plus a one-tap link that books the session with the discount already applied.
+            </p>
+            <div className="mt-auto">
+              <ToneOptIn />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ───────── FAQ ───────── */}
+      <section className="bg-white pb-24 sm:pb-32">
+        <div className="max-w-3xl mx-auto px-6">
+          <Reveal>
+            <p className="trd-eyebrow text-black/40 mb-5">Questions we get a lot</p>
+            <div className="divide-y divide-black/10 border-y border-black/10">
+              {faqs.map((f) => (
+                <details key={f.q} className="group">
+                  <summary className="flex items-center justify-between gap-6 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                    <span className="text-black font-medium text-[17px]">{f.q}</span>
+                    <span className="trd-icon-ring w-8 h-8 shrink-0 text-black transition-transform duration-300 group-open:rotate-45">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                        <path d="M7 1v12M1 7h12" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <p className="text-black/55 text-[16px] leading-relaxed pb-6 pr-12">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ───────── CLOSE ───────── */}
+      <ParallaxImage src={`${CDN}L1010577.jpg`} alt="A finished Rig Doctor pedalboard in warm light" strength={10} className="bg-black min-h-[75svh] flex items-center">
+        <div className="absolute inset-0 bg-black/65" />
+        <div className="relative z-10 w-full max-w-3xl mx-auto px-6 py-24 text-center">
+          <h2 className="trd-display text-white mb-6">
+            You&apos;re closer than <span className="trd-gradient-text">you think.</span>
+          </h2>
+          <p className="text-white/70 text-lg sm:text-xl mb-12">Let&apos;s go find your sound.</p>
+          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+            <BuyButton className="px-9 py-4 text-[17px]">Book a session &middot; $99</BuyButton>
+            <Link href="/book" className="trd-cta-ghost-dark inline-flex items-center justify-center px-9 py-4 rounded-full font-semibold text-[17px]">
+              Thinking about a full build?
+            </Link>
           </div>
         </div>
-
-        <p className="text-center text-[#f5f5f7]/40 text-sm">
-          All prices in USD. Sessions are via video. Just need a guitar and a camera.
-        </p>
-      </Section>
-
-      {/* ---- FAQ ---- */}
-      <Section theme="light" id="faq" reveal>
-        <div className="mb-12">
-          <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
-            Questions we get a lot.
-          </h2>
-        </div>
-
-        <div className="space-y-4 max-w-3xl">
-          <AccordionItem title="I'm kind of a beginner. Is this for me?" content="Yeah. You don't need a massive rig to get something out of this. Whether you've got three pedals or thirty, we meet you where you are. The fundamentals of good tone are the same at every level." />
-          <AccordionItem title="Do I need my gear set up?" content="That's the whole point. Have your guitar, amp, and whatever pedals you've got ready to go. If your setup isn't fully built yet, no problem. We can plan it out together." />
-          <AccordionItem title="What platform?" content="Google Meet. We send you a link — just click and you're in." />
-          <AccordionItem title="Can you help me pick new gear?" content="That's one of our favorite things to do. We'll talk about what you're going for, what your budget looks like, and give you honest recs. Not whatever's trending this week." />
-          <AccordionItem title="How's this different from the free build consultation?" content="The free consult is a 20-minute chat for people thinking about a custom build. Tone Tutoring is a full hour of hands-on coaching where we actually dig into your rig and optimize what you've got. Way more detailed." />
-          <AccordionItem title="Can I book more than one session?" content="Absolutely. A lot of guys do a session, make the changes, play for a week, then come back. You get way more out of it that way. Just book another one when you're ready." />
-          <AccordionItem title="What if I don't get anything out of it?" content="Reach out. We'll make it right. We're not doing this to collect checks. If you didn't get value, that's on us." />
-        </div>
-      </Section>
-
-      {/* ---- CLOSING CTA ---- */}
-      <Section theme="dark" id="final-cta" reveal className="text-center">
-        <div className="mb-8">
-          <h2 className="trd-section-headline text-[#f5f5f7] mb-4">
-            You&apos;re closer to your sound than you think.
-          </h2>
-          <p className="text-[#f5f5f7]/60 text-lg max-w-2xl mx-auto">
-            Let&apos;s go find it.
-          </p>
-        </div>
-        <div className="mt-12">
-          <a
-            href="/api/checkout?handle=tone-tutoring-follow-up"
-            className="trd-cta-gradient inline-flex items-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
-          >
-            Book a Session
-          </a>
-        </div>
-      </Section>
+      </ParallaxImage>
     </>
   );
 }
