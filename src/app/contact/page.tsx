@@ -227,19 +227,16 @@ export default function ContactPage() {
       <div className="relative w-full overflow-hidden">
         <div className="relative min-h-[60vh] flex items-center justify-center bg-black">
           <video
+            poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/preview_images/1e7a54e296a04be0b5e8d7c34031924a.thumbnail.0000000000.jpg"
             autoPlay
             muted
             loop
             playsInline
-            preload="none"
+            preload="auto"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
           >
             <source
-              src="https://cdn.shopify.com/videos/c/o/v/1e7a54e296a04be0b5e8d7c34031924a.mov"
-              type="video/quicktime"
-            />
-            <source
-              src="https://cdn.shopify.com/videos/c/o/v/1e7a54e296a04be0b5e8d7c34031924a.mov"
+              src="https://cdn.shopify.com/videos/c/vp/1e7a54e296a04be0b5e8d7c34031924a/1e7a54e296a04be0b5e8d7c34031924a.HD-720p-4.5Mbps-82678415.mp4"
               type="video/mp4"
             />
           </video>

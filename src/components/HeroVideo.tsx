@@ -2,62 +2,57 @@
 
 import { useRef, useEffect, useState } from 'react';
 
-// Shopify CDN resize: 1200px WebP (~100KB vs 1.2MB raw PNG)
-const POSTER_URL = 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png?width=1200&format=webp&v=1';
-const POSTER_MOBILE = 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png?width=640&format=webp&v=1';
-const VIDEO_URL = 'https://cdn.shopify.com/videos/c/o/v/21a7252cb5764170a234e7dd476193e1.mov';
+// Shopify-transcoded renditions of "Artist Video.mov" (the raw .mov is 106 MB and won't stream).
+const VIDEO_ID = '21a7252cb5764170a234e7dd476193e1';
+const VIDEO_BASE = `https://cdn.shopify.com/videos/c/vp/${VIDEO_ID}/${VIDEO_ID}`;
+const VIDEO_DESKTOP = `${VIDEO_BASE}.HD-720p-4.5Mbps-70111310.mp4`; // 33 MB, streams progressively
+const VIDEO_MOBILE = `${VIDEO_BASE}.SD-480p-1.5Mbps-70111310.mp4`; // 11 MB
+const POSTER = `https://cdn.shopify.com/s/files/1/0528/3171/5486/files/preview_images/${VIDEO_ID}.thumbnail.0000000000.jpg`;
 
 export default function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [src, setSrc] = useState<string | null>(null);
 
   useEffect(() => {
-    // Only load video on desktop (768px+) to save mobile bandwidth
-    const mq = window.matchMedia('(min-width: 768px)');
-    setIsDesktop(mq.matches);
-
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
+    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
+    if (saveData) return; // respect data saver: poster only
+    setSrc(window.matchMedia('(min-width: 768px)').matches ? VIDEO_DESKTOP : VIDEO_MOBILE);
   }, []);
 
   useEffect(() => {
-    if (isDesktop && videoRef.current) {
+    if (src && videoRef.current) {
+      videoRef.current.load();
       videoRef.current.play().catch(() => {});
     }
-  }, [isDesktop]);
+  }, [src]);
 
   return (
     <div className="absolute inset-0">
-      {/* Static poster — responsive sizes, always visible */}
-      <picture>
-        <source media="(max-width: 767px)" srcSet={POSTER_MOBILE} />
-        <source media="(min-width: 768px)" srcSet={POSTER_URL} />
-        <img
-          src={POSTER_URL}
-          alt="Custom pedalboard build"
-          fetchPriority="high"
-          decoding="sync"
-          className="absolute inset-0 w-full h-full object-cover opacity-50"
-        />
-      </picture>
+      {/* Poster frame from the same video: paints instantly, video fades over it */}
+      <img
+        src={POSTER}
+        alt=""
+        aria-hidden="true"
+        fetchPriority="high"
+        className="absolute inset-0 w-full h-full object-cover opacity-50"
+      />
 
-      {/* Video — desktop only. Not rendered on mobile at all. */}
-      {isDesktop && (
+      {src && (
         <video
           ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
+          poster={POSTER}
           className="absolute inset-0 w-full h-full object-cover opacity-50"
         >
-          <source src={VIDEO_URL} type="video/mp4" />
+          <source src={src} type="video/mp4" />
         </video>
       )}
 
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/60" />
     </div>
   );
 }

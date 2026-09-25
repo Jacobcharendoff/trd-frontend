@@ -70,15 +70,16 @@ export default function CustomBuildsPage() {
       <div className="relative w-full overflow-hidden">
         <div className="relative min-h-screen flex items-end justify-center bg-black">
           <video
+            poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/preview_images/f12872e61445487b86f0ae5df85ba09b.thumbnail.0000000000.jpg"
             autoPlay
             muted
             loop
             playsInline
-            preload="none"
+            preload="auto"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
           >
             <source
-              src="https://cdn.shopify.com/videos/c/vp/f12872e61445487b86f0ae5df85ba09b/f12872e61445487b86f0ae5df85ba09b.HD-1080p-7.2Mbps-78086312.mp4"
+              src="https://cdn.shopify.com/videos/c/vp/f12872e61445487b86f0ae5df85ba09b/f12872e61445487b86f0ae5df85ba09b.HD-720p-4.5Mbps-78086312.mp4"
               type="video/mp4"
             />
           </video>

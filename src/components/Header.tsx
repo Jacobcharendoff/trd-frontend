@@ -64,10 +64,10 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
+    <header className="sticky top-0 left-0 right-0 z-50">
       {/* -- Announcement Bar -- */}
       {bannerVisible && (
-        <div className="relative bg-[#1d1d1f] text-white text-center">
+        <div className="relative bg-black text-white text-center border-b border-white/[0.08]">
           <Link
             href={announcement.href}
             className="block px-10 py-2 text-[12px] sm:text-[13px] font-medium tracking-wide hover:opacity-90 transition-opacity"
@@ -96,30 +96,19 @@ export default function Header() {
       <div
         className={`transition-all duration-300 ease-in-out ${
           scrolled
-            ? 'bg-[rgba(255,255,255,0.85)] backdrop-blur-xl border-b border-black/[0.06]'
-            : 'bg-transparent border-b border-transparent'
+            ? 'bg-black/85 backdrop-blur-xl border-b border-white/[0.08]'
+            : 'bg-black border-b border-white/[0.06]'
         }`}
       >
-        <div className="max-w-[1080px] mx-auto px-6 h-14 flex items-center justify-between">
-          {/* Logo — white on dark hero, TRD blue on scrolled/light */}
-          <Link href="/" className="relative flex items-center hover:opacity-80 transition-opacity">
+        <div className="max-w-[1080px] mx-auto px-6 h-16 flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity" aria-label="The Rig Doctor home">
             <img
-              src="/trd-logo.svg"
+              src="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/logo-white-hrt.png?width=360"
               alt="The Rig Doctor"
-              className="h-7 w-auto"
-              style={{
-                opacity: scrolled ? 0 : 1,
-                transition: 'opacity 300ms ease',
-              }}
-            />
-            <img
-              src="/trd-logo-blue.svg"
-              alt=""
-              className="h-7 w-auto absolute left-0 top-1/2 -translate-y-1/2"
-              style={{
-                opacity: scrolled ? 1 : 0,
-                transition: 'opacity 300ms ease',
-              }}
+              width={96}
+              height={48}
+              className="h-11 w-auto"
             />
           </Link>
 
@@ -136,11 +125,7 @@ export default function Header() {
                 >
                   <button
                     onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className={`flex items-center gap-1 text-[13px] transition-colors duration-300 ${
-                      scrolled
-                        ? 'text-[#1d1d1f]/85 hover:text-[#1d1d1f]'
-                        : 'text-white/[0.85] hover:text-white'
-                    }`}
+                    className={`flex items-center gap-1 text-[13px] transition-colors duration-300 text-white/[0.85] hover:text-white`}
                   >
                     {item.label}
                     <svg
@@ -159,13 +144,13 @@ export default function Header() {
                   {/* Dropdown Panel */}
                   {dropdownOpen && (
                     <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2">
-                      <div className="bg-white/90 backdrop-blur-xl rounded-xl border border-black/[0.06] shadow-lg py-2 min-w-[180px]">
+                      <div className="bg-[#111] backdrop-blur-xl rounded-xl border border-white/[0.1] shadow-lg py-2 min-w-[180px]">
                         {item.children.map((child) => (
                           <Link
                             key={child.href}
                             href={child.href}
                             onClick={() => setDropdownOpen(false)}
-                            className="block px-4 py-2.5 text-[13px] text-[#1d1d1f]/85 hover:bg-black/[0.04] hover:text-[#1d1d1f] transition-colors"
+                            className="block px-4 py-2.5 text-[13px] text-white/85 hover:bg-white/[0.06] hover:text-white transition-colors"
                           >
                             {child.label}
                           </Link>
@@ -178,11 +163,7 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href!}
-                  className={`text-[13px] transition-colors duration-300 ${
-                    scrolled
-                      ? 'text-[#1d1d1f]/85 hover:text-[#1d1d1f]'
-                      : 'text-white/[0.85] hover:text-white'
-                  }`}
+                  className={`text-[13px] transition-colors duration-300 text-white/[0.85] hover:text-white`}
                 >
                   {item.label}
                 </Link>
@@ -194,11 +175,7 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-4">
             <Link
               href="/book"
-              className={`text-[13px] font-medium rounded-full px-5 py-2 transition-colors duration-300 ${
-                scrolled
-                  ? 'text-white bg-[#1d1d1f] hover:bg-[#1d1d1f]/90'
-                  : 'text-black bg-white hover:bg-white/90'
-              }`}
+              className={`text-[13px] font-medium rounded-full px-5 py-2 transition-colors duration-300 text-black bg-white hover:bg-white/90`}
             >
               Book a Consultation
             </Link>
@@ -207,9 +184,7 @@ export default function Header() {
           {/* Mobile Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={`md:hidden p-2 transition-colors duration-300 ${
-              scrolled ? 'text-[#1d1d1f]' : 'text-white'
-            }`}
+            className={`md:hidden p-2 transition-colors duration-300 text-white`}
             aria-label="Toggle menu"
           >
             <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2">
@@ -225,11 +200,7 @@ export default function Header() {
         {/* Mobile Menu */}
         {mobileOpen && (
           <div
-            className={`md:hidden backdrop-blur-xl px-6 py-6 transition-colors duration-300 ${
-              scrolled
-                ? 'bg-[rgba(255,255,255,0.98)] border-t border-black/[0.06]'
-                : 'bg-[rgba(29,29,31,0.98)] border-t border-white/[0.06]'
-            }`}
+            className={`md:hidden backdrop-blur-xl px-6 py-6 transition-colors duration-300 bg-black border-t border-white/[0.08]`}
           >
             <nav className="flex flex-col gap-4">
               {navItems.map((item) =>
@@ -237,11 +208,7 @@ export default function Header() {
                   <div key={item.label}>
                     <button
                       onClick={() => setMobileRigOpen(!mobileRigOpen)}
-                      className={`flex items-center justify-between w-full text-[15px] transition-colors duration-300 ${
-                        scrolled
-                          ? 'text-[#1d1d1f]/85 hover:text-[#1d1d1f]'
-                          : 'text-white/[0.85] hover:text-white'
-                      }`}
+                      className={`flex items-center justify-between w-full text-[15px] transition-colors duration-300 text-white/[0.85] hover:text-white`}
                     >
                       {item.label}
                       <svg
@@ -263,11 +230,7 @@ export default function Header() {
                             key={child.href}
                             href={child.href}
                             onClick={() => setMobileOpen(false)}
-                            className={`text-[14px] transition-colors duration-300 ${
-                              scrolled
-                                ? 'text-[#1d1d1f]/70 hover:text-[#1d1d1f]'
-                                : 'text-white/70 hover:text-white'
-                            }`}
+                            className={`text-[14px] transition-colors duration-300 text-white/70 hover:text-white`}
                           >
                             {child.label}
                           </Link>
@@ -280,11 +243,7 @@ export default function Header() {
                     key={item.href}
                     href={item.href!}
                     onClick={() => setMobileOpen(false)}
-                    className={`text-[15px] transition-colors duration-300 ${
-                      scrolled
-                        ? 'text-[#1d1d1f]/85 hover:text-[#1d1d1f]'
-                        : 'text-white/[0.85] hover:text-white'
-                    }`}
+                    className={`text-[15px] transition-colors duration-300 text-white/[0.85] hover:text-white`}
                   >
                     {item.label}
                   </Link>
@@ -293,11 +252,7 @@ export default function Header() {
               <Link
                 href="/book"
                 onClick={() => setMobileOpen(false)}
-                className={`text-[15px] font-medium rounded-full px-6 py-3 text-center mt-2 transition-colors duration-300 ${
-                  scrolled
-                    ? 'text-white bg-[#1d1d1f] hover:bg-[#1d1d1f]/90'
-                    : 'text-black bg-white hover:bg-white/90'
-                }`}
+                className={`text-[15px] font-medium rounded-full px-6 py-3 text-center mt-2 transition-colors duration-300 text-black bg-white hover:bg-white/90`}
               >
                 Book a Consultation
               </Link>

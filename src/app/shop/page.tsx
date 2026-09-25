@@ -119,15 +119,16 @@ export default function ShopPage() {
         <div className="relative min-h-screen flex items-center justify-center bg-black">
           {/* Background Video */}
           <video
+            poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/preview_images/2a85affb7da84ea2aebb92e333164646.thumbnail.0000000000.jpg"
             autoPlay
             muted
             loop
             playsInline
-            preload="none"
+            preload="auto"
             className="absolute inset-0 w-full h-full object-cover opacity-40"
           >
             <source
-              src="https://cdn.shopify.com/videos/c/o/v/2a85affb7da84ea2aebb92e333164646.mp4"
+              src="https://cdn.shopify.com/videos/c/vp/2a85affb7da84ea2aebb92e333164646/2a85affb7da84ea2aebb92e333164646.HD-720p-4.5Mbps-76599010.mp4"
               type="video/mp4"
             />
           </video>

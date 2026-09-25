@@ -14,10 +14,10 @@ export default function Home() {
     <>
       {/* ──── 1. HERO — Video + killer headline ──── */}
       <div className="relative w-full overflow-hidden">
-        <div className="relative min-h-screen flex items-end justify-center bg-black">
+        <div className="relative min-h-[calc(100svh-100px)] flex items-end justify-center bg-black">
           <HeroVideo />
 
-          <div className="relative z-10 max-w-[1200px] mx-auto px-6 pb-24 pt-40 w-full text-center">
+          <div className="relative z-10 max-w-[1200px] mx-auto px-6 pb-20 pt-28 w-full text-center">
             <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-6">Only 2 Spots Left This Year</p>
             <h1 className="trd-hero-headline text-[#f5f5f7] mb-6">
               You didn&apos;t spend thousands on gear
@@ -291,16 +291,16 @@ export default function Home() {
 
         <div className="relative w-full rounded-3xl overflow-hidden bg-[#0a0a0a] aspect-video max-w-4xl mx-auto shadow-2xl">
           <video
+            poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/preview_images/f12872e61445487b86f0ae5df85ba09b.thumbnail.0000000000.jpg"
             autoPlay
             muted
             loop
             playsInline
-            preload="none"
+            preload="metadata"
             className="w-full h-full object-cover"
-            poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png"
           >
             <source
-              src="https://cdn.shopify.com/videos/c/vp/f12872e61445487b86f0ae5df85ba09b/f12872e61445487b86f0ae5df85ba09b.HD-1080p-7.2Mbps-78086312.mp4"
+              src="https://cdn.shopify.com/videos/c/vp/f12872e61445487b86f0ae5df85ba09b/f12872e61445487b86f0ae5df85ba09b.HD-720p-4.5Mbps-78086312.mp4"
               type="video/mp4"
             />
           </video>

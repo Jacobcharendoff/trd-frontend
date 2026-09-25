@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const BEFORE_IMAGE = 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_20.png';
-const AFTER_IMAGE = 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png';
+const AFTER_IMAGE = 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_20.png';
 
 export default function ConsultationPopup() {
   const [isVisible, setIsVisible] = useState(false);

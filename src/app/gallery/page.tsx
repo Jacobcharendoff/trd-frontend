@@ -83,13 +83,6 @@ const builds = [
     description: 'Designed for a working touring musician. Road-proof, flight-case ready, dead quiet.',
     category: 'touring',
   },
-  {
-    id: 12,
-    image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Rig_Build_27.png',
-    title: 'Touring Pro — Road Warrior',
-    description: 'Built to survive 200 shows a year. Reinforced mounting, redundant power, zero compromise.',
-    category: 'touring',
-  },
 ];
 
 const categories = ['all', 'touring', 'studio', 'worship', 'home'] as const;

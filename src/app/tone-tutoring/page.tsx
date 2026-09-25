@@ -31,15 +31,16 @@ export default function ToneTutoringPage() {
       <div className="relative w-full bg-black overflow-hidden">
         <div className="relative min-h-screen flex items-end justify-center">
           <video
+            poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/preview_images/5f0a62a68694406d95b83a837a56c2d0.thumbnail.0000000000.jpg"
             autoPlay
             muted
             loop
             playsInline
-            preload="none"
+            preload="auto"
             className="absolute inset-0 w-full h-full object-cover opacity-30"
           >
             <source
-              src="https://cdn.shopify.com/videos/c/o/v/5f0a62a68694406d95b83a837a56c2d0.mov"
+              src="https://cdn.shopify.com/videos/c/vp/5f0a62a68694406d95b83a837a56c2d0/5f0a62a68694406d95b83a837a56c2d0.HD-720p-3.0Mbps-71202543.mp4"
               type="video/mp4"
             />
           </video>

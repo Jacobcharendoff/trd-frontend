@@ -57,7 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ErrorInit />
         <Header />
         <ErrorBoundary>
-          <main className="pt-14">{children}</main>
+          <main>{children}</main>
         </ErrorBoundary>
         <Footer />
         <StickyBottomCTA />
