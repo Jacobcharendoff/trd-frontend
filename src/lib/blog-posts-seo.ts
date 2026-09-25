@@ -10,7 +10,8 @@ export const seoPosts: BlogPost[] = [
     description:
       'A no-BS guide to which pedals belong in front of your amp and which ones sound better in the effects loop. Learn the signal chain basics that separate a muddy mess from a great-sounding rig.',
     publishedAt: '2026-06-04',
-    author: 'Jacob Charendoff',
+    updatedAt: '2026-09-24',
+    author: 'Jacob Charendoff, Founder of The Rig Doctor',
     readTime: '8 min read',
     category: 'Guides',
     tags: ['effects loop', 'signal chain', 'amp', 'pedal order'],
@@ -105,7 +106,20 @@ export const seoPosts: BlogPost[] = [
         heading: 'Still Not Sure Where Something Goes?',
         headingLevel: 2,
         content: `<p>Look — if you've read this far and you're still second-guessing where your specific pedals should go, that's totally normal. Every rig is different. The "right" answer depends on your amp, your gain level, your playing style, and the specific pedals you own. A Strymon Mobius might sound perfect in your loop but weird in mine because our amps respond differently.</p>
+<p>If you are building a board from scratch, our <a href="/blog/how-to-build-a-pedalboard">complete pedalboard build guide</a> walks through the full process. And if noise is your main issue, start with our <a href="/blog/pedalboard-hum-noise-fix">pedalboard noise troubleshooting guide</a>.</p>
 <p>That's what we're here for. Whether you want someone to <a href="/book">build the whole rig from scratch</a> or you just want a 60-minute session where we walk through your specific setup and get everything dialed, we've got you covered.</p>`,
+      },
+      {
+        heading: 'Frequently asked questions about effects loops',
+        headingLevel: 2,
+        content: `<h3>What is an effects loop on a guitar amp?</h3>
+<p>An effects loop is a send/return circuit on your amp that lets you place pedals between the preamp and the power amp. This means time-based effects like delay and reverb process the signal after your amp's gain stage, keeping them clean and defined even at high gain settings.</p>
+<h3>What pedals should go in the effects loop?</h3>
+<p>Delay, reverb, chorus, tremolo, and other time-based or modulation effects typically sound best in the loop. These effects process the already-shaped signal from your preamp, so your repeats and reverb tails stay clean even with heavy distortion.</p>
+<h3>What pedals should go in front of the amp?</h3>
+<p>Tuners, wah, compressors, overdrives, distortions, fuzz, and boost pedals go in front of the amp. These pedals shape the signal before it hits your amp's preamp, which is how they interact best with your amp's gain structure.</p>
+<h3>Does every amp have an effects loop?</h3>
+<p>No. Many smaller amps, vintage-style amps, and some boutique amps skip the effects loop entirely. If your amp does not have one, all your pedals go in front. You can still get great results, but your delay and reverb will be colored by your amp's distortion at higher gain settings.</p>`,
       },
     ],
     cta: {
@@ -113,6 +127,24 @@ export const seoPosts: BlogPost[] = [
       href: '/book',
       label: 'Book a free consultation to get your signal chain sorted',
     },
+    faqs: [
+      {
+        question: 'What is an effects loop on a guitar amp?',
+        answer: 'An effects loop is a send/return circuit on your amp that lets you place pedals between the preamp and the power amp. This means time-based effects like delay and reverb process the signal after your amp\'s gain stage, keeping them clean and defined even at high gain settings.',
+      },
+      {
+        question: 'What pedals should go in the effects loop?',
+        answer: 'Delay, reverb, chorus, tremolo, and other time-based or modulation effects typically sound best in the loop. These effects process the already-shaped signal from your preamp, so your repeats and reverb tails stay clean even with heavy distortion.',
+      },
+      {
+        question: 'What pedals should go in front of the amp?',
+        answer: 'Tuners, wah, compressors, overdrives, distortions, fuzz, and boost pedals go in front of the amp. These pedals shape the signal before it hits your amp\'s preamp, which is how they interact best with your amp\'s gain structure.',
+      },
+      {
+        question: 'Does every amp have an effects loop?',
+        answer: 'No. Many smaller amps, vintage-style amps, and some boutique amps skip the effects loop entirely. If your amp does not have one, all your pedals go in front. You can still get great results, but your delay and reverb will be colored by your amp\'s distortion at higher gain settings.',
+      },
+    ],
   },
 
   // ─────────────────────────────────────────────
@@ -124,7 +156,8 @@ export const seoPosts: BlogPost[] = [
     description:
       'Tracking down pedalboard hum, buzz, and noise. Learn how to diagnose ground loops, power supply issues, and cable problems — and fix them without replacing everything.',
     publishedAt: '2026-06-04',
-    author: 'Jacob Charendoff',
+    updatedAt: '2026-09-24',
+    author: 'Jacob Charendoff, Founder of The Rig Doctor',
     readTime: '9 min read',
     category: 'Troubleshooting',
     tags: ['noise', 'hum', 'ground loop', 'power supply', 'troubleshooting'],
@@ -198,12 +231,42 @@ export const seoPosts: BlogPost[] = [
 </ul>
 <p>It's not glamorous work, but it's the difference between a board that hums and buzzes at every gig and one that's dead silent until you hit a string. If you're fighting noise and you're tired of chasing it, <a href="/book">let's talk about a proper build</a>.</p>`,
       },
+      {
+        heading: 'Frequently asked questions about pedalboard noise',
+        headingLevel: 2,
+        content: `<h3>Why does my pedalboard hum?</h3>
+<p>The most common cause is a ground loop from daisy-chaining your power supply. When multiple pedals share a common ground path, small voltage differences between them create a 60Hz hum. Switching to an isolated power supply eliminates this in most cases.</p>
+<h3>How do I fix ground loop noise on my pedalboard?</h3>
+<p>Start with power. Replace any daisy-chain setup with an isolated power supply where each output has its own ground. If the hum persists, check for cables running parallel to power lines, try different outlets, and test each pedal individually to isolate the source.</p>
+<h3>Does an isolated power supply fix pedalboard noise?</h3>
+<p>In about 90% of cases, yes. An isolated supply gives each pedal its own independent power output with no shared ground, which eliminates the ground loops that cause most pedalboard hum. It will not fix noise from a bad cable, a noisy pedal, or single-coil pickup interference.</p>
+<h3>Why does my pedalboard buzz only when I touch the strings?</h3>
+<p>That is typically a grounding issue with your guitar, not your pedalboard. The buzz stopping when you touch the strings means your body is completing the ground circuit. Check the ground wire inside your guitar that connects to the bridge or tremolo claw.</p>`,
+      },
     ],
     cta: {
       text: 'Book a Consultation',
       href: '/book',
       label: 'Book a free consultation to get your pedalboard noise sorted',
     },
+    faqs: [
+      {
+        question: 'Why does my pedalboard hum?',
+        answer: 'The most common cause is a ground loop from daisy-chaining your power supply. When multiple pedals share a common ground path, small voltage differences between them create a 60Hz hum. Switching to an isolated power supply eliminates this in most cases.',
+      },
+      {
+        question: 'How do I fix ground loop noise on my pedalboard?',
+        answer: 'Start with power. Replace any daisy-chain setup with an isolated power supply where each output has its own ground. If the hum persists, check for cables running parallel to power lines, try different outlets, and test each pedal individually to isolate the source.',
+      },
+      {
+        question: 'Does an isolated power supply fix pedalboard noise?',
+        answer: 'In about 90% of cases, yes. An isolated supply gives each pedal its own independent power output with no shared ground, which eliminates the ground loops that cause most pedalboard hum. It will not fix noise from a bad cable, a noisy pedal, or single-coil pickup interference.',
+      },
+      {
+        question: 'Why does my pedalboard buzz only when I touch the strings?',
+        answer: 'That is typically a grounding issue with your guitar, not your pedalboard. The buzz stopping when you touch the strings means your body is completing the ground circuit. Check the ground wire inside your guitar that connects to the bridge or tremolo claw.',
+      },
+    ],
   },
 
   // ─────────────────────────────────────────────
@@ -215,7 +278,8 @@ export const seoPosts: BlogPost[] = [
     description:
       'Everything you need to know about MIDI switching on a pedalboard — from choosing a controller to programming presets. Real-world advice from 200+ rig builds.',
     publishedAt: '2026-06-04',
-    author: 'Jacob Charendoff',
+    updatedAt: '2026-09-24',
+    author: 'Jacob Charendoff, Founder of The Rig Doctor',
     readTime: '9 min read',
     category: 'Guides',
     tags: ['MIDI', 'switching', 'RJM', 'Boss ES-8', 'Morningstar', 'pedalboard'],
@@ -279,7 +343,7 @@ export const seoPosts: BlogPost[] = [
       {
         heading: 'Common MIDI Pitfalls (And How to Avoid Them)',
         headingLevel: 2,
-        content: `<p>After wiring up hundreds of MIDI rigs, here are the mistakes I see most often:</p>
+        content: `<p>After wiring up hundreds of MIDI rigs, here are the mistakes I see most often (if you are still sorting out your signal chain basics, start with our <a href="/blog/effects-loop-vs-front-of-amp">effects loop guide</a>):</p>
 <ul>
 <li><strong>Duplicate MIDI channels:</strong> Two pedals on the same channel means both respond to every message. Always double-check that each pedal has a unique channel.</li>
 <li><strong>Wrong cable type:</strong> Some pedals use "Type A" TRS MIDI wiring, others use "Type B." They're not compatible without an adapter. Strymon, Boss, and Empress use Type A. Make and Chase Bliss use Type B. Check before you buy cables.</li>
@@ -295,12 +359,42 @@ export const seoPosts: BlogPost[] = [
 <p>If you're curious but not sure where to start, a <a href="/tone-tutoring">Tone Tutoring session</a> is a great way to figure out whether MIDI is right for your rig and, if so, what components you'd need. We'll look at your current setup, talk about what you're trying to achieve, and map out a plan — no pressure, no upsell, just honest advice from someone who's built this stuff for 17 years.</p>
 <p>And if you already know you want a MIDI rig and you don't want to spend three weekends wiring it yourself, <a href="/book">that's what we do</a>. We'll build it, program it, test it, and hand it to you ready to gig.</p>`,
       },
+      {
+        heading: 'Frequently asked questions about MIDI pedalboard switching',
+        headingLevel: 2,
+        content: `<h3>What is MIDI switching on a pedalboard?</h3>
+<p>MIDI switching uses a central controller to send program change and control change messages to multiple pedals at once. One button press can change presets on your delay, reverb, and overdrive simultaneously, switch loops on and off, and set expression pedal values. It replaces tap dancing with one-press recall.</p>
+<h3>Do I need MIDI on my pedalboard?</h3>
+<p>If you are switching more than 2-3 pedals between songs or sections, MIDI saves you time and mistakes. Most players benefit from MIDI once they hit 8+ pedals. Below that, it adds complexity without enough payoff. Above that, it transforms your workflow.</p>
+<h3>What is a MIDI loop switcher?</h3>
+<p>A loop switcher routes your pedals through audio loops that can be turned on and off via MIDI commands. Your pedals stay always-on inside their loops, and the switcher handles bypassing them. This keeps your signal path clean and eliminates the tone suck from running through multiple bypass circuits.</p>
+<h3>How many pedals do I need before MIDI makes sense?</h3>
+<p>The sweet spot is 8-10 pedals or more. At that point, recalling combinations by stomping individual switches becomes unreliable on stage. MIDI also makes sense earlier if you use pedals with deep preset systems, like a Strymon Timeline or Eventide H9, since MIDI lets you recall specific presets on each pedal per song.</p>`,
+      },
     ],
     cta: {
       text: 'Book a Consultation',
       href: '/book',
       label: 'Book a consultation to plan your MIDI pedalboard setup',
     },
+    faqs: [
+      {
+        question: 'What is MIDI switching on a pedalboard?',
+        answer: 'MIDI switching uses a central controller to send program change and control change messages to multiple pedals at once. One button press can change presets on your delay, reverb, and overdrive simultaneously, switch loops on and off, and set expression pedal values. It replaces tap dancing with one-press recall.',
+      },
+      {
+        question: 'Do I need MIDI on my pedalboard?',
+        answer: 'If you are switching more than 2-3 pedals between songs or sections, MIDI saves you time and mistakes. Most players benefit from MIDI once they hit 8+ pedals. Below that, it adds complexity without enough payoff. Above that, it transforms your workflow.',
+      },
+      {
+        question: 'What is a MIDI loop switcher?',
+        answer: 'A loop switcher routes your pedals through audio loops that can be turned on and off via MIDI commands. Your pedals stay always-on inside their loops, and the switcher handles bypassing them. This keeps your signal path clean and eliminates the tone suck from running through multiple bypass circuits.',
+      },
+      {
+        question: 'How many pedals do I need before MIDI makes sense?',
+        answer: 'The sweet spot is 8-10 pedals or more. At that point, recalling combinations by stomping individual switches becomes unreliable on stage. MIDI also makes sense earlier if you use pedals with deep preset systems, like a Strymon Timeline or Eventide H9, since MIDI lets you recall specific presets on each pedal per song.',
+      },
+    ],
   },
 
   // ─────────────────────────────────────────────
@@ -312,7 +406,8 @@ export const seoPosts: BlogPost[] = [
     description:
       'An honest look at what you get from a professional pedalboard build that you can\'t easily replicate yourself — and when DIY is the smarter move.',
     publishedAt: '2026-06-04',
-    author: 'Jacob Charendoff',
+    updatedAt: '2026-09-24',
+    author: 'Jacob Charendoff, Founder of The Rig Doctor',
     readTime: '8 min read',
     category: 'Insights',
     tags: ['custom build', 'DIY', 'professional', 'pedalboard wiring'],
@@ -401,12 +496,42 @@ export const seoPosts: BlogPost[] = [
 </ul>
 <p>If any of those sound like you, <a href="/book">reach out and let's talk about a build</a>. We'll look at what you've got, figure out what you need, and give you an honest quote. If we think you can handle it yourself, we'll tell you that too.</p>`,
       },
+      {
+        heading: 'Frequently asked questions about custom vs. DIY pedalboard builds',
+        headingLevel: 2,
+        content: `<h3>Should I build my own pedalboard or hire a professional?</h3>
+<p>If you have 6 or fewer pedals and no effects loop routing, a DIY build is straightforward. Once you get above 8 pedals, need switching systems, or gig regularly, a professional build pays for itself in reliability and noise reduction. The <a href="/blog/custom-pedalboard-cost">full cost breakdown</a> shows where the money goes.</p>
+<h3>How much does a custom pedalboard build cost?</h3>
+<p>Professional builds typically range from $600 to $2,500 depending on pedal count, cable type, and switching complexity. That includes the board, power supply, hand-soldered cables cut to exact length, mounting, and cable management. It does not include the pedals themselves.</p>
+<h3>What is included in a professional pedalboard build?</h3>
+<p>A full custom build includes board selection and sizing, isolated power supply installation, hand-soldered patch cables cut to exact lengths, signal chain optimization, cable routing and management, pedal mounting, and full testing. At The Rig Doctor, every build also includes lifetime support and free repairs.</p>
+<h3>Is a custom pedalboard build worth it?</h3>
+<p>For gigging musicians, yes. A pro build eliminates the noise, intermittent failures, and cable mess that plague DIY boards under road conditions. The cables alone last decades. For bedroom-only players with simple setups, DIY is perfectly fine.</p>`,
+      },
     ],
     cta: {
       text: 'Start a Build',
       href: '/book',
       label: 'Get started on a custom pedalboard build',
     },
+    faqs: [
+      {
+        question: 'Should I build my own pedalboard or hire a professional?',
+        answer: 'If you have 6 or fewer pedals and no effects loop routing, a DIY build is straightforward. Once you get above 8 pedals, need switching systems, or gig regularly, a professional build pays for itself in reliability and noise reduction.',
+      },
+      {
+        question: 'How much does a custom pedalboard build cost?',
+        answer: 'Professional builds typically range from $600 to $2,500 depending on pedal count, cable type, and switching complexity. That includes the board, power supply, hand-soldered cables cut to exact length, mounting, and cable management. It does not include the pedals themselves.',
+      },
+      {
+        question: 'What is included in a professional pedalboard build?',
+        answer: 'A full custom build includes board selection and sizing, isolated power supply installation, hand-soldered patch cables cut to exact lengths, signal chain optimization, cable routing and management, pedal mounting, and full testing. At The Rig Doctor, every build also includes lifetime support and free repairs.',
+      },
+      {
+        question: 'Is a custom pedalboard build worth it?',
+        answer: 'For gigging musicians, yes. A pro build eliminates the noise, intermittent failures, and cable mess that plague DIY boards under road conditions. The cables alone last decades. For bedroom-only players with simple setups, DIY is perfectly fine.',
+      },
+    ],
   },
 
   // ─────────────────────────────────────────────
@@ -418,7 +543,8 @@ export const seoPosts: BlogPost[] = [
     description:
       'Everything your pedalboard needs to survive the road — from cable reliability to backup plans. A practical checklist from 17 years of building touring rigs.',
     publishedAt: '2026-06-04',
-    author: 'Jacob Charendoff',
+    updatedAt: '2026-09-24',
+    author: 'Jacob Charendoff, Founder of The Rig Doctor',
     readTime: '8 min read',
     category: 'Guides',
     tags: ['touring', 'gigging', 'reliability', 'road-ready', 'checklist'],
@@ -524,12 +650,42 @@ export const seoPosts: BlogPost[] = [
 </ol>
 <p>This takes 10 minutes and prevents 90% of on-stage disasters. If you want a rig that's built road-ready from the start — with the cables, the power, the reliability, and the backup options baked in — <a href="/book">that's exactly what we build</a>.</p>`,
       },
+      {
+        heading: 'Frequently asked questions about touring pedalboard prep',
+        headingLevel: 2,
+        content: `<h3>What should I check on my pedalboard before a tour?</h3>
+<p>Test every cable connection, verify all power outputs, check mounting tape adhesion, test every pedal individually and in combination, bring backup cables and a spare power supply, and do a full 30-minute sound check simulating set conditions. Problems that hide during a 2-minute test reveal themselves under load.</p>
+<h3>How do I make my pedalboard roadworthy?</h3>
+<p>Use soldered cables instead of solderless, switch to an isolated power supply, replace any loose mounting tape, secure all cables with ties not tape, and invest in a proper flight case or padded soft case. The <a href="/blog/how-to-build-a-pedalboard">pedalboard build guide</a> covers the construction fundamentals.</p>
+<h3>What backup gear should I bring on tour?</h3>
+<p>At minimum: 2 spare patch cables, 2 spare instrument cables, a spare power supply or daisy chain as emergency backup, a multi-tool, a spare set of batteries for any pedal that accepts them, and gaffer tape. If you use MIDI, bring a spare MIDI cable and know how to bypass the switcher and run direct.</p>
+<h3>Should I bring a backup pedalboard on tour?</h3>
+<p>For most working musicians, no. A well-built primary board with proper spare cables is more practical than maintaining two full boards. The exception is touring at the arena or festival level where downtime costs serious money. A small emergency board with your core sounds (drive, delay, tuner) is a reasonable middle ground.</p>`,
+      },
     ],
     cta: {
       text: 'Start a Build',
       href: '/book',
       label: 'Get a road-ready custom pedalboard build',
     },
+    faqs: [
+      {
+        question: 'What should I check on my pedalboard before a tour?',
+        answer: 'Test every cable connection, verify all power outputs, check mounting tape adhesion, test every pedal individually and in combination, bring backup cables and a spare power supply, and do a full 30-minute sound check simulating set conditions. Problems that hide during a 2-minute test reveal themselves under load.',
+      },
+      {
+        question: 'How do I make my pedalboard roadworthy?',
+        answer: 'Use soldered cables instead of solderless, switch to an isolated power supply, replace any loose mounting tape, secure all cables with ties not tape, and invest in a proper flight case or padded soft case.',
+      },
+      {
+        question: 'What backup gear should I bring on tour?',
+        answer: 'At minimum: 2 spare patch cables, 2 spare instrument cables, a spare power supply or daisy chain as emergency backup, a multi-tool, a spare set of batteries for any pedal that accepts them, and gaffer tape. If you use MIDI, bring a spare MIDI cable and know how to bypass the switcher and run direct.',
+      },
+      {
+        question: 'Should I bring a backup pedalboard on tour?',
+        answer: 'For most working musicians, no. A well-built primary board with proper spare cables is more practical than maintaining two full boards. A small emergency board with your core sounds (drive, delay, tuner) is a reasonable middle ground for higher-stakes gigs.',
+      },
+    ],
   },
 
   // ─────────────────────────────────────────────
@@ -541,7 +697,8 @@ export const seoPosts: BlogPost[] = [
     description:
       'You don\'t need another pedal. Here are practical, free ways to improve your guitar tone right now — from pick technique to amp settings to signal chain basics.',
     publishedAt: '2026-06-04',
-    author: 'Jacob Charendoff',
+    updatedAt: '2026-09-24',
+    author: 'Jacob Charendoff, Founder of The Rig Doctor',
     readTime: '8 min read',
     category: 'Tone',
     tags: ['tone', 'signal chain', 'amp settings', 'technique', 'guitar tone'],
@@ -550,7 +707,7 @@ export const seoPosts: BlogPost[] = [
         heading: 'The Gear Treadmill Is Real',
         headingLevel: 2,
         content: `<p>I sell custom pedalboard builds for a living, and I'm about to tell you to stop buying gear. At least for a minute.</p>
-<p>Here's what I've learned from building 200+ rigs and doing hundreds of <a href="/tone-tutoring">Tone Tutoring sessions</a>: the players with the best tone aren't the ones with the most pedals. They're the ones who understand what they already have. I've heard incredible tones from a Telecaster through a Blues Junior with zero pedals, and I've heard terrible tones from $10,000 rigs with 15 boutique pedals and a custom amp. The difference is almost never the gear — it's the player's understanding of how to use it.</p>
+<p>Here's what I've learned from building 200+ rigs and doing hundreds of <a href="/tone-tutoring">Tone Tutoring sessions</a>: the players with the best tone aren't the ones with the most pedals. They're the ones who understand what they already have. That is exactly what our <a href="/blog/what-is-tone-tutoring">Tone Tutoring sessions</a> help with. I've heard incredible tones from a Telecaster through a Blues Junior with zero pedals, and I've heard terrible tones from $10,000 rigs with 15 boutique pedals and a custom amp. The difference is almost never the gear — it's the player's understanding of how to use it.</p>
 <p>Before you buy another pedal, read through this. Every tip here is free, and any one of them might make a bigger difference than that $300 boutique overdrive you've been eyeing.</p>`,
       },
       {
@@ -615,12 +772,42 @@ export const seoPosts: BlogPost[] = [
         content: `<p>All of these tips share a common thread: they're about understanding and optimizing what you already own, not replacing it with something more expensive. The players with the best tone aren't the ones who buy the most gear — they're the ones who get the most out of each piece of gear they have.</p>
 <p>If you want to go deeper on any of this — if you want someone to listen to your rig, look at your signal chain, and tell you exactly where the weak points are — that's what <a href="/tone-tutoring">Tone Tutoring</a> is. It's a 60-minute video call where we go through your entire setup, find the easy wins, and get your tone where you want it. No gear sales pitch, no upsell — just honest advice from someone who's been doing this for 17 years. A lot of players leave those sessions realizing they don't need to buy anything at all. They just needed to use what they have differently.</p>`,
       },
+      {
+        heading: 'Frequently asked questions about improving guitar tone',
+        headingLevel: 2,
+        content: `<h3>How can I improve my guitar tone without buying new gear?</h3>
+<p>Start with your signal chain order, pickup height, cable quality, and amp settings. These four adjustments are free or nearly free and make a bigger difference than most new pedal purchases. Reordering your pedals alone can transform your sound.</p>
+<h3>Does pickup height affect guitar tone?</h3>
+<p>Significantly. Pickups too close to the strings cause warbling, wolf tones, and muddy bass. Too far away and you lose output and clarity. A few turns of the adjustment screws can make your guitar sound like a different instrument. Start with the manufacturer's recommended height and adjust by ear from there.</p>
+<h3>Does cable quality affect guitar tone?</h3>
+<p>Yes. Every foot of cable adds capacitance, which rolls off high frequencies. Cheap cables with high capacitance dull your tone across the full signal path. With passive pickups this effect is more noticeable. Switching to lower-capacitance cable like <a href="/shop">Mogami</a> preserves clarity, especially across a full pedalboard with 10+ patch connections.</p>
+<h3>What is the easiest way to improve guitar tone?</h3>
+<p>Adjust your amp's EQ with intention. Most players set it once and never touch it again. Try cutting frequencies that are masking your sound instead of boosting what you want more of. Cut the mud, don't add the sparkle. That one shift in approach changes everything.</p>`,
+      },
     ],
     cta: {
       text: 'Book Tone Tutoring',
       href: '/tone-tutoring',
       label: 'Book a Tone Tutoring session to optimize your rig',
     },
+    faqs: [
+      {
+        question: 'How can I improve my guitar tone without buying new gear?',
+        answer: 'Start with your signal chain order, pickup height, cable quality, and amp settings. These four adjustments are free or nearly free and make a bigger difference than most new pedal purchases. Reordering your pedals alone can transform your sound.',
+      },
+      {
+        question: 'Does pickup height affect guitar tone?',
+        answer: 'Significantly. Pickups too close to the strings cause warbling, wolf tones, and muddy bass. Too far away and you lose output and clarity. A few turns of the adjustment screws can make your guitar sound like a different instrument.',
+      },
+      {
+        question: 'Does cable quality affect guitar tone?',
+        answer: 'Yes. Every foot of cable adds capacitance, which rolls off high frequencies. Cheap cables with high capacitance dull your tone across the full signal path. With passive pickups this effect is more noticeable. Switching to lower-capacitance cable preserves clarity, especially across a full pedalboard.',
+      },
+      {
+        question: 'What is the easiest way to improve guitar tone?',
+        answer: 'Adjust your amp\'s EQ with intention. Most players set it once and never touch it again. Try cutting frequencies that are masking your sound instead of boosting what you want more of. Cut the mud, don\'t add the sparkle.',
+      },
+    ],
   },
 
   // ─────────────────────────────────────────────
@@ -632,7 +819,8 @@ export const seoPosts: BlogPost[] = [
     description:
       'Everything you need to know about powering your pedalboard — why isolation matters, which power supplies are actually worth it, and how to size your setup correctly.',
     publishedAt: '2026-06-04',
-    author: 'Jacob Charendoff',
+    updatedAt: '2026-09-24',
+    author: 'Jacob Charendoff, Founder of The Rig Doctor',
     readTime: '9 min read',
     category: 'Gear',
     tags: ['power supply', 'isolated', 'CIOKS', 'Strymon Zuma', 'Voodoo Lab'],
@@ -641,7 +829,7 @@ export const seoPosts: BlogPost[] = [
         heading: 'Power Is the Least Sexy, Most Important Part of Your Board',
         headingLevel: 2,
         content: `<p>Nobody gets excited about a power supply. You get excited about a new delay pedal or a limited-edition fuzz, not a black box that lives under your board and delivers 9 volts of direct current. But here's the thing: a bad power supply will make your $2,000 pedalboard sound like a $200 pedalboard, and a good power supply will make a modest board sound professional-grade.</p>
-<p>I've seen it hundreds of times. Someone comes to me with noise issues, and before I even listen to the board, I flip it over and look at the power. Daisy chain. Every time. I swap in an isolated supply and 90% of the noise disappears. It's not magic — it's basic electrical engineering. Let's talk about why.</p>`,
+<p>I've seen it hundreds of times. Someone comes to me with noise issues, and before I even listen to the board, I flip it over and look at the power. Daisy chain. Every time. I swap in an isolated supply and 90% of the noise disappears. Our <a href="/blog/pedalboard-hum-noise-fix">full noise troubleshooting guide</a> covers every cause and fix. It's not magic — it's basic electrical engineering. Let's talk about why.</p>`,
       },
       {
         heading: 'How a Daisy Chain Works (and Why It Causes Problems)',
@@ -712,12 +900,42 @@ export const seoPosts: BlogPost[] = [
 </ul>
 <p>Power management isn't glamorous, but it's the foundation your entire rig is built on. Get it right and you'll never think about it again. Get it wrong and you'll be chasing noise and reliability issues forever. If you want it done right from day one, <a href="/book">let's talk about a build</a>.</p>`,
       },
+      {
+        heading: 'Frequently asked questions about pedalboard power supplies',
+        headingLevel: 2,
+        content: `<h3>What is an isolated power supply for a pedalboard?</h3>
+<p>An isolated power supply provides separate, electrically independent power outputs for each pedal. Unlike a daisy chain where all pedals share one power source and one ground path, each isolated output has its own transformer winding. This eliminates ground loops, which are the number one cause of pedalboard hum.</p>
+<h3>Do I need an isolated power supply for my pedalboard?</h3>
+<p>If you have more than 3-4 pedals and notice any hum or buzz, yes. Even if your board is quiet now, adding pedals to a daisy chain increases the chance of ground loop noise. An isolated supply is cheap insurance against noise problems down the road.</p>
+<h3>What happens if I daisy-chain my pedals?</h3>
+<p>Daisy-chaining connects multiple pedals to one power output through a splitter cable. All pedals share one ground path, which creates ground loops when pedals have different ground reference voltages. The result is a 60Hz hum that gets worse as you add more pedals to the chain.</p>
+<h3>How do I know what voltage my pedals need?</h3>
+<p>Check the label on the bottom of each pedal or the manual. Most pedals run on 9V DC center-negative. Some pedals need 12V or 18V. Some vintage-style pedals use center-positive polarity. Running the wrong voltage can damage a pedal permanently, so always verify before connecting.</p>`,
+      },
     ],
     cta: {
       text: 'Shop Power Supplies',
       href: '/shop',
       label: 'Browse our recommended power supplies',
     },
+    faqs: [
+      {
+        question: 'What is an isolated power supply for a pedalboard?',
+        answer: 'An isolated power supply provides separate, electrically independent power outputs for each pedal. Unlike a daisy chain where all pedals share one power source and one ground path, each isolated output has its own transformer winding. This eliminates ground loops, which are the number one cause of pedalboard hum.',
+      },
+      {
+        question: 'Do I need an isolated power supply for my pedalboard?',
+        answer: 'If you have more than 3-4 pedals and notice any hum or buzz, yes. Even if your board is quiet now, adding pedals to a daisy chain increases the chance of ground loop noise. An isolated supply is cheap insurance against noise problems.',
+      },
+      {
+        question: 'What happens if I daisy-chain my pedals?',
+        answer: 'Daisy-chaining connects multiple pedals to one power output through a splitter cable. All pedals share one ground path, which creates ground loops when pedals have different ground reference voltages. The result is a 60Hz hum that gets worse as you add more pedals to the chain.',
+      },
+      {
+        question: 'How do I know what voltage my pedals need?',
+        answer: 'Check the label on the bottom of each pedal or the manual. Most pedals run on 9V DC center-negative. Some pedals need 12V or 18V. Some vintage-style pedals use center-positive polarity. Running the wrong voltage can damage a pedal permanently, so always verify before connecting.',
+      },
+    ],
   },
 
   // ─────────────────────────────────────────────
@@ -729,7 +947,8 @@ export const seoPosts: BlogPost[] = [
     description:
       'A look inside The Rig Doctor\'s Tone Tutoring service — what happens in a 60-minute session, what problems we solve, and why it might be all you need.',
     publishedAt: '2026-06-04',
-    author: 'Jacob Charendoff',
+    updatedAt: '2026-09-24',
+    author: 'Jacob Charendoff, Founder of The Rig Doctor',
     readTime: '7 min read',
     category: 'Services',
     tags: ['tone tutoring', 'signal chain', 'consultation', 'rig optimization'],
@@ -809,7 +1028,21 @@ export const seoPosts: BlogPost[] = [
         heading: 'Book a Session',
         headingLevel: 2,
         content: `<p>Tone Tutoring is $99.99 for 60 minutes. <a href="/tone-tutoring">Book directly on our site</a> — pick a time that works for you, and we'll send you a video call link. That's it. No contracts, no commitments, no subscription.</p>
-<p>One session. One hour. Your rig, but better. I've done this for over 200 rigs — whether it's a $500 bedroom board or a $5,000 touring rig, the approach is the same: listen, diagnose, fix. Your tone is in there. Sometimes you just need someone who knows where to find it.</p>`,
+<p>One session. One hour. Your rig, but better. I've done this for over 200 rigs — whether it's a $500 bedroom board or a $5,000 touring rig, the approach is the same: listen, diagnose, fix. Your tone is in there. Sometimes you just need someone who knows where to find it. And if you decide you want a full rig overhaul after, check out our <a href="/blog/custom-pedalboard-build-vs-diy">custom build vs. DIY comparison</a> to see if a pro build makes sense.</p>`,
+      },
+      {
+        heading: 'Frequently asked questions about Tone Tutoring',
+        headingLevel: 2,
+        content: `<h3>What is Tone Tutoring?</h3>
+<p>Tone Tutoring is a one-on-one session where we go through your entire rig and optimize it. We cover signal chain order, pedal settings, amp interaction, cable quality, power, and anything else affecting your tone. You get specific, actionable changes you can hear immediately.</p>
+<h3>How does a Tone Tutoring session work?</h3>
+<p>Sessions run about 60 minutes over video call. You show me your rig, I listen, and we work through it together in real time. I tell you what to move, adjust, and try. You hear the difference as we go. No theory lectures. Just hands-on fixes.</p>
+<h3>Do I need to know anything about gear before a session?</h3>
+<p>No. That is the whole point. Whether you have been playing for 2 years or 20, the session meets you where you are. I have worked with players who could not name their pedals and players who had spreadsheets of their signal chain. Both got value.</p>
+<h3>Is Tone Tutoring worth it if I only play at home?</h3>
+<p>Absolutely. Most of our sessions are with home players. Your rig does not need to be expensive or complex to benefit. Even a 3-pedal board through a practice amp has room for optimization that you will hear immediately.</p>
+<h3>Can Tone Tutoring help me decide if I need a custom build?</h3>
+<p>Yes. About 30% of Tone Tutoring clients end up booking a <a href="/blog/custom-pedalboard-build-vs-diy">custom build</a> after the session because they realize how much better their rig could be with proper wiring, power, and cable management. The session gives you clarity on whether your current setup just needs tuning or whether a full rebuild makes more sense.</p>`,
       },
     ],
     cta: {
@@ -817,5 +1050,27 @@ export const seoPosts: BlogPost[] = [
       href: '/tone-tutoring',
       label: 'Book a Tone Tutoring session',
     },
+    faqs: [
+      {
+        question: 'What is Tone Tutoring?',
+        answer: 'Tone Tutoring is a one-on-one session where we go through your entire rig and optimize it. We cover signal chain order, pedal settings, amp interaction, cable quality, power, and anything else affecting your tone. You get specific, actionable changes you can hear immediately.',
+      },
+      {
+        question: 'How does a Tone Tutoring session work?',
+        answer: 'Sessions run about 60 minutes over video call. You show me your rig, I listen, and we work through it together in real time. I tell you what to move, adjust, and try. You hear the difference as we go. No theory lectures. Just hands-on fixes.',
+      },
+      {
+        question: 'Do I need to know anything about gear before a session?',
+        answer: 'No. That is the whole point. Whether you have been playing for 2 years or 20, the session meets you where you are.',
+      },
+      {
+        question: 'Is Tone Tutoring worth it if I only play at home?',
+        answer: 'Absolutely. Most of our sessions are with home players. Your rig does not need to be expensive or complex to benefit. Even a 3-pedal board through a practice amp has room for optimization that you will hear immediately.',
+      },
+      {
+        question: 'Can Tone Tutoring help me decide if I need a custom build?',
+        answer: 'Yes. About 30% of Tone Tutoring clients end up booking a custom build after the session because they realize how much better their rig could be with proper wiring, power, and cable management.',
+      },
+    ],
   },
 ];
