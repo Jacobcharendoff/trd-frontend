@@ -21,6 +21,10 @@
   --color-trd-text-on-dark-muted: rgba(255, 255, 255, 0.4);
   --color-trd-border-light: rgba(0, 0, 0, 0.04);
   --color-trd-border-dark: rgba(255, 255, 255, 0.04);
+  --color-trd-ink: #000000;
+  --color-trd-paper: #ffffff;
+  --color-trd-green: #30D158;
+  --color-trd-pink: #FF375F;
 }
 
 /* ─── TRD Global Design System ─── */
@@ -38,6 +42,13 @@
   --trd-text-secondary: rgba(0, 0, 0, 0.56);
   --trd-border-light: rgba(0, 0, 0, 0.04);
   --trd-border-dark: rgba(255, 255, 255, 0.04);
+
+  /* Spectral system (Sept 2026 facelift): green > blue > purple > pink */
+  --trd-ink: #000000;
+  --trd-paper: #ffffff;
+  --trd-spectral: linear-gradient(90deg, #30D158 0%, #0A84FF 34%, #BF5AF2 68%, #FF375F 100%);
+  --trd-spectral-deep: linear-gradient(90deg, #00A85A 0%, #0071E3 32%, #8E3FD9 66%, #E0245E 100%);
+  --trd-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html {
@@ -81,35 +92,109 @@ body {
   color: rgba(29, 29, 31, 0.56);
 }
 
-/* ─── Gradient Text ───
-   USE SPARINGLY: hero headline only. Solid color for all other text.
+/* ─── Spectral Gradient Text ───
+   Green > blue > purple > pink. For the one phrase per section that matters.
 */
-.trd-gradient-text {
-  background: linear-gradient(135deg, #0071E3, #BF5AF2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Warm variant kept for backward compat, identical to gradient-text reversed */
+.trd-gradient-text,
 .trd-gradient-text-warm {
-  background: linear-gradient(135deg, #BF5AF2, #0071E3);
+  background: var(--trd-spectral);
+  background-size: 200% 100%;
+  background-position: 0% 50%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: trd-spectral-drift 12s ease-in-out infinite alternate;
 }
 
-/* ─── CTA Button (Solid Blue, Apple-style) ─── */
+@keyframes trd-spectral-drift {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+/* ─── Primary CTA: spectral pill ─── */
 .trd-cta-gradient {
-  background: #0071E3;
+  position: relative;
+  isolation: isolate;
   color: #ffffff;
-  transition: background 0.2s ease;
+  background: var(--trd-spectral-deep);
+  background-size: 180% 100%;
+  background-position: 30% 50%;
+  box-shadow: 0 10px 30px -12px rgba(142, 63, 217, 0.55);
+  transition: background-position 0.6s var(--trd-ease), transform 0.3s var(--trd-ease), box-shadow 0.3s var(--trd-ease);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
 }
 
 .trd-cta-gradient:hover {
-  background: #005BB5;
-  transform: none;
-  box-shadow: none;
+  background-position: 70% 50%;
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px -14px rgba(142, 63, 217, 0.7);
+}
+
+/* Secondary CTA on dark: glass pill with a spectral hairline */
+.trd-cta-ghost-dark {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.trd-cta-ghost-dark:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.4); }
+
+/* Secondary CTA on light */
+.trd-cta-ink {
+  color: #fff;
+  background: #000;
+  transition: background 0.3s ease, transform 0.3s var(--trd-ease);
+}
+.trd-cta-ink:hover { background: #1d1d1f; transform: translateY(-1px); }
+
+/* Spectral hairline (dividers, underlines, rings) */
+.trd-spectral-line { height: 1px; background: var(--trd-spectral); opacity: 0.8; }
+
+/* Icon ring: thin spectral border around a premium line icon */
+.trd-icon-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+}
+.trd-icon-ring::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: var(--trd-spectral);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* Eyebrow label */
+.trd-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Display type for the cinematic sections */
+.trd-display {
+  font-size: clamp(44px, 8.5vw, 112px);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+}
+
+/* Photo cards: slow cinematic zoom on hover */
+.trd-photo { overflow: hidden; }
+.trd-photo img { transition: transform 1.2s var(--trd-ease); }
+.trd-photo:hover img { transform: scale(1.06); }
+
+@media (prefers-reduced-motion: reduce) {
+  .trd-gradient-text, .trd-gradient-text-warm { animation: none; }
+  .trd-photo img { transition: none; }
 }
 
 /* ─── Cards (Solid, no glass morphism) ─── */
@@ -203,7 +288,7 @@ body {
   display: block;
   width: 40px;
   height: 3px;
-  background: linear-gradient(90deg, #0071E3, #BF5AF2);
+  background: var(--trd-spectral);
   border-radius: 2px;
   margin: 16px auto 0;
 }
@@ -275,6 +360,7 @@ body {
 .prose-trd a {
   color: #0071E3;
   text-decoration: underline;
+  text-decoration-color: rgba(191, 90, 242, 0.5);
   text-underline-offset: 2px;
   transition: color 0.15s;
 }
