@@ -29,7 +29,6 @@ const img = {
   roomAlt: `${CDN}2022-L1010577.jpg`,
   underside: `${CDN}AfterlightImage_2-212.jpg`,
   consult: `${CDN}Tone_Consultation_Screen_1.png`,
-  tutoring: `${CDN}Tone_Consultation.png`,
   design: `${CDN}Signal_Routing.png`,
   solder: `${CDN}6_219d02cd-1fd7-44f4-ab74-f42783ae338f.png`,
   bench: `${CDN}Pedal-Board-Building-Original-scaled.jpg`,
@@ -413,7 +412,7 @@ export default function Home() {
                   src={`${CDN}${f}`}
                   alt="Custom pedalboard built by The Rig Doctor"
                   fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
+                  sizes={i === 0 || i === 7 ? '(max-width: 768px) 100vw, 50vw' : '(max-width: 768px) 50vw, 25vw'}
                   className="object-cover"
                 />
               </Reveal>
@@ -439,8 +438,23 @@ export default function Home() {
       {/* ───────────── 11. TONE TUTORING + OPT-IN ───────────── */}
       <section id="tone-tutoring" className="bg-[#f5f5f7] py-24 sm:py-32">
         <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <Reveal className="trd-photo relative aspect-[4/3] rounded-[28px] bg-black order-2 lg:order-1">
-            <Image src={img.tutoring} alt="A Tone Tutoring session over video" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+          <Reveal className="relative aspect-[4/3] rounded-[28px] overflow-hidden bg-black order-2 lg:order-1">
+            <video
+              className="absolute inset-0 w-full h-full object-cover"
+              poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/preview_images/5f0a62a68694406d95b83a837a56c2d0.thumbnail.0000000000.jpg"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="A Tone Tutoring session"
+            >
+              <source
+                src="https://cdn.shopify.com/videos/c/vp/5f0a62a68694406d95b83a837a56c2d0/5f0a62a68694406d95b83a837a56c2d0.HD-720p-3.0Mbps-71202543.mp4"
+                type="video/mp4"
+              />
+            </video>
+            <span className="absolute bottom-5 left-5 trd-eyebrow text-white/85 bg-black/45 backdrop-blur-md rounded-full px-3.5 py-1.5">Live on video &middot; 60 min</span>
           </Reveal>
           <Reveal className="order-1 lg:order-2">
             <p className="trd-eyebrow text-black/40 mb-5">Not ready for a build?</p>

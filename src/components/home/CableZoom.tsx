@@ -71,7 +71,7 @@ export default function CableZoom() {
         })}
 
         <div
-          className="absolute bottom-10 inset-x-0 flex justify-center"
+          className="absolute bottom-24 sm:bottom-28 inset-x-0 flex justify-center"
           style={{ opacity: segment(p, 0.8, 0.92) }}
         >
           <Link
