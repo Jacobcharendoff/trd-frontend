@@ -454,7 +454,6 @@ export default function Home() {
                 type="video/mp4"
               />
             </video>
-            <span className="absolute bottom-5 left-5 trd-eyebrow text-white/85 bg-black/45 backdrop-blur-md rounded-full px-3.5 py-1.5">Live on video &middot; 60 min</span>
           </Reveal>
           <Reveal className="order-1 lg:order-2">
             <p className="trd-eyebrow text-black/40 mb-5">Not ready for a build?</p>
