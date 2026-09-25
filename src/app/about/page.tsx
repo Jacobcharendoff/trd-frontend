@@ -128,7 +128,7 @@ export default function AboutPage() {
                 reach — connecting players with the builds they actually need.
               </p>
               <p>
-                Together, we&apos;ve built over 500 custom rigs for touring
+                Together, we&apos;ve built over 300 custom rigs for touring
                 artists, session players, and weekend warriors. Every board
                 is hand-wired by someone who plays guitar and knows what a
                 clean signal chain sounds like under stage lights.
