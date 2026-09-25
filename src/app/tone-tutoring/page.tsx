@@ -219,6 +219,22 @@ export default function ToneTutoringPage() {
             &ldquo;Talked me out of buying 3 pedals <span className="trd-gradient-text">I didn&apos;t need.&rdquo;</span>
           </h2>
         </Reveal>
+        <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-5 mb-14">
+          {[
+            { quote: 'Jacob completely rethought my signal chain. I thought I had it figured out. I was wrong. My tone is night and day different now.', name: 'Marcus T.', role: 'Gigging guitarist' },
+            { quote: "I was drowning in gear options and didn't know what I actually needed. One session, clear plan. Stopped wasting money on stuff that doesn't serve my sound.", name: 'Sarah L.', role: 'Songwriter' },
+            { quote: "An hour with someone who actually knows what they're talking about is worth more than a hundred YouTube videos. Best money I've spent on my tone.", name: 'Jake D.', role: 'Session player' },
+          ].map((r, i) => (
+            <Reveal key={r.name} delay={i * 90} className="bg-white rounded-[28px] p-8 sm:p-9 border border-black/[0.04] flex flex-col">
+              <div className="w-10 h-px mb-6" style={{ background: 'var(--trd-spectral)' }} />
+              <p className="text-black/80 text-[17px] leading-relaxed mb-8">&ldquo;{r.quote}&rdquo;</p>
+              <div className="mt-auto">
+                <p className="font-semibold text-black">{r.name}</p>
+                <p className="text-[14px] text-black/45">{r.role} &middot; Tone Tutoring</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
         <ReviewsMarquee />
       </section>
 
