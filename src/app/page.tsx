@@ -438,22 +438,8 @@ export default function Home() {
       {/* ───────────── 11. TONE TUTORING + OPT-IN ───────────── */}
       <section id="tone-tutoring" className="bg-[#f5f5f7] py-24 sm:py-32">
         <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <Reveal className="relative aspect-[4/3] rounded-[28px] overflow-hidden bg-black order-2 lg:order-1">
-            <video
-              className="absolute inset-0 w-full h-full object-cover"
-              poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/preview_images/5f0a62a68694406d95b83a837a56c2d0.thumbnail.0000000000.jpg"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label="A Tone Tutoring session"
-            >
-              <source
-                src="https://cdn.shopify.com/videos/c/vp/5f0a62a68694406d95b83a837a56c2d0/5f0a62a68694406d95b83a837a56c2d0.HD-720p-3.0Mbps-71202543.mp4"
-                type="video/mp4"
-              />
-            </video>
+          <Reveal className="trd-photo relative aspect-[4/3] rounded-[28px] bg-black order-2 lg:order-1">
+            <Image src={`${CDN}Tone_Consultation_Screen.png`} alt="A Tone Tutoring session over video" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
           </Reveal>
           <Reveal className="order-1 lg:order-2">
             <p className="trd-eyebrow text-black/40 mb-5">Not ready for a build?</p>
