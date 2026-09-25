@@ -21,6 +21,9 @@ export async function GET(req: NextRequest) {
     const handle = req.nextUrl.searchParams.get('handle');
     const variantIdParam = req.nextUrl.searchParams.get('variantId');
     const quantityParam = req.nextUrl.searchParams.get('quantity');
+    // Optional discount code, e.g. ?discount=TONE20 from the Tone Tutoring offer email
+    const discountParam = (req.nextUrl.searchParams.get('discount') || '').trim().toUpperCase();
+    const discountCodes = /^[A-Z0-9_-]{3,32}$/.test(discountParam) ? [discountParam] : [];
 
     if (!handle) {
       return NextResponse.json({ error: 'Product handle required' }, { status: 400 });
@@ -58,7 +61,8 @@ export async function GET(req: NextRequest) {
     const { cart, userErrors } = await createCartWithAttribution(
       variantId,
       quantity,
-      cartAttributes
+      cartAttributes,
+      discountCodes
     );
 
     if (userErrors.length > 0) {

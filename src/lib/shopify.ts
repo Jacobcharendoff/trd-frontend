@@ -238,7 +238,8 @@ export async function createCart(variantId: string, quantity: number = 1) {
 export async function createCartWithAttribution(
   variantId: string,
   quantity: number = 1,
-  attributes: Array<{ key: string; value: string }> = []
+  attributes: Array<{ key: string; value: string }> = [],
+  discountCodes: string[] = []
 ) {
   const query = `
     mutation CartCreate($input: CartInput!) {
@@ -261,6 +262,7 @@ export async function createCartWithAttribution(
     input: {
       lines: [{ merchandiseId: variantId, quantity }],
       attributes,
+      ...(discountCodes.length ? { discountCodes } : {}),
     },
   });
 
