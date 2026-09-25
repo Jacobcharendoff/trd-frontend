@@ -24,7 +24,7 @@
   --color-trd-ink: #000000;
   --color-trd-paper: #ffffff;
   --color-trd-green: #30D158;
-  --color-trd-pink: #FF375F;
+  --color-trd-purple-deep: #8E3FD9;
 }
 
 /* ─── TRD Global Design System ─── */
@@ -43,11 +43,11 @@
   --trd-border-light: rgba(0, 0, 0, 0.04);
   --trd-border-dark: rgba(255, 255, 255, 0.04);
 
-  /* Spectral system (Sept 2026 facelift): green > blue > purple > pink */
+  /* Spectral system (Sept 2026 facelift): green > blue > purple. Always ends on purple, never pink. */
   --trd-ink: #000000;
   --trd-paper: #ffffff;
-  --trd-spectral: linear-gradient(90deg, #30D158 0%, #0A84FF 34%, #BF5AF2 68%, #FF375F 100%);
-  --trd-spectral-deep: linear-gradient(90deg, #00A85A 0%, #0071E3 32%, #8E3FD9 66%, #E0245E 100%);
+  --trd-spectral: linear-gradient(90deg, #30D158 0%, #0A84FF 50%, #BF5AF2 100%);
+  --trd-spectral-deep: linear-gradient(90deg, #00A85A 0%, #0071E3 50%, #8E3FD9 100%);
   --trd-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -93,7 +93,7 @@ body {
 }
 
 /* ─── Spectral Gradient Text ───
-   Green > blue > purple > pink. For the one phrase per section that matters.
+   Green > blue > purple. For the one phrase per section that matters.
 */
 .trd-gradient-text,
 .trd-gradient-text-warm {

@@ -20,7 +20,7 @@ const TOTAL_REVIEW_COUNT = 52;
 function Stars({ count }: { count: number }) {
   return (
     <div className="flex gap-0.5">
-      <svg width="0" height="0" className="absolute" aria-hidden="true"><defs><linearGradient id="trdStar" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stopColor="#30D158"/><stop offset="35%" stopColor="#0A84FF"/><stop offset="70%" stopColor="#BF5AF2"/><stop offset="100%" stopColor="#FF375F"/></linearGradient></defs></svg>
+      <svg width="0" height="0" className="absolute" aria-hidden="true"><defs><linearGradient id="trdStar" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stopColor="#30D158"/><stop offset="50%" stopColor="#0A84FF"/><stop offset="100%" stopColor="#BF5AF2"/></linearGradient></defs></svg>
       {[...Array(5)].map((_, i) => (
         <svg
           key={i}

@@ -64,7 +64,7 @@ function emailHtml() {
   const img = 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/';
   const logo = `${img}logo-white-hrt.png?width=280`;
   const hero = `${img}L1010577.jpg?width=1120`;
-  const spectral = 'linear-gradient(90deg,#00A85A 0%,#0071E3 34%,#8E3FD9 67%,#E0245E 100%)';
+  const spectral = 'linear-gradient(90deg,#00A85A 0%,#0071E3 50%,#8E3FD9 100%)';
   const font = "-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',Roboto,Helvetica,Arial,sans-serif";
 
   const session = (n: string, title: string, body: string, tag: string) => `

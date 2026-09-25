@@ -88,7 +88,7 @@ function buildToneTutoringEmail(firstName: string) {
                 </tr>
                 <tr>
                   <td align="center">
-                    <div style="width: 60px; height: 3px; background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899); border-radius: 2px;"></div>
+                    <div style="width: 60px; height: 3px; background: linear-gradient(90deg, #00A85A, #0071E3, #8E3FD9); border-radius: 2px;"></div>
                   </td>
                 </tr>
               </table>

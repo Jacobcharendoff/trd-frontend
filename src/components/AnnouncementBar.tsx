@@ -9,7 +9,7 @@ export default function AnnouncementBar() {
   if (!visible) return null;
 
   return (
-    <div className="relative bg-gradient-to-r from-[#6366F1] via-[#A855F7] to-[#EC4899] text-white text-center py-2.5 px-10 text-[13px]">
+    <div className="relative bg-gradient-to-r from-[#00A85A] via-[#0071E3] to-[#8E3FD9] text-white text-center py-2.5 px-10 text-[13px]">
       <Link
         href="/shop/mogami-2314-patch-cables"
         className="hover:opacity-90 transition-opacity"
