@@ -116,7 +116,7 @@ export default function ShopPage() {
     <>
       {/* ──── HERO SECTION ──── */}
       <div className="relative w-full overflow-hidden">
-        <div className="relative min-h-screen flex items-center justify-center bg-black">
+        <div className="relative min-h-[56svh] flex items-end bg-black">
           {/* Background Video */}
           <video
             poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/preview_images/2a85affb7da84ea2aebb92e333164646.thumbnail.0000000000.jpg"
@@ -125,7 +125,7 @@ export default function ShopPage() {
             loop
             playsInline
             preload="auto"
-            className="absolute inset-0 w-full h-full object-cover opacity-40"
+            className="absolute inset-0 w-full h-full object-cover opacity-45"
           >
             <source
               src="https://cdn.shopify.com/videos/c/vp/2a85affb7da84ea2aebb92e333164646/2a85affb7da84ea2aebb92e333164646.HD-720p-4.5Mbps-76599010.mp4"
@@ -133,12 +133,14 @@ export default function ShopPage() {
             />
           </video>
 
-          <div className="relative z-10 max-w-[1080px] mx-auto px-6 py-32 w-full text-center">
-            <h1 className="trd-hero-headline text-[#f5f5f7] mb-6">
-              Build <span className="trd-gradient-text">Essentials</span>
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/50" />
+          <div className="relative z-10 max-w-[1200px] mx-auto px-6 pb-14 pt-32 w-full">
+            <p className="trd-eyebrow text-white/60 mb-6">Shop</p>
+            <h1 className="text-white font-bold tracking-[-0.045em] leading-[1.0] text-[clamp(42px,6.5vw,88px)]">
+              Build <span className="trd-gradient-text">essentials.</span>
             </h1>
-            <p className="trd-subheadline max-w-2xl mx-auto">
-              The accessories and services that complement every custom rig.
+            <p className="mt-5 text-white/70 text-lg sm:text-xl max-w-xl leading-relaxed">
+              The services that go with every custom rig. Book them on their own or as a first step.
             </p>
           </div>
         </div>
@@ -153,10 +155,10 @@ export default function ShopPage() {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                className={`px-5 py-2.5 rounded-full text-[14px] font-medium transition-colors ${
                   selectedCategory === category
-                    ? 'bg-[#0071E3] text-white shadow-sm'
-                    : 'bg-[#f5f5f7] text-[#1d1d1f] border border-[#1d1d1f]/10 hover:bg-[#1d1d1f]/5'
+                    ? 'trd-cta-gradient'
+                    : 'bg-[#f5f5f7] text-black/70 hover:bg-black/[0.08] hover:text-black'
                 }`}
               >
                 {category}
@@ -171,8 +173,8 @@ export default function ShopPage() {
             {loading ? 'Loading products...' : `Showing ${filteredProducts.length} ${filteredProducts.length === 1 ? 'product' : 'products'}`}
           </p>
           {isLive && (
-            <span className="inline-flex items-center gap-1 text-xs font-medium text-[#0071E3] bg-[#0071E3]/10 px-2 py-0.5 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0071E3] animate-pulse" />
+            <span className="inline-flex items-center gap-1.5 text-xs font-medium text-black/60 bg-[#f5f5f7] px-2.5 py-1 rounded-full">
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: 'var(--trd-spectral)' }} />
               Live
             </span>
           )}
@@ -197,16 +199,16 @@ export default function ShopPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProducts.map((product) => (
               <div key={product.id} className="group">
-                <div className="bg-white rounded-2xl overflow-hidden border border-black/[0.06] hover:shadow-lg transition-all duration-300 flex flex-col h-full">
+                <div className="bg-[#f5f5f7] rounded-[28px] overflow-hidden hover:bg-white hover:shadow-[0_30px_60px_-30px_rgba(0,0,0,0.35)] transition-all duration-500 flex flex-col h-full">
                   {/* Product Image */}
-                  <div className="relative w-full aspect-square overflow-hidden bg-[#f5f5f7]">
+                  <div className="relative w-full aspect-square overflow-hidden bg-black">
                     {product.image ? (
                       <Image
                         src={product.image}
                         alt={product.imageAlt}
                         width={product.imageWidth}
                         height={product.imageHeight}
-                        className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
+                        className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-700"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                     ) : (
@@ -219,14 +221,14 @@ export default function ShopPage() {
                   </div>
 
                   {/* Content */}
-                  <div className="flex-1 p-6 flex flex-col">
+                  <div className="flex-1 p-7 flex flex-col">
                     <div className="mb-3">
-                      <span className="inline-block text-xs font-medium text-[#0071E3] bg-[#0071E3]/10 px-3 py-1 rounded-full">
+                      <span className="trd-eyebrow text-black/40">
                         {product.category}
                       </span>
                     </div>
 
-                    <h3 className="text-lg font-semibold text-[#1d1d1f] mb-2 leading-snug line-clamp-3">
+                    <h3 className="text-xl font-bold tracking-tight text-black mb-2 leading-snug line-clamp-3">
                       {product.title}
                     </h3>
 
@@ -242,9 +244,9 @@ export default function ShopPage() {
 
                     <Link
                       href={`/shop/${product.handle}`}
-                      className="w-full bg-[#1d1d1f] hover:bg-[#1d1d1f]/90 text-white font-semibold px-4 py-3 rounded-full transition-colors duration-200 text-center text-sm"
+                      className="trd-cta-ink w-full font-semibold px-4 py-3.5 rounded-full text-center text-[15px]"
                     >
-                      View Product
+                      View details
                     </Link>
                   </div>
                 </div>
@@ -259,7 +261,7 @@ export default function ShopPage() {
             <p className="text-[#1d1d1f]/60 text-lg mb-4">No products in this category yet.</p>
             <button
               onClick={() => setSelectedCategory('All')}
-              className="text-[#0071E3] font-medium hover:underline"
+              className="text-black font-medium underline underline-offset-4"
             >
               View all products
             </button>
