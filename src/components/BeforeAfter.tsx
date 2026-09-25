@@ -16,9 +16,9 @@ interface CaseStudy {
 const caseStudies: CaseStudy[] = [
   {
     playerName: 'Ryan H.',
-    playerRole: 'Gigging Guitarist',
+    playerRole: 'Gigging guitarist',
     heading: 'From shoebox to stage-proof',
-    story: 'Ryan came to us with a board that was doing the job — barely. Tangled cables, daisy-chained power, and tone that disappeared by the third song. We stripped it down, rebuilt the signal path from scratch, isolated every power rail, and handed him back a rig that stays dead quiet no matter how loud the stage gets.',
+    story: 'Ryan came to us with a board that was doing the job, barely. Tangled cables, daisy-chained power, and tone that disappeared by the third song. We stripped it down, rebuilt the signal path from scratch, isolated every power rail, and handed him back a rig that stays dead quiet no matter how loud the stage gets.',
     tags: ['15 PEDALS', 'ISOLATED POWER', 'FULL REWIRE'],
     beforeImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Ryan_Before.png?v=1777143983',
     afterImage: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Ryan_After.jpg?v=1777143984',
@@ -65,7 +65,7 @@ function BeforeAfterSlider({ beforeImage, afterImage }: { beforeImage: string; a
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-full rounded-2xl overflow-hidden bg-[#f5f5f7] cursor-col-resize select-none touch-none"
+      className="relative w-full h-full rounded-[28px] overflow-hidden bg-[#f5f5f7] cursor-col-resize select-none touch-none"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
@@ -131,10 +131,10 @@ export default function BeforeAfter({ theme = 'light' }: BeforeAfterProps) {
 
             {/* Story */}
             <div className={isReversed ? 'lg:order-1' : ''}>
-              <p className="text-[#0071E3] font-medium text-sm tracking-wide mb-3">
-                {study.playerName} — {study.playerRole}
+              <p className="trd-eyebrow mb-4">
+                <span className="trd-gradient-text">{study.playerName} &middot; {study.playerRole}</span>
               </p>
-              <h3 className={`text-2xl sm:text-3xl font-bold mb-4 leading-tight ${
+              <h3 className={`text-3xl sm:text-4xl font-bold tracking-tight mb-4 leading-[1.05] ${
                 isDark ? 'text-[#f5f5f7]' : 'text-[#1d1d1f]'
               }`}>
                 {study.heading}

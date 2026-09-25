@@ -175,7 +175,7 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-4">
             <Link
               href="/book"
-              className={`text-[13px] font-medium rounded-full px-5 py-2 transition-colors duration-300 text-black bg-white hover:bg-white/90`}
+              className={`text-[13px] font-medium rounded-full px-5 py-2 transition-colors duration-300 trd-cta-gradient`}
             >
               Book a Consultation
             </Link>
@@ -252,7 +252,7 @@ export default function Header() {
               <Link
                 href="/book"
                 onClick={() => setMobileOpen(false)}
-                className={`text-[15px] font-medium rounded-full px-6 py-3 text-center mt-2 transition-colors duration-300 text-black bg-white hover:bg-white/90`}
+                className={`text-[15px] font-medium rounded-full px-6 py-3 text-center mt-2 transition-colors duration-300 trd-cta-gradient`}
               >
                 Book a Consultation
               </Link>

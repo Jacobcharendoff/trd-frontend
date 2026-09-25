@@ -1,571 +1,539 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import Section from '@/components/Section';
-import TestimonialCarousel from '@/components/TestimonialCarousel';
-import BeforeAfter from '@/components/BeforeAfter';
-import GallerySlider from '@/components/GallerySlider';
-import CinemaSection from '@/components/CinemaSection';
-import ReviewsMarquee from '@/components/ReviewsMarquee';
 import HeroVideo from '@/components/HeroVideo';
+import BeforeAfter from '@/components/BeforeAfter';
+import ReviewsMarquee from '@/components/ReviewsMarquee';
 import LeadCaptureForm from '@/components/LeadCaptureForm';
+import CableZoom from '@/components/home/CableZoom';
+import ParallaxImage from '@/components/home/ParallaxImage';
+import Reveal from '@/components/home/Reveal';
+import ToneOptIn from '@/components/home/ToneOptIn';
+import {
+  IconSolder,
+  IconCable,
+  IconPower,
+  IconQuiet,
+  IconRoadCase,
+  IconLifetime,
+  IconVideo,
+  IconBlueprint,
+  IconShip,
+  IconArrow,
+} from '@/components/home/Icons';
+
+const CDN = 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/';
+
+const img = {
+  stage: `${CDN}Stage-Ready.jpg`,
+  room: `${CDN}L1010577.jpg`,
+  roomAlt: `${CDN}2022-L1010577.jpg`,
+  underside: `${CDN}AfterlightImage_2-212.jpg`,
+  consult: `${CDN}Tone_Consultation_Screen_1.png`,
+  design: `${CDN}Signal_Routing.png`,
+  solder: `${CDN}6_219d02cd-1fd7-44f4-ab74-f42783ae338f.png`,
+  bench: `${CDN}Pedal-Board-Building-Original-scaled.jpg`,
+  mason: `${CDN}Mason_Avatar.png`,
+  vince: `${CDN}Vince_Avatar.png`,
+};
+
+const artists = ['Andy Timmons', 'Oz Noy', 'Michael Landau', 'Kirk Fletcher', 'Josh Smith', 'Matt Schofield'];
+
+const steps = [
+  {
+    n: '01',
+    title: 'We talk.',
+    body: 'A free call about what you play, where you play it and what is driving you nuts. Hum, tap-dancing, a board that fights you. We figure out what it actually needs.',
+    image: img.consult,
+    Icon: IconVideo,
+  },
+  {
+    n: '02',
+    title: 'We design it.',
+    body: 'Before anyone picks up a soldering iron, we map it all out: wiring diagram, power layout, signal chain order and parts list. Nothing gets guessed at the bench.',
+    image: img.design,
+    Icon: IconBlueprint,
+  },
+  {
+    n: '03',
+    title: 'We build it by hand.',
+    body: 'Hand-soldered connectors, every cable cut to length, isolated power, clean routing underneath. The same two guys do every board, start to finish.',
+    image: img.solder,
+    Icon: IconSolder,
+  },
+  {
+    n: '04',
+    title: 'We test it. Then it ships.',
+    body: 'Full signal chain testing under load before it leaves the bench. Your rig ships back insured, road-tested and ready to plug in.',
+    image: img.bench,
+    Icon: IconShip,
+  },
+];
+
+const features = [
+  { Icon: IconSolder, title: 'Hand-soldered', body: 'Every connection done by hand. No solderless kits that loosen on the road.' },
+  { Icon: IconCable, title: 'Cut to length', body: 'Each run measured for its exact spot. No slack coiled up under the board.' },
+  { Icon: IconPower, title: 'Isolated power', body: 'Clean, separated supplies so digital gear stops bleeding hum into your drives.' },
+  { Icon: IconQuiet, title: 'Dead quiet', body: 'Tested under load before it ships. One player thought something was unplugged. It was just quiet.' },
+  { Icon: IconRoadCase, title: 'Road-ready', body: 'Built to take load-ins, sticky floors and 200-show years without flinching.' },
+  { Icon: IconLifetime, title: 'We pick up the phone', body: 'Six months or six years later, you call and a builder answers.' },
+];
+
+const wall = [
+  'Agustin_Q..jpg',
+  'Hunter_W._1.jpg',
+  'Javy_B.png',
+  'AfterlightImage-4.jpg',
+  'John_A._1.png',
+  'Chris_G.png',
+  'Saxon_W..jpg',
+  'Shannon_G._2.png',
+  'Jeremy_B.png',
+  'AfterlightImage_2.jpg',
+  'Kaden_C.png',
+  'Josh_W.png',
+];
+
+const faqs = [
+  {
+    q: 'How much does a custom build cost?',
+    a: 'Builds start at $1,999 USD and go up with complexity. MIDI switching and loop systems add to it. The consultation is free and you get a real number up front.',
+  },
+  {
+    q: 'Why only 18 builds a year?',
+    a: 'The same hands wire every board from start to finish. That is the only way we can stand behind the work. We are down to the last 2 spots this year.',
+  },
+  {
+    q: 'How long does a build take?',
+    a: 'Usually 4 to 8 weeks depending on the rig and parts. Tour date coming up? Tell us and we will work around it.',
+  },
+  {
+    q: 'Do I ship my pedals to you?',
+    a: 'Yes. We send you a label and show you how to pack everything so nothing gets damaged. Tone Tutoring is fully remote.',
+  },
+  {
+    q: 'Do you build MIDI and switching rigs?',
+    a: 'All the time. Loop switchers, MIDI preset routing, multi-amp setups. Some of our best work is on rigs where everything has to talk to everything else.',
+  },
+  {
+    q: 'What is Tone Tutoring?',
+    a: 'An hour on video going through your whole signal chain: amp settings, pedal order, that noise you cannot track down. $99 USD. A lot of players start here.',
+  },
+];
+
+function PrimaryCTA({ children, href = '/book', className = '' }: { children: React.ReactNode; href?: string; className?: string }) {
+  return (
+    <Link href={href} className={`trd-cta-gradient inline-flex items-center justify-center gap-2 rounded-full font-semibold ${className}`}>
+      {children}
+      <IconArrow />
+    </Link>
+  );
+}
 
 export default function Home() {
   return (
     <>
-      {/* ──── 1. HERO — Video + killer headline ──── */}
-      <div className="relative w-full overflow-hidden">
-        <div className="relative min-h-[calc(100svh-100px)] flex items-end justify-center bg-black">
+      {/* ───────────── 1. HERO ───────────── */}
+      <section className="relative bg-black">
+        <div className="relative min-h-[calc(100svh-100px)] flex items-end justify-center overflow-hidden">
           <HeroVideo />
-
-          <div className="relative z-10 max-w-[1200px] mx-auto px-6 pb-20 pt-28 w-full text-center">
-            <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-6">Only 2 Spots Left This Year</p>
-            <h1 className="trd-hero-headline text-[#f5f5f7] mb-6">
+          <div className="relative z-10 max-w-[1200px] mx-auto px-6 pb-16 sm:pb-20 pt-28 w-full text-center">
+            <p className="trd-eyebrow text-white/55 mb-6">Custom pedalboards &middot; 2 build spots left this year</p>
+            <h1 className="trd-hero-headline text-white mb-6">
               You didn&apos;t spend thousands on gear
               <br />
               <span className="trd-gradient-text">to zip-tie it together.</span>
             </h1>
-            <p className="trd-subheadline max-w-2xl mx-auto mb-12">
-              Hand-wired pedalboards built by guys who actually play.
-              We&apos;ve done over 300 of these in 17 years and we&apos;ve got
-              2 spots left before we close out the year.
+            <p className="trd-subheadline max-w-2xl mx-auto mb-10">
+              Hand-wired pedalboards built by working players. Over 300 of them in 17 years, for guys who tour night after
+              night and guys who just want to hear what their rig can really do.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-20">
-              <Link
-                href="/book"
-                className="trd-cta-gradient inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
-              >
-                Claim Your Spot
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-              </Link>
+            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+              <PrimaryCTA className="px-9 py-4 text-[17px]">Book a free rig consultation</PrimaryCTA>
               <Link
                 href="/tone-tutoring"
-                className="inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg border-2 border-white/20 text-white hover:border-white/50 hover:bg-white/[0.06] transition-all duration-300"
+                className="trd-cta-ghost-dark inline-flex items-center justify-center gap-2 font-semibold px-9 py-4 rounded-full text-[17px]"
               >
-                Fix Your Tone &mdash; $99
+                Tone Tutoring &middot; $99
               </Link>
             </div>
-
-            <div className="flex justify-center items-center gap-8 sm:gap-16 pt-8 border-t border-white/10">
-              <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-white">300+</p>
-                <p className="text-sm text-[#f5f5f7]/50 mt-1">rigs built</p>
-              </div>
-              <div className="w-px h-10 bg-white/10" />
-              <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-white">17</p>
-                <p className="text-sm text-[#f5f5f7]/50 mt-1">years at the bench</p>
-              </div>
-              <div className="w-px h-10 bg-white/10" />
-              <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-[#0071E3]">2</p>
-                <p className="text-sm text-[#f5f5f7]/50 mt-1">spots left</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-            <svg className="w-6 h-6 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7" />
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      {/* ──── 2. DOES YOUR RIG LOOK LIKE THIS? — Before/After ──── */}
-      <Section theme="light" id="transformations" reveal>
-        <div className="text-center mb-16">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Before / After</p>
-          <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
-            Same pedals. Same amp. Same player. <span className="trd-gradient-text">Look at the difference.</span>
-          </h2>
-          <p className="text-[#1d1d1f]/50 text-lg max-w-2xl mx-auto">
-            Nothing changed except who wired it. Drag the slider.
-          </p>
-        </div>
-        <BeforeAfter />
-        <div className="text-center mt-12">
-          <Link
-            href="/book"
-            className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-[#1d1d1f]/90 transition-colors text-sm"
-          >
-            Get Your Rig Built Right
-          </Link>
-        </div>
-      </Section>
-
-      {/* ──── 3. SCARCITY CTA — The waitlist ──── */}
-      <section className="relative overflow-hidden bg-[#1d1d1f] py-16 sm:py-20">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(191,90,242,0.06)_0%,transparent_50%)]" />
-        <div className="relative max-w-3xl mx-auto px-6 text-center">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/30 mb-4">Limited Availability</p>
-          <h3 className="text-3xl sm:text-4xl font-bold text-[#f5f5f7] tracking-tight mb-3">
-            Only <span className="trd-gradient-text">2 spots left</span> this year.
-          </h3>
-          <p className="text-[#f5f5f7]/50 text-base mb-8 max-w-xl mx-auto">
-            We do 18 builds a year. That&apos;s it. Same hands wire every board
-            from start to finish because that&apos;s the only way we can
-            guarantee the work. We&apos;re almost done for the year.
-          </p>
-          <Link
-            href="/book"
-            className="trd-cta-gradient inline-flex items-center justify-center gap-2 px-10 py-4 rounded-full font-semibold text-lg"
-          >
-            Claim Your Spot
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-          </Link>
-        </div>
-      </section>
-
-      {/* ──── 4. SOCIAL PROOF — Who trusts us ──── */}
-      <Section theme="dark" id="testimonials" reveal>
-        <div className="text-center mb-12">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-4">From Our Players</p>
-          <h2 className="trd-section-headline text-[#f5f5f7] mb-2">
-            Three tours. Zero failures. <span className="trd-gradient-text">That&apos;s it.</span>
-          </h2>
-          <p className="text-[#f5f5f7]/50 text-lg max-w-2xl mx-auto">
-            We build for guys who can&apos;t have a board go down mid-set.
-            Session players, touring musicians, worship leaders who play
-            four services a weekend. One of their techs looked at the underside
-            and said &quot;whoever did this actually gives a damn.&quot;
-          </p>
-        </div>
-        <TestimonialCarousel theme="dark" />
-        <div className="text-center mt-12">
-          <Link
-            href="/book"
-            className="trd-cta-gradient inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full text-sm"
-          >
-            Build With the Same Team
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-          </Link>
-        </div>
-      </Section>
-
-      {/* ──── 5. HOW WE BUILD — Cinema section ──── */}
-      <CinemaSection />
-
-      {/* ──── 5→5.5 CONVERSION BRIDGE — Cinema to Builders ──── */}
-      <section className="relative overflow-hidden bg-[#0a0a0a] py-14 sm:py-16">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(0,113,227,0.08)_0%,transparent_60%)]" />
-        <div className="relative max-w-2xl mx-auto px-6 text-center">
-          <p className="text-[#f5f5f7]/50 text-lg mb-6">
-            That&apos;s four stages of work most builders skip. We do all of them on every single rig.
-          </p>
-          <Link
-            href="/book"
-            className="trd-cta-gradient inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full text-sm"
-          >
-            See What We&apos;d Do With Yours
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-          </Link>
-        </div>
-      </section>
-
-      {/* ──── 5.5. MEET THE BUILDERS — Mason & Vince ──── */}
-      <Section theme="lightGray" id="builders" reveal>
-        <div className="text-center mb-16">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Who&apos;s Building Your Rig</p>
-          <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
-            Two guys. <span className="trd-gradient-text">300+ builds between them.</span>
-          </h2>
-          <p className="text-[#1d1d1f]/50 text-lg max-w-2xl mx-auto">
-            Your board doesn&apos;t get handed off to some junior tech. These are the only two people who touch your rig.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {/* Mason */}
-          <div className="bg-white rounded-2xl overflow-hidden border border-black/[0.04] hover:shadow-lg transition-shadow duration-300">
-            <div className="relative aspect-[4/3] overflow-hidden bg-[#0a0a0a]">
-              <Image
-                src="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Vince_D.png?v=1773867366"
-                alt="Mason Marangella working on a rig build"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                <h3 className="text-2xl font-bold text-white">Mason Marangella</h3>
-                <p className="text-white/60 text-sm">Founder, Vertex Effects</p>
-              </div>
-            </div>
-            <div className="p-6 sm:p-8">
-              <p className="text-[#1d1d1f]/60 text-[15px] leading-relaxed mb-4">
-                17+ years at the bench. Mason founded Vertex Effects Systems back in 2009 and built the &quot;Vertex by Gator&quot; pedalboard series you&apos;ve probably seen in shops. He&apos;s the reason people started calling this whole thing &quot;The Rig Doctor.&quot;
-              </p>
-              <p className="text-[#1d1d1f]/60 text-[15px] leading-relaxed mb-6">
-                He&apos;s built rigs for Andy Timmons, Oz Noy, Michael Landau, Kirk Fletcher, Josh Smith, and Matt Schofield. Not endorsement deals. Real builds that went on real tours.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {['17+ Years', 'Vertex Effects', 'Andy Timmons', 'Michael Landau', 'Josh Smith'].map((tag) => (
-                  <span key={tag} className="text-xs font-medium px-3 py-1 rounded-full bg-[#f5f5f7] text-[#1d1d1f]/50">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Vince */}
-          <div className="bg-white rounded-2xl overflow-hidden border border-black/[0.04] hover:shadow-lg transition-shadow duration-300">
-            <div className="relative aspect-[4/3] overflow-hidden bg-[#0a0a0a]">
-              <Image
-                src="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Vince_D._2.jpg?v=1777143325"
-                alt="Vince DiGioia in the studio"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                <h3 className="text-2xl font-bold text-white">Vince DiGioia</h3>
-                <p className="text-white/60 text-sm">Engineer, Producer, Rig Builder</p>
-              </div>
-            </div>
-            <div className="p-6 sm:p-8">
-              <p className="text-[#1d1d1f]/60 text-[15px] leading-relaxed mb-4">
-                15+ years building rigs, soldering cables, and troubleshooting bad tone. Vince is a player, studio owner, and audio engineer out of Houston and Austin. He plays lead guitar with 35 Drive and has toured with Roger Creager, Josh Abbott Band, Reckless Kelly, and Pat Green.
-              </p>
-              <p className="text-[#1d1d1f]/60 text-[15px] leading-relaxed mb-6">
-                He knows what a board needs to survive a 200-show year because he&apos;s lived it. When your rig shows up at TRD, Vince is one of the two sets of hands on it. Nobody else.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {['15+ Years', 'Studio Owner', '35 Drive', 'Roger Creager', 'Josh Abbott Band'].map((tag) => (
-                  <span key={tag} className="text-xs font-medium px-3 py-1 rounded-full bg-[#f5f5f7] text-[#1d1d1f]/50">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="text-center mt-12">
-          <p className="text-[#1d1d1f]/40 text-sm mb-6">
-            Two working musicians who build for working musicians. That&apos;s the whole pitch.
-          </p>
-          <Link
-            href="/book"
-            className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-[#1d1d1f]/90 transition-colors text-sm"
-          >
-            Talk to Us About Your Rig
-          </Link>
-        </div>
-      </Section>
-
-      {/* ──── 6. BUILD GALLERY — The gear porn ──── */}
-      <Section theme="dark" id="gallery" reveal>
-        <div className="text-center mb-10">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-4">300+ Builds</p>
-          <h2 className="trd-section-headline text-[#f5f5f7] mb-2">
-            Flip it over. <span className="trd-gradient-text">Look at the wiring.</span>
-          </h2>
-          <p className="text-[#f5f5f7]/50 text-lg max-w-2xl mx-auto">
-            That&apos;s where you can tell. Color-coded cables, labeled jacks,
-            every run cut to length so there&apos;s nothing bunched up underneath.
-            This is the part most builders skip.
-          </p>
-        </div>
-        <GallerySlider />
-        <div className="text-center mt-10">
-          <Link
-            href="/book"
-            className="trd-cta-gradient inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full text-sm"
-          >
-            Start Your Build
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-          </Link>
-        </div>
-      </Section>
-
-      {/* ──── 7. VIDEO BUILD — Watch it happen ──── */}
-      <Section theme="light" id="video-build" reveal>
-        <div className="text-center mb-12">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Watch a Build</p>
-          <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
-            Bare enclosure to road-ready in 60 seconds.
-          </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">Hand-soldered joints, tested connections, cables cut to fit. Not cut to close-enough.</p>
-        </div>
-
-        <div className="relative w-full rounded-3xl overflow-hidden bg-[#0a0a0a] aspect-video max-w-4xl mx-auto shadow-2xl">
-          <video
-            poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/preview_images/f12872e61445487b86f0ae5df85ba09b.thumbnail.0000000000.jpg"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            className="w-full h-full object-cover"
-          >
-            <source
-              src="https://cdn.shopify.com/videos/c/vp/f12872e61445487b86f0ae5df85ba09b/f12872e61445487b86f0ae5df85ba09b.HD-720p-4.5Mbps-78086312.mp4"
-              type="video/mp4"
-            />
-          </video>
-        </div>
-        <div className="text-center mt-12">
-          <Link
-            href="/book"
-            className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-[#1d1d1f]/90 transition-colors text-sm"
-          >
-            Get Your Rig Built Like This
-          </Link>
-        </div>
-      </Section>
-
-      {/* ──── 8. THE PROCESS — How it works ──── */}
-      <Section theme="lightGray" id="process" reveal>
-        <div className="text-center mb-16">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">How It Works</p>
-          <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
-            From rat&apos;s nest to <span className="trd-gradient-text">stage-ready.</span>
-          </h2>
-          <p className="text-[#1d1d1f]/50 text-lg max-w-2xl mx-auto">
-            Three steps. No mystery about what&apos;s happening or what it costs.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {[
-            {
-              number: '01',
-              title: 'We Talk',
-              desc: 'Tell us what you play and what’s bugging you. Maybe it’s a hum you can’t track down, or you’re tap-dancing between three pedals when you should be playing. We’ll go through your signal chain and figure out exactly what the board needs.',
-              image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jacob_S.png',
-            },
-            {
-              number: '02',
-              title: 'We Build',
-              desc: 'Hand-soldered connections. Cables cut to fit, not cut to close-enough. Isolated power so your drive pedals aren’t picking up noise from your digital stuff. We road-test the whole thing before it ships. And yeah, flip it over and look at the wiring.',
-              image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/John_A._1.png',
-            },
-            {
-              number: '03',
-              title: 'You Plug In',
-              desc: 'Uncase it, plug in, and you’ll hear the difference before you finish your first chord. Dead quiet noise floor. Your band is going to think you bought a new amp. You didn’t. It’s just wired right now.',
-              image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Saxon_W..jpg',
-            },
-          ].map((step) => (
-            <div key={step.number} className="group">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-[#0a0a0a]">
-                <Image
-                  src={step.image}
-                  alt={step.title}
-                  fill
-                  className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-                <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm text-white text-xs font-bold tracking-widest px-3 py-1.5 rounded-full">
-                  STEP {step.number}
+            <div className="mt-14 flex justify-center items-center gap-8 sm:gap-16 pt-8 border-t border-white/10 max-w-xl mx-auto">
+              {[
+                ['300+', 'boards built'],
+                ['17', 'years at the bench'],
+                ['2', 'spots left in 2026'],
+              ].map(([n, l]) => (
+                <div key={l} className="text-center">
+                  <p className={`text-2xl sm:text-3xl font-bold ${n === '2' ? 'trd-gradient-text' : 'text-white'}`}>{n}</p>
+                  <p className="text-[13px] text-white/50 mt-1">{l}</p>
                 </div>
-              </div>
-              <h3 className="text-xl font-bold text-[#1d1d1f] mb-2">{step.title}</h3>
-              <p className="text-[14px] text-[#1d1d1f]/55 leading-relaxed">{step.desc}</p>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
+      </section>
 
-        <div className="text-center mt-16">
-          <p className="text-[18px] text-[#1d1d1f] font-medium mb-1">
-            Builds start at <span className="trd-gradient-text font-bold">$1,999 USD</span>
-          </p>
-          <p className="text-[14px] text-[#1d1d1f]/40 mb-6">
-            Every rig is different so every quote is different. The consultation is free, you get a real number, and there&apos;s nothing hidden.
-          </p>
-          <Link
-            href="/book"
-            className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-[#1d1d1f]/90 transition-colors text-sm"
-          >
-            Get on the List
-          </Link>
+      {/* ───────────── 2. PROOF STRIP ───────────── */}
+      <section className="bg-white border-b border-black/[0.06]">
+        <div className="max-w-[1200px] mx-auto px-6 py-10 flex flex-col md:flex-row items-center gap-5 md:gap-10">
+          <p className="trd-eyebrow text-black/40 shrink-0">Mason has built rigs for</p>
+          <ul className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-2">
+            {artists.map((a) => (
+              <li key={a} className="text-black/80 text-[17px] font-semibold tracking-tight">
+                {a}
+              </li>
+            ))}
+          </ul>
         </div>
-      </Section>
+      </section>
 
-      {/* ──── 9. TONE TUTORING — Secondary offer ──── */}
-      <Section theme="light" id="tone-tutoring" reveal>
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Not Ready for a Build?</p>
-          <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
-            Let&apos;s just talk about your rig first.
+      {/* ───────────── 3. TWO KINDS OF PLAYERS ───────────── */}
+      <section className="bg-white py-24 sm:py-32">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <Reveal className="max-w-3xl mb-14 sm:mb-20">
+            <p className="trd-eyebrow text-black/40 mb-5">Who we build for</p>
+            <h2 className="text-black font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(38px,5.5vw,72px)]">
+              Built for the stage it&apos;s going to live on. <span className="trd-gradient-text">Or the room.</span>
+            </h2>
+          </Reveal>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <Reveal>
+              <ParallaxImage
+                src={img.stage}
+                alt="Guitarist on stage stomping a Rig Doctor pedalboard"
+                className="rounded-[28px] aspect-[4/5] sm:aspect-[4/4.2] bg-black"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10">
+                  <p className="trd-eyebrow text-white/60 mb-3">For the road</p>
+                  <h3 className="text-white text-3xl sm:text-4xl font-bold tracking-tight leading-tight mb-3">
+                    Sticky floors. Spilled beer. Load-in every night.
+                  </h3>
+                  <p className="text-white/70 text-[16px] leading-relaxed max-w-md">
+                    Boards that survive the dive bars and the 200-show years, because a dead pedal mid-set is not an option.
+                  </p>
+                </div>
+              </ParallaxImage>
+            </Reveal>
+            <Reveal delay={120}>
+              <ParallaxImage
+                src={img.room}
+                alt="A finished Rig Doctor pedalboard in warm studio light"
+                className="rounded-[28px] aspect-[4/5] sm:aspect-[4/4.2] bg-black"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10">
+                  <p className="trd-eyebrow text-white/60 mb-3">For the room</p>
+                  <h3 className="text-white text-3xl sm:text-4xl font-bold tracking-tight leading-tight mb-3">
+                    Plug in and hear the quiet.
+                  </h3>
+                  <p className="text-white/70 text-[16px] leading-relaxed max-w-md">
+                    You bought a custom shop guitar and a great amp. We make sure the board in the middle stops getting in their way.
+                  </p>
+                </div>
+              </ParallaxImage>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────── 4. CINEMATIC CABLE ZOOM ───────────── */}
+      <section className="bg-black pt-28 sm:pt-36 pb-10 text-center px-6">
+        <Reveal>
+          <p className="trd-eyebrow text-white/45 mb-5">Flip it over</p>
+          <h2 className="trd-display text-white">
+            The part <span className="trd-gradient-text">nobody sees.</span>
           </h2>
-          <p className="text-[#1d1d1f]/50 text-lg leading-relaxed mb-8 max-w-xl mx-auto">
-            An hour on video with Jacob going through your whole signal chain.
-            Amp settings, effects order, that weird hum that shows up when you
-            kick on your drive. Most guys walk away knowing exactly what to
-            change. Some realize they need a full build. Either way you&apos;ll
-            know where you stand.
+          <p className="mt-6 text-white/60 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
+            The top of a board is the pedals you picked. The bottom is where you can tell who built it. Keep scrolling.
           </p>
-          <div className="inline-flex items-baseline gap-2 mb-8">
-            <span className="text-4xl font-bold text-[#1d1d1f]">$99</span>
-            <span className="text-[#1d1d1f]/40 text-lg">USD / session</span>
-          </div>
-          <div className="block">
-            <Link
-              href="/tone-tutoring"
-              className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full border-2 border-[#1d1d1f]/15 text-[#1d1d1f] hover:border-[#1d1d1f]/30 hover:bg-[#1d1d1f]/[0.03] transition-all text-sm"
-            >
-              Book a Tone Session
-            </Link>
+        </Reveal>
+      </section>
+      <CableZoom />
+
+      {/* ───────────── 5. BEFORE / AFTER CASE STUDIES ───────────── */}
+      <section id="transformations" className="bg-white py-24 sm:py-32">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <Reveal className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+            <p className="trd-eyebrow text-black/40 mb-5">Before and after</p>
+            <h2 className="text-black font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(36px,5vw,64px)]">
+              Same pedals. Same player. <span className="trd-gradient-text">Drag the slider.</span>
+            </h2>
+          </Reveal>
+          <BeforeAfter />
+          <div className="text-center mt-16">
+            <PrimaryCTA className="px-8 py-3.5 text-[15px]">Get your board rebuilt</PrimaryCTA>
           </div>
         </div>
-      </Section>
+      </section>
 
-      {/* ──── 9.5. EMAIL CAPTURE — 20% off Tone Tutoring ──── */}
-      <section className="relative overflow-hidden bg-[#1d1d1f] py-16 sm:py-20">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%)]" />
-        <div className="relative max-w-2xl mx-auto px-6 text-center">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/30 mb-4">Exclusive Offer</p>
-          <h3 className="text-3xl sm:text-4xl font-bold text-[#f5f5f7] tracking-tight mb-3">
-            Get <span className="trd-gradient-text">20% off</span> your first Tone Tutoring session.
-          </h3>
-          <p className="text-[#f5f5f7]/50 text-base mb-8 max-w-lg mx-auto">
-            Drop your email and we&apos;ll send you a code for $20 off your first session.
-            One hour with Jacob going through your whole signal chain. No strings attached.
-          </p>
-          <form
-            className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-            action="#"
-            data-hubspot-form="tone-tutoring-discount"
-          >
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="your@email.com"
-              className="flex-1 px-5 py-3.5 rounded-full bg-white/10 border border-white/15 text-white placeholder:text-white/30 focus:outline-none focus:border-[#0071E3] focus:ring-1 focus:ring-[#0071E3] text-sm"
+      {/* ───────────── 6. THE PROCESS ───────────── */}
+      <section id="process" className="bg-[#f5f5f7] py-24 sm:py-32">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <Reveal className="max-w-3xl mb-16 sm:mb-20">
+            <p className="trd-eyebrow text-black/40 mb-5">How a pro build works</p>
+            <h2 className="text-black font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(36px,5vw,64px)]">
+              Four steps. <span className="trd-gradient-text">No mystery.</span>
+            </h2>
+            <p className="mt-5 text-black/55 text-lg sm:text-xl leading-relaxed">
+              You know what is happening, what it costs and who is doing it at every stage.
+            </p>
+          </Reveal>
+          <ol className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {steps.map(({ n, title, body, image, Icon }, i) => (
+              <Reveal as="li" key={n} delay={(i % 2) * 120} className="bg-white rounded-[28px] overflow-hidden border border-black/[0.04]">
+                <div className="trd-photo relative aspect-[16/10] bg-black">
+                  <Image src={image} alt={title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+                  <span className="absolute top-5 left-5 text-white/90 text-[13px] font-semibold tracking-[0.2em] bg-black/45 backdrop-blur-md rounded-full px-3.5 py-1.5">
+                    STEP {n}
+                  </span>
+                </div>
+                <div className="p-8 sm:p-10 flex gap-5">
+                  <span className="trd-icon-ring w-12 h-12 shrink-0 text-black">
+                    <Icon size={24} />
+                  </span>
+                  <div>
+                    <h3 className="text-2xl font-bold tracking-tight text-black mb-2">{title}</h3>
+                    <p className="text-black/55 text-[16px] leading-relaxed">{body}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </ol>
+          <div className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-6 bg-white rounded-[28px] px-8 sm:px-10 py-8 border border-black/[0.04]">
+            <div>
+              <p className="text-black text-xl font-semibold">
+                Builds start at <span className="trd-gradient-text font-bold">$1,999 USD</span>
+              </p>
+              <p className="text-black/50 text-[15px] mt-1">Free consultation. A real quote before anything gets cut.</p>
+            </div>
+            <PrimaryCTA className="px-8 py-3.5 text-[15px] shrink-0">Start with a free call</PrimaryCTA>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────── 7. UNDER THE HOOD ───────────── */}
+      <section className="bg-black py-24 sm:py-32">
+        <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-center">
+          <Reveal>
+            <ParallaxImage
+              src={img.underside}
+              alt="Cable routing and power on a Rig Doctor pedalboard"
+              strength={8}
+              className="rounded-[28px] aspect-[4/3] lg:aspect-[4/4.4] bg-[#111]"
+              sizes="(max-width: 1024px) 100vw, 55vw"
             />
-            <button
-              type="submit"
-              className="trd-cta-gradient px-8 py-3.5 rounded-full font-semibold text-sm whitespace-nowrap"
-            >
-              Send My Code
-            </button>
-          </form>
-          <p className="text-[#f5f5f7]/25 text-xs mt-4">No spam. Just the discount code and maybe a rig tip or two.</p>
-        </div>
-      </section>
-
-      {/* ──── 10. REVIEWS — Volume of social proof ──── */}
-      <Section theme="lightGray" id="customer-reviews" reveal>
-        <div className="text-center mb-12">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">What Players Are Saying</p>
-          <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
-            Don&apos;t take our word for it.
-          </h2>
-          <p className="text-[#1d1d1f]/50 text-lg">These guys came to us with the same stuff you&apos;re dealing with. Read what they said after.</p>
-        </div>
-        <ReviewsMarquee />
-        <div className="text-center mt-12">
-          <Link
-            href="/book"
-            className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-[#1d1d1f]/90 transition-colors text-sm"
-          >
-            Join the List
-          </Link>
-        </div>
-      </Section>
-
-      {/* ──── 11. LEAD CAPTURE — Join the waitlist ──── */}
-      <Section theme="light" id="get-in-touch" reveal>
-        <div className="text-center mb-10">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">Get In Touch</p>
-          <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
-            Tell us what&apos;s going on with your rig.
-          </h2>
-          <p className="text-[#1d1d1f]/50 text-lg max-w-xl mx-auto">
-            2 spots left this year. Drop your info and we&apos;ll get back to you
-            within a day. Just a conversation. No pitch, no pressure.
-          </p>
-        </div>
-        <LeadCaptureForm />
-      </Section>
-
-      {/* ──── 12. FAQ — Remove objections ──── */}
-      <Section theme="lightGray" id="faq" reveal>
-        <div className="text-center mb-12">
-          <h2 className="trd-section-headline text-[#1d1d1f]">
-            Questions we get a lot.
-          </h2>
-        </div>
-
-        <div className="max-w-3xl mx-auto divide-y divide-[#1d1d1f]/10">
-          {[
-            {
-              q: "Why only 18 builds a year?",
-              a: "Same hands wire every board from start to finish. That’s the only way we can guarantee the work. We could take on more, but then we’d be cutting corners, and that’s not something we’re willing to do. We’re down to the last 2 spots for this year.",
-            },
-            {
-              q: "How much does a custom build cost?",
-              a: "Starts at $1,999 USD and goes up depending on how complex the rig is. MIDI switching, loop systems, that kind of thing adds to it. The consultation is free and you’ll get a real number up front. No surprises after the fact.",
-            },
-            {
-              q: "What is Tone Tutoring?",
-              a: "An hour on video with Jacob going through your whole signal chain. Your amp settings, your effects order, that noise you can’t figure out. $99 USD. A lot of guys tell us they wish they’d done it years ago.",
-            },
-            {
-              q: "How long does a build take?",
-              a: "Usually 4 to 8 weeks depending on what we’re building and whether we’re waiting on any parts. If you’ve got a tour date coming up, let us know and we’ll make it work.",
-            },
-            {
-              q: "Do I need to ship my pedals to you?",
-              a: "Yeah, most guys ship everything to us in Houston. We’ll send you a label and walk you through how to pack it so nothing gets damaged. Tone Tutoring is all remote though, just a video call.",
-            },
-            {
-              q: "What if something goes wrong after?",
-              a: "Call us. Seriously. We’ve had guys reach out six months, a year later with a question and we get back to them the same day. We’re not going to build you a board and then disappear.",
-            },
-            {
-              q: "Do you do MIDI and switching rigs?",
-              a: "That’s actually where things get fun for us. MIDI-controlled rigs, loop switchers, preset routing, the whole deal. Some of our best work is on complex switching systems where everything needs to talk to everything else.",
-            },
-          ].map((item, idx) => (
-            <details key={idx} className="group cursor-pointer">
-              <summary className="flex items-center justify-between py-5 [&::-webkit-details-marker]:hidden list-none">
-                <span className="font-medium text-[#1d1d1f] text-base sm:text-lg pr-4">{item.q}</span>
-                <svg
-                  className="w-5 h-5 flex-shrink-0 text-[#1d1d1f]/30 transition-transform duration-200 group-open:rotate-180"
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <p className="text-[#1d1d1f]/60 pb-5 leading-relaxed text-[15px]">{item.a}</p>
-            </details>
-          ))}
-        </div>
-      </Section>
-
-      {/* ──── 13. CLOSING CTA — Final push with scarcity ──── */}
-      <section className="relative overflow-hidden bg-[#1d1d1f] py-20 sm:py-28">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(191,90,242,0.06)_0%,transparent_50%)]" />
-        <div className="relative max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#f5f5f7] tracking-tight mb-4">
-            2 spots left. That&apos;s it.
-          </h2>
-          <p className="text-[#f5f5f7]/50 text-lg mb-10 max-w-xl mx-auto">
-            You already own the gear. Let us make it sound like you thought it
-            would when you bought it. Tell us what you play and what&apos;s
-            not working. We&apos;ll tell you what we&apos;d do.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link
-              href="/book"
-              className="trd-cta-gradient inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg"
-            >
-              Claim Your Spot
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-            </Link>
-            <Link
-              href="/tone-tutoring"
-              className="inline-flex items-center justify-center gap-2 font-semibold px-10 py-4 rounded-full text-lg border-2 border-white/20 text-white hover:border-white/50 hover:bg-white/[0.06] transition-all duration-300"
-            >
-              Fix Your Tone &mdash; $99
-            </Link>
+          </Reveal>
+          <div>
+            <Reveal>
+              <p className="trd-eyebrow text-white/45 mb-5">What you&apos;re paying for</p>
+              <h2 className="text-white font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(34px,4.5vw,56px)] mb-12">
+                Uncompromising, <span className="trd-gradient-text">down to the solder.</span>
+              </h2>
+            </Reveal>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
+              {features.map(({ Icon, title, body }, i) => (
+                <Reveal as="li" key={title} delay={i * 70}>
+                  <span className="trd-icon-ring w-12 h-12 text-white mb-4">
+                    <Icon size={24} />
+                  </span>
+                  <h3 className="text-white font-semibold text-[17px] mb-1.5">{title}</h3>
+                  <p className="text-white/55 text-[15px] leading-relaxed">{body}</p>
+                </Reveal>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
+
+      {/* ───────────── 8. THE BUILDERS ───────────── */}
+      <section id="builders" className="bg-white py-24 sm:py-32">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <Reveal className="max-w-3xl mb-14 sm:mb-20">
+            <p className="trd-eyebrow text-black/40 mb-5">Who&apos;s building your rig</p>
+            <h2 className="text-black font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(36px,5vw,64px)]">
+              Two working players. <span className="trd-gradient-text">Nobody else touches it.</span>
+            </h2>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {[
+              {
+                name: 'Mason Marangella',
+                role: 'Founder, Vertex Effects',
+                image: img.mason,
+                body: '17+ years at the bench. Mason founded Vertex Effects and built the Vertex by Gator pedalboard series. He has built rigs for Andy Timmons, Oz Noy, Michael Landau, Kirk Fletcher, Josh Smith and Matt Schofield. Real builds that went on real tours.',
+              },
+              {
+                name: 'Vince DiGioia',
+                role: 'Engineer, producer, touring guitarist',
+                image: img.vince,
+                body: '15+ years building rigs and chasing down bad tone. Vince plays lead with 35 Drive and has toured with Roger Creager, Josh Abbott Band, Reckless Kelly and Pat Green. He knows what a board needs to survive a 200-show year because he has lived it.',
+              },
+            ].map((b, i) => (
+              <Reveal key={b.name} delay={i * 120} className="group rounded-[28px] overflow-hidden bg-[#f5f5f7]">
+                <div className="trd-photo relative aspect-square bg-black">
+                  <Image src={b.image} alt={b.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-top" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 p-8">
+                    <h3 className="text-white text-3xl font-bold tracking-tight">{b.name}</h3>
+                    <p className="text-white/65 text-[15px] mt-1">{b.role}</p>
+                  </div>
+                </div>
+                <p className="p-8 text-black/60 text-[16px] leading-relaxed">{b.body}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────── 9. THE BUILD WALL ───────────── */}
+      <section id="gallery" className="bg-black py-24 sm:py-32">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
+          <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 px-2">
+            <div className="max-w-2xl">
+              <p className="trd-eyebrow text-white/45 mb-5">300+ boards and counting</p>
+              <h2 className="text-white font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(36px,5vw,64px)]">
+                Every one of these <span className="trd-gradient-text">went out the door quiet.</span>
+              </h2>
+            </div>
+            <Link href="/gallery" className="text-white/70 hover:text-white text-[15px] font-medium inline-flex items-center gap-2 shrink-0">
+              See the full gallery <IconArrow />
+            </Link>
+          </Reveal>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
+            {wall.map((f, i) => (
+              <Reveal
+                key={f}
+                delay={(i % 4) * 60}
+                className={`trd-photo relative rounded-2xl bg-[#111] ${i === 0 || i === 7 ? 'md:col-span-2 md:row-span-2 aspect-square' : 'aspect-square'}`}
+              >
+                <Image
+                  src={`${CDN}${f}`}
+                  alt="Custom pedalboard built by The Rig Doctor"
+                  fill
+                  sizes={i === 0 || i === 7 ? '(max-width: 768px) 100vw, 50vw' : '(max-width: 768px) 50vw, 25vw'}
+                  className="object-cover"
+                />
+              </Reveal>
+            ))}
+          </div>
+          <div className="text-center mt-14">
+            <PrimaryCTA className="px-8 py-3.5 text-[15px]">Put your board on this wall</PrimaryCTA>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────── 10. REVIEWS ───────────── */}
+      <section id="customer-reviews" className="bg-white py-24 sm:py-32">
+        <Reveal className="text-center max-w-3xl mx-auto px-6 mb-12">
+          <p className="trd-eyebrow text-black/40 mb-5">From the players</p>
+          <h2 className="text-black font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(36px,5vw,64px)]">
+            &ldquo;I genuinely thought something <span className="trd-gradient-text">was unplugged.&rdquo;</span>
+          </h2>
+        </Reveal>
+        <ReviewsMarquee />
+      </section>
+
+      {/* ───────────── 11. TONE TUTORING + OPT-IN ───────────── */}
+      <section id="tone-tutoring" className="bg-[#f5f5f7] py-24 sm:py-32">
+        <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <Reveal className="relative aspect-[4/3] rounded-[28px] overflow-hidden bg-black order-2 lg:order-1">
+            <video
+              className="absolute inset-0 w-full h-full object-cover"
+              poster="https://cdn.shopify.com/s/files/1/0528/3171/5486/files/preview_images/5f0a62a68694406d95b83a837a56c2d0.thumbnail.0000000000.jpg"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="A Tone Tutoring session"
+            >
+              <source
+                src="https://cdn.shopify.com/videos/c/vp/5f0a62a68694406d95b83a837a56c2d0/5f0a62a68694406d95b83a837a56c2d0.HD-720p-3.0Mbps-71202543.mp4"
+                type="video/mp4"
+              />
+            </video>
+          </Reveal>
+          <Reveal className="order-1 lg:order-2">
+            <p className="trd-eyebrow text-black/40 mb-5">Not ready for a build?</p>
+            <h2 className="text-black font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(34px,4.5vw,56px)] mb-5">
+              Start with an hour on <span className="trd-gradient-text">your tone.</span>
+            </h2>
+            <p className="text-black/55 text-lg leading-relaxed mb-8">
+              One video call going through your whole signal chain. Amp settings, pedal order, that hum that shows up when
+              you kick on a drive. Most players leave knowing exactly what to change. Some find out they need a build.
+            </p>
+            <div className="flex flex-wrap items-center gap-5 mb-10">
+              <Link href="/tone-tutoring" className="trd-cta-ink inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-[15px]">
+                Book Tone Tutoring &middot; $99
+              </Link>
+              <span className="text-black/45 text-[15px]">USD per session</span>
+            </div>
+            <div className="border-t border-black/10 pt-8">
+              <p className="text-black font-semibold mb-1">Want 20% off your first session?</p>
+              <p className="text-black/50 text-[15px] mb-4">Drop your email. We will send the code and the occasional rig tip. That&apos;s it.</p>
+              <ToneOptIn />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ───────────── 12. TALK TO US + FAQ ───────────── */}
+      <section id="get-in-touch" className="bg-white py-24 sm:py-32">
+        <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <Reveal>
+            <p className="trd-eyebrow text-black/40 mb-5">Tell us about your rig</p>
+            <h2 className="text-black font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(34px,4.5vw,56px)] mb-5">
+              What&apos;s going on with your board?
+            </h2>
+            <p className="text-black/55 text-lg leading-relaxed mb-10">
+              Two spots left this year. Tell us what you play and what isn&apos;t working. A builder gets back to you within a day.
+            </p>
+            <div className="[&>div]:mx-0">
+              <LeadCaptureForm />
+            </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <p className="trd-eyebrow text-black/40 mb-5">Questions we get a lot</p>
+            <div className="divide-y divide-black/10 border-y border-black/10">
+              {faqs.map((f) => (
+                <details key={f.q} className="group">
+                  <summary className="flex items-center justify-between gap-6 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                    <span className="text-black font-medium text-[17px]">{f.q}</span>
+                    <span className="trd-icon-ring w-8 h-8 shrink-0 text-black transition-transform duration-300 group-open:rotate-45">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                        <path d="M7 1v12M1 7h12" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <p className="text-black/55 text-[16px] leading-relaxed pb-6 pr-12">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ───────────── 13. CLOSE ───────────── */}
+      <ParallaxImage src={img.roomAlt} alt="Close-up of a finished Rig Doctor pedalboard" strength={10} className="bg-black min-h-[88svh] flex items-center">
+        <div className="absolute inset-0 bg-black/65" />
+        <div className="relative z-10 w-full max-w-4xl mx-auto px-6 py-28 text-center">
+          <p className="trd-eyebrow text-white/55 mb-6">2 build spots left in 2026</p>
+          <h2 className="trd-display text-white mb-8">
+            You already own the gear. <span className="trd-gradient-text">Let&apos;s hear it.</span>
+          </h2>
+          <p className="text-white/70 text-lg sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+            Tell us what you play and what isn&apos;t working. We&apos;ll tell you exactly what we would do. The call is free.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+            <PrimaryCTA className="px-9 py-4 text-[17px]">Book a free rig consultation</PrimaryCTA>
+            <Link href="/tone-tutoring" className="trd-cta-ghost-dark inline-flex items-center justify-center font-semibold px-9 py-4 rounded-full text-[17px]">
+              Tone Tutoring &middot; $99
+            </Link>
+          </div>
+        </div>
+      </ParallaxImage>
     </>
   );
 }
