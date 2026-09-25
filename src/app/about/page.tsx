@@ -92,7 +92,7 @@ export default function AboutPage() {
           We started building pedalboards because nobody was doing it right.
         </h1>
         <p className="text-lg text-[#f5f5f7]/60 max-w-2xl">
-          17 years. 500+ rigs. Three founders who play guitar and actually
+          17 years. 300+ rigs. Three founders who play guitar and actually
           care whether your signal chain is clean.
         </p>
       </Section>
@@ -232,7 +232,7 @@ export default function AboutPage() {
       <Section theme="dark">
         <div className="grid grid-cols-3 gap-6 text-center">
           {[
-            { number: '500+', label: 'Rigs built' },
+            { number: '300+', label: 'Rigs built' },
             { number: '17', label: 'Years at the bench' },
             { number: '50+', label: 'Touring artists' },
           ].map((stat) => (

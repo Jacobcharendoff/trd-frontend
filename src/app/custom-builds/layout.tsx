@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Custom Pedalboard Builds | The Rig Doctor',
     description:
-      'Hand-wired custom pedalboard builds. Fully isolated power, engineered signal paths, road-tested. 500+ rigs built. From $1,999 USD.',
+      'Hand-wired custom pedalboard builds. Fully isolated power, engineered signal paths, road-tested. 300+ rigs built. From $1,999 USD.',
     images: [
       {
         url: '/og-image.png',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Custom Pedalboard Builds | The Rig Doctor',
     description:
-      'Hand-wired custom pedalboard builds. Fully isolated power, road-tested. 500+ rigs. From $1,999 USD.',
+      'Hand-wired custom pedalboard builds. Fully isolated power, road-tested. 300+ rigs. From $1,999 USD.',
     images: ['/og-image.png'],
   },
 };

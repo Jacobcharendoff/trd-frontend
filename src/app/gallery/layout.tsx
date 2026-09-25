@@ -3,11 +3,11 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Custom Pedalboard Gallery',
   description:
-    'Browse 500+ custom pedalboard builds by The Rig Doctor. Touring rigs, studio boards, worship setups, and home player builds. Houston, TX.',
+    'Browse 300+ custom pedalboard builds by The Rig Doctor. Touring rigs, studio boards, worship setups, and home player builds. Houston, TX.',
   openGraph: {
     title: 'Custom Pedalboard Gallery | The Rig Doctor',
     description:
-      '500+ custom pedalboard builds. Touring rigs, studio boards, worship setups, and home player builds.',
+      '300+ custom pedalboard builds. Touring rigs, studio boards, worship setups, and home player builds.',
     images: [
       {
         url: '/og-image.png',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Custom Pedalboard Gallery | The Rig Doctor',
     description:
-      '500+ custom pedalboard builds. Touring rigs, studio boards, worship, and home player builds.',
+      '300+ custom pedalboard builds. Touring rigs, studio boards, worship, and home player builds.',
     images: ['/og-image.png'],
   },
 };
