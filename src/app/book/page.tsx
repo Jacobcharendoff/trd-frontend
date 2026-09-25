@@ -2,424 +2,289 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Section from '@/components/Section';
-import TestimonialCarousel from '@/components/TestimonialCarousel';
 import BeforeAfter from '@/components/BeforeAfter';
+import ReviewsMarquee from '@/components/ReviewsMarquee';
+import ParallaxImage from '@/components/home/ParallaxImage';
+import Reveal from '@/components/home/Reveal';
+import {
+  IconVideo,
+  IconBlueprint,
+  IconSolder,
+  IconShip,
+  IconQuiet,
+  IconLifetime,
+  IconArrow,
+} from '@/components/home/Icons';
 
-/* ──── Build images ──── */
-const buildImages = [
-  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jacob_S.png', alt: 'Jacob S. custom pedalboard build' },
-  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/John_A._1.png', alt: 'John A. custom pedalboard build' },
-  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Saxon_W..jpg', alt: 'Saxon W. custom pedalboard build' },
-  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Javy_B.png?v=1773867365', alt: 'Javy B. custom pedalboard build' },
-  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/William_O._1.png?v=1773867364', alt: 'William O. custom pedalboard build' },
-  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Josh_W.png?v=1773867364', alt: 'Josh W. custom pedalboard build' },
-  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Vince_D.png?v=1773867366', alt: 'Vince D. custom pedalboard build' },
-  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Hunter_W._1.jpg?v=1774980806', alt: 'Hunter W. custom pedalboard build' },
-  { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Vince_D._2.jpg?v=1777143325', alt: 'Vince D. second custom build' },
+const CDN = 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/';
+
+const wall = [
+  'Agustin_Q..jpg',
+  'Hunter_W._1.jpg',
+  'Javy_B.png',
+  'AfterlightImage-4.jpg',
+  'Chris_G.png',
+  'Saxon_W..jpg',
+  'Shannon_G._2.png',
+  'Jeremy_B.png',
 ];
 
-/* ──── Hero: Build Gallery ──── */
-function BuildGalleryHero() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+const artists = ['Andy Timmons', 'Oz Noy', 'Michael Landau', 'Kirk Fletcher', 'Josh Smith', 'Matt Schofield'];
 
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    let frame: number;
-    let pos = 0;
-    const speed = 0.4;
-
-    const animate = () => {
-      pos += speed;
-      if (pos >= el.scrollWidth / 2) pos = 0;
-      el.scrollLeft = pos;
-      frame = requestAnimationFrame(animate);
-    };
-    frame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frame);
-  }, []);
-
-  const doubled = [...buildImages, ...buildImages];
-
-  return (
-    <div className="relative bg-black pt-28 pb-0 overflow-hidden">
-      {/* Scrolling build gallery */}
-      <div
-        ref={scrollRef}
-        className="flex gap-3 sm:gap-4 overflow-hidden px-4"
-        style={{ scrollBehavior: 'auto' }}
-      >
-        {doubled.map((img, idx) => (
-          <div
-            key={idx}
-            className="relative flex-shrink-0 w-[280px] sm:w-[360px] lg:w-[420px] aspect-[4/3] rounded-2xl overflow-hidden"
-          >
-            <Image
-              src={img.src}
-              alt={img.alt}
-              fill
-              className="object-cover"
-              sizes="(max-width: 640px) 280px, (max-width: 1024px) 360px, 420px"
-              priority={idx < 4}
-            />
-          </div>
-        ))}
-      </div>
-
-      {/* Gradient overlay into content */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />
-
-      {/* Headline overlay */}
-      <div className="relative z-10 max-w-[1080px] mx-auto px-6 pt-10 pb-16 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/[0.05] border border-white/[0.08] rounded-full mb-6">
-          <span className="inline-block w-2 h-2 rounded-full bg-[#0071E3]" />
-          <span className="text-[13px] text-white/[0.85]">Custom builds &middot; Houston, TX</span>
-        </div>
-
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white mb-4">
-          {'Stop gigging with a '}
-          <span className="trd-gradient-text">rat&apos;s nest.</span>
-        </h1>
-
-        <p className="text-[18px] text-white/[0.65] leading-relaxed max-w-2xl mx-auto mb-8">
-          You know the drill. Ground loops, spaghetti wiring, 15 minutes of setup
-          while your band waits. We build boards that show up dead quiet and
-          stage-ready. Uncase, plug in, play.
-        </p>
-
-        <div className="flex justify-center items-center gap-8 sm:gap-12">
-          {[
-            { value: '300+', label: 'rigs built' },
-            { value: '17', label: 'years at the bench' },
-            { value: '4-8', label: 'weeks to ship' },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="text-xl sm:text-2xl font-bold text-white">{stat.value}</p>
-              <p className="text-xs text-white/[0.45] mt-0.5">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* ──── Lead Capture Form ──── */
-function LeadForm() {
+/* ─────────────── Form ─────────────── */
+function ConsultForm() {
   const router = useRouter();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    instrument: '',
-    rig: '',
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', instrument: '', rig: '' });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
-
     try {
       const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-
-      if (res.ok) {
-        router.push('/book/thank-you');
-      } else {
-        setStatus('error');
-      }
+      if (res.ok) router.push('/book/thank-you');
+      else setStatus('error');
     } catch {
       setStatus('error');
     }
   };
 
-  const inputClass =
-    'w-full px-4 py-3.5 rounded-xl bg-white border border-[#1d1d1f]/10 text-[#1d1d1f] placeholder:text-[#1d1d1f]/30 focus:outline-none focus:ring-2 focus:ring-[#0071E3]/30 focus:border-[#0071E3]/50 transition-all text-[15px]';
+  const input =
+    'w-full px-4 py-3.5 rounded-xl bg-[#f5f5f7] border border-transparent text-black placeholder:text-black/35 focus:outline-none focus:bg-white focus:border-[#8E3FD9]/40 focus:ring-4 focus:ring-[#8E3FD9]/10 transition-all text-[15px]';
 
   return (
-    <Section theme="light" id="get-started" reveal>
-      <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-10">
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">
-            Start Here
-          </p>
-          <h2 className="trd-section-headline text-[#1d1d1f] mb-2">
-            Tell us what&apos;s going on with <span className="trd-gradient-text">your rig.</span>
-          </h2>
-          <p className="text-[#1d1d1f]/50 text-lg max-w-xl mx-auto">
-            Hum you can&apos;t track down? Tone suck you can&apos;t explain? Board
-            that looks like a garage sale? Whatever it is, we&apos;ve probably
-            fixed it a hundred times. Drop your info and we&apos;ll get back
-            to you within 24 hours. Just a conversation. No pitch.
-          </p>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <input
-              type="text"
-              placeholder="Your name"
-              required
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className={inputClass}
-            />
-            <input
-              type="email"
-              placeholder="Your email"
-              required
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className={inputClass}
-            />
-          </div>
-
-          <input
-            type="text"
-            placeholder="What do you play? (guitar, bass, keys, etc.)"
-            value={formData.instrument}
-            onChange={(e) => setFormData({ ...formData, instrument: e.target.value })}
-            className={inputClass}
-          />
-
-          <textarea
-            placeholder="What's bugging you about your setup? Noise, hum, tap-dancing between pedals, a rat's nest of cables under the board, tone that disappears by the third pedal in the chain... tell us everything. The more detail the better."
-            rows={4}
-            value={formData.rig}
-            onChange={(e) => setFormData({ ...formData, rig: e.target.value })}
-            className={`${inputClass} resize-none`}
-          />
-
-          <button
-            type="submit"
-            disabled={status === 'submitting'}
-            className="w-full py-4 px-6 bg-[#0071E3] text-white font-semibold rounded-full hover:bg-[#005BB5] transition-colors text-[16px] disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {status === 'submitting' ? 'Sending...' : 'Get My Free Consultation'}
-          </button>
-
-          {status === 'error' && (
-            <p className="text-red-500 text-sm text-center">
-              Something went wrong. Try again or email us directly.
-            </p>
-          )}
-
-          <div className="flex flex-wrap justify-center gap-6 pt-4">
-            {[
-              { icon: 'M12 8v4l3 2m6-3a9 9 0 11-18 0 9 9 0 0118 0z', label: '30-minute call' },
-              { icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z', label: 'Completely free' },
-              { icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z', label: 'No obligation' },
-            ].map((meta) => (
-              <div key={meta.label} className="flex items-center gap-2">
-                <svg className="w-4 h-4 text-[#0071E3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={meta.icon} />
-                </svg>
-                <span className="text-[13px] text-[#1d1d1f]/50">{meta.label}</span>
-              </div>
-            ))}
-          </div>
-        </form>
-
-        {/* Tone Tutoring callout */}
-        <div className="mt-10 bg-[#f5f5f7] border border-[#1d1d1f]/[0.06] rounded-2xl p-5 text-center">
-          <p className="text-[14px] text-[#1d1d1f]/[0.85] mb-1 font-medium">
-            Not sure you need a full build yet?
-          </p>
-          <p className="text-[13px] text-[#1d1d1f]/[0.55]">
-            Grab a Tone Tutoring session first. An hour on video with Jacob, just you and your rig. He&apos;ll tell you exactly what&apos;s going on and what he&apos;d do about it. No pressure either way.{' '}
-            <Link href="/tone-tutoring" className="text-[#0071E3] hover:text-[#005BB5] transition-colors font-semibold">
-              Book Tone Tutoring ($99) &rarr;
-            </Link>
-          </p>
-        </div>
+    <form id="consult-form" onSubmit={handleSubmit} className="scroll-mt-32 bg-white rounded-[28px] p-6 sm:p-8 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] space-y-3.5">
+      <div className="mb-2">
+        <p className="text-black text-xl font-bold tracking-tight">Start your free consultation</p>
+        <p className="text-black/50 text-[14px] mt-1">A builder replies within 24 hours.</p>
       </div>
-    </Section>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+        <label className="sr-only" htmlFor="c-name">Your name</label>
+        <input id="c-name" type="text" placeholder="Your name" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={input} />
+        <label className="sr-only" htmlFor="c-email">Your email</label>
+        <input id="c-email" type="email" placeholder="Your email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={input} />
+      </div>
+      <label className="sr-only" htmlFor="c-inst">What do you play?</label>
+      <input id="c-inst" type="text" placeholder="What do you play? Guitar, bass, keys..." value={formData.instrument} onChange={(e) => setFormData({ ...formData, instrument: e.target.value })} className={input} />
+      <label className="sr-only" htmlFor="c-rig">What's going on with your rig?</label>
+      <textarea
+        id="c-rig"
+        rows={4}
+        placeholder="What's bugging you? Hum, tap-dancing between pedals, a mess under the board, tone that disappears by the third pedal. The more detail the better."
+        value={formData.rig}
+        onChange={(e) => setFormData({ ...formData, rig: e.target.value })}
+        className={`${input} resize-none`}
+      />
+      <button
+        type="submit"
+        disabled={status === 'submitting'}
+        className="trd-cta-gradient w-full inline-flex items-center justify-center gap-2 py-4 rounded-full font-semibold text-[16px] disabled:opacity-60"
+      >
+        {status === 'submitting' ? 'Sending...' : 'Get my free consultation'}
+        {status !== 'submitting' && <IconArrow />}
+      </button>
+      {status === 'error' && <p className="text-red-600 text-sm text-center">That didn&apos;t go through. Try again or email info@therigdr.com.</p>}
+      <div className="flex flex-wrap justify-center gap-x-5 gap-y-1 pt-1 text-[13px] text-black/45">
+        <span>30-minute call</span>
+        <span aria-hidden="true">&middot;</span>
+        <span>Free</span>
+        <span aria-hidden="true">&middot;</span>
+        <span>No obligation</span>
+      </div>
+    </form>
   );
 }
 
-/* ──── Visual Process Section ──── */
-function ProcessSection() {
-  const steps = [
-    {
-      number: '01',
-      title: 'We Map It Out',
-      description: 'You tell us everything. What you play, what pedals you’re running, what’s driving you nuts. We photograph your current board, diagram the signal chain, and plan the rebuild down to every cable length. No surprises.',
-      image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Jacob_S.png',
-      imageAlt: 'Detailed rig planning and wiring diagram',
-    },
-    {
-      number: '02',
-      title: 'We Build It',
-      description: 'Every connection hand-soldered. Every cable cut to length. Isolated power, clean signal path, cable management that actually holds up 200 shows in. We road-test the whole thing before it ships. Flip it over and look at the wiring. That’s the standard.',
-      image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/John_A._1.png',
-      imageAlt: 'Hand-soldered pedalboard build in progress',
-    },
-    {
-      number: '03',
-      title: 'You Plug In',
-      description: 'Board shows up stage-ready. Uncase it, plug in, and hear the difference. Dead quiet. Zero tone suck. Your band will think you got a new amp. Nope. Same amp. Just a proper signal chain now.',
-      image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Saxon_W..jpg',
-      imageAlt: 'Finished custom pedalboard ready to play',
-    },
-  ];
-
-  return (
-    <Section theme="light" id="process" reveal>
-      <div className="text-center mb-16">
-        <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">
-          How It Works
-        </p>
-        <h2 className="trd-section-headline text-[#1d1d1f] mb-4">
-          From spaghetti to <span className="trd-gradient-text">stage-ready.</span>
-        </h2>
-        <p className="text-[#1d1d1f]/50 text-lg max-w-2xl mx-auto">
-          Three steps. You know exactly what&apos;s happening the whole way through.
-        </p>
-      </div>
-
-      <div className="space-y-20">
-        {steps.map((step, idx) => (
-          <div
-            key={step.number}
-            className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
-              idx % 2 === 1 ? 'lg:[direction:rtl]' : ''
-            }`}
-          >
-            <div className={`${idx % 2 === 1 ? 'lg:[direction:ltr]' : ''}`}>
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#0a0a0a] shadow-xl group">
-                <Image
-                  src={step.image}
-                  alt={step.imageAlt}
-                  fill
-                  className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white text-xs font-bold tracking-widest px-3 py-1.5 rounded-full">
-                  STEP {step.number}
-                </div>
-              </div>
-            </div>
-
-            <div className={`space-y-6 ${idx % 2 === 1 ? 'lg:[direction:ltr]' : ''}`}>
-              <div className="text-6xl sm:text-7xl font-bold trd-gradient-text opacity-30">
-                {step.number}
-              </div>
-              <h3 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] -mt-4">
-                {step.title}
-              </h3>
-              <p className="text-[16px] text-[#1d1d1f]/60 leading-relaxed max-w-md">
-                {step.description}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="text-center mt-20 space-y-4">
-        <p className="text-[18px] text-[#1d1d1f] font-medium">
-          Builds typically start from{' '}
-          <span className="trd-gradient-text font-bold">$1,999 USD</span>
-        </p>
-        <p className="text-[14px] text-[#1d1d1f]/40">
-          Every rig is different, so every quote is different. The consultation is free and you&apos;ll get a straight number. Buy once, cry once.
-        </p>
-      </div>
-    </Section>
-  );
-}
-
-/* ──── Before/After Transformation ──── */
-function TransformationSection() {
-  return (
-    <Section theme="dark" id="before-after" reveal>
-      <div className="text-center mb-16">
-        <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-4">
-          The Difference
-        </p>
-        <h2 className="trd-section-headline text-[#f5f5f7] mb-2">
-          Same pedals. Same player. <span className="trd-gradient-text">Completely different rig.</span>
-        </h2>
-        <p className="text-[#f5f5f7]/50 text-lg">
-          The only thing that changed is who wired it. Drag the slider.
-        </p>
-      </div>
-      <BeforeAfter theme="dark" />
-    </Section>
-  );
-}
-
-/* ──── Build Gallery Strip ──── */
-function GalleryStrip() {
-  const images = [
-    { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Javy_B.png?v=1773867365', alt: 'Javy B. build' },
-    { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/William_O._1.png?v=1773867364', alt: 'William O. build' },
-    { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Josh_W.png?v=1773867364', alt: 'Josh W. build' },
-    { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Vince_D.png?v=1773867366', alt: 'Vince D. build' },
-    { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Hunter_W._1.jpg?v=1774980806', alt: 'Hunter W. build' },
-    { src: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/Vince_D._2.jpg?v=1777143325', alt: 'Vince D. board' },
-  ];
-
-  return (
-    <Section theme="lightGray" id="recent-builds" reveal>
-      <div className="text-center mb-10">
-        <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">
-          Recent Builds
-        </p>
-        <h2 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] mb-2">
-          Flip it over. Look at the wiring.
-        </h2>
-        <p className="text-[#1d1d1f]/50 text-lg max-w-xl mx-auto">
-          Color-coded cables. Labeled jacks. Every cable cut to length. This is what 17 years at the bench looks like.
-        </p>
-      </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
-        {images.map((img, idx) => (
-          <div key={idx} className="relative aspect-[4/3] rounded-xl overflow-hidden group bg-[#0a0a0a]">
-            <Image
-              src={img.src}
-              alt={img.alt}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-              sizes="(max-width: 768px) 50vw, 33vw"
-            />
-          </div>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-/* ──── Trusted By ──── */
-function TrustedBy() {
-  return (
-    <Section theme="dark" reveal>
-      <div className="text-center mb-12">
-        <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#f5f5f7]/40 mb-4">On the Road</p>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#f5f5f7] mb-2">
-          200+ shows. Zero failures. <span className="trd-gradient-text">That&apos;s the review.</span>
-        </h2>
-      </div>
-      <TestimonialCarousel theme="dark" />
-    </Section>
-  );
-}
-
-/* ──── Main Page ──── */
 export default function BookPage() {
   return (
     <>
-      <BuildGalleryHero />
-      <LeadForm />
-      <ProcessSection />
-      <TransformationSection />
-      <GalleryStrip />
-      <TrustedBy />
+      {/* ───────── HERO + FORM (above the fold) ───────── */}
+      <section className="relative bg-black overflow-hidden">
+        <div className="absolute inset-0">
+          <Image src={`${CDN}jYrUGxJ.jpg`} alt="" fill priority sizes="100vw" className="object-cover opacity-35" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/40" />
+        </div>
+        <div className="relative max-w-[1200px] mx-auto px-6 py-16 sm:py-24 grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-center">
+          <div>
+            <p className="trd-eyebrow text-white/55 mb-6">Free rig consultation &middot; 2 build spots left in 2026</p>
+            <h1 className="text-white font-bold tracking-[-0.045em] leading-[1.0] text-[clamp(42px,6vw,76px)] mb-6">
+              Tell us about your rig. <span className="trd-gradient-text">We&apos;ll tell you what we&apos;d build.</span>
+            </h1>
+            <p className="text-white/70 text-lg sm:text-xl leading-relaxed max-w-xl mb-10">
+              Ground loops, spaghetti wiring, 15 minutes of setup while the band waits. One call and you&apos;ll know
+              exactly what your board needs and what it costs. No pitch.
+            </p>
+            <ul className="space-y-4 mb-10">
+              {[
+                { Icon: IconVideo, t: 'A 30-minute call with a builder', d: 'Not a sales rep. One of the two guys who wires your board.' },
+                { Icon: IconBlueprint, t: 'A real plan for your rig', d: 'Signal chain, power and switching, mapped to how you play.' },
+                { Icon: IconQuiet, t: 'A straight quote', d: 'Builds start at $1,999 USD. You get a real number up front.' },
+              ].map(({ Icon, t, d }) => (
+                <li key={t} className="flex gap-4">
+                  <span className="trd-icon-ring w-11 h-11 shrink-0 text-white">
+                    <Icon size={22} />
+                  </span>
+                  <div>
+                    <p className="text-white font-semibold text-[16px]">{t}</p>
+                    <p className="text-white/55 text-[15px]">{d}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-3 pt-8 border-t border-white/10">
+              {[
+                ['300+', 'boards built'],
+                ['17', 'years at the bench'],
+                ['4-8', 'weeks to ship'],
+              ].map(([n, l]) => (
+                <div key={l}>
+                  <p className="text-2xl font-bold text-white">{n}</p>
+                  <p className="text-[13px] text-white/50">{l}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="lg:pl-4">
+            <ConsultForm />
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── PROOF STRIP ───────── */}
+      <section className="bg-white border-b border-black/[0.06]">
+        <div className="max-w-[1200px] mx-auto px-6 py-10 flex flex-col md:flex-row items-center gap-5 md:gap-10">
+          <p className="trd-eyebrow text-black/40 shrink-0">Mason has built rigs for</p>
+          <ul className="flex flex-wrap justify-center md:justify-start gap-x-8 gap-y-2">
+            {artists.map((a) => (
+              <li key={a} className="text-black/80 text-[17px] font-semibold tracking-tight">{a}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ───────── WHAT HAPPENS NEXT ───────── */}
+      <section className="bg-white py-24 sm:py-32">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <Reveal className="max-w-3xl mb-16">
+            <p className="trd-eyebrow text-black/40 mb-5">What happens after you hit send</p>
+            <h2 className="text-black font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(36px,5vw,64px)]">
+              From your message <span className="trd-gradient-text">to your board.</span>
+            </h2>
+          </Reveal>
+          <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { n: '01', Icon: IconVideo, t: 'We talk', d: 'A builder reaches out within 24 hours to set up a free 30-minute call about your rig.', img: 'Tone_Consultation_Screen_1.png' },
+              { n: '02', Icon: IconBlueprint, t: 'We design it', d: 'Wiring diagram, power layout, signal chain order and parts list, before a single cable is cut.', img: 'Signal_Routing.png' },
+              { n: '03', Icon: IconSolder, t: 'We build it by hand', d: 'Hand-soldered connections, cables cut to length, isolated power. The same two builders on every board.', img: '6_219d02cd-1fd7-44f4-ab74-f42783ae338f.png' },
+              { n: '04', Icon: IconShip, t: 'It ships ready', d: 'Tested under load, then shipped back insured. Uncase it, plug in, play.', img: 'Pedal-Board-Building-Original-scaled.jpg' },
+            ].map(({ n, Icon, t, d, img }, i) => (
+              <Reveal as="li" key={n} delay={i * 90} className="bg-[#f5f5f7] rounded-[28px] overflow-hidden">
+                <div className="trd-photo relative aspect-[4/3] bg-black">
+                  <Image src={`${CDN}${img}`} alt={t} fill sizes="(max-width: 768px) 100vw, 25vw" className="object-cover" />
+                  <span className="absolute top-4 left-4 text-white/90 text-[12px] font-semibold tracking-[0.2em] bg-black/45 backdrop-blur-md rounded-full px-3 py-1">STEP {n}</span>
+                </div>
+                <div className="p-7">
+                  <span className="trd-icon-ring w-10 h-10 text-black mb-4">
+                    <Icon size={20} />
+                  </span>
+                  <h3 className="text-xl font-bold tracking-tight text-black mb-2">{t}</h3>
+                  <p className="text-black/55 text-[15px] leading-relaxed">{d}</p>
+                </div>
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ───────── BEFORE / AFTER ───────── */}
+      <section className="bg-[#f5f5f7] py-24 sm:py-32">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <Reveal className="text-center max-w-3xl mx-auto mb-16">
+            <p className="trd-eyebrow text-black/40 mb-5">The difference</p>
+            <h2 className="text-black font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(36px,5vw,64px)]">
+              Same pedals. Same player. <span className="trd-gradient-text">Drag the slider.</span>
+            </h2>
+          </Reveal>
+          <BeforeAfter />
+        </div>
+      </section>
+
+      {/* ───────── WALL ───────── */}
+      <section className="bg-black py-24 sm:py-32">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
+          <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 px-2">
+            <div className="max-w-2xl">
+              <p className="trd-eyebrow text-white/45 mb-5">Flip it over</p>
+              <h2 className="text-white font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(36px,5vw,64px)]">
+                Every one of these <span className="trd-gradient-text">went out quiet.</span>
+              </h2>
+            </div>
+            <Link href="/gallery" className="text-white/70 hover:text-white text-[15px] font-medium inline-flex items-center gap-2 shrink-0">
+              See the full gallery <IconArrow />
+            </Link>
+          </Reveal>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
+            {wall.map((f, i) => (
+              <Reveal key={f} delay={(i % 4) * 60} className="trd-photo relative aspect-square rounded-2xl bg-[#111]">
+                <Image src={`${CDN}${f}`} alt="Custom pedalboard built by The Rig Doctor" fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover" />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ───────── REVIEWS ───────── */}
+      <section className="bg-white py-24 sm:py-32">
+        <Reveal className="text-center max-w-3xl mx-auto px-6 mb-12">
+          <p className="trd-eyebrow text-black/40 mb-5">From the players</p>
+          <h2 className="text-black font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(36px,5vw,64px)]">
+            &ldquo;Three tours. Two continents. <span className="trd-gradient-text">Zero issues.&rdquo;</span>
+          </h2>
+        </Reveal>
+        <ReviewsMarquee />
+      </section>
+
+      {/* ───────── NOT READY? ───────── */}
+      <section className="bg-[#f5f5f7] py-20">
+        <Reveal className="max-w-[1000px] mx-auto px-6">
+          <div className="bg-white rounded-[28px] p-8 sm:p-12 flex flex-col md:flex-row items-start md:items-center gap-8 justify-between border border-black/[0.04]">
+            <div className="flex gap-5">
+              <span className="trd-icon-ring w-12 h-12 shrink-0 text-black">
+                <IconLifetime size={24} />
+              </span>
+              <div>
+                <p className="text-black text-2xl font-bold tracking-tight mb-2">Not sure you need a full build yet?</p>
+                <p className="text-black/55 text-[16px] leading-relaxed max-w-xl">
+                  Start with Tone Tutoring. An hour on video going through your whole rig. You&apos;ll know exactly what&apos;s going on and what we&apos;d do about it.
+                </p>
+              </div>
+            </div>
+            <Link href="/tone-tutoring" className="trd-cta-ink inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-[15px] shrink-0">
+              Tone Tutoring &middot; $99
+            </Link>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* ───────── CLOSE ───────── */}
+      <ParallaxImage src={`${CDN}2022-L1010577.jpg`} alt="Close-up of a finished Rig Doctor pedalboard" strength={10} className="bg-black min-h-[70svh] flex items-center">
+        <div className="absolute inset-0 bg-black/65" />
+        <div className="relative z-10 w-full max-w-3xl mx-auto px-6 py-24 text-center">
+          <p className="trd-eyebrow text-white/55 mb-6">2 build spots left in 2026</p>
+          <h2 className="trd-display text-white mb-10">
+            Your board, <span className="trd-gradient-text">done right.</span>
+          </h2>
+          <a href="#consult-form" className="trd-cta-gradient inline-flex items-center gap-2 px-9 py-4 rounded-full font-semibold text-[17px]">
+            Book my free consultation <IconArrow />
+          </a>
+        </div>
+      </ParallaxImage>
     </>
   );
 }

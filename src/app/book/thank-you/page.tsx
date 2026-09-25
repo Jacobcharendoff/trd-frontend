@@ -19,16 +19,16 @@ export default function BookThankYouPage() {
   return (
     <>
       {/* Confirmation Hero */}
-      <div className="bg-black pt-32 pb-16">
+      <div className="bg-black pt-20 sm:pt-28 pb-16">
         <div className="max-w-[680px] mx-auto px-6 text-center">
           {/* Success icon */}
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#0071E3]/10 border border-[#0071E3]/20 mb-8">
-            <svg className="w-8 h-8 text-[#0071E3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="trd-icon-ring w-16 h-16 text-white mb-8">
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight mb-4">
+          <h1 className="text-white font-bold tracking-[-0.045em] leading-[1.02] text-[clamp(40px,6vw,68px)] mb-5">
             {"You're in. "}
             <span className="trd-gradient-text">We got your info.</span>
           </h1>
@@ -40,7 +40,7 @@ export default function BookThankYouPage() {
 
           {/* Arrow pointing down */}
           <div className="animate-bounce">
-            <svg className="w-6 h-6 text-[#0071E3] mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-white/60 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
           </div>
@@ -54,7 +54,7 @@ export default function BookThankYouPage() {
             <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">
               Skip The Wait
             </p>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#1d1d1f] mb-2">
+            <h2 className="text-black font-bold tracking-[-0.04em] leading-[1.05] text-[clamp(30px,4vw,48px)] mb-3">
               Book your free consultation <span className="trd-gradient-text">right now.</span>
             </h2>
             <p className="text-[#1d1d1f]/50 text-lg">
@@ -63,7 +63,7 @@ export default function BookThankYouPage() {
           </div>
 
           {/* HubSpot Calendar Embed */}
-          <div className="bg-[#f5f5f7] rounded-2xl p-4 sm:p-6 border border-[#1d1d1f]/[0.06]">
+          <div className="bg-[#f5f5f7] rounded-[28px] p-4 sm:p-6 border border-black/[0.04]">
             <div
               className="meetings-iframe-container"
               data-src="https://meetings-na2.hubspot.com/trd/rig-build-consultation?embed=true"
@@ -91,8 +91,8 @@ export default function BookThankYouPage() {
               },
             ].map((item) => (
               <div key={item.title} className="text-center">
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#0071E3]/[0.08] mb-3">
-                  <svg className="w-5 h-5 text-[#0071E3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="trd-icon-ring w-11 h-11 text-black mb-3">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} />
                   </svg>
                 </div>
@@ -104,7 +104,7 @@ export default function BookThankYouPage() {
 
           {/* Back link */}
           <div className="text-center mt-12">
-            <Link href="/" className="text-[14px] text-[#0071E3] hover:text-[#005BB5] transition-colors">
+            <Link href="/" className="text-[14px] text-black/60 hover:text-black transition-colors">
               &larr; Back to The Rig Doctor
             </Link>
           </div>
