@@ -8,6 +8,8 @@ import {
   TIERS,
   isTier,
   rewardsOpen,
+  MAX_CLAIMS,
+  countCustomers,
   findCustomerByEmail,
   issueReward,
   revokeUrl,
@@ -83,6 +85,12 @@ export async function POST(req: NextRequest) {
   }
   if (customer.tags.includes(TAG.claimed)) {
     return fail("Looks like you've already claimed yours. Thanks again for the review!", 409);
+  }
+  if (MAX_CLAIMS !== null) {
+    const claimed = await countCustomers(`tag:"${TAG.claimed}"`);
+    if (claimed >= MAX_CLAIMS) {
+      return fail('This round of gift cards has all been claimed. Thanks for the review all the same!', 410);
+    }
   }
 
   // Claim the slot first so a double-submit can't issue two cards.

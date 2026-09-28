@@ -6,6 +6,7 @@ import {
   NOTIFY_TO,
   TAG,
   DRIP_STEPS,
+  DRIP_ENABLED,
   ENDS_ON,
   todayCT,
   listBuyers,
@@ -69,7 +70,9 @@ export async function GET(req: NextRequest) {
 
   const result: Record<string, unknown> = { today };
 
-  if (today <= ENDS_ON) {
+  if (!DRIP_ENABLED) {
+    result.drip = 'paused';
+  } else if (today <= ENDS_ON) {
     const cap = Number(process.env.REVIEW_DRIP_DAILY_CAP) || 60;
     const queue = buildQueue(await listBuyers(), today);
     const todays = queue.slice(0, cap);

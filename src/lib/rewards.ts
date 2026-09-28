@@ -45,6 +45,29 @@ export const DRIP_STEPS = [
   { step: 3, from: '2026-10-27' },
 ] as const;
 
+/**
+ * Drip switch and audience. The drip stays off until Jacob confirms who gets it.
+ *   'all'               every buyer who hasn't unsubscribed
+ *   'subscribed'        buyers who opted in to email marketing
+ *   'recent'            buyers whose first order was in the last 24 months
+ *   'subscribed_recent' both of the above
+ */
+export const DRIP_ENABLED = false;
+/** Safety net on total gift cards issued. null = no cap. */
+export const MAX_CLAIMS: number | null = null;
+export type DripAudience = 'all' | 'subscribed' | 'recent' | 'subscribed_recent';
+export const DRIP_AUDIENCE: DripAudience = 'subscribed';
+
+export function inAudience(c: { marketingState: string | null; createdAt?: string }, audience: DripAudience, today: string) {
+  const cutoff = `${Number(today.slice(0, 4)) - 2}${today.slice(4)}`;
+  const subscribed = c.marketingState === 'SUBSCRIBED';
+  const recent = (c.createdAt || '') >= cutoff;
+  if (audience === 'subscribed') return subscribed;
+  if (audience === 'recent') return recent;
+  if (audience === 'subscribed_recent') return subscribed && recent;
+  return true;
+}
+
 export const TAG = {
   claimed: 'trd-rr-claimed',
   tier: (t: Tier) => `trd-rr-tier-${t}`,
@@ -110,9 +133,11 @@ export interface RrCustomer {
   numberOfOrders: number;
   tags: string[];
   marketingState: string | null;
+  createdAt?: string;
+  amountSpent?: number;
 }
 
-const CUSTOMER_FIELDS = `id firstName lastName email numberOfOrders tags emailMarketingConsent { marketingState }`;
+const CUSTOMER_FIELDS = `id firstName lastName email numberOfOrders tags createdAt amountSpent { amount } emailMarketingConsent { marketingState }`;
 
 type RawCustomer = {
   id: string;
@@ -121,6 +146,8 @@ type RawCustomer = {
   email: string | null;
   numberOfOrders: string | number;
   tags: string[];
+  createdAt?: string;
+  amountSpent?: { amount: string } | null;
   emailMarketingConsent: { marketingState: string } | null;
 };
 
@@ -133,6 +160,8 @@ function mapCustomer(c: RawCustomer): RrCustomer {
     numberOfOrders: Number(c.numberOfOrders) || 0,
     tags: c.tags || [],
     marketingState: c.emailMarketingConsent?.marketingState ?? null,
+    createdAt: c.createdAt,
+    amountSpent: c.amountSpent ? Number(c.amountSpent.amount) || 0 : undefined,
   };
 }
 
@@ -216,9 +245,10 @@ export interface QueueItem {
   step: 1 | 2 | 3;
 }
 
-export function buildQueue(buyers: RrCustomer[], today: string): QueueItem[] {
+export function buildQueue(buyers: RrCustomer[], today: string, audience: DripAudience = DRIP_AUDIENCE): QueueItem[] {
   const queue: QueueItem[] = [];
   for (const c of buyers) {
+    if (!inAudience(c, audience, today)) continue;
     if (!c.email || c.email.toLowerCase().endsWith('@therigdr.com')) continue;
     if (c.tags.includes(TAG.claimed) || c.tags.includes(TAG.optout)) continue;
     if (c.marketingState && SKIP_STATES.has(c.marketingState)) continue;
