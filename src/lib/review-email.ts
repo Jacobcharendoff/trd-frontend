@@ -8,6 +8,8 @@
  * variant 'general' → sent by Jacob to past build and session customers
  */
 
+import { ENDS_ON, ENDS_LABEL } from './rewards';
+
 const SITE = 'https://www.therigdr.com';
 const IMG = 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/';
 const SPECTRAL = 'linear-gradient(90deg,#00A85A 0%,#0071E3 50%,#8E3FD9 100%)';
@@ -15,17 +17,24 @@ const FONT = "-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',Robot
 
 export type ReviewVariant = 'tone' | 'general';
 
-function reviewUrl(variant: ReviewVariant, content: string) {
+/** True if the Review Rewards offer is still open `daysAhead` days from now (Central time). */
+function rewardsOpenIn(daysAhead: number) {
+  const d = new Date(Date.now() + daysAhead * 86_400_000);
+  const day = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago' }).format(d);
+  return day <= ENDS_ON;
+}
+
+function reviewUrl(variant: ReviewVariant, content: string, path = '/review') {
   const q = new URLSearchParams({
     utm_source: 'email',
     utm_medium: 'email',
     utm_campaign: variant === 'tone' ? 'review_tone' : 'review_backfill',
     utm_content: content,
   });
-  return `${SITE}/review?${q.toString()}`;
+  return `${SITE}${path}?${q.toString()}`;
 }
 
-function copy(variant: ReviewVariant, name: string) {
+function copy(variant: ReviewVariant, name: string, rewards: boolean) {
   if (variant === 'tone') {
     return {
       subject: 'How did your session go?',
@@ -36,6 +45,11 @@ function copy(variant: ReviewVariant, name: string) {
         `Hey ${name},`,
         'Hope the session helped and your rig is sounding the way you want it to.',
         'Most players find us through Google. If you have two minutes, a few honest lines about how it went helps the next guitarist figure out if we&#39;re the right fit. Good, bad or somewhere in between.',
+        ...(rewards
+          ? [
+              `Through ${ENDS_LABEL} we&#39;re saying thanks with Rig Doctor credit: $50 for a review, $75 with a photo of your rig, $100 with a video. Mention the gift card in your review, then send us a screenshot at therigdr.com/rewards. Five stars or two, you get the card.`,
+            ]
+          : []),
       ],
       after: 'Haven&#39;t had your session yet? Just reply and we&#39;ll get you on the calendar.',
       signoff: 'Vince',
@@ -58,11 +72,14 @@ function copy(variant: ReviewVariant, name: string) {
 
 export function reviewEmail(variant: ReviewVariant, firstName = '') {
   const name = (firstName || '').trim() || 'there';
-  const c = copy(variant, name);
+  // Tone Tutoring asks go out 5 days after purchase, so check the offer is still open then.
+  const rewards = variant === 'tone' && rewardsOpenIn(5);
+  const path = rewards ? '/rewards' : '/review';
+  const c = copy(variant, name, rewards);
   const btn = (content: string, label: string) => `
         <table role="presentation" cellpadding="0" cellspacing="0"><tr>
           <td align="center" bgcolor="#8E3FD9" style="border-radius:999px;background:#8E3FD9;background-image:${SPECTRAL};">
-            <a href="${reviewUrl(variant, content)}" style="display:inline-block;padding:18px 38px;font-family:${FONT};font-size:17px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:999px;">${label}</a>
+            <a href="${reviewUrl(variant, content, path)}" style="display:inline-block;padding:18px 38px;font-family:${FONT};font-size:17px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:999px;">${label}</a>
           </td>
         </tr></table>`;
 
@@ -85,7 +102,7 @@ export function reviewEmail(variant: ReviewVariant, firstName = '') {
   <tr><td bgcolor="#0b0b0c" style="background:#0b0b0c;border-radius:24px;overflow:hidden;border:1px solid #1f1f22;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
       <tr><td style="font-size:0;line-height:0;">
-        <a href="${reviewUrl(variant, 'hero')}" style="text-decoration:none;"><img src="${IMG}2022-L1010577.jpg?width=1120" width="560" alt="A finished Rig Doctor pedalboard" style="display:block;width:100%;max-width:560px;height:auto;border:0;border-radius:24px 24px 0 0;"></a>
+        <a href="${reviewUrl(variant, 'hero', path)}" style="text-decoration:none;"><img src="${IMG}2022-L1010577.jpg?width=1120" width="560" alt="A finished Rig Doctor pedalboard" style="display:block;width:100%;max-width:560px;height:auto;border:0;border-radius:24px 24px 0 0;"></a>
       </td></tr>
       <tr><td style="height:3px;font-size:0;line-height:0;background:#8E3FD9;background-image:${SPECTRAL};">&nbsp;</td></tr>
 
@@ -124,7 +141,7 @@ export function reviewEmail(variant: ReviewVariant, firstName = '') {
 
   const text = [
     ...c.paras.map((p) => p.replace(/&#39;/g, "'")),
-    `Leave a Google review: ${reviewUrl(variant, 'text')}`,
+    `Leave a Google review: ${reviewUrl(variant, 'text', path)}`,
     c.after.replace(/&#39;/g, "'"),
     `Thanks,\n${c.signoff}\nThe Rig Doctor`,
   ].join('\n\n');
