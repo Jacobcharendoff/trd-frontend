@@ -38,26 +38,6 @@ export default function LocalBusinessSchema() {
       ratingCount: '52',
       reviewCount: '52',
     },
-    review: [
-      {
-        '@type': 'Review',
-        author: { '@type': 'Person', name: 'Isaiah Sharkey' },
-        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-        reviewBody: 'The pedalboard Jacob designed completely transformed my live rig. Best investment I\'ve made in my tone.',
-      },
-      {
-        '@type': 'Review',
-        author: { '@type': 'Person', name: 'Tosin Abasi' },
-        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-        reviewBody: 'He understands signal flow, tone shaping, and durability. Your board won\'t fail you on tour.',
-      },
-      {
-        '@type': 'Review',
-        author: { '@type': 'Person', name: 'Mike Stipanov' },
-        reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
-        reviewBody: 'From consultation to delivery, the whole experience was professional and smooth. My new board is exactly what I envisioned.',
-      },
-    ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Custom Pedalboard Services',
@@ -68,7 +48,7 @@ export default function LocalBusinessSchema() {
             '@type': 'Service',
             name: 'Free Rig Build Consultation',
             description:
-              'Free video consultation to discuss your rig, signal chain, and build requirements. No pressure, no obligation — just honest advice from a professional rig builder.',
+              'Free video consultation to discuss your rig, signal chain, and build requirements. No pressure, no obligation. Just honest advice from a professional rig builder.',
             provider: { '@id': 'https://www.therigdr.com/#business' },
             areaServed: { '@type': 'Country', name: 'United States' },
           },
@@ -84,15 +64,15 @@ export default function LocalBusinessSchema() {
             '@type': 'Service',
             name: 'Custom Rig Build',
             description:
-              'Full custom pedalboard build — layout, soldered cabling, clean power, MIDI integration, labeling. Road-ready and dead-quiet.',
+              'Full custom pedalboard build: layout, soldered cabling, clean power, MIDI integration, labeling. Road-ready and dead-quiet.',
             provider: { '@id': 'https://www.therigdr.com/#business' },
             areaServed: { '@type': 'Country', name: 'United States' },
           },
           priceSpecification: {
             '@type': 'PriceSpecification',
             priceCurrency: 'USD',
-            price: '2000',
-            minPrice: '2000',
+            price: '1999',
+            minPrice: '1999',
           },
         },
         {
@@ -129,7 +109,7 @@ export function WebSiteSchema() {
     name: 'The Rig Doctor',
     url: 'https://www.therigdr.com',
     description:
-      'Custom pedalboard builds, DIY kits, and tone tutoring for guitarists. Hand-wired rigs built in Montgomery, TX — shipping nationwide.',
+      'Custom pedalboard builds and Tone Tutoring for guitarists. Hand-wired rigs built in Montgomery, TX, shipping nationwide.',
     publisher: {
       '@id': 'https://www.therigdr.com/#business',
     },

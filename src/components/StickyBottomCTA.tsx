@@ -28,15 +28,15 @@ export default function StickyBottomCTA() {
             <span className="inline-block w-2 h-2 rounded-full animate-pulse" style={{ background: 'var(--trd-spectral)' }} />
             Only 2 build spots left for 2026
           </span>
-          <span className="sm:hidden text-[13px] text-[#f5f5f7]/70">
-            2 spots left for 2026
+          <span className="sm:hidden text-[13px] text-[#f5f5f7]/70 whitespace-nowrap">
+            2 spots left
           </span>
         </div>
         <Link
           href="/book"
           className="inline-flex items-center justify-center text-[13px] font-semibold rounded-full px-5 py-2 trd-cta-gradient whitespace-nowrap"
         >
-          Book a Free Consultation
+          Book a free consultation
         </Link>
       </div>
     </div>

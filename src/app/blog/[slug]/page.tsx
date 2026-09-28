@@ -164,7 +164,7 @@ export default async function BlogPostPage({
 
         {/* Hero image */}
         {post.heroImage && (
-          <div className="mb-12 overflow-hidden rounded-2xl">
+          <div className="mb-12 overflow-hidden rounded-[24px]">
             <img
               src={post.heroImage}
               alt={post.heroAlt || post.title}
@@ -175,7 +175,7 @@ export default async function BlogPostPage({
         )}
 
         {/* Content sections */}
-        <div className="prose prose-lg max-w-none prose-headings:text-[#1d1d1f] prose-headings:font-bold prose-headings:tracking-tight prose-p:text-black/70 prose-p:leading-relaxed prose-a:text-[#0071E3] prose-a:no-underline hover:prose-a:underline prose-strong:text-[#1d1d1f] prose-li:text-black/70 prose-ul:text-black/70">
+        <div className="prose prose-lg max-w-none prose-headings:text-[#1d1d1f] prose-headings:font-bold prose-headings:tracking-tight prose-p:text-black/70 prose-p:leading-relaxed prose-a:text-[#8E3FD9] prose-a:no-underline hover:prose-a:underline prose-strong:text-[#1d1d1f] prose-li:text-black/70 prose-ul:text-black/70">
           {post.sections.map((section, i) => (
             <div key={i} className={i > 0 ? 'mt-10' : ''}>
               {section.heading &&
@@ -207,13 +207,13 @@ export default async function BlogPostPage({
 
         {/* CTA */}
         {post.cta && (
-          <div className="mt-12 rounded-2xl bg-[#f5f5f7] p-8 md:p-12 text-center">
+          <div className="mt-12 rounded-[24px] bg-[#f5f5f7] p-8 md:p-12 text-center">
             <p className="text-xl font-semibold text-[#1d1d1f] mb-4">
               {post.cta.text}
             </p>
             <Link
               href={post.cta.href}
-              className="inline-flex items-center gap-2 rounded-full bg-[#0071E3] px-8 py-3 text-sm font-medium text-white hover:bg-[#005BB5] transition-colors"
+              className="inline-flex items-center gap-2 rounded-full trd-cta-gradient px-8 py-3 text-sm font-medium text-white  transition-colors"
             >
               {post.cta.label}
               <svg
@@ -244,12 +244,12 @@ export default async function BlogPostPage({
                 <Link
                   key={r.slug}
                   href={`/blog/${r.slug}`}
-                  className="group rounded-2xl border border-black/[0.06] p-6 hover:border-black/[0.12] transition-colors"
+                  className="group rounded-[24px] border border-black/[0.06] p-6 hover:border-black/[0.12] transition-colors"
                 >
                   <span className="text-xs text-black/50 mb-2 block">
                     {r.category}
                   </span>
-                  <h3 className="font-semibold text-[#1d1d1f] group-hover:text-[#0071E3] transition-colors mb-2">
+                  <h3 className="font-semibold text-[#1d1d1f] group-hover:text-[#8E3FD9] transition-colors mb-2">
                     {r.title}
                   </h3>
                   <p className="text-sm text-black/50 line-clamp-2">

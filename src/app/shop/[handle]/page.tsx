@@ -143,7 +143,7 @@ export default function ProductPage() {
       <div className="bg-white border-b border-black/[0.04] pt-16">
         <div className="max-w-[1200px] mx-auto px-6 py-3">
           <nav className="flex items-center gap-2 text-sm text-[#1d1d1f]/40">
-            <Link href="/shop" className="hover:text-[#0071E3] transition-colors">
+            <Link href="/shop" className="hover:text-[#8E3FD9] transition-colors">
               Shop
             </Link>
             <span>/</span>
@@ -184,7 +184,7 @@ export default function ProductPage() {
                       onClick={() => setSelectedImage(i)}
                       className={`flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 transition-all ${
                         selectedImage === i
-                          ? 'border-[#0071E3] shadow-sm'
+                          ? 'border-[#8E3FD9] shadow-sm'
                           : 'border-transparent opacity-60 hover:opacity-100'
                       }`}
                     >
@@ -215,7 +215,7 @@ export default function ProductPage() {
                   )}
                   <span className="text-base font-normal text-[#1d1d1f]/40">USD</span>
                   {compareAtPrice && (
-                    <span className="text-sm font-medium text-[#0071E3] bg-[#0071E3]/10 px-2 py-0.5 rounded-full">Sale</span>
+                    <span className="text-sm font-medium text-[#8E3FD9] trd-cta-gradient/10 px-2 py-0.5 rounded-full">Sale</span>
                   )}
                 </p>
               </div>
@@ -230,7 +230,7 @@ export default function ProductPage() {
                     <select
                       value={selectedVariant}
                       onChange={(e) => setSelectedVariant(Number(e.target.value))}
-                      className="w-full px-5 py-3.5 rounded-2xl text-base font-medium bg-[#f5f5f7] text-[#1d1d1f] border border-[#1d1d1f]/10 focus:border-[#0071E3] focus:ring-2 focus:ring-[#0071E3]/20 outline-none transition-all appearance-none cursor-pointer"
+                      className="w-full px-5 py-3.5 rounded-[24px] text-base font-medium bg-[#f5f5f7] text-[#1d1d1f] border border-[#1d1d1f]/10 focus:border-[#8E3FD9] focus:ring-2 focus:ring-[#8E3FD9]/20 outline-none transition-all appearance-none cursor-pointer"
                       style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231d1d1f' d='M6 8.825L1.175 4l.884-.884L6 7.058l3.941-3.942.884.884z'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 16px center' }}
                     >
                       {variants.map((v, i) => (
@@ -247,8 +247,8 @@ export default function ProductPage() {
                           onClick={() => setSelectedVariant(i)}
                           className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
                             selectedVariant === i
-                              ? 'bg-[#1d1d1f] text-white'
-                              : 'bg-[#f5f5f7] text-[#1d1d1f] hover:bg-[#1d1d1f]/5 border border-[#1d1d1f]/10'
+                              ? 'bg-black text-white'
+                              : 'bg-[#f5f5f7] text-[#1d1d1f] hover:bg-black/5 border border-[#1d1d1f]/10'
                           } ${!v.availableForSale ? 'opacity-40 line-through cursor-not-allowed' : ''}`}
                           disabled={!v.availableForSale}
                         >
@@ -269,7 +269,7 @@ export default function ProductPage() {
                   <button
                     onClick={() => setQuantity((q) => Math.max(1, q - 1))}
                     disabled={quantity <= 1}
-                    className="w-12 h-12 flex items-center justify-center text-lg font-medium text-[#1d1d1f] rounded-full transition-all hover:bg-[#1d1d1f]/5 disabled:opacity-30 disabled:cursor-not-allowed"
+                    className="w-12 h-12 flex items-center justify-center text-lg font-medium text-[#1d1d1f] rounded-full transition-all hover:bg-black/5 disabled:opacity-30 disabled:cursor-not-allowed"
                     aria-label="Decrease quantity"
                   >
                     −
@@ -280,7 +280,7 @@ export default function ProductPage() {
                   <button
                     onClick={() => setQuantity((q) => Math.min(10, q + 1))}
                     disabled={quantity >= 10}
-                    className="w-12 h-12 flex items-center justify-center text-lg font-medium text-[#1d1d1f] rounded-full transition-all hover:bg-[#1d1d1f]/5 disabled:opacity-30 disabled:cursor-not-allowed"
+                    className="w-12 h-12 flex items-center justify-center text-lg font-medium text-[#1d1d1f] rounded-full transition-all hover:bg-black/5 disabled:opacity-30 disabled:cursor-not-allowed"
                     aria-label="Increase quantity"
                   >
                     +
@@ -375,7 +375,7 @@ export default function ProductPage() {
       </Section>
 
       {/* Consultation CTA */}
-      <section className="relative overflow-hidden bg-[#1d1d1f] py-16 sm:py-20">
+      <section className="relative overflow-hidden bg-black py-16 sm:py-20">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(0,113,227,0.15)_0%,transparent_55%),radial-gradient(ellipse_at_70%_50%,rgba(191,90,242,0.12)_0%,transparent_55%),radial-gradient(ellipse_at_50%_80%,rgba(191,90,242,0.06)_0%,transparent_50%)]" />
         <div className="relative max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-8">
           <div>

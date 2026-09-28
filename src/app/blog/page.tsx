@@ -39,7 +39,7 @@ export default function BlogIndex() {
     <>
       {/* ── Hero ── */}
       <Section theme="dark" className="!py-16 md:!py-24">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#0071E3] mb-4">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#8E3FD9] mb-4">
           From the Workbench
         </p>
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#f5f5f7] mb-4">
@@ -59,7 +59,7 @@ export default function BlogIndex() {
             className="group block md:grid md:grid-cols-2 md:gap-12 items-center"
           >
             {featured.heroImage && (
-              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-6 md:mb-0 border border-black/[0.04]">
+              <div className="relative aspect-[16/10] rounded-[24px] overflow-hidden mb-6 md:mb-0 border border-black/[0.04]">
                 <Image
                   src={featured.heroImage}
                   alt={featured.heroAlt || featured.title}
@@ -71,10 +71,10 @@ export default function BlogIndex() {
               </div>
             )}
             <div>
-              <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#0071E3] mb-3">
+              <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#8E3FD9] mb-3">
                 {featured.category}
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1d1d1f] mb-3 group-hover:text-[#0071E3] transition-colors">
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1d1d1f] mb-3 group-hover:text-[#8E3FD9] transition-colors">
                 {featured.title}
               </h2>
               <p className="text-[15px] text-black/50 leading-relaxed mb-4">
@@ -109,7 +109,7 @@ export default function BlogIndex() {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group block bg-white rounded-2xl border border-black/[0.04] overflow-hidden hover:border-black/[0.1] transition-colors"
+                className="group block bg-white rounded-[24px] border border-black/[0.04] overflow-hidden hover:border-black/[0.1] transition-colors"
               >
                 {post.heroImage && (
                   <div className="relative aspect-[16/10] overflow-hidden">
@@ -123,10 +123,10 @@ export default function BlogIndex() {
                   </div>
                 )}
                 <div className="p-5">
-                  <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#0071E3] mb-2">
+                  <span className="inline-block text-[11px] font-semibold uppercase tracking-[0.1em] text-[#8E3FD9] mb-2">
                     {post.category}
                   </span>
-                  <h3 className="text-[15px] font-semibold text-[#1d1d1f] mb-2 group-hover:text-[#0071E3] transition-colors leading-snug">
+                  <h3 className="text-[15px] font-semibold text-[#1d1d1f] mb-2 group-hover:text-[#8E3FD9] transition-colors leading-snug">
                     {post.title}
                   </h3>
                   <p className="text-[13px] text-black/45 leading-relaxed line-clamp-2">
@@ -157,7 +157,7 @@ export default function BlogIndex() {
           </p>
           <Link
             href="/tone-tutoring"
-            className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full border-2 border-[#1d1d1f]/15 text-[#1d1d1f] hover:border-[#1d1d1f]/30 hover:bg-[#1d1d1f]/[0.03] transition-all text-sm"
+            className="inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full border-2 border-[#1d1d1f]/15 text-[#1d1d1f] hover:border-[#1d1d1f]/30 hover:bg-black/[0.03] transition-all text-sm"
           >
             Book a Tone Session &mdash; $99
           </Link>
@@ -176,7 +176,7 @@ export default function BlogIndex() {
           </p>
           <Link
             href="/book"
-            className="inline-flex items-center gap-2 bg-[#0071E3] hover:bg-[#005BB5] text-white font-semibold px-8 py-4 rounded-lg transition-colors"
+            className="inline-flex items-center gap-2 trd-cta-gradient font-semibold px-8 py-4 rounded-lg transition-colors"
           >
             Book a Free Consultation
           </Link>

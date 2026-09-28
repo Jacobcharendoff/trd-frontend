@@ -31,8 +31,8 @@ export default function LeadCaptureForm() {
   if (status === 'success') {
     return (
       <div className="max-w-xl mx-auto text-center py-12">
-        <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[#0071E3]/10 flex items-center justify-center">
-          <svg className="w-8 h-8 text-[#0071E3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="trd-icon-ring w-16 h-16 mx-auto mb-6 text-black">
+          <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
@@ -54,7 +54,7 @@ export default function LeadCaptureForm() {
             required
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            className="w-full px-4 py-3.5 rounded-xl bg-white border border-[#1d1d1f]/10 text-[#1d1d1f] placeholder:text-[#1d1d1f]/30 focus:outline-none focus:ring-2 focus:ring-[#0071E3]/30 focus:border-[#0071E3]/50 transition-all text-[15px]"
+            className="w-full px-4 py-3.5 rounded-xl bg-white border border-[#1d1d1f]/10 text-[#1d1d1f] placeholder:text-[#1d1d1f]/30 focus:outline-none focus:ring-4 focus:ring-[#8E3FD9]/10 focus:border-[#8E3FD9]/40 transition-all text-[15px]"
           />
           <input
             type="email"
@@ -62,22 +62,22 @@ export default function LeadCaptureForm() {
             required
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className="w-full px-4 py-3.5 rounded-xl bg-white border border-[#1d1d1f]/10 text-[#1d1d1f] placeholder:text-[#1d1d1f]/30 focus:outline-none focus:ring-2 focus:ring-[#0071E3]/30 focus:border-[#0071E3]/50 transition-all text-[15px]"
+            className="w-full px-4 py-3.5 rounded-xl bg-white border border-[#1d1d1f]/10 text-[#1d1d1f] placeholder:text-[#1d1d1f]/30 focus:outline-none focus:ring-4 focus:ring-[#8E3FD9]/10 focus:border-[#8E3FD9]/40 transition-all text-[15px]"
           />
         </div>
         <textarea
-          placeholder="Tell us about your rig - what are you working with, and what's driving you crazy?"
+          placeholder="Tell us about your rig. What are you working with, and what's driving you crazy?"
           rows={3}
           value={formData.rig}
           onChange={(e) => setFormData({ ...formData, rig: e.target.value })}
-          className="w-full px-4 py-3.5 rounded-xl bg-white border border-[#1d1d1f]/10 text-[#1d1d1f] placeholder:text-[#1d1d1f]/30 focus:outline-none focus:ring-2 focus:ring-[#0071E3]/30 focus:border-[#0071E3]/50 transition-all text-[15px] resize-none"
+          className="w-full px-4 py-3.5 rounded-xl bg-white border border-[#1d1d1f]/10 text-[#1d1d1f] placeholder:text-[#1d1d1f]/30 focus:outline-none focus:ring-4 focus:ring-[#8E3FD9]/10 focus:border-[#8E3FD9]/40 transition-all text-[15px] resize-none"
         />
         <button
           type="submit"
           disabled={status === 'submitting'}
-          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-[#1d1d1f]/90 transition-colors text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+          className="trd-cta-gradient w-full sm:w-auto inline-flex items-center justify-center gap-2 font-semibold px-8 py-3.5 rounded-full text-[15px] disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {status === 'submitting' ? 'Sending...' : 'Get in Touch'}
+          {status === 'submitting' ? 'Sending...' : 'Get in touch'}
           {status !== 'submitting' && (
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

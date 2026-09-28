@@ -14,7 +14,7 @@ interface SectionProps {
 }
 
 const themeClasses: Record<SectionTheme, string> = {
-  dark: 'bg-[#0a0a0a] text-[#f5f5f7]',
+  dark: 'bg-black text-[#f5f5f7]',
   light: 'bg-white text-[#1d1d1f]',
   lightGray: 'bg-[#f5f5f7] text-[#1d1d1f]',
 };

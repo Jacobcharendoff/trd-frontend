@@ -31,14 +31,14 @@ function AccordionItem({ title, content }: { title: string; content: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border border-black/[0.06] rounded-2xl overflow-hidden bg-white">
+    <div className="border border-black/[0.06] rounded-[24px] overflow-hidden bg-white">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full px-8 py-6 flex justify-between items-center hover:bg-[#f5f5f7]/50 transition-colors duration-200"
       >
         <h3 className="text-lg font-semibold text-[#1d1d1f] text-left">{title}</h3>
         <span
-          className={`text-[#0071E3] text-2xl font-light transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}
+          className={`text-[#8E3FD9] text-2xl font-light transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}
         >
           +
         </span>
@@ -114,8 +114,8 @@ export default function GiftCardsPage() {
           <div className="relative z-10 max-w-[1080px] mx-auto px-6 pt-32 pb-20 w-full">
             {/* Badge */}
             <div className="flex justify-center mb-6">
-              <div className="inline-block bg-white/[0.08] border border-[#0071E3]/40 rounded-full px-4 py-2">
-                <p className="text-sm font-semibold text-[#0071E3]">Digital Gift Card</p>
+              <div className="inline-block bg-white/[0.08] border border-[#8E3FD9]/40 rounded-full px-4 py-2">
+                <p className="text-sm font-semibold text-[#8E3FD9]">Digital Gift Card</p>
               </div>
             </div>
 
@@ -137,7 +137,7 @@ export default function GiftCardsPage() {
                     alt={`The Rig Doctor ${selected.label} Gift Card`}
                     width={700}
                     height={445}
-                    className="w-full rounded-2xl shadow-2xl shadow-black/40"
+                    className="w-full rounded-[24px] shadow-2xl shadow-black/40"
                     priority
                   />
                 </div>
@@ -153,9 +153,9 @@ export default function GiftCardsPage() {
                     <button
                       key={d.amount}
                       onClick={() => setSelectedIndex(i)}
-                      className={`relative px-3 py-4 sm:px-4 sm:py-5 rounded-2xl text-center transition-all duration-200 ${
+                      className={`relative px-3 py-4 sm:px-4 sm:py-5 rounded-[24px] text-center transition-all duration-200 ${
                         selectedIndex === i
-                          ? 'bg-[#0071E3] text-white shadow-lg shadow-[#0071E3]/20 scale-[1.03]'
+                          ? 'trd-cta-gradient shadow-lg shadow-[#8E3FD9]/20 scale-[1.03]'
                           : 'bg-white/[0.06] border border-white/[0.08] text-[#f5f5f7] hover:bg-white/[0.1]'
                       }`}
                     >
@@ -203,7 +203,7 @@ export default function GiftCardsPage() {
               </div>
               <div className="hidden sm:block w-px h-12 bg-white/10" />
               <div>
-                <p className="text-2xl sm:text-3xl font-bold text-[#0071E3] mb-2">Everything</p>
+                <p className="text-2xl sm:text-3xl font-bold text-[#8E3FD9] mb-2">Everything</p>
                 <p className="text-sm text-[#f5f5f7]/60">Works site-wide</p>
               </div>
             </div>
@@ -224,9 +224,9 @@ export default function GiftCardsPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Use Case 1 */}
-          <div className="bg-[#f5f5f7] rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
-            <div className="w-12 h-12 rounded-2xl bg-[#0071E3]/10 flex items-center justify-center mb-6">
-              <svg viewBox="0 0 24 24" className="w-6 h-6 text-[#0071E3]" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <div className="bg-[#f5f5f7] rounded-[24px] p-8 hover:shadow-lg transition-shadow duration-300">
+            <div className="w-12 h-12 rounded-[24px] trd-cta-gradient/10 flex items-center justify-center mb-6">
+              <svg viewBox="0 0 24 24" className="w-6 h-6 text-[#8E3FD9]" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
               </svg>
             </div>
@@ -234,12 +234,12 @@ export default function GiftCardsPage() {
             <p className="text-[#1d1d1f]/60 leading-relaxed mb-4">
               A $100 card covers a full 60-minute session with a pro rig builder. Signal chain audit, gear recommendations, and a clear plan. The kind of gift that actually changes how someone plays.
             </p>
-            <p className="text-sm text-[#0071E3] font-medium">$100 covers a full session</p>
+            <p className="text-sm text-[#8E3FD9] font-medium">$100 covers a full session</p>
           </div>
 
           {/* Use Case 2 */}
-          <div className="bg-[#f5f5f7] rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
-            <div className="w-12 h-12 rounded-2xl bg-[#BF5AF2]/10 flex items-center justify-center mb-6">
+          <div className="bg-[#f5f5f7] rounded-[24px] p-8 hover:shadow-lg transition-shadow duration-300">
+            <div className="w-12 h-12 rounded-[24px] bg-[#BF5AF2]/10 flex items-center justify-center mb-6">
               <svg viewBox="0 0 24 24" className="w-6 h-6 text-[#BF5AF2]" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75a4.5 4.5 0 01-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 11-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 016.336-4.486l-3.276 3.276a3.004 3.004 0 002.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852z" />
               </svg>
@@ -252,8 +252,8 @@ export default function GiftCardsPage() {
           </div>
 
           {/* Use Case 3 */}
-          <div className="bg-[#f5f5f7] rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300">
-            <div className="w-12 h-12 rounded-2xl bg-[#BF5AF2]/10 flex items-center justify-center mb-6">
+          <div className="bg-[#f5f5f7] rounded-[24px] p-8 hover:shadow-lg transition-shadow duration-300">
+            <div className="w-12 h-12 rounded-[24px] bg-[#BF5AF2]/10 flex items-center justify-center mb-6">
               <svg viewBox="0 0 24 24" className="w-6 h-6 text-[#BF5AF2]" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
               </svg>
@@ -279,7 +279,7 @@ export default function GiftCardsPage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <div className="bg-white rounded-2xl p-8 flex flex-col border border-black/[0.04]">
+          <div className="bg-white rounded-[24px] p-8 flex flex-col border border-black/[0.04]">
             <div className="text-4xl font-bold trd-gradient-text mb-4">1</div>
             <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">Pick an Amount</h3>
             <p className="text-[#1d1d1f]/60 leading-relaxed">
@@ -287,7 +287,7 @@ export default function GiftCardsPage() {
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl p-8 flex flex-col border border-black/[0.04]">
+          <div className="bg-white rounded-[24px] p-8 flex flex-col border border-black/[0.04]">
             <div className="text-4xl font-bold trd-gradient-text mb-4">2</div>
             <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">We Send It</h3>
             <p className="text-[#1d1d1f]/60 leading-relaxed">
@@ -295,7 +295,7 @@ export default function GiftCardsPage() {
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl p-8 flex flex-col border border-black/[0.04]">
+          <div className="bg-white rounded-[24px] p-8 flex flex-col border border-black/[0.04]">
             <div className="text-4xl font-bold trd-gradient-text mb-4">3</div>
             <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">They Redeem It</h3>
             <p className="text-[#1d1d1f]/60 leading-relaxed">
@@ -319,7 +319,7 @@ export default function GiftCardsPage() {
             { quote: "My buddy's been talking about getting his board sorted for months. The gift card was the push he needed. Now he won't shut up about how good his rig sounds.", name: 'Tyler K.', role: 'Gift Card Buyer' },
             { quote: "Way better than guessing which pedal someone wants. Let the pros at The Rig Doctor help them figure it out. That's the real gift.", name: 'Amanda S.', role: 'Gift Card Buyer' },
           ].map((review) => (
-            <div key={review.name} className="bg-[#f5f5f7] rounded-2xl p-8">
+            <div key={review.name} className="bg-[#f5f5f7] rounded-[24px] p-8">
               <div className="mb-4 flex gap-1">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-4 h-4" fill="#BF5AF2" viewBox="0 0 20 20">
@@ -339,7 +339,7 @@ export default function GiftCardsPage() {
 
       {/* ──── PERFECT FOR (DARK) ──── */}
       <Section theme="dark" id="perfect-for" reveal>
-        <div className="border border-[#0071E3]/30 bg-[#0071E3]/[0.05] rounded-2xl p-8 sm:p-12 text-center">
+        <div className="border border-[#8E3FD9]/30 trd-cta-gradient/[0.05] rounded-[24px] p-8 sm:p-12 text-center">
           <h3 className="text-2xl sm:text-3xl font-bold text-[#f5f5f7] mb-6">
             Perfect for the guitarist who already has{' '}
             <span className="trd-gradient-text">everything.</span>
@@ -427,14 +427,14 @@ function DarkAccordionItem({ title, content }: { title: string; content: string 
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border border-white/[0.08] rounded-2xl overflow-hidden">
+    <div className="border border-white/[0.08] rounded-[24px] overflow-hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full px-8 py-6 flex justify-between items-center hover:bg-white/[0.02] transition-colors duration-200"
       >
         <h3 className="text-lg font-semibold text-[#f5f5f7] text-left">{title}</h3>
         <span
-          className={`text-[#0071E3] text-2xl font-light transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}
+          className={`text-[#8E3FD9] text-2xl font-light transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}
         >
           +
         </span>
