@@ -10,7 +10,7 @@ const CDN = 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Meet Mason Marangell, Vince DiGoia, and Jacob Charendoff, the founders behind The Rig Doctor. 17+ years building custom pedalboards in Houston, TX for touring artists and home players nationwide.',
+    'Meet Mason Marangella, Vince DiGioia, and Jacob Charendoff, the founders behind The Rig Doctor. 17+ years building custom pedalboards in Houston, TX for touring artists and home players nationwide.',
   openGraph: {
     title: 'About The Rig Doctor',
     description:
@@ -113,7 +113,7 @@ export default function AboutPage() {
             </Reveal>
             <Reveal delay={120} className="space-y-5 text-[17px] text-black/60 leading-relaxed">
               <p>
-                The Rig Doctor was founded by Mason Marangell, Vince DiGoia and Jacob Charendoff, three players who got tired of
+                The Rig Doctor was founded by Mason Marangella, Vince DiGioia and Jacob Charendoff, three players who got tired of
                 watching great guitarists fight bad rigs. Mason started building boards because the ones he could buy weren&apos;t
                 good enough. Vince brought the ear: if a rig doesn&apos;t sound right, he&apos;ll find the problem before it leaves
                 the bench. Jacob brought the reach, connecting players with the builds they actually need.
@@ -130,8 +130,8 @@ export default function AboutPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              { name: 'Mason Marangell', role: 'Builder', img: 'Mason_Avatar.png' },
-              { name: 'Vince DiGoia', role: 'Builder and tone', img: 'Vince_Avatar.png' },
+              { name: 'Mason Marangella', role: 'Builder', img: 'Mason_Avatar.png' },
+              { name: 'Vince DiGioia', role: 'Builder and tone', img: 'Vince_Avatar.png' },
               { name: 'Jacob Charendoff', role: 'Players and partnerships', img: 'Jacob_avatar.png' },
             ].map((f, i) => (
               <Reveal key={f.name} delay={i * 100} className="trd-photo relative aspect-[4/5] rounded-[28px] bg-black">

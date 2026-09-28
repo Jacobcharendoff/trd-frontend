@@ -112,8 +112,8 @@ export const site = {
   // ─── Founders ───
   founders: [
     { name: 'Jacob Charendoff', role: 'Co-Founder' },
-    { name: 'Mason Marangell', role: 'Co-Founder' },
-    { name: 'Vince DiGoia', role: 'Co-Founder' },
+    { name: 'Mason Marangella', role: 'Co-Founder' },
+    { name: 'Vince DiGioia', role: 'Co-Founder' },
   ],
 
   // ─── Selling Points (for CTAs, meta, schema) ───

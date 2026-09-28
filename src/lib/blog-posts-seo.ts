@@ -433,7 +433,7 @@ export const seoPosts: BlogPost[] = [
       {
         heading: 'What a Professional Build Actually Includes',
         headingLevel: 2,
-        content: `<p>When you hire someone to build your board, you're not just paying for assembly. Here's what goes into every build at The Rig Doctor, starting at $999.99:</p>
+        content: `<p>When you hire someone to build your board, you're not just paying for assembly. Here's what goes into every build at The Rig Doctor, starting at $1,999 USD:</p>
 <p><strong>Consultation and planning.</strong> We talk through your playing style, your gig requirements, your pedals, your amp, and your budget. We design the layout before we touch a soldering iron. This includes signal chain order, power supply sizing, cable routing, and ergonomic pedal placement (the stuff you stomp the most goes where your foot naturally falls).</p>
 <p><strong>Custom cables.</strong> Every patch cable is hand-soldered with Mogami wire and Squareplug or Switchcraft connectors, cut to the exact length needed. No excess cable, no strain on connectors, no signal degradation from cheap copper. A custom cable that's exactly 6 inches sounds better and lasts longer than a generic 12-inch cable with excess stuffed under the board.</p>
 <p><strong>Clean power design.</strong> We calculate the current draw of every pedal and match it to the right power supply outputs. High-draw digital pedals get isolated, high-current outputs. Analog pedals get clean, filtered power. We use CIOKS and Strymon Zuma power supplies because they actually deliver what they spec — no sag, no noise, no voltage drop under load.</p>
@@ -457,7 +457,7 @@ export const seoPosts: BlogPost[] = [
 <p>You're looking at $740-840 in parts alone, plus your time. And if you buy cheap patch cables that fail, you'll end up replacing them anyway.</p>
 <p><strong>Professional build costs:</strong></p>
 <ul>
-<li>Our builds start at $999.99 and typically land between $1,200-1,800 for a board this size, including all custom cables, cable management, power distribution, and testing.</li>
+<li>Our builds start at $1,999 USD and scale with complexity, including all custom cables, cable management, power distribution, and testing.</li>
 </ul>
 <p>The difference isn't as dramatic as people assume — maybe $400-800 on top of what you'd spend anyway, except you get hand-soldered Mogami cables instead of pre-made generics, professional power distribution instead of "I think this is right," and a rig that's tested and guaranteed to be quiet. Plus those 20-40 hours back.</p>
 <p>If your time is worth $20/hour (and if you're a working musician, it's worth more than that), the math basically breaks even.</p>`,
@@ -956,9 +956,9 @@ export const seoPosts: BlogPost[] = [
       {
         heading: 'Not Everyone Needs a Full Build',
         headingLevel: 2,
-        content: `<p>I run a custom pedalboard build shop. Our builds start at $999.99 and go up from there. And honestly? About half the players who reach out to us don't need a build. They need 60 minutes with someone who's been doing this for 17 years to look at their rig, listen to it, and tell them what's wrong and how to fix it.</p>
+        content: `<p>I run a custom pedalboard build shop. Our builds start at $1,999 USD and go up from there. And honestly? About half the players who reach out to us don't need a build. They need 60 minutes with someone who's been doing this for 17 years to look at their rig, listen to it, and tell them what's wrong and how to fix it.</p>
 <p>That's what Tone Tutoring is. It's a 60-minute video call — you, me, your rig, a camera pointed at your board, and an hour of focused troubleshooting and optimization. No scripts, no curriculum, no upsell. Just real-time problem-solving for whatever's going on with your tone.</p>
-<p>I started offering it because I was getting emails from players all over the country who had tone problems but couldn't ship their board to us for a build. They just needed advice from someone who knows what they're looking at. A session costs $99.99, and most players walk away with their problems solved in that single hour.</p>`,
+<p>I started offering it because I was getting emails from players all over the country who had tone problems but couldn't ship their board to us for a build. They just needed advice from someone who knows what they're looking at. A session costs $99, and most players walk away with their problems solved in that single hour.</p>`,
       },
       {
         heading: 'What Actually Happens in a Session',
@@ -1027,7 +1027,7 @@ export const seoPosts: BlogPost[] = [
       {
         heading: 'Book a Session',
         headingLevel: 2,
-        content: `<p>Tone Tutoring is $99.99 for 60 minutes. <a href="/tone-tutoring">Book directly on our site</a> — pick a time that works for you, and we'll send you a video call link. That's it. No contracts, no commitments, no subscription.</p>
+        content: `<p>Tone Tutoring is $99 for 60 minutes. <a href="/tone-tutoring">Book directly on our site</a> — pick a time that works for you, and we'll send you a video call link. That's it. No contracts, no commitments, no subscription.</p>
 <p>One session. One hour. Your rig, but better. I've done this for over 200 rigs — whether it's a $500 bedroom board or a $5,000 touring rig, the approach is the same: listen, diagnose, fix. Your tone is in there. Sometimes you just need someone who knows where to find it. And if you decide you want a full rig overhaul after, check out our <a href="/blog/custom-pedalboard-build-vs-diy">custom build vs. DIY comparison</a> to see if a pro build makes sense.</p>`,
       },
       {

@@ -119,8 +119,8 @@ function emailHtml() {
 
       <tr><td align="center" style="padding:22px 32px 4px;font-family:${font};">
         <a href="${buy('price')}" style="text-decoration:none;">
-          <span style="font-size:20px;color:#6e6e73;text-decoration:line-through;">$99.99</span>
-          <span style="font-size:40px;font-weight:800;color:#ffffff;letter-spacing:-1px;">&nbsp;$80</span>
+          <span style="font-size:20px;color:#6e6e73;text-decoration:line-through;">$99</span>
+          <span style="font-size:40px;font-weight:800;color:#ffffff;letter-spacing:-1px;">&nbsp;$79.20</span>
           <span style="font-size:15px;color:#8e8e93;">&nbsp;USD</span>
         </a>
       </td></tr>
@@ -176,7 +176,7 @@ function emailHtml() {
       <tr><td align="center" style="padding:18px 32px 30px;">
         <table role="presentation" cellpadding="0" cellspacing="0"><tr>
           <td align="center" bgcolor="#8E3FD9" style="border-radius:999px;background:#8E3FD9;background-image:${spectral};">
-            <a href="${buy('button_bottom')}" style="display:inline-block;padding:17px 36px;font-family:${font};font-size:17px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:999px;">Book my session for $80 &rarr;</a>
+            <a href="${buy('button_bottom')}" style="display:inline-block;padding:17px 36px;font-family:${font};font-size:17px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:999px;">Book my session for $79.20 &rarr;</a>
           </td>
         </tr></table>
       </td></tr>

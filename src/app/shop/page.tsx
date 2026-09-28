@@ -29,8 +29,12 @@ const STOREFRONT_WHITELIST: StorefrontEntry[] = [
   { titleMatch: 'tone tutor', category: 'Services', order: 5 },
 ];
 
+/** Legacy duplicates kept in Shopify but hidden from the storefront. */
+const STOREFRONT_HIDE = ['1:1 tone tutoring'];
+
 function matchWhitelist(title: string): StorefrontEntry | null {
   const lower = title.toLowerCase();
+  if (STOREFRONT_HIDE.some((h) => lower.includes(h))) return null;
   return STOREFRONT_WHITELIST.find((entry) => lower.includes(entry.titleMatch)) || null;
 }
 
@@ -39,7 +43,7 @@ function formatShopifyPrice(amount: string): number {
   return parseFloat(amount);
 }
 
-const CATEGORIES = ['Accessories', 'Services'] as const;
+const CATEGORIES = ['Services'] as const;
 
 export default function ShopPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
