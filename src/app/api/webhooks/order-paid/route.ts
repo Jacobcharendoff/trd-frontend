@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
+import { reviewEmail } from '@/lib/review-email';
 
 /**
  * Shopify Order Paid Webhook Handler
@@ -9,6 +10,7 @@ import crypto from 'crypto';
  *
  *   - Tone Tutoring → Branded email from Vince with scheduling instructions
  *   - Gift Card     → Buyer thank-you email explaining what the recipient gets
+ *   - Tone Tutoring also schedules a Google review request 5 days later
  *
  * Webhook setup:
  *   Shopify Admin → Settings → Notifications → Webhooks
@@ -310,13 +312,19 @@ interface SendEmailOptions {
   bcc?: string;
   subject: string;
   html: string;
+  text?: string;
   replyTo?: string;
+  scheduledAt?: string;
+  tag?: string;
 }
 
-async function sendEmail({ from, to, bcc, subject, html, replyTo }: SendEmailOptions) {
-  const payload: Record<string, string> = { from, to, subject, html };
+async function sendEmail({ from, to, bcc, subject, html, text, replyTo, scheduledAt, tag }: SendEmailOptions) {
+  const payload: Record<string, unknown> = { from, to, subject, html };
   if (bcc) payload.bcc = bcc;
+  if (text) payload.text = text;
   if (replyTo) payload.reply_to = replyTo;
+  if (scheduledAt) payload.scheduled_at = scheduledAt;
+  if (tag) payload.tags = [{ name: 'campaign', value: tag }];
 
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -377,6 +385,24 @@ export async function POST(req: NextRequest) {
       });
       console.log(`Tone Tutoring email sent to ${customerEmail} (order ${order.id})`);
       results.push({ type: 'tone_tutoring', emailId: result.id });
+
+      // Google review ask, 5 days later. Same ask for every customer (no incentive, no filtering).
+      try {
+        const review = reviewEmail('tone', customerFirstName);
+        const scheduled = await sendEmail({
+          from: VINCE_FROM,
+          to: customerEmail,
+          subject: review.subject,
+          html: review.html,
+          text: review.text,
+          replyTo: 'vince@therigdr.com',
+          scheduledAt: 'in 5 days',
+          tag: 'review_tone',
+        });
+        results.push({ type: 'review_request_scheduled', emailId: scheduled.id });
+      } catch (e) {
+        console.error(`Review request scheduling failed for order ${order.id}:`, e);
+      }
     }
 
     // ── Gift Card buyer thank-you email ──
