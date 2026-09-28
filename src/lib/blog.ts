@@ -7,6 +7,7 @@
 import { seoPosts } from './blog-posts-seo';
 import { costPost } from './blog-post-cost';
 import { seoPostDateOverrides } from './blog-seo-dates';
+import { gapPosts } from './blog-posts-gap';
 
 export interface BlogPost {
   slug: string;
@@ -256,6 +257,7 @@ export const blogPosts: BlogPost[] = [
     ...post,
     publishedAt: seoPostDateOverrides[post.slug] || post.publishedAt,
   })),
+  ...gapPosts,
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
