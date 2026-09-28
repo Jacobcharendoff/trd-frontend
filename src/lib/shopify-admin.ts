@@ -4,7 +4,7 @@
  * Auth, in order of preference:
  *   1. SHOPIFY_ADMIN_TOKEN: a long-lived Admin API access token, if one is ever set.
  *   2. Client credentials grant for the Dev Dashboard app "TRD Site Automations":
- *      SHOPIFY_ADMIN_CLIENT_ID + SHOPIFY_ADMIN_CLIENT_SECRET are exchanged for a token
+ *      its client ID (below) + SHOPIFY_ADMIN_CLIENT_SECRET (Vercel env) are exchanged for a token
  *      (valid ~24h) and cached in memory for the life of the function instance.
  *
  * Never import this from a client component.
@@ -15,7 +15,8 @@ export const ADMIN_API_VERSION = '2026-01';
 export const ADMIN_STORE_URL = 'https://admin.shopify.com/store/the-rig-doctor';
 
 const STATIC_TOKEN = process.env.SHOPIFY_ADMIN_TOKEN;
-const CLIENT_ID = process.env.SHOPIFY_ADMIN_CLIENT_ID;
+// Client ID of the Dev Dashboard app "TRD Site Automations". Public identifier, not a secret.
+const CLIENT_ID = process.env.SHOPIFY_ADMIN_CLIENT_ID || 'de899191b4f9b467c748d5cb2005c4f2';
 const CLIENT_SECRET = process.env.SHOPIFY_ADMIN_CLIENT_SECRET;
 
 let cached: { token: string; expiresAt: number } | null = null;
