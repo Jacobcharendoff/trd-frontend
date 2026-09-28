@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { trackLead } from '@/lib/track';
 import Link from 'next/link';
 import ParallaxImage from '@/components/home/ParallaxImage';
 import Reveal from '@/components/home/Reveal';
@@ -52,6 +53,7 @@ function ContactForm() {
       });
 
       if (!res.ok) throw new Error('Failed');
+      trackLead('contact_form', { interest: form.interest || undefined });
       setStatus('sent');
       setForm({ firstName: '', lastName: '', email: '', phone: '', interest: '', message: '', company: '' });
     } catch {

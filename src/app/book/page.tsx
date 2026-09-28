@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import BeforeAfter from '@/components/BeforeAfter';
+import { trackLead } from '@/lib/track';
 import ReviewsMarquee from '@/components/ReviewsMarquee';
 import ParallaxImage from '@/components/home/ParallaxImage';
 import Reveal from '@/components/home/Reveal';
@@ -48,7 +49,10 @@ function ConsultForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-      if (res.ok) router.push('/book/thank-you');
+      if (res.ok) {
+        trackLead('book_consult', { instrument: formData.instrument || undefined });
+        router.push('/book/thank-you');
+      }
       else setStatus('error');
     } catch {
       setStatus('error');

@@ -3,6 +3,9 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import StickyBottomCTA from '@/components/StickyBottomCTA';
 import Analytics from '@/components/Analytics';
+import MetaPixel from '@/components/MetaPixel';
+import RouteTracker from '@/components/RouteTracker';
+import { Suspense } from 'react';
 import HubSpotTracking from '@/components/HubSpotTracking';
 import UTMCapture from '@/components/UTMCapture';
 import ErrorBoundary from '@/components/ErrorBoundary';
@@ -52,6 +55,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <WebSiteSchema />
         <FAQSchema />
         <Analytics />
+        <MetaPixel />
+        <Suspense fallback={null}>
+          <RouteTracker />
+        </Suspense>
         <HubSpotTracking />
         <UTMCapture />
         <ErrorInit />

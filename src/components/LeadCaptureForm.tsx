@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { trackLead } from '@/lib/track';
 
 export default function LeadCaptureForm() {
   const [formData, setFormData] = useState({ name: '', email: '', rig: '' });
@@ -18,6 +19,7 @@ export default function LeadCaptureForm() {
       });
 
       if (res.ok) {
+        trackLead('homepage_form');
         setStatus('success');
         setFormData({ name: '', email: '', rig: '' });
       } else {

@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import Section from '@/components/Section';
+import { track } from '@/lib/track';
 
 export default function BookThankYouPage() {
   useEffect(() => {
@@ -11,8 +12,17 @@ export default function BookThankYouPage() {
     script.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
     script.async = true;
     document.body.appendChild(script);
+    // HubSpot's meetings iframe posts { meetingBookSucceeded: true } when a call is booked.
+    const onMessage = (e: MessageEvent) => {
+      if (typeof e.origin === 'string' && !e.origin.includes('hubspot')) return;
+      if (e.data && (e.data as { meetingBookSucceeded?: boolean }).meetingBookSucceeded) {
+        track('schedule', { meeting: 'rig_build_consultation' });
+      }
+    };
+    window.addEventListener('message', onMessage);
     return () => {
       document.body.removeChild(script);
+      window.removeEventListener('message', onMessage);
     };
   }, []);
 

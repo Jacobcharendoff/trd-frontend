@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { track, trackLead } from '@/lib/track';
 
 /** Email opt-in for the Tone Tutoring discount. /api/tone-offer emails the TONE20 code and logs the lead in HubSpot. */
 export default function ToneOptIn() {
@@ -17,6 +18,10 @@ export default function ToneOptIn() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, company: honey }),
       });
+      if (res.ok) {
+        track('sign_up', { method: 'tone20_optin' });
+        trackLead('tone20_optin');
+      }
       setStatus(res.ok ? 'done' : 'error');
     } catch {
       setStatus('error');
