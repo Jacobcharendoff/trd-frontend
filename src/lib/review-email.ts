@@ -9,6 +9,7 @@
  */
 
 import { ENDS_ON, ENDS_LABEL } from './rewards';
+import { adminConfigured } from './shopify-admin';
 
 const SITE = 'https://www.therigdr.com';
 const IMG = 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/';
@@ -73,7 +74,8 @@ function copy(variant: ReviewVariant, name: string, rewards: boolean) {
 export function reviewEmail(variant: ReviewVariant, firstName = '') {
   const name = (firstName || '').trim() || 'there';
   // Tone Tutoring asks go out 5 days after purchase, so check the offer is still open then.
-  const rewards = variant === 'tone' && rewardsOpenIn(5);
+  // Only mention the gift card once the Shopify connection that issues it is live.
+  const rewards = variant === 'tone' && rewardsOpenIn(5) && adminConfigured();
   const path = rewards ? '/rewards' : '/review';
   const c = copy(variant, name, rewards);
   const btn = (content: string, label: string) => `

@@ -81,7 +81,7 @@ export async function GET(req: NextRequest) {
       const tagged: QueueItem[] = [];
       for (const item of chunk) {
         try {
-          await tagsAdd(item.customer.id, [TAG.sent(item.step)]);
+          await tagsAdd(item.customer.id, [TAG.sent(item.step), TAG.sentOn(item.step, today)]);
           tagged.push(item);
         } catch (e) {
           errors.push(`tag ${item.customer.id}: ${(e as Error).message}`);
@@ -117,7 +117,7 @@ export async function GET(req: NextRequest) {
             sentByStep[tagged[j].step]++;
           } catch (err) {
             errors.push(`send ${tagged[j].customer.id}: ${(err as Error).message}`);
-            await tagsRemove(tagged[j].customer.id, [TAG.sent(tagged[j].step)]).catch(() => {});
+            await tagsRemove(tagged[j].customer.id, [TAG.sent(tagged[j].step), TAG.sentOn(tagged[j].step, today)]).catch(() => {});
           }
         }
       }

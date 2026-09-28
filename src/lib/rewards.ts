@@ -49,6 +49,8 @@ export const TAG = {
   claimed: 'trd-rr-claimed',
   tier: (t: Tier) => `trd-rr-tier-${t}`,
   sent: (n: number) => `trd-rr-sent-${n}`,
+  /** Dated companion tag, e.g. trd-rr-sent-1-on-20260930, used to space the emails out. */
+  sentOn: (n: number, dayCT: string) => `trd-rr-sent-${n}-on-${dayCT.replace(/-/g, '')}`,
   optout: 'trd-rr-optout',
   shareOk: 'trd-rr-share-ok',
   revoked: 'trd-rr-revoked',
@@ -193,6 +195,21 @@ export async function countCustomers(query: string): Promise<number> {
 // ── Drip queue ──────────────────────────────────────────────────────────
 
 const SKIP_STATES = new Set(['UNSUBSCRIBED', 'REDACTED', 'INVALID']);
+const MIN_GAP_DAYS = 5;
+
+/** "2026-09-30" from a tag like trd-rr-sent-1-on-20260930, or null. */
+function sentOnDate(tags: string[], step: number): string | null {
+  const re = new RegExp(`^trd-rr-sent-${step}-on-(\\d{4})(\\d{2})(\\d{2})$`);
+  for (const t of tags) {
+    const m = t.match(re);
+    if (m) return `${m[1]}-${m[2]}-${m[3]}`;
+  }
+  return null;
+}
+
+function daysBetween(a: string, b: string): number {
+  return Math.round((Date.parse(`${b}T12:00:00Z`) - Date.parse(`${a}T12:00:00Z`)) / 86_400_000);
+}
 
 export interface QueueItem {
   customer: RrCustomer;
@@ -206,9 +223,15 @@ export function buildQueue(buyers: RrCustomer[], today: string): QueueItem[] {
     if (c.tags.includes(TAG.claimed) || c.tags.includes(TAG.optout)) continue;
     if (c.marketingState && SKIP_STATES.has(c.marketingState)) continue;
     const sent = [1, 2, 3].filter((n) => c.tags.includes(TAG.sent(n)));
-    const next = (sent.length ? Math.max(...sent) : 0) + 1;
+    const last = sent.length ? Math.max(...sent) : 0;
+    const next = last + 1;
     if (next > 3) continue;
     if (today < DRIP_STEPS[next - 1].from) continue;
+    // Keep at least MIN_GAP_DAYS between emails, even if the drip started late.
+    if (last > 0) {
+      const lastOn = sentOnDate(c.tags, last);
+      if (lastOn && daysBetween(lastOn, today) < MIN_GAP_DAYS) continue;
+    }
     queue.push({ customer: c, step: next as 1 | 2 | 3 });
   }
   return queue.sort((a, b) => a.step - b.step);
