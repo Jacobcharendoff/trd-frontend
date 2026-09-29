@@ -19,7 +19,7 @@ import { adminGql, AdminApiError, numericId, tagsAdd } from './shopify-admin';
 
 export const SITE = 'https://www.therigdr.com';
 export const GOOGLE_REVIEW_URL = 'https://maps.google.com/?cid=17046293411844793764';
-export const FROM = process.env.RESEND_FROM_EMAIL || 'Jacob <jacob@therigdr.com>';
+export const FROM = process.env.REWARDS_FROM_EMAIL || 'The Rig Doctor Team <info@therigdr.com>';
 export const REPLY_TO = 'info@therigdr.com';
 export const NOTIFY_TO = process.env.REWARDS_NOTIFY_EMAIL || 'info@therigdr.com';
 export const POSTAL_ADDRESS = 'The Rig Doctor LLC, 641 Amesbury Rd, Montgomery, TX 77316';

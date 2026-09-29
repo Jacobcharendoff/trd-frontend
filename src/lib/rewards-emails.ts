@@ -98,7 +98,7 @@ function shell(o: ShellOpts) {
       <tr><td style="padding:0 36px;"><div style="height:1px;background:#1f1f22;font-size:0;line-height:0;">&nbsp;</div></td></tr>
       <tr><td style="padding:24px 36px 38px;font-family:${FONT};">
         ${o.after ? `<p style="margin:0 0 20px;font-size:15px;line-height:1.6;color:#a1a1a6;">${o.after}</p>` : ''}
-        <p style="margin:0;font-size:16px;line-height:1.6;color:#a1a1a6;">Thanks,<br><span style="color:#ffffff;">${o.signoff || 'Jacob'}</span><br>The Rig Doctor</p>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#a1a1a6;">Thanks,<br><span style="color:#ffffff;">${o.signoff || 'The Rig Doctor Team'}</span></p>
       </td></tr>
     </table>
   </td></tr>
@@ -179,8 +179,7 @@ $100 for a review + a video of it in action
 Five stars or two, you get the card. We just want the truth. Runs through ${ENDS_LABEL}. One per customer.
 
 Thanks,
-Jacob
-The Rig Doctor
+The Rig Doctor Team
 
 Unsubscribe: ${unsubscribeUrl}
 ${POSTAL_ADDRESS}`,
@@ -216,8 +215,7 @@ Mention the gift card in your review, screenshot it, and send it over: ${SITE}/r
 Good, bad or in between, you get the card. Ends ${ENDS_LABEL}.
 
 Thanks,
-Jacob
-The Rig Doctor
+The Rig Doctor Team
 
 Unsubscribe: ${unsubscribeUrl}
 ${POSTAL_ADDRESS}`,
@@ -248,8 +246,7 @@ The review thank-you wraps up on ${ENDS_LABEL}.
 Honest Google review, you get $50. Add a photo, $75. Add a video, $100. Mention the gift card in your review, screenshot it, and send it our way: ${SITE}/rewards
 
 Thanks,
-Jacob
-The Rig Doctor
+The Rig Doctor Team
 
 Unsubscribe: ${unsubscribeUrl}
 ${POSTAL_ADDRESS}`,
@@ -299,8 +296,7 @@ ${howTo.replace(/&#39;/g, "'")}
 ${SITE}/shop
 
 Thanks,
-Jacob
-The Rig Doctor`,
+The Rig Doctor Team`,
   };
 }
 
