@@ -52,7 +52,7 @@ export const DRIP_STEPS = [
  *   'recent'            buyers whose first order was in the last 24 months
  *   'subscribed_recent' both of the above
  */
-export const DRIP_ENABLED = true;
+export const DRIP_ENABLED = false; // Bulk sends moved to Shopify Email (segment: Review rewards, not claimed yet)
 /** Safety net on total gift cards issued. null = no cap. */
 export const MAX_CLAIMS: number | null = null;
 export type DripAudience = 'all' | 'subscribed' | 'recent' | 'subscribed_recent';

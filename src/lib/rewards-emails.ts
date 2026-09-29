@@ -359,7 +359,11 @@ export function weeklySummaryEmail(s: {
   const total = s.byTier[50] * 50 + s.byTier[75] * 75 + s.byTier[100] * 100;
   const html = `<div style="font-family:${FONT};max-width:560px;font-size:15px;color:#111;">
   <h2 style="margin:0 0 12px;font-size:20px;">Review rewards: where it stands</h2>
-  <p style="margin:0 0 6px;">Emails sent: ${s.sent[0]} (1st) &middot; ${s.sent[1]} (2nd) &middot; ${s.sent[2]} (last call)</p>
+  <p style="margin:0 0 6px;">${
+    s.sent[0] + s.sent[1] + s.sent[2]
+      ? `Emails sent: ${s.sent[0]} (1st) &middot; ${s.sent[1]} (2nd) &middot; ${s.sent[2]} (last call)`
+      : 'The emails go out through Shopify Email. Opens, clicks and sales are in Shopify under Marketing.'
+  }</p>
   <p style="margin:0 0 6px;">Claims: <b>${s.claimed}</b> &middot; $50: ${s.byTier[50]} &middot; $75: ${s.byTier[75]} &middot; $100: ${s.byTier[100]}</p>
   <p style="margin:0 0 6px;">Credit issued: <b>$${total}</b></p>
   <p style="margin:0 0 6px;">Unsubscribed: ${s.optedOut}</p>
