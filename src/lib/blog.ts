@@ -43,7 +43,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'how-to-build-a-pedalboard',
     title: 'How to Build a Pedalboard: The Complete Guide',
     description:
-      'Everything you need to know about building a pedalboard from scratch — board selection, signal chain order, cable management, power, and pro tips from 200+ builds.',
+      'Everything you need to know about building a pedalboard from scratch — board selection, signal chain order, cable management, power, and pro tips from 300+ builds.',
     publishedAt: '2026-05-05',
     updatedAt: '2026-09-24',
     author: 'Jacob Charendoff, Founder of The Rig Doctor',

@@ -34,7 +34,7 @@ function email1(firstName: string) {
 
   <p>12 signal chain diagrams covering everything from a basic mono setup to wet/dry/wet and 4-cable method. Print it, tape it to your wall, keep it next to your board. That's what it's for.</p>
 
-  <p>Quick thing about me: I'm Jacob, and I've been building pedalboards for about 17 years now. Over 200 custom rigs for touring musicians, session players, and bedroom shredders who just want their stuff to sound right. I started The Rig Doctor because I kept seeing the same problem over and over. Great players with great gear, wired wrong.</p>
+  <p>Quick thing about us: I'm Jacob, one of the three guys behind The Rig Doctor with Mason and Vince. Between us it's 17 years and 300+ custom rigs for touring musicians, session players, and bedroom shredders who just want their stuff to sound right. We started The Rig Doctor because we kept seeing the same problem over and over. Great players with great gear, wired wrong.</p>
 
   <p>If you ever have a signal chain question, just reply to this email. I read everything.</p>
 

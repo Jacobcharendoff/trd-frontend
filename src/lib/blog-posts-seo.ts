@@ -417,7 +417,7 @@ export const seoPosts: BlogPost[] = [
         headingLevel: 2,
         content: `<p>Let's get this out of the way: I built pedalboards for a living, and I'm still going to be honest with you. If you have four pedals, a One Spot daisy chain, and a Pedaltrain Nano — you don't need a professional build. Strap your pedals down, run some patch cables, plug in, and go play. Spend the money on a lesson or a better overdrive.</p>
 <p>DIY makes total sense for simple setups. It's fun, it's educational, and the stakes are low. If you wire something wrong, the worst that happens is some noise or a dead signal that you can troubleshoot in 10 minutes. There's real value in understanding your own rig, and the best way to learn is to build one.</p>
-<p>But there's a point where DIY stops being fun and starts being a time-sucking, tone-killing headache. That point is different for everyone, but after building 200+ rigs, I've gotten pretty good at identifying it. Let me tell you what I see when a player brings in a board they've been fighting with for months.</p>`,
+<p>But there's a point where DIY stops being fun and starts being a time-sucking, tone-killing headache. That point is different for everyone, but after building 300+ rigs, I've gotten pretty good at identifying it. Let me tell you what I see when a player brings in a board they've been fighting with for months.</p>`,
       },
       {
         heading: 'Where DIY Starts Falling Apart',
@@ -707,7 +707,7 @@ export const seoPosts: BlogPost[] = [
         heading: 'The Gear Treadmill Is Real',
         headingLevel: 2,
         content: `<p>I sell custom pedalboard builds for a living, and I'm about to tell you to stop buying gear. At least for a minute.</p>
-<p>Here's what I've learned from building 200+ rigs and doing hundreds of <a href="/tone-tutoring">Tone Tutoring sessions</a>: the players with the best tone aren't the ones with the most pedals. They're the ones who understand what they already have. That is exactly what our <a href="/blog/what-is-tone-tutoring">Tone Tutoring sessions</a> help with. I've heard incredible tones from a Telecaster through a Blues Junior with zero pedals, and I've heard terrible tones from $10,000 rigs with 15 boutique pedals and a custom amp. The difference is almost never the gear — it's the player's understanding of how to use it.</p>
+<p>Here's what I've learned from building 300+ rigs and doing hundreds of <a href="/tone-tutoring">Tone Tutoring sessions</a>: the players with the best tone aren't the ones with the most pedals. They're the ones who understand what they already have. That is exactly what our <a href="/blog/what-is-tone-tutoring">Tone Tutoring sessions</a> help with. I've heard incredible tones from a Telecaster through a Blues Junior with zero pedals, and I've heard terrible tones from $10,000 rigs with 15 boutique pedals and a custom amp. The difference is almost never the gear — it's the player's understanding of how to use it.</p>
 <p>Before you buy another pedal, read through this. Every tip here is free, and any one of them might make a bigger difference than that $300 boutique overdrive you've been eyeing.</p>`,
       },
       {

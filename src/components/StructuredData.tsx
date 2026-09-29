@@ -1,12 +1,16 @@
 export default function LocalBusinessSchema() {
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
+    '@type': ['MusicStore', 'ProfessionalService'],
     '@id': 'https://www.therigdr.com/#business',
     name: 'The Rig Doctor',
+    legalName: 'The Rig Doctor LLC',
+    alternateName: ['The Rig Dr.', 'TRD'],
     description:
-      'Professional custom pedalboard builder serving touring artists and home players. Hand-wired rigs, signal chain design, lifetime support. US-based, shipping nationwide.',
+      'Texas music store and custom pedalboard builder. Hand-wired custom pedalboards, Tone Tutoring video sessions, and the cables, power and parts we use on our own builds. 17 years, 300+ rigs, shipping anywhere in the US.',
     url: 'https://www.therigdr.com',
+    logo: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/logo-white-hrt.png',
+    image: 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/2022-L1010577.jpg',
     telephone: '+1-936-548-9254',
     email: 'info@therigdr.com',
     address: {
@@ -22,22 +26,39 @@ export default function LocalBusinessSchema() {
       latitude: 30.3886,
       longitude: -95.6933,
     },
+    hasMap: 'https://maps.google.com/?cid=17046293411844793764',
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '17:00',
+      },
+    ],
     priceRange: '$$',
     areaServed: {
       '@type': 'Country',
       name: 'United States',
     },
+    founder: [
+      { '@type': 'Person', name: 'Mason Marangella' },
+      { '@type': 'Person', name: 'Vince DiGioia' },
+      { '@type': 'Person', name: 'Jacob Charendoff' },
+    ],
+    knowsAbout: [
+      'Custom pedalboards',
+      'Pedalboard wiring',
+      'Guitar signal chain',
+      'Isolated pedalboard power',
+      'MIDI switching',
+      'Guitar tone',
+    ],
     sameAs: [
+      'https://maps.google.com/?cid=17046293411844793764',
       'https://www.instagram.com/therigdr',
       'https://www.youtube.com/@therigdr',
+      'https://www.facebook.com/therigdr',
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      bestRating: '5',
-      ratingCount: '52',
-      reviewCount: '52',
-    },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Custom Pedalboard Services',

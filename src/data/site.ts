@@ -121,7 +121,7 @@ export const site = {
     'Hand-soldered Mogami cables',
     'Lifetime support + free repairs',
     '17 years of experience',
-    '200+ rigs built',
+    '300+ rigs built',
     'Ships nationwide',
     'Free 30-min consultation',
   ],
