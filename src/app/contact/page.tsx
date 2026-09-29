@@ -239,7 +239,7 @@ export default function ContactPage() {
       title: 'Phone',
       value: '(936) 548-9254',
       href: 'tel:+19365489254',
-      note: 'Mon to Fri, 9am to 5pm CT',
+      note: 'Mon to Fri, 10am to 5pm CT',
       path: 'M9 4h4l2 6-3 2a14 14 0 008 8l2-3 6 2v4a2 2 0 01-2 2C13 25 7 19 7 6a2 2 0 012-2z',
     },
     {

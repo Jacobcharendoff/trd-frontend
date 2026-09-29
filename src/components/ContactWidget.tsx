@@ -100,7 +100,7 @@ export default function ContactWidget() {
               <a href="tel:+19365489254" className="text-[#0071E3] hover:text-[#4DA3FF] transition-colors">
                 (936) 548-9254
               </a>
-              {' '}Mon–Fri, 9am–5pm CT.
+              {' '}Mon–Fri, 10am–5pm CT.
             </p>
             <button
               onClick={() => setStatus('idle')}
