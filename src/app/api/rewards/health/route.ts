@@ -43,6 +43,14 @@ export async function GET(req: NextRequest) {
       out.adminError = (e as Error).message.slice(0, 200);
     }
 
+    // Read-only: can this app see gift cards? (Creating them needs the same access.)
+    try {
+      const g = await adminGql<{ giftCards: { nodes: { id: string }[] } }>(`{ giftCards(first: 1) { nodes { id } } }`);
+      out.giftCards = `readable (${g.giftCards.nodes.length ? 'store has cards' : 'no cards yet'})`;
+    } catch (e) {
+      out.giftCards = `not available: ${(e as Error).message.slice(0, 160)} (claims will get a one-time discount code instead)`;
+    }
+
     // Drip progress (counts only).
     let log = emptyLog();
     try {
