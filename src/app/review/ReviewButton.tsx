@@ -2,7 +2,8 @@
 
 import { track } from '@/lib/track';
 
-export const GOOGLE_REVIEW_URL = 'https://maps.google.com/?cid=17046293411844793764';
+// Opens Google's write-a-review box for The Rig Doctor directly (place ID for CID 17046293411844793764).
+export const GOOGLE_REVIEW_URL = 'https://search.google.com/local/writereview?placeid=ChIJddijiYl--iURpCUX_oqZkOw';
 
 export default function ReviewButton() {
   return (

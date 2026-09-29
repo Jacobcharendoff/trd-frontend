@@ -50,6 +50,14 @@ export default function RewardsPage() {
             Built your board, sorted your signal chain, or sent you the parts to bring your rig to life? Leave an honest
             Google review and we&apos;ll send you a Rig Doctor gift card.
           </p>
+          {open && (
+            <div className="mt-9 flex flex-col items-center gap-4">
+              <ReviewButton />
+              <a href="#claim" className="text-white/70 hover:text-white text-[15px] underline underline-offset-4">
+                Already posted it? Claim your gift card
+              </a>
+            </div>
+          )}
         </div>
       </ParallaxImage>
 
