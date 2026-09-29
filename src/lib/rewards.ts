@@ -52,7 +52,7 @@ export const DRIP_STEPS = [
  *   'recent'            buyers whose first order was in the last 24 months
  *   'subscribed_recent' both of the above
  */
-export const DRIP_ENABLED = false;
+export const DRIP_ENABLED = true;
 /** Safety net on total gift cards issued. null = no cap. */
 export const MAX_CLAIMS: number | null = null;
 export type DripAudience = 'all' | 'subscribed' | 'recent' | 'subscribed_recent';
@@ -221,23 +221,63 @@ export async function countCustomers(query: string): Promise<number> {
   }
 }
 
-// ── Drip queue ──────────────────────────────────────────────────────────
+// ── Drip queue + state ──────────────────────────────────────────────────
+//
+// Who got which email, and when, lives in three app-owned shop metafields
+// (drip_step_1..3). One read and a few writes per run, instead of a tag write per
+// customer, so a run can send 1,000 emails inside the function time limit.
 
 const SKIP_STATES = new Set(['UNSUBSCRIBED', 'REDACTED', 'INVALID']);
 const MIN_GAP_DAYS = 5;
+const STATE_NS = '$app:review_rewards';
 
-/** "2026-09-30" from a tag like trd-rr-sent-1-on-20260930, or null. */
-function sentOnDate(tags: string[], step: number): string | null {
-  const re = new RegExp(`^trd-rr-sent-${step}-on-(\\d{4})(\\d{2})(\\d{2})$`);
-  for (const t of tags) {
-    const m = t.match(re);
-    if (m) return `${m[1]}-${m[2]}-${m[3]}`;
-  }
-  return null;
-}
+/** customer numeric id -> day sent (YYYY-MM-DD), per step */
+export type SentLog = Record<1 | 2 | 3, Map<string, string>>;
 
 function daysBetween(a: string, b: string): number {
   return Math.round((Date.parse(`${b}T12:00:00Z`) - Date.parse(`${a}T12:00:00Z`)) / 86_400_000);
+}
+
+function decodeStep(value: string | null | undefined): Map<string, string> {
+  const map = new Map<string, string>();
+  if (!value) return map;
+  const obj = JSON.parse(value) as Record<string, string>;
+  for (const [day, ids] of Object.entries(obj)) {
+    const iso = `${day.slice(0, 4)}-${day.slice(4, 6)}-${day.slice(6, 8)}`;
+    for (const b of ids.split(',')) if (b) map.set(parseInt(b, 36).toString(), iso);
+  }
+  return map;
+}
+
+function encodeStep(map: Map<string, string>): string {
+  const grouped: Record<string, string[]> = {};
+  for (const [id, day] of map) (grouped[day.replace(/-/g, '')] ||= []).push(Number(id).toString(36));
+  return JSON.stringify(Object.fromEntries(Object.entries(grouped).map(([k, v]) => [k, v.join(',')])));
+}
+
+export async function loadDripState(): Promise<{ shopId: string; log: SentLog }> {
+  type M = { value: string } | null;
+  const d = await adminGql<{ shop: { id: string; s1: M; s2: M; s3: M } }>(
+    `{ shop { id
+      s1: metafield(namespace: "${STATE_NS}", key: "drip_step_1") { value }
+      s2: metafield(namespace: "${STATE_NS}", key: "drip_step_2") { value }
+      s3: metafield(namespace: "${STATE_NS}", key: "drip_step_3") { value }
+    } }`,
+  );
+  return {
+    shopId: d.shop.id,
+    log: { 1: decodeStep(d.shop.s1?.value), 2: decodeStep(d.shop.s2?.value), 3: decodeStep(d.shop.s3?.value) },
+  };
+}
+
+export async function saveDripStep(shopId: string, step: 1 | 2 | 3, map: Map<string, string>) {
+  const d = await adminGql<{ metafieldsSet: { userErrors: { message: string }[] } }>(
+    `mutation($m: [MetafieldsSetInput!]!) { metafieldsSet(metafields: $m) { metafields { id } userErrors { field message } } }`,
+    { m: [{ ownerId: shopId, namespace: STATE_NS, key: `drip_step_${step}`, type: 'json', value: encodeStep(map) }] },
+  );
+  if (d.metafieldsSet.userErrors.length) {
+    throw new AdminApiError(`metafieldsSet: ${d.metafieldsSet.userErrors.map((e) => e.message).join('; ')}`);
+  }
 }
 
 export interface QueueItem {
@@ -245,26 +285,35 @@ export interface QueueItem {
   step: 1 | 2 | 3;
 }
 
-export function buildQueue(buyers: RrCustomer[], today: string, audience: DripAudience = DRIP_AUDIENCE): QueueItem[] {
+export function buildQueue(
+  buyers: RrCustomer[],
+  today: string,
+  log: SentLog,
+  audience: DripAudience = DRIP_AUDIENCE,
+): QueueItem[] {
   const queue: QueueItem[] = [];
   for (const c of buyers) {
     if (!inAudience(c, audience, today)) continue;
     if (!c.email || c.email.toLowerCase().endsWith('@therigdr.com')) continue;
     if (c.tags.includes(TAG.claimed) || c.tags.includes(TAG.optout)) continue;
     if (c.marketingState && SKIP_STATES.has(c.marketingState)) continue;
-    const sent = [1, 2, 3].filter((n) => c.tags.includes(TAG.sent(n)));
-    const last = sent.length ? Math.max(...sent) : 0;
+    const id = numericId(c.id);
+    const last = log[3].has(id) ? 3 : log[2].has(id) ? 2 : log[1].has(id) ? 1 : 0;
     const next = last + 1;
     if (next > 3) continue;
     if (today < DRIP_STEPS[next - 1].from) continue;
     // Keep at least MIN_GAP_DAYS between emails, even if the drip started late.
     if (last > 0) {
-      const lastOn = sentOnDate(c.tags, last);
+      const lastOn = log[last as 1 | 2 | 3].get(id);
       if (lastOn && daysBetween(lastOn, today) < MIN_GAP_DAYS) continue;
     }
     queue.push({ customer: c, step: next as 1 | 2 | 3 });
   }
   return queue.sort((a, b) => a.step - b.step);
+}
+
+export function emptyLog(): SentLog {
+  return { 1: new Map(), 2: new Map(), 3: new Map() };
 }
 
 // ── Rewards ───────────────────────────────────────────────────────────────
