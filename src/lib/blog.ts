@@ -79,7 +79,7 @@ export const blogPosts: BlogPost[] = [
     sections: [
       {
         content: `<p>You've got a pile of pedals on the floor, a tangle of cables that would make an electrician cry, and a tone you know could be better. Sound familiar? Building a pedalboard isn't just about bolting pedals to a board — it's about designing a system that makes your rig sound better, set up faster, and survive the road.</p>
-<p>I've built over 200 pedalboards in the last 17 years — for weekend players, touring professionals, and everyone in between. This guide covers everything I've learned about building a board that actually works.</p>`,
+<p>We've built over 300 pedalboards in the last 17 years — for weekend players, touring professionals, and everyone in between. This guide covers everything I've learned about building a board that actually works.</p>`,
       },
       {
         heading: 'Step 1: Choose the right pedalboard',
@@ -202,7 +202,7 @@ export const blogPosts: BlogPost[] = [
     sections: [
       {
         content: `<p>Most guitarists will spend hours debating which overdrive pedal to buy, then connect it with a $3 patch cable from a bin at the music store. That cable is quietly eating your tone — and you might not even realize it.</p>
-<p>After 200+ professional pedalboard builds, cable quality is the single most impactful upgrade most players overlook. Here's what you need to know.</p>`,
+<p>After 300+ professional pedalboard builds, cable quality is the single most impactful upgrade most players overlook. Here's what you need to know.</p>`,
       },
       {
         heading: 'What makes a cable "good"?',

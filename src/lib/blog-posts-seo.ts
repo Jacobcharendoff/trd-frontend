@@ -21,7 +21,7 @@ export const seoPosts: BlogPost[] = [
         headingLevel: 2,
         content: `<p>Here's something I tell almost every player who sits down for a <a href="/tone-tutoring">Tone Tutoring session</a>: you can own the most expensive pedals on the planet and still sound like garbage if they're in the wrong spot in your chain. Pedal placement isn't some esoteric secret — it's basic physics. Where a pedal sits relative to your amp's preamp stage changes what that pedal is actually processing, and that changes everything about how it sounds.</p>
 <p>Your amp has two main gain stages: the preamp (where your tone gets shaped and distorted) and the power amp (where it gets loud). The effects loop sits between those two stages. That's the whole game. Pedals in front of the amp hit the preamp's input. Pedals in the loop hit the power amp's input after the preamp has already done its thing. Same pedal, completely different results depending on where you plug it in.</p>
-<p>I've built over 200 rigs for touring musicians and home players, and signal chain order is the single most impactful thing we dial in during every build. Let's break down where every type of pedal belongs and why.</p>`,
+<p>We've built over 300 rigs for touring musicians and home players, and signal chain order is the single most impactful thing we dial in during every build. Let's break down where every type of pedal belongs and why.</p>`,
       },
       {
         heading: 'What the Effects Loop Actually Is',
@@ -100,7 +100,7 @@ export const seoPosts: BlogPost[] = [
         heading: 'What About Amp Modelers and Multi-Effects?',
         headingLevel: 2,
         content: `<p>If you're running a Kemper, Axe-FX, Helix, or Quad Cortex, the effects loop question doesn't apply the same way — those units let you place effects anywhere in a virtual signal chain. But the same principles hold: put your gain blocks before your delay and reverb blocks. Put your wah before your drives. The physics of sound processing doesn't change just because the processing is digital.</p>
-<p>Where it gets interesting is when you use a modeler as the hub of a hybrid rig — running real pedals into the modeler's loops alongside amp models. We've built a bunch of rigs like this, and the routing gets complex fast. That's exactly the kind of build where having someone who's done it 200+ times makes a real difference.</p>`,
+<p>Where it gets interesting is when you use a modeler as the hub of a hybrid rig — running real pedals into the modeler's loops alongside amp models. We've built a bunch of rigs like this, and the routing gets complex fast. That's exactly the kind of build where having someone who's done it 300+ times makes a real difference.</p>`,
       },
       {
         heading: 'Still Not Sure Where Something Goes?',
@@ -276,7 +276,7 @@ export const seoPosts: BlogPost[] = [
     slug: 'midi-pedalboard-switching-guide',
     title: 'MIDI Pedalboard Switching: A Setup Guide for Guitarists',
     description:
-      'Everything you need to know about MIDI switching on a pedalboard — from choosing a controller to programming presets. Real-world advice from 200+ rig builds.',
+      'Everything you need to know about MIDI switching on a pedalboard — from choosing a controller to programming presets. Real-world advice from 300+ rig builds.',
     publishedAt: '2026-06-04',
     updatedAt: '2026-09-24',
     author: 'Jacob Charendoff, Founder of The Rig Doctor',
@@ -851,7 +851,7 @@ export const seoPosts: BlogPost[] = [
       {
         heading: 'The Power Supplies We Actually Use and Recommend',
         headingLevel: 2,
-        content: `<p>After building 200+ boards, we've settled on a handful of power supplies that we trust. Here's what we use and why:</p>
+        content: `<p>After building 300+ boards, we've settled on a handful of power supplies that we trust. Here's what we use and why:</p>
 <h3>CIOKS DC7</h3>
 <p>This is our go-to for most builds. Seven isolated outputs, each delivering up to 660mA at 9V (or configurable to 12V/18V with jumpers on some outputs). It's compact, dead quiet, and incredibly well-built. The DC7 can power most 7-10 pedal boards by itself, and you can link two together for larger rigs. CIOKS also makes the DC4 (four outputs, even smaller) for compact boards.</p>
 <p>What sets CIOKS apart is the flexibility. The outputs are grouped into sections that can be configured for different voltages, and the current capacity per output is generous enough to handle Strymon and Boss 500-series pedals without breaking a sweat. Around $300, and worth every cent.</p>
@@ -1028,7 +1028,7 @@ export const seoPosts: BlogPost[] = [
         heading: 'Book a Session',
         headingLevel: 2,
         content: `<p>Tone Tutoring is $99 for 60 minutes. <a href="/tone-tutoring">Book directly on our site</a> — pick a time that works for you, and we'll send you a video call link. That's it. No contracts, no commitments, no subscription.</p>
-<p>One session. One hour. Your rig, but better. I've done this for over 200 rigs — whether it's a $500 bedroom board or a $5,000 touring rig, the approach is the same: listen, diagnose, fix. Your tone is in there. Sometimes you just need someone who knows where to find it. And if you decide you want a full rig overhaul after, check out our <a href="/blog/custom-pedalboard-build-vs-diy">custom build vs. DIY comparison</a> to see if a pro build makes sense.</p>`,
+<p>One session. One hour. Your rig, but better. We've done this for over 300 rigs — whether it's a $500 bedroom board or a $5,000 touring rig, the approach is the same: listen, diagnose, fix. Your tone is in there. Sometimes you just need someone who knows where to find it. And if you decide you want a full rig overhaul after, check out our <a href="/blog/custom-pedalboard-build-vs-diy">custom build vs. DIY comparison</a> to see if a pro build makes sense.</p>`,
       },
       {
         heading: 'Frequently asked questions about Tone Tutoring',
