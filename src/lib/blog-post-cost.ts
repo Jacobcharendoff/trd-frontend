@@ -8,7 +8,7 @@ export const costPost: BlogPost = {
     'Real 2026 price ranges, from $150 DIY boards to $5,000+ touring rigs. What you\'re paying for, what DIY really costs, and when a pro build pays off.',
   publishedAt: '2026-06-09',
   updatedAt: '2026-09-24',
-  author: 'Jacob Charendoff, Co-founder of The Rig Doctor',
+  author: 'The Rig Doctor Team',
   readTime: '10 min read',
   category: 'Guides',
   tags: [

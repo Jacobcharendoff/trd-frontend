@@ -221,7 +221,7 @@ export default function ToneTutoringPage() {
         </Reveal>
         <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-5 mb-14">
           {[
-            { quote: 'Jacob completely rethought my signal chain. I thought I had it figured out. I was wrong. My tone is night and day different now.', name: 'Marcus T.', role: 'Gigging guitarist' },
+            { quote: 'Completely rethought my signal chain. I thought I had it figured out. I was wrong. My tone is night and day different now.', name: 'Marcus T.', role: 'Gigging guitarist' },
             { quote: "I was drowning in gear options and didn't know what I actually needed. One session, clear plan. Stopped wasting money on stuff that doesn't serve my sound.", name: 'Sarah L.', role: 'Songwriter' },
             { quote: "An hour with someone who actually knows what they're talking about is worth more than a hundred YouTube videos. Best money I've spent on my tone.", name: 'Jake D.', role: 'Session player' },
           ].map((r, i) => (

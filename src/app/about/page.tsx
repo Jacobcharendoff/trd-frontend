@@ -10,17 +10,17 @@ const CDN = 'https://cdn.shopify.com/s/files/1/0528/3171/5486/files/';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Meet Mason Marangella, Vince DiGioia, and Jacob Charendoff, the founders behind The Rig Doctor. 17+ years building custom pedalboards in Houston, TX for touring artists and home players nationwide.',
+    'Meet Mason Marangella and Vince DiGioia, the rig builders behind The Rig Doctor. 17+ years building custom pedalboards in Houston, TX for touring artists and home players nationwide.',
   openGraph: {
     title: 'About The Rig Doctor',
     description:
-      'Meet the founders behind The Rig Doctor. 17+ years building custom pedalboards for touring artists and home players.',
+      'Meet the rig builders behind The Rig Doctor. 17+ years building custom pedalboards for touring artists and home players.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'About The Rig Doctor: Mason, Vince, and Jacob',
+        alt: 'About The Rig Doctor: Mason and Vince',
       },
     ],
   },
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'About The Rig Doctor',
     description:
-      'Meet Mason, Vince, and Jacob. 17+ years building custom pedalboards for touring artists and home players.',
+      'Meet Mason and Vince. 17+ years building custom pedalboards for touring artists and home players.',
     images: ['/og-image.png'],
   },
 };
@@ -96,46 +96,44 @@ export default function AboutPage() {
             We started building pedalboards because <span className="trd-gradient-text">nobody was doing it right.</span>
           </h1>
           <p className="mt-6 text-white/70 text-lg sm:text-xl max-w-2xl leading-relaxed">
-            17 years. 300+ rigs. Three founders who play guitar and actually care whether your signal chain is clean.
+            17 years. 300+ rigs. Two rig builders who play guitar and actually care whether your signal chain is clean.
           </p>
         </div>
       </ParallaxImage>
 
-      {/* ───────── FOUNDERS ───────── */}
+      {/* ───────── BUILDERS ───────── */}
       <section className="bg-white py-24 sm:py-32">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20 mb-16">
             <Reveal>
-              <p className="trd-eyebrow text-black/40 mb-5">The founders</p>
+              <p className="trd-eyebrow text-black/40 mb-5">The builders</p>
               <h2 className="text-black font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(36px,5vw,64px)]">
-                Three guitarists. <span className="trd-gradient-text">One obsession.</span>
+                Two guitarists. <span className="trd-gradient-text">One obsession.</span>
               </h2>
             </Reveal>
             <Reveal delay={120} className="space-y-5 text-[17px] text-black/60 leading-relaxed">
               <p>
-                The Rig Doctor was founded by Mason Marangella, Vince DiGioia and Jacob Charendoff, three players who got tired of
-                watching great guitarists fight bad rigs. Mason started building boards because the ones he could buy weren&apos;t
-                good enough. Vince brought the ear: if a rig doesn&apos;t sound right, he&apos;ll find the problem before it leaves
-                the bench. Jacob brought the reach, connecting players with the builds they actually need.
+                The Rig Doctor is Mason Marangella and Vince DiGioia, two players who got tired of watching great guitarists
+                fight bad rigs. Mason started building boards because the ones he could buy weren&apos;t good enough. Vince brought
+                the ear: if a rig doesn&apos;t sound right, he&apos;ll find the problem before it leaves the bench.
               </p>
               <p>
                 Together, we&apos;ve built over 300 custom rigs for touring artists, session players and weekend warriors. Every
                 board is hand-wired by someone who plays guitar and knows what a clean signal chain sounds like under stage lights.
               </p>
               <p>
-                This isn&apos;t a factory. It&apos;s three guys who care whether your board works perfectly on the 200th gig the same way
+                This isn&apos;t a factory. It&apos;s two guys who care whether your board works perfectly on the 200th gig the same way
                 it did on the first. That&apos;s the whole pitch.
               </p>
             </Reveal>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-[880px] mx-auto">
             {[
-              { name: 'Mason Marangella', role: 'Builder', img: 'Mason_Avatar.png' },
-              { name: 'Vince DiGioia', role: 'Builder and tone', img: 'Vince_Avatar.png' },
-              { name: 'Jacob Charendoff', role: 'Players and partnerships', img: 'Jacob_avatar.png' },
+              { name: 'Mason Marangella', role: 'Rig Builder', img: 'Mason_Avatar.png' },
+              { name: 'Vince DiGioia', role: 'Rig Builder', img: 'Vince_Avatar.png' },
             ].map((f, i) => (
               <Reveal key={f.name} delay={i * 100} className="trd-photo relative aspect-[4/5] rounded-[28px] bg-black">
-                <Image src={`${CDN}${f.img}`} alt={f.name} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover object-top" />
+                <Image src={`${CDN}${f.img}`} alt={f.name} fill sizes="(max-width: 640px) 100vw, 440px" className="object-cover object-top" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
                 <div className="absolute bottom-0 p-7">
                   <p className="text-white text-2xl font-bold tracking-tight">{f.name}</p>

@@ -360,13 +360,13 @@ export default function Home() {
             {[
               {
                 name: 'Mason Marangella',
-                role: 'Founder, Vertex Effects',
+                role: 'Rig Builder',
                 image: img.mason,
                 body: '17+ years at the bench. Mason founded Vertex Effects and built the Vertex by Gator pedalboard series. He has built rigs for Andy Timmons, Oz Noy, Michael Landau, Kirk Fletcher, Josh Smith and Matt Schofield. Real builds that went on real tours.',
               },
               {
                 name: 'Vince DiGioia',
-                role: 'Engineer, producer, touring guitarist',
+                role: 'Rig Builder',
                 image: img.vince,
                 body: '15+ years building rigs and chasing down bad tone. Vince plays lead with 35 Drive and has toured with Roger Creager, Josh Abbott Band, Reckless Kelly and Pat Green. He knows what a board needs to survive a 200-show year because he has lived it.',
               },

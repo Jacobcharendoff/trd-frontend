@@ -12,7 +12,8 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const FROM = process.env.RESEND_FROM_EMAIL || 'Jacob <jacob@therigdr.com>';
+// Sent as the team, not a person. Deliberately not RESEND_FROM_EMAIL, which may still name an individual.
+const FROM = 'The Rig Doctor Team <info@therigdr.com>';
 const REPLY_TO = 'info@therigdr.com';
 const SITE = 'https://www.therigdr.com';
 const CODE = 'TONE20';
@@ -182,7 +183,7 @@ function emailHtml() {
       </td></tr>
 
       <tr><td style="padding:14px 36px 38px;font-family:${font};">
-        <p style="margin:0 0 20px;font-size:16px;line-height:1.6;color:#a1a1a6;">Talk soon,<br><span style="color:#ffffff;">Jacob</span><br>The Rig Doctor</p>
+        <p style="margin:0 0 20px;font-size:16px;line-height:1.6;color:#a1a1a6;">Talk soon,<br><span style="color:#ffffff;">The Rig Doctor Team</span></p>
         <p style="margin:0;font-size:14px;line-height:1.6;color:#8e8e93;">Want to see how it works first? <a href="${learn}" style="color:#ffffff;text-decoration:underline;">Here's the rundown.</a></p>
       </td></tr>
     </table>
@@ -209,7 +210,7 @@ async function sendCode(email: string) {
       reply_to: REPLY_TO,
       subject: 'Your 20% off is ready (already applied)',
       html: emailHtml(),
-      text: `Your 20% off Tone Tutoring is ready. Code ${CODE} is already applied at this link: ${SITE}/api/checkout?handle=tone-tutoring-follow-up&discount=${CODE}\n\nTalk soon,\nJacob\nThe Rig Doctor`,
+      text: `Your 20% off Tone Tutoring is ready. Code ${CODE} is already applied at this link: ${SITE}/api/checkout?handle=tone-tutoring-follow-up&discount=${CODE}\n\nTalk soon,\nThe Rig Doctor Team`,
       tags: [{ name: 'campaign', value: 'tone20_optin' }],
     }),
   });
