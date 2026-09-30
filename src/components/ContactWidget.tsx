@@ -124,7 +124,7 @@ export default function ContactWidget() {
                   value={form.firstName}
                   onChange={handleChange}
                   className="w-full px-4 py-3.5 rounded-xl bg-white/[0.05] border border-white/[0.1] text-[#f5f5f7] placeholder-white/20 focus:outline-none focus:ring-2 focus:ring-[#0071E3]/40 focus:border-[#0071E3]/50 transition-all text-sm backdrop-blur-sm"
-                  placeholder="Jacob"
+                  placeholder="Alex"
                 />
               </div>
               <div>
