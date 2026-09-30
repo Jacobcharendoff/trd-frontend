@@ -65,8 +65,9 @@ export default async function BlogPostPage({
     datePublished: post.publishedAt,
     ...(post.updatedAt && { dateModified: post.updatedAt }),
     author: {
-      '@type': 'Person',
-      name: post.author,
+      '@type': 'Organization',
+      name: 'The Rig Doctor',
+      url: 'https://www.therigdr.com',
     },
     publisher: {
       '@type': 'Organization',

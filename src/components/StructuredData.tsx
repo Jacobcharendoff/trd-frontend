@@ -40,10 +40,9 @@ export default function LocalBusinessSchema() {
       '@type': 'Country',
       name: 'United States',
     },
-    founder: [
-      { '@type': 'Person', name: 'Mason Marangella' },
-      { '@type': 'Person', name: 'Vince DiGioia' },
-      { '@type': 'Person', name: 'Jacob Charendoff' },
+    employee: [
+      { '@type': 'Person', name: 'Mason Marangella', jobTitle: 'Rig Builder' },
+      { '@type': 'Person', name: 'Vince DiGioia', jobTitle: 'Rig Builder' },
     ],
     knowsAbout: [
       'Custom pedalboards',
@@ -171,8 +170,9 @@ export function BlogPostSchema({
     datePublished: date,
     url,
     author: {
-      '@type': 'Person',
-      name: 'Jacob Charendoff',
+      '@type': 'Organization',
+      name: 'The Rig Doctor',
+      url: 'https://www.therigdr.com',
     },
     publisher: {
       '@type': 'Organization',

@@ -5,7 +5,7 @@
  * which keeps it inside Google's review policy.
  *
  * variant 'tone'    → sent by Vince a few days after a Tone Tutoring purchase
- * variant 'general' → sent by Jacob to past build and session customers
+ * variant 'general' → sent as The Rig Doctor Team to past build and session customers
  */
 
 import { ENDS_ON, ENDS_LABEL } from './rewards';
@@ -67,7 +67,7 @@ function copy(variant: ReviewVariant, name: string, rewards: boolean) {
       'If we built your board or ran a Tone Tutoring session with you, would you leave a few honest lines about how it went? Good, bad or somewhere in between. It takes two minutes and it helps the next guitarist decide if we&#39;re the right shop for them.',
     ],
     after: 'And if anything on your rig isn&#39;t right, just reply. Lifetime support means lifetime.',
-    signoff: 'Jacob',
+    signoff: 'The Rig Doctor Team',
   };
 }
 
