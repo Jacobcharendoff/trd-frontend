@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getProduct, createCartWithAttribution } from '@/lib/shopify';
-import { getUTMFromCookie, appendUTMToURL, utmToCartAttributes } from '@/lib/utm';
+import { getUTMFromCookie, extractUTMFromURL, appendUTMToURL, utmToCartAttributes } from '@/lib/utm';
 
 /**
  * Checkout API Route
@@ -52,9 +52,10 @@ export async function GET(req: NextRequest) {
       variantId = variant.id;
     }
 
-    // Read UTM attribution from cookie
+    // UTM attribution: tags on this link win (email buttons link straight here),
+    // otherwise fall back to the first-touch cookie set when they landed on the site.
     const cookieHeader = req.headers.get('cookie') || '';
-    const utmParams = getUTMFromCookie(cookieHeader);
+    const utmParams = extractUTMFromURL(req.nextUrl.searchParams) || getUTMFromCookie(cookieHeader);
     const cartAttributes = utmParams ? utmToCartAttributes(utmParams) : [];
 
     // Create a cart with attribution and get the Shopify-hosted checkout URL

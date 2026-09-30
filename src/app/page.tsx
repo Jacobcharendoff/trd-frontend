@@ -149,7 +149,7 @@ export default function Home() {
         <div className="relative min-h-[calc(100svh-100px)] flex items-end justify-center overflow-hidden">
           <HeroVideo />
           <div className="relative z-10 max-w-[1200px] mx-auto px-6 pb-16 sm:pb-20 pt-28 w-full text-center">
-            <p className="trd-eyebrow text-white/55 mb-6">Custom pedalboards &middot; 2 build spots left this year</p>
+            <p className="trd-eyebrow text-white/55 mb-6">Custom pedalboard builder &middot; Houston, TX &middot; 2 build spots left this year</p>
             <h1 className="trd-hero-headline text-white mb-6">
               You didn&apos;t spend thousands on gear
               <br />
