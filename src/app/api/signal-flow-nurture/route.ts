@@ -11,7 +11,8 @@ import { NextRequest, NextResponse } from 'next/server';
  */
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'Jacob <jacob@therigdr.com>';
+// Sent as the team, not a person. Deliberately not RESEND_FROM_EMAIL, which may still name an individual.
+const FROM_EMAIL = 'The Rig Doctor Team <info@therigdr.com>';
 const PDF_URL =
   'https://ul04rn4k3jtypxsy.public.blob.vercel-storage.com/Signal_Flow_Cheat_Sheet-ht17iWYR53dcOwLBPjes5W2F4jgaNa.pdf';
 const TONE_TUTORING_URL = 'https://www.therigdr.com/tone-tutoring';
@@ -34,11 +35,11 @@ function email1(firstName: string) {
 
   <p>12 signal chain diagrams covering everything from a basic mono setup to wet/dry/wet and 4-cable method. Print it, tape it to your wall, keep it next to your board. That's what it's for.</p>
 
-  <p>Quick thing about us: I'm Jacob, one of the three guys behind The Rig Doctor with Mason and Vince. Between us it's 17 years and 300+ custom rigs for touring musicians, session players, and bedroom shredders who just want their stuff to sound right. We started The Rig Doctor because we kept seeing the same problem over and over. Great players with great gear, wired wrong.</p>
+  <p>Quick thing about us: The Rig Doctor is Mason and Vince, two rig builders with 17 years and 300+ custom rigs behind them, for touring musicians, session players, and bedroom shredders who just want their stuff to sound right. We started The Rig Doctor because we kept seeing the same problem over and over. Great players with great gear, wired wrong.</p>
 
-  <p>If you ever have a signal chain question, just reply to this email. I read everything.</p>
+  <p>If you ever have a signal chain question, just reply to this email. We read everything.</p>
 
-  <p>Talk soon,<br/>Jacob<br/><span style="color: #86868b;">The Rig Doctor</span></p>
+  <p>Talk soon,<br/>The Rig Doctor Team</p>
 </div>
     `.trim(),
   };
@@ -52,13 +53,13 @@ function email2(firstName: string) {
 <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 560px; margin: 0 auto; color: #1d1d1f; line-height: 1.6; font-size: 16px;">
   <p>Hey ${name},</p>
 
-  <p>Since you grabbed the cheat sheet, figured I'd share something that trips up almost everyone I work with. Buffers.</p>
+  <p>Since you grabbed the cheat sheet, figured we'd share something that trips up almost everyone we work with. Buffers.</p>
 
   <p>Here's the deal: every cable on your board is a tiny antenna sucking tone out of your signal. The longer your cable runs and the more pedals you chain together, the more high end you lose. Your sound gets darker and muddier the further it travels. That's not your pedals. That's physics.</p>
 
   <p>A buffer fixes this. It takes your high-impedance guitar signal and converts it to low-impedance so it can travel through your whole chain without losing clarity. Think of it like a signal booster for your tone.</p>
 
-  <p><strong>Where to put one:</strong> First in the chain (right after your guitar) is the most common spot. If you have a long cable run to your amp, putting a second buffer at the end of your chain helps too. Some pedals already have buffers built in — Boss pedals, for example, are buffered bypass. So if you've got a Boss tuner up front, you might already be covered.</p>
+  <p><strong>Where to put one:</strong> First in the chain (right after your guitar) is the most common spot. If you have a long cable run to your amp, putting a second buffer at the end of your chain helps too. Some pedals already have buffers built in. Boss pedals, for example, are buffered bypass. So if you've got a Boss tuner up front, you might already be covered.</p>
 
   <p><strong>One thing to watch:</strong> If you're running a fuzz face or vintage-style fuzz, those want to see your guitar's raw signal directly. Put the fuzz before the buffer, or you'll lose that sputtery, reactive feel those pedals are known for.</p>
 
@@ -68,7 +69,7 @@ function email2(firstName: string) {
 
   <p>No pressure on that. Just wanted you to know it exists.</p>
 
-  <p>Jacob</p>
+  <p>The Rig Doctor Team</p>
 </div>
     `.trim(),
   };
@@ -82,7 +83,7 @@ function email3(firstName: string) {
 <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 560px; margin: 0 auto; color: #1d1d1f; line-height: 1.6; font-size: 16px;">
   <p>Hey ${name},</p>
 
-  <p>Vince here from The Rig Doctor. Jacob asked me to reach out because I'm the one who runs our Tone Tutoring sessions, and I wanted to put a name to the face you'd actually be working with.</p>
+  <p>Vince here from The Rig Doctor. I'm the one who runs our Tone Tutoring sessions, and I wanted to put a name to the face you'd actually be working with.</p>
 
   <p>You know that feeling where you've watched a dozen YouTube videos on signal chain, read three forum threads, and you're somehow more confused than when you started? Everyone's got an opinion. Half of them contradict each other. And none of them have seen your actual board.</p>
 
@@ -126,7 +127,7 @@ async function sendEmail(params: {
       to: params.to,
       subject: params.subject,
       html: params.html,
-      reply_to: params.from === VINCE_FROM_EMAIL ? 'vince@therigdr.com' : 'jacobcharendoff@gmail.com',
+      reply_to: params.from === VINCE_FROM_EMAIL ? 'vince@therigdr.com' : 'info@therigdr.com',
       ...(params.scheduledAt ? { scheduled_at: params.scheduledAt } : {}),
     }),
   });

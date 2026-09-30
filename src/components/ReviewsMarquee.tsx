@@ -3,7 +3,7 @@
 const reviews = [
   { name: 'Kevin M.', stars: 5, feedback: 'Three weeks on the road, not a single issue. I used to bring a backup board to every show. Don\'t anymore.' },
   { name: 'Dustin A.', stars: 5, feedback: 'Three tours. Two continents. Zero issues. That\'s the review.' },
-  { name: 'Chris P.', stars: 5, feedback: 'Jacob talked me OUT of buying 3 pedals I didn\'t need. Saved me like $600. Then built something way better with what I had. Rare to find someone who doesn\'t just try to upsell you.' },
+  { name: 'Chris P.', stars: 5, feedback: 'Talked me OUT of buying 3 pedals I didn\'t need. Saved me like $600. Then built something way better with what I had. Rare to find someone who doesn\'t just try to upsell you.' },
   { name: 'Tyler R.', stars: 5, feedback: 'the noise floor dropped so much I genuinely thought something was unplugged lol. nope just quiet now' },
   { name: 'Brian K.', stars: 5, feedback: 'Was skeptical about the price honestly. After the first gig I got it. Worth every penny.' },
   { name: 'Will E.', stars: 5, feedback: 'My tech looked at the wiring and said "whoever did this actually gives a damn." Yep.' },
@@ -11,7 +11,6 @@ const reviews = [
   { name: 'Ethan G.', stars: 5, feedback: 'My band thought I got a new amp. Nope. Same amp, just a proper signal chain now haha' },
   { name: 'Hunter W.', stars: 5, feedback: 'Recording engineer. The noise floor improvement was measurable. We\'re talking 6dB quieter. That\'s significant.' },
   { name: 'Omar K.', stars: 5, feedback: 'Spent thousands on gear over the years. This is hands down the single best investment I\'ve made in my tone.' },
-  { name: 'Jared T.', stars: 5, feedback: 'Built my first board with Jacob in 2019. Just sent him my third. Nobody else touches my rigs at this point.' },
   { name: 'Sean O.', stars: 5, feedback: 'Had a question 6 months after the build. Response in 20 minutes on a Saturday. That kind of support doesn\'t exist anymore.' },
 ];
 

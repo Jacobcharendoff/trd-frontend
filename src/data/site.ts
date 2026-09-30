@@ -15,10 +15,10 @@ export const site = {
 
   // ─── Contact ───
   phone: {
-    display: '(647) 680-2324',
-    raw: '+16476802324',
+    display: '(936) 548-9254',
+    raw: '+19365489254',
   },
-  email: 'jacob@therigdr.com',
+  email: 'info@therigdr.com',
 
   // ─── Location ───
   address: {
@@ -109,11 +109,10 @@ export const site = {
     satisfactionRate: '100%',
   },
 
-  // ─── Founders ───
-  founders: [
-    { name: 'Jacob Charendoff', role: 'Co-Founder' },
-    { name: 'Mason Marangella', role: 'Co-Founder' },
-    { name: 'Vince DiGioia', role: 'Co-Founder' },
+  // ─── Team (public label is Rig Builder) ───
+  team: [
+    { name: 'Mason Marangella', role: 'Rig Builder' },
+    { name: 'Vince DiGioia', role: 'Rig Builder' },
   ],
 
   // ─── Selling Points (for CTAs, meta, schema) ───
