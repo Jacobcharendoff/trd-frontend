@@ -129,9 +129,21 @@ function PrimaryCTA({ children, href = '/book', className = '' }: { children: Re
   );
 }
 
+// FAQ structured data built from the FAQs shown on this page, so the markup always matches what visitors see.
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
 export default function Home() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       {/* ───────────── 1. HERO ───────────── */}
       <section className="relative bg-black">
         <div className="relative min-h-[calc(100svh-100px)] flex items-end justify-center overflow-hidden">

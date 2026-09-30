@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse, after } from 'next/server';
 
 /**
  * Signal Flow Lead Capture API
@@ -87,18 +87,20 @@ export async function POST(req: NextRequest) {
     }
 
     // ── 2. Trigger nurture email sequence ────────────────────
-    // Fire to our own nurture endpoint (non-blocking)
-    const nurtureFetch = fetch(`${SITE_URL}/api/signal-flow-nurture`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: normalizedEmail }),
-    }).catch((err) => {
-      console.error('Nurture trigger failed:', err);
+    // Runs after the response is sent. after() keeps the function alive until it finishes;
+    // a bare un-awaited fetch can be killed when a serverless function returns.
+    after(async () => {
+      try {
+        const res = await fetch(`${SITE_URL}/api/signal-flow-nurture`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: normalizedEmail }),
+        });
+        if (!res.ok) console.error('Nurture trigger failed:', res.status, await res.text());
+      } catch (err) {
+        console.error('Nurture trigger failed:', err);
+      }
     });
-
-    // Don't await nurture — return success to the user immediately
-    // The nurture emails will fire in the background
-    void nurtureFetch;
 
     return NextResponse.json({ ok: true });
   } catch (err) {

@@ -40,6 +40,7 @@ function email1(firstName: string) {
   <p>If you ever have a signal chain question, just reply to this email. We read everything.</p>
 
   <p>Talk soon,<br/>The Rig Doctor Team</p>
+  <p style="margin-top: 32px; font-size: 12px; color: #86868b; line-height: 1.5;">The Rig Doctor LLC, 641 Amesbury Rd, Montgomery, TX 77316. You got this because you downloaded our Signal Flow Cheat Sheet. Reply "unsubscribe" and we'll take you off the list.</p>
 </div>
     `.trim(),
   };
@@ -70,6 +71,7 @@ function email2(firstName: string) {
   <p>No pressure on that. Just wanted you to know it exists.</p>
 
   <p>The Rig Doctor Team</p>
+  <p style="margin-top: 32px; font-size: 12px; color: #86868b; line-height: 1.5;">The Rig Doctor LLC, 641 Amesbury Rd, Montgomery, TX 77316. You got this because you downloaded our Signal Flow Cheat Sheet. Reply "unsubscribe" and we'll take you off the list.</p>
 </div>
     `.trim(),
   };
@@ -100,6 +102,7 @@ function email3(firstName: string) {
   <p>Either way, thanks for downloading the cheat sheet. Hope it's been useful.</p>
 
   <p>Vince<br/><span style="color: #86868b;">The Rig Doctor · Houston, TX</span></p>
+  <p style="margin-top: 32px; font-size: 12px; color: #86868b; line-height: 1.5;">The Rig Doctor LLC, 641 Amesbury Rd, Montgomery, TX 77316. You got this because you downloaded our Signal Flow Cheat Sheet. Reply "unsubscribe" and we'll take you off the list.</p>
 </div>
     `.trim(),
   };

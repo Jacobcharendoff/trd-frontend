@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { getPostBySlug, getAllPosts, getRelatedPosts } from '@/lib/blog';
+import CheatSheetInline from '@/components/CheatSheetInline';
+import { quickAnswers } from '@/lib/blog-quick-answers';
 
 type Params = Promise<{ slug: string }>;
 
@@ -55,6 +57,8 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   const related = getRelatedPosts(slug);
+  // Cheat sheet opt-in goes about 40% of the way in, before most readers drop off.
+  const cheatSheetAfter = Math.max(0, Math.floor(post.sections.length * 0.4) - 1);
 
   /* ── structured data ───────────────────────────────── */
   const articleJsonLd = {
@@ -165,6 +169,14 @@ export default async function BlogPostPage({
           </div>
         </header>
 
+        {/* Quick answer: the post's conclusion up front, for readers and answer engines */}
+        {quickAnswers[post.slug] && (
+          <div className="mb-12 rounded-[24px] border border-black/[0.06] bg-[#f5f5f7] p-6 sm:p-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-black/45 mb-3">Quick answer</p>
+            <p className="text-[17px] leading-relaxed text-[#1d1d1f]">{quickAnswers[post.slug]}</p>
+          </div>
+        )}
+
         {/* Hero image */}
         {post.heroImage && (
           <div className="mb-12 overflow-hidden rounded-[24px]">
@@ -190,6 +202,7 @@ export default async function BlogPostPage({
               <div
                 dangerouslySetInnerHTML={{ __html: section.content }}
               />
+              {i === cheatSheetAfter && <CheatSheetInline source={post.slug} />}
             </div>
           ))}
         </div>

@@ -11,7 +11,6 @@ import UTMCapture from '@/components/UTMCapture';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import ErrorInit from '@/components/ErrorInit';
 import LocalBusinessSchema, { WebSiteSchema } from '@/components/StructuredData';
-import FAQSchema from '@/components/FAQSchema';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -53,7 +52,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="antialiased">
         <LocalBusinessSchema />
         <WebSiteSchema />
-        <FAQSchema />
         <Analytics />
         <MetaPixel />
         <Suspense fallback={null}>
