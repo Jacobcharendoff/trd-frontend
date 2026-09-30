@@ -7,11 +7,12 @@ export const seoPosts: BlogPost[] = [
   {
     slug: 'effects-loop-vs-front-of-amp',
     title: 'Effects Loop vs Front of Amp: Where Every Pedal Goes',
+    seoTitle: 'Effects Loop vs Front of Amp: Which Pedals Go Where',
     description:
-      'A no-BS guide to which pedals belong in front of your amp and which ones sound better in the effects loop. Learn the signal chain basics that separate a muddy mess from a great-sounding rig.',
+      'Drives, fuzz and wah go in front. Delay and reverb go in the loop. Where modulation goes, the exceptions, and a signal chain template you can copy.',
     publishedAt: '2026-06-04',
     updatedAt: '2026-09-24',
-    author: 'Jacob Charendoff, Founder of The Rig Doctor',
+    author: 'Jacob Charendoff, Co-founder of The Rig Doctor',
     readTime: '8 min read',
     category: 'Guides',
     tags: ['effects loop', 'signal chain', 'amp', 'pedal order'],
@@ -123,9 +124,9 @@ export const seoPosts: BlogPost[] = [
       },
     ],
     cta: {
-      text: 'Book a Consultation',
-      href: '/book',
-      label: 'Book a free consultation to get your signal chain sorted',
+      text: "Still not sure where your pedals go? We'll sort your chain with you on a 60-minute video call.",
+      href: '/tone-tutoring',
+      label: 'Book Tone Tutoring, $99',
     },
     faqs: [
       {
@@ -153,11 +154,12 @@ export const seoPosts: BlogPost[] = [
   {
     slug: 'pedalboard-hum-noise-fix',
     title: 'Why Your Pedalboard Hums (And How to Fix It)',
+    seoTitle: 'Pedalboard Hum, Buzz or Hiss? How to Find and Fix It',
     description:
-      'Tracking down pedalboard hum, buzz, and noise. Learn how to diagnose ground loops, power supply issues, and cable problems — and fix them without replacing everything.',
+      'Hum, buzz, hiss, whine or crackle on your board? How to track down ground loops, digital noise, gain staging and bad cables, and fix each one.',
     publishedAt: '2026-06-04',
     updatedAt: '2026-09-24',
-    author: 'Jacob Charendoff, Founder of The Rig Doctor',
+    author: 'Jacob Charendoff, Co-founder of The Rig Doctor',
     readTime: '9 min read',
     category: 'Troubleshooting',
     tags: ['noise', 'hum', 'ground loop', 'power supply', 'troubleshooting'],
@@ -245,9 +247,9 @@ export const seoPosts: BlogPost[] = [
       },
     ],
     cta: {
-      text: 'Book a Consultation',
-      href: '/book',
-      label: 'Book a free consultation to get your pedalboard noise sorted',
+      text: "Board still humming? We'll track it down with you on a 60-minute video call.",
+      href: '/tone-tutoring',
+      label: 'Book Tone Tutoring, $99',
     },
     faqs: [
       {
@@ -275,11 +277,12 @@ export const seoPosts: BlogPost[] = [
   {
     slug: 'midi-pedalboard-switching-guide',
     title: 'MIDI Pedalboard Switching: A Setup Guide for Guitarists',
+    seoTitle: 'MIDI Pedalboard Setup: Switchers, Controllers and Presets',
     description:
-      'Everything you need to know about MIDI switching on a pedalboard — from choosing a controller to programming presets. Real-world advice from 300+ rig builds.',
+      'How MIDI switching works on a pedalboard: the gear you need, setting up your first rig, loop switchers, expression, and the mistakes to avoid.',
     publishedAt: '2026-06-04',
     updatedAt: '2026-09-24',
-    author: 'Jacob Charendoff, Founder of The Rig Doctor',
+    author: 'Jacob Charendoff, Co-founder of The Rig Doctor',
     readTime: '9 min read',
     category: 'Guides',
     tags: ['MIDI', 'switching', 'RJM', 'Boss ES-8', 'Morningstar', 'pedalboard'],
@@ -373,9 +376,9 @@ export const seoPosts: BlogPost[] = [
       },
     ],
     cta: {
-      text: 'Book a Consultation',
+      text: 'Want a MIDI rig planned, built and programmed for you?',
       href: '/book',
-      label: 'Book a consultation to plan your MIDI pedalboard setup',
+      label: 'Book a free 30-minute consult',
     },
     faqs: [
       {
@@ -407,7 +410,7 @@ export const seoPosts: BlogPost[] = [
       'An honest look at what you get from a professional pedalboard build that you can\'t easily replicate yourself — and when DIY is the smarter move.',
     publishedAt: '2026-06-04',
     updatedAt: '2026-09-24',
-    author: 'Jacob Charendoff, Founder of The Rig Doctor',
+    author: 'Jacob Charendoff, Co-founder of The Rig Doctor',
     readTime: '8 min read',
     category: 'Insights',
     tags: ['custom build', 'DIY', 'professional', 'pedalboard wiring'],
@@ -544,7 +547,7 @@ export const seoPosts: BlogPost[] = [
       'Everything your pedalboard needs to survive the road — from cable reliability to backup plans. A practical checklist from 17 years of building touring rigs.',
     publishedAt: '2026-06-04',
     updatedAt: '2026-09-24',
-    author: 'Jacob Charendoff, Founder of The Rig Doctor',
+    author: 'Jacob Charendoff, Co-founder of The Rig Doctor',
     readTime: '8 min read',
     category: 'Guides',
     tags: ['touring', 'gigging', 'reliability', 'road-ready', 'checklist'],
@@ -698,7 +701,7 @@ export const seoPosts: BlogPost[] = [
       'You don\'t need another pedal. Here are practical, free ways to improve your guitar tone right now — from pick technique to amp settings to signal chain basics.',
     publishedAt: '2026-06-04',
     updatedAt: '2026-09-24',
-    author: 'Jacob Charendoff, Founder of The Rig Doctor',
+    author: 'Jacob Charendoff, Co-founder of The Rig Doctor',
     readTime: '8 min read',
     category: 'Tone',
     tags: ['tone', 'signal chain', 'amp settings', 'technique', 'guitar tone'],
@@ -816,11 +819,12 @@ export const seoPosts: BlogPost[] = [
   {
     slug: 'pedalboard-power-supply-guide',
     title: 'Pedalboard Power Supply Guide: Isolated vs Daisy Chain',
+    seoTitle: 'Isolated vs Daisy Chain Pedal Power: Which Do You Need?',
     description:
-      'Everything you need to know about powering your pedalboard — why isolation matters, which power supplies are actually worth it, and how to size your setup correctly.',
+      'Why daisy chains cause hum, what isolated really means, the power supplies we use on our builds, and how to size one for your board.',
     publishedAt: '2026-06-04',
     updatedAt: '2026-09-24',
-    author: 'Jacob Charendoff, Founder of The Rig Doctor',
+    author: 'Jacob Charendoff, Co-founder of The Rig Doctor',
     readTime: '9 min read',
     category: 'Gear',
     tags: ['power supply', 'isolated', 'CIOKS', 'Strymon Zuma', 'Voodoo Lab'],
@@ -948,7 +952,7 @@ export const seoPosts: BlogPost[] = [
       'A look inside The Rig Doctor\'s Tone Tutoring service — what happens in a 60-minute session, what problems we solve, and why it might be all you need.',
     publishedAt: '2026-06-04',
     updatedAt: '2026-09-24',
-    author: 'Jacob Charendoff, Founder of The Rig Doctor',
+    author: 'Jacob Charendoff, Co-founder of The Rig Doctor',
     readTime: '7 min read',
     category: 'Services',
     tags: ['tone tutoring', 'signal chain', 'consultation', 'rig optimization'],

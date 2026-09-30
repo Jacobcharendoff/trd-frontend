@@ -12,6 +12,8 @@ import { gapPosts } from './blog-posts-gap';
 export interface BlogPost {
   slug: string;
   title: string;
+  /** Search result title. Written for the query people actually type; shown without the brand suffix. Falls back to "title | The Rig Doctor". */
+  seoTitle?: string;
   description: string;
   publishedAt: string;
   updatedAt?: string;
@@ -42,11 +44,12 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'how-to-build-a-pedalboard',
     title: 'How to Build a Pedalboard: The Complete Guide',
+    seoTitle: 'How to Build a Pedalboard in 7 Steps (Builder Guide)',
     description:
-      'Everything you need to know about building a pedalboard from scratch — board selection, signal chain order, cable management, power, and pro tips from 300+ builds.',
+      'Choose the board, plan the chain, get cables and power right, route, mount and test. A 7-step guide from builders with 300+ rigs behind them.',
     publishedAt: '2026-05-05',
     updatedAt: '2026-09-24',
-    author: 'Jacob Charendoff, Founder of The Rig Doctor',
+    author: 'Jacob Charendoff, Co-founder of The Rig Doctor',
     readTime: '12 min read',
     category: 'Guides',
     tags: ['pedalboard', 'signal chain', 'cable management', 'build guide'],
@@ -173,11 +176,12 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'best-patch-cables-for-pedalboard',
     title: 'Best Patch Cables for Your Pedalboard: Why Cable Quality Matters',
+    seoTitle: 'Best Patch Cables for Pedalboards: What We Use and Why',
     description:
-      'A deep dive into why patch cable quality makes an audible difference on your pedalboard, and what to look for when choosing cables for your rig.',
+      'We use Mogami 2314 on every board we build. Why it beats bin cables, soldered vs solderless, and how cable length changes your tone.',
     publishedAt: '2026-05-05',
     updatedAt: '2026-09-24',
-    author: 'Jacob Charendoff, Founder of The Rig Doctor',
+    author: 'Jacob Charendoff, Co-founder of The Rig Doctor',
     readTime: '8 min read',
     category: 'Gear',
     tags: ['patch cables', 'Mogami', 'signal quality', 'pedalboard'],

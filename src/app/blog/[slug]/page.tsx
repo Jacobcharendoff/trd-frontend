@@ -20,7 +20,9 @@ export async function generateMetadata({
   if (!post) return {};
 
   return {
-    title: `${post.title} | The Rig Doctor`,
+    title: post.seoTitle
+      ? { absolute: post.seoTitle }
+      : `${post.title} | The Rig Doctor`,
     description: post.description,
     openGraph: {
       title: post.title,

@@ -3,11 +3,12 @@ import type { BlogPost } from './blog';
 export const costPost: BlogPost = {
   slug: 'custom-pedalboard-cost',
   title: 'How Much Does a Custom Pedalboard Cost in 2026?',
+  seoTitle: 'How Much Does a Pedalboard Cost? DIY vs Custom (2026)',
   description:
-    'Honest pricing breakdown for custom pedalboard builds — from DIY setups under $300 to professional touring rigs over $2,000. What you\'re actually paying for and when a pro build is worth it.',
+    'Real 2026 price ranges, from $150 DIY boards to $5,000+ touring rigs. What you\'re paying for, what DIY really costs, and when a pro build pays off.',
   publishedAt: '2026-06-09',
   updatedAt: '2026-09-24',
-  author: 'Jacob Charendoff, Founder of The Rig Doctor',
+  author: 'Jacob Charendoff, Co-founder of The Rig Doctor',
   readTime: '10 min read',
   category: 'Guides',
   tags: [
