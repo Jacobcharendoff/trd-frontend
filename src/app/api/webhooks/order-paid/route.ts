@@ -270,7 +270,7 @@ function buildGiftCardBuyerEmail(firstName: string, amount: string) {
       Appreciate you thinking of a guitarist.
     </p>
     <p style="font-family:'Inter',sans-serif; font-size:15px; font-weight:600; color:#ffffff; margin:8px 0 0; text-align:center;">
-      Jacob, Mason &amp; Vince
+      Mason &amp; Vince
     </p>
   </td>
 </tr>
@@ -416,7 +416,7 @@ export async function POST(req: NextRequest) {
         bcc: TEAM_BCC,
         subject: email.subject,
         html: email.html,
-        replyTo: 'jacob@therigdr.com',
+        replyTo: 'info@therigdr.com',
       });
       console.log(`Gift card buyer email sent to ${customerEmail} (order ${order.id})`);
       results.push({ type: 'gift_card_buyer', emailId: result.id });
