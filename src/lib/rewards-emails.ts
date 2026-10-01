@@ -258,10 +258,10 @@ ${POSTAL_ADDRESS}`,
 export function rewardEmail(firstName: string | null, reward: IssuedReward) {
   const name = esc((firstName || '').trim()) || 'there';
   const isGift = reward.type === 'gc';
-  const shop = link('/shop', 'review_rewards_delivered', 'button');
+  const shop = link('/tone-tutoring', 'review_rewards_delivered', 'button');
   const howTo = isGift
-    ? 'Enter it in the gift card box at checkout. Use it on anything at therigdr.com: cables, accessories, Tone Tutoring, or put it toward a build. Whatever you don&#39;t spend stays on the card.'
-    : `Enter it at checkout for $${reward.amount} off one order. Use it on anything at therigdr.com: cables, accessories, Tone Tutoring, or put it toward a build.`;
+    ? 'Enter it in the gift card box at checkout. Use it on Tone Tutoring at therigdr.com, or put it toward a custom build. Whatever you don&#39;t spend stays on the card.'
+    : `Enter it at checkout for $${reward.amount} off one order. Use it on Tone Tutoring at therigdr.com, or put it toward a custom build.`;
   return {
     subject: `Your $${reward.amount} Rig Doctor ${isGift ? 'gift card' : 'credit'}`,
     html: shell({
@@ -293,7 +293,7 @@ Your ${isGift ? 'gift card' : 'code'}: ${reward.code}
 
 ${howTo.replace(/&#39;/g, "'")}
 
-${SITE}/shop
+${SITE}/tone-tutoring
 
 Thanks,
 The Rig Doctor Team`,

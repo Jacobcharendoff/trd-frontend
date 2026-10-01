@@ -15,14 +15,22 @@ const nextConfig: NextConfig = {
     return [
       // Old Shopify collection pages (Google still indexing these)
       { source: '/collections/:path*', destination: '/', permanent: true },
+      // Only Tone Tutoring is sold online for now (Oct 2026). Shop, product, kit and gift card pages
+      // are off; temporary redirects so they can come back later.
+      { source: '/shop/:slug(tone-tutoring.*)', destination: '/tone-tutoring', permanent: false },
+      { source: '/shop', destination: '/custom-builds', permanent: false },
+      { source: '/shop/:path*', destination: '/custom-builds', permanent: false },
+      { source: '/diy-kit', destination: '/custom-builds', permanent: false },
+      { source: '/gift-cards', destination: '/tone-tutoring', permanent: false },
       // Old Shopify product pages
-      { source: '/products/:path*', destination: '/shop', permanent: true },
+      { source: '/products/:slug(tone-tutoring.*)', destination: '/tone-tutoring', permanent: false },
+      { source: '/products/:path*', destination: '/custom-builds', permanent: false },
       // Old Shopify pages
       { source: '/pages/:path*', destination: '/', permanent: true },
       // Old Shopify blog
       { source: '/blogs/:path*', destination: '/blog', permanent: true },
       // Old cart URL
-      { source: '/cart', destination: '/shop', permanent: true },
+      { source: '/cart', destination: '/tone-tutoring', permanent: false },
     ];
   },
 };

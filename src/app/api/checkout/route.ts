@@ -16,9 +16,16 @@ import { getUTMFromCookie, extractUTMFromURL, appendUTMToURL, utmToCartAttribute
  * AND appends them to the checkout URL for Shopify/GA4 analytics.
  */
 
+// Only Tone Tutoring is sold online right now. Builds are quoted after the free build call,
+// and everything else is off the site. Any other handle goes back to the Tone Tutoring page.
+const SELLABLE_HANDLES = new Set(['tone-tutoring-follow-up']);
+
 export async function GET(req: NextRequest) {
   try {
     const handle = req.nextUrl.searchParams.get('handle');
+    if (!handle || !SELLABLE_HANDLES.has(handle)) {
+      return NextResponse.redirect(new URL('/tone-tutoring', req.url));
+    }
     const variantIdParam = req.nextUrl.searchParams.get('variantId');
     const quantityParam = req.nextUrl.searchParams.get('quantity');
     // Optional discount code, e.g. ?discount=TONE20 from the Tone Tutoring offer email
@@ -32,12 +39,19 @@ export async function GET(req: NextRequest) {
     let variantId = variantIdParam;
     const quantity = quantityParam ? Math.max(1, parseInt(quantityParam, 10) || 1) : 1;
 
+    // A variant id is only honored if it belongs to the allowed product.
+    if (variantId) {
+      const allowed = await getProduct(handle);
+      const ok = allowed?.variants.edges.some((v) => v.node.id === variantId && v.node.availableForSale);
+      if (!ok) variantId = null;
+    }
+
     // If no variantId provided, look up the product and pick first available
     if (!variantId) {
       const product = await getProduct(handle);
       if (!product) {
         console.error(`Product not found: ${handle}`);
-        return NextResponse.redirect(new URL('/shop', req.url));
+        return NextResponse.redirect(new URL('/tone-tutoring', req.url));
       }
 
       const variant = product.variants.edges.find(
@@ -46,7 +60,7 @@ export async function GET(req: NextRequest) {
 
       if (!variant) {
         console.error(`No available variants for product: ${handle}`);
-        return NextResponse.redirect(new URL('/shop', req.url));
+        return NextResponse.redirect(new URL('/tone-tutoring', req.url));
       }
 
       variantId = variant.id;
@@ -80,6 +94,6 @@ export async function GET(req: NextRequest) {
   } catch (err) {
     console.error('Checkout redirect error:', err);
     // Fallback: send them to the shop rather than a dead end
-    return NextResponse.redirect(new URL('/shop', req.url));
+    return NextResponse.redirect(new URL('/tone-tutoring', req.url));
   }
 }

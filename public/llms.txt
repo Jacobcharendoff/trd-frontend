@@ -7,7 +7,6 @@
 - [Custom pedalboard builds](https://www.therigdr.com/custom-builds): Planned on a free call, diagrammed, quoted, then hand-built with hand-soldered Mogami cable cut to length, isolated power and clean switching. Builds start at $1,999 USD and usually take 4 to 8 weeks. Lifetime support on every build. Customers ship their pedals in; finished rigs ship back insured to all 50 US states. International shipping is case by case.
 - [Tone Tutoring](https://www.therigdr.com/tone-tutoring): A 60-minute one-on-one video session for $99 USD. We go through a player's whole signal chain, amp settings and pedal order, and fix noise and tone problems with them.
 - [Free build consultation](https://www.therigdr.com/book): A 30-minute call to talk through a rig, goals and what a build would cost.
-- [Shop](https://www.therigdr.com/shop): The cables, power and parts we use on our own builds.
 - [Pricing](https://www.therigdr.com/pricing) and [our build process](https://www.therigdr.com/process).
 
 ## The builders

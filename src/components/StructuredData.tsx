@@ -197,16 +197,6 @@ export function PricingFAQSchema() {
         'Pedal count, routing complexity, power requirements, and whether you need extras like MIDI integration or effects loops. We quote everything upfront after your consultation so there are no surprises.',
     },
     {
-      question: "What's included in the DIY Kit?",
-      answer:
-        'Hand-soldered Mogami patch cables, a custom rig blueprint designed for your specific pedals, a 60-minute Tone Tutoring session to walk through the build, and a pedalboard essentials kit with everything you need to get started.',
-    },
-    {
-      question: 'Can I upgrade from a DIY Kit to a Custom Build?',
-      answer:
-        'Absolutely. If you start with a DIY Kit and decide you want us to take it from there, we will credit the kit price toward your custom build.',
-    },
-    {
       question: 'Do you offer rush builds?',
       answer:
         'Yes. If you have a tour date, recording session, or studio deadline, let us know and we will work with your timeline. Rush pricing varies by complexity.',
