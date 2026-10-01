@@ -163,7 +163,8 @@ export default function BookPage() {
               ))}
             </ul>
             <p className="text-white/60 text-[15px] leading-relaxed max-w-xl mb-8 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4">
-              <span className="text-white font-semibold">This call is for custom builds and rebuilds.</span> Want help with
+              <span className="text-white font-semibold">This call is for custom builds and rebuilds.</span>{' '}
+              Want help with
               your tone or a problem on the board you already have? That&apos;s{' '}
               <Link href="/tone-tutoring" className="text-white underline underline-offset-2">
                 Tone Tutoring
