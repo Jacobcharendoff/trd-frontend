@@ -15,15 +15,17 @@ const nextConfig: NextConfig = {
     return [
       // Old Shopify collection pages (Google still indexing these)
       { source: '/collections/:path*', destination: '/', permanent: true },
-      // Only Tone Tutoring is sold online for now (Oct 2026). Shop, product, kit and gift card pages
-      // are off; temporary redirects so they can come back later.
+      // Sold online: Tone Tutoring, the Rig Blueprint and gift cards (Oct 2026). Every other product
+      // page is off; builds and parts are sold through quotes. Temporary redirects so they can come back.
       { source: '/shop/:slug(tone-tutoring.*)', destination: '/tone-tutoring', permanent: false },
+      { source: '/shop/:slug(the-rig-dr-gift-card.*)', destination: '/gift-cards', permanent: false },
       { source: '/shop', destination: '/custom-builds', permanent: false },
-      { source: '/shop/:path*', destination: '/custom-builds', permanent: false },
+      { source: '/shop/:slug((?!pedalboard-layout-planning$).*)', destination: '/custom-builds', permanent: false },
       { source: '/diy-kit', destination: '/custom-builds', permanent: false },
-      { source: '/gift-cards', destination: '/tone-tutoring', permanent: false },
       // Old Shopify product pages
       { source: '/products/:slug(tone-tutoring.*)', destination: '/tone-tutoring', permanent: false },
+      { source: '/products/:slug(the-rig-dr-gift-card.*)', destination: '/gift-cards', permanent: false },
+      { source: '/products/pedalboard-layout-planning', destination: '/shop/pedalboard-layout-planning', permanent: false },
       { source: '/products/:path*', destination: '/custom-builds', permanent: false },
       // Old Shopify pages
       { source: '/pages/:path*', destination: '/', permanent: true },

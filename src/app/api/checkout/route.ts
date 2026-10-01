@@ -16,9 +16,14 @@ import { getUTMFromCookie, extractUTMFromURL, appendUTMToURL, utmToCartAttribute
  * AND appends them to the checkout URL for Shopify/GA4 analytics.
  */
 
-// Only Tone Tutoring is sold online right now. Builds are quoted after the free build call,
-// and everything else is off the site. Any other handle goes back to the Tone Tutoring page.
-const SELLABLE_HANDLES = new Set(['tone-tutoring-follow-up']);
+// Sold online: Tone Tutoring, the Rig Blueprint and gift cards. Builds and parts are sold through
+// quotes (Shopify draft order invoices), which don't go through this route. Any other handle goes to
+// the Tone Tutoring page.
+const SELLABLE_HANDLES = new Set([
+  'tone-tutoring-follow-up', // Tone Tutoring (60 min.)
+  'pedalboard-layout-planning', // Rig Blueprint
+  'the-rig-dr-gift-card-25', // Gift card
+]);
 
 export async function GET(req: NextRequest) {
   try {

@@ -260,8 +260,8 @@ export function rewardEmail(firstName: string | null, reward: IssuedReward) {
   const isGift = reward.type === 'gc';
   const shop = link('/tone-tutoring', 'review_rewards_delivered', 'button');
   const howTo = isGift
-    ? 'Enter it in the gift card box at checkout. Use it on Tone Tutoring at therigdr.com, or put it toward a custom build. Whatever you don&#39;t spend stays on the card.'
-    : `Enter it at checkout for $${reward.amount} off one order. Use it on Tone Tutoring at therigdr.com, or put it toward a custom build.`;
+    ? 'Enter it in the gift card box at checkout. Use it on Tone Tutoring or a Rig Blueprint at therigdr.com, or put it toward a custom build. Whatever you don&#39;t spend stays on the card.'
+    : `Enter it at checkout for $${reward.amount} off one order. Use it on Tone Tutoring or a Rig Blueprint at therigdr.com, or put it toward a custom build.`;
   return {
     subject: `Your $${reward.amount} Rig Doctor ${isGift ? 'gift card' : 'credit'}`,
     html: shell({

@@ -111,10 +111,10 @@ export default function ProductPage() {
             This product may have been removed or the link is incorrect.
           </p>
           <Link
-            href="/shop"
+            href="/custom-builds"
             className="inline-flex items-center gap-2 trd-cta-gradient text-white font-semibold px-8 py-4 rounded-full"
           >
-            Back to Shop
+            See custom builds
           </Link>
         </div>
       </div>
@@ -143,8 +143,8 @@ export default function ProductPage() {
       <div className="bg-white border-b border-black/[0.04] pt-16">
         <div className="max-w-[1200px] mx-auto px-6 py-3">
           <nav className="flex items-center gap-2 text-sm text-[#1d1d1f]/40">
-            <Link href="/shop" className="hover:text-[#8E3FD9] transition-colors">
-              Shop
+            <Link href="/custom-builds" className="hover:text-[#8E3FD9] transition-colors">
+              Custom Builds
             </Link>
             <span>/</span>
             <span className="text-[#1d1d1f]/70 truncate max-w-[300px]">{product.title}</span>
@@ -366,10 +366,10 @@ export default function ProductPage() {
             Book a Free Build Call
           </Link>
           <Link
-            href="/shop"
+            href="/tone-tutoring"
             className="inline-flex items-center gap-2 border border-white/20 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 transition-colors"
           >
-            Browse All Products
+            See Tone Tutoring
           </Link>
         </div>
       </Section>
