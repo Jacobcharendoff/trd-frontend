@@ -68,7 +68,7 @@ export default function LocalBusinessSchema() {
             '@type': 'Service',
             name: 'Free Rig Build Consultation',
             description:
-              'Free video consultation to discuss your rig, signal chain, and build requirements. No pressure, no obligation. Just honest advice from a professional rig builder.',
+              'Free 30-minute video consultation for custom pedalboard builds and rebuilds: what the board needs to do, power, switching and a straight quote. For help dialing in tone on your current rig, see Tone Tutoring.',
             provider: { '@id': 'https://www.therigdr.com/#business' },
             areaServed: { '@type': 'Country', name: 'United States' },
           },

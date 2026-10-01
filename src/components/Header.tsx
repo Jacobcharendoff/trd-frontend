@@ -31,7 +31,7 @@ const navItems: NavItem[] = [
 const announcement = {
   text: 'Only 2 Build Spots Left for 2026.',
   href: '/book',
-  cta: 'Book Your Free Consultation →',
+  cta: 'Book a Free Build Consult →',
 };
 
 export default function Header() {
@@ -76,7 +76,7 @@ export default function Header() {
             <span className="sm:hidden">2 build spots left.</span>
             {' '}
             <span className="underline underline-offset-2 font-semibold hidden sm:inline">{announcement.cta}</span>
-            <span className="underline underline-offset-2 font-semibold sm:hidden">Book a free call &rarr;</span>
+            <span className="underline underline-offset-2 font-semibold sm:hidden">Free build consult &rarr;</span>
           </Link>
           <button
             onClick={(e) => {
@@ -178,7 +178,7 @@ export default function Header() {
               href="/book"
               className={`text-[13px] font-medium rounded-full px-5 py-2 transition-colors duration-300 trd-cta-gradient`}
             >
-              Book a Consultation
+              Book a Build Consult
             </Link>
           </div>
 
@@ -255,7 +255,7 @@ export default function Header() {
                 onClick={() => setMobileOpen(false)}
                 className={`text-[15px] font-medium rounded-full px-6 py-3 text-center mt-2 transition-colors duration-300 trd-cta-gradient`}
               >
-                Book a Consultation
+                Book a Build Consult
               </Link>
             </nav>
           </div>

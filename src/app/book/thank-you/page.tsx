@@ -97,7 +97,7 @@ export default function BookThankYouPage() {
           </h1>
 
           <p className="text-[18px] text-white/[0.6] leading-relaxed max-w-xl mx-auto mb-6">
-            Grab a slot for your free 30-minute call below. A builder is also reading your rig notes
+            Grab a slot for your free 30-minute build call below. A builder is also reading your notes
             and will reply within 24 hours if you&apos;d rather start by email.
           </p>
 
@@ -118,10 +118,10 @@ export default function BookThankYouPage() {
               Skip The Wait
             </p>
             <h2 className="text-black font-bold tracking-[-0.04em] leading-[1.05] text-[clamp(30px,4vw,48px)] mb-3">
-              Book your free consultation <span className="trd-gradient-text">right now.</span>
+              Book your free build call <span className="trd-gradient-text">right now.</span>
             </h2>
             <p className="text-[#1d1d1f]/50 text-lg">
-              30 minutes. No obligation. Just straight talk about your rig.
+              30 minutes with a builder about your new board or rebuild. No obligation.
             </p>
           </div>
 
@@ -134,13 +134,21 @@ export default function BookThankYouPage() {
             )}
           </div>
 
+          <p className="text-center text-[14px] text-black/50 mt-5">
+            This call is for custom builds and rebuilds. Need help with your tone or a problem on your current board?{' '}
+            <Link href="/tone-tutoring" className="text-black/80 underline underline-offset-2">
+              That&apos;s Tone Tutoring
+            </Link>
+            .
+          </p>
+
           {/* What to expect */}
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
               {
                 icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z',
-                title: 'We talk tone',
-                desc: 'What you play, what you need, what is not working right now.',
+                title: 'We scope your build',
+                desc: 'What you play, where the board lives and what it has to do.',
               },
               {
                 icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01',

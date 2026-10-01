@@ -26,7 +26,7 @@ export default function Footer() {
               <Link href="/custom-builds" className="text-[13px] hover:text-white transition-colors">Custom Builds</Link>
               <Link href="/tone-tutoring" className="text-[13px] hover:text-white transition-colors">Tone Tutoring</Link>
               <Link href="/pricing" className="text-[13px] hover:text-white transition-colors">Pricing</Link>
-              <Link href="/book" className="text-[13px] hover:text-white transition-colors">Book a Consultation</Link>
+              <Link href="/book" className="text-[13px] hover:text-white transition-colors">Book a Build Consult</Link>
             </nav>
           </div>
 

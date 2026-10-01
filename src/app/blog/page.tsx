@@ -178,7 +178,7 @@ export default function BlogIndex() {
             href="/book"
             className="inline-flex items-center gap-2 trd-cta-gradient font-semibold px-8 py-4 rounded-lg transition-colors"
           >
-            Book a Free Consultation
+            Book a Free Build Consultation
           </Link>
         </div>
       </Section>

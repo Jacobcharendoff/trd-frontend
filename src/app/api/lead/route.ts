@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse, after } from 'next/server';
 import { upsertContact, addContactNote, contactUrl, esc, LEAD_OWNER_ID } from '@/lib/hubspot';
 import { sendBatch, sendResend, notBookedSequence, consultTeamAlert, ALERT_FROM, ALERT_TO } from '@/lib/lead-emails';
+import { NEED_LABEL } from '@/lib/build-need';
 
 /**
  * Free consult request (/book form and the homepage form).
@@ -37,6 +38,11 @@ export async function POST(req: NextRequest) {
   const plays = String(body.instrument ?? '').trim().slice(0, 120);
   const notes = String(body.rig ?? '').trim().slice(0, 2000);
   const source = body.source === 'homepage' ? 'homepage' : 'book';
+  // The free call is for builds and rebuilds. Tone help is Tone Tutoring; the form routes it there.
+  if (body.need === 'tone') {
+    return NextResponse.json({ error: 'Tone help is booked as Tone Tutoring' }, { status: 400 });
+  }
+  const lookingFor = NEED_LABEL[String(body.need ?? '')] ?? '';
   const page = (req.headers.get('referer') || '').slice(0, 300);
 
   // Scheduled before responding, so a booking on the next page can always cancel them.
@@ -45,7 +51,7 @@ export async function POST(req: NextRequest) {
 
   after(async () => {
     const formLabel = source === 'homepage' ? 'homepage form' : '/book';
-    const message = [`Free consult request (${formLabel})`, plays && `Plays: ${plays}`, notes && `Rig: ${notes}`]
+    const message = [`Free build consult request (${formLabel})`, lookingFor && `Looking for: ${lookingFor}`, plays && `Plays: ${plays}`, notes && `Rig: ${notes}`]
       .filter(Boolean)
       .join('. ');
 
@@ -58,7 +64,8 @@ export async function POST(req: NextRequest) {
     if (contactId) {
       await addContactNote(
         contactId,
-        `<strong>Free consult request</strong> (${formLabel})` +
+        `<strong>Free build consult request</strong> (${formLabel})` +
+          (lookingFor ? `<br><strong>Looking for:</strong> ${esc(lookingFor)}` : '') +
           (plays ? `<br><strong>Plays:</strong> ${esc(plays)}` : '') +
           (notes ? `<br><br><strong>Rig notes:</strong><br>${esc(notes).replace(/\n/g, '<br>')}` : '') +
           (page ? `<br><br><strong>Page:</strong> ${esc(page)}` : ''),
@@ -70,6 +77,7 @@ export async function POST(req: NextRequest) {
       first,
       email,
       plays,
+      lookingFor,
       notes,
       source,
       page,

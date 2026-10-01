@@ -243,10 +243,10 @@ function n1(first: string) {
     subject: "Your rig call isn't booked yet",
     html: layout(`
   <p>${hey(first)}</p>
-  <p>You asked us for a free rig consult but didn't get a time on the calendar. It takes about 30 seconds:</p>
+  <p>You asked us for a free build consultation but didn't get a time on the calendar. It takes about 30 seconds:</p>
   ${button(calendar('n1_button'), 'Pick a time')}
-  <p>It's a 30-minute call with one of us. We go through what you play, what's bugging you about your board, and what a build or rebuild would look like. No pressure, no obligation.</p>
-  <p>If a call isn't your thing, reply with your rig notes and a photo of your board. We'll answer by email.</p>`),
+  <p>It's a 30-minute call with one of the builders about your new board or rebuild: what you play, where the board lives, what it has to do, and what it'll cost. No pressure, no obligation.</p>
+  <p>Prefer email? Reply with what's on your board now and what you want the new one to do, and we'll start there.</p>`),
   };
 }
 
@@ -261,7 +261,7 @@ function n2(first: string) {
     '<strong>Cables.</strong> Long, cheap patch cables eat your high end and fail at the worst possible time.',
     '<strong>Order.</strong> Great pedals in the wrong spot make a great rig sound flat.',
   ])}
-  <p>On the call we'll tell you which of these is hurting your board and what it takes to fix it. Sometimes it's a quick fix you can do yourself. Sometimes it's a rebuild.</p>
+  <p>A custom build or rebuild gets all three right from day one. On the call we'll map out what yours needs and give you a real number.</p>
   ${button(calendar('n2_button'), 'Pick a time')}`),
   };
 }
@@ -272,7 +272,7 @@ function n3(first: string) {
     html: layout(`
   <p>${hey(first)}</p>
   <p>Most people want to know this before the call, so here it is. Our custom builds start at $1,999, not counting pedals. What moves the price is the size of the board, whether it needs MIDI switching, and how much power it has to feed.</p>
-  <p>Not every rig needs a full build. A rewire with new power and cables, or one Tone Tutoring session, fixes a lot of boards. We'll tell you which one you need on the call, even when the answer is the cheaper one.</p>
+  <p>Happy with your pedals and just want the board done right? We also rebuild existing boards: new layout, new cables, new power, same pedals. We quote those on the same free call.</p>
   ${button(calendar('n3_button'), 'Pick a time')}
   <p>Every build comes with lifetime support, and we ship anywhere in the US.</p>`),
   };
@@ -284,9 +284,9 @@ function n4(first: string) {
     subject: 'Not ready for a build?',
     html: layout(`
   <p>${hey(first)}</p>
-  <p>If a full build feels like a big step, start smaller. Tone Tutoring is a 60-minute one-on-one video session. We go through your whole signal chain with you and dial it in live. $99.</p>
+  <p>If what you really want right now is help with your tone or a problem on the board you have, that's Tone Tutoring, not the build call. It's a 60-minute one-on-one video session. We go through your whole signal chain with you and dial it in live. $99.</p>
   ${button(tone, 'See Tone Tutoring')}
-  <p>The free build call is still open too. <a href="${calendar('n4_link')}" style="color: #0071E3;">Pick a time here</a>.</p>`),
+  <p>When you're ready to plan a build, the free call is still open. <a href="${calendar('n4_link')}" style="color: #0071E3;">Pick a time here</a>.</p>`),
   };
 }
 
@@ -330,7 +330,7 @@ const PREP = [
   'Two photos of your board: from the top, and underneath if you can flip it.',
   'Your pedals in order, from guitar to amp. A phone note is fine.',
   "Your amp and guitars, and whether you use the amp's effects loop.",
-  "What's bugging you. Noise, tone loss, tap-dancing between pedals, size, reliability.",
+  'What the new board has to do, and what the current one gets wrong (noise, size, tap-dancing, reliability).',
   'Where the board lives: home, church, weekly gigs, or the road.',
   'A rough budget, and any date you need it by.',
 ];
@@ -356,7 +356,7 @@ function b2(first: string) {
   <p>${hey(first)}</p>
   <p>Quick look at what happens after we talk, so nothing is a surprise:</p>
   ${list([
-    "<strong>The call.</strong> We figure out what you need, which might not be a full build.",
+    '<strong>The call.</strong> We scope your build: size, power, switching, and where the board lives.',
     '<strong>The diagram.</strong> We draw your rig: signal path, power and switching. You see it before we build it.',
     '<strong>The quote.</strong> One number, before anything gets built.',
     '<strong>The build.</strong> Every cable cut to length, isolated power, clean switching.',
@@ -411,6 +411,7 @@ export function consultTeamAlert(d: {
   first: string;
   email: string;
   plays: string;
+  lookingFor: string;
   notes: string;
   source: string;
   page: string;
@@ -423,13 +424,14 @@ export function consultTeamAlert(d: {
       : '';
   const reply = `mailto:${encodeURIComponent(d.email)}?subject=${encodeURIComponent('Your rig consult with The Rig Doctor')}`;
   return {
-    subject: `New consult request: ${d.name || d.email}`,
+    subject: `New build consult request: ${d.name || d.email}`,
     html: `
 <div style="font-family: ${FONT}; max-width: 560px; margin: 0 auto; color: #1d1d1f; line-height: 1.6; font-size: 15px;">
-  <p style="font-size: 18px; font-weight: 700; margin: 0 0 12px;">New free consult request</p>
+  <p style="font-size: 18px; font-weight: 700; margin: 0 0 12px;">New free build consult request</p>
   <table cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin-bottom: 16px;">
     ${row('Name', esc(d.name))}
     ${row('Email', `<a href="mailto:${esc(d.email)}" style="color: #0071E3;">${esc(d.email)}</a>`)}
+    ${row('Looking for', esc(d.lookingFor))}
     ${row('Plays', esc(d.plays))}
     ${row('Form', d.source === 'homepage' ? 'Homepage' : '/book')}
     ${row('Page', esc(d.page))}

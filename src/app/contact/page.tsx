@@ -291,9 +291,9 @@ export default function ContactPage() {
             ))}
             <Reveal delay={260} className="bg-black rounded-[24px] p-7">
               <p className="text-white text-lg font-semibold mb-2">Rather just talk?</p>
-              <p className="text-white/55 text-[15px] mb-5">Book a free 30-minute consultation about your rig.</p>
+              <p className="text-white/55 text-[15px] mb-5">Planning a custom build or rebuild? Book a free 30-minute build consultation.</p>
               <Link href="/book" className="trd-cta-gradient inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-[15px]">
-                Book a consultation <IconArrow />
+                Book a build consult <IconArrow />
               </Link>
             </Reveal>
           </div>

@@ -226,7 +226,7 @@ export default function GalleryPage() {
             Want to see <span className="trd-gradient-text">yours here?</span>
           </h2>
           <Link href="/book" className="trd-cta-gradient inline-flex items-center gap-2 px-9 py-4 rounded-full font-semibold text-[17px]">
-            Book a free consultation <IconArrow />
+            Book a free build consultation <IconArrow />
           </Link>
         </div>
       </ParallaxImage>

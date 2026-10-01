@@ -1,27 +1,27 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Book a Free Consultation',
+  title: 'Book a Free Build Consultation',
   description:
-    'Schedule a free 30-minute consultation with The Rig Doctor. Talk through your rig, your goals, and get a straight quote. No pressure, no obligation.',
+    'Free 30-minute consultation for custom pedalboard builds and rebuilds. Plan the board with a builder and get a straight quote. For help with your tone, see Tone Tutoring.',
   openGraph: {
-    title: 'Book a Free Consultation | The Rig Doctor',
+    title: 'Book a Free Build Consultation | The Rig Doctor',
     description:
-      'Free 30-minute consultation. Talk through your rig, your goals, and get a straight quote. No pressure.',
+      'Free 30-minute consultation for custom pedalboard builds and rebuilds. Get a straight quote.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Book a consultation with The Rig Doctor',
+        alt: 'Book a free build consultation with The Rig Doctor',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Book a Free Consultation | The Rig Doctor',
+    title: 'Book a Free Build Consultation | The Rig Doctor',
     description:
-      'Free 30-minute rig consultation. Talk through your goals, get a straight quote.',
+      'Free 30-minute build consultation for custom pedalboards and rebuilds. Get a straight quote.',
     images: ['/og-image.png'],
   },
 };
