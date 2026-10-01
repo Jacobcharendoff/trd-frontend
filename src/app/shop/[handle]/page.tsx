@@ -355,7 +355,7 @@ export default function ProductPage() {
             Questions about this product?
           </h2>
           <p className="text-[#f5f5f7]/60 text-lg max-w-2xl mx-auto mb-8">
-            We&apos;re guitarists first. If you&apos;re not sure this is the right fit for your rig, let&apos;s talk.
+            Thinking about a full custom board instead? Book a free build call with one of the builders.
           </p>
         </div>
         <div className="flex gap-4 justify-center flex-wrap">
@@ -363,7 +363,7 @@ export default function ProductPage() {
             href="/book"
             className="inline-flex items-center gap-2 trd-cta-gradient text-white font-semibold px-8 py-4 rounded-full"
           >
-            Book a Free Call
+            Book a Free Build Call
           </Link>
           <Link
             href="/shop"
@@ -380,17 +380,17 @@ export default function ProductPage() {
         <div className="relative max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-8">
           <div>
             <h3 className="text-2xl sm:text-3xl font-bold text-[#f5f5f7] tracking-tight">
-              Ready to hear what your rig should sound like?
+              Thinking about a custom board?
             </h3>
             <p className="text-[#f5f5f7]/50 text-base mt-3">
-              30 minutes. Free. No commitment.
+              A free 30-minute build consultation. A straight quote, no commitment.
             </p>
           </div>
           <Link
             href="/book"
             className="trd-cta-gradient inline-flex items-center px-8 py-4 rounded-full font-semibold text-base whitespace-nowrap"
           >
-            Book a Free Consultation
+            Book a Free Build Consultation
           </Link>
         </div>
       </section>

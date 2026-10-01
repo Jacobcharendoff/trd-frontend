@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import BeforeAfter from '@/components/BeforeAfter';
 import { trackLead } from '@/lib/track';
 import { rememberLead } from '@/lib/lead-session';
+import BuildNeed, { type Need } from '@/components/BuildNeed';
 import ReviewsMarquee from '@/components/ReviewsMarquee';
 import ParallaxImage from '@/components/home/ParallaxImage';
 import Reveal from '@/components/home/Reveal';
@@ -40,19 +41,26 @@ function ConsultForm() {
   const router = useRouter();
   const [formData, setFormData] = useState({ name: '', email: '', instrument: '', rig: '', company: '' });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle');
+  const [need, setNeed] = useState<Need>('');
+  const [needError, setNeedError] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!need) {
+      setNeedError(true);
+      return;
+    }
+    if (need === 'tone') return;
     setStatus('submitting');
     try {
       const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, source: 'book' }),
+        body: JSON.stringify({ ...formData, need, source: 'book' }),
       });
       if (res.ok) {
         const { n } = (await res.json().catch(() => ({}))) as { n?: string };
-        trackLead('book_consult', { instrument: formData.instrument || undefined });
+        trackLead('book_consult', { instrument: formData.instrument || undefined, need });
         rememberLead(formData.name, formData.email);
         router.push(n ? `/book/thank-you?n=${encodeURIComponent(n)}` : '/book/thank-you');
       }
@@ -68,9 +76,12 @@ function ConsultForm() {
   return (
     <form id="consult-form" onSubmit={handleSubmit} className="scroll-mt-32 bg-white rounded-[28px] p-6 sm:p-8 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] space-y-3.5">
       <div className="mb-2">
-        <p className="text-black text-xl font-bold tracking-tight">Start your free consultation</p>
-        <p className="text-black/50 text-[14px] mt-1">A builder replies within 24 hours.</p>
+        <p className="text-black text-xl font-bold tracking-tight">Start your free build consultation</p>
+        <p className="text-black/50 text-[14px] mt-1">For custom builds and rebuilds. Next, you pick a time for the call.</p>
       </div>
+      <BuildNeed idPrefix="c" value={need} onChange={(v) => { setNeed(v); setNeedError(false); }} showError={needError} />
+      {need !== 'tone' && (
+      <>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
         <label className="sr-only" htmlFor="c-name">Your name</label>
         <input id="c-name" type="text" placeholder="Your name" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={input} />
@@ -84,11 +95,11 @@ function ConsultForm() {
       </div>
       <label className="sr-only" htmlFor="c-inst">What do you play?</label>
       <input id="c-inst" type="text" placeholder="What do you play? Guitar, bass, keys..." value={formData.instrument} onChange={(e) => setFormData({ ...formData, instrument: e.target.value })} className={input} />
-      <label className="sr-only" htmlFor="c-rig">What's going on with your rig?</label>
+      <label className="sr-only" htmlFor="c-rig">What should the board do?</label>
       <textarea
         id="c-rig"
         rows={4}
-        placeholder="What's bugging you? Hum, tap-dancing between pedals, a mess under the board, tone that disappears by the third pedal. The more detail the better."
+        placeholder="What's on your board now, and what do you want the new one to do? Pedal count, MIDI switching, power, a tour coming up. The more detail the better."
         value={formData.rig}
         onChange={(e) => setFormData({ ...formData, rig: e.target.value })}
         className={`${input} resize-none`}
@@ -98,7 +109,7 @@ function ConsultForm() {
         disabled={status === 'submitting'}
         className="trd-cta-gradient w-full inline-flex items-center justify-center gap-2 py-4 rounded-full font-semibold text-[16px] disabled:opacity-60"
       >
-        {status === 'submitting' ? 'Sending...' : 'Get my free consultation'}
+        {status === 'submitting' ? 'Sending...' : 'Next: pick a time'}
         {status !== 'submitting' && <IconArrow />}
       </button>
       {status === 'error' && <p className="text-red-600 text-sm text-center">That didn&apos;t go through. Try again or email info@therigdr.com.</p>}
@@ -107,8 +118,10 @@ function ConsultForm() {
         <span aria-hidden="true">&middot;</span>
         <span>Free</span>
         <span aria-hidden="true">&middot;</span>
-        <span>No obligation</span>
+        <span>Builds and rebuilds only</span>
       </div>
+      </>
+      )}
     </form>
   );
 }
@@ -124,7 +137,7 @@ export default function BookPage() {
         </div>
         <div className="relative max-w-[1200px] mx-auto px-6 py-16 sm:py-24 grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-center">
           <div>
-            <p className="trd-eyebrow text-white/55 mb-6">Free rig consultation &middot; 2 build spots left in 2026</p>
+            <p className="trd-eyebrow text-white/55 mb-6">Free build consultation &middot; 2 build spots left in 2026</p>
             <h1 className="text-white font-bold tracking-[-0.045em] leading-[1.0] text-[clamp(42px,6vw,76px)] mb-6">
               Tell us about your rig. <span className="trd-gradient-text">We&apos;ll tell you what we&apos;d build.</span>
             </h1>
@@ -149,6 +162,14 @@ export default function BookPage() {
                 </li>
               ))}
             </ul>
+            <p className="text-white/60 text-[15px] leading-relaxed max-w-xl mb-8 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-4">
+              <span className="text-white font-semibold">This call is for custom builds and rebuilds.</span> Want help with
+              your tone or a problem on the board you already have? That&apos;s{' '}
+              <Link href="/tone-tutoring" className="text-white underline underline-offset-2">
+                Tone Tutoring
+              </Link>
+              : 60 minutes, one on one, $99.
+            </p>
             <div className="flex flex-wrap items-center gap-x-8 gap-y-3 pt-8 border-t border-white/10">
               {[
                 ['300+', 'boards built'],
@@ -191,7 +212,7 @@ export default function BookPage() {
           </Reveal>
           <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { n: '01', Icon: IconVideo, t: 'We talk', d: 'A builder reaches out within 24 hours to set up a free 30-minute call about your rig.', img: 'Tone_Consultation_Screen_1.png' },
+              { n: '01', Icon: IconVideo, t: 'We talk', d: 'You pick a time for a free 30-minute build call. We scope the board you want with you.', img: 'Tone_Consultation_Screen_1.png' },
               { n: '02', Icon: IconBlueprint, t: 'We design it', d: 'Wiring diagram, power layout, signal chain order and parts list, before a single cable is cut.', img: 'Signal_Routing.png' },
               { n: '03', Icon: IconSolder, t: 'We build it by hand', d: 'Hand-soldered connections, cables cut to length, isolated power. The same two builders on every board.', img: '6_219d02cd-1fd7-44f4-ab74-f42783ae338f.png' },
               { n: '04', Icon: IconShip, t: 'It ships ready', d: 'Tested under load, then shipped back insured. Uncase it, plug in, play.', img: 'Pedal-Board-Building-Original-scaled.jpg' },
@@ -293,7 +314,7 @@ export default function BookPage() {
             Your board, <span className="trd-gradient-text">done right.</span>
           </h2>
           <a href="#consult-form" className="trd-cta-gradient inline-flex items-center gap-2 px-9 py-4 rounded-full font-semibold text-[17px]">
-            Book my free consultation <IconArrow />
+            Book my free build consultation <IconArrow />
           </a>
         </div>
       </ParallaxImage>

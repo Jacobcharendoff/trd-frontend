@@ -42,7 +42,7 @@ const steps = [
   {
     n: '01',
     title: 'We talk.',
-    body: 'A free call about what you play, where you play it and what is driving you nuts. Hum, tap-dancing, a board that fights you. We figure out what it actually needs.',
+    body: 'A free build call about the board you want: what you play, where you play it and what the board has to do. We scope the build and you get a real number.',
     image: img.consult,
     Icon: IconVideo,
   },
@@ -160,7 +160,7 @@ export default function Home() {
               night and guys who just want to hear what their rig can really do.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-              <PrimaryCTA className="px-9 py-4 text-[17px]">Book a free rig consultation</PrimaryCTA>
+              <PrimaryCTA className="px-9 py-4 text-[17px]">Book a free build consultation</PrimaryCTA>
               <Link
                 href="/tone-tutoring"
                 className="trd-cta-ghost-dark inline-flex items-center justify-center gap-2 font-semibold px-9 py-4 rounded-full text-[17px]"
@@ -318,9 +318,9 @@ export default function Home() {
               <p className="text-black text-xl font-semibold">
                 Builds start at <span className="trd-gradient-text font-bold">$1,999 USD</span>
               </p>
-              <p className="text-black/50 text-[15px] mt-1">Free consultation. A real quote before anything gets cut.</p>
+              <p className="text-black/50 text-[15px] mt-1">Free build consultation. A real quote before anything gets cut.</p>
             </div>
-            <PrimaryCTA className="px-8 py-3.5 text-[15px] shrink-0">Start with a free call</PrimaryCTA>
+            <PrimaryCTA className="px-8 py-3.5 text-[15px] shrink-0">Start with a free build call</PrimaryCTA>
           </div>
         </div>
       </section>
@@ -481,12 +481,12 @@ export default function Home() {
       <section id="get-in-touch" className="bg-white py-24 sm:py-32">
         <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
           <Reveal>
-            <p className="trd-eyebrow text-black/40 mb-5">Tell us about your rig</p>
+            <p className="trd-eyebrow text-black/40 mb-5">Free build consultation</p>
             <h2 className="text-black font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(34px,4.5vw,56px)] mb-5">
-              What&apos;s going on with your board?
+              Planning a new board or a rebuild?
             </h2>
             <p className="text-black/55 text-lg leading-relaxed mb-10">
-              Two spots left this year. Tell us what you play and what isn&apos;t working. A builder gets back to you within a day.
+              Two build spots left this year. Tell us what you play and what you want the board to do, then pick a time for a free 30-minute call. Just need help with your tone? That&apos;s <Link href="/tone-tutoring" className="underline underline-offset-2 text-black/80">Tone Tutoring</Link>.
             </p>
             <div className="[&>div]:mx-0">
               <LeadCaptureForm />
@@ -525,7 +525,7 @@ export default function Home() {
             Tell us what you play and what isn&apos;t working. We&apos;ll tell you exactly what we would do. The call is free.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-            <PrimaryCTA className="px-9 py-4 text-[17px]">Book a free rig consultation</PrimaryCTA>
+            <PrimaryCTA className="px-9 py-4 text-[17px]">Book a free build consultation</PrimaryCTA>
             <Link href="/tone-tutoring" className="trd-cta-ghost-dark inline-flex items-center justify-center font-semibold px-9 py-4 rounded-full text-[17px]">
               Tone Tutoring &middot; $99
             </Link>

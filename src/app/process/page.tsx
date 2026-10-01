@@ -223,7 +223,7 @@ export default function ProcessPage() {
                 </ul>
                 {idx === 0 && (
                   <Link href="/book" className="mt-10 trd-cta-gradient inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-[15px]">
-                    Book your free consultation <IconArrow />
+                    Book your free build consultation <IconArrow />
                   </Link>
                 )}
               </Reveal>
@@ -294,7 +294,7 @@ export default function ProcessPage() {
           <p className="text-white/70 text-lg sm:text-xl mb-12">30 minutes. Free. Tell us about your rig and we&apos;ll tell you exactly what we would do.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
             <Link href="/book" className="trd-cta-gradient inline-flex items-center justify-center gap-2 px-9 py-4 rounded-full font-semibold text-[17px]">
-              Book a free consultation <IconArrow />
+              Book a free build consultation <IconArrow />
             </Link>
             <Link href="/custom-builds" className="trd-cta-ghost-dark inline-flex items-center justify-center px-9 py-4 rounded-full font-semibold text-[17px]">
               See what you get

@@ -147,7 +147,7 @@ export default function CustomBuildsPage() {
               bench, every connection soldered by hand.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-              <BookButton className="px-9 py-4 text-[17px]">Book a free consultation</BookButton>
+              <BookButton className="px-9 py-4 text-[17px]">Book a free build consultation</BookButton>
               <Link href="/gallery" className="trd-cta-ghost-dark inline-flex items-center justify-center px-9 py-4 rounded-full font-semibold text-[17px]">
                 See our work
               </Link>
@@ -372,7 +372,7 @@ export default function CustomBuildsPage() {
             Your tone is worth <span className="trd-gradient-text">getting right.</span>
           </h2>
           <p className="text-white/70 text-lg sm:text-xl mb-12">Stop fighting your rig. Let&apos;s build something that actually works.</p>
-          <BookButton className="px-9 py-4 text-[17px]">Book a free consultation</BookButton>
+          <BookButton className="px-9 py-4 text-[17px]">Book a free build consultation</BookButton>
         </div>
       </ParallaxImage>
     </>
