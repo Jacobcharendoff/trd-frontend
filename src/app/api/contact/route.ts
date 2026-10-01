@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { LEAD_OWNER_ID } from '@/lib/hubspot';
 
 const HUBSPOT_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
@@ -7,8 +8,8 @@ const VERIFIED_DOMAIN = true;
 const FROM_ADDRESS = 'The Rig Doctor <notifications@therigdr.com>';
 const NOTIFICATION_EMAIL = 'info@therigdr.com';
 
-// Jacob's HubSpot owner ID -- tickets and contacts get assigned to him
-const OWNER_ID = '61103251';
+// New contacts are assigned to Vince so HubSpot notifies a builder
+const OWNER_ID = LEAD_OWNER_ID;
 
 // Minimum time (ms) a human would take to fill out the form
 const MIN_SUBMIT_TIME_MS = 2000;
@@ -212,16 +213,16 @@ export async function POST(req: NextRequest) {
         const searchData = await searchRes.json();
         const existingContact = searchData.results?.[0];
 
+        // Only properties that exist in the portal. An unknown one (leadsource, description)
+        // makes HubSpot reject the whole create or update.
         const properties: Record<string, string> = {
           firstname: firstName,
-          lastname: lastName || '',
           email,
-          phone: phone || '',
           hs_lead_status: 'NEW',
-          hubspot_owner_id: OWNER_ID,
-          leadsource: 'Website Contact Form',
-          description: interest || 'General Question',
+          message: `Contact form (${interest || 'General question'}): ${String(message).slice(0, 1500)}`,
         };
+        if (lastName) properties.lastname = lastName;
+        if (phone) properties.phone = phone;
 
         if (existingContact) {
           contactId = existingContact.id;
@@ -238,6 +239,7 @@ export async function POST(req: NextRequest) {
           );
         } else {
           properties.lifecyclestage = 'lead';
+          properties.hubspot_owner_id = OWNER_ID;
           const createRes = await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
             method: 'POST',
             headers: {
@@ -286,7 +288,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // -- Step 3: Send notification email to Jacob --
+    // -- Step 3: Send notification email to info@ --
     await sendNotificationEmail({ firstName, lastName: lastName || '', email, phone: phone || '', interest: interest || '', message });
 
     // -- Step 4: Send confirmation email to customer --

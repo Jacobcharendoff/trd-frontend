@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { upsertContact, addContactNote } from '@/lib/hubspot';
 
 /**
  * Tone Tutoring 20% opt-in.
@@ -10,7 +11,6 @@ import { NextRequest, NextResponse } from 'next/server';
  * TONE20 lives in Shopify: 20% off "Tone Tutoring (60 min.)", one use per customer.
  */
 
-const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 // Sent as the team, not a person. Deliberately not RESEND_FROM_EMAIL, which may still name an individual.
 const FROM = 'The Rig Doctor Team <info@therigdr.com>';
@@ -26,37 +26,9 @@ function utm(url: string, content: string) {
 }
 
 async function upsertHubSpot(email: string) {
-  if (!HUBSPOT_ACCESS_TOKEN) return;
-  const note = `Tone Tutoring 20% opt-in (homepage). Sent code ${CODE}. ${new Date().toISOString()}`;
-  const headers = { Authorization: `Bearer ${HUBSPOT_ACCESS_TOKEN}`, 'Content-Type': 'application/json' };
-
-  const res = await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
-    method: 'POST',
-    headers,
-    body: JSON.stringify({
-      properties: {
-        email,
-        lifecyclestage: 'lead',
-        hs_lead_status: 'NEW',
-        leadsource: 'Tone Tutoring 20% Opt-in',
-        notes_last_updated: note,
-      },
-    }),
-  });
-
-  if (res.status === 409) {
-    const conflict = await res.json().catch(() => null);
-    const id = conflict?.message?.match(/Existing ID: (\d+)/)?.[1];
-    if (id) {
-      await fetch(`https://api.hubapi.com/crm/v3/objects/contacts/${id}`, {
-        method: 'PATCH',
-        headers,
-        body: JSON.stringify({ properties: { notes_last_updated: note } }),
-      });
-    }
-  } else if (!res.ok) {
-    console.error('HubSpot tone-offer error:', res.status, await res.text());
-  }
+  // New contacts start as NEW leads; existing ones keep their status and notes.
+  const id = await upsertContact(email, {}, { lifecyclestage: 'lead', hs_lead_status: 'NEW' });
+  if (id) await addContactNote(id, `<strong>Tone Tutoring 20% opt-in</strong>. Emailed code ${CODE} with a one-click checkout link.`);
 }
 
 function emailHtml() {

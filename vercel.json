@@ -44,6 +44,10 @@
     {
       "path": "/api/cron/indexnow",
       "schedule": "0 16 * * 1"
+    },
+    {
+      "path": "/api/cron/consult-booked",
+      "schedule": "0 14 * * *"
     }
   ]
 }

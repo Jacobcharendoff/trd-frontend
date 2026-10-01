@@ -108,9 +108,7 @@ export async function POST(req: NextRequest) {
                 firstname: contactName,
                 phone: contactPhone,
                 hs_lead_status: 'NEW',
-                hubspot_owner_id: '61103251',
-                leadsource: 'Rig Build Consultation',
-                description: 'Rig Build Consultation',
+                hubspot_owner_id: '61116245',
                 lifecyclestage: 'lead',
               },
             }),
@@ -139,8 +137,6 @@ export async function POST(req: NextRequest) {
             body: JSON.stringify({
               properties: {
                 hs_lead_status: 'NEW',
-                description: 'Rig Build Consultation',
-                leadsource: 'Rig Build Consultation',
                 phone: contactPhone || undefined,
               },
             }),

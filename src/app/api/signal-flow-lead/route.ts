@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse, after } from 'next/server';
+import { upsertContact, addContactNote } from '@/lib/hubspot';
 
 /**
  * Signal Flow Lead Capture API
@@ -13,7 +14,6 @@ import { NextRequest, NextResponse, after } from 'next/server';
  * and gives us full control over contact properties.
  */
 
-const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.therigdr.com';
 
 export async function POST(req: NextRequest) {
@@ -27,64 +27,13 @@ export async function POST(req: NextRequest) {
     const normalizedEmail = email.trim().toLowerCase();
 
     // ── 1. Create or update HubSpot contact ──────────────────
-    if (HUBSPOT_ACCESS_TOKEN) {
-      try {
-        // Try to create the contact first
-        const createRes = await fetch(
-          'https://api.hubapi.com/crm/v3/objects/contacts',
-          {
-            method: 'POST',
-            headers: {
-              Authorization: `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              properties: {
-                email: normalizedEmail,
-                lifecyclestage: 'lead',
-                hs_lead_status: 'NEW',
-                leadsource: 'Signal Flow Cheat Sheet',
-                notes_last_updated: `Signal Flow PDF download — ${new Date().toISOString()}`,
-              },
-            }),
-          },
-        );
-
-        if (createRes.status === 409) {
-          // Contact already exists — update them instead
-          // Extract existing contact ID from the 409 response
-          const conflict = await createRes.json();
-          const existingId = conflict?.message?.match(/Existing ID: (\d+)/)?.[1];
-
-          if (existingId) {
-            await fetch(
-              `https://api.hubapi.com/crm/v3/objects/contacts/${existingId}`,
-              {
-                method: 'PATCH',
-                headers: {
-                  Authorization: `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  properties: {
-                    notes_last_updated: `Signal Flow PDF re-download — ${new Date().toISOString()}`,
-                  },
-                }),
-              },
-            );
-          }
-        } else if (!createRes.ok) {
-          const errText = await createRes.text();
-          console.error('HubSpot CRM error:', createRes.status, errText);
-          // Don't fail the whole request — the user still gets their PDF
-        }
-      } catch (hubspotErr) {
-        console.error('HubSpot CRM request failed:', hubspotErr);
-        // Non-blocking: user still gets PDF + nurture emails
-      }
-    } else {
-      console.warn('HUBSPOT_ACCESS_TOKEN not set — skipping CRM contact creation');
-    }
+    // Non-blocking for the visitor: they already have the PDF. Only real properties are written
+    // (see lib/hubspot), and the download is logged as a note on the contact.
+    after(async () => {
+      // New contacts start as NEW leads; existing ones keep their status and notes.
+      const id = await upsertContact(normalizedEmail, {}, { lifecyclestage: 'lead', hs_lead_status: 'NEW' });
+      if (id) await addContactNote(id, '<strong>Signal Flow Cheat Sheet</strong> downloaded from therigdr.com');
+    });
 
     // ── 2. Trigger nurture email sequence ────────────────────
     // Runs after the response is sent. after() keeps the function alive until it finishes;

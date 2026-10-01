@@ -1,96 +1,90 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse, after } from 'next/server';
+import { upsertContact, addContactNote, contactUrl, esc, LEAD_OWNER_ID } from '@/lib/hubspot';
+import { sendBatch, sendResend, notBookedSequence, consultTeamAlert, ALERT_FROM, ALERT_TO } from '@/lib/lead-emails';
 
 /**
- * Homepage Lead Capture API
+ * Free consult request (/book form and the homepage form).
  *
- * Creates or updates a HubSpot contact via the CRM API (v3)
- * using a private app token. Follows the same pattern as
- * /api/signal-flow-lead.
- *
- * Fields: name, email, rig (description of their current rig).
+ * 1. Schedules the not-booked follow-up (30 min, then days 1, 3, 6, 10) in one Resend batch.
+ * 2. Responds with those ids; the form sends the visitor straight to the calendar page.
+ *    Booking there calls /api/lead/booked, which cancels the follow-up and starts the prep emails.
+ * 3. After the response: contact + note in HubSpot (owner Vince) and an alert to info@.
  */
 
-const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export async function POST(req: NextRequest) {
+  let body: Record<string, unknown>;
   try {
-    const { name, email, rig } = await req.json();
-
-    if (!email || typeof email !== 'string') {
-      return NextResponse.json({ error: 'Email required' }, { status: 400 });
-    }
-
-    const normalizedEmail = email.trim().toLowerCase();
-    const nameParts = (name || '').trim().split(' ');
-    const firstName = nameParts[0] || '';
-    const lastName = nameParts.slice(1).join(' ') || '';
-
-    // Create or update HubSpot contact
-    if (HUBSPOT_ACCESS_TOKEN) {
-      try {
-        const createRes = await fetch(
-          'https://api.hubapi.com/crm/v3/objects/contacts',
-          {
-            method: 'POST',
-            headers: {
-              Authorization: `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              properties: {
-                email: normalizedEmail,
-                firstname: firstName,
-                lastname: lastName,
-                lifecyclestage: 'lead',
-                hs_lead_status: 'NEW',
-                leadsource: 'Website Lead Form',
-                notes_last_updated: `Homepage lead form${rig ? ` - Rig notes: ${rig}` : ''} - ${new Date().toISOString()}`,
-              },
-            }),
-          },
-        );
-
-        if (createRes.status === 409) {
-          // Contact already exists - update them
-          const conflict = await createRes.json();
-          const existingId = conflict?.message?.match(/Existing ID: (\d+)/)?.[1];
-
-          if (existingId) {
-            await fetch(
-              `https://api.hubapi.com/crm/v3/objects/contacts/${existingId}`,
-              {
-                method: 'PATCH',
-                headers: {
-                  Authorization: `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  properties: {
-                    firstname: firstName || undefined,
-                    lastname: lastName || undefined,
-                    notes_last_updated: `Lead form re-submission${rig ? ` - Rig notes: ${rig}` : ''} - ${new Date().toISOString()}`,
-                  },
-                }),
-              },
-            );
-          }
-        } else if (!createRes.ok) {
-          const errText = await createRes.text();
-          console.error('HubSpot CRM error:', createRes.status, errText);
-        }
-      } catch (hubspotErr) {
-        console.error('HubSpot CRM request failed:', hubspotErr);
-      }
-    } else {
-      console.warn('HUBSPOT_ACCESS_TOKEN not set - skipping CRM');
-    }
-
-    return NextResponse.json({ ok: true });
-  } catch (err) {
-    console.error('Lead capture error:', err);
-    return NextResponse.json(
-      { error: 'Failed to process lead' },
-      { status: 500 },
-    );
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: 'Bad request' }, { status: 400 });
   }
+
+  // Honeypot: a hidden field people never see. Bots fill it; pretend it worked.
+  if (typeof body.company === 'string' && body.company.trim() !== '') {
+    return NextResponse.json({ ok: true, n: '' });
+  }
+
+  const email = String(body.email ?? '').trim().toLowerCase();
+  if (!EMAIL_RE.test(email)) {
+    return NextResponse.json({ error: 'Valid email required' }, { status: 400 });
+  }
+
+  const name = String(body.name ?? '').trim().slice(0, 120);
+  const [first = '', ...rest] = name.split(/\s+/).filter(Boolean);
+  const last = rest.join(' ');
+  const plays = String(body.instrument ?? '').trim().slice(0, 120);
+  const notes = String(body.rig ?? '').trim().slice(0, 2000);
+  const source = body.source === 'homepage' ? 'homepage' : 'book';
+  const page = (req.headers.get('referer') || '').slice(0, 300);
+
+  // Scheduled before responding, so a booking on the next page can always cancel them.
+  const ids = await sendBatch(notBookedSequence(first, email));
+  const n = ids.join('.');
+
+  after(async () => {
+    const formLabel = source === 'homepage' ? 'homepage form' : '/book';
+    const message = [`Free consult request (${formLabel})`, plays && `Plays: ${plays}`, notes && `Rig: ${notes}`]
+      .filter(Boolean)
+      .join('. ');
+
+    const contactId = await upsertContact(
+      email,
+      { firstname: first, lastname: last, message, hs_lead_status: 'NEW' },
+      { lifecyclestage: 'lead', hubspot_owner_id: LEAD_OWNER_ID },
+    );
+
+    if (contactId) {
+      await addContactNote(
+        contactId,
+        `<strong>Free consult request</strong> (${formLabel})` +
+          (plays ? `<br><strong>Plays:</strong> ${esc(plays)}` : '') +
+          (notes ? `<br><br><strong>Rig notes:</strong><br>${esc(notes).replace(/\n/g, '<br>')}` : '') +
+          (page ? `<br><br><strong>Page:</strong> ${esc(page)}` : ''),
+      );
+    }
+
+    const alert = consultTeamAlert({
+      name,
+      first,
+      email,
+      plays,
+      notes,
+      source,
+      page,
+      hubspotUrl: contactId ? contactUrl(contactId) : null,
+      followUpScheduled: ids.length > 0,
+    });
+    await sendResend({
+      from: ALERT_FROM,
+      to: ALERT_TO,
+      subject: alert.subject,
+      html: alert.html,
+      replyTo: email,
+      tag: 'consult_alert',
+    });
+  });
+
+  return NextResponse.json({ ok: true, n });
 }

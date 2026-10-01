@@ -1,10 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { trackLead } from '@/lib/track';
+import { rememberLead } from '@/lib/lead-session';
 
 export default function LeadCaptureForm() {
-  const [formData, setFormData] = useState({ name: '', email: '', rig: '' });
+  const router = useRouter();
+  const [formData, setFormData] = useState({ name: '', email: '', rig: '', company: '' });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -15,13 +18,16 @@ export default function LeadCaptureForm() {
       const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, source: 'homepage' }),
       });
 
       if (res.ok) {
+        const { n } = (await res.json().catch(() => ({}))) as { n?: string };
         trackLead('homepage_form');
+        rememberLead(formData.name, formData.email);
+        // Straight to the calendar: booking the call is the next step, not waiting for a reply.
+        router.push(n ? `/book/thank-you?n=${encodeURIComponent(n)}` : '/book/thank-you');
         setStatus('success');
-        setFormData({ name: '', email: '', rig: '' });
       } else {
         setStatus('error');
       }
@@ -66,6 +72,11 @@ export default function LeadCaptureForm() {
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             className="w-full px-4 py-3.5 rounded-xl bg-white border border-[#1d1d1f]/10 text-[#1d1d1f] placeholder:text-[#1d1d1f]/30 focus:outline-none focus:ring-4 focus:ring-[#8E3FD9]/10 focus:border-[#8E3FD9]/40 transition-all text-[15px]"
           />
+        </div>
+        {/* Honeypot: hidden from people, bots fill it in */}
+        <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+          <label htmlFor="lc-company">Company</label>
+          <input id="lc-company" type="text" tabIndex={-1} autoComplete="off" value={formData.company} onChange={(e) => setFormData({ ...formData, company: e.target.value })} />
         </div>
         <textarea
           placeholder="Tell us about your rig. What are you working with, and what's driving you crazy?"

@@ -173,6 +173,27 @@ function buildToneTutoringEmail(firstName: string) {
   };
 }
 
+// ── Tone Tutoring 12-day check-in (help, then a build call) ────────────
+
+function buildToneFollowUpEmail(firstName: string) {
+  const hey = firstName ? `Hey ${firstName.replace(/[<>&"]/g, '')},` : 'Hey,';
+  const book =
+    'https://www.therigdr.com/book?utm_source=tone_email&utm_medium=email&utm_campaign=tone_followup&utm_content=book_button';
+  return {
+    subject: "How's the board sounding?",
+    html: `
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 560px; margin: 0 auto; color: #1d1d1f; line-height: 1.6; font-size: 16px;">
+  <p>${hey}</p>
+  <p>Vince here, checking in since you booked Tone Tutoring. How's the board sounding? If something we changed isn't working, reply and tell me. I'll help you sort it out.</p>
+  <p>If we haven't had the session yet, reply too and we'll get it on the calendar.</p>
+  <p>Sometimes a session shows the real problem is the board itself: power, cables, layout. If that's where you landed, we can rebuild yours or build you a new one. It starts with a free 30-minute call.</p>
+  <p style="margin: 24px 0;"><a href="${book}" style="display: inline-block; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #ffffff; padding: 14px 32px; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 16px;">Book a free build call</a></p>
+  <p>Vince<br/>The Rig Doctor</p>
+  <p style="margin-top: 32px; font-size: 12px; color: #86868b; line-height: 1.5;">The Rig Doctor LLC, 641 Amesbury Rd, Montgomery, TX 77316. You got this because you booked Tone Tutoring at therigdr.com.</p>
+</div>`.trim(),
+  };
+}
+
 // ── Gift Card buyer thank-you email template ────────────────────────────
 
 function buildGiftCardBuyerEmail(firstName: string, amount: string) {
@@ -402,6 +423,24 @@ export async function POST(req: NextRequest) {
         results.push({ type: 'review_request_scheduled', emailId: scheduled.id });
       } catch (e) {
         console.error(`Review request scheduling failed for order ${order.id}:`, e);
+      }
+
+      // Check-in 12 days later: help if something isn't working, and offer a build call
+      // when the session showed the board itself is the problem.
+      try {
+        const upsell = buildToneFollowUpEmail(customerFirstName);
+        const scheduled = await sendEmail({
+          from: VINCE_FROM,
+          to: customerEmail,
+          subject: upsell.subject,
+          html: upsell.html,
+          replyTo: 'vince@therigdr.com',
+          scheduledAt: 'in 12 days',
+          tag: 'tone_followup',
+        });
+        results.push({ type: 'tone_followup_scheduled', emailId: scheduled.id });
+      } catch (e) {
+        console.error(`Tone follow-up scheduling failed for order ${order.id}:`, e);
       }
     }
 

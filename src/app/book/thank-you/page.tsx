@@ -1,13 +1,50 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Section from '@/components/Section';
 import { track } from '@/lib/track';
+import { readLead, forgetLead } from '@/lib/lead-session';
+
+const MEETINGS_URL = 'https://meetings-na2.hubspot.com/trd/rig-build-consultation?embed=true';
+
+/**
+ * Pull the booker's email, first name and call time out of HubSpot's booking message.
+ * Shape: { meetingsPayload: { bookingResponse: { event: { dateTime }, postResponse: { timerange: { start }, contact: { email, firstName } } } } }
+ * Read defensively; anything missing falls back to what the form stored.
+ */
+function readBooking(data: unknown): { email?: string; firstName?: string; start?: number } {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const r = (data as any)?.meetingsPayload?.bookingResponse;
+  const contact = r?.postResponse?.contact ?? {};
+  const start = Number(r?.postResponse?.timerange?.start ?? r?.event?.dateTime);
+  return {
+    email: typeof contact.email === 'string' ? contact.email : undefined,
+    firstName: typeof contact.firstName === 'string' ? contact.firstName : undefined,
+    start: Number.isFinite(start) && start > 0 ? start : undefined,
+  };
+}
 
 export default function BookThankYouPage() {
+  // Calendar URL, prefilled with the name and email they just typed (HubSpot meetings prefill params).
+  const [calendarSrc, setCalendarSrc] = useState<string | null>(null);
+  const booked = useRef(false);
+
   useEffect(() => {
-    // Load HubSpot meetings embed script
+    const lead = readLead();
+    const q = new URLSearchParams();
+    if (lead?.firstName) q.set('firstName', lead.firstName);
+    if (lead?.lastName) q.set('lastName', lead.lastName);
+    if (lead?.email) q.set('email', lead.email);
+    const extra = q.toString();
+    setCalendarSrc(extra ? `${MEETINGS_URL}&${extra}` : MEETINGS_URL);
+  }, []);
+
+  useEffect(() => {
+    if (!calendarSrc) return;
+    // Pending reminder ids, from the form redirect or the email link. Booking cancels them.
+    const pending = new URLSearchParams(window.location.search).get('n') || '';
+
     const script = document.createElement('script');
     script.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
     script.async = true;
@@ -15,8 +52,24 @@ export default function BookThankYouPage() {
     // HubSpot's meetings iframe posts { meetingBookSucceeded: true } when a call is booked.
     const onMessage = (e: MessageEvent) => {
       if (typeof e.origin === 'string' && !e.origin.includes('hubspot')) return;
-      if (e.data && (e.data as { meetingBookSucceeded?: boolean }).meetingBookSucceeded) {
+      if (e.data && (e.data as { meetingBookSucceeded?: boolean }).meetingBookSucceeded && !booked.current) {
+        booked.current = true;
         track('schedule', { meeting: 'rig_build_consultation' });
+        // Stops the "you haven't booked yet" emails and starts the prep emails.
+        const booking = readBooking(e.data);
+        const lead = readLead();
+        fetch('/api/lead/booked', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            n: pending,
+            email: booking.email || lead?.email || '',
+            firstName: booking.firstName || lead?.firstName || '',
+            start: booking.start,
+          }),
+          keepalive: true,
+        }).catch(() => {});
+        forgetLead();
       }
     };
     window.addEventListener('message', onMessage);
@@ -24,7 +77,7 @@ export default function BookThankYouPage() {
       document.body.removeChild(script);
       window.removeEventListener('message', onMessage);
     };
-  }, []);
+  }, [calendarSrc]);
 
   return (
     <>
@@ -40,12 +93,12 @@ export default function BookThankYouPage() {
 
           <h1 className="text-white font-bold tracking-[-0.045em] leading-[1.02] text-[clamp(40px,6vw,68px)] mb-5">
             {"You're in. "}
-            <span className="trd-gradient-text">We got your info.</span>
+            <span className="trd-gradient-text">Now pick a time.</span>
           </h1>
 
           <p className="text-[18px] text-white/[0.6] leading-relaxed max-w-xl mx-auto mb-6">
-            We will reach out within 24 hours to talk through your rig. But if you want to skip
-            the wait, grab a time on the calendar below and let us get into it right now.
+            Grab a slot for your free 30-minute call below. A builder is also reading your rig notes
+            and will reply within 24 hours if you&apos;d rather start by email.
           </p>
 
           {/* Arrow pointing down */}
@@ -74,11 +127,11 @@ export default function BookThankYouPage() {
 
           {/* HubSpot Calendar Embed */}
           <div className="bg-[#f5f5f7] rounded-[28px] p-4 sm:p-6 border border-black/[0.04]">
-            <div
-              className="meetings-iframe-container"
-              data-src="https://meetings-na2.hubspot.com/trd/rig-build-consultation?embed=true"
-              style={{ minHeight: '650px' }}
-            />
+            {calendarSrc ? (
+              <div className="meetings-iframe-container" data-src={calendarSrc} style={{ minHeight: '650px' }} />
+            ) : (
+              <div style={{ minHeight: '650px' }} />
+            )}
           </div>
 
           {/* What to expect */}

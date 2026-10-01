@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import BeforeAfter from '@/components/BeforeAfter';
 import { trackLead } from '@/lib/track';
+import { rememberLead } from '@/lib/lead-session';
 import ReviewsMarquee from '@/components/ReviewsMarquee';
 import ParallaxImage from '@/components/home/ParallaxImage';
 import Reveal from '@/components/home/Reveal';
@@ -37,7 +38,7 @@ const artists = ['Andy Timmons', 'Oz Noy', 'Michael Landau', 'Kirk Fletcher', 'J
 /* ─────────────── Form ─────────────── */
 function ConsultForm() {
   const router = useRouter();
-  const [formData, setFormData] = useState({ name: '', email: '', instrument: '', rig: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', instrument: '', rig: '', company: '' });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -47,11 +48,13 @@ function ConsultForm() {
       const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, source: 'book' }),
       });
       if (res.ok) {
+        const { n } = (await res.json().catch(() => ({}))) as { n?: string };
         trackLead('book_consult', { instrument: formData.instrument || undefined });
-        router.push('/book/thank-you');
+        rememberLead(formData.name, formData.email);
+        router.push(n ? `/book/thank-you?n=${encodeURIComponent(n)}` : '/book/thank-you');
       }
       else setStatus('error');
     } catch {
@@ -73,6 +76,11 @@ function ConsultForm() {
         <input id="c-name" type="text" placeholder="Your name" required value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className={input} />
         <label className="sr-only" htmlFor="c-email">Your email</label>
         <input id="c-email" type="email" placeholder="Your email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={input} />
+      </div>
+      {/* Honeypot: hidden from people, bots fill it in */}
+      <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+        <label htmlFor="c-company">Company</label>
+        <input id="c-company" type="text" tabIndex={-1} autoComplete="off" value={formData.company} onChange={(e) => setFormData({ ...formData, company: e.target.value })} />
       </div>
       <label className="sr-only" htmlFor="c-inst">What do you play?</label>
       <input id="c-inst" type="text" placeholder="What do you play? Guitar, bass, keys..." value={formData.instrument} onChange={(e) => setFormData({ ...formData, instrument: e.target.value })} className={input} />
