@@ -7,6 +7,8 @@
  * Free text goes in `message` and in a note on the contact.
  */
 
+import { MEETING_SLUG } from './booking';
+
 const TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
 const API = 'https://api.hubapi.com';
 const PORTAL_ID = '245067165';
@@ -108,7 +110,7 @@ export async function addContactNote(contactId: string, html: string) {
 
 /**
  * Did this email just book the rig consult calendar? HubSpot records a booking as a
- * "Meetings Link: trd/rig-build-consultation" conversion on the contact.
+ * "Meetings Link: <owner>/rig-build-consultation" conversion on the contact.
  * Returns the contact's first name and the booked meeting time when HubSpot has them.
  */
 export async function findRecentBooking(
@@ -139,7 +141,7 @@ export async function findRecentBooking(
     const at = p.recent_conversion_date ? Date.parse(p.recent_conversion_date) : 0;
     const meeting = p.engagements_last_meeting_booked ? Date.parse(p.engagements_last_meeting_booked) : NaN;
     return {
-      booked: event.includes('rig-build-consultation') && Date.now() - at <= withinMs,
+      booked: event.includes(MEETING_SLUG) && Date.now() - at <= withinMs,
       contactId: c.id,
       firstName: p.firstname || undefined,
       meetingAt: Number.isFinite(meeting) && meeting > Date.now() ? meeting : undefined,
@@ -160,7 +162,7 @@ export async function recentBookers(sinceMs: number): Promise<string[]> {
         filterGroups: [
           {
             filters: [
-              { propertyName: 'recent_conversion_event_name', operator: 'CONTAINS_TOKEN', value: '*rig-build-consultation*' },
+              { propertyName: 'recent_conversion_event_name', operator: 'CONTAINS_TOKEN', value: `*${MEETING_SLUG}*` },
               { propertyName: 'recent_conversion_date', operator: 'GTE', value: String(sinceMs) },
             ],
           },

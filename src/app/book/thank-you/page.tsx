@@ -2,11 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import Section from '@/components/Section';
 import { track } from '@/lib/track';
 import { readLead, forgetLead } from '@/lib/lead-session';
-
-const MEETINGS_URL = 'https://meetings-na2.hubspot.com/trd/rig-build-consultation?embed=true';
+import { MEETINGS_EMBED_URL as MEETINGS_URL } from '@/lib/booking';
 
 /**
  * Pull the booker's email, first name and call time out of HubSpot's booking message.
@@ -81,52 +79,37 @@ export default function BookThankYouPage() {
 
   return (
     <>
-      {/* Confirmation Hero */}
-      <div className="bg-black pt-20 sm:pt-28 pb-16">
-        <div className="max-w-[680px] mx-auto px-6 text-center">
-          {/* Success icon */}
-          <div className="trd-icon-ring w-16 h-16 text-white mb-8">
-            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
+      {/* Step 2 of 2: the calendar is the page. It sits in the first screen so nobody mistakes
+          the form for the finish line. */}
+      <div className="bg-white pt-24 sm:pt-28 pb-24">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+          <ol className="flex items-center justify-center gap-3 text-[13px] font-medium mb-6" aria-label="Progress">
+            <li className="flex items-center gap-2 text-black/45">
+              <span className="w-6 h-6 rounded-full bg-black/10 text-black/60 inline-flex items-center justify-center" aria-hidden="true">
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                </svg>
+              </span>
+              Your details
+            </li>
+            <li className="w-8 h-px bg-black/15" aria-hidden="true" />
+            <li className="flex items-center gap-2 text-black" aria-current="step">
+              <span className="w-6 h-6 rounded-full bg-black text-white inline-flex items-center justify-center text-[12px]">2</span>
+              Pick a time
+            </li>
+          </ol>
 
-          <h1 className="text-white font-bold tracking-[-0.045em] leading-[1.02] text-[clamp(40px,6vw,68px)] mb-5">
-            {"You're in. "}
-            <span className="trd-gradient-text">Now pick a time.</span>
-          </h1>
-
-          <p className="text-[18px] text-white/[0.6] leading-relaxed max-w-xl mx-auto mb-6">
-            Grab a slot for your free 30-minute build call below. A builder is also reading your notes
-            and will reply within 24 hours if you&apos;d rather start by email.
-          </p>
-
-          {/* Arrow pointing down */}
-          <div className="animate-bounce">
-            <svg className="w-6 h-6 text-white/60 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      {/* Calendar Section */}
-      <Section theme="light" id="book-call">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-10">
-            <p className="text-sm font-medium tracking-[0.2em] uppercase text-[#1d1d1f]/40 mb-4">
-              Skip The Wait
-            </p>
-            <h2 className="text-black font-bold tracking-[-0.04em] leading-[1.05] text-[clamp(30px,4vw,48px)] mb-3">
-              Book your free build call <span className="trd-gradient-text">right now.</span>
-            </h2>
-            <p className="text-[#1d1d1f]/50 text-lg">
-              30 minutes with a builder about your new board or rebuild. No obligation.
+          <div className="text-center mb-6">
+            <h1 className="text-black font-bold tracking-[-0.04em] leading-[1.05] text-[clamp(30px,4.5vw,46px)] mb-3">
+              Last step: <span className="trd-gradient-text">pick a time for your build call.</span>
+            </h1>
+            <p className="text-[#1d1d1f]/60 text-[16px] sm:text-lg max-w-xl mx-auto">
+              Your request isn&apos;t booked until you choose a time. 30 minutes on Google Meet with one of the builders.
             </p>
           </div>
 
           {/* HubSpot Calendar Embed */}
-          <div className="bg-[#f5f5f7] rounded-[28px] p-4 sm:p-6 border border-black/[0.04]">
+          <div id="book-call" className="bg-[#f5f5f7] rounded-[28px] p-2 sm:p-5 border border-black/[0.04]">
             {calendarSrc ? (
               <div className="meetings-iframe-container" data-src={calendarSrc} style={{ minHeight: '650px' }} />
             ) : (
@@ -134,7 +117,14 @@ export default function BookThankYouPage() {
             )}
           </div>
 
-          <p className="text-center text-[14px] text-black/50 mt-5">
+          <p className="text-center text-[14px] text-black/55 mt-5">
+            No time that works? Email{' '}
+            <a href="mailto:info@therigdr.com" className="text-black/80 underline underline-offset-2">
+              info@therigdr.com
+            </a>{' '}
+            and we&apos;ll set one up.
+          </p>
+          <p className="text-center text-[14px] text-black/50 mt-2">
             This call is for custom builds and rebuilds. Need help with your tone or a problem on your current board?{' '}
             <Link href="/tone-tutoring" className="text-black/80 underline underline-offset-2">
               That&apos;s Tone Tutoring
@@ -180,7 +170,7 @@ export default function BookThankYouPage() {
             </Link>
           </div>
         </div>
-      </Section>
+      </div>
     </>
   );
 }

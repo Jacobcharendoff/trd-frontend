@@ -76,6 +76,7 @@ function ConsultForm() {
   return (
     <form id="consult-form" onSubmit={handleSubmit} className="scroll-mt-32 bg-white rounded-[28px] p-6 sm:p-8 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] space-y-3.5">
       <div className="mb-2">
+        <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-black/40 mb-1">Step 1 of 2</p>
         <p className="text-black text-xl font-bold tracking-tight">Start your free build consultation</p>
         <p className="text-black/50 text-[14px] mt-1">For custom builds and rebuilds. Next, you pick a time for the call.</p>
       </div>
