@@ -9,7 +9,7 @@ import {
   ENDS_ON,
   todayCT,
   listBuyers,
-  countCustomers,
+  countTagged,
   unsubscribeUrl,
   sendBatch,
   sendEmail,
@@ -50,7 +50,7 @@ function authorized(req: NextRequest): boolean {
 }
 
 async function summary(log: SentLog) {
-  const q = (tag: string) => countCustomers(`tag:"${tag}"`);
+  const q = (tag: string) => countTagged(tag);
   const [claimed, t50, t75, t100, optedOut] = await Promise.all([
     q(TAG.claimed),
     q(TAG.tier(50)),

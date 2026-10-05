@@ -209,13 +209,36 @@ export async function listBuyers(): Promise<RrCustomer[]> {
   return out;
 }
 
-export async function countCustomers(query: string): Promise<number> {
+/**
+ * How many customers carry this exact tag. Returns -1 if it can't tell.
+ *
+ * Counts by listing the matches and checking each customer's tags, instead of Shopify's
+ * customersCount: that one silently ignored the tag filter and returned its 10,000 cap,
+ * which made the Oct 5 summary report 10,000 claims and $2,250,000 issued.
+ * A real tag matches a handful of customers, so if the list runs past 2,000 the filter
+ * isn't working and we report "unknown" rather than a wrong number.
+ */
+export async function countTagged(tag: string): Promise<number> {
   try {
-    const d = await adminGql<{ customersCount: { count: number } }>(
-      `query($q: String!) { customersCount(query: $q) { count } }`,
-      { q: query },
-    );
-    return d.customersCount.count;
+    let count = 0;
+    let after: string | null = null;
+    for (let page = 0; page < 8; page++) {
+      const d: {
+        customers: { pageInfo: { hasNextPage: boolean; endCursor: string | null }; nodes: Array<{ tags: string[] }> };
+      } = await adminGql(
+        `query($q: String!, $after: String) {
+          customers(first: 250, after: $after, query: $q) {
+            pageInfo { hasNextPage endCursor }
+            nodes { tags }
+          }
+        }`,
+        { q: `tag:${tag}`, after },
+      );
+      count += d.customers.nodes.filter((c) => c.tags.includes(tag)).length;
+      if (!d.customers.pageInfo.hasNextPage) return count;
+      after = d.customers.pageInfo.endCursor;
+    }
+    return -1;
   } catch {
     return -1;
   }

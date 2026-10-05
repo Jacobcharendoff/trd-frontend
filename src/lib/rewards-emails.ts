@@ -352,7 +352,10 @@ export function weeklySummaryEmail(s: {
   byTier: Record<Tier, number>;
   optedOut: number;
 }) {
-  const total = s.byTier[50] * 50 + s.byTier[75] * 75 + s.byTier[100] * 100;
+  // A count of -1 means Shopify couldn't be counted reliably. Say so instead of printing a wrong number.
+  const unknown = [s.claimed, s.byTier[50], s.byTier[75], s.byTier[100], s.optedOut].some((n) => n < 0);
+  const n = (v: number) => (v < 0 ? 'unknown' : String(v));
+  const total = unknown ? 0 : s.byTier[50] * 50 + s.byTier[75] * 75 + s.byTier[100] * 100;
   const html = `<div style="font-family:${FONT};max-width:560px;font-size:15px;color:#111;">
   <h2 style="margin:0 0 12px;font-size:20px;">Review rewards: where it stands</h2>
   <p style="margin:0 0 6px;">${
@@ -360,10 +363,15 @@ export function weeklySummaryEmail(s: {
       ? `Emails sent: ${s.sent[0]} (1st) &middot; ${s.sent[1]} (2nd) &middot; ${s.sent[2]} (last call)`
       : 'The emails go out through Shopify Email. Opens, clicks and sales are in Shopify under Marketing.'
   }</p>
-  <p style="margin:0 0 6px;">Claims: <b>${s.claimed}</b> &middot; $50: ${s.byTier[50]} &middot; $75: ${s.byTier[75]} &middot; $100: ${s.byTier[100]}</p>
-  <p style="margin:0 0 6px;">Credit issued: <b>$${total}</b></p>
-  <p style="margin:0 0 6px;">Unsubscribed: ${s.optedOut}</p>
+  <p style="margin:0 0 6px;">Claims: <b>${n(s.claimed)}</b> &middot; $50: ${n(s.byTier[50])} &middot; $75: ${n(s.byTier[75])} &middot; $100: ${n(s.byTier[100])}</p>
+  <p style="margin:0 0 6px;">Credit issued: <b>${unknown ? 'unknown (check Gift cards in Shopify)' : `$${total}`}</b></p>
+  <p style="margin:0 0 6px;">Unsubscribed: ${n(s.optedOut)}</p>
   <p style="margin:14px 0 0;color:#6e6e73;font-size:13px;">Every claim is tagged in Shopify. Filter customers by the tag trd-rr-claimed to see them all.</p>
 </div>`;
-  return { subject: `Review rewards: ${s.claimed} claims, $${total} issued`, html };
+  return {
+    subject: unknown
+      ? 'Review rewards: weekly summary (counts unavailable, check Shopify)'
+      : `Review rewards: ${s.claimed} claims, $${total} issued`,
+    html,
+  };
 }
