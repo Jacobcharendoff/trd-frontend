@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
   const page = (req.headers.get('referer') || '').slice(0, 300);
 
   // Scheduled before responding, so a booking on the next page can always cancel them.
-  const ids = await sendBatch(notBookedSequence(first, email));
+  const ids = await sendBatch(notBookedSequence(first, email, { need: String(body.need ?? ''), plays, notes }));
   const n = ids.join('.');
 
   after(async () => {

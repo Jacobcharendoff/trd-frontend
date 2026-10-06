@@ -26,6 +26,10 @@ const SITE = 'https://www.therigdr.com';
 
 export const TEAM_FROM = 'The Rig Doctor Team <info@therigdr.com>';
 const TEAM_ADDRESS = 'info@therigdr.com';
+// The first follow-up and the last one come from Vince, written like a personal note.
+// Replies go straight to him.
+const VINCE_FROM = process.env.RESEND_VINCE_FROM_EMAIL || 'Vince DiGioia <vince@therigdr.com>';
+const VINCE_ADDRESS = 'vince@therigdr.com';
 export const ALERT_FROM = 'The Rig Doctor <notifications@therigdr.com>';
 export const ALERT_TO = 'info@therigdr.com';
 
@@ -133,7 +137,7 @@ export async function cancelPendingFor(email: string, days = 14) {
   for (let page = 0; page < 10; page++) {
     const url = `https://api.resend.com/emails?limit=100${after ? `&after=${after}` : ''}`;
     let body: {
-      data?: Array<{ id: string; to?: string[]; from?: string; created_at?: string; scheduled_at?: string | null; last_event?: string }>;
+      data?: Array<{ id: string; to?: string[]; from?: string; subject?: string; created_at?: string; scheduled_at?: string | null; last_event?: string }>;
       has_more?: boolean;
     };
     try {
@@ -151,9 +155,11 @@ export async function cancelPendingFor(email: string, days = 14) {
     const rows = body.data ?? [];
     for (const r of rows) {
       const toMatch = (r.to ?? []).some((t) => t.toLowerCase().includes(target));
-      const fromTeam = (r.from ?? '').toLowerCase().includes(TEAM_ADDRESS);
+      // Only this campaign's emails, matched by subject, so a booking never cancels anything else
+      // (a Tone Tutoring review ask, the cheat sheet emails).
+      const ours = NOT_BOOKED_SUBJECTS.has((r.subject ?? '').trim());
       const pending = r.last_event === 'scheduled' || (r.scheduled_at ? Date.parse(r.scheduled_at) > Date.now() : false);
-      if (toMatch && fromTeam && pending && r.last_event !== 'canceled') {
+      if (toMatch && ours && pending && r.last_event !== 'canceled') {
         if (await cancelResend(r.id)) canceled++;
       }
     }
@@ -238,6 +244,53 @@ function quote(notes: string) {
 
 // ── NOT BOOKED ─────────────────────────────────────────────────────────
 
+export type LeadInfo = { need?: string; plays?: string; notes?: string };
+
+/** Plain, personal-looking email from Vince: no buttons, no banner, just text and a link. */
+function personal(body: string) {
+  return `
+<div style="font-family: Arial, Helvetica, sans-serif; max-width: 560px; color: #222; line-height: 1.55; font-size: 15px;">
+${body}
+  <p>Vince<br/>The Rig Doctor</p>
+  <p style="margin-top: 28px; font-size: 11px; color: #999; line-height: 1.5;">${FOOTER}</p>
+</div>`.trim();
+}
+
+const NEED_SUBJECT: Record<string, string> = {
+  new: 'Your new board',
+  rebuild: 'Your board rebuild',
+};
+const DEFAULT_SUBJECT = 'Your build call';
+
+/** 30 minutes after the form, if they haven't booked: a note from Vince about their rig. */
+function v1(first: string, info: LeadInfo) {
+  const what = info.need === 'rebuild' ? 'rebuilding your board' : info.need === 'new' ? 'a new board' : 'a build';
+  const notes = (info.notes || '').trim();
+  const short = notes.length > 220 ? `${notes.slice(0, 220).trim()}...` : notes;
+  return {
+    subject: NEED_SUBJECT[info.need || ''] || DEFAULT_SUBJECT,
+    html: personal(`
+  <p>${first ? `Hey ${esc(first)},` : 'Hey,'}</p>
+  <p>Vince here from The Rig Doctor. Saw your note about ${what}.${short ? ` You mentioned: "${esc(short)}"` : ''}</p>
+  <p>Easiest next step is a 30-minute call so I can see what you're working with. Grab whatever time works for you here: <a href="${calendar('v1_link')}">${SITE.replace('https://www.', '')}/book</a></p>
+  <p>If you'd rather start over email, just reply with a couple of photos of your current board and I'll take a look.</p>`),
+  };
+}
+
+/** Day 10, if they still haven't booked: the last note, also from Vince. */
+function v5(first: string) {
+  return {
+    subject: 'Should I close out your request?',
+    html: personal(`
+  <p>${first ? `Hey ${esc(first)},` : 'Hey,'}</p>
+  <p>Haven't heard back, so I'll keep this short. Just reply with a number:</p>
+  <p>1. Still want the call (or grab a time here: <a href="${calendar('v5_link')}">${SITE.replace('https://www.', '')}/book</a>)<br/>
+  2. Interested, but not right now<br/>
+  3. Not for me</p>
+  <p>Any answer helps me know what to do next.</p>`),
+  };
+}
+
 function n1(first: string) {
   return {
     subject: "Your rig call isn't booked yet",
@@ -305,22 +358,38 @@ function n5(first: string) {
   };
 }
 
-/** The five not-booked emails, scheduled from `now`. */
-export function notBookedSequence(first: string, to: string, now = Date.now()): Email[] {
-  const at = (iso: string, e: { subject: string; html: string }, t: string): Email => ({
-    from: TEAM_FROM,
+/**
+ * Subjects of every not-booked email, current and earlier versions, so a booking can find and cancel
+ * the pending ones without touching any other email to that person.
+ */
+export const NOT_BOOKED_SUBJECTS = new Set<string>([
+  ...Object.values(NEED_SUBJECT),
+  DEFAULT_SUBJECT,
+  n1('').subject,
+  n2('').subject,
+  n3('').subject,
+  n4('').subject,
+  n5('').subject,
+  v5('').subject,
+]);
+
+/** The five not-booked emails, scheduled from `now`. First and last come from Vince. */
+export function notBookedSequence(first: string, to: string, info: LeadInfo = {}, now = Date.now()): Email[] {
+  const at = (iso: string, e: { subject: string; html: string }, t: string, fromVince = false): Email => ({
+    from: fromVince ? VINCE_FROM : TEAM_FROM,
     to,
     subject: e.subject,
     html: e.html,
     scheduledAt: iso,
     tag: t,
+    ...(fromVince ? { replyTo: VINCE_ADDRESS } : {}),
   });
   return [
-    at(new Date(now + 30 * 60_000).toISOString(), n1(first), 'consult_n1'),
+    at(new Date(now + 30 * 60_000).toISOString(), v1(first, info), 'consult_v1', true),
     at(tenAmCentral(1, now), n2(first), 'consult_n2'),
     at(tenAmCentral(3, now), n3(first), 'consult_n3'),
     at(tenAmCentral(6, now), n4(first), 'consult_n4'),
-    at(tenAmCentral(10, now), n5(first), 'consult_n5'),
+    at(tenAmCentral(10, now), v5(first), 'consult_v5', true),
   ];
 }
 
@@ -441,7 +510,7 @@ export function consultTeamAlert(d: {
     <a href="${reply}" style="display: inline-block; background: #1d1d1f; color: #ffffff; padding: 12px 28px; border-radius: 999px; text-decoration: none; font-weight: 600;">Reply to ${esc(d.first || 'them')}</a>
     ${d.hubspotUrl ? `&nbsp; <a href="${d.hubspotUrl}" style="color: #0071E3; font-size: 14px;">Open in HubSpot</a>` : ''}
   </p>
-  <p style="color: #86868b; font-size: 13px;">They were sent straight to the calendar.${d.followUpScheduled ? " If they don't book, follow-ups go out at 30 minutes and on days 1, 3, 6 and 10. Booking stops them and starts the prep emails." : ''} The page promises a reply within 24 hours.</p>
+  <p style="color: #86868b; font-size: 13px;">They were sent straight to the calendar.${d.followUpScheduled ? " If they don't book, a personal note from Vince goes out at 30 minutes (replies go to vince@), then follow-ups on days 1, 3, 6 and 10. Booking stops them and starts the prep emails." : ''} The page promises a reply within 24 hours.</p>
 </div>`.trim(),
   };
 }
