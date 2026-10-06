@@ -247,47 +247,67 @@ function quote(notes: string) {
 export type LeadInfo = { need?: string; plays?: string; notes?: string };
 
 /** Plain, personal-looking email from Vince: no buttons, no banner, just text and a link. */
-function personal(body: string) {
+function personal(body: string, signoff = 'Talk soon,<br/>Vince') {
   return `
-<div style="font-family: Arial, Helvetica, sans-serif; max-width: 560px; color: #222; line-height: 1.55; font-size: 15px;">
+<div style="font-family: Arial, Helvetica, sans-serif; max-width: 540px; color: #222; line-height: 1.6; font-size: 15px;">
 ${body}
-  <p>Vince<br/>The Rig Doctor</p>
-  <p style="margin-top: 28px; font-size: 11px; color: #999; line-height: 1.5;">${FOOTER}</p>
+  <p style="margin: 22px 0 0;">${signoff}</p>
+  <p style="margin: 2px 0 0; color: #777; font-size: 13px;">The Rig Doctor &middot; therigdr.com</p>
+  <p style="margin-top: 36px; font-size: 11px; color: #aaa; line-height: 1.5;">${FOOTER}</p>
 </div>`.trim();
 }
 
-const NEED_SUBJECT: Record<string, string> = {
-  new: 'Your new board',
-  rebuild: 'Your board rebuild',
-};
-const DEFAULT_SUBJECT = 'Your build call';
+const P = (html: string) => `<p style="margin: 0 0 14px;">${html}</p>`;
+const BOOK_LINK = (content: string) =>
+  `<a href="${calendar(content)}" style="color: #0b62d6; font-weight: bold;">therigdr.com/book</a>`;
 
-/** 30 minutes after the form, if they haven't booked: a note from Vince about their rig. */
+/** Their rig notes as a quoted block. Signal chains typed with ">" read as arrows. */
+function rigBlock(notes: string) {
+  const trimmed = notes.length > 300 ? `${notes.slice(0, 300).trim()}...` : notes;
+  const pretty = esc(trimmed)
+    .replace(/\s*&gt;\s*/g, ' &rarr; ')
+    .replace(/\n+/g, '<br/>');
+  return `<div style="margin: 0 0 16px; padding: 10px 14px; border-left: 3px solid #d0d0d0; background: #f7f7f7; color: #444; font-size: 14px;">${pretty}</div>`;
+}
+
+const NEED_SUBJECT: Record<string, string> = {
+  new: 'your new board',
+  rebuild: 'your board rebuild',
+};
+const DEFAULT_SUBJECT = 'your build';
+/** Subjects used by earlier versions, so pending ones can still be canceled on booking. */
+const OLD_SUBJECTS = ['Your new board', 'Your board rebuild', 'Your build call', 'Should I close out your request?'];
+
+/** 30 minutes after the form, if they haven't booked: a note from Vince, player to player. */
 function v1(first: string, info: LeadInfo) {
-  const what = info.need === 'rebuild' ? 'rebuilding your board' : info.need === 'new' ? 'a new board' : 'a build';
+  const what =
+    info.need === 'rebuild' ? 'rebuilding your board' : info.need === 'new' ? 'building a new board' : 'a build';
   const notes = (info.notes || '').trim();
-  const short = notes.length > 220 ? `${notes.slice(0, 220).trim()}...` : notes;
   return {
     subject: NEED_SUBJECT[info.need || ''] || DEFAULT_SUBJECT,
     html: personal(`
-  <p>${first ? `Hey ${esc(first)},` : 'Hey,'}</p>
-  <p>Vince here from The Rig Doctor. Saw your note about ${what}.${short ? ` You mentioned: "${esc(short)}"` : ''}</p>
-  <p>Easiest next step is a 30-minute call so I can see what you're working with. Grab whatever time works for you here: <a href="${calendar('v1_link')}">${SITE.replace('https://www.', '')}/book</a></p>
-  <p>If you'd rather start over email, just reply with a couple of photos of your current board and I'll take a look.</p>`),
+  ${P(first ? `Hey ${esc(first)},` : 'Hey,')}
+  ${P(`Vince here, one of the builders at The Rig Doctor. Got your note about ${what}.`)}
+  ${notes ? `${P("Here's what you sent over:")}${rigBlock(notes)}` : ''}
+  ${P("Easiest way to sort it out is a call. 30 minutes, you show me the board, I tell you what I'd do with it. No sales pitch.")}
+  ${P(`Grab whatever time works: ${BOOK_LINK('v1_link')}`)}
+  ${P("Or if you'd rather keep it to email, shoot me a couple pics of the board (top and underneath) and I'll take a look.")}`),
   };
 }
 
 /** Day 10, if they still haven't booked: the last note, also from Vince. */
 function v5(first: string) {
   return {
-    subject: 'Should I close out your request?',
-    html: personal(`
-  <p>${first ? `Hey ${esc(first)},` : 'Hey,'}</p>
-  <p>Haven't heard back, so I'll keep this short. Just reply with a number:</p>
-  <p>1. Still want the call (or grab a time here: <a href="${calendar('v5_link')}">${SITE.replace('https://www.', '')}/book</a>)<br/>
-  2. Interested, but not right now<br/>
-  3. Not for me</p>
-  <p>Any answer helps me know what to do next.</p>`),
+    subject: 'should I close this out?',
+    html: personal(
+      `
+  ${P(first ? `Hey ${esc(first)},` : 'Hey,')}
+  ${P("Haven't heard back, no worries. Don't want to keep bugging you.")}
+  ${P("Just reply with a number and I'll take it from there:")}
+  ${P(`1. Still want to talk (or grab a time: ${BOOK_LINK('v5_link')})<br/>2. Into it, just not right now<br/>3. Not for me`)}
+  ${P('All good either way.')}`,
+      'Cheers,<br/>Vince',
+    ),
   };
 }
 
@@ -371,6 +391,7 @@ export const NOT_BOOKED_SUBJECTS = new Set<string>([
   n4('').subject,
   n5('').subject,
   v5('').subject,
+  ...OLD_SUBJECTS,
 ]);
 
 /** The five not-booked emails, scheduled from `now`. First and last come from Vince. */
