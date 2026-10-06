@@ -136,7 +136,7 @@ export default function ConsultationPopup() {
 
         <div className="flex-1 overflow-y-auto px-4 pb-2 min-h-0">
           <iframe
-            src="https://meetings-na2.hubspot.com/trd/rig-build-consultation?embed=true"
+            src="https://meetings-na2.hubspot.com/therigdr/rig-build-consultation?embed=true"
             style={{ width: '100%', minHeight: '580px', border: 'none' }}
             title="Book a free rig build consultation"
           />
