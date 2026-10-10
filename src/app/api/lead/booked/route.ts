@@ -1,11 +1,21 @@
 import { NextRequest, NextResponse, after } from 'next/server';
-import { cancelResend, cancelPendingFor, sendBatch, bookedSequence, RESEND_ID } from '@/lib/lead-emails';
-import { findRecentBooking } from '@/lib/hubspot';
+import {
+  cancelResend,
+  cancelPendingFor,
+  sendBatch,
+  sendResend,
+  bookedSequence,
+  centralTime,
+  RESEND_ID,
+  ALERT_FROM,
+  ALERT_TO,
+} from '@/lib/lead-emails';
+import { findRecentBooking, esc } from '@/lib/hubspot';
 
 /**
- * Called by /book/thank-you when the HubSpot calendar confirms a booking.
+ * Called by the build-call calendar (/book/thank-you, /custom-builds) when HubSpot confirms a booking.
  *
- * Body: { n, email, firstName, start }
+ * Body: { n, email, firstName, start, source }
  *   n      dot-separated ids of the not-booked follow-up (from the form, same browser)
  *   email  the address they booked with (from HubSpot's booking message, or the form)
  *   start  call start time in ms, from HubSpot's booking message
@@ -14,7 +24,13 @@ import { findRecentBooking } from '@/lib/hubspot';
  * 2. Confirms the booking with HubSpot (retrying while HubSpot catches up), then cancels any other
  *    scheduled follow-up to that address and sends the prep emails. Nothing goes out unless HubSpot
  *    shows a real booking, so this endpoint can't be used to email arbitrary addresses.
+ * 3. Sends a short "build call booked" alert to info@.
  */
+
+const SOURCE_LABEL: Record<string, string> = {
+  book_thank_you: 'consult form, then calendar',
+  custom_builds: 'Custom Builds page, straight to calendar',
+};
 
 export const maxDuration = 60;
 
@@ -30,6 +46,7 @@ export async function POST(req: NextRequest) {
     .slice(0, 10);
   const email = String(body.email ?? '').trim().toLowerCase();
   const firstFromPage = String(body.firstName ?? '').trim().slice(0, 60);
+  const source = SOURCE_LABEL[String(body.source ?? '')] ?? 'calendar';
   const start = Number(body.start);
   const startFromPage =
     Number.isFinite(start) && start > Date.now() && start < Date.now() + 120 * 86_400_000 ? start : null;
@@ -54,6 +71,19 @@ export async function POST(req: NextRequest) {
       const first = firstFromPage || booking.firstName || '';
       const sent = await sendBatch(bookedSequence(first, email, callAt));
       console.log(`[booked] prep emails scheduled: ${sent.length}`);
+
+      await sendResend({
+        from: ALERT_FROM,
+        to: ALERT_TO,
+        subject: `Build call booked: ${first || email}`,
+        html:
+          `<p style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;font-size:15px;line-height:1.6;color:#1d1d1f">` +
+          `<strong>${esc(first || 'Someone')}</strong> (${esc(email)}) booked a build call` +
+          (callAt ? ` for <strong>${esc(centralTime(callAt))} CT</strong>` : '') +
+          `.<br>Came from: ${esc(source)}<br>Prep emails scheduled: ${sent.length}</p>`,
+        replyTo: email,
+        tag: 'booked_alert',
+      });
     });
   }
 

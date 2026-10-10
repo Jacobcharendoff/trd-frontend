@@ -4,6 +4,8 @@ import CableZoom from '@/components/home/CableZoom';
 import ParallaxImage from '@/components/home/ParallaxImage';
 import Reveal from '@/components/home/Reveal';
 import ReviewsMarquee from '@/components/ReviewsMarquee';
+import BookingCalendar from '@/components/BookingCalendar';
+import PickATimeLink from '@/components/PickATimeLink';
 import {
   IconPower,
   IconSolder,
@@ -106,12 +108,16 @@ const wall = [
   'Vince_D.png',
 ];
 
-function BookButton({ className = '', children }: { className?: string; children: React.ReactNode }) {
+/** Every CTA on this page scrolls to Vince's calendar (#pick-a-time). One step, no form. */
+function BookButton({ placement, className = '', children }: { placement: string; className?: string; children: React.ReactNode }) {
   return (
-    <Link href="/book" className={`trd-cta-gradient inline-flex items-center justify-center gap-2 rounded-full font-semibold ${className}`}>
+    <PickATimeLink
+      placement={placement}
+      className={`trd-cta-gradient inline-flex items-center justify-center gap-2 rounded-full font-semibold ${className}`}
+    >
       {children}
       <IconArrow />
-    </Link>
+    </PickATimeLink>
   );
 }
 
@@ -147,7 +153,7 @@ export default function CustomBuildsPage() {
               bench, every connection soldered by hand.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-              <BookButton className="px-9 py-4 text-[17px]">Book a free build consultation</BookButton>
+              <BookButton placement="hero" className="px-9 py-4 text-[17px]">Pick a time with Vince</BookButton>
               <Link href="/gallery" className="trd-cta-ghost-dark inline-flex items-center justify-center px-9 py-4 rounded-full font-semibold text-[17px]">
                 See our work
               </Link>
@@ -331,12 +337,49 @@ export default function CustomBuildsPage() {
           </div>
           <p className="text-white/45 text-[15px] mb-10">The consultation is free. You get a straight quote. No surprises, no hidden fees.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-            <BookButton className="px-9 py-4 text-[17px]">Get a free quote</BookButton>
+            <BookButton placement="pricing" className="px-9 py-4 text-[17px]">Get a free quote</BookButton>
             <Link href="/tone-tutoring" className="trd-cta-ghost-dark inline-flex items-center justify-center px-9 py-4 rounded-full font-semibold text-[17px]">
               Just need advice? $99
             </Link>
           </div>
         </Reveal>
+      </section>
+
+      {/* ───────── BOOK (calendar on the page, no form) ───────── */}
+      <section id="pick-a-time" className="bg-[#f5f5f7] py-24 sm:py-32 scroll-mt-16">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-10 px-2">
+            <p className="trd-eyebrow text-black/40 mb-5">Free build consultation</p>
+            <h2 className="text-black font-bold tracking-[-0.04em] leading-[1.02] text-[clamp(34px,4.5vw,56px)] mb-5">
+              Pick a time <span className="trd-gradient-text">with Vince.</span>
+            </h2>
+            <p className="text-black/60 text-lg leading-relaxed max-w-xl mx-auto">
+              Vince is one of our builders. 30 minutes on Google Meet: show him your board, tell him what you want it to
+              do, and you get a plan and a straight quote. No sales pitch.
+            </p>
+          </div>
+          <div className="bg-white rounded-[28px] p-2 sm:p-5 border border-black/[0.04]">
+            <BookingCalendar source="custom_builds" lazy />
+          </div>
+          <p className="text-center text-[14px] text-black/50 mt-5">
+            This call is for custom builds and rebuilds. Need help with your tone or a problem on your current board?{' '}
+            <Link href="/tone-tutoring" className="text-black/80 underline underline-offset-2">
+              That&apos;s Tone Tutoring
+            </Link>
+            .
+          </p>
+          <p className="text-center text-[14px] text-black/50 mt-2">
+            Rather send us your rig details first?{' '}
+            <Link href="/book" className="text-black/80 underline underline-offset-2">
+              Use the form
+            </Link>
+            . No time that works? Email{' '}
+            <a href="mailto:info@therigdr.com" className="text-black/80 underline underline-offset-2">
+              info@therigdr.com
+            </a>
+            .
+          </p>
+        </div>
       </section>
 
       {/* ───────── FAQ ───────── */}
@@ -372,7 +415,7 @@ export default function CustomBuildsPage() {
             Your tone is worth <span className="trd-gradient-text">getting right.</span>
           </h2>
           <p className="text-white/70 text-lg sm:text-xl mb-12">Stop fighting your rig. Let&apos;s build something that actually works.</p>
-          <BookButton className="px-9 py-4 text-[17px]">Book a free build consultation</BookButton>
+          <BookButton placement="close" className="px-9 py-4 text-[17px]">Pick a time with Vince</BookButton>
         </div>
       </ParallaxImage>
     </>
