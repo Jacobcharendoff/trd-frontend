@@ -116,6 +116,7 @@ export async function addContactNote(contactId: string, html: string) {
 export async function findRecentBooking(
   email: string,
   withinMs = 30 * 60_000,
+  slug: string = MEETING_SLUG,
 ): Promise<{ booked: boolean; contactId?: string; firstName?: string; meetingAt?: number }> {
   if (!TOKEN) return { booked: false };
   try {
@@ -141,7 +142,7 @@ export async function findRecentBooking(
     const at = p.recent_conversion_date ? Date.parse(p.recent_conversion_date) : 0;
     const meeting = p.engagements_last_meeting_booked ? Date.parse(p.engagements_last_meeting_booked) : NaN;
     return {
-      booked: event.includes(MEETING_SLUG) && Date.now() - at <= withinMs,
+      booked: event.includes(slug) && Date.now() - at <= withinMs,
       contactId: c.id,
       firstName: p.firstname || undefined,
       meetingAt: Number.isFinite(meeting) && meeting > Date.now() ? meeting : undefined,
@@ -153,7 +154,7 @@ export async function findRecentBooking(
 }
 
 /** Contacts who booked the rig consult calendar since `sinceMs` (for the daily safety-net cron). */
-export async function recentBookers(sinceMs: number): Promise<string[]> {
+export async function recentBookers(sinceMs: number, slug: string = MEETING_SLUG): Promise<string[]> {
   if (!TOKEN) return [];
   try {
     const res = await hs('/crm/v3/objects/contacts/search', {
@@ -162,7 +163,7 @@ export async function recentBookers(sinceMs: number): Promise<string[]> {
         filterGroups: [
           {
             filters: [
-              { propertyName: 'recent_conversion_event_name', operator: 'CONTAINS_TOKEN', value: `*${MEETING_SLUG}*` },
+              { propertyName: 'recent_conversion_event_name', operator: 'CONTAINS_TOKEN', value: `*${slug}*` },
               { propertyName: 'recent_conversion_date', operator: 'GTE', value: String(sinceMs) },
             ],
           },

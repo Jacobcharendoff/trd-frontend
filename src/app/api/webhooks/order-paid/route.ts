@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
-import { reviewEmail } from '@/lib/review-email';
 
 /**
  * Shopify Order Paid Webhook Handler
@@ -8,9 +7,12 @@ import { reviewEmail } from '@/lib/review-email';
  * Receives orders/paid webhooks from Shopify.
  * Detects the order type and sends the appropriate post-purchase email:
  *
- *   - Tone Tutoring → Branded email from Vince with scheduling instructions
+ *   - Tone Tutoring → Branded email from Vince with a link to pick the session time
  *   - Gift Card     → Buyer thank-you email explaining what the recipient gets
- *   - Tone Tutoring also schedules a Google review request 5 days later
+ *
+ * Tone Tutoring's review ask and check-in are NOT scheduled here. They're timed off the session
+ * the buyer books (see /api/tone/booked and lib/tone-emails.ts), so nobody gets asked how a
+ * session went before they've had it.
  *
  * Webhook setup:
  *   Shopify Admin → Settings → Notifications → Webhooks
@@ -108,7 +110,15 @@ function buildToneTutoringEmail(firstName: string) {
 
                     <p style="margin: 0 0 20px 0;">Vince here from The Rig Doctor. I'll be the one on the other end of your Tone Tutoring session. Thanks for booking, really looking forward to digging into your rig.</p>
 
-                    <p style="margin: 0 0 20px 0;">Shoot me a few dates and times over the next week or two that work for you and we'll get it on the calendar. We run sessions on Google Meet. I'll send you a link once we lock something in. Just click it and you're good, nothing to install.</p>
+                    <p style="margin: 0 0 20px 0;">First step: pick a time for your session. We run them on Google Meet, and the invite lands in your inbox as soon as you book. Nothing to install.</p>
+
+                    <table role="presentation" cellpadding="0" cellspacing="0" style="margin: 4px 0 24px 0;"><tr>
+                      <td align="center" bgcolor="#1d1d1f" style="border-radius: 999px; background: #1d1d1f;">
+                        <a href="https://www.therigdr.com/tone-tutoring/book?utm_source=email&utm_medium=transactional&utm_campaign=tone_tutoring&utm_content=pick_time" style="display: inline-block; padding: 14px 30px; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 600; color: #ffffff; text-decoration: none; border-radius: 999px;">Pick your session time</a>
+                      </td>
+                    </tr></table>
+
+                    <p style="margin: 0 0 20px 0;">If none of the times work, reply with a few that do and I'll make it work.</p>
 
                     <p style="margin: 0 0 20px 0;">If you want to hit the ground running, send over whatever's on your mind ahead of time. What's on your board, what's bugging you, what you're hoping to get out of the hour. Could be killing hum and buzz, cleaning up the signal chain, figuring out what gear to actually buy next. Whatever it is, the more I know going in, the more we get done.</p>
 
@@ -170,27 +180,6 @@ function buildToneTutoringEmail(firstName: string) {
 </body>
 </html>
     `.trim(),
-  };
-}
-
-// ── Tone Tutoring 12-day check-in (help, then a build call) ────────────
-
-function buildToneFollowUpEmail(firstName: string) {
-  const hey = firstName ? `Hey ${firstName.replace(/[<>&"]/g, '')},` : 'Hey,';
-  const book =
-    'https://www.therigdr.com/book?utm_source=tone_email&utm_medium=email&utm_campaign=tone_followup&utm_content=book_button';
-  return {
-    subject: "How's the board sounding?",
-    html: `
-<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 560px; margin: 0 auto; color: #1d1d1f; line-height: 1.6; font-size: 16px;">
-  <p>${hey}</p>
-  <p>Vince here, checking in since you booked Tone Tutoring. How's the board sounding? If something we changed isn't working, reply and tell me. I'll help you sort it out.</p>
-  <p>If we haven't had the session yet, reply too and we'll get it on the calendar.</p>
-  <p>Sometimes a session shows the real problem is the board itself: power, cables, layout. If that's where you landed, we can rebuild yours or build you a new one. It starts with a free 30-minute call.</p>
-  <p style="margin: 24px 0;"><a href="${book}" style="display: inline-block; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #ffffff; padding: 14px 32px; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 16px;">Book a free build call</a></p>
-  <p>Vince<br/>The Rig Doctor</p>
-  <p style="margin-top: 32px; font-size: 12px; color: #86868b; line-height: 1.5;">The Rig Doctor LLC, 641 Amesbury Rd, Montgomery, TX 77316. You got this because you booked Tone Tutoring at therigdr.com.</p>
-</div>`.trim(),
   };
 }
 
@@ -406,42 +395,6 @@ export async function POST(req: NextRequest) {
       });
       console.log(`Tone Tutoring email sent to ${customerEmail} (order ${order.id})`);
       results.push({ type: 'tone_tutoring', emailId: result.id });
-
-      // Google review ask, 5 days later. Same ask for every customer (no incentive, no filtering).
-      try {
-        const review = reviewEmail('tone', customerFirstName);
-        const scheduled = await sendEmail({
-          from: VINCE_FROM,
-          to: customerEmail,
-          subject: review.subject,
-          html: review.html,
-          text: review.text,
-          replyTo: 'vince@therigdr.com',
-          scheduledAt: 'in 5 days',
-          tag: 'review_tone',
-        });
-        results.push({ type: 'review_request_scheduled', emailId: scheduled.id });
-      } catch (e) {
-        console.error(`Review request scheduling failed for order ${order.id}:`, e);
-      }
-
-      // Check-in 12 days later: help if something isn't working, and offer a build call
-      // when the session showed the board itself is the problem.
-      try {
-        const upsell = buildToneFollowUpEmail(customerFirstName);
-        const scheduled = await sendEmail({
-          from: VINCE_FROM,
-          to: customerEmail,
-          subject: upsell.subject,
-          html: upsell.html,
-          replyTo: 'vince@therigdr.com',
-          scheduledAt: 'in 12 days',
-          tag: 'tone_followup',
-        });
-        results.push({ type: 'tone_followup_scheduled', emailId: scheduled.id });
-      } catch (e) {
-        console.error(`Tone follow-up scheduling failed for order ${order.id}:`, e);
-      }
     }
 
     // ── Gift Card buyer thank-you email ──

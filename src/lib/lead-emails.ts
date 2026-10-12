@@ -123,6 +123,63 @@ export async function cancelResend(id: string) {
 
 export const RESEND_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
+export type ResendRow = {
+  id: string;
+  to?: string[];
+  from?: string;
+  subject?: string;
+  created_at?: string;
+  scheduled_at?: string | null;
+  last_event?: string;
+};
+
+/** Resend timestamps look like "2026-10-12 20:20:07.123+00". Returns ms, or 0 if unreadable. */
+export function resendTime(t?: string | null) {
+  if (!t) return 0;
+  const iso = t.replace(' ', 'T').replace(/([+-]\d{2})$/, '$1:00');
+  const ms = Date.parse(iso);
+  return Number.isFinite(ms) ? ms : 0;
+}
+
+/** Still waiting to go out (scheduled and not canceled). */
+export function isPending(r: ResendRow) {
+  if (r.last_event === 'canceled') return false;
+  return r.last_event === 'scheduled' || resendTime(r.scheduled_at) > Date.now();
+}
+
+/** Every email created in the last `days` days, newest first (up to 1,000). */
+export async function listRecentEmails(days = 14): Promise<ResendRow[]> {
+  if (!RESEND_API_KEY) return [];
+  const oldest = Date.now() - days * DAY;
+  const out: ResendRow[] = [];
+  let after = '';
+  for (let page = 0; page < 10; page++) {
+    const url = `https://api.resend.com/emails?limit=100${after ? `&after=${after}` : ''}`;
+    let body: { data?: ResendRow[]; has_more?: boolean };
+    try {
+      const res = await fetch(url, { headers: { Authorization: `Bearer ${RESEND_API_KEY}` } });
+      if (!res.ok) {
+        console.error('[resend] list failed', res.status, await res.text());
+        break;
+      }
+      body = await res.json();
+    } catch (err) {
+      console.error('[resend] list request failed', err);
+      break;
+    }
+    const rows = body.data ?? [];
+    out.push(...rows);
+    const last = rows[rows.length - 1];
+    const lastCreated = resendTime(last?.created_at);
+    if (!body.has_more || !last || (lastCreated && lastCreated < oldest)) break;
+    after = last.id;
+  }
+  return out.filter((r) => {
+    const t = resendTime(r.created_at);
+    return !t || t >= oldest;
+  });
+}
+
 /**
  * Cancel every still-scheduled email from info@ to this address, created in the last `days` days.
  * Walks Resend's email list newest first. Returns how many were canceled.

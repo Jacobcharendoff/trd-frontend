@@ -4,7 +4,7 @@
  * Asks every customer the same way (no incentives, no filtering by sentiment),
  * which keeps it inside Google's review policy.
  *
- * variant 'tone'    → sent by Vince a few days after a Tone Tutoring purchase
+ * variant 'tone'    → sent by Vince a few hours after a booked Tone Tutoring session (see tone-emails.ts)
  * variant 'general' → sent as The Rig Doctor Team to past build and session customers
  */
 
@@ -18,10 +18,9 @@ const FONT = "-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',Robot
 
 export type ReviewVariant = 'tone' | 'general';
 
-/** True if the Review Rewards offer is still open `daysAhead` days from now (Central time). */
-function rewardsOpenIn(daysAhead: number) {
-  const d = new Date(Date.now() + daysAhead * 86_400_000);
-  const day = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago' }).format(d);
+/** True if the Review Rewards offer is still open on the day `at` lands (Central time). */
+function rewardsOpenAt(at: number) {
+  const day = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago' }).format(new Date(at));
   return day <= ENDS_ON;
 }
 
@@ -52,7 +51,7 @@ function copy(variant: ReviewVariant, name: string, rewards: boolean) {
             ]
           : []),
       ],
-      after: 'Haven&#39;t had your session yet? Just reply and we&#39;ll get you on the calendar.',
+      after: 'If anything we changed isn&#39;t working the way you want, just reply. I&#39;ll help you sort it out.',
       signoff: 'Vince',
     };
   }
@@ -71,11 +70,12 @@ function copy(variant: ReviewVariant, name: string, rewards: boolean) {
   };
 }
 
-export function reviewEmail(variant: ReviewVariant, firstName = '') {
+/** `sendAt`: when the email will actually go out (it's often scheduled), so the offer is checked for that day. */
+export function reviewEmail(variant: ReviewVariant, firstName = '', sendAt = Date.now()) {
   const name = (firstName || '').trim() || 'there';
-  // Tone Tutoring asks go out 5 days after purchase, so check the offer is still open then.
-  // Only mention the gift card once the Shopify connection that issues it is live.
-  const rewards = variant === 'tone' && rewardsOpenIn(5) && adminConfigured();
+  // Only mention the gift card if the offer is still open on the send day and the Shopify
+  // connection that issues it is live.
+  const rewards = variant === 'tone' && rewardsOpenAt(sendAt) && adminConfigured();
   const path = rewards ? '/rewards' : '/review';
   const c = copy(variant, name, rewards);
   const btn = (content: string, label: string) => `

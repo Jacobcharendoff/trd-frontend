@@ -25,11 +25,13 @@ function readBooking(data: unknown): { email?: string; firstName?: string; start
 }
 
 /**
- * Vince's build-call calendar (HubSpot meetings embed).
+ * A HubSpot meetings calendar on our own page. Defaults to Vince's build-call calendar.
  *
  * - Prefills name and email if the consult form was filled in this tab.
- * - On a booking: fires the `schedule` key event and calls /api/lead/booked, which cancels any
- *   "you haven't booked yet" emails (ids in ?n=) and sends the prep emails once HubSpot confirms.
+ * - On a booking: fires the `schedule` key event and POSTs { n, email, firstName, start, source }
+ *   to `bookedEndpoint`. For the build call that's /api/lead/booked (cancels the "you haven't booked
+ *   yet" emails in ?n= and sends the prep emails); for Tone Tutoring it's /api/tone/booked
+ *   (schedules the after-session emails off the session time).
  * - `lazy` waits until the calendar is near the viewport before loading HubSpot's script,
  *   so long pages don't pay for it up front.
  */
@@ -37,10 +39,16 @@ export default function BookingCalendar({
   source,
   lazy = false,
   minHeight = 650,
+  embedUrl = MEETINGS_EMBED_URL,
+  bookedEndpoint = '/api/lead/booked',
+  meeting = 'rig_build_consultation',
 }: {
   source: string;
   lazy?: boolean;
   minHeight?: number;
+  embedUrl?: string;
+  bookedEndpoint?: string;
+  meeting?: string;
 }) {
   const box = useRef<HTMLDivElement>(null);
   const booked = useRef(false);
@@ -54,8 +62,8 @@ export default function BookingCalendar({
     if (lead?.lastName) q.set('lastName', lead.lastName);
     if (lead?.email) q.set('email', lead.email);
     const extra = q.toString();
-    setSrc(extra ? `${MEETINGS_EMBED_URL}&${extra}` : MEETINGS_EMBED_URL);
-  }, []);
+    setSrc(extra ? `${embedUrl}&${extra}` : embedUrl);
+  }, [embedUrl]);
 
   useEffect(() => {
     if (near) return;
@@ -91,10 +99,10 @@ export default function BookingCalendar({
       if (typeof e.origin === 'string' && !e.origin.includes('hubspot')) return;
       if (!e.data || !(e.data as { meetingBookSucceeded?: boolean }).meetingBookSucceeded || booked.current) return;
       booked.current = true;
-      track('schedule', { meeting: 'rig_build_consultation', source });
+      track('schedule', { meeting, source });
       const booking = readBooking(e.data);
       const lead = readLead();
-      fetch('/api/lead/booked', {
+      fetch(bookedEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -113,7 +121,7 @@ export default function BookingCalendar({
       script.remove();
       window.removeEventListener('message', onMessage);
     };
-  }, [src, near, source]);
+  }, [src, near, source, bookedEndpoint, meeting]);
 
   return (
     <div ref={box} style={{ minHeight }}>
