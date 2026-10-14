@@ -36,7 +36,7 @@ async function sendNotificationEmail(data: {
       },
       body: JSON.stringify({
         from: FROM_ADDRESS,
-        to: [NOTIFICATION_EMAIL],
+        to: [NOTIFICATION_EMAIL, 'vince@therigdr.com'],
         reply_to: email,
         subject: `New inquiry from ${fullName}`,
         html: `

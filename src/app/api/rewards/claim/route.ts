@@ -137,7 +137,7 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  // Always tell Jacob, with the screenshot, whatever happened.
+  // Always tell the team (shared inbox + Vince), with the screenshot, whatever happened.
   try {
     const n = claimNotificationEmail({
       name,
@@ -158,7 +158,7 @@ export async function POST(req: NextRequest) {
     });
     await sendEmail({
       from: FROM,
-      to: [NOTIFY_TO],
+      to: [...new Set([NOTIFY_TO, 'vince@therigdr.com'])],
       reply_to: customer.email,
       subject: n.subject,
       html: n.html,

@@ -31,7 +31,8 @@ const TEAM_ADDRESS = 'info@therigdr.com';
 const VINCE_FROM = process.env.RESEND_VINCE_FROM_EMAIL || 'Vince DiGioia <vince@therigdr.com>';
 const VINCE_ADDRESS = 'vince@therigdr.com';
 export const ALERT_FROM = 'The Rig Doctor <notifications@therigdr.com>';
-export const ALERT_TO = 'info@therigdr.com';
+// Team alerts (new consult requests, booked calls) go to the shared inbox and to Vince, who runs the calls.
+export const ALERT_TO = ['info@therigdr.com', 'vince@therigdr.com'];
 
 const FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
 const BUTTON =
@@ -43,7 +44,7 @@ const HOUR = 3_600_000;
 
 export type Email = {
   from: string;
-  to: string;
+  to: string | string[];
   subject: string;
   html: string;
   replyTo?: string;
