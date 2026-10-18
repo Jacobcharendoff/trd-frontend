@@ -268,9 +268,7 @@ export default function Campaign2027Page() {
             One board <span className="trd-gradient-text">at a time.</span>
           </h2>
           <p className="text-white/65 text-lg sm:text-xl leading-relaxed">
-            Every board gets the bench to itself, about {CAMPAIGN.benchDays} business days from the day your pedals arrive. No assembly
-            line, nobody else&apos;s board in the way. That&apos;s why January only has room for {CAMPAIGN.spots}, and why being first in line
-            means getting your board first.
+            {`Every board gets the bench to itself, about ${CAMPAIGN.benchDays} business days from the day your pedals arrive. No assembly line, nobody else's board in the way. That's why January only has room for ${CAMPAIGN.spots}, and why being first in line means getting your board first.`}
           </p>
         </Reveal>
       </section>
