@@ -100,11 +100,11 @@ const faqs = [
   },
   {
     q: 'Why only 18 builds a year?',
-    a: 'The same hands wire every board from start to finish. That is the only way we can stand behind the work. We are down to the last 2 spots this year.',
+    a: 'The same hands wire every board from start to finish. That is the only way we can stand behind the work. 2026 is sold out, and the first 10 builds of 2027 are open now.',
   },
   {
     q: 'How long does a build take?',
-    a: 'Usually 4 to 8 weeks depending on the rig and parts. Tour date coming up? Tell us and we will work around it.',
+    a: 'About 10 business days at the bench once your pedals arrive. We build one board at a time, so your place in line sets your start date. Tour date coming up? Tell us and we will work around it.',
   },
   {
     q: 'Do I ship my pedals to you?',
@@ -149,7 +149,7 @@ export default function Home() {
         <div className="relative min-h-[calc(100svh-100px)] flex items-end justify-center overflow-hidden">
           <HeroVideo />
           <div className="relative z-10 max-w-[1200px] mx-auto px-6 pb-16 sm:pb-20 pt-28 w-full text-center">
-            <p className="trd-eyebrow text-white/55 mb-6">Custom pedalboard builder &middot; Houston, TX &middot; 2 build spots left this year</p>
+            <p className="trd-eyebrow text-white/55 mb-6">Custom pedalboard builder &middot; Houston, TX &middot; 2026 sold out, booking 2027</p>
             <h1 className="trd-hero-headline text-white mb-6">
               You didn&apos;t spend thousands on gear
               <br />
@@ -172,10 +172,10 @@ export default function Home() {
               {[
                 ['300+', 'boards built'],
                 ['17', 'years at the bench'],
-                ['2', 'spots left in 2026'],
+                ['2027', 'now booking'],
               ].map(([n, l]) => (
                 <div key={l} className="text-center">
-                  <p className={`text-2xl sm:text-3xl font-bold ${n === '2' ? 'trd-gradient-text' : 'text-white'}`}>{n}</p>
+                  <p className={`text-2xl sm:text-3xl font-bold ${n === '2027' ? 'trd-gradient-text' : 'text-white'}`}>{n}</p>
                   <p className="text-[13px] text-white/50 mt-1">{l}</p>
                 </div>
               ))}
@@ -486,7 +486,7 @@ export default function Home() {
               Planning a new board or a rebuild?
             </h2>
             <p className="text-black/55 text-lg leading-relaxed mb-10">
-              Two build spots left this year. Tell us what you play and what you want the board to do, then pick a time for a free 30-minute call. Just need help with your tone? That&apos;s <Link href="/tone-tutoring" className="underline underline-offset-2 text-black/80">Tone Tutoring</Link>.
+              2026 is sold out and the first 10 builds of 2027 are open. Tell us what you play and what you want the board to do, then pick a time for a free 30-minute call. Just need help with your tone? That&apos;s <Link href="/tone-tutoring" className="underline underline-offset-2 text-black/80">Tone Tutoring</Link>.
             </p>
             <div className="[&>div]:mx-0">
               <LeadCaptureForm />
@@ -517,7 +517,7 @@ export default function Home() {
       <ParallaxImage src={img.roomAlt} alt="Close-up of a finished Rig Doctor pedalboard" strength={10} className="bg-black min-h-[88svh] flex items-center">
         <div className="absolute inset-0 bg-black/65" />
         <div className="relative z-10 w-full max-w-4xl mx-auto px-6 py-28 text-center">
-          <p className="trd-eyebrow text-white/55 mb-6">2 build spots left in 2026</p>
+          <p className="trd-eyebrow text-white/55 mb-6">2026 sold out &middot; now booking 2027</p>
           <h2 className="trd-display text-white mb-8">
             You already own the gear. <span className="trd-gradient-text">Let&apos;s hear it.</span>
           </h2>

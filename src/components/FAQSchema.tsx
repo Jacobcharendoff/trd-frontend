@@ -7,7 +7,7 @@ const faqs = [
   {
     question: 'How long does it take to build a custom pedalboard?',
     answer:
-      'Custom rig builds typically take 4-8 weeks depending on complexity and what parts we need to source. Touring emergency? We do rush builds too. Just let us know during your consultation.',
+      'Each board gets about 10 business days at the bench once your pedals arrive. We build one at a time, so your start date depends on your place in line. Touring soon? Tell us during your consultation.',
   },
   {
     question: 'What is included in the free rig build consultation?',

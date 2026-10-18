@@ -146,8 +146,8 @@ export default function PricingPage() {
             {[
               { label: 'Consultation', time: 'Day 1', desc: '30 min call' },
               { label: 'Design', time: 'Week 1', desc: 'Diagram and quote' },
-              { label: 'Build', time: 'Weeks 2 to 7', desc: 'Hands-on work' },
-              { label: 'Delivery', time: 'Weeks 4 to 8', desc: 'At your door' },
+              { label: 'Build', time: '~10 days', desc: 'One board at a time' },
+              { label: 'Delivery', time: 'Ships insured', desc: 'Ready to plug in' },
             ].map((t, i) => (
               <Reveal key={t.label} delay={i * 80} className="bg-white/[0.04] border border-white/[0.08] rounded-[24px] p-7 relative overflow-hidden">
                 <div className="absolute top-0 inset-x-0 h-[3px]" style={{ background: 'var(--trd-spectral)' }} />

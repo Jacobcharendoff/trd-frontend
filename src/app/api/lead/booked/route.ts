@@ -30,6 +30,7 @@ import { findRecentBooking, esc } from '@/lib/hubspot';
 const SOURCE_LABEL: Record<string, string> = {
   book_thank_you: 'consult form, then calendar',
   custom_builds: 'Custom Builds page, straight to calendar',
+  campaign_2027: 'First in line for 2027 page ($300 offer)',
 };
 
 export const maxDuration = 60;

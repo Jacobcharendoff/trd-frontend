@@ -10,7 +10,7 @@ const TIMELAPSE = 'f12872e61445487b86f0ae5df85ba09b';
 const processFAQs = [
   {
     q: 'How long does a custom pedalboard build take?',
-    a: 'Most builds ship in 4 to 8 weeks. Timeline depends on complexity, parts sourcing, and our current queue. If you have a tour date or studio session, tell us during the consultation and we will prioritize accordingly.',
+    a: 'Each board gets about 10 business days at the bench once your pedals arrive. We build one at a time, so your start date depends on your place in line. If you have a tour date or studio session, tell us during the consultation.',
   },
   {
     q: 'What happens during the free consultation?',
@@ -168,7 +168,7 @@ export default function ProcessPage() {
             <div className="flex justify-center items-center gap-8 sm:gap-16 pt-8 border-t border-white/10 max-w-xl mx-auto">
               {[
                 ['5', 'clear steps'],
-                ['4-8 wk', 'typical build'],
+                ['10 days', 'at the bench'],
                 ['$0', 'to start'],
               ].map(([n, l]) => (
                 <div key={l}>
@@ -245,8 +245,8 @@ export default function ProcessPage() {
             {[
               { label: 'Consultation', time: 'Day 1', desc: '30 min call' },
               { label: 'Design', time: 'Week 1', desc: 'Diagram and quote' },
-              { label: 'Build', time: 'Weeks 2 to 7', desc: 'Hands-on work' },
-              { label: 'Delivery', time: 'Weeks 4 to 8', desc: 'At your door' },
+              { label: 'Build', time: '~10 days', desc: 'One board at a time' },
+              { label: 'Delivery', time: 'Ships insured', desc: 'Ready to plug in' },
             ].map((t, i) => (
               <Reveal key={t.label} delay={i * 80} className="bg-white rounded-[24px] p-7 relative overflow-hidden border border-black/[0.04]">
                 <div className="absolute top-0 inset-x-0 h-[3px]" style={{ background: 'var(--trd-spectral)' }} />

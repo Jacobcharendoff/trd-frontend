@@ -221,7 +221,7 @@ export default function GalleryPage() {
       <ParallaxImage src={`${CDN}2022-L1010577.jpg`} alt="Close-up of a finished Rig Doctor pedalboard" strength={10} className="bg-black min-h-[70svh] flex items-center">
         <div className="absolute inset-0 bg-black/65" />
         <div className="relative z-10 w-full max-w-3xl mx-auto px-6 py-24 text-center">
-          <p className="trd-eyebrow text-white/55 mb-6">2 build spots left in 2026</p>
+          <p className="trd-eyebrow text-white/55 mb-6">2026 sold out &middot; now booking 2027</p>
           <h2 className="trd-display text-white mb-10">
             Want to see <span className="trd-gradient-text">yours here?</span>
           </h2>

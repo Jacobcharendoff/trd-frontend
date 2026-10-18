@@ -144,7 +144,7 @@ function email4(firstName: string) {
 
   <p>A lot of boards just need a better chain order or a power fix, and that's what Tone Tutoring is for. But some boards are past tweaking. Daisy-chained power, tired solderless cables, and every new pedal makes it a little noisier. That's when a rebuild makes sense.</p>
 
-  <p>Every custom build starts with a free 30-minute call. We look at what you've got, talk through how you play, and give you a real number. Builds start at $1,999, usually take 4 to 8 weeks, and come with lifetime support.</p>
+  <p>Every custom build starts with a free 30-minute call. We look at what you've got, talk through how you play, and give you a real number. Builds start at $1,999, take about 10 business days at the bench once your pedals arrive, and come with lifetime support.</p>
 
   <p style="margin: 24px 0;">
     <a href="${utm(BOOK_URL, 'e4_book_consult')}" style="${BUTTON_STYLE}">Book a free 30-minute call</a>

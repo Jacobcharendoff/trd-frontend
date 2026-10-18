@@ -2,9 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { CAMPAIGN, campaignOpen, usd } from '@/lib/campaign';
 
 export default function StickyBottomCTA() {
   const [visible, setVisible] = useState(false);
+  const [offerOpen, setOfferOpen] = useState(true);
+  // On the campaign page itself, the bar jumps to the calendar instead of linking back to the page.
+  const onCampaign = usePathname() === CAMPAIGN.path;
+  useEffect(() => setOfferOpen(campaignOpen()), []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -26,17 +32,19 @@ export default function StickyBottomCTA() {
         <div className="flex items-center gap-3">
           <span className="hidden sm:inline-flex items-center gap-2 text-[13px] text-[#f5f5f7]/70">
             <span className="inline-block w-2 h-2 rounded-full animate-pulse" style={{ background: 'var(--trd-spectral)' }} />
-            Only 2 build spots left for 2026
+            {offerOpen
+              ? `2026 is sold out. ${usd(CAMPAIGN.discount)} off 2027 builds through ${CAMPAIGN.deadlineLabel}`
+              : '2026 is sold out. Now booking 2027'}
           </span>
           <span className="sm:hidden text-[13px] text-[#f5f5f7]/70 whitespace-nowrap">
-            2 spots left
+            2026 sold out
           </span>
         </div>
         <Link
-          href="/book"
+          href={onCampaign ? '#pick-a-time' : CAMPAIGN.path}
           className="inline-flex items-center justify-center text-[13px] font-semibold rounded-full px-5 py-2 trd-cta-gradient whitespace-nowrap"
         >
-          Book a free build consult
+          {onCampaign ? 'Pick a time with Vince' : 'Get in line for 2027'}
         </Link>
       </div>
     </div>

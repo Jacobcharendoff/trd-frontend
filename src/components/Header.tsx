@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { CAMPAIGN, campaignOpen, usd } from '@/lib/campaign';
 
 interface NavChild {
   label: string;
@@ -27,11 +28,18 @@ const navItems: NavItem[] = [
   { label: 'Blog', href: '/blog' },
 ];
 
-/* -- Announcement bar config -- */
-const announcement = {
-  text: 'Only 2 Build Spots Left for 2026.',
-  href: '/book',
-  cta: 'Book a Free Build Consult →',
+/* -- Announcement bar: 2026 is sold out, the 2027 campaign page takes the click -- */
+const ANNOUNCE_OPEN = {
+  text: `2026 builds are sold out. First ${CAMPAIGN.spots} of 2027: ${usd(CAMPAIGN.discount)} off through ${CAMPAIGN.deadlineLabel}.`,
+  short: '2026 sold out.',
+  cta: 'Get in line for 2027 →',
+  ctaShort: '2027 spots →',
+};
+const ANNOUNCE_CLOSED = {
+  text: '2026 builds are sold out.',
+  short: '2026 sold out.',
+  cta: 'Now booking 2027 →',
+  ctaShort: 'Book 2027 →',
 };
 
 export default function Header() {
@@ -41,6 +49,10 @@ export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileRigOpen, setMobileRigOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  // Pages are pre-rendered, so the offer wording flips on the client once the deadline passes.
+  const [offerOpen, setOfferOpen] = useState(true);
+  useEffect(() => setOfferOpen(campaignOpen()), []);
+  const announcement = offerOpen ? ANNOUNCE_OPEN : ANNOUNCE_CLOSED;
 
   /* -- Scroll listener -- */
   useEffect(() => {
@@ -69,14 +81,14 @@ export default function Header() {
       {bannerVisible && (
         <div className="relative bg-black text-white text-center border-b border-white/[0.08]">
           <Link
-            href={announcement.href}
+            href={CAMPAIGN.path}
             className="block px-10 py-2 text-[12px] sm:text-[13px] font-medium tracking-wide hover:opacity-90 transition-opacity"
           >
             <span className="hidden sm:inline">{announcement.text}</span>
-            <span className="sm:hidden">2 build spots left.</span>
+            <span className="sm:hidden">{announcement.short}</span>
             {' '}
             <span className="underline underline-offset-2 font-semibold hidden sm:inline">{announcement.cta}</span>
-            <span className="underline underline-offset-2 font-semibold sm:hidden">Free build consult &rarr;</span>
+            <span className="underline underline-offset-2 font-semibold sm:hidden">{announcement.ctaShort}</span>
           </Link>
           <button
             onClick={(e) => {

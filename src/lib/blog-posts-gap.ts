@@ -475,7 +475,7 @@ export const gapPosts: BlogPost[] = [
 <li>Are your patch cables close to the length they need to be?</li>
 </ul>
 <p>If you answered yes to all four, leave it alone. Your board is fine, whatever it looks like. If you answered no to one or more, a rewire is probably worth it. Not for the photos. For the sound and the peace of mind.</p>
-<p>Want to see what a clean build looks like in practice? Browse our <a href="/gallery">gallery</a>. If you are thinking about a full build, every <a href="/custom-builds">custom build</a> starts with a <a href="/book">free 30-minute consultation</a>, where we plan the signal chain, the power and the routing before a single cable is cut. Builds start at $1,999 and usually take 4 to 8 weeks. And if you just want a second opinion on your current board, <a href="/tone-tutoring">Tone Tutoring</a> is $99 for a 60-minute video session.</p>`,
+<p>Want to see what a clean build looks like in practice? Browse our <a href="/gallery">gallery</a>. If you are thinking about a full build, every <a href="/custom-builds">custom build</a> starts with a <a href="/book">free 30-minute consultation</a>, where we plan the signal chain, the power and the routing before a single cable is cut. Builds start at $1,999 and take about 10 business days at the bench once your pedals arrive. And if you just want a second opinion on your current board, <a href="/tone-tutoring">Tone Tutoring</a> is $99 for a 60-minute video session.</p>`,
       },
       {
         heading: 'Frequently asked questions about pedalboard wiring',
@@ -594,7 +594,7 @@ export const gapPosts: BlogPost[] = [
         headingLevel: 2,
         content: `<p>That is us. Here is the plain version.</p>
 <p>The Rig Doctor is based in Houston and ships nationwide. The shop has 300+ rigs built and 17 years of experience behind it. Our builders are Mason Marangella and Vince DiGioia.</p>
-<p><strong>What stands out:</strong> we start with the sound, not the board. Every build begins with a free 30-minute consultation where we talk through your music, your amp and your pedals, then design the signal chain before anything gets mounted or soldered. From there, every build uses hand-soldered Mogami cable cut to length and isolated power, and comes with lifetime support and free repairs. <a href="/custom-builds">Custom builds</a> start at $1,999, and a typical build takes 4 to 8 weeks.</p>
+<p><strong>What stands out:</strong> we start with the sound, not the board. Every build begins with a free 30-minute consultation where we talk through your music, your amp and your pedals, then design the signal chain before anything gets mounted or soldered. From there, every build uses hand-soldered Mogami cable cut to length and isolated power, and comes with lifetime support and free repairs. <a href="/custom-builds">Custom builds</a> start at $1,999, and each board gets about 10 business days at the bench, one at a time.</p>
 <p>We also offer <a href="/tone-tutoring">Tone Tutoring</a>. It is a $99, 60-minute video session for players who are not ready for a full build but want help with chain order, gain staging or noise on the board they already own.</p>
 <p><strong>Good fit for:</strong> players who want the whole rig designed and built around their sound, and players who want expert help with their current board first. You can see finished builds in our <a href="/gallery">gallery</a>.</p>`,
       },

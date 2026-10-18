@@ -3,8 +3,8 @@
 const steps = [
   { label: 'Consultation', time: 'Day 1', detail: '30 min call' },
   { label: 'Design', time: 'Week 1', detail: 'Diagram + quote' },
-  { label: 'Build', time: 'Weeks 2–7', detail: 'Hands-on work' },
-  { label: 'Delivery', time: 'Week 4–8', detail: 'At your door' },
+  { label: 'Build', time: '~10 days', detail: 'One board at a time' },
+  { label: 'Delivery', time: 'Ships insured', detail: 'Ready to plug in' },
 ];
 
 interface BuildTimelineProps {

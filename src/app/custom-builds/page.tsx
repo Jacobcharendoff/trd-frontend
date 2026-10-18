@@ -30,7 +30,7 @@ const customBuildsFAQs = [
   },
   {
     q: 'How long does a custom pedalboard build take?',
-    a: 'Most builds ship in 4 to 8 weeks depending on complexity and parts sourcing. If you have a tour date or deadline, let us know. We do rush builds.',
+    a: 'Each board gets about 10 business days at the bench once your pedals arrive. We build one at a time, so your place in line sets your start date. If you have a tour date or deadline, tell us on the call.',
   },
   {
     q: 'Do I need to ship my pedals to you?',
@@ -93,8 +93,8 @@ const steps = [
   { Icon: IconVideo, when: 'Day 1', title: 'Free consultation', body: "30-minute video call. Show us your rig and tell us what's driving you nuts. We map out a plan." },
   { Icon: IconBlueprint, when: 'Week 1', title: 'Design and planning', body: 'Wiring diagram, power layout, signal chain order and parts list. Every detail documented before we pick up a soldering iron.' },
   { Icon: IconShip, when: '', title: 'Ship your pedals', body: 'We send a prepaid label. On arrival we photograph everything and confirm the build spec.' },
-  { Icon: IconSolder, when: 'Weeks 2 to 7', title: 'The build', body: 'Hand-soldered connections, custom-cut cables, isolated power, engineered signal path. Road-tested before it ships.' },
-  { Icon: IconRoadCase, when: 'Weeks 4 to 8', title: 'Play and support', body: 'Your rig ships back fully insured and ready to plug in. Ongoing support included.' },
+  { Icon: IconSolder, when: '~10 business days', title: 'The build', body: 'Hand-soldered connections, custom-cut cables, isolated power, engineered signal path. Road-tested before it ships.' },
+  { Icon: IconRoadCase, when: '', title: 'Play and support', body: 'Your rig ships back fully insured and ready to plug in. Ongoing support included.' },
 ];
 
 const wall = [
@@ -162,7 +162,7 @@ export default function CustomBuildsPage() {
               {[
                 ['300+', 'rigs built'],
                 ['17', 'years at the bench'],
-                ['4-8 wk', 'typical turnaround'],
+                ['10 days', 'per board, one at a time'],
               ].map(([n, l]) => (
                 <div key={l}>
                   <p className="text-2xl sm:text-3xl font-bold text-white">{n}</p>
@@ -410,7 +410,7 @@ export default function CustomBuildsPage() {
       <ParallaxImage src={`${CDN}2022-L1010577.jpg`} alt="Close-up of a finished Rig Doctor pedalboard" strength={10} className="bg-black min-h-[75svh] flex items-center">
         <div className="absolute inset-0 bg-black/65" />
         <div className="relative z-10 w-full max-w-3xl mx-auto px-6 py-24 text-center">
-          <p className="trd-eyebrow text-white/55 mb-6">2 build spots left in 2026</p>
+          <p className="trd-eyebrow text-white/55 mb-6">2026 sold out &middot; now booking 2027</p>
           <h2 className="trd-display text-white mb-8">
             Your tone is worth <span className="trd-gradient-text">getting right.</span>
           </h2>
